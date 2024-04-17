@@ -13,6 +13,7 @@
     if (schema) {
       fetch(schema)
         .then(response => response.text()) // 将响应内容转换为文本
+        .then(text => JSON.stringify(JSON.parse(text), null, 2))
         .then(data => {
           sourceView();
           global.jsonEditor.getSession().setValue(data);
