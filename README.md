@@ -74,8 +74,8 @@
 
 ## 可视化
 
-- <a href="https://dongchengjie.github.io/meta-json-schema/?schema=https://fastly.jsdelivr.net/gh/dongchengjie/meta-json-schema@main/schemas/meta-json-schema.json" target="_blank">meta-json-schema</a>
-- <a href="https://dongchengjie.github.io/meta-json-schema/?schema=https://fastly.jsdelivr.net/gh/dongchengjie/meta-json-schema@main/schemas/clash-verge-merge-json-schema.json" target="_blank">clash-verge-merge-json-schema</a>
+- <a href="https://dongchengjie.github.io/meta-json-schema/?schema=https://raw.githubusercontent.com/dongchengjie/meta-json-schema/main/schemas/clash-verge-merge-json-schema.json" target="_blank">meta-json-schema</a>
+- <a href="https://dongchengjie.github.io/meta-json-schema/?schema=https://raw.githubusercontent.com/dongchengjie/meta-json-schema/main/schemas/clash-verge-merge-json-schema.json" target="_blank">clash-verge-merge-json-schema</a>
 
 ## 语法
 
