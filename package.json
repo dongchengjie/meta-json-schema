@@ -1,5 +1,11 @@
 {
   "name": "meta-json-schema",
+  "version": "1.18.3",
+  "keywords": [
+    "clash",
+    "clash.meta",
+    "schema"
+  ],
   "config": {
     "watches": [
       "./src/meta-json-schema.json",
