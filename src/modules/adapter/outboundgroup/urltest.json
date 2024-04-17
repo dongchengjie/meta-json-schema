@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "title": "outboundgroup-url-test",
+  "definitions": {
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" },
+    "groupbase": { "$ref": "./groupbase.json" }
+  },
+  "allOf": [
+    { "title": "代理组基础配置", "$ref": "#/definitions/groupbase" },
+    {
+      "type": "object",
+      "title": "url-test配置",
+      "properties": {
+        "tolerance": {
+          "type": "integer",
+          "title": "代理节点切换容差",
+          "description": "新代理节点延迟至少比当前小多少程度,才进行代理节点切换(单位:ms)",
+          "markdownDescription": "新代理节点延迟至少比当前小多少程度,才进行代理节点切换(单位:ms)"
+        }
+      }
+    }
+  ]
+}

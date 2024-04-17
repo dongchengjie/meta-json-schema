@@ -1,0 +1,9 @@
+{
+  "type": "array",
+  "title": "认证配置",
+  "description": "格式: <用户>:<密码>",
+  "definitions": {
+    "types": { "$ref": "../../definitions/types.json" },
+    "patterns": { "$ref": "../../definitions/patterns.json" }
+  }
+}

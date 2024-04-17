@@ -1,0 +1,150 @@
+{
+  "type": "object",
+  "title": "outbound-wireguard",
+  "definitions": {
+    "compatible": { "$ref": "../../../definitions/compatible.json" },
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" },
+    "basic-option": { "$ref": "./base.json#/definitions/basic-option" },
+    "smux": { "$ref": "./singmux.json" },
+    "wireguard-peer-option": {
+      "type": "object",
+      "title": "peer配置",
+      "required": ["server", "port"],
+      "properties": {
+        "server": {
+          "$ref": "#/definitions/patterns/server",
+          "title": "代理节点服务器",
+          "description": "域名或IP",
+          "markdownDescription": "域名或IP"
+        },
+        "port": {
+          "$ref": "#/definitions/patterns/port",
+          "title": "代理节点端口号",
+          "description": "代理节点端口号",
+          "markdownDescription": "代理节点端口号"
+        },
+        "public-key": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "公钥",
+          "description": "公钥",
+          "markdownDescription": "公钥"
+        },
+        "pre-shared-key": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "预共享密钥",
+          "description": "预共享密钥",
+          "markdownDescription": "预共享密钥"
+        },
+        "reserved": {
+          "type": "array",
+          "title": "保留字段值",
+          "description": "部分WARP节点需要使用",
+          "markdownDescription": "部分`WARP`节点需要使用"
+        },
+        "allowed-ips": {
+          "$ref": "#/definitions/types/ipCIDRArray",
+          "title": "允许进行流量转发的IP段",
+          "description": "允许进行流量转发的IP段",
+          "markdownDescription": "允许进行流量转发的IP段"
+        }
+      }
+    }
+  },
+  "allOf": [
+    { "title": "basic配置", "$ref": "#/definitions/basic-option" },
+    {
+      "type": "object",
+      "title": "wireguard配置",
+      "required": ["name"],
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "代理节点类型",
+          "description": "代理节点类型",
+          "markdownDescription": "代理节点类型"
+        },
+        "name": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "代理节点名称",
+          "description": "代理节点名称",
+          "markdownDescription": "代理节点名称"
+        },
+        "ip": {
+          "$ref": "#/definitions/patterns/ipv4",
+          "title": "本机在Wireguard网络中使用的IPv4地址",
+          "description": "本机在Wireguard网络中使用的IPv4地址",
+          "markdownDescription": "本机在`Wireguard`网络中使用的`IPv4`地址"
+        },
+        "ipv6": {
+          "$ref": "#/definitions/patterns/ipv6",
+          "title": "本机在Wireguard网络中使用的IPv6地址",
+          "description": "本机在Wireguard网络中使用的IPv6地址",
+          "markdownDescription": "本机在`Wireguard`网络中使用的`IPv6`地址"
+        },
+        "private-key": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "私钥",
+          "description": "私钥(Base64编码)",
+          "markdownDescription": "私钥(`Base64`编码)"
+        },
+        "workers": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "工作线程",
+          "description": "工作线程(默认为CPU逻辑核心数)",
+          "markdownDescription": "工作线程(默认为CPU逻辑核心数)"
+        },
+        "mtu": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "最大传输单元",
+          "description": "最大传输单元",
+          "markdownDescription": "最大传输单元",
+          "default": 1408
+        },
+        "udp": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用UDP",
+          "description": "启用UDP",
+          "markdownDescription": "启用`UDP`",
+          "default": true
+        },
+        "persistent-keepalive": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "持久保活间隔",
+          "description": "单位:s",
+          "markdownDescription": "单位:s"
+        },
+        "peers": {
+          "type": "array",
+          "title": "peer配置",
+          "description": "peer配置",
+          "markdownDescription": "peer配置",
+          "items": { "$ref": "#/definitions/wireguard-peer-option" }
+        },
+        "remote-dns-resolve": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "强制DNS远程解析",
+          "description": "强制DNS远程解析",
+          "markdownDescription": "强制DNS远程解析",
+          "default": false
+        },
+        "dns": {
+          "$ref": "#/definitions/types/serverArray",
+          "title": "DNS解析服务器",
+          "description": "DNS解析服务器(要求启用remote-dns-resolve)",
+          "markdownDescription": "DNS解析服务器(要求启用`remote-dns-resolve`)"
+        }
+      },
+      "if": { "not": { "properties": { "peers": { "type": "array" } } } },
+      "then": {
+        "$ref": "#/definitions/wireguard-peer-option"
+      }
+    },
+    {
+      "type": "object",
+      "title": "smux配置",
+      "properties": { "smux": { "title": "smux配置", "$ref": "#/definitions/smux" } }
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "type": "object",
+  "title": "子规则配置",
+  "definitions": {
+    "types": { "$ref": "../../definitions/types.json" },
+    "patterns": { "$ref": "../../definitions/patterns.json" },
+    "enums": { "$ref": "../../definitions/enums.json" },
+    "rule": { "$ref": "../rules/rule.json" }
+  },
+  "additionalProperties": {
+    "type": "array",
+    "items": { "$ref": "#/definitions/rule" }
+  }
+}

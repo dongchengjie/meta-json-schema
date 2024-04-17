@@ -1,0 +1,6 @@
+{
+  "string": { "anyOf": [{ "type": "string" }, { "pattern": "^\\d+(\\.\\d+)?$" }] },
+  "integer": { "anyOf": [{ "type": "integer" }, { "pattern": "^\\d+$" }] },
+  "number": { "anyOf": [{ "type": "number" }, { "pattern": "^\\d+(\\.\\d+)?$" }] },
+  "boolean": { "anyOf": [{ "type": "boolean" }, { "pattern": "^(?i)(true|false)$" }] }
+}

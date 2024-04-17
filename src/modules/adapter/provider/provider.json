@@ -1,0 +1,159 @@
+{
+  "type": "object",
+  "title": "proxy-provider",
+  "definitions": {
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" },
+    "health-check": { "$ref": "./health-check.json" }
+  },
+  "patternProperties": {
+    "^default$": { "type": "null", "errorMessage": "不能使用default作为provider的名称" }
+  },
+  "additionalProperties": {
+    "type": "object",
+    "required": ["type"],
+    "properties": {
+      "type": {
+        "enum": ["file", "http"],
+        "markdownEnumDescriptions": ["本地文件", "网络文件"],
+        "title": "provider类型",
+        "description": "provider类型",
+        "markdownDescription": "provider类型"
+      },
+      "path": {
+        "type": "string",
+        "title": "provider文件保存路径",
+        "description": "默认使用MD5(url)作为文件名。内核工作目录的相对路径(如果想保存到任意位置,配置环境变量SKIP_SAFE_PATH_CHECK=1)",
+        "markdownDescription": "默认使用MD5(`url`)作为文件名。内核工作目录的相对路径(如果想保存到任意位置,配置环境变量`SKIP_SAFE_PATH_CHECK=1`)"
+      },
+      "interval": {
+        "type": "integer",
+        "title": "provider更新间隔",
+        "description": "单位:s",
+        "markdownDescription": "单位:s"
+      },
+      "header": { "type": "object", "errorMessage": "类型应为object" },
+      "health-check": { "$ref": "#/definitions/health-check" },
+      "override": {
+        "allOf": [
+          {
+            "type": "object",
+            "title": "覆写节点内容",
+            "description": "覆写节点内容",
+            "properties": {
+              "udp": {
+                "type": "boolean",
+                "title": "启用UDP",
+                "description": "启用UDP",
+                "markdownDescription": "启用`UDP`"
+              },
+              "up": {
+                "type": "string",
+                "title": "是否允许UDP通过代理",
+                "description": "Hysteria/Hysteria2协议配置上行带宽",
+                "markdownDescription": "`Hysteria`/`Hysteria2`协议配置上行带宽"
+              },
+              "down": {
+                "type": "string",
+                "title": "是否允许UDP通过代理",
+                "description": "Hysteria/Hysteria2协议配置下行带宽",
+                "markdownDescription": "`Hysteria`/`Hysteria2`协议配置下行带宽"
+              },
+              "dialer-proxy": {
+                "type": "string",
+                "title": "指定当前proxy通过下一跳的dialer-proxy建立网络连接",
+                "description": "取值为proxy-groups,proxy的name",
+                "markdownDescription": "取值为`proxy-groups`,`proxy`的`name`"
+              },
+              "skip-cert-verify": {
+                "type": "boolean",
+                "title": "跳过证书验证",
+                "description": "跳过证书验证",
+                "markdownDescription": "跳过证书验证"
+              },
+              "interface-name": {
+                "type": "string",
+                "title": "指定节点绑定的接口,从此接口发起连接",
+                "description": "指定节点绑定的接口,从此接口发起连接",
+                "markdownDescription": "指定节点绑定的接口,从此接口发起连接"
+              },
+              "routing-mark": {
+                "type": "integer",
+                "title": "节点发起连接时附加的路由标记",
+                "description": "为Linux下的出站连接提供默认流量标记",
+                "markdownDescription": "为Linux下的出站连接提供默认流量标记"
+              },
+              "ip-version": {
+                "enum": ["dual", "ipv4", "ipv6", "ipv4-prefer", "ipv6-prefer"],
+                "markdownEnumDescriptions": [
+                  "`IPv4`/`IPv6`双栈",
+                  "仅使用`IPv4`",
+                  "仅使用`IPv6`",
+                  "优先使用`IPv4`。对于`TCP`会进行双栈解析,并发链接,但是优先使用`IPv4`链接。`UDP`为双栈解析,获取结果中的第一个`IPv4`",
+                  "优先使用`IPv6`。对于`TCP`会进行双栈解析,并发链接,但是优先使用`IPv6`链接。`UDP`为双栈解析,获取结果中的第一个`IPv6`"
+                ],
+                "title": "设置节点使用IP版本",
+                "description": "设置节点使用IP版本",
+                "markdownDescription": "设置节点使用IP版本",
+                "default": "dual"
+              },
+              "additional-prefix": {
+                "type": "string",
+                "title": "为节点名称添加固定前缀",
+                "description": "为节点名称添加固定前缀",
+                "markdownDescription": "为节点名称添加固定前缀"
+              },
+              "additional-suffix": {
+                "type": "string",
+                "title": "为节点名称添加固定后缀",
+                "description": "为节点名称添加固定后缀",
+                "markdownDescription": "为节点名称添加固定后缀"
+              }
+            }
+          }
+        ]
+      },
+      "filter": {
+        "type": "string",
+        "title": "节点过滤",
+        "description": "保留满足关键词或正则表达式的节点(使用`号分隔)",
+        "markdownDescription": "筛选满足关键词或`正则表达式`的节点(使用`号分隔)"
+      },
+      "exclude-filter": {
+        "type": "string",
+        "title": "节点排除",
+        "description": "排除满足关键词或正则表达式的节点(不支持多个表达式)",
+        "markdownDescription": "排除满足关键词或`正则表达式`的节点(不支持多个表达式)"
+      },
+      "exclude-type": {
+        "type": "string",
+        "title": "根据节点类型排除节点",
+        "description": "direct, dns, ss, ssr, snell, socks5, http, vmess, vless, trojan, hysteria, hysteria2, wireguard, tuic, ssh(使用|分隔,不支持正则表达式)",
+        "markdownDescription": "`direct`,`dns`,`ss`,`ssr`,`snell`,`socks5`,`http`,`vmess`,`vless`,`trojan`,`hysteria`,`hysteria2`,`wireguard`,`tuic`,`ssh`(使用`|`分隔,不支持正则表达式)"
+      }
+    },
+    "if": {
+      "properties": {
+        "type": { "const": "http" }
+      }
+    },
+    "then": {
+      "required": ["url"],
+      "properties": {
+        "url": {
+          "$ref": "#/definitions/patterns/httpUrl",
+          "title": "provider网络文件地址",
+          "description": "provider网络文件地址",
+          "markdownDescription": "provider网络文件地址"
+        },
+        "proxy": {
+          "type": "string",
+          "title": "使用指定代理下载/更新provider",
+          "description": "使用指定代理下载/更新provider",
+          "markdownDescription": "使用指定代理下载/更新provider"
+        }
+      }
+    }
+  }
+}

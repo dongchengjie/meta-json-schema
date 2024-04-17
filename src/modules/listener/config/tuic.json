@@ -1,0 +1,102 @@
+{
+  "type": "object",
+  "title": "tuic-server配置",
+  "definitions": {
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" },
+    "mux-option": { "$ref": "../sing/sing.json" }
+  },
+  "required": ["enable", "listen"],
+  "properties": {
+    "enable": {
+      "type": "boolean",
+      "title": "启用tuic-server",
+      "description": "启用tuic-server",
+      "markdownDescription": "启用`tuic-server`"
+    },
+    "listen": {
+      "type": "string",
+      "title": "监听地址",
+      "description": "多个使用,分隔",
+      "markdownDescription": "多个使用,分隔"
+    },
+    "token": {
+      "type": "string",
+      "title": "Token",
+      "description": "Token",
+      "markdownDescription": "Token"
+    },
+    "users": {
+      "type": "object",
+      "title": "用户列表(key: value格式)",
+      "description": "uuid:password",
+      "markdownDescription": "`uuid`:`password`",
+      "additionalProperties": { "type": "string" }
+    },
+    "certificate": {
+      "type": "string",
+      "title": "证书或证书路径",
+      "description": "PEM格式",
+      "markdownDescription": "PEM格式"
+    },
+    "private-key": {
+      "type": "string",
+      "title": "私钥",
+      "description": "私钥",
+      "markdownDescription": "私钥"
+    },
+    "congestion-controller": {
+      "enum": ["cubic", "new_reno", "bbr_meta_v1", "bbr_meta_v2", "bbr"],
+      "markdownEnumDescriptions": [
+        "根据网络拥塞窗口的大小来调整传输速率,以使其在拥塞和非拥塞期间保持平衡",
+        "通过在网络发生拥塞时执行快速恢复和快速重传来改善数据传输性能",
+        "`BBR`算法变体版本,通过引入新的机制和策略来进一步提升网络性能",
+        "`BBR`算法变体版本,通过引入新的机制和策略来进一步提升网络性能",
+        "通过动态估计网络的带宽和往返时间(`RTT`),并根据这些信息来调整数据传输速率"
+      ],
+      "title": "拥塞控制算法",
+      "description": "拥塞控制算法",
+      "markdownDescription": "拥塞控制算法"
+    },
+    "max-idle-time": {
+      "type": "integer",
+      "title": "连接的最大空闲时间",
+      "description": "单位:ms",
+      "markdownDescription": "单位:ms"
+    },
+    "authentication-timeout": {
+      "type": "integer",
+      "title": "认证超时时间",
+      "description": "单位:ms",
+      "markdownDescription": "单位:ms"
+    },
+    "alpn": {
+      "$ref": "#/definitions/types/stringArray",
+      "title": "ALPN",
+      "description": "Application-Layer Protocol Negotiation(应用层协议协商)",
+      "markdownDescription": "Application-Layer Protocol Negotiation(应用层协议协商)"
+    },
+    "max-udp-relay-packet-size": {
+      "type": "integer",
+      "title": "最大的UDP数据包中继大小",
+      "description": "单位:bytes",
+      "markdownDescription": "单位:bytes",
+      "default": 1500
+    },
+    "max-datagram-frame-size": {
+      "type": "integer",
+      "title": "最大数据帧大小",
+      "description": "不超过1400",
+      "markdownDescription": "不超过1400"
+    },
+    "cwnd": {
+      "type": "integer",
+      "title": "拥塞窗口大小",
+      "description": "拥塞窗口大小(Congestion Window)",
+      "markdownDescription": "拥塞窗口大小(Congestion Window)",
+      "default": 32
+    },
+    "mux-option": { "title": "多路复用配置", "$ref": "#/definitions/mux-option" }
+  }
+}

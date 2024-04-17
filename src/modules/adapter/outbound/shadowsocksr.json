@@ -1,0 +1,151 @@
+{
+  "type": "object",
+  "title": "outbound-shadowsocksr",
+  "definitions": {
+    "compatible": { "$ref": "../../../definitions/compatible.json" },
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" },
+    "basic-option": { "$ref": "./base.json#/definitions/basic-option" },
+    "smux": { "$ref": "./singmux.json" }
+  },
+  "allOf": [
+    { "title": "basic配置", "$ref": "#/definitions/basic-option" },
+    {
+      "type": "object",
+      "title": "http配置",
+      "required": ["name", "server", "port", "password", "cipher", "obfs"],
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "代理节点类型",
+          "description": "代理节点类型",
+          "markdownDescription": "代理节点类型"
+        },
+        "name": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "代理节点名称",
+          "description": "代理节点名称",
+          "markdownDescription": "代理节点名称"
+        },
+        "server": {
+          "$ref": "#/definitions/patterns/server",
+          "title": "代理节点服务器",
+          "description": "域名或IP",
+          "markdownDescription": "域名或IP"
+        },
+        "port": {
+          "$ref": "#/definitions/patterns/port",
+          "title": "代理节点端口号",
+          "description": "代理节点端口号",
+          "markdownDescription": "代理节点端口号"
+        },
+        "password": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "密码",
+          "description": "认证密码",
+          "markdownDescription": "认证密码"
+        },
+        "cipher": {
+          "$ref": "#/definitions/enums/cipher",
+          "title": "加密方法",
+          "description": "加密方法",
+          "markdownDescription": "加密方法"
+        },
+        "obfs": {
+          "enum": ["plain", "http_simple", "http_post", "random_head", "tls1.2_ticket_auth", "tls1.2_ticket_fastauth"],
+          "markdownEnumDescriptions": [
+            "不使用任何混淆方式(流量以明文形式传输)",
+            "将流量伪装成HTTP `GET`请求",
+            "将流量伪装成HTTP `POST`请求",
+            "在数据包的头部添加随机字节",
+            "将流量伪装成TLS 1.2通信",
+            "与`tls1.2_ticket_fastauth`类似,但在认证过程中使用了一种更快的认证方式,但可能牺牲了一些安全性"
+          ],
+          "title": "混淆方法",
+          "description": "混淆方法",
+          "markdownDescription": "混淆方法"
+        },
+        "protocol": {
+          "enum": ["origin", "auth_sha1_v4", "auth_aes128_md5", "auth_aes128_sha1", "auth_chain_a", "auth_chain_b"],
+          "title": "认证协议",
+          "description": "认证协议",
+          "markdownDescription": "认证协议"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "obfs": {
+                "anyOf": [
+                  { "title": "混淆方法", "const": "http_simple" },
+                  { "title": "混淆方法", "const": "http_post" }
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "obfs-param": {
+                "$ref": "#/definitions/compatible/string",
+                "title": "自定义伪装地址和请求体(定义多个使用,分隔并随机选取)",
+                "description": "格式: <host>[#body],...",
+                "markdownDescription": "格式: <`host`>[#`body`],..."
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "obfs": {
+                "anyOf": [
+                  { "title": "混淆方法", "const": "tls1.2_ticket_auth" },
+                  { "title": "混淆方法", "const": "tls1.2_ticket_fastauth" }
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "obfs-param": {
+                "$ref": "#/definitions/compatible/string",
+                "title": "定义伪装地址(定义多个使用,分隔并随机选取)",
+                "description": "格式: <host>,...",
+                "markdownDescription": "格式: <`host`>,..."
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "protocol": {
+                "anyOf": [
+                  { "title": "认证协议", "const": "auth_aes128_sha1" },
+                  { "title": "认证协议", "const": "auth_chain_a" }
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "protocol-param": {
+                "$ref": "#/definitions/compatible/string",
+                "title": "定义用户ID:密钥(定义多个使用,分隔并随机选取)",
+                "description": "格式: <uderId>:<secret>,...",
+                "markdownDescription": "格式: <`uderId`>:<`secret`>,..."
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "object",
+      "title": "smux配置",
+      "properties": { "smux": { "title": "smux配置", "$ref": "#/definitions/smux" } }
+    }
+  ]
+}

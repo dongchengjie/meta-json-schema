@@ -1,0 +1,155 @@
+{
+  "stringArray": {
+    "anyOf": [
+      {
+        "type": "array",
+        "items": { "$ref": "compatible.json#/string" }
+      },
+      { "$ref": "compatible.json#/string" }
+    ]
+  },
+  "portArray": {
+    "anyOf": [
+      {
+        "type": "array",
+        "items": { "$ref": "patterns.json#/port" }
+      },
+      { "$ref": "patterns.json#/port" }
+    ]
+  },
+  "portRangeArray": {
+    "anyOf": [
+      {
+        "type": "array",
+        "items": { "$ref": "patterns.json#/portRange" }
+      },
+      { "$ref": "patterns.json#/portRange" }
+    ]
+  },
+  "ipv4Array": {
+    "anyOf": [
+      {
+        "type": "array",
+        "items": { "$ref": "patterns.json#/ipv4" }
+      },
+      { "$ref": "patterns.json#/ipv4" }
+    ]
+  },
+  "ipv4PortArray": {
+    "anyOf": [
+      {
+        "type": "array",
+        "items": { "$ref": "patterns.json#/ipv4Port" }
+      },
+      { "$ref": "patterns.json#/ipv4Port" }
+    ]
+  },
+  "ipv4CIDRArray": {
+    "anyOf": [
+      {
+        "type": "array",
+        "items": { "$ref": "patterns.json#/ipv4CIDR" }
+      },
+      { "$ref": "patterns.json#/ipv4CIDR" }
+    ]
+  },
+  "ipv6Array": {
+    "anyOf": [
+      {
+        "type": "array",
+        "items": { "$ref": "patterns.json#/ipv6" }
+      },
+      { "$ref": "patterns.json#/ipv6" }
+    ]
+  },
+  "ipv6PortArray": {
+    "anyOf": [
+      {
+        "type": "array",
+        "items": { "$ref": "patterns.json#/ipv6Port" }
+      },
+      { "$ref": "patterns.json#/ipv6Port" }
+    ]
+  },
+  "ipv6CIDRArray": {
+    "anyOf": [
+      {
+        "type": "array",
+        "items": { "$ref": "patterns.json#/ipv6CIDR" }
+      },
+      { "$ref": "patterns.json#/ipv6CIDR" }
+    ]
+  },
+  "ipArray": {
+    "anyOf": [
+      {
+        "type": "array",
+        "items": { "$ref": "patterns.json#/ip" }
+      },
+      { "$ref": "patterns.json#/ip" }
+    ]
+  },
+  "ipPortArray": {
+    "anyOf": [
+      {
+        "type": "array",
+        "items": { "$ref": "patterns.json#/ipPort" }
+      },
+      { "$ref": "patterns.json#/ipPort" }
+    ]
+  },
+  "ipCIDRArray": {
+    "anyOf": [
+      {
+        "type": "array",
+        "items": { "$ref": "patterns.json#/ipCIDR" }
+      },
+      { "$ref": "patterns.json#/ipCIDR" }
+    ]
+  },
+  "serverArray": {
+    "anyOf": [
+      {
+        "type": "array",
+        "items": { "$ref": "patterns.json#/server" }
+      },
+      { "$ref": "patterns.json#/server" }
+    ]
+  },
+  "domainArray": {
+    "anyOf": [
+      {
+        "type": "array",
+        "items": { "$ref": "patterns.json#/domain" }
+      },
+      { "$ref": "patterns.json#/domain" }
+    ]
+  },
+  "domainWildcardArray": {
+    "anyOf": [
+      {
+        "type": "array",
+        "items": { "$ref": "patterns.json#/domainWildcard" }
+      },
+      { "$ref": "patterns.json#/domainWildcard" }
+    ]
+  },
+  "urlArray": {
+    "anyOf": [
+      {
+        "type": "array",
+        "items": { "$ref": "patterns.json#/url" }
+      },
+      { "$ref": "patterns.json#/url" }
+    ]
+  },
+  "httpUrlArray": {
+    "anyOf": [
+      {
+        "type": "array",
+        "items": { "$ref": "patterns.json#/httpUrl" }
+      },
+      { "$ref": "patterns.json#/httpUrl" }
+    ]
+  }
+}

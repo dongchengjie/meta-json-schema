@@ -1,0 +1,72 @@
+{
+  "type": "object",
+  "title": "inbound-vmess",
+  "definitions": {
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" },
+    "base-option": { "$ref": "./base.json" },
+    "mux-option": { "$ref": "./mux.json" },
+    "vmess-user": {
+      "type": "object",
+      "title": "vmess用户",
+      "required": ["uuid", "alterId"],
+      "properties": {
+        "username": {
+          "type": "string",
+          "title": "用户名",
+          "description": "认证用户名",
+          "markdownDescription": "认证用户名"
+        },
+        "uuid": {
+          "$ref": "#/definitions/patterns/uuid",
+          "title": "UUID",
+          "description": "UUID",
+          "markdownDescription": "UUID"
+        },
+        "alterId": {
+          "type": "integer",
+          "title": "AlterID",
+          "description": "Alternate ID(替代标识)",
+          "markdownDescription": "Alternate ID(替代标识)"
+        }
+      }
+    }
+  },
+  "allOf": [
+    { "title": "入站基础配置", "$ref": "#/definitions/base-option" },
+    {
+      "type": "object",
+      "title": "vmess配置",
+      "required": ["password", "cipher"],
+      "properties": {
+        "users": {
+          "type": "array",
+          "title": "用户列表",
+          "description": "用户列表",
+          "markdownDescription": "用户列表",
+          "items": { "$ref": "#/definitions/vmess-user" }
+        },
+        "ws-path": {
+          "type": "string",
+          "title": "ws路径",
+          "description": "ws路径",
+          "markdownDescription": "ws路径"
+        },
+        "certificate": {
+          "type": "string",
+          "title": "证书或证书路径",
+          "description": "PEM格式",
+          "markdownDescription": "PEM格式"
+        },
+        "private-key": {
+          "type": "string",
+          "title": "私钥",
+          "description": "私钥内容或私钥文件路径",
+          "markdownDescription": "私钥内容或私钥文件路径"
+        },
+        "mux-option": { "title": "多路复用配置", "$ref": "#/definitions/mux-option" }
+      }
+    }
+  ]
+}

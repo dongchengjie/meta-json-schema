@@ -1,0 +1,98 @@
+{
+  "type": "object",
+  "title": "inbound配置",
+  "definitions": {
+    "types": { "$ref": "../../definitions/types.json" },
+    "patterns": { "$ref": "../../definitions/patterns.json" }
+  },
+  "properties": {
+    "port": {
+      "$ref": "#/definitions/patterns/port",
+      "title": "HTTP(S)代理端口",
+      "description": "HTTP(S)代理端口",
+      "markdownDescription": "`HTTP(S)`代理端口"
+    },
+    "socks-port": {
+      "$ref": "#/definitions/patterns/port",
+      "title": "SOCKS代理端口",
+      "description": "SOCKS代理端口",
+      "markdownDescription": "`SOCKS`代理端口"
+    },
+    "redir-port": {
+      "$ref": "#/definitions/patterns/port",
+      "title": "透明代理端口",
+      "description": "用于Linux和MacOS",
+      "markdownDescription": "用于`Linux`和`MacOS`"
+    },
+    "tproxy-port": {
+      "$ref": "#/definitions/patterns/port",
+      "title": "透明代理端口",
+      "description": "用于Linux(TProxy TCP 和 TProxy UDP)",
+      "markdownDescription": "用于`Linux`(TProxy TCP 和 TProxy UDP)"
+    },
+    "mixed-port": {
+      "$ref": "#/definitions/patterns/port",
+      "title": "HTTP(S)和SOCKS代理混合端口",
+      "description": "HTTP(S)和SOCKS代理混合端口",
+      "markdownDescription": "`HTTP(S)`和`SOCKS`代理混合端口",
+      "default": 7890
+    },
+    "ss-config": {
+      "type": "string",
+      "title": "shadowsocks配置",
+      "description": "根据配置(URL格式)启动shadowsocks服务器,并添加到listeners",
+      "markdownDescription": "根据配置(`URL`格式)启动shadowsocks服务器,并添加到listeners"
+    },
+    "vmess-config": {
+      "type": "string",
+      "title": "vmess配置",
+      "description": "根据配置(URL格式)启动vmess服务器,并添加到listeners",
+      "markdownDescription": "根据配置(`URL`格式)启动vmess服务器,并添加到listeners"
+    },
+    "allow-lan": {
+      "type": "boolean",
+      "title": "允许局域网",
+      "description": "允许其他设备经过内核的代理端口访问互联网",
+      "markdownDescription": "允许其他设备经过内核的代理端口访问互联网",
+      "default": false
+    },
+    "skip-auth-prefixes": {
+      "$ref": "#/definitions/patterns/ipCIDR",
+      "title": "允许跳过验证的IP段",
+      "description": "允许跳过验证的IP段",
+      "markdownDescription": "允许跳过验证的IP段"
+    },
+    "lan-allowed-ips": {
+      "$ref": "#/definitions/patterns/ipCIDR",
+      "title": "允许连接的IP地址段",
+      "description": "需要启用allow-lan",
+      "markdownDescription": "需要启用`allow-lan`",
+      "default": ["0.0.0.0/0", "::/0"]
+    },
+    "lan-disallowed-ips": {
+      "$ref": "#/definitions/patterns/ipCIDR",
+      "title": "不允许连接的IP地址段",
+      "description": "需要启用allow-lan(优先级高于lan-allowed-ips)",
+      "markdownDescription": "需要启用`allow-lan`(优先级高于`lan-allowed-ips`)"
+    },
+    "bind-address": {
+      "$ref": "#/definitions/patterns/ipPort",
+      "title": "绑定地址",
+      "description": "仅允许其他设备通过这个地址访问(*绑定所有IP地址)",
+      "markdownDescription": "仅允许其他设备通过这个地址访问(*绑定所有IP地址)",
+      "default": "*"
+    },
+    "inbound-tfo": {
+      "type": "boolean",
+      "title": "入站启用TFO(TCP Fast Open)",
+      "description": "仅对TCP协议生效",
+      "markdownDescription": "仅对TCP协议生效"
+    },
+    "inbound-mptcp": {
+      "type": "boolean",
+      "title": "入站启用MPTCP(Multi Path TCP)",
+      "description": "仅对TCP协议生效",
+      "markdownDescription": "仅对TCP协议生效"
+    }
+  }
+}

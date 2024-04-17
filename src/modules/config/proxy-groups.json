@@ -1,0 +1,21 @@
+{
+  "type": "array",
+  "title": "代理组配置",
+  "definitions": {
+    "types": { "$ref": "../../definitions/types.json" },
+    "patterns": { "$ref": "../../definitions/patterns.json" },
+    "enums": { "$ref": "../../definitions/enums.json" },
+    "url-test": { "$ref": "../adapter/outboundgroup/urltest.json" },
+    "fallback": { "$ref": "../adapter/outboundgroup/fallback.json" },
+    "load-balance": { "$ref": "../adapter/outboundgroup/loadbalance.json" },
+    "relay": { "$ref": "../adapter/outboundgroup/relay.json" }
+  },
+  "items": {
+    "anyOf": [
+      { "title": "url-test配置", "$ref": "#/definitions/url-test" },
+      { "title": "fallback配置", "$ref": "#/definitions/fallback" },
+      { "title": "load-balance配置", "$ref": "#/definitions/load-balance" },
+      { "title": "relay配置", "$ref": "#/definitions/relay" }
+    ]
+  }
+}

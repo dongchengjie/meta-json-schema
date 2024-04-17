@@ -1,0 +1,50 @@
+{
+  "type": "object",
+  "title": "NTP配置",
+  "definitions": {
+    "types": { "$ref": "../../definitions/types.json" },
+    "patterns": { "$ref": "../../definitions/patterns.json" }
+  },
+  "properties": {
+    "enable": {
+      "type": "boolean",
+      "title": "启用NTP",
+      "description": "NTP(Network Time Protocol),用于同步计算机系统时钟的网络协议",
+      "markdownDescription": "`NTP`(Network Time Protocol),用于同步计算机系统时钟的网络协议",
+      "default": false
+    },
+    "server": {
+      "type": "string",
+      "title": "NTP服务器地址",
+      "description": "NTP服务器地址",
+      "markdownDescription": "`NTP`服务器地址",
+      "default": "time.apple.com"
+    },
+    "port": {
+      "$ref": "#/definitions/patterns/port",
+      "title": "NTP服务器端口",
+      "description": "NTP服务器端口",
+      "markdownDescription": "`NTP`服务器端口",
+      "default": 123
+    },
+    "interval": {
+      "type": "integer",
+      "title": "同步时钟间隔",
+      "description": "单位:m",
+      "markdownDescription": "单位:m",
+      "default": 30
+    },
+    "dialer-proxy": {
+      "type": "string",
+      "title": "指定当前proxy通过下一跳的dialer-proxy建立网络连接",
+      "description": "取值为proxy-groups,proxy的name",
+      "markdownDescription": "取值为`proxy-groups`,`proxy`的`name`"
+    },
+    "write-to-system": {
+      "type": "boolean",
+      "title": "同步至系统时间",
+      "description": "需要root/管理员权限",
+      "markdownDescription": "需要root/管理员权限"
+    }
+  }
+}

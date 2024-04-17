@@ -1,0 +1,43 @@
+{
+  "type": "object",
+  "title": "inbound-base",
+  "definitions": {
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" }
+  },
+  "required": ["name"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "title": "名称",
+      "description": "名称",
+      "markdownDescription": "名称"
+    },
+    "listen": {
+      "$ref": "#/definitions/patterns/ip",
+      "title": "监听地址",
+      "description": "监听地址",
+      "markdownDescription": "监听地址",
+      "default": "0.0.0.0"
+    },
+    "port": {
+      "$ref": "#/definitions/patterns/port",
+      "title": "监听端口",
+      "description": "监听端口",
+      "markdownDescription": "监听端口"
+    },
+    "rule": {
+      "type": "string",
+      "title": "出站规则",
+      "description": "使用子规则作为入站匹配规则出站",
+      "markdownDescription": "使用子规则作为入站匹配规则出站"
+    },
+    "proxy": {
+      "type": "string",
+      "title": "出站代理",
+      "description": "取值为proxy-groups,proxy的name",
+      "markdownDescription": "取值为proxy-groups,proxy的name"
+    }
+  }
+}

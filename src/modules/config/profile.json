@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "title": "缓存配置",
+  "definitions": {
+    "types": { "$ref": "../../definitions/types.json" },
+    "patterns": { "$ref": "../../definitions/patterns.json" }
+  },
+  "properties": {
+    "store-selected": {
+      "type": "boolean",
+      "title": "持久化策略组的选择",
+      "description": "缓存对策略组的选择,以供下次启动时使用",
+      "markdownDescription": "缓存对策略组的选择,以供下次启动时使用",
+      "default": true
+    },
+    "store-fake-ip": {
+      "type": "boolean",
+      "title": "持久化缓存fake-ip映射表",
+      "description": "缓存fake-ip映射表,域名再次发生连接时,使用原有映射地址",
+      "markdownDescription": "缓存`fake-ip`映射表,域名再次发生连接时,使用原有映射地址",
+      "default": false
+    }
+  }
+}

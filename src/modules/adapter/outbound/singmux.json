@@ -1,0 +1,95 @@
+{
+  "type": "object",
+  "description": "sing-mux多路复用配置",
+  "definitions": {
+    "compatible": { "$ref": "../../../definitions/compatible.json" },
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" }
+  },
+  "properties": {
+    "enabled": {
+      "$ref": "#/definitions/compatible/boolean",
+      "title": "启用多路复用",
+      "description": "启用多路复用",
+      "markdownDescription": "启用多路复用",
+      "default": false
+    },
+    "protocol": {
+      "enum": ["smux", "yamux", "h2mux"],
+      "markdownEnumDescriptions": [
+        "[smux](https://github.com/xtaci/smux)",
+        "[yamux](https://github.com/hashicorp/yamux)",
+        "[h2mux](https://pkg.go.dev/golang.org/x/net/http2)"
+      ],
+      "title": "多路复用协议",
+      "description": "多路复用协议",
+      "markdownDescription": "多路复用协议",
+      "default": "h2mux"
+    },
+    "max-connections": {
+      "$ref": "#/definitions/compatible/integer",
+      "title": "最大连接数量",
+      "description": "与max-streams冲突",
+      "markdownDescription": "与`max-streams`冲突"
+    },
+    "min-streams": {
+      "$ref": "#/definitions/compatible/integer",
+      "title": "在打开新连接之前,连接中的最小多路复用流数量",
+      "description": "与max-streams冲突",
+      "markdownDescription": "与`max-streams`冲突"
+    },
+    "max-streams": {
+      "$ref": "#/definitions/compatible/integer",
+      "title": "在打开新连接之前,连接中的最大多路复用流数量",
+      "description": "与max-connections, max-streams冲突"
+    },
+    "padding": {
+      "$ref": "#/definitions/compatible/boolean",
+      "title": "启用填充",
+      "description": "启用填充",
+      "markdownDescription": "启用填充",
+      "default": false
+    },
+    "brutal-opts": {
+      "type": "object",
+      "title": "Brutal拥塞控制",
+      "description": "Brutal拥塞控制",
+      "markdownDescription": "[Brutal](https://github.com/apernet/tcp-brutal)拥塞控制",
+      "properties": {
+        "enabled": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用Brutal拥塞控制算法",
+          "description": "启用Brutal拥塞控制算法",
+          "markdownDescription": "启用Brutal拥塞控制算法",
+          "default": false
+        },
+        "up": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "上行带宽",
+          "description": "以Mbps为单位",
+          "markdownDescription": "以`Mbps`为单位"
+        },
+        "down": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "下行带宽",
+          "description": "以Mbps为单位",
+          "markdownDescription": "以`Mbps`为单位"
+        }
+      }
+    },
+    "statistic": {
+      "$ref": "#/definitions/compatible/boolean",
+      "title": "将底层连接显示在面板中",
+      "description": "方便打断底层连接",
+      "markdownDescription": "方便打断底层连接",
+      "default": false
+    },
+    "only-tcp": {
+      "$ref": "#/definitions/compatible/boolean",
+      "title": "是否仅允许tcp",
+      "description": "smux配置将不会对udp生效(udp连接会直接走节点默认udp协议传输)",
+      "markdownDescription": "smux配置将不会对`udp`生效(udp连接会直接走节点默认`udp`协议传输)"
+    }
+  }
+}

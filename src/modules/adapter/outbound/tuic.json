@@ -1,0 +1,213 @@
+{
+  "type": "object",
+  "title": "outbound-tuic",
+  "definitions": {
+    "compatible": { "$ref": "../../../definitions/compatible.json" },
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" },
+    "basic-option": { "$ref": "./base.json#/definitions/basic-option" },
+    "smux": { "$ref": "./singmux.json" }
+  },
+  "allOf": [
+    { "title": "basic配置", "$ref": "#/definitions/basic-option" },
+    {
+      "type": "object",
+      "title": "tuic配置",
+      "required": ["name", "server", "port"],
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "代理节点类型",
+          "description": "代理节点类型",
+          "markdownDescription": "代理节点类型"
+        },
+        "name": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "代理节点名称",
+          "description": "代理节点名称",
+          "markdownDescription": "代理节点名称"
+        },
+        "server": {
+          "$ref": "#/definitions/patterns/server",
+          "title": "代理节点服务器",
+          "description": "域名或IP",
+          "markdownDescription": "域名或IP"
+        },
+        "port": {
+          "$ref": "#/definitions/patterns/port",
+          "title": "代理节点端口号",
+          "description": "代理节点端口号",
+          "markdownDescription": "代理节点端口号"
+        },
+        "token": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "TUIC V4的用户标识",
+          "description": "TUIC V4的用户标识",
+          "markdownDescription": "TUIC `V4`的用户标识"
+        },
+        "uuid": {
+          "$ref": "#/definitions/patterns/uuid",
+          "title": "TUIC V5的用户标识",
+          "description": "TUIC V5的用户标识",
+          "markdownDescription": "TUIC `V5`的用户标识"
+        },
+        "password": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "TUIC V5的用户密码",
+          "description": "TUIC V5的用户密码",
+          "markdownDescription": "TUIC `V5`的用户密码"
+        },
+        "ip": {
+          "$ref": "#/definitions/patterns/ip",
+          "title": "覆盖server选项中设置的服务器地址的DNS查找结果",
+          "description": "覆盖server选项中设置的服务器地址的DNS查找结果",
+          "markdownDescription": "覆盖`server`选项中设置的服务器地址的DNS查找结果"
+        },
+        "heartbeat-interval": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "发送保持连接活动的心跳包的间隔时间",
+          "description": "单位:ms",
+          "markdownDescription": "单位:ms",
+          "default": 10000
+        },
+        "alpn": {
+          "$ref": "#/definitions/types/stringArray",
+          "title": "ALPN",
+          "description": "Application-Layer Protocol Negotiation(应用层协议协商)",
+          "markdownDescription": "Application-Layer Protocol Negotiation(应用层协议协商)"
+        },
+        "reduce-rtt": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用QUIC的0-RTT握手",
+          "description": "可以减少连接建立时间,但可能增加重放攻击的风险",
+          "markdownDescription": "可以减少连接建立时间,但可能增加重放攻击的风险"
+        },
+        "request-timeout": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "连接TUIC代理服务器的超时时间",
+          "description": "单位:ms",
+          "markdownDescription": "单位:ms",
+          "default": 8000
+        },
+        "udp-relay-mode": {
+          "enum": ["native", "quic"],
+          "title": "UDP数据包中继模式",
+          "description": "UDP数据包中继模式",
+          "markdownDescription": "UDP数据包中继模式",
+          "default": "native"
+        },
+        "congestion-controller": {
+          "enum": ["cubic", "new_reno", "bbr"],
+          "title": "拥塞控制算法",
+          "description": "拥塞控制算法",
+          "markdownDescription": "拥塞控制算法"
+        },
+        "disable-sni": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "禁用SNI",
+          "description": "SNI(Server Name Indication)",
+          "markdownDescription": "`SNI`(Server Name Indication)"
+        },
+        "max-udp-relay-packet-size": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "最大的UDP数据包中继大小",
+          "description": "单位:bytes",
+          "markdownDescription": "单位:bytes",
+          "default": 1252
+        },
+        "fast-open": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用TFO(TCP Fast Open)",
+          "description": "仅对TCP协议生效(优先级高于tfo)",
+          "markdownDescription": "仅对TCP协议生效(优先级高于`tfo`)"
+        },
+        "max-open-streams": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "最大打开流的数量",
+          "description": "过多的打开流可能会影响性能",
+          "markdownDescription": "过多的打开流可能会影响性能",
+          "default": 100
+        },
+        "cwnd": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "拥塞窗口大小",
+          "description": "拥塞窗口大小(Congestion Window)",
+          "markdownDescription": "拥塞窗口大小(Congestion Window)",
+          "default": 32
+        },
+        "skip-cert-verify": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "跳过证书验证",
+          "description": "跳过证书验证",
+          "markdownDescription": "跳过证书验证"
+        },
+        "fingerprint": {
+          "$ref": "#/definitions/enums/fingerprint",
+          "title": "指纹",
+          "description": "指纹",
+          "markdownDescription": "指纹"
+        },
+        "ca": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "CA证书文件路径",
+          "description": "CA证书文件路径",
+          "markdownDescription": "CA证书文件路径"
+        },
+        "ca-str": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "CA证书内容",
+          "description": "CA证书内容(优先级低于ca)",
+          "markdownDescription": "CA证书内容CA证书内容(优先级低于`ca`)"
+        },
+        "recv-window-conn": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "最大流接收窗口大小",
+          "description": "最大流接收窗口大小(默认限制最大15 MB/s)",
+          "markdownDescription": "最大流接收窗口大小(默认限制最大15 MB/s)"
+        },
+        "recv-window": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "最大连接收窗口大小",
+          "description": "最大连接收窗口大小(默认限制最大64 MB/s)",
+          "markdownDescription": "最大连接收窗口大小(默认限制最大64 MB/s)"
+        },
+        "disable-mtu-discovery": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "禁用MTU发现",
+          "description": "禁用MTU(Maximum Transmission Unit)发现",
+          "markdownDescription": "禁用`MTU`(Maximum Transmission Unit)发现"
+        },
+        "max-datagram-frame-size": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "最大数据帧大小",
+          "description": "最大数据帧大小",
+          "markdownDescription": "最大数据帧大小"
+        },
+        "sni": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "SNI",
+          "description": "SNI(Server Name Indication)",
+          "markdownDescription": "`SNI`(Server Name Indication)"
+        },
+        "udp-over-stream": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用UDP over Stream",
+          "description": "meta和sing-box私有扩展,将ss-uot用于udp中继(开启此选项后udp-relay-mode将失效警告,与原版tuic不兼容)",
+          "markdownDescription": "`meta`和`sing-box`私有扩展,将ss-uot用于udp中继(开启此选项后`udp-relay-mode`将失效警告,与原版`tuic`不兼容)"
+        },
+        "udp-over-stream-version": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "UDP over Stream版本",
+          "description": "UDP over Stream版本",
+          "markdownDescription": "UDP over Stream版本"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "title": "smux配置",
+      "properties": { "smux": { "title": "smux配置", "$ref": "#/definitions/smux" } }
+    }
+  ]
+}

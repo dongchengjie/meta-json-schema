@@ -1,0 +1,308 @@
+{
+  "type": "object",
+  "title": "outbound-shadowsocks",
+  "definitions": {
+    "compatible": { "$ref": "../../../definitions/compatible.json" },
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" },
+    "basic-option": { "$ref": "./base.json#/definitions/basic-option" },
+    "smux": { "$ref": "./singmux.json" },
+    "simple-obfs-option": {
+      "type": "object",
+      "title": "简易混淆配置",
+      "properties": {
+        "mode": {
+          "enums": ["tls", "http"],
+          "title": "混淆模式",
+          "description": "混淆模式",
+          "markdownDescription": "混淆模式"
+        },
+        "host": {
+          "$ref": "#/definitions/patterns/server",
+          "title": "主机地址",
+          "description": "主机地址",
+          "markdownDescription": "主机地址",
+          "default": "bing.com"
+        }
+      }
+    },
+    "v2ray-obfs-option": {
+      "type": "object",
+      "title": "v2ray混淆配置",
+      "required": ["mode"],
+      "properties": {
+        "mode": {
+          "const": "websocket",
+          "title": "混淆模式",
+          "description": "混淆模式",
+          "markdownDescription": "混淆模式"
+        },
+        "host": {
+          "$ref": "#/definitions/patterns/server",
+          "title": "主机地址",
+          "description": "主机地址",
+          "markdownDescription": "主机地址",
+          "default": "bing.com"
+        },
+        "path": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "路径",
+          "description": "路径",
+          "markdownDescription": "路径"
+        },
+        "tls": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用TLS",
+          "description": "启用TLS",
+          "markdownDescription": "启用`TLS`"
+        },
+        "fingerprint": {
+          "$ref": "#/definitions/enums/fingerprint",
+          "title": "指纹",
+          "description": "指纹",
+          "markdownDescription": "指纹"
+        },
+        "headers": {
+          "type": "object",
+          "title": "请求头",
+          "description": "请求头",
+          "markdownDescription": "请求头",
+          "additionalProperties": { "type": "string" }
+        },
+        "skip-cert-verify": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "跳过证书验证",
+          "description": "跳过证书验证",
+          "markdownDescription": "跳过证书验证"
+        },
+        "mux": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用多路复用",
+          "description": "启用多路复用",
+          "markdownDescription": "启用多路复用",
+          "default": true
+        },
+        "v2ray-http-upgrade": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用HTTP协议升级",
+          "description": "通过HTTP协议与客户端进行通信,并在需要时升级到更高级的协议",
+          "markdownDescription": "通过HTTP协议与客户端进行通信,并在需要时升级到更高级的协议"
+        },
+        "v2ray-http-upgrade-fast-open": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用TFO(TCP Fast Open)",
+          "description": "启用TFO(TCP Fast Open)",
+          "markdownDescription": "启用`TFO`(TCP Fast Open)"
+        }
+      }
+    },
+    "shadow-tls-option": {
+      "type": "object",
+      "title": "shadow-tls配置",
+      "required": ["password", "host"],
+      "properties": {
+        "password": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "密码",
+          "description": "密码",
+          "markdownDescription": "密码"
+        },
+        "host": {
+          "$ref": "#/definitions/patterns/server",
+          "title": "主机地址",
+          "description": "主机地址",
+          "markdownDescription": "主机地址"
+        },
+        "fingerprint": {
+          "$ref": "#/definitions/enums/fingerprint",
+          "title": "指纹",
+          "description": "指纹",
+          "markdownDescription": "指纹"
+        },
+        "skip-cert-verify": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "跳过证书验证",
+          "description": "跳过证书验证",
+          "markdownDescription": "跳过证书验证"
+        },
+        "version": {
+          "enum": [1, 2, 3],
+          "title": "版本",
+          "description": "版本",
+          "markdownDescription": "版本",
+          "default": 2
+        }
+      }
+    },
+    "restls-option": {
+      "type": "object",
+      "title": "restls配置",
+      "required": ["password", "host", "version-hint"],
+      "properties": {
+        "password": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "密码",
+          "description": "密码",
+          "markdownDescription": "密码"
+        },
+        "host": {
+          "$ref": "#/definitions/patterns/server",
+          "title": "主机地址",
+          "description": "主机地址",
+          "markdownDescription": "主机地址"
+        },
+        "version-hint": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "版本",
+          "description": "版本",
+          "markdownDescription": "版本"
+        },
+        "restls-script": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "Restls脚本",
+          "description": "Restls脚本隐藏代理流量行为",
+          "markdownDescription": "[Restls脚本隐藏代理流量行为](https://github.com/3andne/restls/blob/main/Restls-Script%3A%20Hide%20Your%20Proxy%20Traffic%20Behavior.md)"
+        }
+      }
+    }
+  },
+  "allOf": [
+    { "title": "basic配置", "$ref": "#/definitions/basic-option" },
+    {
+      "type": "object",
+      "title": "shadowsocks配置",
+      "required": ["name", "server", "port", "password", "cipher"],
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "代理节点类型",
+          "description": "代理节点类型",
+          "markdownDescription": "代理节点类型"
+        },
+        "name": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "代理节点名称",
+          "description": "代理节点名称",
+          "markdownDescription": "代理节点名称"
+        },
+        "server": {
+          "$ref": "#/definitions/patterns/server",
+          "title": "代理节点服务器",
+          "description": "域名或IP",
+          "markdownDescription": "域名或IP"
+        },
+        "port": {
+          "$ref": "#/definitions/patterns/port",
+          "title": "代理节点端口号",
+          "description": "代理节点端口号",
+          "markdownDescription": "代理节点端口号"
+        },
+        "password": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "密码",
+          "description": "认证密码",
+          "markdownDescription": "认证密码"
+        },
+        "cipher": {
+          "$ref": "#/definitions/enums/cipher",
+          "title": "加密方法",
+          "description": "加密方法",
+          "markdownDescription": "加密方法"
+        },
+        "udp": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用UDP",
+          "description": "启用UDP",
+          "markdownDescription": "启用`UDP`",
+          "default": true
+        },
+        "plugin": {
+          "enum": ["obfs", "v2ray-plugin", "shadow-tls", "restls"],
+          "title": "插件",
+          "description": "插件",
+          "markdownDescription": "插件"
+        },
+        "udp-over-tcp": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用UDP over TCP",
+          "description": "启用UDP over TCP",
+          "markdownDescription": "启用UDP over TCP",
+          "default": false
+        },
+        "udp-over-tcp-version": {
+          "enum": [0, 1, 2],
+          "title": "UDP over TCP的协议版本",
+          "description": "UDP over TCP的协议版本",
+          "markdownDescription": "UDP over TCP的协议版本",
+          "default": 2
+        },
+        "client-fingerprint": {
+          "$ref": "#/definitions/enums/fingerprint",
+          "title": "客户端指纹",
+          "description": "客户端指纹",
+          "markdownDescription": "客户端指纹"
+        }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "plugin": { "const": "obfs" } } },
+          "then": {
+            "properties": {
+              "plugin-opts": {
+                "type": "object",
+                "title": "插件配置",
+                "description": "obfs插件配置",
+                "$ref": "#/definitions/simple-obfs-option"
+              }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "plugin": { "const": "v2ray-plugin" } } },
+          "then": {
+            "properties": {
+              "plugin-opts": {
+                "type": "object",
+                "title": "插件配置",
+                "description": "v2ray-plugin插件配置",
+                "$ref": "#/definitions/v2ray-obfs-option"
+              }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "plugin": { "const": "shadow-tls" } } },
+          "then": {
+            "properties": {
+              "plugin-opts": {
+                "type": "object",
+                "title": "插件配置",
+                "description": "shadow-tls插件配置",
+                "$ref": "#/definitions/shadow-tls-option"
+              }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "plugin": { "const": "restls" } } },
+          "then": {
+            "properties": {
+              "plugin-opts": {
+                "type": "object",
+                "title": "插件配置",
+                "description": "restls插件配置",
+                "$ref": "#/definitions/restls-option"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "object",
+      "title": "smux配置",
+      "properties": { "smux": { "title": "smux配置", "$ref": "#/definitions/smux" } }
+    }
+  ]
+}

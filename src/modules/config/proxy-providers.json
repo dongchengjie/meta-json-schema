@@ -1,0 +1,11 @@
+{
+  "type": "object",
+  "title": "代理提供者配置",
+  "definitions": {
+    "types": { "$ref": "../../definitions/types.json" },
+    "patterns": { "$ref": "../../definitions/patterns.json" },
+    "enums": { "$ref": "../../definitions/enums.json" },
+    "health-check": { "$ref": "../adapter/provider/health-check.json" }
+  },
+  "$ref": "../adapter/provider/provider.json"
+}

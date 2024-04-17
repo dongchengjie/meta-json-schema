@@ -1,0 +1,38 @@
+{
+  "type": "object",
+  "title": "iptables配置",
+  "definitions": {
+    "types": { "$ref": "../../definitions/types.json" },
+    "patterns": { "$ref": "../../definitions/patterns.json" }
+  },
+  "properties": {
+    "enable": {
+      "type": "boolean",
+      "title": "持久化策略组的选择",
+      "description": "缓存对策略组的选择,以供下次启动时使用",
+      "markdownDescription": "缓存对策略组的选择,以供下次启动时使用",
+      "default": false
+    },
+    "inbound-interface": {
+      "type": "string",
+      "title": "入站接口",
+      "description": "入站规则将仅应用于哪个接口(默认本地环回接口)",
+      "markdownDescription": "入站规则将仅应用于哪个接口(默认本地环回接口)",
+      "default": "lo"
+    },
+    "bypass": {
+      "$ref": "#/definitions/types/stringArray",
+      "title": "需要绕过iptables规则的IP地址或网段列表",
+      "description": "需要绕过iptables规则的IP地址或网段列表",
+      "markdownDescription": "需要绕过`iptables`规则的IP地址或网段列表",
+      "default": []
+    },
+    "dns-redirect": {
+      "type": "boolean",
+      "title": "DNS重定向",
+      "description": "DNS重定向",
+      "markdownDescription": "DNS重定向",
+      "default": true
+    }
+  }
+}

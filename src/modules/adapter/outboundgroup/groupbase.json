@@ -1,0 +1,98 @@
+{
+  "type": "object",
+  "title": "outboundgroup-groupbase",
+  "definitions": {
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" },
+    "base-option": { "$ref": "../outbound/base.json#/definitions/base-option" },
+    "health-check": { "$ref": "../provider/health-check.json" }
+  },
+  "allOf": [
+    { "title": "outbound基础配置", "required": ["name", "type"], "$ref": "#/definitions/base-option" },
+    {
+      "allOf": [
+        {
+          "type": "object",
+          "title": "代理组基础配置",
+          "properties": {
+            "proxies": {
+              "$ref": "#/definitions/types/stringArray",
+              "title": "代理节点列表",
+              "description": "代理节点列表",
+              "markdownDescription": "代理节点列表"
+            },
+            "use": {
+              "$ref": "#/definitions/types/stringArray",
+              "title": "引入proxy-provider中的代理节点",
+              "description": "引入proxy-provider中的代理节点",
+              "markdownDescription": "引入proxy-provider中的代理节点"
+            },
+            "max-failed-times": {
+              "type": "integer",
+              "title": "最大失败次数",
+              "description": "在timeout时间长度内,请求失败max-failed-times次,提前主动触发健康检查",
+              "markdownDescription": "在`timeout`时间长度内,请求失败`max-failed-times`次,提前主动触发健康检查",
+              "default": 5
+            },
+            "disable-udp": {
+              "type": "boolean",
+              "title": "禁用UDP",
+              "description": "禁用UDP",
+              "markdownDescription": "禁用`UDP`"
+            },
+            "filter": {
+              "type": "string",
+              "title": "节点过滤",
+              "description": "保留满足关键词或正则表达式的节点(使用`号分隔)",
+              "markdownDescription": "筛选满足关键词或`正则表达式`的节点(使用`号分隔)"
+            },
+            "exclude-filter": {
+              "type": "string",
+              "title": "节点排除",
+              "description": "排除满足关键词或正则表达式的节点(不支持多个表达式)",
+              "markdownDescription": "排除满足关键词或`正则表达式`的节点(不支持多个表达式)"
+            },
+            "exclude-type": {
+              "type": "string",
+              "title": "根据出站类型排除节点",
+              "description": "Direct, Reject, RejectDrop, Compatible, Pass, Dns, Shadowsocks, ShadowsocksR, Snell, Socks5, Http, Vmess, Vless, Trojan, Hysteria, Hysteria2, WireGuard, Tuic, Relay, Selector, Fallback, URLTest, LoadBalance, Ssh(使用|分隔,不支持正则表达式)",
+              "markdownDescription": "`Direct`,`Reject`,`RejectDrop`,`Compatible`,`Pass`,`Dns`,`Shadowsocks`,`ShadowsocksR`,`Snell`,`Socks5`,`Http`,`Vmess`,`Vless`,`Trojan`,`Hysteria`,`Hysteria2`,`WireGuard`,`Tuic`,`Relay`,`Selector`,`Fallback`,`URLTest`,`LoadBalance`,`Ssh(使用`|`分隔,不支持正则表达式)"
+            },
+            "include-all": {
+              "type": "boolean",
+              "title": "引入所有proxies和proxy-providers包含的代理节点",
+              "description": "引入所有proxies和proxy-providers包含的代理节点(优先级高于include-all-proxies和include-all-providers)",
+              "markdownDescription": "引入所有`proxies`和`proxy-providers`包含的代理节点(优先级高于`include-all-proxies`和`include-all-providers`)"
+            },
+            "include-all-proxies": {
+              "type": "boolean",
+              "title": "引入所有proxies包含的代理节点",
+              "description": "引入所有proxies包含的代理节点",
+              "markdownDescription": "引入所有`proxies`包含的代理节点"
+            },
+            "include-all-providers": {
+              "type": "boolean",
+              "title": "引入所有proxy-providers包含的代理节点",
+              "description": "引入所有proxy-providers包含的代理节点",
+              "markdownDescription": "引入所有`proxy-providers`包含的代理节点"
+            },
+            "hidden": {
+              "type": "boolean",
+              "title": "隐藏代理组",
+              "description": "需要调用RESTful API的Web UI适配支持",
+              "markdownDescription": "需要调用RESTful API的Web UI适配支持"
+            },
+            "icon": {
+              "type": "string",
+              "title": "代理组图标",
+              "description": "<img/>标签src属性支持的值(如url、data:image/*;base64等,需要调用RESTful API的Web UI适配支持)",
+              "markdownDescription": "`<img/>`标签`src`属性支持的值(如`url`、`data:image/*;base64`等,需要调用RESTful API的Web UI适配支持)"
+            }
+          }
+        },
+        { "title": "健康检查配置", "$ref": "#/definitions/health-check" }
+      ]
+    }
+  ]
+}

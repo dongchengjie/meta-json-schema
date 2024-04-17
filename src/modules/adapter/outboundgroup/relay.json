@@ -1,0 +1,18 @@
+{
+  "type": "object",
+  "title": "outboundgroup-relay",
+  "definitions": {
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" },
+    "groupbase": { "$ref": "./groupbase.json" }
+  },
+  "allOf": [
+    { "title": "代理组基础配置", "$ref": "#/definitions/groupbase" },
+    {
+      "type": "object",
+      "title": "relay配置",
+      "properties": {}
+    }
+  ]
+}

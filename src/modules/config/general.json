@@ -1,0 +1,140 @@
+{
+  "type": "object",
+  "title": "全局配置",
+  "definitions": {
+    "types": { "$ref": "../../definitions/types.json" },
+    "patterns": { "$ref": "../../definitions/patterns.json" },
+    "enums": { "$ref": "../../definitions/enums.json" },
+    "inbound": { "$ref": "./inbound.json" },
+    "controller": { "$ref": "./controller.json" },
+    "geox-url": { "$ref": "./geox-url.json" },
+    "ebpf": { "$ref": "./ebpf.json" }
+  },
+  "allOf": [
+    { "title": "inbound配置", "$ref": "#/definitions/inbound" },
+    { "title": "controller配置", "$ref": "#/definitions/controller" },
+    {
+      "properties": {
+        "unified-delay": {
+          "type": "boolean",
+          "title": "更换延迟计算方式",
+          "description": "去除握手等额外延迟",
+          "markdownDescription": "去除握手等额外延迟",
+          "default": false
+        },
+        "mode": {
+          "enum": ["global", "rule", "direct"],
+          "markdownEnumDescriptions": ["全局代理", "规则匹配", "全局直连"],
+          "title": "运行模式",
+          "description": "运行模式",
+          "markdownDescription": "运行模式",
+          "default": "rule"
+        },
+        "log-level": {
+          "enum": ["debug", "info", "warning", "error", "silent"],
+          "markdownEnumDescriptions": [
+            "尽可能的输出运行中所有的信息",
+            "输出一般运行的内容，以及`error`和`warning`级别的日志",
+            "输出发生错误但不影响运行的日志,以及`error`级别内容",
+            "仅输出发生错误至无法使用的日志",
+            "静默,不输出"
+          ],
+          "title": "日志级别",
+          "description": "日志级别",
+          "markdownDescription": "日志级别",
+          "default": "info"
+        },
+        "ipv6": {
+          "type": "boolean",
+          "title": "是否允许内核接受IPv6流量",
+          "description": "是否允许内核接受IPv6流量",
+          "markdownDescription": "是否允许内核接受`IPv6`流量",
+          "default": true
+        },
+        "interface-name": {
+          "type": "string",
+          "title": "流量出站接口",
+          "description": "流量出站接口",
+          "markdownDescription": "流量出站接口"
+        },
+        "routing-mark": {
+          "type": "integer",
+          "title": "节点发起连接时附加的路由标记",
+          "description": "为Linux下的出站连接提供默认流量标记",
+          "markdownDescription": "为Linux下的出站连接提供默认流量标记"
+        },
+        "geox-url": { "title": "geox-url配置", "$ref": "#/definitions/geox-url" },
+        "geo-auto-update": {
+          "type": "boolean",
+          "title": "Geo自动更新",
+          "description": "Geo自动更新",
+          "markdownDescription": "Geo自动更新",
+          "default": false
+        },
+        "geo-update-interval": {
+          "type": "integer",
+          "title": "Geo自动更新间隔",
+          "description": "单位:h",
+          "markdownDescription": "单位:h",
+          "default": 24
+        },
+        "geodata-mode": {
+          "type": "boolean",
+          "title": "GeoIP数据模式",
+          "description": "更改geoip使用文件(true: dat, false: mmdb)",
+          "markdownDescription": "更改geoip使用文件(true: dat, false: mmdb)",
+          "default": false
+        },
+        "geodata-loader": {
+          "enum": ["standard", "memconservative", "memc"],
+          "markdownEnumDescriptions": ["标准加载器", "专为内存受限(小内存)设备优化的加载器", "`memconservative`的别名"],
+          "title": "Geo文件加载器",
+          "description": "Geo文件加载器",
+          "markdownDescription": "Geo文件加载器",
+          "default": "memconservative"
+        },
+        "geosite-matcher": {
+          "enum": ["mph", "hybrid", "succinct"],
+          "markdownEnumDescriptions": [
+            "根据Geosite规则中的域名或IP地址信息,将匹配的网络流量代理到指定的目标服务器",
+            "根据域名、IP地址和CIDR地址等规则进行匹配,并根据预定义的优先级来选择最佳的匹配结果",
+            "使用了一种紧凑的数据结构,可以有效地存储和查询大量的Geosite规则"
+          ],
+          "title": "Geosite匹配器",
+          "description": "Geosite匹配器",
+          "markdownDescription": "Geosite匹配器",
+          "default": "succinct"
+        },
+        "tcp-concurrent": {
+          "type": "boolean",
+          "title": "TCP并发",
+          "description": "TCP并发",
+          "markdownDescription": "TCP并发",
+          "default": false
+        },
+        "find-process-mode": {
+          "enum": ["always", "strict", "off"],
+          "markdownEnumDescriptions": ["强制匹配所有进程", "由内核判断是否开启", "不匹配进程,推荐在路由器上使用此模式"],
+          "title": "进程匹配模式",
+          "description": "进程匹配模式",
+          "markdownDescription": "进程匹配模式",
+          "default": "strict"
+        },
+        "ebpf": { "title": "ebpf配置", "$ref": "#/definitions/ebpf" },
+        "global-client-fingerprint": {
+          "$ref": "#/definitions/enums/fingerprint",
+          "title": "全局客户端指纹",
+          "description": "支持协议有VLESS,Vmess,trojan",
+          "markdownDescription": "支持协议有`VLESS`,`Vmess`,`trojan`"
+        },
+        "global-ua": {
+          "type": "string",
+          "title": "全局UA",
+          "description": "下载外部资源(proxy-provider、rule-provider、Geo等)时使用",
+          "markdownDescription": "下载外部资源(proxy-provider、rule-provider、Geo等)时使用",
+          "default": "clash.meta/version"
+        }
+      }
+    }
+  ]
+}

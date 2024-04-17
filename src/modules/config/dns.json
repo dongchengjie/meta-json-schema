@@ -1,0 +1,156 @@
+{
+  "type": "object",
+  "description": "DNS配置",
+  "definitions": {
+    "types": { "$ref": "../../definitions/types.json" },
+    "patterns": { "$ref": "../../definitions/patterns.json" }
+  },
+  "properties": {
+    "enable": {
+      "type": "boolean",
+      "title": "启用DNS",
+      "description": "关闭将使用系统DNS",
+      "markdownDescription": "关闭将使用系统DNS",
+      "default": false
+    },
+    "prefer-h3": {
+      "type": "boolean",
+      "title": "启用DoH的HTTP/3支持",
+      "description": "启用DoH的HTTP/3支持",
+      "markdownDescription": "启用DoH的`HTTP/3`支持",
+      "default": false
+    },
+    "ipv6": {
+      "type": "boolean",
+      "title": "是否解析IPV6",
+      "description": "如为false,则回应内容为AAAA的空解析",
+      "markdownDescription": "如为false,则回应内容为AAAA的空解析",
+      "default": false
+    },
+    "ipv6-timeout": {
+      "type": "integer",
+      "title": "解析IPV6超时时间",
+      "description": "单位: ms",
+      "markdownDescription": "单位: ms",
+      "default": 100
+    },
+    "use-hosts": {
+      "type": "boolean",
+      "title": "查询系统hosts文件",
+      "description": "查询系统hosts文件",
+      "markdownDescription": "查询系统`hosts`文件",
+      "default": true
+    },
+    "nameserver": {
+      "$ref": "#/definitions/types/stringArray",
+      "title": "默认域名解析服务器",
+      "description": "支持UDP,TCP,DoT,DoH,DoQ",
+      "markdownDescription": "支持`UDP`,`TCP`,`DoT`,`DoH`,`DoQ`",
+      "default": ["https://doh.pub/dns-query", "tls://223.5.5.5:853"]
+    },
+    "fallback": {
+      "$ref": "#/definitions/types/stringArray",
+      "title": "备用域名解析服务器",
+      "description": "一般情况下使用境外DNS服务器,保证结果可信",
+      "markdownDescription": "一般情况下使用境外DNS服务器,保证结果可信"
+    },
+    "fallback-filter": {
+      "type": "object",
+      "title": "备用域名解析服务器过滤",
+      "description": "满足条件的将采用fallback的解析结果,或只采用fallback解析结果",
+      "markdownDescription": "满足条件的将采用`fallback`的解析结果,或只采用`fallback`解析结果",
+      "properties": {
+        "geoip": {
+          "type": "boolean",
+          "title": "启用fallback-filter",
+          "description": "启用fallback-filter",
+          "markdownDescription": "启用`fallback-filter`",
+          "default": true
+        },
+        "geoip-code": {
+          "type": "string",
+          "title": "启用fallback-filter",
+          "description": "除geoip-code配置的国家IP外,其他IP结果会被视为污染。geoip-code对应国家的结果会直接采用,其余结果将采用fallback的解析结果",
+          "markdownDescription": "除`geoip-code`配置的国家IP外,其他IP结果会被视为污染。`geoip-code`对应国家的结果会直接采用,其余结果将采用`fallback`的解析结果",
+          "default": "CN"
+        },
+        "ipcidr": {
+          "$ref": "#/definitions/types/ipCIDRArray",
+          "title": "DNS污染网段列表",
+          "description": "这些网段的结果会被视为污染,将采用fallback的解析结果",
+          "markdownDescription": "这些网段的结果会被视为污染,将采用`fallback`的解析结果"
+        },
+        "domain": {
+          "$ref": "#/definitions/types/stringArray",
+          "title": "DNS污染域名列表",
+          "description": "这些域名的结果会被视为污染,将采用fallback的解析结果",
+          "markdownDescription": "这些域名的结果会被视为污染,将采用`fallback`的解析结果"
+        },
+        "geosite": {
+          "$ref": "#/definitions/types/stringArray",
+          "title": "DNS污染GeoSite列表",
+          "description": "这些GeoSite的结果会被视为污染,将采用fallback的解析结果",
+          "markdownDescription": "这些[GeoSite](https://github.com/v2ray/domain-list-community/tree/master/data)的结果会被视为污染,将采用`fallback`的解析结果",
+          "deprecationMessage": "使用nameserver-policy代替geosite(geosite将在未来移除)"
+        }
+      }
+    },
+    "listen": {
+      "$ref": "#/definitions/patterns/ipPort",
+      "title": "DNS服务器监听地址",
+      "description": "DNS服务器监听地址",
+      "markdownDescription": "DNS服务器监听地址",
+      "default": "127.0.0.1:53"
+    },
+    "enhanced-mode": {
+      "enum": ["normal", "fake-ip", "redir-host"],
+      "markdownEnumDescriptions": ["普通模式", "fake-ip模式", "redir-host模式"],
+      "title": "增强模式",
+      "description": "DNS处理模式",
+      "markdownDescription": "DNS处理模式",
+      "default": "fake-ip"
+    },
+    "fake-ip-range": {
+      "$ref": "#/definitions/patterns/ipCIDR",
+      "title": "fake-ip的预留映射地址段",
+      "description": "tun模式的网卡默认IP也使用此值作为参考",
+      "markdownDescription": "tun模式的网卡默认IP也使用此值作为参考",
+      "default": "198.18.0.1/16"
+    },
+    "fake-ip-filter": {
+      "$ref": "#/definitions/types/stringArray",
+      "title": "fake-ip过滤",
+      "description": "不使用fake-ip的地址范围",
+      "markdownDescription": "不使用`fake-ip`的地址范围",
+      "default": ["dns.msftnsci.com", "www.msftnsci.com", "www.msftconnecttest.com"]
+    },
+    "default-nameserver": {
+      "$ref": "#/definitions/types/serverArray",
+      "title": "元域名解析服务器",
+      "description": "解析nameserver,fallback以及其他DNS服务器配置的DNS服务器(只能使用纯IP地址,支持加密DNS)",
+      "markdownDescription": "解析`nameserver`,`fallback`以及其他DNS服务器配置的DNS服务器(只能使用纯IP地址,支持加密DNS)",
+      "default": ["114.114.114.114", "223.5.5.5", "8.8.8.8", "1.0.0.1"]
+    },
+    "cache-algorithm": {
+      "enum": ["lru", "arc"],
+      "markdownEnumDescriptions": ["最近最少使用", "自适应替换缓存"],
+      "title": "缓存算法",
+      "description": "lru: Least Recently Used, arc: Adaptive Replacement Cache",
+      "markdownDescription": "`lru`: Least Recently Used, `arc`: Adaptive Replacement Cache",
+      "default": "lru"
+    },
+    "nameserver-policy": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/definitions/types/stringArray" },
+      "title": "DNS解析服务器策略",
+      "description": "指定地址使用特定DNS解析服务器",
+      "markdownDescription": "指定地址使用特定DNS解析服务器"
+    },
+    "proxy-server-nameserver": {
+      "$ref": "#/definitions/types/stringArray",
+      "title": "代理节点DNS解析服务器",
+      "description": "用于解析代理节点的域名",
+      "markdownDescription": "用于解析代理节点的域名"
+    }
+  }
+}

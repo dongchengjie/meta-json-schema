@@ -1,0 +1,71 @@
+{
+  "type": "object",
+  "title": "规则提供者配置",
+  "definitions": {
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" }
+  },
+  "additionalProperties": {
+    "type": "object",
+    "required": ["type", "behavior"],
+    "properties": {
+      "type": {
+        "enum": ["file", "http"],
+        "markdownEnumDescriptions": ["本地文件", "网络文件"],
+        "title": "provider类型",
+        "description": "provider类型",
+        "markdownDescription": "provider类型"
+      },
+      "behavior": {
+        "enum": ["domain", "ipcidr", "classical"],
+        "markdownEnumDescriptions": ["域名通配", "IP网段匹配", "支持除`rule-set`/`sub-rule`以外的全部路由规则"],
+        "title": "规则匹配行为",
+        "description": "规则匹配行为",
+        "markdownDescription": "规则匹配行为"
+      },
+      "path": {
+        "type": "string",
+        "title": "provider文件保存路径",
+        "description": "默认使用MD5(url)作为文件名。内核工作目录的相对路径(如果想保存到任意位置,配置环境变量SKIP_SAFE_PATH_CHECK=1)",
+        "markdownDescription": "默认使用MD5(`url`)作为文件名。内核工作目录的相对路径(如果想保存到任意位置,配置环境变量`SKIP_SAFE_PATH_CHECK=1`)"
+      },
+      "format": {
+        "enum": ["yaml", "text"],
+        "markdownEnumDescriptions": ["YAML格式", "普通文本格式"],
+        "title": "provider文件格式",
+        "description": "provider文件格式",
+        "markdownDescription": "provider文件格式",
+        "default": "yaml"
+      },
+      "interval": {
+        "type": "integer",
+        "title": "provider更新间隔",
+        "description": "单位:s",
+        "markdownDescription": "单位:s"
+      }
+    },
+    "if": {
+      "properties": {
+        "type": { "const": "http" }
+      }
+    },
+    "then": {
+      "required": ["url"],
+      "properties": {
+        "url": {
+          "$ref": "#/definitions/patterns/httpUrl",
+          "title": "provider网络文件地址",
+          "description": "provider网络文件地址",
+          "markdownDescription": "provider网络文件地址"
+        },
+        "proxy": {
+          "type": "string",
+          "title": "使用指定代理下载/更新provider",
+          "description": "使用指定代理下载/更新provider",
+          "markdownDescription": "使用指定代理下载/更新provider"
+        }
+      }
+    }
+  }
+}

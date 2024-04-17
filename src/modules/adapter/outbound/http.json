@@ -1,0 +1,101 @@
+{
+  "type": "object",
+  "title": "outbound-http",
+  "definitions": {
+    "compatible": { "$ref": "../../../definitions/compatible.json" },
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" },
+    "basic-option": { "$ref": "./base.json#/definitions/basic-option" },
+    "smux": { "$ref": "./singmux.json" }
+  },
+  "allOf": [
+    { "title": "basic配置", "$ref": "#/definitions/basic-option" },
+    {
+      "type": "object",
+      "title": "http配置",
+      "required": ["name", "server", "port"],
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "代理节点类型",
+          "description": "代理节点类型",
+          "markdownDescription": "代理节点类型"
+        },
+        "name": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "代理节点名称",
+          "description": "代理节点名称",
+          "markdownDescription": "代理节点名称"
+        },
+        "server": {
+          "$ref": "#/definitions/patterns/server",
+          "title": "代理节点服务器",
+          "description": "域名或IP",
+          "markdownDescription": "域名或IP"
+        },
+        "port": {
+          "$ref": "#/definitions/patterns/port",
+          "title": "代理节点端口号",
+          "description": "代理节点端口号",
+          "markdownDescription": "代理节点端口号"
+        },
+        "username": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "用户名",
+          "description": "认证用户名",
+          "markdownDescription": "认证用户名"
+        },
+        "password": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "密码",
+          "description": "认证密码",
+          "markdownDescription": "认证密码"
+        },
+        "tls": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用TLS",
+          "description": "启用TLS",
+          "markdownDescription": "启用`TLS`"
+        },
+        "sni": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "SNI",
+          "description": "SNI(Server Name Indication)",
+          "markdownDescription": "`SNI`(Server Name Indication)"
+        },
+        "udp": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用UDP",
+          "description": "启用UDP",
+          "markdownDescription": "启用`UDP`",
+          "default": true
+        },
+        "skip-cert-verify": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "跳过证书验证",
+          "description": "跳过证书验证",
+          "markdownDescription": "跳过证书验证"
+        },
+        "fingerprint": {
+          "$ref": "#/definitions/enums/fingerprint",
+          "title": "指纹",
+          "description": "指纹",
+          "markdownDescription": "指纹"
+        },
+        "headers": {
+          "type": "object",
+          "title": "请求头",
+          "description": "请求头",
+          "markdownDescription": "请求头",
+          "additionalProperties": { "type": "string" }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "title": "smux配置",
+      "properties": { "smux": { "title": "smux配置", "$ref": "#/definitions/smux" } }
+    }
+  ]
+}

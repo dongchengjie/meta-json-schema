@@ -1,0 +1,205 @@
+{
+  "type": "object",
+  "title": "tun配置",
+  "definitions": {
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" }
+  },
+  "properties": {
+    "enable": {
+      "type": "boolean",
+      "title": "启用TUN模式",
+      "description": "启用TUN模式",
+      "markdownDescription": "启用`TUN`模式",
+      "default": false
+    },
+    "device": {
+      "type": "string",
+      "title": "指定tun网卡名称",
+      "description": "指定tun网卡名称(macOS强制为utun)",
+      "markdownDescription": "指定tun网卡名称(macOS强制为`utun`)"
+    },
+    "stack": {
+      "type": "string",
+      "title": "TUN模式堆栈",
+      "enum": ["system", "gvisor", "mixed"],
+      "markdownEnumDescriptions": [
+        "可以提供更稳定/全面的tun体验,且占用相对其他堆栈更低",
+        "通过在用户空间中实现网络协议栈,可以提供更高的安全性和隔离性,同时可以避免操作系统内核和用户空间之间的切换,从而在特定情况下具有更好的网络处理性能",
+        "混合堆栈,tcp使用`system`栈,udp使用`gvisor`栈,使用体验可能相对更好"
+      ],
+      "description": "如无使用问题,建议使用mixed(默认gvisor)",
+      "markdownDescription": "如无使用问题,建议使用`mixed`(默认`gvisor`)",
+      "default": "gvisor"
+    },
+    "dns-hijack": {
+      "$ref": "#/definitions/types/stringArray",
+      "title": "DNS劫持",
+      "description": "一般设置为any:53即可,即劫持所有53端口的udp流量",
+      "markdownDescription": "一般设置为`any:53`即可,即劫持所有53端口的udp流量",
+      "default": ["0.0.0.0:53"]
+    },
+    "auto-route": {
+      "type": "boolean",
+      "title": "自动设置全局路由",
+      "description": "可以自动将全局流量路由进入tun网卡",
+      "markdownDescription": "可以自动将全局流量路由进入`tun`网卡",
+      "default": true
+    },
+    "auto-detect-interface": {
+      "type": "boolean",
+      "title": "自动选择流量出口接口",
+      "description": "多出口网卡同时连接的设备建议手动指定出口网卡",
+      "markdownDescription": "多出口网卡同时连接的设备建议手动指定出口网卡",
+      "default": true
+    },
+    "mtu": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 65534,
+      "title": "最大传输单元",
+      "description": "会影响极限状态下的速率,一般用户默认即可",
+      "markdownDescription": "会影响极限状态下的速率,一般用户默认即可",
+      "default": 9000
+    },
+    "gso": {
+      "type": "boolean",
+      "title": "启用通用分段卸载",
+      "description": "仅支持Linux",
+      "markdownDescription": "仅支持Linux",
+      "default": false
+    },
+    "gso-max-size": {
+      "type": "integer",
+      "title": "通用分段卸载包的最大大小",
+      "description": "通用分段卸载包的最大大小",
+      "markdownDescription": "通用分段卸载包的最大大小",
+      "default": 65536
+    },
+    "inet4-address": {
+      "$ref": "#/definitions/patterns/ipv4",
+      "title": "DNS劫持IPv4地址()",
+      "description": "53端口",
+      "markdownDescription": "53端口"
+    },
+    "inet6-address": {
+      "$ref": "#/definitions/patterns/ipv6",
+      "title": "DNS劫持IPv6地址()",
+      "description": "53端口",
+      "markdownDescription": "53端口"
+    },
+    "strict-route": {
+      "type": "boolean",
+      "title": "严格路由",
+      "description": "它可以防止地址泄漏,并使DNS劫持在Android和使用systemd-resolved的Linux上工作,但你的设备将无法被其他设备访问",
+      "markdownDescription": "它可以防止地址泄漏,并使DNS劫持在Android和使用systemd-resolved的Linux上工作,但你的设备将无法被其他设备访问",
+      "default": false
+    },
+    "inet4-route-address": {
+      "$ref": "#/definitions/types/ipv4CIDRArray",
+      "title": "启用auto-route时,指定这些IPV4网段使用自定义路由",
+      "description": "启用auto-route时,指定这些IPV4网段使用自定义路由",
+      "markdownDescription": "启用`auto-route`时,指定这些IPV4网段使用自定义路由"
+    },
+    "inet6-route-address": {
+      "$ref": "#/definitions/types/ipv6CIDRArray",
+      "title": "启用auto-route时,指定这些IPV6网段使用自定义路由",
+      "description": "启用auto-route时,指定这些IPV6网段使用自定义路由",
+      "markdownDescription": "启用`auto-route`时,指定这些IPV6网段使用自定义路由"
+    },
+    "inet4-route-exclude-address": {
+      "$ref": "#/definitions/types/ipv4CIDRArray",
+      "title": "启用auto-route时,指定这些IPV4网段使用默认路由",
+      "description": "启用auto-route时,指定这些IPV4网段使用默认路由",
+      "markdownDescription": "启用`auto-route`时,指定这些IPV4网段使用默认路由"
+    },
+    "inet6-route-exclude-address": {
+      "$ref": "#/definitions/types/ipv6CIDRArray",
+      "title": "启用auto-route时,指定这些IPV6网段使用默认路由",
+      "description": "启用auto-route时,指定这些IPV6网段使用默认路由",
+      "markdownDescription": "启用`auto-route`时,指定这些IPV6网段使用默认路由"
+    },
+    "include-interface": {
+      "$ref": "#/definitions/types/stringArray",
+      "title": "包含被路由的接口",
+      "description": "与exclude-interface冲突",
+      "markdownDescription": "与`exclude-interface`冲突"
+    },
+    "exclude-interface": {
+      "$ref": "#/definitions/types/stringArray",
+      "title": "排除被路由的接口",
+      "description": "与include-interface冲突",
+      "markdownDescription": "与`include-interface`冲突"
+    },
+    "include-uid": {
+      "$ref": "#/definitions/types/stringArray",
+      "title": "包含被路由的Linux用户",
+      "description": "使其被Tun路由流量(需要启用auto-route)",
+      "markdownDescription": "使其被Tun路由流量(需要启用`auto-route`)"
+    },
+    "include-uid-range": {
+      "$ref": "#/definitions/types/stringArray",
+      "title": "包含被路由的Linux用户范围,使其被Tun路由流量",
+      "description": "格式: <UID起始>:<UID终止>(需要启用auto-route)",
+      "markdownDescription": "格式: <UID起始>:<UID终止>(需要启用`auto-route`)"
+    },
+    "exclude-uid": {
+      "$ref": "#/definitions/types/stringArray",
+      "title": "排除被路由的Linux用户",
+      "description": "使其避免被Tun路由流量",
+      "markdownDescription": "使其避免被Tun路由流量"
+    },
+    "exclude-uid-range": {
+      "$ref": "#/definitions/types/stringArray",
+      "title": "排除被路由的Linux用户范围,使其不被Tun路由流量",
+      "description": "格式: <UID起始>:<UID终止>(需要启用auto-route)",
+      "markdownDescription": "格式: <UID起始>:<UID终止>(需要启用`auto-route`)"
+    },
+    "include-android-user": {
+      "$ref": "#/definitions/types/stringArray",
+      "title": "包含被路由的Android用户",
+      "description": "使其被Tun路由流量(需要启用auto-route)",
+      "markdownDescription": "使其被Tun路由流量(需要启用`auto-route`)"
+    },
+    "include-package": {
+      "$ref": "#/definitions/types/stringArray",
+      "title": "包含被路由的Android应用包名",
+      "description": "使其被Tun路由流量(需要启用auto-route)",
+      "markdownDescription": "使其被Tun路由流量(需要启用`auto-route`)"
+    },
+    "exclude-package": {
+      "$ref": "#/definitions/types/stringArray",
+      "title": "排除被路由的Android应用包名",
+      "description": "使其避免被Tun路由流量",
+      "markdownDescription": "使其避免被Tun路由流量"
+    },
+    "endpoint-independent-nat": {
+      "type": "boolean",
+      "title": "启用独立于端点的NAT",
+      "description": "性能可能会略有下降,不建议在不需要的时候开启",
+      "markdownDescription": "性能可能会略有下降,不建议在不需要的时候开启",
+      "default": false
+    },
+    "udp-timeout": {
+      "type": "integer",
+      "title": "UDP NAT过期时间",
+      "description": "单位:s",
+      "markdownDescription": "单位:s",
+      "default": 300
+    },
+    "file-descriptor": {
+      "type": "integer",
+      "title": "文件描述符",
+      "description": "绑定到文件描述符对应设备接口(Unix-like系统)",
+      "markdownDescription": "绑定到文件描述符对应设备接口(Unix-like系统)"
+    },
+    "table-index": {
+      "type": "integer",
+      "title": "使用的路由表索引值",
+      "description": "docker子系统限制最高1023",
+      "markdownDescription": "docker子系统限制最高1023",
+      "default": 2022
+    }
+  }
+}

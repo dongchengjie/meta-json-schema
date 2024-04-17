@@ -1,0 +1,251 @@
+{
+  "type": "object",
+  "title": "outbound-vmess",
+  "definitions": {
+    "compatible": { "$ref": "../../../definitions/compatible.json" },
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" },
+    "basic-option": { "$ref": "./base.json#/definitions/basic-option" },
+    "smux": { "$ref": "./singmux.json" },
+    "reality-option": { "$ref": "./reality.json" },
+    "http-option": {
+      "type": "object",
+      "title": "HTTP配置",
+      "properties": {
+        "method": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "请求方式",
+          "description": "请求方式",
+          "markdownDescription": "请求方式",
+          "default": "GET"
+        },
+        "path": {
+          "$ref": "#/definitions/types/stringArray",
+          "title": "路径",
+          "description": "路径",
+          "markdownDescription": "路径",
+          "default": ["/"]
+        },
+        "headers": {
+          "type": "object",
+          "title": "请求头",
+          "description": "请求头",
+          "markdownDescription": "请求头",
+          "additionalProperties": { "type": "string" }
+        }
+      }
+    },
+    "http2-option": {
+      "type": "object",
+      "title": "HTTP配置",
+      "properties": {
+        "host": {
+          "$ref": "#/definitions/types/stringArray",
+          "title": "主机地址",
+          "description": "主机地址",
+          "markdownDescription": "主机地址",
+          "default": ["www.example.com"]
+        },
+        "path": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "路径",
+          "description": "路径",
+          "markdownDescription": "路径",
+          "default": ["/"]
+        }
+      }
+    },
+    "grpc-option": {
+      "type": "object",
+      "title": "HTTP配置",
+      "properties": {
+        "grpc-service-name": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "GRPC服务名称",
+          "description": "GRPC服务名称",
+          "markdownDescription": "GRPC服务名称"
+        }
+      }
+    },
+    "ws-option": {
+      "type": "object",
+      "title": "HTTP配置",
+      "properties": {
+        "path": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "路径",
+          "description": "路径",
+          "markdownDescription": "路径",
+          "default": ["/"]
+        },
+        "headers": {
+          "type": "object",
+          "title": "请求头",
+          "description": "请求头",
+          "markdownDescription": "请求头",
+          "additionalProperties": { "type": "string" }
+        },
+        "max-early-data": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "最大早期数据大小",
+          "description": "单位:bytes",
+          "markdownDescription": "单位:`bytes`"
+        },
+        "early-data-header-name": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "早期数据使用的header字段名",
+          "description": "早期数据使用的header字段名",
+          "markdownDescription": "早期数据使用的header字段名"
+        },
+        "v2ray-http-upgrade": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用HTTP协议升级",
+          "description": "通过HTTP协议与客户端进行通信,并在需要时升级到更高级的协议",
+          "markdownDescription": "通过HTTP协议与客户端进行通信,并在需要时升级到更高级的协议"
+        },
+        "v2ray-http-upgrade-fast-open": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用TFO(TCP Fast Open)",
+          "description": "启用TFO(TCP Fast Open)",
+          "markdownDescription": "启用`TFO`(TCP Fast Open)"
+        }
+      }
+    }
+  },
+  "allOf": [
+    { "title": "basic配置", "$ref": "#/definitions/basic-option" },
+    {
+      "type": "object",
+      "title": "vmess配置",
+      "required": ["name", "server", "port", "uuid", "alterId", "cipher"],
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "代理节点类型",
+          "description": "代理节点类型",
+          "markdownDescription": "代理节点类型"
+        },
+        "name": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "代理节点名称",
+          "description": "代理节点名称",
+          "markdownDescription": "代理节点名称"
+        },
+        "server": {
+          "$ref": "#/definitions/patterns/server",
+          "title": "代理节点服务器",
+          "description": "域名或IP",
+          "markdownDescription": "域名或IP"
+        },
+        "port": {
+          "$ref": "#/definitions/patterns/port",
+          "title": "代理节点端口号",
+          "description": "代理节点端口号",
+          "markdownDescription": "代理节点端口号"
+        },
+        "uuid": {
+          "$ref": "#/definitions/patterns/uuid",
+          "title": "UUID",
+          "description": "UUID",
+          "markdownDescription": "UUID"
+        },
+        "alterId": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "AlterID",
+          "description": "Alternate ID(替代标识)",
+          "markdownDescription": "Alternate ID(替代标识)"
+        },
+        "cipher": {
+          "$ref": "#/definitions/enums/cipher",
+          "title": "加密方法",
+          "description": "加密方法",
+          "markdownDescription": "加密方法"
+        },
+        "udp": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用UDP",
+          "description": "启用UDP",
+          "markdownDescription": "启用`UDP`",
+          "default": true
+        },
+        "network": {
+          "enum": ["tcp", "ws", "http", "h2", "grpc"],
+          "title": "传输协议",
+          "description": "传输协议",
+          "markdownDescription": "传输协议"
+        },
+        "tls": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用TLS",
+          "description": "启用TLS",
+          "markdownDescription": "启用`TLS`"
+        },
+        "alpn": {
+          "$ref": "#/definitions/types/stringArray",
+          "title": "ALPN",
+          "description": "Application-Layer Protocol Negotiation(应用层协议协商)",
+          "markdownDescription": "Application-Layer Protocol Negotiation(应用层协议协商)"
+        },
+        "fingerprint": {
+          "$ref": "#/definitions/enums/fingerprint",
+          "title": "指纹",
+          "description": "指纹",
+          "markdownDescription": "指纹"
+        },
+        "servername": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "服务器名称",
+          "description": "服务器名称",
+          "markdownDescription": "服务器名称"
+        },
+        "reality-opts": { "$ref": "#/definitions/reality-option" },
+        "http-opts": { "$ref": "#/definitions/http-option" },
+        "h2-opts": { "$ref": "#/definitions/http2-option" },
+        "grpc-opts": { "$ref": "#/definitions/grpc-option" },
+        "ws-opts": { "$ref": "#/definitions/ws-option" },
+        "packet-addr": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "保留原始数据包的地址信息",
+          "description": "启用xudp时关闭;packet-encoding取值为packetaddr,packet时启用",
+          "markdownDescription": "启用`xudp`时关闭;`packet-encoding`取值为`packetaddr`,`packet`时启用"
+        },
+        "xudp": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用XUDP",
+          "description": "启用XUDP(eXtended User Datagram Protocol)",
+          "markdownDescription": "启用`XUDP`(eXtended User Datagram Protocol)"
+        },
+        "packet-encoding": {
+          "enum": ["packetaddr", "packet", "xudp"],
+          "title": "数据包的编码方式",
+          "description": "数据包的编码方式",
+          "markdownDescription": "数据包的编码方式"
+        },
+        "global-padding": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "全局填充",
+          "description": "全局填充",
+          "markdownDescription": "全局填充"
+        },
+        "authenticated-length": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用验证信息长度",
+          "description": "启用验证信息长度",
+          "markdownDescription": "启用验证信息长度"
+        },
+        "client-fingerprint": {
+          "$ref": "#/definitions/enums/fingerprint",
+          "title": "客户端指纹",
+          "description": "客户端指纹",
+          "markdownDescription": "客户端指纹"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "title": "smux配置",
+      "properties": { "smux": { "title": "smux配置", "$ref": "#/definitions/smux" } }
+    }
+  ]
+}

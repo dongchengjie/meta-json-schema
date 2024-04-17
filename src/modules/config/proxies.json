@@ -1,0 +1,118 @@
+{
+  "type": "array",
+  "title": "代理配置",
+  "definitions": {
+    "types": { "$ref": "../../definitions/types.json" },
+    "patterns": { "$ref": "../../definitions/patterns.json" },
+    "enums": { "$ref": "../../definitions/enums.json" },
+    "direct": { "$ref": "../adapter/outbound/direct.json" },
+    "dns": { "$ref": "../adapter/outbound/dns.json" },
+    "shadowsocks": { "$ref": "../adapter/outbound/shadowsocks.json" },
+    "shadowsocksr": { "$ref": "../adapter/outbound/shadowsocksr.json" },
+    "snell": { "$ref": "../adapter/outbound/snell.json" },
+    "socks5": { "$ref": "../adapter/outbound/socks5.json" },
+    "http": { "$ref": "../adapter/outbound/http.json" },
+    "vmess": { "$ref": "../adapter/outbound/vmess.json" },
+    "vless": { "$ref": "../adapter/outbound/vless.json" },
+    "trojan": { "$ref": "../adapter/outbound/trojan.json" },
+    "hysteria": { "$ref": "../adapter/outbound/hysteria.json" },
+    "hysteria2": { "$ref": "../adapter/outbound/hysteria2.json" },
+    "wireguard": { "$ref": "../adapter/outbound/wireguard.json" },
+    "tuic": { "$ref": "../adapter/outbound/tuic.json" },
+    "ssh": { "$ref": "../adapter/outbound/ssh.json" }
+  },
+  "items": {
+    "anyOf": [
+      {
+        "type": "object",
+        "title": "direct",
+        "properties": { "type": { "title": "direct配置", "const": "direct" } },
+        "$ref": "#/definitions/direct"
+      },
+      {
+        "type": "object",
+        "title": "dns",
+        "properties": { "type": { "title": "dns配置", "const": "dns" } },
+        "$ref": "#/definitions/dns"
+      },
+      {
+        "type": "object",
+        "title": "shadowsocks",
+        "properties": { "type": { "title": "shadowsocks配置", "const": "ss" } },
+        "$ref": "#/definitions/shadowsocks"
+      },
+      {
+        "type": "object",
+        "title": "shadowsocksr",
+        "properties": { "type": { "title": "shadowsocksr配置", "const": "ssr" } },
+        "$ref": "#/definitions/shadowsocksr"
+      },
+      {
+        "type": "object",
+        "title": "snell",
+        "properties": { "type": { "title": "snell配置", "const": "snell" } },
+        "$ref": "#/definitions/snell"
+      },
+      {
+        "type": "object",
+        "title": "socks5",
+        "properties": { "type": { "title": "socks5配置", "const": "socks5" } },
+        "$ref": "#/definitions/socks5"
+      },
+      {
+        "type": "object",
+        "title": "http",
+        "properties": { "type": { "title": "http配置", "const": "http" } },
+        "$ref": "#/definitions/http"
+      },
+      {
+        "type": "object",
+        "title": "vmess",
+        "properties": { "type": { "title": "vmess配置", "const": "vmess" } },
+        "$ref": "#/definitions/vmess"
+      },
+      {
+        "type": "object",
+        "title": "vless",
+        "properties": { "type": { "title": "vless配置", "const": "vless" } },
+        "$ref": "#/definitions/vless"
+      },
+      {
+        "type": "object",
+        "title": "trojan",
+        "properties": { "type": { "title": "trojan配置", "const": "trojan" } },
+        "$ref": "#/definitions/trojan"
+      },
+      {
+        "type": "object",
+        "title": "hysteria",
+        "properties": { "type": { "title": "hysteria配置", "const": "hysteria" } },
+        "$ref": "#/definitions/hysteria"
+      },
+      {
+        "type": "object",
+        "title": "hysteria2",
+        "properties": { "type": { "title": "hysteria2配置", "const": "hysteria2" } },
+        "$ref": "#/definitions/hysteria2"
+      },
+      {
+        "type": "object",
+        "title": "wireguard",
+        "properties": { "type": { "title": "wireguard配置", "const": "wireguard" } },
+        "$ref": "#/definitions/wireguard"
+      },
+      {
+        "type": "object",
+        "title": "tuic",
+        "properties": { "type": { "title": "tuic配置", "const": "tuic" } },
+        "$ref": "#/definitions/tuic"
+      },
+      {
+        "type": "object",
+        "title": "ssh",
+        "properties": { "type": { "title": "ssh配置", "const": "ssh" } },
+        "$ref": "#/definitions/ssh"
+      }
+    ]
+  }
+}

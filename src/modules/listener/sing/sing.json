@@ -1,0 +1,42 @@
+{
+  "type": "object",
+  "title": "sing配置",
+  "definitions": {
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" },
+    "brutal": {
+      "type": "object",
+      "title": "brutal配置",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "title": "启用Brutal拥塞控制算法",
+          "description": "启用Brutal拥塞控制算法",
+          "markdownDescription": "启用Brutal拥塞控制算法"
+        },
+        "up": {
+          "type": "integer",
+          "title": "上行带宽",
+          "description": "以Mbps为单位",
+          "markdownDescription": "以`Mbps`为单位"
+        },
+        "down": {
+          "type": "integer",
+          "title": "下行带宽",
+          "description": "以Mbps为单位",
+          "markdownDescription": "以`Mbps`为单位"
+        }
+      }
+    }
+  },
+  "properties": {
+    "padding": {
+      "type": "boolean",
+      "title": "启用填充",
+      "description": "启用填充",
+      "markdownDescription": "启用填充"
+    },
+    "brutal": { "title": "brutal配置", "$ref": "#/definitions/brutal" }
+  }
+}

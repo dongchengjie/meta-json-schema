@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "title": "outbound-reality",
+  "definitions": {
+    "compatible": { "$ref": "../../../definitions/compatible.json" },
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" }
+  },
+  "required": ["public-key", "short-id"],
+  "properties": {
+    "public-key": {
+      "$ref": "#/definitions/compatible/string",
+      "title": "公钥",
+      "description": "公钥",
+      "markdownDescription": "公钥"
+    },
+    "short-id": {
+      "$ref": "#/definitions/compatible/string",
+      "title": "short ID",
+      "description": "short ID",
+      "markdownDescription": "short ID"
+    }
+  }
+}

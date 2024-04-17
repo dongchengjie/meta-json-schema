@@ -1,0 +1,84 @@
+{
+  "type": "object",
+  "title": "inbound-tuic",
+  "definitions": {
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" },
+    "base-option": { "$ref": "./base.json" },
+    "mux-option": { "$ref": "./mux.json" }
+  },
+  "allOf": [
+    { "title": "入站基础配置", "$ref": "#/definitions/base-option" },
+    {
+      "type": "object",
+      "title": "tuic配置",
+      "properties": {
+        "token": {
+          "type": "string",
+          "title": "TUIC V4的用户标识",
+          "description": "TUIC V4的用户标识",
+          "markdownDescription": "TUIC `V4`的用户标识"
+        },
+        "users": {
+          "type": "object",
+          "title": "用户列表(key: value格式)",
+          "description": "uuid:password",
+          "markdownDescription": "`uuid`:`password`",
+          "additionalProperties": { "type": "string" }
+        },
+        "certificate": {
+          "type": "string",
+          "title": "证书或证书路径",
+          "description": "PEM格式",
+          "markdownDescription": "PEM格式"
+        },
+        "private-key": {
+          "type": "string",
+          "title": "私钥",
+          "description": "私钥内容或私钥文件路径",
+          "markdownDescription": "私钥内容或私钥文件路径"
+        },
+        "congestion-controller": {
+          "enum": ["cubic", "new_reno", "bbr"],
+          "title": "拥塞控制算法",
+          "description": "拥塞控制算法",
+          "markdownDescription": "拥塞控制算法"
+        },
+        "max-idle-time": {
+          "type": "integer",
+          "title": "连接的最大空闲时间",
+          "description": "单位:ms",
+          "markdownDescription": "单位:ms"
+        },
+        "authentication-timeout": {
+          "type": "integer",
+          "title": "认证超时时间",
+          "description": "单位:ms",
+          "markdownDescription": "单位:ms"
+        },
+        "alpn": {
+          "$ref": "#/definitions/types/stringArray",
+          "title": "ALPN",
+          "description": "Application-Layer Protocol Negotiation(应用层协议协商)",
+          "markdownDescription": "Application-Layer Protocol Negotiation(应用层协议协商)"
+        },
+        "max-udp-relay-packet-size": {
+          "type": "integer",
+          "title": "最大的UDP数据包中继大小",
+          "description": "单位:bytes",
+          "markdownDescription": "单位:bytes",
+          "default": 1500
+        },
+        "cwnd": {
+          "type": "integer",
+          "title": "拥塞窗口大小",
+          "description": "拥塞窗口大小(Congestion Window)",
+          "markdownDescription": "拥塞窗口大小(Congestion Window)",
+          "default": 32
+        },
+        "mux-option": { "title": "多路复用配置", "$ref": "#/definitions/mux-option" }
+      }
+    }
+  ]
+}

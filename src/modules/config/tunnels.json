@@ -1,0 +1,49 @@
+{
+  "type": "array",
+  "description": "隧道配置",
+  "definitions": {
+    "types": { "$ref": "../../definitions/types.json" },
+    "patterns": { "$ref": "../../definitions/patterns.json" }
+  },
+  "items": {
+    "anyOf": [
+      {
+        "pattern": "^(tcp)?/?(udp)?(?:,[^,]+){2,3}$",
+        "errorMessage": "格式(<tcp|udp|tcp/udp>,<address>,<target>,[proxy])"
+      },
+      {
+        "type": "object",
+        "properties": {
+          "network": {
+            "type": "array",
+            "items": {
+              "enum": ["tcp", "udp"],
+              "markdownEnumDescriptions": ["tcp", "udp"]
+            },
+            "title": "需要监听的网络类型",
+            "description": "可为tcp/udp",
+            "markdownDescription": "可为`tcp`/`udp`"
+          },
+          "address": {
+            "$ref": "#/definitions/patterns/ipPort",
+            "title": "本地监听地址",
+            "description": "本地监听地址",
+            "markdownDescription": "本地监听地址"
+          },
+          "target": {
+            "type": "string",
+            "title": "转发的目标地址",
+            "description": "转发的目标地址",
+            "markdownDescription": "转发的目标地址"
+          },
+          "proxy": {
+            "type": "string",
+            "title": "经由代理",
+            "description": "经由某个proxy/proxy-group发送流量(可选)",
+            "markdownDescription": "经由某个`proxy`/`proxy-group`发送流量(可选)"
+          }
+        }
+      }
+    ]
+  }
+}

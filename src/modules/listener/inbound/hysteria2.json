@@ -1,0 +1,102 @@
+{
+  "type": "object",
+  "title": "inbound-hysteria2",
+  "definitions": {
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" },
+    "base-option": { "$ref": "./base.json" },
+    "mux-option": { "$ref": "./mux.json" }
+  },
+  "allOf": [
+    { "title": "入站基础配置", "$ref": "#/definitions/base-option" },
+    {
+      "type": "object",
+      "title": "hysteria2配置",
+      "required": ["password", "cipher"],
+      "properties": {
+        "users": {
+          "type": "object",
+          "title": "用户列表(key: value格式)",
+          "description": "uuid:password",
+          "markdownDescription": "`uuid`:`password`",
+          "additionalProperties": { "type": "string" }
+        },
+        "obfs": {
+          "const": "salamander",
+          "title": "混淆方式",
+          "description": "混淆方式",
+          "markdownDescription": "混淆方式"
+        },
+        "obfs-password": {
+          "type": "string",
+          "title": "混淆密钥",
+          "description": "混淆密钥",
+          "markdownDescription": "混淆密钥"
+        },
+        "certificate": {
+          "type": "string",
+          "title": "证书或证书路径",
+          "description": "PEM格式",
+          "markdownDescription": "PEM格式"
+        },
+        "private-key": {
+          "type": "string",
+          "title": "私钥",
+          "description": "私钥内容或私钥文件路径",
+          "markdownDescription": "私钥内容或私钥文件路径"
+        },
+        "max-idle-time": {
+          "type": "integer",
+          "title": "连接的最大空闲时间",
+          "description": "单位:ms",
+          "markdownDescription": "单位:ms"
+        },
+        "alpn": {
+          "$ref": "#/definitions/types/stringArray",
+          "title": "ALPN",
+          "description": "Application-Layer Protocol Negotiation(应用层协议协商)",
+          "markdownDescription": "Application-Layer Protocol Negotiation(应用层协议协商)"
+        },
+        "up": {
+          "type": "string",
+          "title": "上行带宽",
+          "description": "格式:<带宽数值> [带宽单位(默认:Mbps)]",
+          "markdownDescription": "格式:<带宽数值> [带宽单位(默认:`Mbps`)]"
+        },
+        "down": {
+          "type": "string",
+          "title": "下行带宽",
+          "description": "格式:<带宽数值> [带宽单位(默认:Mbps)]",
+          "markdownDescription": "格式:<带宽数值> [带宽单位(默认:`Mbps`)]"
+        },
+        "ignore-client-bandwidth": {
+          "type": "boolean",
+          "title": "忽略客户端带宽",
+          "description": "启用后使服务器忽略任何客户端设置的带宽提示,使用传统的BBR拥塞控制算法",
+          "markdownDescription": "启用后使服务器忽略任何客户端设置的带宽带宽提示,使用传统的BBR拥塞控制算法"
+        },
+        "masquerade": {
+          "$ref": "#/definitions/patterns/url",
+          "title": "伪装流量url",
+          "description": "支持file://、http://、https://",
+          "markdownDescription": "支持`file://`、`http://`、`https://`"
+        },
+        "cwnd": {
+          "type": "integer",
+          "title": "拥塞窗口大小",
+          "description": "拥塞窗口大小(Congestion Window)",
+          "markdownDescription": "拥塞窗口大小(Congestion Window)"
+        },
+        "udp-mtu": {
+          "type": "integer",
+          "title": "UDP最大传输单元",
+          "description": "UDP最大传输单元(Maximum Transmission Unit)",
+          "markdownDescription": "UDP最大传输单元(Maximum Transmission Unit)",
+          "default": 1197
+        },
+        "mux-option": { "title": "多路复用配置", "$ref": "#/definitions/mux-option" }
+      }
+    }
+  ]
+}

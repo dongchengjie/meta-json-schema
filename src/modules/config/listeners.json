@@ -1,0 +1,90 @@
+{
+  "type": "array",
+  "title": "listeners配置",
+  "definitions": {
+    "types": { "$ref": "../../definitions/types.json" },
+    "patterns": { "$ref": "../../definitions/patterns.json" },
+    "enums": { "$ref": "../../definitions/enums.json" },
+    "socks": { "$ref": "../listener/inbound/socks.json" },
+    "http": { "$ref": "../listener/inbound/http.json" },
+    "tproxy": { "$ref": "../listener/inbound/tproxy.json" },
+    "redir": { "$ref": "../listener/inbound/redir.json" },
+    "mixed": { "$ref": "../listener/inbound/mixed.json" },
+    "tunnel": { "$ref": "../listener/inbound/tunnel.json" },
+    "tun": { "$ref": "../listener/inbound/tun.json" },
+    "shadowsocks": { "$ref": "../listener/inbound/shadowsocks.json" },
+    "vmess": { "$ref": "../listener/inbound/vmess.json" },
+    "hysteria2": { "$ref": "../listener/inbound/hysteria2.json" },
+    "tuic": { "$ref": "../listener/inbound/tuic.json" }
+  },
+  "items": {
+    "anyOf": [
+      {
+        "type": "object",
+        "title": "socks配置",
+        "properties": { "type": { "title": "socks配置", "const": "socks" } },
+        "$ref": "#/definitions/socks"
+      },
+      {
+        "type": "object",
+        "title": "http配置",
+        "properties": { "type": { "title": "socks配置", "const": "http" } },
+        "$ref": "#/definitions/http"
+      },
+      {
+        "type": "object",
+        "title": "tproxy配置",
+        "properties": { "type": { "title": "tproxy配置", "const": "tproxy" } },
+        "$ref": "#/definitions/tproxy"
+      },
+      {
+        "type": "object",
+        "title": "redir配置",
+        "properties": { "type": { "title": "redir配置", "const": "redir" } },
+        "$ref": "#/definitions/redir"
+      },
+      {
+        "type": "object",
+        "title": "mixed配置",
+        "properties": { "type": { "title": "mixed配置", "const": "mixed" } },
+        "$ref": "#/definitions/mixed"
+      },
+      {
+        "type": "object",
+        "title": "tunnel配置",
+        "properties": { "type": { "title": "tunnel配置", "const": "tunnel" } },
+        "$ref": "#/definitions/tunnel"
+      },
+      {
+        "type": "object",
+        "title": "tun配置",
+        "properties": { "type": { "title": "tun配置", "const": "tun" } },
+        "$ref": "#/definitions/tun"
+      },
+      {
+        "type": "object",
+        "title": "shadowsocks配置",
+        "properties": { "type": { "title": "shadowsocks配置", "const": "shadowsocks" } },
+        "$ref": "#/definitions/shadowsocks"
+      },
+      {
+        "type": "object",
+        "title": "vmess配置",
+        "properties": { "type": { "title": "vmess配置", "const": "vmess" } },
+        "$ref": "#/definitions/vmess"
+      },
+      {
+        "type": "object",
+        "title": "hysteria2配置",
+        "properties": { "type": { "title": "hysteria2配置", "const": "hysteria2" } },
+        "$ref": "#/definitions/hysteria2"
+      },
+      {
+        "type": "object",
+        "title": "tuic配置",
+        "properties": { "type": { "title": "tuic配置", "const": "tuic" } },
+        "$ref": "#/definitions/tuic"
+      }
+    ]
+  }
+}

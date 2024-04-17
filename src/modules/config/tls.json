@@ -1,0 +1,28 @@
+{
+  "type": "object",
+  "title": "TLS配置",
+  "definitions": {
+    "types": { "$ref": "../../definitions/types.json" },
+    "patterns": { "$ref": "../../definitions/patterns.json" }
+  },
+  "properties": {
+    "certificate": {
+      "type": "string",
+      "title": "证书或证书路径",
+      "description": "PEM格式",
+      "markdownDescription": "PEM格式"
+    },
+    "private-key": {
+      "type": "string",
+      "title": "私钥",
+      "description": "私钥",
+      "markdownDescription": "私钥"
+    },
+    "custom-certifactes": {
+      "$ref": "#/definitions/types/stringArray",
+      "title": "自定义证书列表",
+      "description": "自定义证书列表",
+      "markdownDescription": "自定义证书列表"
+    }
+  }
+}

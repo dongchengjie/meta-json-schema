@@ -1,0 +1,17 @@
+{
+  "name": "meta-json-schema",
+  "version": "v1.18.3",
+  "config": {
+    "schemaSource": "./src/meta-json-schema.json",
+    "archiveDir": "./schemas",
+    "optimization": true
+  },
+  "scripts": {
+    "dev": "node ./scripts/watch.mjs",
+    "release": "node ./scripts/release.mjs"
+  },
+  "devDependencies": {
+    "@apidevtools/json-schema-ref-parser": "^11.5.4",
+    "prettier": "^3.2.5"
+  }
+}

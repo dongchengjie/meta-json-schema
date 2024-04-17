@@ -1,0 +1,146 @@
+{
+  "type": "object",
+  "title": "outbound-vless",
+  "definitions": {
+    "compatible": { "$ref": "../../../definitions/compatible.json" },
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" },
+    "basic-option": { "$ref": "./base.json#/definitions/basic-option" },
+    "smux": { "$ref": "./singmux.json" },
+    "reality-option": { "$ref": "./reality.json" },
+    "http-option": { "$ref": "./vmess.json#/definitions/http-option" },
+    "http2-option": { "$ref": "./vmess.json#/definitions/http2-option" },
+    "grpc-option": { "$ref": "./vmess.json#/definitions/grpc-option" },
+    "ws-option": { "$ref": "./vmess.json#/definitions/ws-option" }
+  },
+  "allOf": [
+    { "title": "basic配置", "$ref": "#/definitions/basic-option" },
+    {
+      "type": "object",
+      "title": "vless配置",
+      "required": ["name", "server", "port", "uuid"],
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "代理节点类型",
+          "description": "代理节点类型",
+          "markdownDescription": "代理节点类型"
+        },
+        "name": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "代理节点名称",
+          "description": "代理节点名称",
+          "markdownDescription": "代理节点名称"
+        },
+        "server": {
+          "$ref": "#/definitions/patterns/server",
+          "title": "代理节点服务器",
+          "description": "域名或IP",
+          "markdownDescription": "域名或IP"
+        },
+        "port": {
+          "$ref": "#/definitions/patterns/port",
+          "title": "代理节点端口号",
+          "description": "代理节点端口号",
+          "markdownDescription": "代理节点端口号"
+        },
+        "uuid": {
+          "$ref": "#/definitions/patterns/uuid",
+          "title": "UUID",
+          "description": "UUID",
+          "markdownDescription": "UUID"
+        },
+        "flow": {
+          "enum": ["xtls-rprx-origin", "xtls-rprx-direct", "xtls-rprx-splice", "xtls-rprx-vision"],
+          "markdownEnumDescriptions": [
+            "将传入的连接直接转发到目标服务器,不做任何修改或处理",
+            "解析传入的连接中的TLS握手信息,然后直接与目标服务器建立加密连接",
+            "将传入的连接解析为TLS握手信息,然后重新生成一个新的TLS握手,并在客户端和服务器之间建立两个独立的TLS连接",
+            "尝试直接连接目标服务器，如果失败则回退到`xtls-rprx-splice`模式"
+          ],
+          "title": "流量控制方式",
+          "description": "流量控制方式",
+          "markdownDescription": "流量控制方式"
+        },
+        "tls": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用TLS",
+          "description": "启用TLS",
+          "markdownDescription": "启用`TLS`"
+        },
+        "alpn": {
+          "$ref": "#/definitions/types/stringArray",
+          "title": "ALPN",
+          "description": "Application-Layer Protocol Negotiation(应用层协议协商)",
+          "markdownDescription": "Application-Layer Protocol Negotiation(应用层协议协商)"
+        },
+        "packet-addr": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "保留原始数据包的地址信息",
+          "description": "启用xudp时关闭;packet-encoding取值为packetaddr,packet时启用",
+          "markdownDescription": "启用`xudp`时关闭;`packet-encoding`取值为`packetaddr`,`packet`时启用"
+        },
+        "xudp": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用XUDP",
+          "description": "启用XUDP(eXtended User Datagram Protocol)",
+          "markdownDescription": "启用`XUDP`(eXtended User Datagram Protocol)"
+        },
+        "packet-encoding": {
+          "enum": ["packetaddr", "packet", "xudp"],
+          "title": "数据包的编码方式",
+          "description": "数据包的编码方式",
+          "markdownDescription": "数据包的编码方式"
+        },
+        "network": {
+          "enum": ["tcp", "ws", "http", "h2", "grpc"],
+          "title": "传输协议",
+          "description": "传输协议",
+          "markdownDescription": "传输协议"
+        },
+        "reality-opts": { "$ref": "#/definitions/reality-option" },
+        "http-opts": { "$ref": "#/definitions/http-option" },
+        "h2-opts": { "$ref": "#/definitions/http2-option" },
+        "grpc-opts": { "$ref": "#/definitions/grpc-option" },
+        "ws-opts": { "$ref": "#/definitions/ws-option" },
+        "ws-path": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "ws路径",
+          "description": "ws路径",
+          "markdownDescription": "ws路径"
+        },
+        "ws-headers": {
+          "type": "object",
+          "title": "ws请求头",
+          "description": "ws请求头",
+          "markdownDescription": "ws请求头",
+          "additionalProperties": { "type": "string" }
+        },
+        "fingerprint": {
+          "$ref": "#/definitions/enums/fingerprint",
+          "title": "指纹",
+          "description": "指纹",
+          "markdownDescription": "指纹"
+        },
+        "servername": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "服务器名称",
+          "description": "服务器名称",
+          "markdownDescription": "服务器名称"
+        },
+        "client-fingerprint": {
+          "$ref": "#/definitions/enums/fingerprint",
+          "title": "客户端指纹",
+          "description": "客户端指纹",
+          "markdownDescription": "客户端指纹"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "title": "smux配置",
+      "properties": { "smux": { "title": "smux配置", "$ref": "#/definitions/smux" } }
+    }
+  ]
+}

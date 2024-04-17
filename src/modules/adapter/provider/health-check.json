@@ -1,0 +1,73 @@
+{
+  "type": "object",
+  "title": "健康检查",
+  "definitions": {
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" }
+  },
+  "properties": {
+    "enable": {
+      "type": "boolean",
+      "title": "启用健康检查",
+      "description": "启用健康检查",
+      "markdownDescription": "启用健康检查",
+      "default": false
+    },
+    "url": {
+      "$ref": "#/definitions/patterns/httpUrl",
+      "title": "健康检查地址",
+      "description": "健康检查url",
+      "markdownDescription": "健康检查url",
+      "default": "https://www.gstatic.com/generate_204"
+    },
+    "interval": {
+      "type": "integer",
+      "title": "健康检查间隔",
+      "description": "单位:s",
+      "markdownDescription": "单位:s",
+      "default": 300
+    },
+    "timeout": {
+      "type": "integer",
+      "title": "健康检查超时",
+      "description": "单位:ms",
+      "markdownDescription": "单位:ms",
+      "default": 5000
+    },
+    "lazy": {
+      "type": "boolean",
+      "title": "懒加载",
+      "description": "未被使用时,不进行健康检查测试",
+      "markdownDescription": "未被使用时,不进行健康检查测试",
+      "default": true
+    },
+    "expected-status": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?:\\/?\\d{3}(-?\\d{3})?)+$",
+          "title": "期望状态码",
+          "description": "健康检查时期望的HTTP响应状态码",
+          "markdownDescription": "健康检查时期望的HTTP响应状态码",
+          "default": "*"
+        },
+        {
+          "type": "integer",
+          "minimum": 100,
+          "maximum": 999,
+          "title": "期望状态码",
+          "description": "健康检查时期望的HTTP响应状态码",
+          "markdownDescription": "健康检查时期望的HTTP响应状态码"
+        },
+        {
+          "type": "string",
+          "const": "*",
+          "title": "期望状态码",
+          "description": "健康检查时期望的HTTP响应状态码",
+          "markdownDescription": "健康检查时期望的HTTP响应状态码"
+        }
+      ]
+    }
+  }
+}

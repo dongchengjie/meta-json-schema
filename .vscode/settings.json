@@ -1,0 +1,18 @@
+{
+  "json.schemas": [
+    {
+      "url": "http://json-schema.org/draft-07/schema",
+      "fileMatch": ["/src/**/*.json"]
+    }
+  ],
+  "yaml.schemas": {
+    "dest/meta-json-schema.json": "test/**/*.yaml"
+  },
+  "editor.tabSize": 2,
+  "files.exclude": {
+    "dest": true,
+    ".gitattributes": true,
+    ".gitignore": true,
+    "package-lock.json": true
+  }
+}

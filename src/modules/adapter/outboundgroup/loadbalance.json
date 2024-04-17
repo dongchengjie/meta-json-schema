@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "title": "outboundgroup-load-balance",
+  "definitions": {
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" },
+    "groupbase": { "$ref": "./groupbase.json" }
+  },
+  "allOf": [
+    { "title": "代理组基础配置", "$ref": "#/definitions/groupbase" },
+    {
+      "type": "object",
+      "title": "load-balance配置",
+      "properties": {
+        "strategy": {
+          "enum": ["consistent-hashing", "round-robin", "sticky-sessions"],
+          "title": "负载均衡策略",
+          "markdownEnumDescriptions": [
+            "一致性哈希,把相同顶级域名的请求分配给代理组内的同一个代理节点",
+            "轮询,按照顺序将请求分发给每个可用的服务器",
+            "粘性会话,将特定的用户会话绑定到同一台服务器上"
+          ],
+          "default": "consistent-hashing"
+        }
+      }
+    }
+  ]
+}

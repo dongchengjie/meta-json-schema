@@ -1,0 +1,146 @@
+{
+  "type": "object",
+  "title": "outbound-hysteria2",
+  "definitions": {
+    "compatible": { "$ref": "../../../definitions/compatible.json" },
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" },
+    "basic-option": { "$ref": "./base.json#/definitions/basic-option" },
+    "smux": { "$ref": "./singmux.json" }
+  },
+  "allOf": [
+    { "title": "basic配置", "$ref": "#/definitions/basic-option" },
+    {
+      "type": "object",
+      "title": "hysteria2配置",
+      "required": ["name", "server"],
+      "dependentRequired": {
+        "obfs": ["obfs-password"]
+      },
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "代理节点类型",
+          "description": "代理节点类型",
+          "markdownDescription": "代理节点类型"
+        },
+        "name": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "代理节点名称",
+          "description": "代理节点名称",
+          "markdownDescription": "代理节点名称"
+        },
+        "server": {
+          "$ref": "#/definitions/patterns/server",
+          "title": "代理节点服务器",
+          "description": "域名或IP",
+          "markdownDescription": "域名或IP"
+        },
+        "port": {
+          "$ref": "#/definitions/patterns/port",
+          "title": "代理节点端口号",
+          "description": "代理节点端口号",
+          "markdownDescription": "代理节点端口号"
+        },
+        "ports": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "占用端口范围",
+          "description": "占用端口范围",
+          "markdownDescription": "占用端口范围"
+        },
+        "hop-interval": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "UDP端口跳跃间隔",
+          "description": "单位:s",
+          "markdownDescription": "单位:s",
+          "default": 10
+        },
+        "up": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "上行带宽",
+          "description": "格式:<带宽数值> [带宽单位(默认:Mbps)]",
+          "markdownDescription": "格式:<带宽数值> [带宽单位(默认:`Mbps`)]"
+        },
+        "down": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "下行带宽",
+          "description": "格式:<带宽数值> [带宽单位(默认:Mbps)]",
+          "markdownDescription": "格式:<带宽数值> [带宽单位(默认:`Mbps`)]"
+        },
+        "password": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "密码",
+          "description": "认证密码",
+          "markdownDescription": "认证密码"
+        },
+        "obfs": {
+          "const": "salamander",
+          "title": "混淆方式",
+          "description": "混淆方式",
+          "markdownDescription": "混淆方式"
+        },
+        "obfs-password": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "混淆密钥",
+          "description": "混淆密钥",
+          "markdownDescription": "混淆密钥"
+        },
+        "sni": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "SNI",
+          "description": "SNI(Server Name Indication)",
+          "markdownDescription": "`SNI`(Server Name Indication)"
+        },
+        "skip-cert-verify": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "跳过证书验证",
+          "description": "跳过证书验证",
+          "markdownDescription": "跳过证书验证"
+        },
+        "fingerprint": {
+          "$ref": "#/definitions/enums/fingerprint",
+          "title": "指纹",
+          "description": "指纹",
+          "markdownDescription": "指纹"
+        },
+        "alpn": {
+          "$ref": "#/definitions/types/stringArray",
+          "title": "ALPN",
+          "description": "Application-Layer Protocol Negotiation(应用层协议协商)",
+          "markdownDescription": "Application-Layer Protocol Negotiation(应用层协议协商)"
+        },
+        "ca": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "CA证书文件路径",
+          "description": "CA证书文件路径",
+          "markdownDescription": "CA证书文件路径"
+        },
+        "ca-str": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "CA证书内容",
+          "description": "CA证书内容(优先级低于ca)",
+          "markdownDescription": "CA证书内容CA证书内容(优先级低于`ca`)"
+        },
+        "cwnd": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "拥塞窗口大小",
+          "description": "拥塞窗口大小(Congestion Window)",
+          "markdownDescription": "拥塞窗口大小(Congestion Window)"
+        },
+        "udp-mtu": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "UDP最大传输单元",
+          "description": "UDP最大传输单元(Maximum Transmission Unit)",
+          "markdownDescription": "UDP最大传输单元(Maximum Transmission Unit)",
+          "default": 1197
+        }
+      }
+    },
+    {
+      "type": "object",
+      "title": "smux配置",
+      "properties": { "smux": { "title": "smux配置", "$ref": "#/definitions/smux" } }
+    }
+  ]
+}

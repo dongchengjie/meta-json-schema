@@ -1,0 +1,41 @@
+{
+  "type": "object",
+  "title": "inbound-shadowsocks",
+  "definitions": {
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" },
+    "base-option": { "$ref": "./base.json" },
+    "mux-option": { "$ref": "./mux.json" }
+  },
+  "allOf": [
+    { "title": "入站基础配置", "$ref": "#/definitions/base-option" },
+    {
+      "type": "object",
+      "title": "shadowsocks配置",
+      "required": ["password", "cipher"],
+      "properties": {
+        "password": {
+          "type": "string",
+          "title": "密码",
+          "description": "认证密码",
+          "markdownDescription": "认证密码"
+        },
+        "cipher": {
+          "$ref": "#/definitions/enums/cipher",
+          "title": "加密方法",
+          "description": "加密方法",
+          "markdownDescription": "加密方法"
+        },
+        "udp": {
+          "type": "boolean",
+          "title": "启用UDP",
+          "description": "启用UDP",
+          "markdownDescription": "启用`UDP`",
+          "default": true
+        },
+        "mux-option": { "title": "多路复用配置", "$ref": "#/definitions/mux-option" }
+      }
+    }
+  ]
+}

@@ -1,0 +1,182 @@
+{
+  "type": "object",
+  "title": "outbound-hysteria",
+  "definitions": {
+    "compatible": { "$ref": "../../../definitions/compatible.json" },
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" },
+    "basic-option": { "$ref": "./base.json#/definitions/basic-option" },
+    "smux": { "$ref": "./singmux.json" }
+  },
+  "allOf": [
+    { "title": "basic配置", "$ref": "#/definitions/basic-option" },
+    {
+      "type": "object",
+      "title": "hysteria配置",
+      "required": ["name", "server", "up", "down"],
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "代理节点类型",
+          "description": "代理节点类型",
+          "markdownDescription": "代理节点类型"
+        },
+        "name": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "代理节点名称",
+          "description": "代理节点名称",
+          "markdownDescription": "代理节点名称"
+        },
+        "server": {
+          "$ref": "#/definitions/patterns/server",
+          "title": "代理节点服务器",
+          "description": "域名或IP",
+          "markdownDescription": "域名或IP"
+        },
+        "port": {
+          "$ref": "#/definitions/patterns/port",
+          "title": "代理节点端口号",
+          "description": "代理节点端口号",
+          "markdownDescription": "代理节点端口号"
+        },
+        "ports": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "占用端口范围",
+          "description": "占用端口范围",
+          "markdownDescription": "占用端口范围"
+        },
+        "protocol": {
+          "enum": ["udp", "wechat-video", "faketcp"],
+          "markdownEnumDescriptions": ["伪装udp流量", "伪装微信视频流量", "伪装假tcp流量"],
+          "title": "混淆方法",
+          "description": "混淆方法",
+          "markdownDescription": "混淆方法",
+          "default": "udp"
+        },
+        "obfs-protocol": {
+          "enum": ["udp", "wechat-video", "faketcp"],
+          "markdownEnumDescriptions": ["伪装udp流量", "伪装微信视频流量", "伪装假tcp流量"],
+          "title": "混淆方法",
+          "description": "混淆方法(为兼容Stash引入,优先级高于protocol)",
+          "markdownDescription": "混淆方法(为兼容Stash引入,优先级高于`protocol`)",
+          "default": "udp"
+        },
+        "up": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "上行带宽",
+          "description": "格式:<带宽数值> [带宽单位(默认:Mbps)]",
+          "markdownDescription": "格式:<带宽数值> [带宽单位(默认:`Mbps`)]"
+        },
+        "up-speed": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "上行带宽",
+          "description": "单位:Mbps(为兼容Stash引入,优先级高于up)",
+          "markdownDescription": "单位:`Mbps`上行带宽(为兼容Stash引入,优先级高于`up`)"
+        },
+        "down": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "下行带宽",
+          "description": "格式:<带宽数值> [带宽单位(默认:Mbps)]",
+          "markdownDescription": "格式:<带宽数值> [带宽单位(默认:`Mbps`)]"
+        },
+        "down-speed": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "下行带宽",
+          "description": "单位:Mbps(为兼容Stash引入,优先级高于down)",
+          "markdownDescription": "单位:`Mbps`下行带宽(为兼容Stash引入,优先级高于`down`)"
+        },
+        "auth-str": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "认证字符串",
+          "description": "认证字符串",
+          "markdownDescription": "认证字符串"
+        },
+        "auth": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "认证字符串",
+          "description": "认证字符串(为兼容Stash引入,优先级高于auth-str)",
+          "markdownDescription": "认证字符串(为兼容Stash引入,优先级高于`auth-str`)"
+        },
+        "obfs": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "混淆密钥",
+          "description": "混淆密钥",
+          "markdownDescription": "混淆密钥"
+        },
+        "sni": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "SNI",
+          "description": "SNI(Server Name Indication)",
+          "markdownDescription": "`SNI`(Server Name Indication)"
+        },
+        "skip-cert-verify": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "跳过证书验证",
+          "description": "跳过证书验证",
+          "markdownDescription": "跳过证书验证"
+        },
+        "fingerprint": {
+          "$ref": "#/definitions/enums/fingerprint",
+          "title": "指纹",
+          "description": "指纹",
+          "markdownDescription": "指纹"
+        },
+        "alpn": {
+          "$ref": "#/definitions/types/stringArray",
+          "title": "ALPN",
+          "description": "Application-Layer Protocol Negotiation(应用层协议协商)",
+          "markdownDescription": "Application-Layer Protocol Negotiation(应用层协议协商)"
+        },
+        "ca": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "CA证书文件路径",
+          "description": "CA证书文件路径",
+          "markdownDescription": "CA证书文件路径"
+        },
+        "ca-str": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "CA证书内容",
+          "description": "CA证书内容(优先级低于ca)",
+          "markdownDescription": "CA证书内容CA证书内容(优先级低于`ca`)"
+        },
+        "recv-window-conn": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "最大流接收窗口大小",
+          "description": "最大流接收窗口大小(默认限制最大15 MB/s)",
+          "markdownDescription": "最大流接收窗口大小(默认限制最大15 MB/s)"
+        },
+        "recv-window": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "最大连接收窗口大小",
+          "description": "最大连接收窗口大小(默认限制最大64 MB/s)",
+          "markdownDescription": "最大连接收窗口大小(默认限制最大64 MB/s)"
+        },
+        "disable-mtu-discovery": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "禁用MTU发现",
+          "description": "禁用MTU(Maximum Transmission Unit)发现",
+          "markdownDescription": "禁用`MTU`(Maximum Transmission Unit)发现"
+        },
+        "fast-open": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用TFO(TCP Fast Open)",
+          "description": "仅对TCP协议生效(优先级高于tfo)",
+          "markdownDescription": "仅对TCP协议生效(优先级高于`tfo`)"
+        },
+        "hop-interval": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "UDP端口跳跃间隔",
+          "description": "单位:s",
+          "markdownDescription": "单位:s",
+          "default": 10
+        }
+      }
+    },
+    {
+      "type": "object",
+      "title": "smux配置",
+      "properties": { "smux": { "title": "smux配置", "$ref": "#/definitions/smux" } }
+    }
+  ]
+}

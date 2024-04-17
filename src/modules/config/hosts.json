@@ -1,0 +1,9 @@
+{
+  "type": "object",
+  "title": "hosts配置",
+  "description": "key: value格式(域名支持通配)",
+  "definitions": {
+    "types": { "$ref": "../../definitions/types.json" },
+    "patterns": { "$ref": "../../definitions/patterns.json" }
+  }
+}

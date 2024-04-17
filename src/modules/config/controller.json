@@ -1,0 +1,47 @@
+{
+  "type": "object",
+  "title": "controller配置",
+  "definitions": {
+    "types": { "$ref": "../../definitions/types.json" },
+    "patterns": { "$ref": "../../definitions/patterns.json" }
+  },
+  "properties": {
+    "external-controller": {
+      "$ref": "#/definitions/patterns/ipPort",
+      "title": "外部控制器(HTTP)监听地址",
+      "description": "可以使用RESTful API来控制内核",
+      "markdownDescription": "可以使用RESTful API来控制内核"
+    },
+    "external-controller-tls": {
+      "$ref": "#/definitions/patterns/ipPort",
+      "title": "外部控制器(HTTPS)监听地址",
+      "description": "可以使用RESTful API over HTTPS来控制内核",
+      "markdownDescription": "可以使用RESTful API over HTTPS来控制内核"
+    },
+    "external-ui": {
+      "type": "string",
+      "title": "外部用户界面路径(默认:工作目录/ui)",
+      "description": "可以将静态网页资源运行在RESTful API(可以为绝对路径,或者内核工作目录的相对路径)",
+      "markdownDescription": "可以将静态网页资源运行在RESTful API(可以为绝对路径,或者内核工作目录的相对路径)"
+    },
+    "external-ui-url": {
+      "$ref": "#/definitions/patterns/httpUrl",
+      "title": "外部用户界面下载地址",
+      "description": "外部用户界面下载地址",
+      "markdownDescription": "外部用户界面下载地址",
+      "default": "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip"
+    },
+    "external-ui-name": {
+      "type": "string",
+      "title": "外部用户界面下载目录",
+      "description": "下载时会下载到指定文件夹(默认下载到external-ui配置的目录)",
+      "markdownDescription": "下载时会下载到指定文件夹(默认下载到`external-ui`配置的目录)"
+    },
+    "secret": {
+      "type": "string",
+      "title": "外部控制器RESTful API访问密钥",
+      "description": "请求头Authorization:Bearer <secret>",
+      "markdownDescription": "请求头Authorization:Bearer <`secret`>"
+    }
+  }
+}

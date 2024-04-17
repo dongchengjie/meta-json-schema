@@ -1,0 +1,111 @@
+{
+  "type": "object",
+  "description": "域名嗅探配置",
+  "definitions": {
+    "types": { "$ref": "../../definitions/types.json" },
+    "patterns": { "$ref": "../../definitions/patterns.json" }
+  },
+  "properties": {
+    "enable": {
+      "type": "boolean",
+      "title": "启用域名嗅探",
+      "description": "Clash使用Mapping机制解决透明代理情况下,无法通过Redir端口传递域名的问题。但此机制会导致如果不使用Clash内置的DNS解析服务,就无法准确还原域名,进行域名分流的问题。Meta内置了Sniffer域名嗅器,通过读取握手包内的域名字段,将IP还原成域名,有效解决Mapping机制的短板。",
+      "markdownDescription": "Clash使用Mapping机制解决透明代理情况下,无法通过Redir端口传递域名的问题。但此机制会导致如果不使用Clash内置的DNS解析服务,就无法准确还原域名,进行域名分流的问题。Meta内置了Sniffer域名嗅器,通过读取握手包内的域名字段,将IP还原成域名,有效解决Mapping机制的短板。",
+      "default": false
+    },
+    "override-destination": {
+      "type": "boolean",
+      "title": "启用嗅探结果作为实际访问",
+      "description": "全局配置,优先级低于sniffer.sniff中的配置",
+      "markdownDescription": "全局配置,优先级低于`sniffer.sniff`中的配置",
+      "default": true
+    },
+    "force-domain": {
+      "$ref": "#/definitions/types/domainWildcardArray",
+      "title": "需要强制嗅探的域名",
+      "description": "默认情况下只对IP进行嗅探",
+      "markdownDescription": "默认情况下只对IP进行嗅探"
+    },
+    "skip-domain": {
+      "$ref": "#/definitions/types/domainWildcardArray",
+      "title": "需要跳过嗅探的域名",
+      "description": "默认情况下只对IP进行嗅探",
+      "markdownDescription": "默认情况下只对IP进行嗅探"
+    },
+    "sniffing": {
+      "$ref": "#/definitions/types/stringArray",
+      "title": "限制嗅探类型范围",
+      "description": "支持TLS,HTTP,QUIC",
+      "markdownDescription": "支持`TLS`,`HTTP`,`QUIC`",
+      "deprecationMessage": "推荐使用sniff"
+    },
+    "port-whitelist": {
+      "$ref": "#/definitions/types/portRangeArray",
+      "title": "限制嗅探端口范围",
+      "description": "要求搭配sniffing使用(格式:80 或 80-88)",
+      "markdownDescription": "要求搭配`sniffing`使用(格式:`80` 或 `80-88`)",
+      "deprecationMessage": "推荐使用sniff"
+    },
+    "force-dns-mapping": {
+      "type": "boolean",
+      "title": "启用redir-host强制嗅探",
+      "description": "对redir-host类型识别的流量进行强制嗅探",
+      "markdownDescription": "对`redir-host`类型识别的流量进行强制嗅探",
+      "default": true
+    },
+    "parse-pure-ip": {
+      "type": "boolean",
+      "title": "启用未获取到域名强制嗅探",
+      "description": "对所有未获取到域名的流量进行强制嗅探",
+      "markdownDescription": "对所有未获取到域名的流量进行强制嗅探",
+      "default": true
+    },
+    "sniff": {
+      "type": "object",
+      "title": "域名嗅探规则",
+      "description": "域名嗅探规则",
+      "markdownDescription": "域名嗅探规则",
+      "properties": {
+        "TLS": {
+          "type": "object",
+          "properties": {
+            "ports": {
+              "$ref": "#/definitions/types/portRangeArray",
+              "description": "嗅探端口列表"
+            },
+            "override-destination": {
+              "type": "boolean",
+              "title": "启用嗅探结果作为实际访问"
+            }
+          }
+        },
+        "HTTP": {
+          "type": "object",
+          "properties": {
+            "ports": {
+              "$ref": "#/definitions/types/portArray",
+              "description": "嗅探端口列表"
+            },
+            "override-destination": {
+              "type": "boolean",
+              "title": "启用嗅探结果作为实际访问"
+            }
+          }
+        },
+        "QUIC": {
+          "type": "object",
+          "properties": {
+            "ports": {
+              "$ref": "#/definitions/types/portRangeArray",
+              "description": "嗅探端口列表"
+            },
+            "override-destination": {
+              "type": "boolean",
+              "title": "启用嗅探结果作为实际访问"
+            }
+          }
+        }
+      }
+    }
+  }
+}

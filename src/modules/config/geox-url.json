@@ -1,0 +1,38 @@
+{
+  "type": "object",
+  "title": "geox-url配置",
+  "definitions": {
+    "types": { "$ref": "../../definitions/types.json" },
+    "patterns": { "$ref": "../../definitions/patterns.json" }
+  },
+  "properties": {
+    "geoip": {
+      "$ref": "#/definitions/patterns/httpUrl",
+      "title": "geoip文件下载地址",
+      "description": "geoip文件下载地址",
+      "markdownDescription": "`geoip`文件下载地址",
+      "default": "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.dat"
+    },
+    "mmdb": {
+      "$ref": "#/definitions/patterns/httpUrl",
+      "title": "mmdb文件下载地址",
+      "description": "mmdb文件下载地址",
+      "markdownDescription": "`mmdb`文件下载地址",
+      "default": "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.metadb"
+    },
+    "asn": {
+      "$ref": "#/definitions/patterns/httpUrl",
+      "title": "asn文件下载地址",
+      "description": "asn文件下载地址",
+      "markdownDescription": "`asn`文件下载地址",
+      "default": "https://github.com/xishang0128/geoip/releases/download/latest/GeoLite2-ASN.mmdb"
+    },
+    "geosite": {
+      "$ref": "#/definitions/patterns/httpUrl",
+      "title": "geosite文件下载地址",
+      "description": "geosite文件下载地址",
+      "markdownDescription": "`geosite`文件下载地址",
+      "default": "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat"
+    }
+  }
+}
