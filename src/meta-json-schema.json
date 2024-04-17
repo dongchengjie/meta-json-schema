@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
-  "$id": "https://github.com/MetaCubeX/meta-json-schema/schema/meta-json-schema.json",
+  "$id": "https://github.com/MetaCubeX/meta-json-schema/schemas/meta-json-schema.json",
   "type": "object",
-  "title": "Clash.Meta Config Schema",
+  "title": "Clash.Meta Config",
   "additionalProperties": true,
   "definitions": {
     "experimental": { "$ref": "./modules/config/experimental.json" },

@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://github.com/clash-verge-rev/clash-verge-rev/schemas/meta-json-schema.json",
+  "type": "object",
+  "title": "Clash Verge Merge",
+  "additionalProperties": true,
+  "definitions": {
+    "proxies": { "$ref": "./modules/config/proxies.json" },
+    "proxy-providers": { "$ref": "./modules/config/proxy-providers.json" },
+    "proxy-groups": { "$ref": "./modules/config/proxy-groups.json" },
+    "rule-providers": { "$ref": "./modules/rules/provider/provider.json" },
+    "rules": { "$ref": "./modules/config/rules.json" }
+  },
+  "allOf": [
+    {
+      "type": "object",
+      "properties": {
+        "prepend-rules": { "title": "前置规则配置", "$ref": "#/definitions/rules" }
+      }
+    },
+    {
+      "type": "object",
+      "properties": {
+        "prepend-rule-providers": { "title": "前置规则提供者配置", "$ref": "#/definitions/rule-providers" }
+      }
+    },
+    {
+      "type": "object",
+      "properties": {
+        "prepend-proxies": { "title": "前置代理节点配置", "$ref": "#/definitions/proxies" }
+      }
+    },
+    {
+      "type": "object",
+      "properties": {
+        "prepend-proxy-providers": { "title": "前置代理提供者配置", "$ref": "#/definitions/proxy-providers" }
+      }
+    },
+    {
+      "type": "object",
+      "properties": {
+        "prepend-proxy-groups": { "title": "前置代理组配置", "$ref": "#/definitions/proxy-groups" }
+      }
+    },
+    {
+      "type": "object",
+      "properties": {
+        "append-rules": { "title": "后置规则配置", "$ref": "#/definitions/rules" }
+      }
+    },
+    {
+      "type": "object",
+      "properties": {
+        "append-rule-providers": { "title": "后置规则提供者配置", "$ref": "#/definitions/rule-providers" }
+      }
+    },
+    {
+      "type": "object",
+      "properties": {
+        "append-proxies": { "title": "后置代理节点配置", "$ref": "#/definitions/proxies" }
+      }
+    },
+    {
+      "type": "object",
+      "properties": {
+        "append-proxy-providers": { "title": "后置代理提供者配置", "$ref": "#/definitions/proxy-providers" }
+      }
+    },
+    {
+      "type": "object",
+      "properties": {
+        "append-proxy-groups": { "title": "后置代理组配置", "$ref": "#/definitions/proxy-groups" }
+      }
+    }
+  ]
+}

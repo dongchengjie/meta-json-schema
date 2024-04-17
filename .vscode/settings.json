@@ -6,11 +6,11 @@
     }
   ],
   "yaml.schemas": {
-    "dest/meta-json-schema.json": "test/**/*.yaml"
+    ".temp/meta-json-schema.json": "test/clash-meta/**/*.yaml",
+    ".temp/clash-verge-merge-json-schema.json": "test/clash-verge/**/*.yaml"
   },
   "editor.tabSize": 2,
   "files.exclude": {
-    "dest": true,
     ".gitattributes": true,
     ".gitignore": true,
     "package-lock.json": true

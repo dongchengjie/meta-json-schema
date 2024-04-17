@@ -1,0 +1,212 @@
+prepend-rules:
+  - DOMAIN,ad.com,REJECT
+  - DOMAIN-SUFFIX,google.com,auto
+  - DOMAIN-KEYWORD,google,auto
+  - DOMAIN-REGEX,^abc.*com,PROXY
+  - GEOSITE,youtube,PROXY
+  - IP-CIDR,127.0.0.0/8,DIRECT,no-resolve
+  - IP-CIDR6,2620:0:2d0:200::7/32,auto
+  - IP-SUFFIX,8.8.8.8/24,PROXY
+  - IP-ASN,13335,DIRECT
+  - GEOIP,CN,DIRECT
+  - SRC-GEOIP,cn,DIRECT
+  - SCR-IP-ASN,9808,DIRECT
+  - SRC-IP-CIDR,192.168.1.201/32,DIRECT
+  - SRC-IP-SUFFIX,192.168.1.201/8,DIRECT
+  - DST-PORT,80,DIRECT
+  - SRC-PORT,7777,DIRECT
+  - IN-PORT,7890,PROXY
+  - IN-TYPE,SOCKS/HTTP,PROXY
+  - IN-USER,mihomo,PROXY
+  - IN-NAME,ss,PROXY
+  - PROCESS-PATH,/usr/bin/wget,PROXY
+  - PROCESS-PATH,C:\Program Files\Google\Chrome\Application\chrome.exe,PROXY
+  - PROCESS-NAME,curl,PROXY
+  - PROCESS-NAME,chrome.exe,PROXY
+  - PROCESS-NAME,com.termux,PROXY
+  - UID,1001,DIRECT
+  - NETWORK,udp,DIRECT
+  - DSCP,4,DIRECT
+  - RULE-SET,providername,proxy
+  - AND,((DOMAIN,baidu.com),(NETWORK,UDP)),DIRECT
+  - OR,((NETWORK,UDP),(DOMAIN,baidu.com)),REJECT
+  - NOT,((DOMAIN,baidu.com)),PROXY
+  - SUB-RULE,(NETWORK,tcp),sub-rule
+  - MATCH,auto
+
+prepend-rule-providers:
+  Apple:
+    type: http
+    behavior: classical
+    format: text
+    url: https://mirror.ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Apple.list
+    path: ./rulesets/acl4ssr/Apple.list
+    interval: 86400
+
+prepend-proxies:
+  - {
+      'name': '🇭🇰 香港_1',
+      'server': '231103level2.unclemanco.com',
+      'port': '916',
+      'type': 'ss',
+      'cipher': 'aes-128-gcm',
+      'password': 'fsfal2',
+      'plugin': 'obfs',
+      'plugin-opts': { 'mode': 'http', 'host': 'd6c9191892.download.windowsupdate.com' },
+      'udp': true
+    }
+
+prepend-proxy-providers:
+  provider1:
+    type: http
+    url: 'http://test.com'
+    path: ./proxy_providers/provider1.yaml
+    interval: 3600
+    proxy: DIRECT
+    header:
+      User-Agent:
+        - 'Clash/v1.18.0'
+        - 'mihomo/1.18.3'
+      Authorization:
+        - 'token 1231231'
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
+      timeout: 5000
+      lazy: true
+      expected-status: 204
+    override:
+      skip-cert-verify: true
+      udp: true
+      down: '50 Mbps'
+      up: '10 Mbps'
+      dialer-proxy: proxy
+      interface-name: tailscale0
+      routing-mark: 233
+      ip-version: ipv4-prefer
+      additional-prefix: 'provider1 prefix |'
+      additional-suffix: '| provider1 suffix'
+    filter: '(?i)港|hk|hongkong|hong kong'
+    exclude-filter: 'xxx'
+    exclude-type: 'ss|http'
+
+prepend-proxy-groups:
+  - {
+      name: 自动选择,
+      type: url-test,
+      proxies: ['🇺🇸美国 01-中转'],
+      url: 'http://www.gstatic.com/generate_204',
+      interval: 86400
+    }
+
+append-rules:
+  - DOMAIN,ad.com,REJECT
+  - DOMAIN-SUFFIX,google.com,auto
+  - DOMAIN-KEYWORD,google,auto
+  - DOMAIN-REGEX,^abc.*com,PROXY
+  - GEOSITE,youtube,PROXY
+
+  - IP-CIDR,127.0.0.0/8,DIRECT,no-resolve
+  - IP-CIDR6,2620:0:2d0:200::7/32,auto
+  - IP-SUFFIX,8.8.8.8/24,PROXY
+  - IP-ASN,13335,DIRECT
+  - GEOIP,CN,DIRECT
+
+  - SRC-GEOIP,cn,DIRECT
+  - SCR-IP-ASN,9808,DIRECT
+  - SRC-IP-CIDR,192.168.1.201/32,DIRECT
+  - SRC-IP-SUFFIX,192.168.1.201/8,DIRECT
+
+  - DST-PORT,80,DIRECT
+  - SRC-PORT,7777,DIRECT
+
+  - IN-PORT,7890,PROXY
+  - IN-TYPE,SOCKS/HTTP,PROXY
+  - IN-USER,mihomo,PROXY
+  - IN-NAME,ss,PROXY
+
+  - PROCESS-PATH,/usr/bin/wget,PROXY
+  - PROCESS-PATH,C:\Program Files\Google\Chrome\Application\chrome.exe,PROXY
+
+  - PROCESS-NAME,curl,PROXY
+  - PROCESS-NAME,chrome.exe,PROXY
+  - PROCESS-NAME,com.termux,PROXY
+  - UID,1001,DIRECT
+
+  - NETWORK,udp,DIRECT
+  - DSCP,4,DIRECT
+
+  - RULE-SET,providername,proxy
+  - AND,((DOMAIN,baidu.com),(NETWORK,UDP)),DIRECT
+  - OR,((NETWORK,UDP),(DOMAIN,baidu.com)),REJECT
+  - NOT,((DOMAIN,baidu.com)),PROXY
+  - SUB-RULE,(NETWORK,tcp),sub-rule
+
+  - MATCH,auto
+
+append-rule-providers:
+  Apple:
+    type: http
+    behavior: classical
+    format: text
+    url: https://mirror.ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Apple.list
+    path: ./rulesets/acl4ssr/Apple.list
+    interval: 86400
+
+append-proxies:
+  - {
+      'name': '🇭🇰 香港_1',
+      'server': '231103level2.unclemanco.com',
+      'port': '916',
+      'type': 'ss',
+      'cipher': 'aes-128-gcm',
+      'password': 'fsfal2',
+      'plugin': 'obfs',
+      'plugin-opts': { 'mode': 'http', 'host': 'd6c9191892.download.windowsupdate.com' },
+      'udp': true
+    }
+
+append-proxy-providers:
+  provider1:
+    type: http
+    url: 'http://test.com'
+    path: ./proxy_providers/provider1.yaml
+    interval: 3600
+    proxy: DIRECT
+    header:
+      User-Agent:
+        - 'Clash/v1.18.0'
+        - 'mihomo/1.18.3'
+      Authorization:
+        - 'token 1231231'
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
+      timeout: 5000
+      lazy: true
+      expected-status: 204
+    override:
+      skip-cert-verify: true
+      udp: true
+      down: '50 Mbps'
+      up: '10 Mbps'
+      dialer-proxy: proxy
+      interface-name: tailscale0
+      routing-mark: 233
+      ip-version: ipv4-prefer
+      additional-prefix: 'provider1 prefix |'
+      additional-suffix: '| provider1 suffix'
+    filter: '(?i)港|hk|hongkong|hong kong'
+    exclude-filter: 'xxx'
+    exclude-type: 'ss|http'
+
+append-proxy-groups:
+  - {
+      name: 自动选择,
+      type: url-test,
+      proxies: ['🇺🇸美国 01-中转'],
+      url: 'http://www.gstatic.com/generate_204',
+      interval: 86400
+    }

@@ -1,10 +1,24 @@
 {
   "name": "meta-json-schema",
-  "version": "v1.18.3",
   "config": {
-    "schemaSource": "./src/meta-json-schema.json",
-    "archiveDir": "./schemas",
-    "optimization": true
+    "watches": [
+      "./src/meta-json-schema.json",
+      "./src/clash-verge-merge-json-schema.json"
+    ],
+    "releases": [
+      {
+        "enabled": true,
+        "source": "./src/meta-json-schema.json",
+        "target": "./schemas/meta-json-schema.json",
+        "optimization": true
+      },
+      {
+        "enabled": true,
+        "source": "./src/clash-verge-merge-json-schema.json",
+        "target": "./schemas/clash-verge-merge-json-schema.json",
+        "optimization": true
+      }
+    ]
   },
   "scripts": {
     "dev": "node ./scripts/watch.mjs",

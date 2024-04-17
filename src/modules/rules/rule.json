@@ -133,7 +133,7 @@
     },
     {
       "title": "子规则",
-      "pattern": "^SUB-RULE((?:,[^,]+){2})$",
+      "pattern": "^SUB-RULE,\\([^,]+,[^,]+\\),.+$",
       "errorMessage": "无效的规则"
     },
     {
