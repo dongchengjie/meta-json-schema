@@ -5,6 +5,7 @@
   "title": "Clash Verge Merge",
   "additionalProperties": true,
   "definitions": {
+    "meta-json-schema": { "$ref": "./meta-json-schema.json" },
     "proxies": { "$ref": "./modules/config/proxies.json" },
     "proxy-providers": { "$ref": "./modules/config/proxy-providers.json" },
     "proxy-groups": { "$ref": "./modules/config/proxy-groups.json" },
@@ -12,6 +13,7 @@
     "rules": { "$ref": "./modules/config/rules.json" }
   },
   "allOf": [
+    { "title": "覆写profile配置", "$ref": "#/definitions/meta-json-schema" },
     {
       "type": "object",
       "title": "前置规则配置",
