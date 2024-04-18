@@ -4,11 +4,11 @@
 <summary>Visual Studio Code中使用</summary>
 
 1. 安装YAML语法支持插件`redhat.vscode-yaml`。
-2. 在`.vscode`目录下的`settings.json`文件中（如不存在则手动创建），填入以下内容。其中，key为schema文件的地址，value为路径通配符，可根据自身需要自行修改。
+2. 在`.vscode`目录下的`settings.json`文件中（如不存在则手动创建），填入以下内容。其中，key为schema文件的地址，value为路径通配符，请根据需求自行修改。
    ```json
    {
      "yaml.schemas": {
-       "https://fastly.jsdelivr.net/gh/dongchengjie/meta-json-schema@main/schemas/clash-verge-merge-json-schema.json": "**/*.yaml"
+       "https://fastly.jsdelivr.net/gh/dongchengjie/meta-json-schema@main/schemas/meta-json-schema.json": "**/*.yaml"
      }
    }
    ```
@@ -52,7 +52,7 @@
     });
     ```
 
-    3.  代码中配置schema
+    3.  代码中配置schema（请根据需求自行修改`fileMatch`）。
 
     ```javascript
     import * as monaco from 'monaco-editor';
@@ -74,8 +74,50 @@
 
 ## 可视化
 
-- <a href="https://dongchengjie.github.io/meta-json-schema/?schema=https://raw.githubusercontent.com/dongchengjie/meta-json-schema/main/schemas/clash-verge-merge-json-schema.json" target="_blank">meta-json-schema</a>
+- <a href="https://dongchengjie.github.io/meta-json-schema/?schema=https://raw.githubusercontent.com/dongchengjie/meta-json-schema/main/schemas/meta-json-schema.json" target="_blank">meta-json-schema</a>
+
 - <a href="https://dongchengjie.github.io/meta-json-schema/?schema=https://raw.githubusercontent.com/dongchengjie/meta-json-schema/main/schemas/clash-verge-merge-json-schema.json" target="_blank">clash-verge-merge-json-schema</a>
+
+## 开发
+
+1.  下载代码
+
+```
+git clone https://github.com/dongchengjie/meta-json-schema.git
+```
+
+2.  使用Visual Studio Code打开项目（工作目录为.vscode所在目录）。项目打开后会弹出建议安装YAML插件的提示。
+
+```
+code /path/to/project/location
+```
+
+3.  安装依赖
+
+```
+npm install
+```
+
+4.  启动项目。执行下列命令后,会对`src`目录进行监视,如果发生变动则会对项目进行bundle,输出到`.temp`目录下。
+
+```
+npm run dev
+```
+
+5.  测试schema。由于`.vscode`目录下`settings.json`中已事先配置了如下配置（`test`目录下的文件使用`.temp`目录下输出的schema文件）。因此可以对`src`进行修改,并在`test`目录下新增测试文件,及时观察变动并做出修正。
+
+```yaml
+"yaml.schemas": {
+  ".temp/meta-json-schema.json": "test/clash-meta/**/*.yaml",
+  ".temp/clash-verge-merge-json-schema.json": "test/clash-verge/**/*.yaml"
+},
+```
+
+6.  发布release。执行下列命令后,会根据`package.json`文件中定义的`releases`进行输出,并根据`optimization`决定是否进行压缩。
+
+```
+npm run release
+```
 
 ## 语法
 
@@ -116,15 +158,15 @@ interface JSONSchema {
 
 </details>
 
-### FAQ
+## FAQ
 
 ### definitions中的`compatible.json`文件的用途是什么？
 
-YAML支持`Folded Style`和`Inline Style`的写法。例如使用`"type": "boolean"`来定义某个属性,那么`'true'`和`'false'`就会提示`Incorrect type. Expected "boolean".`。
+YAML支持`Folded Style`和`Inline Style`的写法。
+使用`"type": "boolean"`来定义某个属性,那么`'true'`和`'false'`就会提示`Incorrect type. Expected "boolean".`。因此引入compatible类型,以兼容多种编码风格。
 
-因此引入compatible类型,兼容多种风格。由于这种情况多发生于`proxies`配置部分，所以目前仅`proxies`配置中使用了`compatible.json`,其余地方可视情况使用。
-
-Inline Style
+<details>
+<summary>Inline Style</summary>
 
 ```
 proxies:
@@ -132,7 +174,10 @@ proxies:
   - {name: proxy2, type: ss, cipher: auto, tls: true}
 ```
 
-Folded Style
+</details>
+
+<details>
+<summary>Folded Style</summary>
 
 ```
 proxies:
@@ -145,3 +190,8 @@ proxies:
   cipher: auto
   tls: true
 ```
+
+</details>
+
+> [!NOTE]  
+> 由于这种情况多发生于`proxies`配置部分，所以目前仅`proxies`配置中使用了`compatible.json`,其余地方可视情况使用。

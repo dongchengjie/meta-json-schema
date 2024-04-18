@@ -6,6 +6,9 @@
     "clash.meta",
     "schema"
   ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
   "config": {
     "watches": [
       "./src/meta-json-schema.json",
