@@ -86,11 +86,14 @@
 git clone https://github.com/dongchengjie/meta-json-schema.git
 ```
 
-2.  使用Visual Studio Code打开项目（工作目录为.vscode所在目录）。项目打开后会弹出建议安装YAML插件的提示。
+2.  使用Visual Studio Code打开项目（工作目录为.vscode所在目录）。
 
 ```
 code /path/to/project/location
 ```
+
+> [!NOTE]
+> 项目打开后会弹出建议安装YAML插件的提示,请点击确认安装或手动安装,以获取良好的开发体验。
 
 3.  安装依赖
 
@@ -119,7 +122,7 @@ npm run dev
 npm run release
 ```
 
-## 语法
+## 语法参考
 
 <details>
 <summary>JSON Schema标准语法</summary>
@@ -193,5 +196,5 @@ proxies:
 
 </details>
 
-> [!NOTE]  
+> [!NOTE]
 > 由于这种情况多发生于`proxies`配置部分，所以目前仅`proxies`配置中使用了`compatible.json`,其余地方可视情况使用。
