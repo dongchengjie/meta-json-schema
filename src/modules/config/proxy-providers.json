@@ -1,6 +1,6 @@
 {
   "type": "object",
-  "title": "代理提供者配置",
+  "title": "代理集合配置",
   "definitions": {
     "types": { "$ref": "../../definitions/types.json" },
     "patterns": { "$ref": "../../definitions/patterns.json" },

@@ -18,14 +18,14 @@
       "type": "object",
       "title": "前置规则配置",
       "properties": {
-        "prepend-rules": { "title": "prepend-rules", "$ref": "#/definitions/rules" }
+        "prepend-rules": { "title": "前置规则配置", "$ref": "#/definitions/rules" }
       }
     },
     {
       "type": "object",
-      "title": "前置规则提供者配置",
+      "title": "前置规则集合配置",
       "properties": {
-        "prepend-rule-providers": { "title": "prepend-rule-providers", "$ref": "#/definitions/rule-providers" }
+        "prepend-rule-providers": { "title": "前置规则集合配置", "$ref": "#/definitions/rule-providers" }
       }
     },
     {
@@ -37,51 +37,51 @@
     },
     {
       "type": "object",
-      "title": "前置代理提供者配置",
+      "title": "前置代理集合配置",
       "properties": {
-        "prepend-proxy-providers": { "title": "prepend-proxy-providers", "$ref": "#/definitions/proxy-providers" }
+        "prepend-proxy-providers": { "title": "前置代理集合配置", "$ref": "#/definitions/proxy-providers" }
       }
     },
     {
       "type": "object",
       "title": "前置代理组配置",
       "properties": {
-        "prepend-proxy-groups": { "title": "prepend-proxy-groups", "$ref": "#/definitions/proxy-groups" }
+        "prepend-proxy-groups": { "title": "前置代理组配置", "$ref": "#/definitions/proxy-groups" }
       }
     },
     {
       "type": "object",
       "title": "后置规则配置",
       "properties": {
-        "append-rules": { "title": "append-rules", "$ref": "#/definitions/rules" }
+        "append-rules": { "title": "后置规则配置", "$ref": "#/definitions/rules" }
       }
     },
     {
       "type": "object",
-      "title": "后置规则提供者配置",
+      "title": "后置规则集合配置",
       "properties": {
-        "append-rule-providers": { "title": "append-rule-providers", "$ref": "#/definitions/rule-providers" }
+        "append-rule-providers": { "title": "后置规则集合配置", "$ref": "#/definitions/rule-providers" }
       }
     },
     {
       "type": "object",
       "title": "后置代理节点配置",
       "properties": {
-        "append-proxies": { "title": "append-proxies", "$ref": "#/definitions/proxies" }
+        "append-proxies": { "title": "后置代理节点配置", "$ref": "#/definitions/proxies" }
       }
     },
     {
       "type": "object",
-      "title": "后置代理提供者配置",
+      "title": "后置代理集合配置",
       "properties": {
-        "append-proxy-providers": { "title": "append-proxy-providers", "$ref": "#/definitions/proxy-providers" }
+        "append-proxy-providers": { "title": "后置代理集合配置", "$ref": "#/definitions/proxy-providers" }
       }
     },
     {
       "type": "object",
       "title": "后置代理组配置",
       "properties": {
-        "append-proxy-groups": { "title": "append-proxy-groups", "$ref": "#/definitions/proxy-groups" }
+        "append-proxy-groups": { "title": "后置代理组配置", "$ref": "#/definitions/proxy-groups" }
       }
     }
   ]

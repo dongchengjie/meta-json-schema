@@ -68,7 +68,7 @@
     },
     {
       "type": "object",
-      "title": "代理提供者配置",
+      "title": "代理集合配置",
       "properties": {
         "proxy-providers": { "$ref": "#/definitions/proxy-providers" }
       }
@@ -89,7 +89,7 @@
     },
     {
       "type": "object",
-      "title": "规则提供者配置",
+      "title": "规则集合配置",
       "properties": {
         "rule-providers": { "$ref": "#/definitions/rule-providers" }
       }

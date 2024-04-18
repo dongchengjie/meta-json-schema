@@ -1,6 +1,6 @@
 {
   "type": "object",
-  "title": "规则提供者配置",
+  "title": "规则集合配置",
   "definitions": {
     "types": { "$ref": "../../../definitions/types.json" },
     "patterns": { "$ref": "../../../definitions/patterns.json" },
