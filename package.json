@@ -1,6 +1,6 @@
 {
   "name": "meta-json-schema",
-  "version": "1.18.3",
+  "version": "1.18.3-beta",
   "keywords": [
     "clash",
     "clash.meta",
@@ -9,6 +9,7 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
   },
+  "license": "MIT",
   "config": {
     "watches": [
       "./src/meta-json-schema.json",
