@@ -90,7 +90,7 @@
           "$ref": "#/definitions/types/stringArray",
           "title": "DNS污染GeoSite列表",
           "description": "这些GeoSite的结果会被视为污染,将采用fallback的解析结果",
-          "markdownDescription": "这些[GeoSite](https://github.com/v2ray/domain-list-community/tree/master/data)的结果会被视为污染,将采用`fallback`的解析结果",
+          "markdownDescription": "这些[GeoSite](https://github.com/MetaCubeX/meta-rules-dat/tree/meta/geo/geosite)的结果会被视为污染,将采用`fallback`的解析结果",
           "deprecationMessage": "使用nameserver-policy代替geosite(geosite将在未来移除)"
         }
       }
