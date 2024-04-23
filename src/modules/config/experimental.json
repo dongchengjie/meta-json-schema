@@ -10,22 +10,20 @@
       "type": "boolean",
       "title": "quic-go禁用GSO",
       "description": "quic禁用GSO(Generic Segmentation Offload)通用分段卸载,可能会导致Linux平台上的性能下降(等价于环境变量QUIC_GO_DISABLE_GSO=1)",
-      "markdownDescription": "quic禁用`GSO`(Generic Segmentation Offload)通用分段卸载,可能会导致Linux平台上的性能下降(等价于环境变量`QUIC_GO_DISABLE_GSO=1`)",
-      "default": false
+      "markdownDescription": "quic禁用`GSO`(Generic Segmentation Offload)通用分段卸载,可能会导致Linux平台上的性能下降(等价于环境变量`QUIC_GO_DISABLE_GSO=1`)"
     },
     "quic-go-disable-ecn": {
       "type": "boolean",
       "title": "quic-go禁用ECN",
       "description": "quic禁用ECN(Explicit Congestion Notification)显式拥塞通知(等价于环境变量QUIC_GO_DISABLE_ECN=1)",
       "markdownDescription": "quic禁用`ECN`(Explicit Congestion Notification)显式拥塞通知(等价于环境变量QUIC_GO_DISABLE_ECN=1)",
-      "default": false
+      "default": true
     },
     "dialer-ip4p-convert": {
       "type": "boolean",
       "title": "启用IP4P地址转换",
       "description": "NATMap可以打通运营商完全锥型NAT网关的端口,使得通过运营商网关的公网IP:端口能够访问到用户内网的服务。",
-      "markdownDescription": "`NATMap`可以打通运营商完全锥型NAT网关的端口,使得通过运营商网关的公网IP:端口能够访问到用户内网的服务。",
-      "default": false
+      "markdownDescription": "`NATMap`可以打通运营商完全锥型NAT网关的端口,使得通过运营商网关的公网IP:端口能够访问到用户内网的服务。"
     }
   }
 }
