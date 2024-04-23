@@ -2449,7 +2449,7 @@ proxy-groups:
     type: load-balance
     strategy: round-robin
     lazy: true
-    interval: 60
+    interval: 60s
     timeout: 2000
     url: https://www.google.com/gen_204
     max-failed-times: 3

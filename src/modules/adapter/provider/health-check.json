@@ -2,6 +2,7 @@
   "type": "object",
   "title": "健康检查",
   "definitions": {
+    "compatible": { "$ref": "../../../definitions/compatible.json" },
     "types": { "$ref": "../../../definitions/types.json" },
     "patterns": { "$ref": "../../../definitions/patterns.json" },
     "enums": { "$ref": "../../../definitions/enums.json" }
@@ -22,18 +23,18 @@
       "default": "https://www.gstatic.com/generate_204"
     },
     "interval": {
-      "type": "integer",
+      "$ref": "#/definitions/compatible/string",
       "title": "健康检查间隔",
-      "description": "单位:s",
-      "markdownDescription": "单位:s",
-      "default": 300
+      "description": "格式: <时长>[ms或s(默认:s)]",
+      "markdownDescription": "格式: <时长>[ms或s(默认:s)]",
+      "default": "300"
     },
     "timeout": {
-      "type": "integer",
+      "$ref": "#/definitions/compatible/string",
       "title": "健康检查超时",
-      "description": "单位:ms",
-      "markdownDescription": "单位:ms",
-      "default": 5000
+      "description": "格式: <时长>[ms或s(默认:ms)]",
+      "markdownDescription": "格式: <时长>[ms或s(默认:ms)]",
+      "default": "5000"
     },
     "lazy": {
       "type": "boolean",
