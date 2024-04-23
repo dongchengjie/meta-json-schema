@@ -32,7 +32,7 @@
       "type": "object",
       "title": "前置代理节点配置",
       "properties": {
-        "prepend-proxies": { "title": "prepend-proxies", "$ref": "#/definitions/proxies" }
+        "prepend-proxies": { "title": "前置代理节点配置", "$ref": "#/definitions/proxies" }
       }
     },
     {
