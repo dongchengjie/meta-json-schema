@@ -83,7 +83,7 @@
           "type": "object",
           "properties": {
             "ports": {
-              "$ref": "#/definitions/types/portArray",
+              "$ref": "#/definitions/types/portRangeArray",
               "description": "嗅探端口列表"
             },
             "override-destination": {
