@@ -18,6 +18,12 @@
       "description": "可以使用RESTful API over HTTPS来控制内核",
       "markdownDescription": "可以使用RESTful API over HTTPS来控制内核"
     },
+    "external-controller-unix": {
+      "type": "string",
+      "title": "外部控制器(Unix Socket)监听地址",
+      "description": "从Unix Socket访问api接口不会验证secret,如果开启请自行保证安全问题(Windows版本大于17063也可以使用,即大于等于1803/RS4版本即可使用)",
+      "markdownDescription": "从Unix Socket访问api接口不会验证secret,如果开启请自行保证安全问题(Windows版本大于17063也可以使用,即大于等于1803/RS4版本即可使用)"
+    },
     "external-ui": {
       "type": "string",
       "title": "外部用户界面路径(默认:工作目录/ui)",
