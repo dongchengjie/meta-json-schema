@@ -9,6 +9,8 @@
 ### Bugs Fixes
 
 - 字符串数组类型错误
+- 监听地址支持`:port`
+- sniffer的http ports类型错误
 
 ---
 
