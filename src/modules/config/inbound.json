@@ -76,11 +76,20 @@
       "markdownDescription": "需要启用`allow-lan`(优先级高于`lan-allowed-ips`)"
     },
     "bind-address": {
-      "$ref": "#/definitions/patterns/ipPort",
-      "title": "绑定地址",
-      "description": "仅允许其他设备通过这个地址访问(*绑定所有IP地址)",
-      "markdownDescription": "仅允许其他设备通过这个地址访问(*绑定所有IP地址)",
-      "default": "*"
+      "anyOf": [
+        {
+          "const": "*",
+          "title": "绑定所有 IP 地址",
+          "description": "允许其他设备通过所有地址访问",
+          "markdownDescription": "允许其他设备通过所有地址访问"
+        },
+        {
+          "$ref": "#/definitions/patterns/ipPort",
+          "title": "绑定单个 IP 地址",
+          "description": "仅允许其他设备通过这个地址访问",
+          "markdownDescription": "仅允许其他设备通过这个地址访问"
+        }
+      ]
     },
     "inbound-tfo": {
       "type": "boolean",
