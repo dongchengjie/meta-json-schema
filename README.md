@@ -1,4 +1,8 @@
-## 用法
+### 🧩 VSCode 插件
+
+VS Code 扩展商店搜索 `Meta JSON Schema` 或 `ClashMeta.meta-json-schema`，安装扩展后即可获取 `Clash.Meta`的语法支持。
+
+## 💡 用法
 
 <details>
 <summary>Visual Studio Code中使用</summary>
@@ -35,16 +39,16 @@
     2.  配置`vite.config.ts`。
 
     ```javascript
-    import { defineConfig } from 'vite';
-    import monacoEditor from 'vite-plugin-monaco-editor';
+    import { defineConfig } from "vite";
+    import monacoEditor from "vite-plugin-monaco-editor";
     export default defineConfig({
       plugins: [
         monacoEditor({
-          languageWorkers: ['editorWorkerService'],
+          languageWorkers: ["editorWorkerService"],
           customWorkers: [
             {
-              label: 'yaml',
-              entry: 'monaco-yaml/yaml.worker'
+              label: "yaml",
+              entry: "monaco-yaml/yaml.worker"
             }
           ]
         })
@@ -55,16 +59,16 @@
     3.  代码中配置schema（请根据需求自行修改`fileMatch`）。
 
     ```javascript
-    import * as monaco from 'monaco-editor';
-    import { configureMonacoYaml } from 'monaco-yaml';
+    import * as monaco from "monaco-editor";
+    import { configureMonacoYaml } from "monaco-yaml";
 
     configureMonacoYaml(monaco, {
       validate: true,
       enableSchemaRequest: true,
       schemas: [
         {
-          uri: 'https://fastly.jsdelivr.net/gh/dongchengjie/airport@main/meta-json-schema.json',
-          fileMatch: ['**/*.clash.yaml']
+          uri: "https://fastly.jsdelivr.net/gh/dongchengjie/airport@main/meta-json-schema.json",
+          fileMatch: ["**/*.clash.yaml"]
         }
       ]
     });
@@ -78,7 +82,7 @@
 
 - <a href="https://dongchengjie.github.io/meta-json-schema/?schema=https://raw.githubusercontent.com/dongchengjie/meta-json-schema/main/schemas/clash-verge-merge-json-schema.json" target="_blank">clash-verge-merge-json-schema</a>
 
-## 开发
+## 🖥️ 开发
 
 1.  下载代码
 
