@@ -2,6 +2,7 @@
   "cipher": {
     "description": "加密方法",
     "enum": [
+      "none",
       "auto",
       "dummy",
       "aes-128-gcm",
