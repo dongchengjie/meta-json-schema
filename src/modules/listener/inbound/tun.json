@@ -15,9 +15,9 @@
       "properties": {
         "device": {
           "type": "string",
-          "title": "指定tun网卡名称",
-          "description": "指定tun网卡名称(macOS强制为utun)",
-          "markdownDescription": "指定tun网卡名称(macOS强制为`utun`)"
+          "title": "指定TUN网卡名称",
+          "description": "指定TUN网卡名称(macOS强制为utun)",
+          "markdownDescription": "指定TUN网卡名称(macOS强制为`utun`)"
         },
         "stack": {
           "type": "string",
@@ -43,7 +43,7 @@
           "type": "boolean",
           "title": "自动设置全局路由",
           "description": "可以自动将全局流量路由进入tun网卡",
-          "markdownDescription": "可以自动将全局流量路由进入`tun`网卡",
+          "markdownDescription": "可以自动将全局流量路由进入`TUN`网卡",
           "default": true
         },
         "auto-detect-interface": {

@@ -43,8 +43,8 @@
     "auto-route": {
       "type": "boolean",
       "title": "自动设置全局路由",
-      "description": "可以自动将全局流量路由进入tun网卡",
-      "markdownDescription": "可以自动将全局流量路由进入`tun`网卡",
+      "description": "可以自动将全局流量路由进入TUN网卡",
+      "markdownDescription": "可以自动将全局流量路由进入`TUN`网卡",
       "default": true
     },
     "auto-detect-interface": {
