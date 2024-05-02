@@ -144,11 +144,11 @@ npm run release
 interface JSONSchema {
   // 自定义Snippet建议(数组)
   defaultSnippets?: {
-    label?: string; // 标题
-    description?: string; // 描述
-    markdownDescription?: string; // 描述(markdown格式)
-    body?: any; // 内容
-    bodyText?: string; // 内容文本
+    label: string; // 标签文本(索引)
+    description?: string; // 标签描述(需要点击展开)
+    markdownDescription?: string; // 标签描述(需要点击展开，markdown格式，优先级高于description,)
+    body: any; // 实际取值内容
+    bodyText?: string; // 实际取值内容文本(暂无作用)
   }[];
   errorMessage?: string; // 错误信息
   patternErrorMessage?: string; // 格式错误信息(优先级高于errorMessage)
