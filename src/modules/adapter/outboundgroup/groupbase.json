@@ -31,8 +31,8 @@
             "max-failed-times": {
               "type": "integer",
               "title": "最大失败次数",
-              "description": "在timeout时间长度内,请求失败max-failed-times次,提前主动触发健康检查",
-              "markdownDescription": "在`timeout`时间长度内,请求失败`max-failed-times`次,提前主动触发健康检查",
+              "description": "在timeout时间长度内,请求失败max-failed-times次,强制提前主动触发健康检查",
+              "markdownDescription": "在`timeout`时间长度内,请求失败`max-failed-times`次,强制提前主动触发健康检查",
               "default": 5
             },
             "disable-udp": {
