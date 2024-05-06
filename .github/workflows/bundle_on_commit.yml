@@ -33,4 +33,4 @@ jobs:
         run: |
           git add -f schemas
           git commit -m "Bundle On Commit"
-          git push origin HEAD:main
+          git push --force origin HEAD:main
