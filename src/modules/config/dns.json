@@ -36,9 +36,16 @@
     },
     "use-hosts": {
       "type": "boolean",
+      "title": "启用配置中的hosts配置",
+      "description": "启用配置中的hosts配置",
+      "markdownDescription": "启用配置中的`hosts`配置",
+      "default": true
+    },
+    "use-system-hosts": {
+      "type": "boolean",
       "title": "查询系统hosts文件",
-      "description": "查询系统hosts文件",
-      "markdownDescription": "查询系统`hosts`文件",
+      "description": "优先级低于配置中的hosts配置",
+      "markdownDescription": "优先级低于配置中的`hosts`配置",
       "default": true
     },
     "nameserver": {
@@ -125,7 +132,7 @@
       "default": ["dns.msftnsci.com", "www.msftnsci.com", "www.msftconnecttest.com"]
     },
     "default-nameserver": {
-      "$ref": "#/definitions/types/serverArray",
+      "$ref": "#/definitions/types/stringArray",
       "title": "元域名解析服务器",
       "description": "解析nameserver,fallback以及其他DNS服务器配置的DNS服务器(只能使用纯IP地址,支持加密DNS)",
       "markdownDescription": "解析`nameserver`,`fallback`以及其他DNS服务器配置的DNS服务器(只能使用纯IP地址,支持加密DNS)",

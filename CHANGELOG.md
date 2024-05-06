@@ -1,3 +1,16 @@
+## v1.18.5
+
+### Changes
+
+- 新增: `dns` 新增配置项 `use-system-hosts`
+
+### Bugs Fixes
+
+- 修复: cipher 缺少 `none`
+- 修复: `default-nameserver`类型错误
+
+---
+
 ## v1.18.4
 
 ### Changes
