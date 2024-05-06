@@ -134,8 +134,8 @@
     "default-nameserver": {
       "$ref": "#/definitions/types/stringArray",
       "title": "元域名解析服务器",
-      "description": "解析nameserver,fallback以及其他DNS服务器配置的DNS服务器(只能使用纯IP地址,支持加密DNS)",
-      "markdownDescription": "解析`nameserver`,`fallback`以及其他DNS服务器配置的DNS服务器(只能使用纯IP地址,支持加密DNS)",
+      "description": "解析nameserver,fallback以及其他DNS服务器配置的DNS服务器(只能使用纯IP地址,支持UDP,TCP,DoT,DoH,DoQ)",
+      "markdownDescription": "解析`nameserver`,`fallback`以及其他DNS服务器配置的DNS服务器(只能使用纯IP地址,支持`UDP`,`TCP`,`DoT`,`DoH`,`DoQ`)",
       "default": ["114.114.114.114", "223.5.5.5", "8.8.8.8", "1.0.0.1"]
     },
     "cache-algorithm": {

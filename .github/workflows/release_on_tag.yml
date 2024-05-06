@@ -1,9 +1,9 @@
-name: Bundle On Commit
+name: Release On Tag
+
 on:
   push:
-    branches:
-      - master
-      - main
+    tags:
+      - "v*.*.*"
 
 jobs:
   bundle_on_commit:
@@ -26,8 +26,19 @@ jobs:
       - name: Bundle
         run: npm install && npm run release
 
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          body_path: ${{ github.workspace }}/CHANGELOG.md
+          prerelease: false
+          make_latest: true
+          files: |
+            schemas/*
+
       - name: Commit and Push
         run: |
           git add -f schemas
-          git commit -m "Bundle On Commit"
+          git commit -m "Release On Tag"
           git push --force origin HEAD:main
