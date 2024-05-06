@@ -16,7 +16,6 @@ jobs:
       - uses: actions/checkout@v4
       - name: Configure Git Credentials
         run: |
-          git config advice.addIgnoredFile true
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
 
@@ -32,6 +31,6 @@ jobs:
 
       - name: Commit
         run: |
-          git add schemas
+          git add -f schemas
           git commit -m "Bundle On Commit"
           git push origin HEAD:main
