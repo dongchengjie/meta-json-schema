@@ -6,9 +6,8 @@ on:
       - main
 
 jobs:
-  delete-workflow-runs:
+  bundle_on_commit:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -25,11 +24,9 @@ jobs:
           node-version: "20"
 
       - name: Bundle
-        run: |
-          npm install
-          npm run release
+        run: npm install && npm run release
 
-      - name: Commit
+      - name: Commit and Push
         run: |
           git add -f schemas
           git commit -m "Bundle On Commit"
