@@ -120,15 +120,15 @@
     "fake-ip-range": {
       "$ref": "#/definitions/patterns/ipCIDR",
       "title": "fake-ip的预留映射地址段",
-      "description": "tun模式的网卡默认IP也使用此值作为参考",
-      "markdownDescription": "tun模式的网卡默认IP也使用此值作为参考",
+      "description": "TUN模式的网卡默认IP也使用此值作为参考",
+      "markdownDescription": "TUN模式的网卡默认IP也使用此值作为参考",
       "default": "198.18.0.1/16"
     },
     "fake-ip-filter": {
       "$ref": "#/definitions/types/stringArray",
       "title": "fake-ip过滤",
-      "description": "不使用fake-ip的地址范围",
-      "markdownDescription": "不使用`fake-ip`的地址范围",
+      "description": "哪些域名不使用fake-ip",
+      "markdownDescription": "哪些域名不使用`fake-ip`",
       "default": ["dns.msftnsci.com", "www.msftnsci.com", "www.msftconnecttest.com"]
     },
     "default-nameserver": {
@@ -142,8 +142,8 @@
       "enum": ["lru", "arc"],
       "markdownEnumDescriptions": ["最近最少使用", "自适应替换缓存"],
       "title": "缓存算法",
-      "description": "lru: Least Recently Used, arc: Adaptive Replacement Cache",
-      "markdownDescription": "`lru`: Least Recently Used, `arc`: Adaptive Replacement Cache",
+      "description": "缓存算法",
+      "markdownDescription": "缓存算法",
       "default": "lru"
     },
     "nameserver-policy": {

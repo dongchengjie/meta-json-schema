@@ -3,6 +3,7 @@
 ### Changes
 
 - 新增: `dns` 新增配置项 `use-system-hosts`
+- 调整: 调整部分配置描述
 
 ### Bugs Fixes
 

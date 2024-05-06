@@ -9,7 +9,7 @@
     "health-check": { "$ref": "../provider/health-check.json" }
   },
   "allOf": [
-    { "title": "outbound基础配置", "required": ["name", "type"], "$ref": "#/definitions/base-option" },
+    { "title": "出站基础配置", "required": ["name", "type"], "$ref": "#/definitions/base-option" },
     {
       "allOf": [
         {

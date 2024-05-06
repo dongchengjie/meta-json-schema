@@ -8,20 +8,20 @@
     "enums": { "$ref": "../../../definitions/enums.json" },
     "base-option": {
       "type": "object",
-      "title": "outbound基础配置",
+      "title": "出站基础配置",
       "properties": {
         "name": {
           "$ref": "#/definitions/compatible/string",
-          "title": "outbound名称",
-          "description": "outbound名称",
-          "markdownDescription": "outbound名称"
+          "title": "出站名称",
+          "description": "出站名称",
+          "markdownDescription": "出站名称"
         },
         "type": {
           "enum": ["select", "url-test", "fallback", "load-balance", "relay"],
           "markdownEnumDescriptions": ["手动选择", "延迟选优", "故障转移", "负载均衡", "链式代理"],
-          "title": "outbound类型",
-          "description": "outbound类型",
-          "markdownDescription": "outbound类型"
+          "title": "出站类型",
+          "description": "出站类型",
+          "markdownDescription": "出站类型"
         },
         "interface-name": {
           "$ref": "#/definitions/compatible/string",
@@ -39,7 +39,7 @@
     },
     "basic-option": {
       "type": "object",
-      "title": "outbound基本配置",
+      "title": "出站基本配置",
       "properties": {
         "tfo": {
           "$ref": "#/definitions/compatible/boolean",
