@@ -4,6 +4,7 @@
 
 - 新增: `dns` 新增配置项 `use-system-hosts`
 - 调整: 调整部分配置描述
+- 移除: Clash Verge Merge 配置移除`prepend-rule-providers`、`prepend-proxy-providers`、`append-rule-providers`、`append-proxy-providers`
 
 ### Bugs Fixes
 

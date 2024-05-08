@@ -7,9 +7,7 @@
   "definitions": {
     "meta-json-schema": { "$ref": "./meta-json-schema.json" },
     "proxies": { "$ref": "./modules/config/proxies.json" },
-    "proxy-providers": { "$ref": "./modules/config/proxy-providers.json" },
     "proxy-groups": { "$ref": "./modules/config/proxy-groups.json" },
-    "rule-providers": { "$ref": "./modules/rules/provider/provider.json" },
     "rules": { "$ref": "./modules/config/rules.json" }
   },
   "allOf": [
@@ -23,23 +21,9 @@
     },
     {
       "type": "object",
-      "title": "前置规则集合配置",
-      "properties": {
-        "prepend-rule-providers": { "title": "前置规则集合配置", "$ref": "#/definitions/rule-providers" }
-      }
-    },
-    {
-      "type": "object",
       "title": "前置代理节点配置",
       "properties": {
         "prepend-proxies": { "title": "前置代理节点配置", "$ref": "#/definitions/proxies" }
-      }
-    },
-    {
-      "type": "object",
-      "title": "前置代理集合配置",
-      "properties": {
-        "prepend-proxy-providers": { "title": "前置代理集合配置", "$ref": "#/definitions/proxy-providers" }
       }
     },
     {
@@ -58,23 +42,9 @@
     },
     {
       "type": "object",
-      "title": "后置规则集合配置",
-      "properties": {
-        "append-rule-providers": { "title": "后置规则集合配置", "$ref": "#/definitions/rule-providers" }
-      }
-    },
-    {
-      "type": "object",
       "title": "后置代理节点配置",
       "properties": {
         "append-proxies": { "title": "后置代理节点配置", "$ref": "#/definitions/proxies" }
-      }
-    },
-    {
-      "type": "object",
-      "title": "后置代理集合配置",
-      "properties": {
-        "append-proxy-providers": { "title": "后置代理集合配置", "$ref": "#/definitions/proxy-providers" }
       }
     },
     {
