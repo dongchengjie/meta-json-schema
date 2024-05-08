@@ -1,4 +1,4 @@
-## v1.18.4-beta4
+## v1.18.4-beta5
 
 ### Changes
 
@@ -10,6 +10,7 @@
 
 - 修复: cipher 缺少 `none`
 - 修复: `default-nameserver`类型错误
+- 修复: `nameserver-policy` 不支持配置单个DNS服务器字符串
 
 ---
 

@@ -148,7 +148,7 @@
     },
     "nameserver-policy": {
       "type": "object",
-      "additionalProperties": { "$ref": "#/definitions/types/stringArray" },
+      "additionalProperties": { "anyOf": [{ "type": "string" }, { "$ref": "#/definitions/types/stringArray" }] },
       "title": "DNS解析服务器策略",
       "description": "指定地址使用特定DNS解析服务器",
       "markdownDescription": "指定地址使用特定DNS解析服务器"
