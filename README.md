@@ -76,7 +76,7 @@ VS Code 扩展商店搜索 `Meta JSON Schema` 或 `ClashMeta.meta-json-schema`�
 
 </details>
 
-## 可视化
+## 👓 JSON Schema可视化
 
 - <a href="https://dongchengjie.github.io/meta-json-schema/?schema=https://raw.githubusercontent.com/dongchengjie/meta-json-schema/main/schemas/meta-json-schema.json" target="_blank">meta-json-schema</a>
 
@@ -86,13 +86,13 @@ VS Code 扩展商店搜索 `Meta JSON Schema` 或 `ClashMeta.meta-json-schema`�
 
 1.  下载代码
 
-```
+```bash
 git clone https://github.com/dongchengjie/meta-json-schema.git
 ```
 
 2.  使用Visual Studio Code打开项目（工作目录为.vscode所在目录）。
 
-```
+```bash
 code /path/to/project/location
 ```
 
@@ -101,19 +101,19 @@ code /path/to/project/location
 
 3.  安装依赖
 
-```
+```bash
 npm install
 ```
 
 4.  启动项目。执行下列命令后,会对`src`目录进行监视,如果发生变动则会对项目进行bundle,输出到`.temp`目录下。
 
-```
+```bash
 npm run dev
 ```
 
 5.  测试schema。由于`.vscode`目录下`settings.json`中已事先配置了如下配置（`test`目录下的文件使用`.temp`目录下输出的schema文件）。因此可以对`src`进行修改,并在`test`目录下新增测试文件,及时观察变动并做出修正。
 
-```yaml
+```json
 "yaml.schemas": {
   ".temp/meta-json-schema.json": "test/clash-meta/**/*.yaml",
   ".temp/clash-verge-merge-json-schema.json": "test/clash-verge/**/*.yaml"
@@ -122,11 +122,11 @@ npm run dev
 
 6.  发布release。执行下列命令后,会根据`package.json`文件中定义的`releases`进行输出,并根据`optimization`决定是否进行压缩。
 
-```
+```bash
 npm run release
 ```
 
-## 语法参考
+## 📚 语法参考
 
 <details>
 <summary>JSON Schema标准语法</summary>
@@ -165,7 +165,7 @@ interface JSONSchema {
 
 </details>
 
-## FAQ
+## 🤔 FAQ
 
 ### definitions中的`compatible.json`文件的用途是什么？
 
@@ -175,10 +175,10 @@ YAML支持`Folded Style`和`Inline Style`的写法。
 <details>
 <summary>Inline Style</summary>
 
-```
+```yaml
 proxies:
-  - {name: 'proxy1', type: 'ss', cipher: 'auto', tls: 'true'}
-  - {name: proxy2, type: ss, cipher: auto, tls: true}
+  - { name: "proxy1", type: "ss", cipher: "auto", tls: "true" }
+  - { name: proxy2, type: ss, cipher: auto, tls: true }
 ```
 
 </details>
@@ -186,16 +186,16 @@ proxies:
 <details>
 <summary>Folded Style</summary>
 
-```
+```yaml
 proxies:
-- name: 'proxy1'
-  type: 'ss'
-  cipher: 'auto'
-  tls: 'true'
-- name: proxy1
-  type: ss
-  cipher: auto
-  tls: true
+  - name: "proxy1"
+    type: "ss"
+    cipher: "auto"
+    tls: "true"
+  - name: proxy1
+    type: ss
+    cipher: auto
+    tls: true
 ```
 
 </details>
