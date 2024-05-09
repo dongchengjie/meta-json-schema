@@ -107,5 +107,9 @@
         }
       }
     }
-  }
+  },
+  "if": {
+    "allOf": [{ "properties": { "enable": { "const": true } } }, { "properties": { "sniff": { "const": {} } } }]
+  },
+  "then": { "properties": { "enable": { "deprecationMessage": "未配置sniff配置" } } }
 }

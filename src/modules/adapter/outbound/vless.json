@@ -61,7 +61,13 @@
           ],
           "title": "流量控制方式",
           "description": "流量控制方式",
-          "markdownDescription": "流量控制方式"
+          "markdownDescription": "流量控制方式",
+          "if": {
+            "enum": ["xtls-rprx-origin", "xtls-rprx-direct", "xtls-rprx-splice"]
+          },
+          "then": {
+            "deprecationMessage": "旧版XTLS协议(xtls-rprx-origin、xtls-rprx-direct、xtls-rprx-splice)已弃用且不再支持"
+          }
         },
         "tls": {
           "$ref": "#/definitions/compatible/boolean",
