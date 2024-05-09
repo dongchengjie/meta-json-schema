@@ -13,6 +13,7 @@
 - 修复: cipher 缺少 `none`
 - 修复: `default-nameserver`类型错误
 - 修复: `nameserver-policy` 不支持配置单个DNS服务器字符串
+- 修复: 域名通配格式错误
 
 ---
 
