@@ -9,24 +9,24 @@ jobs:
   bundle_on_commit:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - uses: actions/checkout@v4
-      - name: Configure Git Credentials
+      - name: Configure Git
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
 
-      - name: Install Node
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: "20"
+          registry-url: "https://registry.npmjs.org"
 
-      - name: Bundle
+      - name: Bundle JSON Schemas
         run: npm install && npm run release
 
-      - name: Release
+      - name: Github Release
         uses: softprops/action-gh-release@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -36,6 +36,11 @@ jobs:
           make_latest: true
           files: |
             schemas/*
+
+      - name: NPM Release
+        run: npm publish --access public --tag latest
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Commit and Push
         run: |

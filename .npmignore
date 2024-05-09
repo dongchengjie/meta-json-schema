@@ -1,0 +1,9 @@
+.gitattributes
+.github
+.temp
+.vscode
+node_modules
+scripts
+src
+test
+CHANGELOG

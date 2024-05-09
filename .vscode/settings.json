@@ -17,8 +17,6 @@
   // 在 workspace 中排除下列文件
   "files.exclude": {
     ".gitattributes": true,
-    ".gitignore": true,
-    "package-lock.json": true,
     "CHANGELOG": true
   },
   // 搜索排除下列目录
