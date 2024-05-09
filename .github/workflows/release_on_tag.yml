@@ -44,6 +44,5 @@ jobs:
 
       - name: Commit and Push
         run: |
-          git add -f schemas
-          git commit -m "Release On Tag"
-          git push --force origin HEAD:main
+          git commit --allow-empty -am 'Release On Tag'
+          git push origin HEAD:main
