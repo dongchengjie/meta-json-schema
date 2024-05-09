@@ -13,7 +13,7 @@
     {
       "type": "object",
       "title": "hysteria2配置",
-      "required": ["password", "cipher"],
+      "required": ["certificate", "private-key"],
       "properties": {
         "users": {
           "type": "object",

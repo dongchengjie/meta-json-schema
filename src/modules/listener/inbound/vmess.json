@@ -38,7 +38,7 @@
     {
       "type": "object",
       "title": "vmess配置",
-      "required": ["password", "cipher"],
+      "required": ["users"],
       "properties": {
         "users": {
           "type": "array",

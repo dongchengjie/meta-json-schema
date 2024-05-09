@@ -13,6 +13,7 @@
     {
       "type": "object",
       "title": "tuic配置",
+      "required": ["certificate", "private-key"],
       "properties": {
         "token": {
           "type": "string",
