@@ -1,4 +1,4 @@
-## v1.18.5
+## v1.18.6
 
 ### Changes
 
@@ -7,6 +7,7 @@
 - 移除: Clash Verge Merge 配置移除`prepend-rule-providers`、`prepend-proxy-providers`、`append-rule-providers`、`append-proxy-providers`
 - 新增: `sniffer` 未配置 `sniff` 警告
 - 新增: `vless` 使用旧版 `XTLS` 协议警告
+- 新增: `rules` 新增规则 `PROCESS-NAME-REGEX` 、 `PROCESS-PATH-REGEX`
 
 ### Bugs Fixes
 
