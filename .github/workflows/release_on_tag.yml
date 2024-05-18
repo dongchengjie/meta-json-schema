@@ -5,6 +5,8 @@ on:
     tags:
       - "v*.*.*"
 
+permissions: write-all
+
 jobs:
   bundle_on_commit:
     runs-on: ubuntu-latest
