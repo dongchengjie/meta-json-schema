@@ -5,24 +5,12 @@
   "title": "Clash Verge Merge Config",
   "additionalProperties": true,
   "definitions": {
-    "meta-json-schema": {
-      "$ref": "./meta-json-schema.json"
-    },
-    "proxies": {
-      "$ref": "./modules/config/proxies.json"
-    },
-    "proxy-providers": {
-      "$ref": "./modules/config/proxy-providers.json"
-    },
-    "proxy-groups": {
-      "$ref": "./modules/config/proxy-groups.json"
-    },
-    "rule-providers": {
-      "$ref": "./modules/rules/provider/provider.json"
-    },
-    "rules": {
-      "$ref": "./modules/config/rules.json"
-    }
+    "meta-json-schema": { "$ref": "./meta-json-schema.json" },
+    "proxies": { "$ref": "./modules/config/proxies.json" },
+    "proxy-providers": { "$ref": "./modules/config/proxy-providers.json" },
+    "proxy-groups": { "$ref": "./modules/config/proxy-groups.json" },
+    "rule-providers": { "$ref": "./modules/rules/provider/provider.json" },
+    "rules": { "$ref": "./modules/config/rules.json" }
   },
   "allOf": [
     {

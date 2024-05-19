@@ -5,66 +5,26 @@
   "title": "Clash Meta Config",
   "additionalProperties": true,
   "definitions": {
-    "experimental": {
-      "$ref": "./modules/config/experimental.json"
-    },
-    "profile": {
-      "$ref": "./modules/config/profile.json"
-    },
-    "iptables": {
-      "$ref": "./modules/config/iptables.json"
-    },
-    "tls": {
-      "$ref": "./modules/config/tls.json"
-    },
-    "general": {
-      "$ref": "./modules/config/general.json"
-    },
-    "proxies": {
-      "$ref": "./modules/config/proxies.json"
-    },
-    "proxy-providers": {
-      "$ref": "./modules/config/proxy-providers.json"
-    },
-    "proxy-groups": {
-      "$ref": "./modules/config/proxy-groups.json"
-    },
-    "listeners": {
-      "$ref": "./modules/config/listeners.json"
-    },
-    "rule-providers": {
-      "$ref": "./modules/rules/provider/provider.json"
-    },
-    "sub-rules": {
-      "$ref": "./modules/config/sub-rules.json"
-    },
-    "rules": {
-      "$ref": "./modules/config/rules.json"
-    },
-    "hosts": {
-      "$ref": "./modules/config/hosts.json"
-    },
-    "ntp": {
-      "$ref": "./modules/config/ntp.json"
-    },
-    "dns": {
-      "$ref": "./modules/config/dns.json"
-    },
-    "tun": {
-      "$ref": "./modules/listener/config/tun.json"
-    },
-    "tuic-server": {
-      "$ref": "./modules/listener/config/tuic.json"
-    },
-    "authentication": {
-      "$ref": "./modules/config/authentication.json"
-    },
-    "tunnels": {
-      "$ref": "./modules/config/tunnels.json"
-    },
-    "sniffer": {
-      "$ref": "./modules/config/sniffer.json"
-    }
+    "experimental": { "$ref": "./modules/config/experimental.json" },
+    "profile": { "$ref": "./modules/config/profile.json" },
+    "iptables": { "$ref": "./modules/config/iptables.json" },
+    "tls": { "$ref": "./modules/config/tls.json" },
+    "general": { "$ref": "./modules/config/general.json" },
+    "proxies": { "$ref": "./modules/config/proxies.json" },
+    "proxy-providers": { "$ref": "./modules/config/proxy-providers.json" },
+    "proxy-groups": { "$ref": "./modules/config/proxy-groups.json" },
+    "listeners": { "$ref": "./modules/config/listeners.json" },
+    "rule-providers": { "$ref": "./modules/rules/provider/provider.json" },
+    "sub-rules": { "$ref": "./modules/config/sub-rules.json" },
+    "rules": { "$ref": "./modules/config/rules.json" },
+    "hosts": { "$ref": "./modules/config/hosts.json" },
+    "ntp": { "$ref": "./modules/config/ntp.json" },
+    "dns": { "$ref": "./modules/config/dns.json" },
+    "tun": { "$ref": "./modules/listener/config/tun.json" },
+    "tuic-server": { "$ref": "./modules/listener/config/tuic.json" },
+    "authentication": { "$ref": "./modules/config/authentication.json" },
+    "tunnels": { "$ref": "./modules/config/tunnels.json" },
+    "sniffer": { "$ref": "./modules/config/sniffer.json" }
   },
   "allOf": [
     {

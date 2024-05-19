@@ -1,4 +1,7 @@
 {
+  // prettier 配置
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.configPath": ".prettierrc",
   "json.schemas": [
     {
       // src 目录的JSON文件使用JSON Schema Draft 07
