@@ -2,57 +2,105 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "https://github.com/MetaCubeX/meta-json-schema/schemas/meta-json-schema.json",
   "type": "object",
-  "title": "Clash.Meta Config",
+  "title": "Clash Meta Config",
   "additionalProperties": true,
   "definitions": {
-    "experimental": { "$ref": "./modules/config/experimental.json" },
-    "profile": { "$ref": "./modules/config/profile.json" },
-    "iptables": { "$ref": "./modules/config/iptables.json" },
-    "tls": { "$ref": "./modules/config/tls.json" },
-    "general": { "$ref": "./modules/config/general.json" },
-    "proxies": { "$ref": "./modules/config/proxies.json" },
-    "proxy-providers": { "$ref": "./modules/config/proxy-providers.json" },
-    "proxy-groups": { "$ref": "./modules/config/proxy-groups.json" },
-    "listeners": { "$ref": "./modules/config/listeners.json" },
-    "rule-providers": { "$ref": "./modules/rules/provider/provider.json" },
-    "sub-rules": { "$ref": "./modules/config/sub-rules.json" },
-    "rules": { "$ref": "./modules/config/rules.json" },
-    "hosts": { "$ref": "./modules/config/hosts.json" },
-    "ntp": { "$ref": "./modules/config/ntp.json" },
-    "dns": { "$ref": "./modules/config/dns.json" },
-    "tun": { "$ref": "./modules/listener/config/tun.json" },
-    "tuic-server": { "$ref": "./modules/listener/config/tuic.json" },
-    "authentication": { "$ref": "./modules/config/authentication.json" },
-    "tunnels": { "$ref": "./modules/config/tunnels.json" },
-    "sniffer": { "$ref": "./modules/config/sniffer.json" }
+    "experimental": {
+      "$ref": "./modules/config/experimental.json"
+    },
+    "profile": {
+      "$ref": "./modules/config/profile.json"
+    },
+    "iptables": {
+      "$ref": "./modules/config/iptables.json"
+    },
+    "tls": {
+      "$ref": "./modules/config/tls.json"
+    },
+    "general": {
+      "$ref": "./modules/config/general.json"
+    },
+    "proxies": {
+      "$ref": "./modules/config/proxies.json"
+    },
+    "proxy-providers": {
+      "$ref": "./modules/config/proxy-providers.json"
+    },
+    "proxy-groups": {
+      "$ref": "./modules/config/proxy-groups.json"
+    },
+    "listeners": {
+      "$ref": "./modules/config/listeners.json"
+    },
+    "rule-providers": {
+      "$ref": "./modules/rules/provider/provider.json"
+    },
+    "sub-rules": {
+      "$ref": "./modules/config/sub-rules.json"
+    },
+    "rules": {
+      "$ref": "./modules/config/rules.json"
+    },
+    "hosts": {
+      "$ref": "./modules/config/hosts.json"
+    },
+    "ntp": {
+      "$ref": "./modules/config/ntp.json"
+    },
+    "dns": {
+      "$ref": "./modules/config/dns.json"
+    },
+    "tun": {
+      "$ref": "./modules/listener/config/tun.json"
+    },
+    "tuic-server": {
+      "$ref": "./modules/listener/config/tuic.json"
+    },
+    "authentication": {
+      "$ref": "./modules/config/authentication.json"
+    },
+    "tunnels": {
+      "$ref": "./modules/config/tunnels.json"
+    },
+    "sniffer": {
+      "$ref": "./modules/config/sniffer.json"
+    }
   },
   "allOf": [
     {
       "type": "object",
       "title": "实验性内容配置",
       "properties": {
-        "experimental": { "$ref": "#/definitions/experimental" }
+        "experimental": {
+          "$ref": "#/definitions/experimental"
+        }
       }
     },
     {
       "type": "object",
       "title": "缓存配置",
       "properties": {
-        "profile": { "$ref": "#/definitions/profile" }
+        "profile": {
+          "$ref": "#/definitions/profile"
+        }
       }
     },
     {
       "type": "object",
       "title": "iptables配置",
       "properties": {
-        "iptables": { "$ref": "#/definitions/iptables" }
+        "iptables": {
+          "$ref": "#/definitions/iptables"
+        }
       }
     },
     {
       "type": "object",
       "title": "TLS配置",
       "properties": {
-        "tls": { "$ref": "#/definitions/tls" }
+        "tls": {
+          "$ref": "#/definitions/tls"
+        }
       }
     },
     {
@@ -63,105 +111,135 @@
       "type": "object",
       "title": "代理配置",
       "properties": {
-        "proxies": { "$ref": "#/definitions/proxies" }
+        "proxies": {
+          "$ref": "#/definitions/proxies"
+        }
       }
     },
     {
       "type": "object",
       "title": "代理集合配置",
       "properties": {
-        "proxy-providers": { "$ref": "#/definitions/proxy-providers" }
+        "proxy-providers": {
+          "$ref": "#/definitions/proxy-providers"
+        }
       }
     },
     {
       "type": "object",
       "title": "代理组配置",
       "properties": {
-        "proxy-groups": { "$ref": "#/definitions/proxy-groups" }
+        "proxy-groups": {
+          "$ref": "#/definitions/proxy-groups"
+        }
       }
     },
     {
       "type": "object",
       "title": "listeners配置",
       "properties": {
-        "listeners": { "$ref": "#/definitions/listeners" }
+        "listeners": {
+          "$ref": "#/definitions/listeners"
+        }
       }
     },
     {
       "type": "object",
       "title": "规则集合配置",
       "properties": {
-        "rule-providers": { "$ref": "#/definitions/rule-providers" }
+        "rule-providers": {
+          "$ref": "#/definitions/rule-providers"
+        }
       }
     },
     {
       "type": "object",
       "title": "子规则配置",
       "properties": {
-        "sub-rules": { "$ref": "#/definitions/sub-rules" }
+        "sub-rules": {
+          "$ref": "#/definitions/sub-rules"
+        }
       }
     },
     {
       "type": "object",
       "title": "规则配置",
       "properties": {
-        "rules": { "$ref": "#/definitions/rules" }
+        "rules": {
+          "$ref": "#/definitions/rules"
+        }
       }
     },
     {
       "type": "object",
       "title": "hosts配置",
       "properties": {
-        "hosts": { "$ref": "#/definitions/hosts" }
+        "hosts": {
+          "$ref": "#/definitions/hosts"
+        }
       }
     },
     {
       "type": "object",
       "title": "NTP配置",
       "properties": {
-        "ntp": { "$ref": "#/definitions/ntp" }
+        "ntp": {
+          "$ref": "#/definitions/ntp"
+        }
       }
     },
     {
       "type": "object",
       "title": "DNS配置",
       "properties": {
-        "dns": { "$ref": "#/definitions/dns" }
+        "dns": {
+          "$ref": "#/definitions/dns"
+        }
       }
     },
     {
       "type": "object",
       "title": "TUN配置",
       "properties": {
-        "tun": { "$ref": "#/definitions/tun" }
+        "tun": {
+          "$ref": "#/definitions/tun"
+        }
       }
     },
     {
       "type": "object",
       "title": "tuic-server配置",
       "properties": {
-        "tuic-server": { "$ref": "#/definitions/tuic-server" }
+        "tuic-server": {
+          "$ref": "#/definitions/tuic-server"
+        }
       }
     },
     {
       "type": "object",
       "title": "认证配置",
       "properties": {
-        "authentication": { "$ref": "#/definitions/authentication" }
+        "authentication": {
+          "$ref": "#/definitions/authentication"
+        }
       }
     },
     {
       "type": "object",
       "title": "隧道配置",
       "properties": {
-        "tunnels": { "$ref": "#/definitions/tunnels" }
+        "tunnels": {
+          "$ref": "#/definitions/tunnels"
+        }
       }
     },
     {
       "type": "object",
       "title": "域名嗅探配置",
       "properties": {
-        "sniffer": { "$ref": "#/definitions/sniffer" }
+        "sniffer": {
+          "$ref": "#/definitions/sniffer"
+        }
       }
     }
   ]
