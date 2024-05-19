@@ -78,7 +78,7 @@ export default async function (input, output, optimization, verbose) {
   // bundle文件片段
   print(`📦 Bundling...(${input})`, verbose);
   await $RefParser.bundle(input).then(async jsonObject => {
-    // 间接引用解引用,提高兼容性()
+    // 间接引用解引用,提高兼容性
     let dereferred = await handleIndirectReference(jsonObject);
 
     // 格式化 / 最小化(约缩减40%)
