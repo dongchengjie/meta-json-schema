@@ -45,30 +45,30 @@ prepend-rule-providers:
 
 prepend-proxies:
   - {
-      'name': '🇭🇰 香港_1',
-      'server': '231103level2.unclemanco.com',
-      'port': '916',
-      'type': 'ss',
-      'cipher': 'aes-128-gcm',
-      'password': 'fsfal2',
-      'plugin': 'obfs',
-      'plugin-opts': { 'mode': 'http', 'host': 'd6c9191892.download.windowsupdate.com' },
-      'udp': true
+      "name": "🇭🇰 香港_1",
+      "server": "231103level2.unclemanco.com",
+      "port": "916",
+      "type": "ss",
+      "cipher": "aes-128-gcm",
+      "password": "fsfal2",
+      "plugin": "obfs",
+      "plugin-opts": { "mode": "http", "host": "d6c9191892.download.windowsupdate.com" },
+      "udp": true
     }
 
 prepend-proxy-providers:
   provider1:
     type: http
-    url: 'http://test.com'
+    url: "http://test.com"
     path: ./proxy_providers/provider1.yaml
     interval: 3600
     proxy: DIRECT
     header:
       User-Agent:
-        - 'Clash/v1.18.0'
-        - 'mihomo/1.18.3'
+        - "Clash/v1.18.0"
+        - "mihomo/1.18.3"
       Authorization:
-        - 'token 1231231'
+        - "token 1231231"
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
@@ -79,24 +79,24 @@ prepend-proxy-providers:
     override:
       skip-cert-verify: true
       udp: true
-      down: '50 Mbps'
-      up: '10 Mbps'
+      down: "50 Mbps"
+      up: "10 Mbps"
       dialer-proxy: proxy
       interface-name: tailscale0
       routing-mark: 233
       ip-version: ipv4-prefer
-      additional-prefix: 'provider1 prefix |'
-      additional-suffix: '| provider1 suffix'
-    filter: '(?i)港|hk|hongkong|hong kong'
-    exclude-filter: 'xxx'
-    exclude-type: 'ss|http'
+      additional-prefix: "provider1 prefix |"
+      additional-suffix: "| provider1 suffix"
+    filter: "(?i)港|hk|hongkong|hong kong"
+    exclude-filter: "xxx"
+    exclude-type: "ss|http"
 
 prepend-proxy-groups:
   - {
       name: 自动选择,
       type: url-test,
-      proxies: ['🇺🇸美国 01-中转'],
-      url: 'http://www.gstatic.com/generate_204',
+      proxies: ["🇺🇸美国 01-中转"],
+      url: "http://www.gstatic.com/generate_204",
       interval: 86400
     }
 
@@ -156,30 +156,30 @@ append-rule-providers:
 
 append-proxies:
   - {
-      'name': '🇭🇰 香港_1',
-      'server': '231103level2.unclemanco.com',
-      'port': '916',
-      'type': 'ss',
-      'cipher': 'aes-128-gcm',
-      'password': 'fsfal2',
-      'plugin': 'obfs',
-      'plugin-opts': { 'mode': 'http', 'host': 'd6c9191892.download.windowsupdate.com' },
-      'udp': true
+      "name": "🇭🇰 香港_1",
+      "server": "231103level2.unclemanco.com",
+      "port": "916",
+      "type": "ss",
+      "cipher": "aes-128-gcm",
+      "password": "fsfal2",
+      "plugin": "obfs",
+      "plugin-opts": { "mode": "http", "host": "d6c9191892.download.windowsupdate.com" },
+      "udp": true
     }
 
 append-proxy-providers:
   provider1:
     type: http
-    url: 'http://test.com'
+    url: "http://test.com"
     path: ./proxy_providers/provider1.yaml
     interval: 3600
     proxy: DIRECT
     header:
       User-Agent:
-        - 'Clash/v1.18.0'
-        - 'mihomo/1.18.3'
+        - "Clash/v1.18.0"
+        - "mihomo/1.18.3"
       Authorization:
-        - 'token 1231231'
+        - "token 1231231"
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
@@ -190,23 +190,23 @@ append-proxy-providers:
     override:
       skip-cert-verify: true
       udp: true
-      down: '50 Mbps'
-      up: '10 Mbps'
+      down: "50 Mbps"
+      up: "10 Mbps"
       dialer-proxy: proxy
       interface-name: tailscale0
       routing-mark: 233
       ip-version: ipv4-prefer
-      additional-prefix: 'provider1 prefix |'
-      additional-suffix: '| provider1 suffix'
-    filter: '(?i)港|hk|hongkong|hong kong'
-    exclude-filter: 'xxx'
-    exclude-type: 'ss|http'
+      additional-prefix: "provider1 prefix |"
+      additional-suffix: "| provider1 suffix"
+    filter: "(?i)港|hk|hongkong|hong kong"
+    exclude-filter: "xxx"
+    exclude-type: "ss|http"
 
 append-proxy-groups:
   - {
       name: 自动选择,
       type: url-test,
-      proxies: ['🇺🇸美国 01-中转'],
-      url: 'http://www.gstatic.com/generate_204',
+      proxies: ["🇺🇸美国 01-中转"],
+      url: "http://www.gstatic.com/generate_204",
       interval: 86400
     }

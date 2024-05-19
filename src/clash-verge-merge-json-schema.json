@@ -5,53 +5,132 @@
   "title": "Clash Verge Merge",
   "additionalProperties": true,
   "definitions": {
-    "meta-json-schema": { "$ref": "./meta-json-schema.json" },
-    "proxies": { "$ref": "./modules/config/proxies.json" },
-    "proxy-groups": { "$ref": "./modules/config/proxy-groups.json" },
-    "rules": { "$ref": "./modules/config/rules.json" }
+    "meta-json-schema": {
+      "$ref": "./meta-json-schema.json"
+    },
+    "proxies": {
+      "$ref": "./modules/config/proxies.json"
+    },
+    "proxy-providers": {
+      "$ref": "./modules/config/proxy-providers.json"
+    },
+    "proxy-groups": {
+      "$ref": "./modules/config/proxy-groups.json"
+    },
+    "rule-providers": {
+      "$ref": "./modules/rules/provider/provider.json"
+    },
+    "rules": {
+      "$ref": "./modules/config/rules.json"
+    }
   },
   "allOf": [
-    { "title": "覆写profile配置", "$ref": "#/definitions/meta-json-schema" },
+    {
+      "title": "覆写profile配置",
+      "$ref": "#/definitions/meta-json-schema"
+    },
     {
       "type": "object",
       "title": "前置规则配置",
       "properties": {
-        "prepend-rules": { "title": "前置规则配置", "$ref": "#/definitions/rules" }
+        "prepend-rules": {
+          "title": "前置规则配置",
+          "$ref": "#/definitions/rules"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "title": "前置规则集合配置",
+      "properties": {
+        "prepend-rule-providers": {
+          "title": "前置规则集合配置",
+          "$ref": "#/definitions/rule-providers",
+          "deprecationMessage": "v1.16.2已移除(请使用rule-providers代替)"
+        }
       }
     },
     {
       "type": "object",
       "title": "前置代理节点配置",
       "properties": {
-        "prepend-proxies": { "title": "前置代理节点配置", "$ref": "#/definitions/proxies" }
+        "prepend-proxies": {
+          "title": "前置代理节点配置",
+          "$ref": "#/definitions/proxies"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "title": "前置代理集合配置",
+      "properties": {
+        "prepend-proxy-providers": {
+          "title": "前置代理集合配置",
+          "$ref": "#/definitions/proxy-providers",
+          "deprecationMessage": "v1.16.2已移除(请使用proxy-providers代替)"
+        }
       }
     },
     {
       "type": "object",
       "title": "前置代理组配置",
       "properties": {
-        "prepend-proxy-groups": { "title": "前置代理组配置", "$ref": "#/definitions/proxy-groups" }
+        "prepend-proxy-groups": {
+          "title": "前置代理组配置",
+          "$ref": "#/definitions/proxy-groups"
+        }
       }
     },
     {
       "type": "object",
       "title": "后置规则配置",
       "properties": {
-        "append-rules": { "title": "后置规则配置", "$ref": "#/definitions/rules" }
+        "append-rules": {
+          "title": "后置规则配置",
+          "$ref": "#/definitions/rules"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "title": "后置规则集合配置",
+      "properties": {
+        "append-rule-providers": {
+          "title": "后置规则集合配置",
+          "$ref": "#/definitions/rule-providers",
+          "deprecationMessage": "v1.16.2已移除(请使用rule-providers代替)"
+        }
       }
     },
     {
       "type": "object",
       "title": "后置代理节点配置",
       "properties": {
-        "append-proxies": { "title": "后置代理节点配置", "$ref": "#/definitions/proxies" }
+        "append-proxies": {
+          "title": "后置代理节点配置",
+          "$ref": "#/definitions/proxies"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "title": "后置代理集合配置",
+      "properties": {
+        "append-proxy-providers": {
+          "title": "后置代理集合配置",
+          "$ref": "#/definitions/proxy-providers",
+          "deprecationMessage": "v1.16.2已移除(请使用proxy-providers代替)"
+        }
       }
     },
     {
       "type": "object",
       "title": "后置代理组配置",
       "properties": {
-        "append-proxy-groups": { "title": "后置代理组配置", "$ref": "#/definitions/proxy-groups" }
+        "append-proxy-groups": {
+          "title": "后置代理组配置",
+          "$ref": "#/definitions/proxy-groups"
+        }
       }
     }
   ]
