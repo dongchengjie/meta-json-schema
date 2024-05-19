@@ -16,18 +16,18 @@
     },
     "device": {
       "type": "string",
-      "title": "指定tun网卡名称",
-      "description": "指定tun网卡名称(macOS强制为utun)",
-      "markdownDescription": "指定tun网卡名称(macOS强制为`utun`)"
+      "title": "指定TUN网卡名称",
+      "description": "指定TUN网卡名称(macOS强制为utun)",
+      "markdownDescription": "指定TUN网卡名称(macOS强制为`utun`)"
     },
     "stack": {
       "type": "string",
       "title": "TUN模式堆栈",
       "enum": ["system", "gvisor", "mixed"],
       "markdownEnumDescriptions": [
-        "可以提供更稳定/全面的tun体验,且占用相对其他堆栈更低",
-        "通过在用户空间中实现网络协议栈,可以提供更高的安全性和隔离性,同时可以避免操作系统内核和用户空间之间的切换,从而在特定情况下具有更好的网络处理性能",
-        "混合堆栈,tcp使用`system`栈,udp使用`gvisor`栈,使用体验可能相对更好"
+        "基于系统网络栈执行`L3`到`L4`转换。可以提供更稳定/全面的TUN体验,且占用相对其他堆栈更低。",
+        "基于`gVisor`虚拟网络栈执行`L3`到`L4`转换。通过在用户空间中实现网络协议栈,可以提供更高的安全性和隔离性,同时可以避免操作系统内核和用户空间之间的切换,从而在特定情况下具有更好的网络处理性能。",
+        "混合堆栈,tcp使用`system`栈,udp使用`gvisor`栈,使用体验可能相对更好。"
       ],
       "description": "如无使用问题,建议使用mixed(默认gvisor)",
       "markdownDescription": "如无使用问题,建议使用`mixed`(默认`gvisor`)",
@@ -79,21 +79,21 @@
     },
     "inet4-address": {
       "$ref": "#/definitions/patterns/ipv4",
-      "title": "DNS劫持IPv4地址()",
-      "description": "53端口",
-      "markdownDescription": "53端口"
+      "title": "TUN接口的IPv4前缀",
+      "description": "TUN接口的IPv4前缀",
+      "markdownDescription": "`TUN`接口的`IPv4`前缀"
     },
     "inet6-address": {
       "$ref": "#/definitions/patterns/ipv6",
-      "title": "DNS劫持IPv6地址()",
-      "description": "53端口",
-      "markdownDescription": "53端口"
+      "title": "TUN接口的IPv6前缀",
+      "description": "TUN接口的IPv6前缀",
+      "markdownDescription": "`TUN`接口的`IPv6`前缀"
     },
     "strict-route": {
       "type": "boolean",
       "title": "严格路由",
-      "description": "它可以防止地址泄漏,并使DNS劫持在Android和使用systemd-resolved的Linux上工作,但你的设备将无法被其他设备访问",
-      "markdownDescription": "它可以防止地址泄漏,并使DNS劫持在Android和使用systemd-resolved的Linux上工作,但你的设备将无法被其他设备访问",
+      "description": "在Linux中,它可以防止地址泄漏,并使DNS劫持在Android和使用systemd-resolved的Linux上工作(你的设备将无法被其他设备访问)。在Windows中,添加防火墙规则以阻止Windows的普通多宿主DNS解析行为造成的DNS泄露(可能会使某些应用程序如VirtualBox在某些情况下无法正常工作)。",
+      "markdownDescription": "在Linux中,它可以防止地址泄漏,并使DNS劫持在Android和使用`systemd-resolved`的Linux上工作(你的设备将无法被其他设备访问)。在Windows中,添加防火墙规则以阻止Windows的`普通多宿主DNS`解析行为造成的DNS泄露(可能会使某些应用程序如`VirtualBox`在某些情况下无法正常工作)。",
       "default": false
     },
     "inet4-route-address": {
