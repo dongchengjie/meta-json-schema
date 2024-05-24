@@ -1,0 +1,25 @@
+{
+  "$schema": "node_modules/json-schema-artifact/schema/json-schema-artifact.json",
+  "watch": [
+    {
+      "dir": "src",
+      "recursive": true
+    }
+  ],
+  "build": {
+    "target": [
+      {
+        "input": "src/meta-json-schema.json",
+        "output": "schemas/meta-json-schema.json"
+      },
+      {
+        "input": "src/clash-verge-merge-json-schema.json",
+        "output": "schemas/clash-verge-merge-json-schema.json"
+      }
+    ],
+    "optimize": {
+      "format": "minify",
+      "refsDerefer": true
+    }
+  }
+}

@@ -1,4 +1,4 @@
-name: Release On Tag
+name: release on tag
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 permissions: write-all
 
 jobs:
-  bundle_on_commit:
+  release-on-tag:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -33,7 +33,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          body_path: ${{ github.workspace }}/CHANGELOG
           prerelease: false
           make_latest: true
           files: |

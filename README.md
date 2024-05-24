@@ -105,18 +105,18 @@ code /path/to/project/location
 npm install
 ```
 
-4.  启动项目。执行下列命令后,会对`src`目录进行监视,如果发生变动则会对项目进行bundle,输出到`.temp`目录下。
+4.  启动项目。执行下列命令后,会对`src`目录进行监视,如果发生变动则会对项目进行bundle,输出到`schemas`目录下。
 
 ```bash
 npm run dev
 ```
 
-5.  测试schema。由于`.vscode`目录下`settings.json`中已事先配置了如下配置（`test`目录下的文件使用`.temp`目录下输出的schema文件）。因此可以对`src`进行修改,并在`test`目录下新增测试文件,及时观察变动并做出修正。
+5.  测试schema。由于`.vscode`目录下`settings.json`中已事先配置了如下配置（`test`目录下的文件使用`schemas`目录下输出的schema文件）。因此可以对`src`进行修改,并在`test`目录下新增测试文件,及时观察变动并做出修正。
 
 ```json
 "yaml.schemas": {
-  ".temp/meta-json-schema.json": "test/clash-meta/**/*.yaml",
-  ".temp/clash-verge-merge-json-schema.json": "test/clash-verge/**/*.yaml"
+  "schemas/meta-json-schema.json": "test/clash-meta/**/*.yaml",
+  "schemas/clash-verge-merge-json-schema.json": "test/clash-verge/**/*.yaml"
 },
 ```
 
