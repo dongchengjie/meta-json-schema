@@ -10,7 +10,32 @@
     "smux": { "$ref": "./singmux.json" },
     "reality-option": { "$ref": "./reality.json" },
     "grpc-option": { "$ref": "./vmess.json#/definitions/grpc-option" },
-    "ws-option": { "$ref": "./vmess.json#/definitions/ws-option" }
+    "ws-option": { "$ref": "./vmess.json#/definitions/ws-option" },
+    "ss-option": {
+      "type": "object",
+      "title": "Shadowsocks配置",
+      "properties": {
+        "enabled": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用Shadowsocks AEAD加密",
+          "description": "启用Shadowsocks AEAD加密",
+          "markdownDescription": "启用Shadowsocks AEAD加密"
+        },
+        "method": {
+          "$ref": "#/definitions/enums/cipher",
+          "title": "加密方法",
+          "description": "加密方法",
+          "markdownDescription": "加密方法",
+          "default": "aes-128-gcm"
+        },
+        "password": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "密码",
+          "description": "认证密码",
+          "markdownDescription": "认证密码"
+        }
+      }
+    }
   },
   "allOf": [
     { "title": "basic配置", "$ref": "#/definitions/basic-option" },
@@ -76,6 +101,7 @@
         "reality-opts": { "$ref": "#/definitions/reality-option" },
         "grpc-opts": { "$ref": "#/definitions/grpc-option" },
         "ws-opts": { "$ref": "#/definitions/ws-option" },
+        "ss-opts": { "$ref": "#/definitions/ss-option" },
         "client-fingerprint": {
           "$ref": "#/definitions/enums/fingerprint",
           "title": "客户端指纹",
