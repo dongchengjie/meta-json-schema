@@ -13,7 +13,7 @@
     { "title": "basic配置", "$ref": "#/definitions/basic-option" },
     {
       "type": "object",
-      "title": "http配置",
+      "title": "shadowsocksr配置",
       "required": ["name", "server", "port", "password", "cipher", "obfs"],
       "properties": {
         "type": {

@@ -38,7 +38,7 @@
     },
     "http2-option": {
       "type": "object",
-      "title": "HTTP配置",
+      "title": "HTTP2配置",
       "properties": {
         "host": {
           "$ref": "#/definitions/types/stringArray",
@@ -58,7 +58,7 @@
     },
     "grpc-option": {
       "type": "object",
-      "title": "HTTP配置",
+      "title": "GRPC配置",
       "properties": {
         "grpc-service-name": {
           "$ref": "#/definitions/compatible/string",
@@ -70,7 +70,7 @@
     },
     "ws-option": {
       "type": "object",
-      "title": "HTTP配置",
+      "title": "WS配置",
       "properties": {
         "path": {
           "$ref": "#/definitions/compatible/string",
