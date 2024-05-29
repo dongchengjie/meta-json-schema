@@ -84,7 +84,7 @@
           "markdownDescription": "允许其他设备通过所有地址访问"
         },
         {
-          "$ref": "#/definitions/patterns/ipPort",
+          "$ref": "#/definitions/patterns/ip",
           "title": "绑定单个 IP 地址",
           "description": "仅允许其他设备通过这个地址访问",
           "markdownDescription": "仅允许其他设备通过这个地址访问"
