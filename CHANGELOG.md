@@ -2,7 +2,7 @@
 
 ### Changes
 
-- 新增: `trojan`出站配置 新增配置项 `ss-opts` 以支持 Shadowsocks AEAD加密\
+- 新增: `trojan`出站配置 新增配置项 `ss-opts` 以支持 Shadowsocks AEAD加密
 
 ### Bugs Fixes
 
