@@ -1,6 +1,6 @@
 {
-  "string": { "anyOf": [{ "type": "string" }, { "pattern": "^\\d+(\\.\\d+)?$" }] },
-  "integer": { "anyOf": [{ "type": "integer" }, { "pattern": "^\\d+$" }] },
-  "number": { "anyOf": [{ "type": "number" }, { "pattern": "^\\d+(\\.\\d+)?$" }] },
-  "boolean": { "anyOf": [{ "type": "boolean" }, { "pattern": "^(?i)(true|false)$" }] }
+  "string": { "title": "字符串", "anyOf": [{ "type": "string" }, { "pattern": "^\\d+(\\.\\d+)?$" }] },
+  "integer": { "title": "整数值", "anyOf": [{ "type": "integer" }, { "pattern": "^\\d+$" }] },
+  "number": { "title": "数值", "anyOf": [{ "type": "number" }, { "pattern": "^\\d+(\\.\\d+)?$" }] },
+  "boolean": { "title": "布尔值", "anyOf": [{ "type": "boolean" }, { "pattern": "^(?i)(true|false)$" }] }
 }

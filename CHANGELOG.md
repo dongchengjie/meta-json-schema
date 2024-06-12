@@ -7,6 +7,7 @@
 ### Bugs Fixes
 
 - 修复: `bind-address` 类型错误
+- 修复: 字符串数组提示错误
 
 ---
 
