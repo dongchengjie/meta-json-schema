@@ -48,6 +48,12 @@
       "markdownDescription": "优先级低于配置中的`hosts`配置",
       "default": true
     },
+    "respect-rules": {
+      "type": "boolean",
+      "title": "DNS连接跟随RULES",
+      "description": "需配置proxy-server-nameserver",
+      "markdownDescription": "需配置`proxy-server-nameserver`"
+    },
     "nameserver": {
       "$ref": "#/definitions/types/stringArray",
       "title": "默认域名解析服务器",
@@ -159,5 +165,18 @@
       "description": "用于解析代理节点的域名",
       "markdownDescription": "用于解析代理节点的域名"
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "respect-rules": { "const": true }, "proxy-server-nameserver": { "const": [] } }
+      },
+      "then": {
+        "required": ["proxy-server-nameserver"],
+        "properties": {
+          "proxy-server-nameserver": { "deprecationMessage": "启用`respect-rules`时`proxy-server-nameserver`不能为空" }
+        }
+      }
+    }
+  ]
 }
