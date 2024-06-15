@@ -3,6 +3,8 @@
 ### Changes
 
 - 新增: `trojan`出站配置 新增配置项 `ss-opts` 以支持 Shadowsocks AEAD加密
+- 新增: `dns` 新增配置项 `respect-rules`
+- 新增: `wireguard` 配置项 `refresh-server-ip-interval`
 - 调整: `rules` 正则表达式
 
 ### Bugs Fixes

@@ -57,7 +57,7 @@
     {
       "type": "object",
       "title": "wireguard配置",
-      "required": ["name"],
+      "required": ["name", "private-key"],
       "properties": {
         "type": {
           "$ref": "#/definitions/compatible/string",
@@ -134,6 +134,12 @@
           "title": "DNS解析服务器",
           "description": "DNS解析服务器(要求启用remote-dns-resolve)",
           "markdownDescription": "DNS解析服务器(要求启用`remote-dns-resolve`)"
+        },
+        "refresh-server-ip-interval": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "服务器IP刷新间隔",
+          "description": "单位:s",
+          "markdownDescription": "单位:s"
         }
       },
       "if": { "not": { "properties": { "peers": { "type": "array" } } } },
