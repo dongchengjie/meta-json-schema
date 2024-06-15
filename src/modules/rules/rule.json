@@ -108,12 +108,12 @@
     },
     {
       "title": "正则匹配完整进程名称(Android包名)",
-      "pattern": "^PROCESS-NAME-REGEX((?:,.+){2})$",
+      "pattern": "^PROCESS-NAME-REGEX((?:,[^,]+){2})$",
       "errorMessage": "无效的规则"
     },
     {
       "title": "正则匹配完整进程路径",
-      "pattern": "^PROCESS-PATH-REGEX((?:,.+){2})$",
+      "pattern": "^PROCESS-PATH-REGEX((?:,[^,]+){2})$",
       "errorMessage": "无效的规则"
     },
     {
@@ -143,7 +143,7 @@
     },
     {
       "title": "子规则",
-      "pattern": "^SUB-RULE,\\(.+\\),.+$",
+      "pattern": "^SUB-RULE,\\(.+\\),[^,]+$",
       "errorMessage": "无效的规则"
     },
     {
@@ -153,22 +153,22 @@
     },
     {
       "title": "逻辑和",
-      "pattern": "^AND,\\(\\(.+,.+\\)\\),.+$",
+      "pattern": "^AND,\\(\\(.+,.+\\)\\),[^,]+$",
       "errorMessage": "无效的规则"
     },
     {
       "title": "逻辑或",
-      "pattern": "^OR,\\(\\(.+,.+\\)\\),.+$",
+      "pattern": "^OR,\\(\\(.+,.+\\)\\),[^,]+$",
       "errorMessage": "无效的规则"
     },
     {
       "title": "逻辑非",
-      "pattern": "^NOT,\\(\\(.+,.+\\)\\),.+$",
+      "pattern": "^NOT,\\(\\(.+,.+\\)\\),[^,]+$",
       "errorMessage": "无效的规则"
     },
     {
       "title": "匹配所有请求(无需条件)",
-      "pattern": "^MATCH,.+$",
+      "pattern": "^MATCH,[^,]+$",
       "errorMessage": "无效的规则"
     }
   ]
