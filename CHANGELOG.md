@@ -6,6 +6,7 @@
 - 新增: `dns` 新增配置项 `respect-rules`
 - 新增: `wireguard` 配置项 `refresh-server-ip-interval`
 - 调整: `rules` 正则表达式
+- 新增: `proxy-provider` 新增覆写配置项 `tfo`、`mptcp`、`udp-over-tcp`
 
 ### Bugs Fixes
 

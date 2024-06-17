@@ -42,11 +42,29 @@
             "title": "覆写节点内容",
             "description": "覆写节点内容",
             "properties": {
+              "tfo": {
+                "type": "boolean",
+                "title": "启用TFO(TCP Fast Open)",
+                "description": "仅对TCP协议生效",
+                "markdownDescription": "仅对TCP协议生效"
+              },
+              "mptcp": {
+                "type": "boolean",
+                "title": "启用MPTCP(Multi Path TCP)",
+                "description": "仅对TCP协议生效",
+                "markdownDescription": "仅对TCP协议生效"
+              },
               "udp": {
                 "type": "boolean",
                 "title": "启用UDP",
                 "description": "启用UDP",
                 "markdownDescription": "启用`UDP`"
+              },
+              "udp-over-tcp": {
+                "type": "boolean",
+                "title": "启用UDP over TCP",
+                "description": "启用UDP over TCP",
+                "markdownDescription": "启用UDP over TCP"
               },
               "up": {
                 "type": "string",

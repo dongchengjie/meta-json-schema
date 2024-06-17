@@ -50,7 +50,7 @@
     },
     "respect-rules": {
       "type": "boolean",
-      "title": "DNS连接跟随RULES",
+      "title": "DNS请求遵循规则路由",
       "description": "需配置proxy-server-nameserver",
       "markdownDescription": "需配置`proxy-server-nameserver`"
     },
