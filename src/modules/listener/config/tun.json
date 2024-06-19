@@ -89,6 +89,40 @@
       "description": "TUN接口的IPv6前缀",
       "markdownDescription": "`TUN`接口的`IPv6`前缀"
     },
+    "iproute2-table-index": {
+      "type": "integer",
+      "title": "创建路由表使用的索引",
+      "description": "创建路由表使用的索引",
+      "markdownDescription": "创建路由表使用的索引",
+      "default": 2022
+    },
+    "iproute2-rule-index": {
+      "type": "integer",
+      "title": "创建路由规则使用的索引",
+      "description": "创建路由规则使用的索引",
+      "markdownDescription": "创建路由规则使用的索引",
+      "default": 9000
+    },
+    "auto-redirect": {
+      "type": "boolean",
+      "title": "自动重定向",
+      "description": "自动配置iptables/nftables以重定向TCP连接(需要启用auto-route)。在Android中：仅转发本地 IPv4连接，要通过热点或中继共享您的VPN连接，请使用VPNHotspot。在Linux中：带有auto-route的auto-redirect现在可以在路由器上按预期工作，无需干预。",
+      "markdownDescription": "自动配置iptables/nftables以重定向TCP连接(需要启用auto-route)。\n\n在Android中：仅转发本地 IPv4连接，要通过热点或中继共享您的VPN连接，请使用[VPNHotspot](https://github.com/Mygod/VPNHotspot)。\n\n在Linux中：带有`auto-route`的`auto-redirect`现在可以在路由器上按预期工作，无需干预。"
+    },
+    "auto-redirect-input-mark": {
+      "type": "integer",
+      "title": "自动重定向输入标识",
+      "description": "自动重定向输入标识",
+      "markdownDescription": "自动重定向输入标识",
+      "default": 8227
+    },
+    "auto-redirect-output-mark": {
+      "type": "integer",
+      "title": "自动重定向输出标识",
+      "description": "自动重定向输出标识",
+      "markdownDescription": "自动重定向输出标识",
+      "default": 8228
+    },
     "strict-route": {
       "type": "boolean",
       "title": "严格路由",
@@ -96,29 +130,29 @@
       "markdownDescription": "在Linux中,它可以防止地址泄漏,并使DNS劫持在Android和使用`systemd-resolved`的Linux上工作(你的设备将无法被其他设备访问)。在Windows中,添加防火墙规则以阻止Windows的`普通多宿主DNS`解析行为造成的DNS泄露(可能会使某些应用程序如`VirtualBox`在某些情况下无法正常工作)。",
       "default": false
     },
-    "inet4-route-address": {
-      "$ref": "#/definitions/types/ipv4CIDRArray",
-      "title": "启用auto-route时,指定这些IPV4网段使用自定义路由",
-      "description": "启用auto-route时,指定这些IPV4网段使用自定义路由",
-      "markdownDescription": "启用`auto-route`时,指定这些IPV4网段使用自定义路由"
+    "route-address": {
+      "$ref": "#/definitions/types/ipArray",
+      "title": "启用auto-route时,指定这些网段使用自定义路由",
+      "description": "启用auto-route时,指定这些网段使用自定义路由",
+      "markdownDescription": "启用`auto-route`时,指定这些网段使用自定义路由"
     },
-    "inet6-route-address": {
-      "$ref": "#/definitions/types/ipv6CIDRArray",
-      "title": "启用auto-route时,指定这些IPV6网段使用自定义路由",
-      "description": "启用auto-route时,指定这些IPV6网段使用自定义路由",
-      "markdownDescription": "启用`auto-route`时,指定这些IPV6网段使用自定义路由"
+    "route-address-set": {
+      "$ref": "#/definitions/types/stringArray",
+      "title": "将指定规则集中的目标IP CIDR规则添加到防火墙，不匹配的流量将绕过路由",
+      "description": "仅支持Linux，需要启用auto-route和auto-redirect，且需要nftables",
+      "markdownDescription": "仅支持Linux，需要启用`auto-route`和`auto-redirect`，且需要`nftables`"
     },
-    "inet4-route-exclude-address": {
-      "$ref": "#/definitions/types/ipv4CIDRArray",
-      "title": "启用auto-route时,指定这些IPV4网段使用默认路由",
-      "description": "启用auto-route时,指定这些IPV4网段使用默认路由",
-      "markdownDescription": "启用`auto-route`时,指定这些IPV4网段使用默认路由"
+    "route-exclude-address": {
+      "$ref": "#/definitions/types/ipArray",
+      "title": "启用auto-route时,指定这些网段使用默认路由",
+      "description": "启用auto-route时,指定这些网段使用默认路由",
+      "markdownDescription": "启用`auto-route`时,指定这些网段使用默认路由"
     },
-    "inet6-route-exclude-address": {
-      "$ref": "#/definitions/types/ipv6CIDRArray",
-      "title": "启用auto-route时,指定这些IPV6网段使用默认路由",
-      "description": "启用auto-route时,指定这些IPV6网段使用默认路由",
-      "markdownDescription": "启用`auto-route`时,指定这些IPV6网段使用默认路由"
+    "route-exclude-address-set": {
+      "$ref": "#/definitions/types/stringArray",
+      "title": "将指定规则集中的目标IP CIDR规则添加到防火墙，匹配的流量将绕过路由",
+      "description": "仅支持Linux，需要启用auto-route和auto-redirect，且需要nftables",
+      "markdownDescription": "仅支持Linux，需要启用`auto-route`和`auto-redirect`，且需要`nftables`"
     },
     "include-interface": {
       "$ref": "#/definitions/types/stringArray",
@@ -194,12 +228,33 @@
       "description": "绑定到文件描述符对应设备接口(Unix-like系统)",
       "markdownDescription": "绑定到文件描述符对应设备接口(Unix-like系统)"
     },
-    "table-index": {
-      "type": "integer",
-      "title": "使用的路由表索引值",
-      "description": "docker子系统限制最高1023",
-      "markdownDescription": "docker子系统限制最高1023",
-      "default": 2022
+    "inet4-route-address": {
+      "$ref": "#/definitions/types/ipv4CIDRArray",
+      "title": "启用auto-route时,指定这些IPV4网段使用自定义路由",
+      "description": "启用auto-route时,指定这些IPV4网段使用自定义路由",
+      "markdownDescription": "启用`auto-route`时,指定这些IPV4网段使用自定义路由",
+      "deprecationMessage": "即将废弃，使用route-address代替"
+    },
+    "inet6-route-address": {
+      "$ref": "#/definitions/types/ipv6CIDRArray",
+      "title": "启用auto-route时,指定这些IPV6网段使用自定义路由",
+      "description": "启用auto-route时,指定这些IPV6网段使用自定义路由",
+      "markdownDescription": "启用`auto-route`时,指定这些IPV6网段使用自定义路由",
+      "deprecationMessage": "即将废弃，使用route-address代替"
+    },
+    "inet4-route-exclude-address": {
+      "$ref": "#/definitions/types/ipv4CIDRArray",
+      "title": "启用auto-route时,指定这些IPV4网段使用默认路由",
+      "description": "启用auto-route时,指定这些IPV4网段使用默认路由",
+      "markdownDescription": "启用`auto-route`时,指定这些IPV4网段使用默认路由",
+      "deprecationMessage": "即将废弃，使用route-exclude-address代替"
+    },
+    "inet6-route-exclude-address": {
+      "$ref": "#/definitions/types/ipv6CIDRArray",
+      "title": "启用auto-route时,指定这些IPV6网段使用默认路由",
+      "description": "启用auto-route时,指定这些IPV6网段使用默认路由",
+      "markdownDescription": "启用`auto-route`时,指定这些IPV6网段使用默认路由",
+      "deprecationMessage": "即将废弃，使用route-exclude-address代替"
     }
   }
 }

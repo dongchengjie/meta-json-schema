@@ -7,6 +7,9 @@
 - 新增: `wireguard` 配置项 `refresh-server-ip-interval`
 - 调整: `rules` 正则表达式
 - 新增: `proxy-provider` 新增覆写配置项 `tfo`、`mptcp`、`udp-over-tcp`
+- 调整: `tun` 弃用配置项 `inet4-route-address`、`inet6-route-address`、`inet4-route-exclude-address`、`inet6-route-exclude-address`，使用 `route-address`、`route-exclude-address` 代替
+- 调整: `tun` 配置项 `table-index` 重命名为 `iproute2-table-index`
+- 新增: `tun` 新增配置项 `iproute2-rule-index`、`auto-redirect`、`auto-redirect-input-mark`、`auto-redirect-output-mark`、`route-address-set`、`route-exclude-address-set`
 
 ### Bugs Fixes
 
