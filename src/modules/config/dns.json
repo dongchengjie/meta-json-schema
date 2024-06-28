@@ -172,7 +172,6 @@
         "properties": { "respect-rules": { "const": true }, "proxy-server-nameserver": { "const": [] } }
       },
       "then": {
-        "required": ["proxy-server-nameserver"],
         "properties": {
           "proxy-server-nameserver": { "deprecationMessage": "启用`respect-rules`时`proxy-server-nameserver`不能为空" }
         }
