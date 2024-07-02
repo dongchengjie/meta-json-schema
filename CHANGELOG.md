@@ -1,3 +1,13 @@
+## v1.18.7
+
+### Changes
+
+- 调整: `tun` 配置项 `route-exclude-address` 描述
+
+### Bugs Fixes
+
+---
+
 ## v1.18.6
 
 ### Changes
