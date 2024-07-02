@@ -131,7 +131,7 @@
           "default": false
         },
         "route-address": {
-          "$ref": "#/definitions/types/ipArray",
+          "$ref": "#/definitions/types/ipCIDRArray",
           "title": "启用auto-route时,指定这些网段使用自定义路由",
           "description": "启用auto-route时,指定这些网段使用自定义路由",
           "markdownDescription": "启用`auto-route`时,指定这些网段使用自定义路由"
@@ -143,7 +143,7 @@
           "markdownDescription": "仅支持Linux，需要启用`auto-route`和`auto-redirect`，且需要`nftables`"
         },
         "route-exclude-address": {
-          "$ref": "#/definitions/types/ipArray",
+          "$ref": "#/definitions/types/ipCIDRArray",
           "title": "启用auto-route时,指定这些网段使用默认路由",
           "description": "启用auto-route时,指定这些网段使用默认路由",
           "markdownDescription": "启用`auto-route`时,指定这些网段使用默认路由"

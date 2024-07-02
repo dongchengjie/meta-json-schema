@@ -15,6 +15,7 @@
 
 - 修复: `bind-address` 类型错误
 - 修复: 字符串数组提示错误
+- 修复: `route-address` 和 `route-exclude-address` 格式错误
 
 ---
 
