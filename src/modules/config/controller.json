@@ -43,6 +43,13 @@
       "description": "下载时会下载到指定文件夹(默认下载到external-ui配置的目录)",
       "markdownDescription": "下载时会下载到指定文件夹(默认下载到`external-ui`配置的目录)"
     },
+    "external-doh-server": {
+      "type": "string",
+      "title": "本地DOH服务器路径",
+      "description": "在外部控制器端口上开启DOH服务器的访问路径",
+      "markdownDescription": "在外部控制器端口上开启DOH服务器的访问路径",
+      "default": "/dns-query"
+    },
     "secret": {
       "type": "string",
       "title": "外部控制器RESTful API访问密钥",
