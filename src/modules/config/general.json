@@ -135,14 +135,14 @@
         "keep-alive-idle": {
           "type": "integer",
           "title": "保持活跃空闲时间（单位:s）",
-          "description": "连接空闲后多久发送keep-alive包",
-          "markdownDescription": "连接空闲后多久发送keep-alive包"
+          "description": "连接空闲后多久发送探测包",
+          "markdownDescription": "连接空闲后多久发送探测包"
         },
         "keep-alive-interval": {
           "type": "integer",
-          "title": "保持活跃间隔时间（单位:s）",
-          "description": "发送keep-alive包的时间间隔",
-          "markdownDescription": "发送keep-alive包的时间间隔"
+          "title": "保持活跃探测间隔时间（单位:s）",
+          "description": "发送探测包的时间间隔",
+          "markdownDescription": "发送探测包的时间间隔"
         },
         "disable-keep-alive": {
           "type": "boolean",

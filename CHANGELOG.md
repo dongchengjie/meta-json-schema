@@ -3,6 +3,11 @@
 ### Changes
 
 - 调整: `tun` 配置项 `route-exclude-address` 描述
+- 调整: 支持部分 `chacha8` 加密方法
+- 新增: 全局配置新增 `external-doh-server`，支持配置提供本地DOH服务
+- 新增: 规则集新增 `mrs` 格式
+- 新增: 全局配置新增 `keep-alive-idle` 和 `disable-keep-alive` 保持连接相关配置
+- 移除: 不再支持 `ebpf` 配置
 
 ### Bugs Fixes
 
