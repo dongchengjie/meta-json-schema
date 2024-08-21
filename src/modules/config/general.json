@@ -133,6 +133,24 @@
           "description": "下载外部资源(proxy-provider、rule-provider、Geo等)时使用",
           "markdownDescription": "下载外部资源(proxy-provider、rule-provider、Geo等)时使用",
           "default": "clash.meta"
+        },
+        "keep-alive-idle": {
+          "type": "integer",
+          "title": "保持活跃空闲时间（单位:s）",
+          "description": "连接空闲后多久发送keep-alive包",
+          "markdownDescription": "连接空闲后多久发送keep-alive包"
+        },
+        "keep-alive-interval": {
+          "type": "integer",
+          "title": "保持活跃间隔时间（单位:s）",
+          "description": "发送keep-alive包的时间间隔",
+          "markdownDescription": "发送keep-alive包的时间间隔"
+        },
+        "disable-keep-alive": {
+          "type": "boolean",
+          "title": "禁用保持活跃探测",
+          "description": "禁用保持活跃探测",
+          "markdownDescription": "禁用保持活跃探测"
         }
       }
     }
