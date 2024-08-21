@@ -7,8 +7,7 @@
     "enums": { "$ref": "../../definitions/enums.json" },
     "inbound": { "$ref": "./inbound.json" },
     "controller": { "$ref": "./controller.json" },
-    "geox-url": { "$ref": "./geox-url.json" },
-    "ebpf": { "$ref": "./ebpf.json" }
+    "geox-url": { "$ref": "./geox-url.json" }
   },
   "allOf": [
     { "title": "inbound配置", "$ref": "#/definitions/inbound" },
@@ -120,7 +119,6 @@
           "markdownDescription": "进程匹配模式",
           "default": "strict"
         },
-        "ebpf": { "title": "ebpf配置", "$ref": "#/definitions/ebpf" },
         "global-client-fingerprint": {
           "$ref": "#/definitions/enums/fingerprint",
           "title": "全局客户端指纹",
