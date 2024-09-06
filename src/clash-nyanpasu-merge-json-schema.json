@@ -85,7 +85,18 @@
               "type": "string"
             },
             "remove": {
-              "title": "删除选项"
+              "title": "删除选项",
+              "type": "array",
+              "items": {
+                "anyOf": [{
+                  "title": "数组索引",
+                  "type": "integer"
+                }, {
+                  "title": "对象键",
+                  "type": "string",
+                  "pattern": "[-a-zA-Z0-9]+(\\.[-a-zA-Z0-9]+)*$"
+                }]
+              }
             }
           },
           "required": [
@@ -235,7 +246,7 @@
           "title": "前置规则集合配置",
           "$ref": "#/definitions/rule-providers"
         },
-        "^append__[a-zA-Z0-9]+(\\.[a-zA-Z0-9]+)*$": {
+        "^append__[-a-zA-Z0-9]+(\\.[-a-zA-Z0-9]+)*$": {
           "title": "前置配置",
           "type": "object"
         }
@@ -265,7 +276,7 @@
           "title": "后置规则集合配置",
           "$ref": "#/definitions/rule-providers"
         },
-        "^prepend__[a-zA-Z0-9]+(\\.[a-zA-Z0-9]+)*$": {
+        "^prepend__[-a-zA-Z0-9]+(\\.[-a-zA-Z0-9]+)*$": {
           "title": "后置配置"
         }
       }
@@ -274,7 +285,7 @@
       "type": "object",
       "title": "覆盖配置",
       "patternProperties": {
-        "^override__[a-zA-Z0-9]+(\\.[a-zA-Z0-9]+)*$": {
+        "^override__[-a-zA-Z0-9]+(\\.[-a-zA-Z0-9]+)*$": {
           "title": "直接覆盖配置"
         }
       }
@@ -283,7 +294,7 @@
       "type": "object",
       "title": "筛选选配",
       "patternProperties": {
-        "^filter__[a-zA-Z0-9]+(\\.[a-zA-Z0-9]+)*$": {
+        "^filter__[-a-zA-Z0-9]+(\\.[-a-zA-Z0-9]+)*$": {
           "anyOf": [
             {
               "$ref": "#/definitions/nyanpasu-filter"
