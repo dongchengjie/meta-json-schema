@@ -15,6 +15,10 @@
       {
         "input": "src/clash-verge-merge-json-schema.json",
         "output": "schemas/clash-verge-merge-json-schema.json"
+      },
+      {
+        "input": "src/clash-nyanpasu-merge-json-schema.json",
+        "output": "schemas/clash-nyanpasu-merge-json-schema.json"
       }
     ],
     "optimize": {

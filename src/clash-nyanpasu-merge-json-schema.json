@@ -1,0 +1,302 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://github.com/libnyanpasu/clash-nyanpasu/schemas/clash-verge-merge-json-schema.json",
+  "type": "object",
+  "title": "Clash Nyanpasu Merge Config",
+  "additionalProperties": true,
+  "definitions": {
+    "meta-json-schema": {
+      "$ref": "./meta-json-schema.json"
+    },
+    "proxies": {
+      "$ref": "./modules/config/proxies.json"
+    },
+    "proxy-providers": {
+      "$ref": "./modules/config/proxy-providers.json"
+    },
+    "proxy-groups": {
+      "$ref": "./modules/config/proxy-groups.json"
+    },
+    "rule-providers": {
+      "$ref": "./modules/rules/provider/provider.json"
+    },
+    "rules": {
+      "$ref": "./modules/config/rules.json"
+    },
+    "nyanpasu-filter": {
+      "anyOf": [
+        {
+          "type": "string",
+          "title": "筛选选定列表"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "when": {
+              "type": "string"
+            },
+            "expr": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "when",
+            "expr"
+          ],
+          "title": "筛选选定列表后，使用表达式处理列表元素"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "when": {
+              "type": "string"
+            },
+            "override": {
+              "title": "直接覆盖配置"
+            }
+          },
+          "required": [
+            "when",
+            "override"
+          ],
+          "title": "筛选选定列表后，覆盖配置"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "when": {
+              "type": "string"
+            },
+            "merge": {
+              "type": "object",
+              "title": "合并选项"
+            }
+          },
+          "required": [
+            "when",
+            "merge"
+          ],
+          "title": "筛选选定列表后，合并配置"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "when": {
+              "type": "string"
+            },
+            "remove": {
+              "title": "删除选项"
+            }
+          },
+          "required": [
+            "when",
+            "remove"
+          ],
+          "title": "筛选选定列表后，删除配置"
+        }
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "title": "覆写profile配置",
+      "$ref": "#/definitions/meta-json-schema"
+    },
+    {
+      "type": "object",
+      "title": "前置规则配置",
+      "properties": {
+        "prepend-rules": {
+          "title": "前置规则配置",
+          "$ref": "#/definitions/rules"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "title": "前置规则集合配置",
+      "properties": {
+        "prepend-rule-providers": {
+          "title": "前置规则集合配置",
+          "$ref": "#/definitions/rule-providers",
+          "deprecationMessage": "v1.6.0 已弃用(使用prepend__rule-providers)代替"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "title": "前置代理节点配置",
+      "properties": {
+        "prepend-proxies": {
+          "title": "前置代理节点配置",
+          "$ref": "#/definitions/proxies",
+          "deprecationMessage": "v1.6.0 已弃用(使用prepend__proxies)代替"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "title": "前置代理集合配置",
+      "properties": {
+        "prepend-proxy-providers": {
+          "title": "前置代理集合配置",
+          "$ref": "#/definitions/proxy-providers",
+          "deprecationMessage": "v1.6.0 已弃用(使用prepend__proxy-providers)代替"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "title": "前置代理组配置",
+      "properties": {
+        "prepend-proxy-groups": {
+          "title": "前置代理组配置",
+          "$ref": "#/definitions/proxy-groups",
+          "deprecationMessage": "v1.6.0 已弃用(使用prepend__proxy-groups)代替"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "title": "后置规则配置",
+      "properties": {
+        "append-rules": {
+          "title": "后置规则配置",
+          "$ref": "#/definitions/rules",
+          "deprecationMessage": "v1.6.0 已弃用(使用append__rules)代替"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "title": "后置规则集合配置",
+      "properties": {
+        "append-rule-providers": {
+          "title": "后置规则集合配置",
+          "$ref": "#/definitions/rule-providers",
+          "deprecationMessage": "v1.6.0 已弃用(使用append__rule-providers)代替"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "title": "后置代理节点配置",
+      "properties": {
+        "append-proxies": {
+          "title": "后置代理节点配置",
+          "$ref": "#/definitions/proxies",
+          "deprecationMessage": "v1.6.0 已弃用(使用append__proxies)代替"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "title": "后置代理集合配置",
+      "properties": {
+        "append-proxy-providers": {
+          "title": "后置代理集合配置",
+          "$ref": "#/definitions/proxy-providers",
+          "deprecationMessage": "v1.6.0 已弃用(使用append__proxy-providers)代替"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "title": "后置代理组配置",
+      "properties": {
+        "append-proxy-groups": {
+          "title": "后置代理组配置",
+          "$ref": "#/definitions/proxy-groups",
+          "deprecationMessage": "v1.6.0 已弃用(使用append__proxy-groups)代替"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "title": "前置配置",
+      "patternProperties": {
+        "^append__proxies": {
+          "title": "前置代理节点配置",
+          "$ref": "#/definitions/proxies"
+        },
+        "^append__proxy-providers": {
+          "title": "前置代理集合配置",
+          "$ref": "#/definitions/proxy-providers"
+        },
+        "^append__proxy-groups": {
+          "title": "前置代理组配置",
+          "$ref": "#/definitions/proxy-groups"
+        },
+        "^append__rules": {
+          "title": "前置规则配置",
+          "$ref": "#/definitions/rules"
+        },
+        "^append__rule-providers": {
+          "title": "前置规则集合配置",
+          "$ref": "#/definitions/rule-providers"
+        },
+        "^append__[a-zA-Z0-9]+(\\.[a-zA-Z0-9]+)*$": {
+          "title": "前置配置",
+          "type": "object"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "title": "后置配置",
+      "patternProperties": {
+        "^prepend__proxies": {
+          "title": "后置代理节点配置",
+          "$ref": "#/definitions/proxies"
+        },
+        "^prepend__proxy-providers": {
+          "title": "后置代理集合配置",
+          "$ref": "#/definitions/proxy-providers"
+        },
+        "^prepend__proxy-groups": {
+          "title": "后置代理组配置",
+          "$ref": "#/definitions/proxy-groups"
+        },
+        "^prepend__rules": {
+          "title": "后置规则配置",
+          "$ref": "#/definitions/rules"
+        },
+        "^prepend__rule-providers": {
+          "title": "后置规则集合配置",
+          "$ref": "#/definitions/rule-providers"
+        },
+        "^prepend__[a-zA-Z0-9]+(\\.[a-zA-Z0-9]+)*$": {
+          "title": "后置配置"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "title": "覆盖配置",
+      "patternProperties": {
+        "^override__[a-zA-Z0-9]+(\\.[a-zA-Z0-9]+)*$": {
+          "title": "直接覆盖配置"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "title": "筛选选配",
+      "patternProperties": {
+        "^filter__[a-zA-Z0-9]+(\\.[a-zA-Z0-9]+)*$": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/nyanpasu-filter"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/nyanpasu-filter"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
