@@ -5,7 +5,8 @@
     "types": { "$ref": "../../../definitions/types.json" },
     "patterns": { "$ref": "../../../definitions/patterns.json" },
     "enums": { "$ref": "../../../definitions/enums.json" },
-    "base-option": { "$ref": "./base.json" }
+    "base-option": { "$ref": "./base.json" },
+    "auth-user": { "$ref": "./auth.json#/definitions/auth-user" }
   },
   "allOf": [
     { "title": "入站基础配置", "$ref": "#/definitions/base-option" },
@@ -13,6 +14,13 @@
       "type": "object",
       "title": "mixed配置",
       "properties": {
+        "users": {
+          "type": "array",
+          "title": "用户认证配置",
+          "description": "默认遵从全局authentication配置",
+          "markdownDescription": "默认遵从全局`authentication`配置",
+          "items": { "$ref": "#/definitions/auth-user" }
+        },
         "udp": {
           "type": "boolean",
           "title": "启用UDP",
