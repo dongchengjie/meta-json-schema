@@ -1,3 +1,17 @@
+## v1.18.8
+
+### Changes
+
+- 新增: 添加对 [clash-nyanpasu](https://github.com/libnyanpasu/clash-nyanpasu) Merge Schema 的支持 [#1](https://github.com/dongchengjie/meta-json-schema/pull/1)
+- 新增: `http`、`socks`、`mixed` 入站配置 新增 `users` 认证配置项
+- 新增: `sniff` 新增 `skip-src-address`、`skip-dst-address` 配置项
+- 新增: `dns` 新增 `fake-ip-filter-mode` 配置项
+- 调整: 规则 `GEOIP`、`IP-ASN`、`IP-CIDR`、`IP-CIDR6`、`IP-SUFFIX`、`RULE-SET` 支持追加 `,src` 选项
+
+### Bugs Fixes
+
+---
+
 ## v1.18.7
 
 ### Changes

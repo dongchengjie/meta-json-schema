@@ -82,6 +82,8 @@ VS Code 扩展商店搜索 `Meta JSON Schema` 或 `ClashMeta.meta-json-schema`�
 
 - <a href="https://dongchengjie.github.io/meta-json-schema/?schema=https://raw.githubusercontent.com/dongchengjie/meta-json-schema/main/schemas/clash-verge-merge-json-schema.json" target="_blank">clash-verge-merge-json-schema</a>
 
+- <a href="https://dongchengjie.github.io/meta-json-schema/?schema=https://raw.githubusercontent.com/dongchengjie/meta-json-schema/main/schemas/clash-nyanpasu-merge-json-schema.json" target="_blank">clash-nyanpasu-merge-json-schema</a>
+
 ## 🖥️ 开发
 
 1.  下载代码
