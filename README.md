@@ -118,7 +118,8 @@ npm run dev
 ```json
 "yaml.schemas": {
   "schemas/meta-json-schema.json": "test/clash-meta/**/*.yaml",
-  "schemas/clash-verge-merge-json-schema.json": "test/clash-verge/**/*.yaml"
+  "schemas/clash-verge-merge-json-schema.json": "test/clash-verge/**/*.yaml",
+  "schemas/clash-verge-nyanpasu-json-schema.json": "test/clash-nyanpasu/**/*.yaml"
 },
 ```
 
