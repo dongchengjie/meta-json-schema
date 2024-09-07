@@ -33,7 +33,7 @@
     },
     {
       "title": "匹配IP所属国家代码",
-      "pattern": "^GEOIP((?:,[^,]+){2})(,no-resolve)?$",
+      "pattern": "^GEOIP((?:,[^,]+){2})(?:,(no-resolve|src)){0,2}$",
       "errorMessage": "无效的规则"
     },
     {
@@ -43,7 +43,7 @@
     },
     {
       "title": "匹配IP所属ASN",
-      "pattern": "^IP-ASN((?:,[^,]+){2})(,no-resolve)?$",
+      "pattern": "^IP-ASN((?:,[^,]+){2})(?:,(no-resolve|src)){0,2}$",
       "errorMessage": "无效的规则"
     },
     {
@@ -53,12 +53,12 @@
     },
     {
       "title": "匹配IP地址范围",
-      "pattern": "^IP-CIDR((?:,[^,]+){2})(,no-resolve)?$",
+      "pattern": "^IP-CIDR((?:,[^,]+){2})(?:,(no-resolve|src)){0,2}$",
       "errorMessage": "无效的规则"
     },
     {
       "title": "匹配IP地址范围",
-      "pattern": "^IP-CIDR6((?:,[^,]+){2})(,no-resolve)?$",
+      "pattern": "^IP-CIDR6((?:,[^,]+){2})(?:,(no-resolve|src)){0,2}$",
       "errorMessage": "无效的规则"
     },
     {
@@ -68,7 +68,7 @@
     },
     {
       "title": "匹配IP后缀范围",
-      "pattern": "^IP-SUFFIX((?:,[^,]+){2})(,no-resolve)?$",
+      "pattern": "^IP-SUFFIX((?:,[^,]+){2})(?:,(no-resolve|src)){0,2}$",
       "errorMessage": "无效的规则"
     },
     {
@@ -148,7 +148,7 @@
     },
     {
       "title": "匹配规则集(rule-providers中定义)",
-      "pattern": "^RULE-SET((?:,[^,]+){2})(,no-resolve)?$",
+      "pattern": "^RULE-SET((?:,[^,]+){2})(?:,(no-resolve|src)){0,2}$",
       "errorMessage": "无效的规则"
     },
     {
