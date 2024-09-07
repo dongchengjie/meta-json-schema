@@ -32,6 +32,18 @@
       "description": "默认情况下只对IP进行嗅探",
       "markdownDescription": "默认情况下只对IP进行嗅探"
     },
+    "skip-src-address": {
+      "$ref": "#/definitions/types/ipCIDRArray",
+      "title": "对于来源IP跳过嗅探",
+      "description": "对于来源IP跳过嗅探",
+      "markdownDescription": "对于来源IP跳过嗅探"
+    },
+    "skip-dst-address": {
+      "$ref": "#/definitions/types/ipCIDRArray",
+      "title": "对于目标IP跳过嗅探",
+      "description": "对于目标IP跳过嗅探",
+      "markdownDescription": "对于目标IP跳过嗅探"
+    },
     "sniffing": {
       "$ref": "#/definitions/types/stringArray",
       "title": "限制嗅探类型范围",
