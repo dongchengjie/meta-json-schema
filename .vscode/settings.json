@@ -13,7 +13,9 @@
     // test/clash-meta  目录的 YAML 文件使用编译后的 meta-json-schema.json
     "schemas/meta-json-schema.json": "test/clash-meta/**/*.yaml",
     // test/clash-verge 目录的 YAML 文件使用编译后的 clash-verge-merge-json-schema.json
-    "schemas/clash-verge-merge-json-schema.json": "test/clash-verge/**/*.yaml"
+    "schemas/clash-verge-merge-json-schema.json": "test/clash-verge/**/*.yaml",
+    // test/clash-nyanpasu 目录的 YAML 文件使用编译后的 clash-nyanpasu-merge-json-schema.json
+    "schemas/clash-nyanpasu-merge-json-schema.json": "test/clash-nyanpasu/**/*.yaml"
   },
   // 使用两空格缩进
   "editor.tabSize": 2,

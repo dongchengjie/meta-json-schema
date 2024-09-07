@@ -1,28 +1,16 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
-  "$id": "https://github.com/libnyanpasu/clash-nyanpasu/schemas/clash-verge-merge-json-schema.json",
+  "$id": "https://github.com/libnyanpasu/clash-nyanpasu/schemas/clash-nyanpasu-merge-json-schema.json",
   "type": "object",
   "title": "Clash Nyanpasu Merge Config",
   "additionalProperties": true,
   "definitions": {
-    "meta-json-schema": {
-      "$ref": "./meta-json-schema.json"
-    },
-    "proxies": {
-      "$ref": "./modules/config/proxies.json"
-    },
-    "proxy-providers": {
-      "$ref": "./modules/config/proxy-providers.json"
-    },
-    "proxy-groups": {
-      "$ref": "./modules/config/proxy-groups.json"
-    },
-    "rule-providers": {
-      "$ref": "./modules/rules/provider/provider.json"
-    },
-    "rules": {
-      "$ref": "./modules/config/rules.json"
-    },
+    "meta-json-schema": { "$ref": "./meta-json-schema.json" },
+    "proxies": { "$ref": "./modules/config/proxies.json" },
+    "proxy-providers": { "$ref": "./modules/config/proxy-providers.json" },
+    "proxy-groups": { "$ref": "./modules/config/proxy-groups.json" },
+    "rule-providers": { "$ref": "./modules/rules/provider/provider.json" },
+    "rules": { "$ref": "./modules/config/rules.json" },
     "nyanpasu-filter": {
       "anyOf": [
         {
@@ -39,10 +27,7 @@
               "type": "string"
             }
           },
-          "required": [
-            "when",
-            "expr"
-          ],
+          "required": ["when", "expr"],
           "title": "筛选选定列表后，使用表达式处理列表元素"
         },
         {
@@ -55,10 +40,7 @@
               "title": "直接覆盖配置"
             }
           },
-          "required": [
-            "when",
-            "override"
-          ],
+          "required": ["when", "override"],
           "title": "筛选选定列表后，覆盖配置"
         },
         {
@@ -72,10 +54,7 @@
               "title": "合并选项"
             }
           },
-          "required": [
-            "when",
-            "merge"
-          ],
+          "required": ["when", "merge"],
           "title": "筛选选定列表后，合并配置"
         },
         {
@@ -88,21 +67,21 @@
               "title": "删除选项",
               "type": "array",
               "items": {
-                "anyOf": [{
-                  "title": "数组索引",
-                  "type": "integer"
-                }, {
-                  "title": "对象键",
-                  "type": "string",
-                  "pattern": "[-a-zA-Z0-9]+(\\.[-a-zA-Z0-9]+)*$"
-                }]
+                "anyOf": [
+                  {
+                    "title": "数组索引",
+                    "type": "integer"
+                  },
+                  {
+                    "title": "对象键",
+                    "type": "string",
+                    "pattern": "[-a-zA-Z0-9]+(\\.[-a-zA-Z0-9]+)*$"
+                  }
+                ]
               }
             }
           },
-          "required": [
-            "when",
-            "remove"
-          ],
+          "required": ["when", "remove"],
           "title": "筛选选定列表后，删除配置"
         }
       ]

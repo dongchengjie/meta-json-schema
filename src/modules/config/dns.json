@@ -141,8 +141,8 @@
       "enum": ["blacklist", "whitelist"],
       "markdownEnumDescriptions": ["黑名单模式", "白名单模式"],
       "title": "fake-ip过滤模式",
-      "description": "黑名单模式如果匹配成功则不返回fake-ip;白名单相反",
-      "markdownDescription": "黑名单模式如果匹配成功则不返回fake-ip;白名单相反",
+      "description": "黑名单模式如果匹配成功则不返回fake-ip;白名单则相反",
+      "markdownDescription": "黑名单模式如果匹配成功则不返回fake-ip;白名单则相反",
       "default": "blacklist"
     },
     "default-nameserver": {
