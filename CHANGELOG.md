@@ -1,3 +1,17 @@
+## v1.18.9
+
+### Changes
+
+- 新增: 全局配置新增 `etag-support` 开关
+- 新增: 外部控制器 新增 `external-controller-pipe` 配置项，支持从Windows namedpipe访问API
+- 新增: 外部控制器 新增 `external-controller-cors` 配置跨域响应头
+- 新增: proxy-provider 的 `override` 配置项新增 `proxy-name` 配置项，支持正则替换代理名称
+- 新增: `wireguard` 新增 `amnezia-wg-option` 配置项
+
+### Bugs Fixes
+
+---
+
 ## v1.18.8
 
 ### Changes
