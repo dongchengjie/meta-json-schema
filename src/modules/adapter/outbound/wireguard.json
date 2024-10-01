@@ -8,6 +8,67 @@
     "enums": { "$ref": "../../../definitions/enums.json" },
     "basic-option": { "$ref": "./base.json#/definitions/basic-option" },
     "smux": { "$ref": "./singmux.json" },
+    "amnezia-wg-option": {
+      "type": "object",
+      "title": "AmneziaWG配置",
+      "required": ["jc", "jmin", "jmax", "s1", "s2", "h1", "h2", "h3", "h4"],
+      "properties": {
+        "jc": {
+          "type": "integer",
+          "title": "发送的垃圾包的数量",
+          "description": "用于在握手之前发送随机数据包，以混淆 DPI（深度包检测）系统",
+          "markdownDescription": "用于在握手之前发送随机数据包，以混淆 DPI（深度包检测）系统"
+        },
+        "jmin": {
+          "type": "integer",
+          "title": "每个垃圾包的最小字节大小",
+          "description": "最大值为 1280 字节",
+          "markdownDescription": "最大值为 1280 字节"
+        },
+        "jmax": {
+          "type": "integer",
+          "title": "每个垃圾包的最大字节大小",
+          "description": "最大值为 1280 字节",
+          "markdownDescription": "最大值为 1280 字节"
+        },
+        "s1": {
+          "type": "integer",
+          "title": "在握手初始化包之前添加的随机数据字节数",
+          "description": "在握手初始化包之前添加的随机数据字节数",
+          "markdownDescription": "在握手初始化包之前添加的随机数据字节数"
+        },
+        "s2": {
+          "type": "integer",
+          "title": "在握手响应包之前添加的随机数据字节数",
+          "description": "在握手响应包之前添加的随机数据字节数",
+          "markdownDescription": "在握手响应包之前添加的随机数据字节数"
+        },
+        "h1": {
+          "type": "integer",
+          "title": "h1",
+          "description": "用于替换 WireGuard 消息类型 1（握手初始化）",
+          "markdownDescription": "用于替换`WireGuard`消息类型 1（握手初始化）"
+        },
+        "h2": {
+          "type": "integer",
+          "title": "h2",
+          "description": "用于替换 WireGuard 消息类型 2（握手响应）",
+          "markdownDescription": "用于替换`WireGuard`消息类型 2（握手响应）"
+        },
+        "h3": {
+          "type": "integer",
+          "title": "h3",
+          "description": "用于替换 WireGuard 消息类型 3",
+          "markdownDescription": "用于替换`WireGuard`消息类型 3"
+        },
+        "h4": {
+          "type": "integer",
+          "title": "h3",
+          "description": "用于替换 WireGuard 消息类型 4",
+          "markdownDescription": "用于替换`WireGuard`消息类型 4"
+        }
+      }
+    },
     "wireguard-peer-option": {
       "type": "object",
       "title": "peer配置",
@@ -114,6 +175,9 @@
           "title": "持久保活间隔",
           "description": "单位:s",
           "markdownDescription": "单位:s"
+        },
+        "amnezia-wg-option": {
+          "$ref": "#/definitions/amnezia-wg-option"
         },
         "peers": {
           "type": "array",
