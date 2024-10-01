@@ -132,6 +132,13 @@
           "markdownDescription": "下载外部资源(proxy-provider、rule-provider、Geo等)时使用",
           "default": "clash.meta"
         },
+        "etag-support": {
+          "type": "boolean",
+          "title": "启用ETag（实体标签）",
+          "description": "ETag是一种用于缓存和条件请求的机制",
+          "markdownDescription": "ETag是一种用于缓存和条件请求的机制",
+          "default": true
+        },
         "keep-alive-idle": {
           "type": "integer",
           "title": "保持活跃空闲时间（单位:s）",
