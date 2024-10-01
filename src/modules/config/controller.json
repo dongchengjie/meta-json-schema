@@ -18,11 +18,39 @@
       "description": "可以使用RESTful API over HTTPS来控制内核",
       "markdownDescription": "可以使用RESTful API over HTTPS来控制内核"
     },
+    "external-controller-pipe": {
+      "type": "string",
+      "title": "外部控制器(Windows namedpipe)监听地址",
+      "description": "从Windows namedpipe访问api接口不会验证secret， 如果开启请自行保证安全问题",
+      "markdownDescription": "从Windows namedpipe访问api接口不会验证secret， 如果开启请自行保证安全问题"
+    },
     "external-controller-unix": {
       "type": "string",
       "title": "外部控制器(Unix Socket)监听地址",
       "description": "从Unix Socket访问api接口不会验证secret,如果开启请自行保证安全问题(Windows版本大于17063也可以使用,即大于等于1803/RS4版本即可使用)",
       "markdownDescription": "从Unix Socket访问api接口不会验证secret,如果开启请自行保证安全问题(Windows版本大于17063也可以使用,即大于等于1803/RS4版本即可使用)"
+    },
+    "external-controller-cors": {
+      "type": "object",
+      "title": "外部控制器CORS配置",
+      "description": "跨域资源共享(CORS)配置",
+      "markdownDescription": "跨域资源共享(CORS)配置",
+      "properties": {
+        "allow-origin": {
+          "type": "array",
+          "title": "允许的来源",
+          "description": "允许的来源",
+          "markdownDescription": "允许的来源",
+          "default": ["\"*\""]
+        },
+        "allow-private-network": {
+          "type": "boolean",
+          "title": "允许私有地址",
+          "description": "允许私有地址",
+          "markdownDescription": "允许私有地址",
+          "default": true
+        }
+      }
     },
     "external-ui": {
       "type": "string",
