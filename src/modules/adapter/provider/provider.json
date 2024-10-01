@@ -127,6 +127,30 @@
                 "title": "为节点名称添加固定后缀",
                 "description": "为节点名称添加固定后缀",
                 "markdownDescription": "为节点名称添加固定后缀"
+              },
+              "proxy-name": {
+                "type": "array",
+                "title": "替换节点名称内容",
+                "description": "支持正则表达式",
+                "markdownDescription": "支持正则表达式",
+                "items": {
+                  "type": "object",
+                  "required": ["pattern", "target"],
+                  "properties": {
+                    "pattern": {
+                      "type": "string",
+                      "title": "匹配内容",
+                      "description": "支持正则表达式",
+                      "markdownDescription": "支持正则表达式"
+                    },
+                    "target": {
+                      "type": "string",
+                      "title": "替换内容",
+                      "description": "支持正则表达式分组",
+                      "markdownDescription": "支持正则表达式分组"
+                    }
+                  }
+                }
               }
             }
           }
