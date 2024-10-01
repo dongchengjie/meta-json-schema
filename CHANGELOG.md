@@ -8,8 +8,6 @@
 - 新增: proxy-provider 的 `override` 配置项新增 `proxy-name` 配置项，支持正则替换代理名称
 - 新增: `wireguard` 新增 `amnezia-wg-option` 配置项
 
-### Bugs Fixes
-
 ---
 
 ## v1.18.8

@@ -41,6 +41,9 @@
           "title": "允许的来源",
           "description": "允许的来源",
           "markdownDescription": "允许的来源",
+          "items": {
+            "type": "string"
+          },
           "default": ["\"*\""]
         },
         "allow-private-network": {
