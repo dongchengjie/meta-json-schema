@@ -172,6 +172,19 @@
       "title": "代理节点DNS解析服务器",
       "description": "用于解析代理节点的域名",
       "markdownDescription": "用于解析代理节点的域名"
+    },
+    "direct-nameserver": {
+      "$ref": "#/definitions/types/stringArray",
+      "title": "direct出口DNS解析服务器",
+      "description": "用于解析direct出口的域名",
+      "markdownDescription": "用于解析direct出口的域名"
+    },
+    "direct-nameserver-follow-policy": {
+      "type": "boolean",
+      "title": "是否遵循DNS解析服务器策略",
+      "description": "是否遵循nameserver-policy",
+      "markdownDescription": "是否遵循`nameserver-policy`",
+      "default": false
     }
   },
   "allOf": [

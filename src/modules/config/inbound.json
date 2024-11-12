@@ -57,20 +57,20 @@
       "default": false
     },
     "skip-auth-prefixes": {
-      "$ref": "#/definitions/patterns/ipCIDR",
+      "$ref": "#/definitions/types/ipCIDRArray",
       "title": "允许跳过验证的IP段",
       "description": "允许跳过验证的IP段",
       "markdownDescription": "允许跳过验证的IP段"
     },
     "lan-allowed-ips": {
-      "$ref": "#/definitions/patterns/ipCIDR",
+      "$ref": "#/definitions/types/ipCIDRArray",
       "title": "允许连接的IP地址段",
       "description": "需要启用allow-lan",
       "markdownDescription": "需要启用`allow-lan`",
       "default": ["0.0.0.0/0", "::/0"]
     },
     "lan-disallowed-ips": {
-      "$ref": "#/definitions/patterns/ipCIDR",
+      "$ref": "#/definitions/types/ipCIDRArray",
       "title": "不允许连接的IP地址段",
       "description": "需要启用allow-lan(优先级高于lan-allowed-ips)",
       "markdownDescription": "需要启用`allow-lan`(优先级高于`lan-allowed-ips`)"

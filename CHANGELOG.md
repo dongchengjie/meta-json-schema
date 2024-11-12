@@ -1,3 +1,14 @@
+## v1.18.10
+
+### Changes
+
+### Bugs Fixes
+
+- 修复: `skip-auth-prefixes`、`lan-allowed-ips`、`lan-disallowed-ips` 类型错误
+- 新增: DNS 新增 `direct-nameserver`、`direct-nameserver-follow-policy` 配置项
+
+---
+
 ## v1.18.9
 
 ### Changes
