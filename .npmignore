@@ -1,9 +1,0 @@
-.gitattributes
-.github
-.prettierrc
-.vscode
-json-schema-artifact.json
-node_modules
-scripts
-src
-test

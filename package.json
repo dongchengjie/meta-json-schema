@@ -7,6 +7,10 @@
     "clash.meta",
     "schema"
   ],
+  "files": [
+    "schemas",
+    "CHANGELOG.md"
+  ],
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
   },
@@ -30,7 +34,7 @@
     "@commitlint/cli": "^19.6.0",
     "@commitlint/config-conventional": "^19.6.0",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
-    "json-schema-artifact": "^1.1.1",
+    "json-schema-artifact": "^1.1.2",
     "lefthook": "^1.8.5",
     "prettier": "^3.4.2"
   },
