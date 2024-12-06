@@ -162,7 +162,9 @@
     },
     "nameserver-policy": {
       "type": "object",
-      "additionalProperties": { "anyOf": [{ "type": "string" }, { "$ref": "#/definitions/types/stringArray" }] },
+      "additionalProperties": {
+        "anyOf": [{ "type": "string" }, { "$ref": "#/definitions/types/stringArray" }]
+      },
       "title": "DNS解析服务器策略",
       "description": "指定地址使用特定DNS解析服务器",
       "markdownDescription": "指定地址使用特定DNS解析服务器"
@@ -190,11 +192,16 @@
   "allOf": [
     {
       "if": {
-        "properties": { "respect-rules": { "const": true }, "proxy-server-nameserver": { "const": [] } }
+        "properties": {
+          "respect-rules": { "const": true },
+          "proxy-server-nameserver": { "const": [] }
+        }
       },
       "then": {
         "properties": {
-          "proxy-server-nameserver": { "deprecationMessage": "启用`respect-rules`时`proxy-server-nameserver`不能为空" }
+          "proxy-server-nameserver": {
+            "deprecationMessage": "启用`respect-rules`时`proxy-server-nameserver`不能为空"
+          }
         }
       }
     }

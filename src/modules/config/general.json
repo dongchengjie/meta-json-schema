@@ -86,7 +86,11 @@
         },
         "geodata-loader": {
           "enum": ["standard", "memconservative", "memc"],
-          "markdownEnumDescriptions": ["标准加载器", "专为内存受限(小内存)设备优化的加载器", "`memconservative`的别名"],
+          "markdownEnumDescriptions": [
+            "标准加载器",
+            "专为内存受限(小内存)设备优化的加载器",
+            "`memconservative`的别名"
+          ],
           "title": "Geo文件加载器",
           "description": "Geo文件加载器",
           "markdownDescription": "Geo文件加载器",
@@ -113,7 +117,11 @@
         },
         "find-process-mode": {
           "enum": ["always", "strict", "off"],
-          "markdownEnumDescriptions": ["强制匹配所有进程", "由内核判断是否开启", "不匹配进程,推荐在路由器上使用此模式"],
+          "markdownEnumDescriptions": [
+            "强制匹配所有进程",
+            "由内核判断是否开启",
+            "不匹配进程,推荐在路由器上使用此模式"
+          ],
           "title": "进程匹配模式",
           "description": "进程匹配模式",
           "markdownDescription": "进程匹配模式",

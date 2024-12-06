@@ -53,7 +53,14 @@
           "markdownDescription": "加密方法"
         },
         "obfs": {
-          "enum": ["plain", "http_simple", "http_post", "random_head", "tls1.2_ticket_auth", "tls1.2_ticket_fastauth"],
+          "enum": [
+            "plain",
+            "http_simple",
+            "http_post",
+            "random_head",
+            "tls1.2_ticket_auth",
+            "tls1.2_ticket_fastauth"
+          ],
           "markdownEnumDescriptions": [
             "不使用任何混淆方式(流量以明文形式传输)",
             "将流量伪装成HTTP `GET`请求",
@@ -67,7 +74,14 @@
           "markdownDescription": "混淆方法"
         },
         "protocol": {
-          "enum": ["origin", "auth_sha1_v4", "auth_aes128_md5", "auth_aes128_sha1", "auth_chain_a", "auth_chain_b"],
+          "enum": [
+            "origin",
+            "auth_sha1_v4",
+            "auth_aes128_md5",
+            "auth_aes128_sha1",
+            "auth_chain_a",
+            "auth_chain_b"
+          ],
           "title": "认证协议",
           "description": "认证协议",
           "markdownDescription": "认证协议"

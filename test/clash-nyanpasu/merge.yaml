@@ -53,7 +53,7 @@ prepend__proxies:
       "password": "fsfal2",
       "plugin": "obfs",
       "plugin-opts": { "mode": "http", "host": "d6c9191892.download.windowsupdate.com" },
-      "udp": true,
+      "udp": true
     }
 
 prepend__proxy-providers:
@@ -97,7 +97,7 @@ prepend__proxy-groups:
       type: url-test,
       proxies: ["🇺🇸美国 01-中转"],
       url: "http://www.gstatic.com/generate_204",
-      interval: 86400,
+      interval: 86400
     }
 
 append__rules:
@@ -164,7 +164,7 @@ append__proxies:
       "password": "fsfal2",
       "plugin": "obfs",
       "plugin-opts": { "mode": "http", "host": "d6c9191892.download.windowsupdate.com" },
-      "udp": true,
+      "udp": true
     }
 
 append__proxy-providers:
@@ -208,5 +208,5 @@ append__proxy-groups:
       type: url-test,
       proxies: ["🇺🇸美国 01-中转"],
       url: "http://www.gstatic.com/generate_204",
-      interval: 86400,
+      interval: 86400
     }

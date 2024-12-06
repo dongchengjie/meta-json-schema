@@ -19,7 +19,11 @@
       },
       "behavior": {
         "enum": ["domain", "ipcidr", "classical"],
-        "markdownEnumDescriptions": ["域名通配", "IP网段匹配", "支持除`rule-set`/`sub-rule`以外的全部路由规则"],
+        "markdownEnumDescriptions": [
+          "域名通配",
+          "IP网段匹配",
+          "支持除`rule-set`/`sub-rule`以外的全部路由规则"
+        ],
         "title": "规则匹配行为",
         "description": "规则匹配行为",
         "markdownDescription": "规则匹配行为"
