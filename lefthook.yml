@@ -1,0 +1,13 @@
+assert_lefthook_installed: true
+
+commit-msg:
+  commands:
+    commitlint:
+      run: npx --no-install commitlint --edit
+
+pre-commit:
+  parallel: true
+  commands:
+    prettier:
+      glob: "*.*"
+      run: npx prettier {staged_files} --write --ignore-unknown

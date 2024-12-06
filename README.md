@@ -41,6 +41,7 @@ VS Code 扩展商店搜索 `Meta JSON Schema` 或 `ClashMeta.meta-json-schema`�
     ```javascript
     import { defineConfig } from "vite";
     import monacoEditor from "vite-plugin-monaco-editor";
+
     export default defineConfig({
       plugins: [
         monacoEditor({
@@ -67,7 +68,7 @@ VS Code 扩展商店搜索 `Meta JSON Schema` 或 `ClashMeta.meta-json-schema`�
       enableSchemaRequest: true,
       schemas: [
         {
-          uri: "https://fastly.jsdelivr.net/gh/dongchengjie/airport@main/meta-json-schema.json",
+          uri: "https://fastly.jsdelivr.net/gh/dongchengjie/meta-json-schema@main/schemas/meta-json-schema.json",
           fileMatch: ["**/*.clash.yaml"]
         }
       ]

@@ -1,7 +1,4 @@
 {
-  // prettier 配置
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "prettier.configPath": ".prettierrc",
   "json.schemas": [
     {
       // src 目录的JSON文件使用JSON Schema Draft 07
@@ -17,16 +14,15 @@
     // test/clash-nyanpasu 目录的 YAML 文件使用编译后的 clash-nyanpasu-merge-json-schema.json
     "schemas/clash-nyanpasu-merge-json-schema.json": "test/clash-nyanpasu/**/*.yaml"
   },
-  // 使用两空格缩进
-  "editor.tabSize": 2,
-  // 在 workspace 中排除下列文件
-  "files.exclude": {
-    ".gitattributes": true,
-    "CHANGELOG": true
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    ".gitignore": ".git*,lefthook.*,prettier.config.*,.prettierignore,.npmignore,LICENSE",
+    "README.md": "README.*.md",
+    "package.json": "package-lock.json,yarn.lock,pnpm-lock.yaml,bun.lockb"
   },
-  // 搜索排除下列目录
   "search.exclude": {
-    "node_modules": true, // 忽略模块目录
-    "schemas": true // 忽略构建发布目录
+    "node_modules": true,
+    "schemas": true
   }
 }

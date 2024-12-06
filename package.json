@@ -20,12 +20,28 @@
     "url": "https://github.com/dongchengjie/meta-json-schema"
   },
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "prepare": "lefthook install",
     "dev": "npx json-schema-artifact --watch",
     "release": "npx json-schema-artifact",
-    "preview": "npm publish --dry-run"
+    "preview": "pnpm publish --dry-run"
   },
   "devDependencies": {
-    "json-schema-artifact": "^1.1.1"
+    "@commitlint/cli": "^19.6.0",
+    "@commitlint/config-conventional": "^19.6.0",
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "json-schema-artifact": "^1.1.1",
+    "lefthook": "^1.8.5",
+    "prettier": "^3.4.2"
   },
-  "packageManager": "npm@10.8.3"
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "engines": {
+    "node": ">=18",
+    "pnpm": ">=9"
+  },
+  "packageManager": "pnpm@9.13.2"
 }
