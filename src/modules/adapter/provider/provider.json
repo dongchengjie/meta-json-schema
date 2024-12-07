@@ -33,7 +33,30 @@
         "description": "单位:s",
         "markdownDescription": "单位:s"
       },
-      "header": { "type": "object", "errorMessage": "类型应为object" },
+      "filter": {
+        "type": "string",
+        "title": "节点过滤",
+        "description": "保留满足关键词或正则表达式的节点(使用`号分隔)",
+        "markdownDescription": "筛选满足关键词或`正则表达式`的节点(使用`号分隔)"
+      },
+      "exclude-filter": {
+        "type": "string",
+        "title": "节点排除",
+        "description": "排除满足关键词或正则表达式的节点(不支持多个表达式)",
+        "markdownDescription": "排除满足关键词或`正则表达式`的节点(不支持多个表达式)"
+      },
+      "exclude-type": {
+        "type": "string",
+        "title": "根据节点类型排除节点",
+        "description": "direct, dns, ss, ssr, snell, socks5, http, vmess, vless, trojan, hysteria, hysteria2, wireguard, tuic, ssh(使用|分隔,不支持正则表达式)",
+        "markdownDescription": "`direct`,`dns`,`ss`,`ssr`,`snell`,`socks5`,`http`,`vmess`,`vless`,`trojan`,`hysteria`,`hysteria2`,`wireguard`,`tuic`,`ssh`(使用`|`分隔,不支持正则表达式)"
+      },
+      "dialer-proxy": {
+        "type": "string",
+        "title": "指定当前proxy通过下一跳的dialer-proxy建立网络连接",
+        "description": "取值为proxy-groups,proxy的name",
+        "markdownDescription": "取值为`proxy-groups`,`proxy`的`name`"
+      },
       "health-check": { "$ref": "#/definitions/health-check" },
       "override": {
         "allOf": [
@@ -156,24 +179,7 @@
           }
         ]
       },
-      "filter": {
-        "type": "string",
-        "title": "节点过滤",
-        "description": "保留满足关键词或正则表达式的节点(使用`号分隔)",
-        "markdownDescription": "筛选满足关键词或`正则表达式`的节点(使用`号分隔)"
-      },
-      "exclude-filter": {
-        "type": "string",
-        "title": "节点排除",
-        "description": "排除满足关键词或正则表达式的节点(不支持多个表达式)",
-        "markdownDescription": "排除满足关键词或`正则表达式`的节点(不支持多个表达式)"
-      },
-      "exclude-type": {
-        "type": "string",
-        "title": "根据节点类型排除节点",
-        "description": "direct, dns, ss, ssr, snell, socks5, http, vmess, vless, trojan, hysteria, hysteria2, wireguard, tuic, ssh(使用|分隔,不支持正则表达式)",
-        "markdownDescription": "`direct`,`dns`,`ss`,`ssr`,`snell`,`socks5`,`http`,`vmess`,`vless`,`trojan`,`hysteria`,`hysteria2`,`wireguard`,`tuic`,`ssh`(使用`|`分隔,不支持正则表达式)"
-      }
+      "header": { "type": "object", "errorMessage": "类型应为object" }
     },
     "if": {
       "properties": {
@@ -194,6 +200,13 @@
           "title": "使用指定代理下载/更新provider",
           "description": "使用指定代理下载/更新provider",
           "markdownDescription": "使用指定代理下载/更新provider"
+        },
+        "size-limit": {
+          "type": "integer",
+          "title": "限制下载文件大小",
+          "description": "单位:KB,0为不限制",
+          "markdownDescription": "单位:KB,0为不限制",
+          "default": 0
         }
       }
     }
