@@ -1088,6 +1088,41 @@ rule-providers:
     url: https://mirror.ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/applications.txt
     path: ./ruleset/loyalsoldier/applications.yaml
     interval: 86400
+  # 文件规则
+  file-x:
+    type: file
+    path: ./ruleset/loyalsoldier/x.yaml
+    behavior: classical
+  # 内置规则
+  inline-ipcidr:
+    type: inline
+    behavior: ipcidr
+    payload:
+      - "127.0.0.1/32"
+      - "::1/128"
+      - "192.168.1.0/24"
+      - "10.0.0.1/32"
+  inline-domain:
+    type: inline
+    behavior: domain
+    payload:
+      - ".blogger.com"
+      - "*.*.microsoft.com"
+      - "books.itunes.apple.com"
+  inline-classical:
+    type: inline
+    behavior: classical
+    payload:
+      - "DOMAIN,www.google.com"
+      - "DOMAIN,www.bing.com"
+      - DOMAIN-SUFFIX,google.com
+      - DOMAIN-KEYWORD,google
+      - DOMAIN,ad.com
+      - SRC-IP-CIDR,192.168.1.201/32
+      - IP-CIDR,127.0.0.0/8
+      - GEOIP,CN
+      - DST-PORT,80
+      - SRC-PORT,7777
 
 rules:
   # Google
