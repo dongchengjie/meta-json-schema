@@ -23,14 +23,21 @@ jobs:
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
 
-      - name: Setup Node
+      # Install pnpm based on `packageManager` in package.json
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
+      # Install Node.js
+      - name: Install Node
         uses: actions/setup-node@v4
         with:
           node-version: "20"
           registry-url: "https://registry.npmjs.org"
 
       - name: Bundle JSON Schemas
-        run: npm install && npm run release
+        run: pnpm install && pnpm run release
 
       - name: Github Release
         uses: softprops/action-gh-release@v2
@@ -47,7 +54,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Commit and Push
+      - name: Commit Changes
         run: |
-          git commit --allow-empty -am 'Release On Tag'
+          git commit --allow-empty -am 'ci: release ${{ github.ref_name }}'
           git push origin HEAD:main

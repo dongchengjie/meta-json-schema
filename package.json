@@ -20,8 +20,7 @@
   },
   "license": "MIT",
   "repository": {
-    "type": "git",
-    "url": "https://github.com/dongchengjie/meta-json-schema"
+    "url": "git+https://github.com/dongchengjie/meta-json-schema.git"
   },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
