@@ -12,7 +12,7 @@
     "properties": {
       "type": {
         "enum": ["file", "http", "inline"],
-        "markdownEnumDescriptions": ["本地文件", "网络文件", "内联"],
+        "markdownEnumDescriptions": ["本地文件", "网络文件", "内联规则"],
         "title": "provider类型",
         "description": "provider类型",
         "markdownDescription": "provider类型"
@@ -55,8 +55,40 @@
         "then": { "required": ["path"] }
       },
       {
+        "if": {
+          "properties": {
+            "type": { "const": "http" }
+          }
+        },
+        "then": {
+          "required": ["url"],
+          "properties": {
+            "url": {
+              "$ref": "#/definitions/patterns/httpUrl",
+              "title": "provider网络文件地址",
+              "description": "provider网络文件地址",
+              "markdownDescription": "provider网络文件地址"
+            },
+            "proxy": {
+              "type": "string",
+              "title": "使用指定代理下载/更新provider",
+              "description": "使用指定代理下载/更新provider",
+              "markdownDescription": "使用指定代理下载/更新provider"
+            }
+          }
+        }
+      },
+      {
         "if": { "properties": { "type": { "const": "inline" } } },
         "then": {
+          "required": ["payload"],
+          "properties": {
+            "payload": {
+              "title": "规则内容",
+              "description": "规则内容",
+              "markdownDescription": "规则内容"
+            }
+          },
           "allOf": [
             {
               "if": { "properties": { "behavior": { "const": "classical" } } },
@@ -64,7 +96,7 @@
                 "properties": {
                   "payload": {
                     "type": "array",
-                    "items": { "$ref": "rule.json" }
+                    "items": { "$ref": "./inline-rule.json" }
                   }
                 }
               }
@@ -89,39 +121,7 @@
                 }
               }
             }
-          ],
-          "properties": {
-            "payload": {
-              "title": "规则内容",
-              "description": "规则内容",
-              "markdownDescription": "规则内容"
-            }
-          },
-          "required": ["payload"]
-        }
-      },
-      {
-        "if": {
-          "properties": {
-            "type": { "const": "http" }
-          }
-        },
-        "then": {
-          "required": ["url"],
-          "properties": {
-            "url": {
-              "$ref": "#/definitions/patterns/httpUrl",
-              "title": "provider网络文件地址",
-              "description": "provider网络文件地址",
-              "markdownDescription": "provider网络文件地址"
-            },
-            "proxy": {
-              "type": "string",
-              "title": "使用指定代理下载/更新provider",
-              "description": "使用指定代理下载/更新provider",
-              "markdownDescription": "使用指定代理下载/更新provider"
-            }
-          }
+          ]
         }
       }
     ]

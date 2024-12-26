@@ -2,7 +2,7 @@
 
 ### changes
 
-- 新增：rule-providers `type` 新增加 `inline`
+- 新增：rule-providers 新增 `inline` 内联规则配置
 
 ---
 
