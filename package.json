@@ -1,6 +1,6 @@
 {
   "name": "meta-json-schema",
-  "version": "1.18.10",
+  "version": "1.19.0",
   "description": "JSON Schema for Clash Meta",
   "keywords": [
     "clash",
@@ -20,8 +20,7 @@
   },
   "license": "MIT",
   "repository": {
-    "type": "git",
-    "url": "https://github.com/dongchengjie/meta-json-schema"
+    "url": "git+https://github.com/dongchengjie/meta-json-schema.git"
   },
   "scripts": {
     "preinstall": "npx only-allow pnpm",

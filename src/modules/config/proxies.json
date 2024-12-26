@@ -19,7 +19,8 @@
     "hysteria2": { "$ref": "../adapter/outbound/hysteria2.json" },
     "wireguard": { "$ref": "../adapter/outbound/wireguard.json" },
     "tuic": { "$ref": "../adapter/outbound/tuic.json" },
-    "ssh": { "$ref": "../adapter/outbound/ssh.json" }
+    "ssh": { "$ref": "../adapter/outbound/ssh.json" },
+    "mieru": { "$ref": "../adapter/outbound/mieru.json" }
   },
   "items": {
     "anyOf": [
@@ -112,6 +113,12 @@
         "title": "ssh",
         "properties": { "type": { "title": "ssh配置", "const": "ssh" } },
         "$ref": "#/definitions/ssh"
+      },
+      {
+        "type": "object",
+        "title": "mieru",
+        "properties": { "type": { "title": "mieru配置", "const": "mieru" } },
+        "$ref": "#/definitions/mieru"
       }
     ]
   }

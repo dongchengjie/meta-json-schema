@@ -1,8 +1,19 @@
-## next
+## v1.19.1
 
 ### changes
 
 - 新增：rule-providers `type` 新增加 `inline`
+
+---
+
+## v1.19.0
+
+### Changes
+
+- 新增: proxy-provider 新增 `size-limit` 配置项
+- 新增: proxy 新增 `mieru` 协议
+
+---
 
 ## v1.18.10
 

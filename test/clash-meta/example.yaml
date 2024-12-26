@@ -628,7 +628,16 @@ proxies:
       "protocol-param": "112598:vcy7qi",
       "group": "SSRProvider"
     }
-
+  - {
+      "name": "mieru",
+      "type": "mieru",
+      "server": "1.2.3.4",
+      "transport": "TCP",
+      "port": "125",
+      # "port-range": "125-895",
+      "username": "username",
+      "password": "password"
+    }
 # 代理组
 proxy-groups:
   - name: 节点选择

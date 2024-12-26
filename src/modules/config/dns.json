@@ -200,7 +200,7 @@
       "then": {
         "properties": {
           "proxy-server-nameserver": {
-            "deprecationMessage": "启用`respect-rules`时`proxy-server-nameserver`不能为空"
+            "deprecationMessage": "启用respect-rules时proxy-server-nameserver不能为空"
           }
         }
       }
