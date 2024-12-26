@@ -1,3 +1,11 @@
+## v1.19.1
+
+### changes
+
+- 新增：rule-providers `type` 新增加 `inline`
+
+---
+
 ## v1.19.0
 
 ### Changes
