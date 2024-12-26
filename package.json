@@ -1,6 +1,6 @@
 {
   "name": "meta-json-schema",
-  "version": "1.18.10",
+  "version": "1.19.0",
   "description": "JSON Schema for Clash Meta",
   "keywords": [
     "clash",

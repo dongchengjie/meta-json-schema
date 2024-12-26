@@ -1,0 +1,99 @@
+{
+  "type": "object",
+  "title": "outbound-mieru",
+  "definitions": {
+    "compatible": { "$ref": "../../../definitions/compatible.json" },
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" },
+    "basic-option": { "$ref": "./base.json#/definitions/basic-option" },
+    "smux": { "$ref": "./singmux.json" }
+  },
+  "allOf": [
+    { "title": "basic配置", "$ref": "#/definitions/basic-option" },
+    {
+      "type": "object",
+      "title": "http配置",
+      "required": ["name", "server", "transport", "username", "password"],
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "代理节点类型",
+          "description": "代理节点类型",
+          "markdownDescription": "代理节点类型"
+        },
+        "name": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "代理节点名称",
+          "description": "代理节点名称",
+          "markdownDescription": "代理节点名称"
+        },
+        "server": {
+          "$ref": "#/definitions/patterns/server",
+          "title": "代理节点服务器",
+          "description": "域名或IP",
+          "markdownDescription": "域名或IP"
+        },
+        "port": {
+          "$ref": "#/definitions/patterns/port",
+          "title": "代理节点端口号",
+          "description": "代理节点端口号",
+          "markdownDescription": "代理节点端口号"
+        },
+        "port-range": {
+          "$ref": "#/definitions/patterns/portRange",
+          "title": "代理节点端口范围",
+          "description": "代理节点端口范围",
+          "markdownDescription": "代理节点端口范围"
+        },
+        "transport": {
+          "enum": ["TCP"],
+          "markdownEnumDescriptions": ["TCP"],
+          "title": "传输层协议",
+          "description": "传输层协议",
+          "markdownDescription": "传输层协议"
+        },
+        "username": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "用户名",
+          "description": "认证用户名",
+          "markdownDescription": "认证用户名"
+        },
+        "password": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "密码",
+          "description": "认证密码",
+          "markdownDescription": "认证密码"
+        },
+        "multiplexing": {
+          "enum": [
+            "MULTIPLEXING_DEFAULT",
+            "MULTIPLEXING_OFF",
+            "MULTIPLEXING_LOW",
+            "MULTIPLEXING_MIDDLE",
+            "MULTIPLEXING_HIGH"
+          ],
+          "markdownEnumDescriptions": ["默认", "禁用", "低", "中", "高"],
+          "title": "多路复用级别",
+          "description": "多路复用级别",
+          "markdownDescription": "多路复用级别"
+        }
+      },
+      "anyOf": [{ "required": ["port"] }, { "required": ["port-range"] }],
+      "if": {
+        "required": ["port", "port-range"]
+      },
+      "then": {
+        "properties": {
+          "port": { "deprecationMessage": "不可同时填写 port 和 port-range" },
+          "port-range": { "deprecationMessage": "不可同时填写 port 和 port-range" }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "title": "smux配置",
+      "properties": { "smux": { "title": "smux配置", "$ref": "#/definitions/smux" } }
+    }
+  ]
+}
