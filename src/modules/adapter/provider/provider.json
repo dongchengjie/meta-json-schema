@@ -4,8 +4,7 @@
   "definitions": {
     "types": { "$ref": "../../../definitions/types.json" },
     "patterns": { "$ref": "../../../definitions/patterns.json" },
-    "enums": { "$ref": "../../../definitions/enums.json" },
-    "health-check": { "$ref": "./health-check.json" }
+    "enums": { "$ref": "../../../definitions/enums.json" }
   },
   "patternProperties": {
     "^default$": { "type": "null", "errorMessage": "不能使用default作为provider的名称" }
@@ -15,8 +14,8 @@
     "required": ["type"],
     "properties": {
       "type": {
-        "enum": ["file", "http"],
-        "markdownEnumDescriptions": ["本地文件", "网络文件"],
+        "enum": ["file", "http", "inline"],
+        "markdownEnumDescriptions": ["本地文件", "网络文件", "内联proxies"],
         "title": "provider类型",
         "description": "provider类型",
         "markdownDescription": "provider类型"
@@ -181,34 +180,56 @@
       },
       "header": { "type": "object", "errorMessage": "类型应为object" }
     },
-    "if": {
-      "properties": {
-        "type": { "const": "http" }
-      }
-    },
-    "then": {
-      "required": ["url"],
-      "properties": {
-        "url": {
-          "$ref": "#/definitions/patterns/httpUrl",
-          "title": "provider网络文件地址",
-          "description": "provider网络文件地址",
-          "markdownDescription": "provider网络文件地址"
+    "allOf": [
+      {
+        "if": { "properties": { "type": { "const": "file" } } },
+        "then": { "required": ["path"] }
+      },
+      {
+        "if": {
+          "properties": {
+            "type": { "const": "http" }
+          }
         },
-        "proxy": {
-          "type": "string",
-          "title": "使用指定代理下载/更新provider",
-          "description": "使用指定代理下载/更新provider",
-          "markdownDescription": "使用指定代理下载/更新provider"
-        },
-        "size-limit": {
-          "type": "integer",
-          "title": "限制下载文件大小",
-          "description": "单位:KB,0为不限制",
-          "markdownDescription": "单位:KB,0为不限制",
-          "default": 0
+        "then": {
+          "required": ["url"],
+          "properties": {
+            "url": {
+              "$ref": "#/definitions/patterns/httpUrl",
+              "title": "provider网络文件地址",
+              "description": "provider网络文件地址",
+              "markdownDescription": "provider网络文件地址"
+            },
+            "proxy": {
+              "type": "string",
+              "title": "使用指定代理下载/更新provider",
+              "description": "使用指定代理下载/更新provider",
+              "markdownDescription": "使用指定代理下载/更新provider"
+            },
+            "size-limit": {
+              "type": "integer",
+              "title": "限制下载文件大小",
+              "description": "单位:KB,0为不限制",
+              "markdownDescription": "单位:KB,0为不限制",
+              "default": 0
+            }
+          }
+        }
+      },
+      {
+        "if": { "properties": { "type": { "const": "inline" } } },
+        "then": {
+          "required": ["payload"],
+          "properties": {
+            "payload": {
+              "$ref": "#/definitions/proxies",
+              "title": "proxies内容",
+              "description": "proxies内容",
+              "markdownDescription": "proxies内容"
+            }
+          }
         }
       }
-    }
+    ]
   }
 }

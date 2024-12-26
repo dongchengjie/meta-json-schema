@@ -76,7 +76,8 @@
           "markdownEnumDescriptions": ["默认", "禁用", "低", "中", "高"],
           "title": "多路复用级别",
           "description": "多路复用级别",
-          "markdownDescription": "多路复用级别"
+          "markdownDescription": "多路复用级别",
+          "default": "MULTIPLEXING_LOW"
         }
       },
       "anyOf": [{ "required": ["port"] }, { "required": ["port-range"] }],

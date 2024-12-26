@@ -80,8 +80,7 @@
           "$ref": "#/definitions/patterns/ipv4",
           "title": "TUN接口的IPv4前缀",
           "description": "TUN接口的IPv4前缀",
-          "markdownDescription": "`TUN`接口的`IPv4`前缀",
-          "deprecationMessage": "已弃用"
+          "markdownDescription": "`TUN`接口的`IPv4`前缀"
         },
         "inet6-address": {
           "$ref": "#/definitions/patterns/ipv6",

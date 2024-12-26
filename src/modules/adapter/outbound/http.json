@@ -87,8 +87,7 @@
           "type": "object",
           "title": "请求头",
           "description": "请求头",
-          "markdownDescription": "请求头",
-          "additionalProperties": { "type": "string" }
+          "markdownDescription": "请求头"
         }
       }
     },

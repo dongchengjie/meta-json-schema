@@ -1,1163 +1,1235 @@
-# 混合端口
-mixed-port: 7890
-# 局域网访问控制(白名单/黑名单)
-allow-lan: true
-lan-allowed-ips: ["0.0.0.0/0", "::/0"]
-lan-disallowed-ips: []
-# 运行模式
+port: 7890 # HTTP(S) 代理服务器端口
+socks-port: 7891 # SOCKS5 代理端口
+mixed-port: 10801 # HTTP(S) 和 SOCKS 代理混合端口
+redir-port: 7892 # 透明代理端口，用于 Linux 和 MacOS
+
+# Transparent proxy server port for Linux (TProxy TCP and TProxy UDP)
+tproxy-port: 7893
+
+allow-lan: true # 允许局域网连接
+bind-address: "*" # 绑定 IP 地址，仅作用于 allow-lan 为 true，'*'表示所有地址
+authentication: # http,socks 入口的验证用户名，密码
+  - "username:password"
+skip-auth-prefixes: # 设置跳过验证的 IP 段
+  - 127.0.0.1/8
+  - ::1/128
+lan-allowed-ips: # 允许连接的 IP 地址段，仅作用于 allow-lan 为 true, 默认值为 0.0.0.0/0 和::/0
+  - 0.0.0.0/0
+  - ::/0
+lan-disallowed-ips: # 禁止连接的 IP 地址段，黑名单优先级高于白名单，默认值为空
+  - 192.168.0.3/32
+
+#  find-process-mode has 3 values:always, strict, off
+#  - always, 开启，强制匹配所有进程
+#  - strict, 默认，由 mihomo 判断是否开启
+#  - off, 不匹配进程，推荐在路由器上使用此模式
+find-process-mode: strict
+
 mode: rule
-# 日志级别
-log-level: info
-# 接受IPv6流量
-ipv6: true
-# 外部控制监听地址、访问密钥
-external-controller: 0.0.0.0:9090
-secret: ""
-# 延迟计算去除握手等额外延迟
-unified-delay: false
-# TCP并发
-tcp-concurrent: true
-# 全局客户端指纹(支持VLESS,VMess,Trojan)
-global-client-fingerprint: chrome
-# 下载外部资源(proxy-provider、rule-provider、GEO等)使用的UA
-global-ua: clash.meta
 
-# DNS配置
-domestic_nameservers: &domestic_nameservers
-  - https://dns.alidns.com/dns-query # 阿里云公共DNS
-  - https://doh.pub/dns-query # 腾讯DNSPod
-  - https://doh.360.cn/dns-query # 360安全DNS
-foreign_nameservers: &foreign_nameservers
-  - https://1.1.1.1/dns-query # Cloudflare(主)
-  - https://1.0.0.1/dns-query # Cloudflare(备)
-  - https://208.67.222.222/dns-query # OpenDNS(主)
-  - https://208.67.220.220/dns-query # OpenDNS(备)
-  - https://194.242.2.2/dns-query # Mullvad(主)
-  - https://194.242.2.3/dns-query # Mullvad(备)
-dns:
-  enable: true
-  ipv6: true
-  use-system-hosts: false
-  cache-algorithm: arc
-  enhanced-mode: fake-ip
-  fake-ip-range: 198.18.0.1/16
-  fake-ip-filter:
-    [
-      "+.lan",
-      "+.local",
-      "+.msftconnecttest.com",
-      "+.msftncsi.com",
-      "localhost.ptlogin2.qq.com",
-      "localhost.sec.qq.com",
-      "localhost.work.weixin.qq.com"
-    ]
-  default-nameserver: ["223.5.5.5", "119.29.29.29", "1.1.1.1", "8.8.8.8"]
-  nameserver: *domestic_nameservers
-  proxy-server-nameserver: *domestic_nameservers
-  nameserver-policy:
-    "+.mirror.ghproxy.com": *foreign_nameservers
-    "geosite:private,cn,geolocation-cn": *domestic_nameservers
-    "geosite:google,youtube,telegram,gfw,geolocation-!cn": *foreign_nameservers
-
-# GEO自动更新、更新间隔(单位: 小时)、更新下载地址
-geo-auto-update: true
-geo-update-interval: 48
+#自定义 geodata url
 geox-url:
-  geoip: https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat
-  geosite: https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat
-  mmdb: https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country.mmdb
+  geoip: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat"
+  geosite: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat"
+  mmdb: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.metadb"
 
-# 代理列表
-proxies:
-  - {
-      "name": "🇯🇵 日本_1",
-      "server": "54.199.34.196",
-      "port": "443",
-      "client-fingerprint": "chrome",
-      "type": "ss",
-      "cipher": "aes-256-cfb",
-      "password": "amazonskr05",
-      "tfo": false
-    }
-  - {
-      "name": "🇯🇵 日本_2",
-      "server": "54.248.142.136",
-      "port": "443",
-      "client-fingerprint": "chrome",
-      "type": "ss",
-      "cipher": "aes-256-cfb",
-      "password": "amazonskr05",
-      "tfo": false
-    }
-  - {
-      "name": "🇯🇵 日本_3",
-      "server": "52.196.152.62",
-      "port": "443",
-      "client-fingerprint": "chrome",
-      "type": "ss",
-      "cipher": "aes-256-cfb",
-      "password": "amazonskr05",
-      "tfo": false
-    }
-  - {
-      "name": "🇯🇵 日本_4",
-      "server": "52.193.184.18",
-      "port": "443",
-      "client-fingerprint": "chrome",
-      "type": "ss",
-      "cipher": "aes-256-cfb",
-      "password": "amazonskr05",
-      "tfo": false
-    }
-  - {
-      "name": "🇯🇵 日本_5",
-      "server": "54.199.12.31",
-      "port": "443",
-      "client-fingerprint": "chrome",
-      "type": "ss",
-      "cipher": "aes-256-cfb",
-      "password": "amazonskr05",
-      "tfo": false
-    }
-  - {
-      "name": "🇯🇵 日本_6",
-      "server": "52.193.200.75",
-      "port": "443",
-      "client-fingerprint": "chrome",
-      "type": "ss",
-      "cipher": "aes-256-cfb",
-      "password": "amazonskr05",
-      "tfo": false
-    }
-  - {
-      "name": "🇯🇵 日本_7",
-      "server": "52.195.205.31",
-      "port": "443",
-      "client-fingerprint": "chrome",
-      "type": "ss",
-      "cipher": "aes-256-cfb",
-      "password": "amazonskr05",
-      "tfo": false
-    }
-  - {
-      "name": "🇯🇵 日本_8",
-      "server": "18.183.146.147",
-      "port": "443",
-      "type": "ss",
-      "cipher": "aes-256-cfb",
-      "password": "amazonskr05"
-    }
-  - {
-      "name": "🇯🇵 日本_9",
-      "server": "3.112.174.89",
-      "port": "443",
-      "client-fingerprint": "chrome",
-      "type": "ss",
-      "cipher": "aes-256-cfb",
-      "password": "amazonskr05",
-      "tfo": false
-    }
-  - {
-      "name": "🇯🇵 日本_10",
-      "server": "52.195.210.20",
-      "port": "443",
-      "client-fingerprint": "chrome",
-      "type": "ss",
-      "cipher": "aes-256-cfb",
-      "password": "amazonskr05",
-      "tfo": false
-    }
-  - {
-      "name": "🇸🇬 新加坡_1",
-      "server": "54.169.5.182",
-      "port": "443",
-      "client-fingerprint": "chrome",
-      "type": "ss",
-      "cipher": "aes-256-cfb",
-      "password": "amazonskr05",
-      "tfo": false
-    }
-  - {
-      "name": "🇸🇬 新加坡_2",
-      "server": "54.254.79.231",
-      "port": "443",
-      "client-fingerprint": "chrome",
-      "type": "ss",
-      "cipher": "aes-256-cfb",
-      "password": "amazonskr05",
-      "tfo": false
-    }
-  - {
-      "name": "🇸🇬 新加坡_3",
-      "server": "47.128.225.94",
-      "port": "443",
-      "client-fingerprint": "chrome",
-      "type": "ss",
-      "cipher": "aes-256-cfb",
-      "password": "amazonskr05",
-      "tfo": false
-    }
-  - {
-      "name": "❓ 未知_1",
-      "server": "54.179.69.136",
-      "port": "443",
-      "client-fingerprint": "chrome",
-      "type": "ss",
-      "cipher": "aes-256-cfb",
-      "password": "amazonskr05",
-      "tfo": false
-    }
-  - {
-      "name": "❓ 未知_2",
-      "server": "13.250.110.56",
-      "port": "443",
-      "client-fingerprint": "chrome",
-      "type": "ss",
-      "cipher": "aes-256-cfb",
-      "password": "amazonskr05",
-      "tfo": false
-    }
-  - {
-      "name": "🇰🇷 韩国_1",
-      "server": "103.44.255.81",
-      "port": "443",
-      "type": "vless",
-      "uuid": "89b3cbba-e6ac-485a-9481-976a0415eab9",
-      "tls": true,
-      "skip-cert-verify": false,
-      "servername": "v2.yunchun.top",
-      "network": "ws",
-      "ws-opts":
-        { "path": "/?ed=2048&Telegram🇨🇳+@WangCai2", "headers": { "Host": "v2.yunchun.top" } }
-    }
-  - {
-      "name": "🇯🇵 日本_11",
-      "server": "43.207.81.209",
-      "port": "443",
-      "client-fingerprint": "chrome",
-      "type": "ss",
-      "cipher": "aes-256-cfb",
-      "password": "amazonskr05",
-      "tfo": false
-    }
-  - {
-      "name": "🇯🇵 日本_12",
-      "server": "54.248.121.219",
-      "port": "443",
-      "type": "vless",
-      "uuid": "89b3cbba-e6ac-485a-9481-976a0415eab9",
-      "tls": true,
-      "skip-cert-verify": false,
-      "servername": "v2.yunchun.top",
-      "network": "ws",
-      "ws-opts":
-        { "path": "/?ed=2048&Telegram🇨🇳+@WangCai2", "headers": { "Host": "v2.yunchun.top" } }
-    }
-  - {
-      "name": "🇸🇬 新加坡_4",
-      "server": "54.251.196.3",
-      "port": "443",
-      "client-fingerprint": "chrome",
-      "type": "ss",
-      "cipher": "aes-256-cfb",
-      "password": "amazonskr05",
-      "tfo": false
-    }
-  - {
-      "name": "🇯🇵 日本_13",
-      "server": "141.11.139.211",
-      "port": "8443",
-      "type": "vless",
-      "uuid": "89b3cbba-e6ac-485a-9481-976a0415eab9",
-      "tls": true,
-      "skip-cert-verify": false,
-      "servername": "v2.yunchun.top",
-      "network": "ws",
-      "ws-opts":
-        { "path": "/?ed=2048&Telegram🇨🇳+@WangCai2", "headers": { "Host": "v2.yunchun.top" } }
-    }
-  - {
-      "name": "❓ 未知_3",
-      "type": "trojan",
-      "server": "jp005.421421.xyz",
-      "port": "20230",
-      "udp": true,
-      "password": "d971ee7a-32d9-402a-8a4f-d2135d48a47b",
-      "sni": "421421.xyz",
-      "skip-cert-verify": true,
-      "network": "tcp"
-    }
-  - {
-      "name": "🇺🇸 美国_1",
-      "type": "hysteria2",
-      "server": "vr.179179.xyz",
-      "port": "12959",
-      "password": "d07a5927-3ed1-4a1a-b9fa-799e7d09a8e9",
-      "sni": "vr.179179.xyz",
-      "skip-cert-verify": false,
-      "alpn": ["h3"]
-    }
-  - {
-      "name": "🇺🇸 美国_2",
-      "type": "tuic",
-      "server": "hy.179179.xyz",
-      "port": "42189",
-      "password": "341ed386-38cc-412c-a3c9-bbff24b22ed4",
-      "uuid": "341ed386-38cc-412c-a3c9-bbff24b22ed4",
-      "alpn": ["h3"],
-      "congestion-controller": "bbr"
-    }
-  - {
-      "name": "🇰🇷 韩国_2",
-      "server": "103.20.199.101",
-      "port": "30860",
-      "type": "vless",
-      "uuid": "89b3cbba-e6ac-485a-9481-976a0415eab9",
-      "tls": true,
-      "skip-cert-verify": false,
-      "servername": "v2.yunchun.top",
-      "network": "ws",
-      "ws-opts":
-        { "path": "/?ed=2048&Telegram🇨🇳+@WangCai2", "headers": { "Host": "v2.yunchun.top" } }
-    }
-  - {
-      "name": "🇯🇵 日本_14",
-      "server": "165.154.43.92",
-      "port": "35181",
-      "type": "vless",
-      "uuid": "89b3cbba-e6ac-485a-9481-976a0415eab9",
-      "tls": true,
-      "skip-cert-verify": false,
-      "servername": "v2.yunchun.top",
-      "network": "ws",
-      "ws-opts":
-        { "path": "/?ed=2048&Telegram🇨🇳+@WangCai2", "headers": { "Host": "v2.yunchun.top" } }
-    }
-  - {
-      "name": "🇺🇸 美国_3",
-      "server": "114.34.202.224",
-      "port": "10004",
-      "type": "vless",
-      "uuid": "89b3cbba-e6ac-485a-9481-976a0415eab9",
-      "tls": true,
-      "skip-cert-verify": false,
-      "servername": "v2.yunchun.top",
-      "network": "ws",
-      "ws-opts":
-        { "path": "/?ed=2048&Telegram🇨🇳+@WangCai2", "headers": { "Host": "v2.yunchun.top" } }
-    }
-  - {
-      "name": "🇯🇵 日本_15",
-      "server": "43.206.233.92",
-      "port": "443",
-      "client-fingerprint": "chrome",
-      "type": "ss",
-      "cipher": "aes-256-cfb",
-      "password": "amazonskr05",
-      "tfo": false
-    }
-  - {
-      "name": "🇺🇸 美国_4",
-      "type": "hysteria2",
-      "server": "hy.179179.xyz",
-      "port": "29800",
-      "password": "5aa778a9-1789-4d2f-b4bb-f182d2b63f57",
-      "sni": "hy.179179.xyz",
-      "skip-cert-verify": false,
-      "alpn": ["h3"]
-    }
-  - {
-      "name": "🇰🇷 韩国_3",
-      "server": "45.153.130.97",
-      "port": "25909",
-      "type": "vless",
-      "uuid": "89b3cbba-e6ac-485a-9481-976a0415eab9",
-      "tls": true,
-      "skip-cert-verify": false,
-      "servername": "v2.yunchun.top",
-      "network": "ws",
-      "ws-opts":
-        { "path": "/?ed=2048&Telegram🇨🇳+@WangCai2", "headers": { "Host": "v2.yunchun.top" } }
-    }
-  - {
-      "name": "🇺🇸 美国_5",
-      "type": "tuic",
-      "server": "vr.179179.xyz",
-      "port": "16002",
-      "password": "d07a5927-3ed1-4a1a-b9fa-799e7d09a8e9",
-      "uuid": "d07a5927-3ed1-4a1a-b9fa-799e7d09a8e9",
-      "alpn": ["h3"],
-      "congestion-controller": "bbr"
-    }
-  - {
-      "name": "🇦🇺 澳大利亚",
-      "server": "118.163.37.32",
-      "port": "81",
-      "type": "vless",
-      "uuid": "89b3cbba-e6ac-485a-9481-976a0415eab9",
-      "tls": true,
-      "skip-cert-verify": false,
-      "servername": "v2.yunchun.top",
-      "network": "ws",
-      "ws-opts":
-        { "path": "/?ed=2048&Telegram🇨🇳+@WangCai2", "headers": { "Host": "v2.yunchun.top" } }
-    }
-  - {
-      "name": "🇭🇰 香港",
-      "type": "trojan",
-      "server": "32c7696277e1e7bc6135ffa96da09122.v1.cac.node-is.green",
-      "port": "46983",
-      "udp": true,
-      "password": "e87e2257-e387-4254-9b12-ba499549c847",
-      "sni": "hk12.bilibili.com",
-      "skip-cert-verify": true
-    }
-  - {
-      "name": "🇦🇪 阿联酋",
-      "server": "185.214.103.210",
-      "port": "29862",
-      "type": "vless",
-      "uuid": "89b3cbba-e6ac-485a-9481-976a0415eab9",
-      "tls": true,
-      "skip-cert-verify": false,
-      "servername": "v2.yunchun.top",
-      "network": "ws",
-      "ws-opts":
-        { "path": "/?ed=2048&Telegram🇨🇳+@WangCai2", "headers": { "Host": "v2.yunchun.top" } }
-    }
-  - {
-      "name": "🇰🇷 韩国_4",
-      "server": "185.213.62.199",
-      "port": "39584",
-      "type": "vless",
-      "uuid": "89b3cbba-e6ac-485a-9481-976a0415eab9",
-      "tls": true,
-      "skip-cert-verify": false,
-      "servername": "v2.yunchun.top",
-      "network": "ws",
-      "ws-opts":
-        { "path": "/?ed=2048&Telegram🇨🇳+@WangCai2", "headers": { "Host": "v2.yunchun.top" } }
-    }
-  - {
-      "name": "🇺🇸 美国_6",
-      "server": "54.185.18.43",
-      "port": "443",
-      "client-fingerprint": "chrome",
-      "type": "ss",
-      "cipher": "aes-256-cfb",
-      "password": "amazonskr05",
-      "tfo": false
-    }
-  - {
-      "name": "🇺🇸 美国_7",
-      "server": "54.203.119.192",
-      "port": "443",
-      "client-fingerprint": "chrome",
-      "type": "ss",
-      "cipher": "aes-256-cfb",
-      "password": "amazonskr05",
-      "tfo": false
-    }
-  - {
-      "name": "🇺🇸 美国_8",
-      "server": "54.200.220.184",
-      "port": "443",
-      "client-fingerprint": "chrome",
-      "type": "ss",
-      "cipher": "aes-256-cfb",
-      "password": "amazonskr05",
-      "tfo": false
-    }
-  - {
-      "name": "🇯🇵 日本_16",
-      "server": "j-p01.loveroise.com",
-      "port": "54096",
-      "type": "ss",
-      "cipher": "chacha20-ietf-poly1305",
-      "password": "09833a6f-4d46-426e-87fe-7793a5489f84"
-    }
-  - {
-      "name": "🇯🇵 日本_17",
-      "server": "j-p02.loveroise.com",
-      "port": "54098",
-      "type": "ss",
-      "cipher": "chacha20-ietf-poly1305",
-      "password": "09833a6f-4d46-426e-87fe-7793a5489f84"
-    }
-  - {
-      "name": "🇩🇪 德国",
-      "server": "63.176.110.139",
-      "port": "22222",
-      "type": "trojan",
-      "password": "telegram-id-directvpn",
-      "sni": "trojan.burgerip.co.uk"
-    }
-  - {
-      "name": "🇰🇷 韩国_5",
-      "server": "154.21.93.97",
-      "port": "12378",
-      "type": "vless",
-      "uuid": "89b3cbba-e6ac-485a-9481-976a0415eab9",
-      "tls": true,
-      "skip-cert-verify": false,
-      "servername": "v2.yunchun.top",
-      "network": "ws",
-      "ws-opts":
-        { "path": "/?ed=2048&Telegram🇨🇳+@WangCai2", "headers": { "Host": "v2.yunchun.top" } }
-    }
-  - {
-      "name": "🇳🇱 荷兰",
-      "server": "23.169.184.125",
-      "port": "25526",
-      "type": "vless",
-      "uuid": "89b3cbba-e6ac-485a-9481-976a0415eab9",
-      "tls": true,
-      "skip-cert-verify": false,
-      "servername": "v2.yunchun.top",
-      "network": "ws",
-      "ws-opts":
-        { "path": "/?ed=2048&Telegram🇨🇳+@WangCai2", "headers": { "Host": "v2.yunchun.top" } }
-    }
-  - {
-      "name": "❓ 未知_4",
-      "server": "3.10.239.177",
-      "port": "22222",
-      "type": "trojan",
-      "password": "telegram-id-privatevpns",
-      "sni": "trojan.burgerip.co.uk"
-    }
-  - {
-      "name": "❓ 未知_5",
-      "server": "52.197.230.94",
-      "port": "443",
-      "type": "vless",
-      "uuid": "89b3cbba-e6ac-485a-9481-976a0415eab9",
-      "tls": true,
-      "skip-cert-verify": false,
-      "servername": "v2.yunchun.top",
-      "network": "ws",
-      "ws-opts":
-        { "path": "/?ed=2048&Telegram🇨🇳+@WangCai2", "headers": { "Host": "v2.yunchun.top" } }
-    }
-  - {
-      "name": "🇺🇸 美国_9",
-      "type": "vless",
-      "server": "23.105.202.103",
-      "port": "17436",
-      "udp": true,
-      "uuid": "50c74bf0-f502-4d16-af22-f3f13fde82a6",
-      "tls": true,
-      "servername": "ddyinuo.net",
-      "flow": "xtls-rprx-vision",
-      "network": "tcp",
-      "reality-opts":
-        {
-          "public-key": "5m86YpAytHADTCSWKlleWGPAp0qq8oFYH_iNu3gtIxA",
-          "short-id": "6ba85179e30d4fc2"
-        },
-      "client-fingerprint": "chrome"
-    }
-  - {
-      "name": "❓ 未知_6",
-      "server": "34.208.196.91",
-      "port": "443",
-      "type": "ss",
-      "cipher": "aes-256-cfb",
-      "password": "amazonskr05"
-    }
-  - {
-      "name": "🇺🇸 美国_10",
-      "type": "vless",
-      "server": "142.171.126.130",
-      "port": "10003",
-      "udp": true,
-      "uuid": "78e31733-b7a2-4e15-8dbf-8c3ebbb07f8d",
-      "tls": true,
-      "servername": "www.yzjswz.com",
-      "flow": "xtls-rprx-vision",
-      "network": "tcp",
-      "reality-opts":
-        {
-          "public-key": "JfDMji8dLkJPhozUtqvh0hL34n5-LQR0Fo1NqNu6uDk",
-          "short-id": "6ba85179e30d4fc2"
-        },
-      "client-fingerprint": "chrome"
-    }
-  - {
-      "name": "❓ 未知_7",
-      "server": "18.132.156.16",
-      "port": "22222",
-      "type": "trojan",
-      "password": "telegram-id-privatevpns",
-      "sni": "trojan.burgerip.co.uk"
-    }
-  - {
-      "name": "🇰🇷 韩国_6",
-      "server": "k-r02.loveroise.com",
-      "port": "54010",
-      "type": "ss",
-      "cipher": "chacha20-ietf-poly1305",
-      "password": "09833a6f-4d46-426e-87fe-7793a5489f84"
-    }
-  - {
-      "name": "❓ 未知_8",
-      "server": "34.250.114.133",
-      "port": "22222",
-      "type": "trojan",
-      "password": "telegram-id-privatevpns",
-      "sni": "trojan.burgerip.co.uk"
-    }
-  - {
-      "name": "🇰🇷 韩国_7",
-      "server": "k-r04.loveroise.com",
-      "port": "54014",
-      "type": "ss",
-      "cipher": "chacha20-ietf-poly1305",
-      "password": "09833a6f-4d46-426e-87fe-7793a5489f84"
-    }
-  - {
-      "name": "🇸🇬 新加坡_5",
-      "type": "ssr",
-      "server": "95b1cd85a0968ff2.cdn.jiashule.com",
-      "port": "40251",
-      "password": "ENZ52K",
-      "cipher": "rc4-md5",
-      "obfs": "plain",
-      "protocol": "auth_aes128_md5",
-      "obfs-param": "255e7112598.6602b8463464108506.microsoft.com",
-      "protocol-param": "112598:vcy7qi",
-      "group": "SSRProvider"
-    }
-  - {
-      "name": "mieru",
-      "type": "mieru",
-      "server": "1.2.3.4",
-      "transport": "TCP",
-      "port": "125",
-      # "port-range": "125-895",
-      "username": "username",
-      "password": "password"
-    }
-# 代理组
+geo-auto-update: false # 是否自动更新 geodata
+geo-update-interval: 24 # 更新间隔，单位：小时
+
+# Matcher implementation used by GeoSite, available implementations:
+# - succinct (default, same as rule-set)
+# - mph (from V2Ray, also `hybrid` in Xray)
+geosite-matcher: succinct
+
+log-level: debug # 日志等级 silent/error/warning/info/debug
+
+ipv6: true # 开启 IPv6 总开关，关闭阻断所有 IPv6 链接和屏蔽 DNS 请求 AAAA 记录
+
+tls:
+  certificate: string # 证书 PEM 格式，或者 证书的路径
+  private-key: string # 证书对应的私钥 PEM 格式，或者私钥路径
+  custom-certifactes:
+    - |
+      -----BEGIN CERTIFICATE-----
+      format/pem...
+      -----END CERTIFICATE-----
+
+external-controller: 0.0.0.0:9093 # RESTful API 监听地址
+external-controller-tls: 0.0.0.0:9443 # RESTful API HTTPS 监听地址，需要配置 tls 部分配置文件
+secret: "123456" # `Authorization:Bearer ${secret}`
+
+# RESTful API CORS标头配置
+external-controller-cors:
+  allow-origins:
+    - "*"
+  allow-private-network: true
+
+# RESTful API Unix socket 监听地址（ windows版本大于17063也可以使用，即大于等于1803/RS4版本即可使用 ）
+# ！！！注意： 从Unix socket访问api接口不会验证secret， 如果开启请自行保证安全问题 ！！！
+# 测试方法： curl -v --unix-socket "mihomo.sock" http://localhost/
+external-controller-unix: mihomo.sock
+
+# RESTful API Windows namedpipe 监听地址
+# ！！！注意： 从Windows namedpipe访问api接口不会验证secret， 如果开启请自行保证安全问题 ！！！
+external-controller-pipe: \\.\pipe\mihomo
+
+tcp-concurrent: true # TCP 并发连接所有 IP, 将使用最快握手的 TCP
+
+# 配置 WEB UI 目录，使用 http://{{external-controller}}/ui 访问
+external-ui: /path/to/ui/folder/
+external-ui-name: xd
+external-ui-url: "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip"
+
+# 在RESTful API端口上开启DOH服务器
+# ！！！该URL不会验证secret， 如果开启请自行保证安全问题 ！！！
+external-doh-server: /dns-query
+
+interface-name: en0 # 设置出口网卡
+
+# 全局 TLS 指纹，优先低于 proxy 内的 client-fingerprint
+# 可选： "chrome","firefox","safari","ios","random","none" options.
+# Utls is currently support TLS transport in TCP/grpc/WS/HTTP for VLESS/Vmess and trojan.
+global-client-fingerprint: chrome
+
+#  TCP keep alive interval
+disable-keep-alive: false #目前在android端强制为true
+keep-alive-idle: 15
+keep-alive-interval: 15
+
+# routing-mark:6666 # 配置 fwmark 仅用于 Linux
+experimental:
+  # Disable quic-go GSO support. This may result in reduced performance on Linux.
+  # This is not recommended for most users.
+  # Only users encountering issues with quic-go's internal implementation should enable this,
+  # and they should disable it as soon as the issue is resolved.
+  # This field will be removed when quic-go fixes all their issues in GSO.
+  # This equivalent to the environment variable QUIC_GO_DISABLE_GSO=1.
+  quic-go-disable-gso: true
+
+# 类似于 /etc/hosts, 仅支持配置单个 IP
+hosts:
+  "*.mihomo.dev": 127.0.0.1
+  ".dev": 127.0.0.1
+  "alpha.mihomo.dev": "::1"
+  test.com: [1.1.1.1, 2.2.2.2]
+  home.lan: lan # lan 为特别字段，将加入本地所有网卡的地址
+  baidu.com: google.com # 只允许配置一个别名
+
+profile: # 存储 select 选择记录
+  store-selected: false
+
+  # 持久化 fake-ip
+  store-fake-ip: true
+
+# Tun 配置
+tun:
+  enable: false
+  stack: system # gvisor/mixed
+  dns-hijack:
+    - 0.0.0.0:53 # 需要劫持的 DNS
+  auto-detect-interface: true # 自动识别出口网卡
+  auto-route: true # 配置路由表
+  mtu: 9000 # 最大传输单元
+  gso: false # 启用通用分段卸载，仅支持 Linux
+  gso-max-size: 65536 # 通用分段卸载包的最大大小
+  auto-redirect: false # 自动配置 iptables 以重定向 TCP 连接。仅支持 Linux。带有 auto-redirect 的 auto-route 现在可以在路由器上按预期工作，无需干预。
+  strict-route: true # 将所有连接路由到 tun 来防止泄漏，但你的设备将无法其他设备被访问
+  route-address-set: # 将指定规则集中的目标 IP CIDR 规则添加到防火墙, 不匹配的流量将绕过路由, 仅支持 Linux，且需要 nftables，`auto-route` 和 `auto-redirect` 已启用。
+    - ruleset-1
+    - ruleset-2
+  route-exclude-address-set: # 将指定规则集中的目标 IP CIDR 规则添加到防火墙, 匹配的流量将绕过路由, 仅支持 Linux，且需要 nftables，`auto-route` 和 `auto-redirect` 已启用。
+    - ruleset-3
+    - ruleset-4
+  route-address: # 启用 auto-route 时使用自定义路由而不是默认路由
+    - 0.0.0.0/1
+    - 128.0.0.0/1
+    - "::/1"
+    - "8000::/1"
+  # inet4-route-address: # 启用 auto-route 时使用自定义路由而不是默认路由（旧写法）
+  #   - 0.0.0.0/1
+  #   - 128.0.0.0/1
+  # inet6-route-address: # 启用 auto-route 时使用自定义路由而不是默认路由（旧写法）
+  #   - "::/1"
+  #   - "8000::/1"
+  endpoint-independent-nat: false # 启用独立于端点的 NAT
+  include-interface: # 限制被路由的接口。默认不限制，与 `exclude-interface` 冲突
+    - "lan0"
+  exclude-interface: # 排除路由的接口，与 `include-interface` 冲突
+    - "lan1"
+  include-uid: # UID 规则仅在 Linux 下被支持，并且需要 auto-route
+    - 0
+  include-uid-range: # 限制被路由的的用户范围
+    - 1000:9999
+  exclude-uid: # 排除路由的的用户
+    - 1000
+  exclude-uid-range: # 排除路由的的用户范围
+    - 1000:9999
+
+  # Android 用户和应用规则仅在 Android 下被支持
+  # 并且需要 auto-route
+
+  include-android-user: # 限制被路由的 Android 用户
+    - 0
+    - 10
+  include-package: # 限制被路由的 Android 应用包名
+    - com.android.chrome
+  exclude-package: # 排除被路由的 Android 应用包名
+    - com.android.captiveportallogin
+
+# 嗅探域名 可选配置
+sniffer:
+  enable: false
+  ## 对 redir-host 类型识别的流量进行强制嗅探
+  ## 如：Tun、Redir 和 TProxy 并 DNS 为 redir-host 皆属于
+  force-dns-mapping: false
+  ## 对所有未获取到域名的流量进行强制嗅探
+  parse-pure-ip: false
+  # 是否使用嗅探结果作为实际访问，默认 true
+  # 全局配置，优先级低于 sniffer.sniff 实际配置
+  override-destination: false
+  sniff: # TLS 和 QUIC 默认如果不配置 ports 默认嗅探 443
+    QUIC:
+      ports: [443]
+    TLS:
+      ports: [443, 8443]
+
+    # 默认嗅探 80
+    HTTP: # 需要嗅探的端口
+      ports: [80, 8080-8880]
+      # 可覆盖 sniffer.override-destination
+      override-destination: true
+  force-domain:
+    - +.v2ex.com
+  skip-src-address: # 对于来源ip跳过嗅探
+    - 192.168.0.3/32
+  skip-dst-address: # 对于目标ip跳过嗅探
+    - 192.168.0.3/32
+  ## 对嗅探结果进行跳过
+  skip-domain:
+    - Mijia Cloud
+  # 需要嗅探协议
+  # 已废弃，若 sniffer.sniff 配置则此项无效
+  # sniffing:
+  #   - tls
+  #   - http
+  # 强制对此域名进行嗅探
+
+  # 仅对白名单中的端口进行嗅探，默认为 443，80
+  # 已废弃，若 sniffer.sniff 配置则此项无效
+  # port-whitelist:
+  #   - "80"
+  #   - "443"
+  #   - 8000-9999
+
+tunnels: # one line config
+  - tcp/udp,127.0.0.1:6553,114.114.114.114:53,proxy
+  - tcp,127.0.0.1:6666,rds.mysql.com:3306,vpn
+  # full yaml config
+  - network: [tcp, udp]
+    address: 127.0.0.1:7777
+    target: target.com
+    proxy: proxy
+
+# DNS 配置
+dns:
+  cache-algorithm: arc
+  enable: false # 关闭将使用系统 DNS
+  prefer-h3: false # 是否开启 DoH 支持 HTTP/3，将并发尝试
+  listen: 0.0.0.0:53 # 开启 DNS 服务器监听
+  ipv6: false # false 将返回 AAAA 的空结果
+  ipv6-timeout: 300 # 单位：ms，内部双栈并发时，向上游查询 AAAA 时，等待 AAAA 的时间，默认 100ms
+  # 用于解析 nameserver，fallback 以及其他 DNS 服务器配置的，DNS 服务域名
+  # 只能使用纯 IP 地址，可使用加密 DNS
+  default-nameserver:
+    - 114.114.114.114
+    - 8.8.8.8
+    - tls://1.12.12.12:853
+    - tls://223.5.5.5:853
+    - system # append DNS server from system configuration. If not found, it would print an error log and skip.
+  enhanced-mode: fake-ip # or redir-host
+
+  fake-ip-range: 198.18.0.1/16 # fake-ip 池设置
+
+  # 配置不使用 fake-ip 的域名
+  fake-ip-filter:
+    - "*.lan"
+    - localhost.ptlogin2.qq.com
+    # fakeip-filter 为 rule-providers 中的名为 fakeip-filter 规则订阅，
+    # 且 behavior 必须为 domain/classical，当为 classical 时仅会生效域名类规则
+    - rule-set:fakeip-filter
+    # fakeip-filter 为 geosite 中名为 fakeip-filter 的分类（需要自行保证该分类存在）
+    - geosite:fakeip-filter
+  # 配置fake-ip-filter的匹配模式，默认为blacklist，即如果匹配成功不返回fake-ip
+  # 可设置为whitelist，即只有匹配成功才返回fake-ip
+  fake-ip-filter-mode: blacklist
+
+  use-hosts: true # 查询 hosts
+  use-system-hosts: true # 使用系统 hosts
+
+  # 配置后面的nameserver、fallback和nameserver-policy向dns服务器的连接过程是否遵守遵守rules规则
+  # 如果为false（默认值）则这三部分的dns服务器在未特别指定的情况下会直连
+  # 如果为true，将会按照rules的规则匹配链接方式（走代理或直连），如果有特别指定则任然以指定值为准
+  # 仅当proxy-server-nameserver非空时可以开启此选项, 强烈不建议和prefer-h3一起使用
+  # 此外，这三者配置中的dns服务器如果出现域名会采用default-nameserver配置项解析，也请确保正确配置default-nameserver
+  respect-rules: false
+
+  # DNS 主要域名配置
+  # 支持 UDP，TCP，DoT，DoH，DoQ
+  # 这部分为主要 DNS 配置，影响所有直连，确保使用对大陆解析精准的 DNS
+  nameserver:
+    - 114.114.114.114 # default value
+    - 8.8.8.8 # default value
+    - tls://223.5.5.5:853 # DNS over TLS
+    - https://doh.pub/dns-query # DNS over HTTPS
+    - https://dns.alidns.com/dns-query#h3=true # 强制 HTTP/3，与 perfer-h3 无关，强制开启 DoH 的 HTTP/3 支持，若不支持将无法使用
+    - https://mozilla.cloudflare-dns.com/dns-query#DNS&h3=true # 指定策略组和使用 HTTP/3
+    - dhcp://en0 # dns from dhcp
+    - quic://dns.adguard.com:784 # DNS over QUIC
+    - "8.8.8.8#RULES" # 效果同respect-rules，但仅对该服务器生效
+    - "8.8.8.8#en0" # 兼容指定 DNS 出口网卡
+
+  # 当配置 fallback 时，会查询 nameserver 中返回的 IP 是否为 CN，非必要配置
+  # 当不是 CN，则使用 fallback 中的 DNS 查询结果
+  # 确保配置 fallback 时能够正常查询
+  fallback:
+    - tcp://1.1.1.1
+    - "tcp://1.1.1.1#ProxyGroupName" # 指定 DNS 过代理查询，ProxyGroupName 为策略组名或节点名，过代理配置优先于配置出口网卡，当找不到策略组或节点名则设置为出口网卡
+
+  # 专用于节点域名解析的 DNS 服务器，非必要配置项，如果不填则遵循nameserver-policy、nameserver和fallback的配置
+  proxy-server-nameserver:
+    - https://dns.google/dns-query
+    - tls://one.one.one.one
+
+  # 专用于direct出口域名解析的 DNS 服务器，非必要配置项，如果不填则遵循nameserver-policy、nameserver和fallback的配置
+  direct-nameserver:
+    - system://
+  direct-nameserver-follow-policy: false # 是否遵循nameserver-policy，默认为不遵守，仅当direct-nameserver不为空时生效
+
+  # 配置 fallback 使用条件
+  fallback-filter:
+    geoip: true # 配置是否使用 geoip
+    geoip-code: CN # 当 nameserver 域名的 IP 查询 geoip 库为 CN 时，不使用 fallback 中的 DNS 查询结果
+  #   配置强制 fallback，优先于 IP 判断，具体分类自行查看 geosite 库
+  geosite:
+    - gfw
+  #   如果不匹配 ipcidr 则使用 nameservers 中的结果
+  ipcidr:
+    - 240.0.0.0/4
+  domain:
+    - "+.google.com"
+    - "+.facebook.com"
+    - "+.youtube.com"
+
+  # 配置查询域名使用的 DNS 服务器
+  nameserver-policy:
+    "www.baidu.com": "114.114.114.114"
+    "+.internal.crop.com": "10.0.0.1"
+    "geosite:cn,private,apple":
+      - https://doh.pub/dns-query
+      - https://dns.alidns.com/dns-query
+    "geosite:category-ads-all": rcode://success
+    "www.baidu.com,+.google.cn": [223.5.5.5, https://dns.alidns.com/dns-query]
+    ## global，dns 为 rule-providers 中的名为 global 和 dns 规则订阅，
+    ## 且 behavior 必须为 domain/classical，当为 classical 时仅会生效域名类规则
+    "rule-set:global,dns": 8.8.8.8
+
+proxies: # socks5
+  - name: "socks"
+    type: socks5
+    server: 1.2.3.4
+    port: 443
+    username: username
+    password: password
+    tls: true
+    fingerprint: chrome
+    skip-cert-verify: true
+    udp: true
+    ip-version: ipv6
+
+  # http
+  - name: "http"
+    type: http
+    server: 1.2.3.4
+    port: 443
+    username: username
+    password: password
+    tls: true # https
+    skip-cert-verify: true
+    sni: custom.com
+    fingerprint: chrome # 同 experimental.fingerprints 使用 sha256 指纹，配置协议独立的指纹，将忽略 experimental.fingerprints
+    ip-version: dual
+
+  # Snell
+  # Beware that there's currently no UDP support yet
+  - name: "snell"
+    type: snell
+    server: 1.2.3.4
+    port: 44046
+    psk: yourpsk
+    version: 2
+    obfs-opts:
+      mode: http # or tls
+      host: bing.com
+
+  # Shadowsocks
+  # cipher支持:
+  #   aes-128-gcm aes-192-gcm aes-256-gcm
+  #   aes-128-cfb aes-192-cfb aes-256-cfb
+  #   aes-128-ctr aes-192-ctr aes-256-ctr
+  #   rc4-md5 chacha20-ietf xchacha20
+  #   chacha20-ietf-poly1305 xchacha20-ietf-poly1305
+  #   2022-blake3-aes-128-gcm 2022-blake3-aes-256-gcm 2022-blake3-chacha20-poly1305
+  - name: "ss1"
+    type: ss
+    server: 1.2.3.4
+    port: 443
+    cipher: chacha20-ietf-poly1305
+    password: "password"
+    udp: true
+    udp-over-tcp: false
+    ip-version: ipv4 # 设置节点使用 IP 版本，可选：dual，ipv4，ipv6，ipv4-prefer，ipv6-prefer。默认使用 dual
+    # ipv4：仅使用 IPv4  ipv6：仅使用 IPv6
+    # ipv4-prefer：优先使用 IPv4 对于 TCP 会进行双栈解析，并发链接但是优先使用 IPv4 链接，
+    # UDP 则为双栈解析，获取结果中的第一个 IPv4
+    # ipv6-prefer 同 ipv4-prefer
+    # 现有协议都支持此参数，TCP 效果仅在开启 tcp-concurrent 生效
+    smux:
+      enabled: false
+      protocol: smux # smux/yamux/h2mux
+      max-connections: 4 # Maximum connections. Conflict with max-streams.
+      min-streams: 4 # Minimum multiplexed streams in a connection before opening a new connection. Conflict with max-streams.
+      max-streams: 0 # Maximum multiplexed streams in a connection before opening a new connection. Conflict with max-connections and min-streams.
+      padding: false # Enable padding. Requires sing-box server version 1.3-beta9 or later.
+      statistic: false # 控制是否将底层连接显示在面板中，方便打断底层连接
+      only-tcp: false # 如果设置为 true, smux 的设置将不会对 udp 生效，udp 连接会直接走底层协议
+
+  - name: "ss2"
+    type: ss
+    server: 1.2.3.4
+    port: 443
+    cipher: chacha20-ietf-poly1305
+    password: "password"
+    plugin: obfs
+    plugin-opts:
+      mode: tls # or http
+      host: bing.com
+
+  - name: "ss3"
+    type: ss
+    server: 1.2.3.4
+    port: 443
+    cipher: chacha20-ietf-poly1305
+    password: "password"
+    plugin: v2ray-plugin
+    plugin-opts:
+      mode: websocket # no QUIC now
+      tls: true # wss
+      # 可使用 openssl x509 -noout -fingerprint -sha256 -inform pem -in yourcert.pem 获取
+      # 配置指纹将实现 SSL Pining 效果
+      fingerprint: chrome
+      skip-cert-verify: true
+      host: bing.com
+      path: "/"
+      mux: true
+      headers:
+        custom: value
+        v2ray-http-upgrade: false
+        v2ray-http-upgrade-fast-open: false
+
+  - name: "ss4-shadow-tls"
+    type: ss
+    server: 1.2.3.4
+    port: 443
+    cipher: chacha20-ietf-poly1305
+    password: "password"
+    plugin: shadow-tls
+    client-fingerprint: chrome
+    plugin-opts:
+      host: "cloud.tencent.com"
+      password: "shadow_tls_password"
+      version: 2 # support 1/2/3
+
+  - name: "ss-restls-tls13"
+    type: ss
+    server: [YOUR_SERVER_IP]
+    port: 443
+    cipher: chacha20-ietf-poly1305
+    password: [YOUR_SS_PASSWORD]
+    client-fingerprint:
+      chrome # One of: chrome, ios, firefox or safari
+      # 可以是 chrome, ios, firefox, safari 中的一个
+    plugin: restls
+    plugin-opts:
+      host:
+        "www.microsoft.com" # Must be a TLS 1.3 server
+        # 应当是一个 TLS 1.3 服务器
+      password: [YOUR_RESTLS_PASSWORD]
+      version-hint: "tls13"
+      # Control your post-handshake traffic through restls-script
+      # Hide proxy behaviors like "tls in tls".
+      # see https://github.com/3andne/restls/blob/main/Restls-Script:%20Hide%20Your%20Proxy%20Traffic%20Behavior.md
+      # 用 restls 剧本来控制握手后的行为，隐藏"tls in tls"等特征
+      # 详情：https://github.com/3andne/restls/blob/main/Restls-Script:%20%E9%9A%90%E8%97%8F%E4%BD%A0%E7%9A%84%E4%BB%A3%E7%90%86%E8%A1%8C%E4%B8%BA.md
+      restls-script: "300?100<1,400~100,350~100,600~100,300~200,300~100"
+
+  - name: "ss-restls-tls12"
+    type: ss
+    server: [YOUR_SERVER_IP]
+    port: 443
+    cipher: chacha20-ietf-poly1305
+    password: [YOUR_SS_PASSWORD]
+    client-fingerprint:
+      chrome # One of: chrome, ios, firefox or safari
+      # 可以是 chrome, ios, firefox, safari 中的一个
+    plugin: restls
+    plugin-opts:
+      host:
+        "vscode.dev" # Must be a TLS 1.2 server
+        # 应当是一个 TLS 1.2 服务器
+      password: [YOUR_RESTLS_PASSWORD]
+      version-hint: "tls12"
+      restls-script: "1000?100<1,500~100,350~100,600~100,400~200"
+
+  # vmess
+  # cipher 支持 auto/aes-128-gcm/chacha20-poly1305/none
+  - name: "vmess"
+    type: vmess
+    server: 1.2.3.4
+    port: 443
+    uuid: 8f3fca8e-d381-402c-8fdf-71f461a0170e
+    alterId: 32
+    cipher: auto
+    udp: true
+    tls: true
+    fingerprint: chrome
+    client-fingerprint: chrome # Available: "chrome","firefox","safari","ios","random", currently only support TLS transport in TCP/GRPC/WS/HTTP for VLESS/Vmess and trojan.
+    skip-cert-verify: true
+    servername: example.com # priority over wss host
+    network: ws
+    ws-opts:
+      path: /path
+      headers:
+        Host: v2ray.com
+        max-early-data: 2048
+        early-data-header-name: Sec-WebSocket-Protocol
+        v2ray-http-upgrade: false
+        v2ray-http-upgrade-fast-open: false
+
+  - name: "vmess-h2"
+    type: vmess
+    server: 1.2.3.4
+    port: 443
+    uuid: 8f3fca8e-d381-402c-8fdf-71f461a0170e
+    alterId: 32
+    cipher: auto
+    network: h2
+    tls: true
+    fingerprint: chrome
+    h2-opts:
+      host:
+        - http.example.com
+        - http-alt.example.com
+      path: /
+
+  - name: "vmess-http"
+    type: vmess
+    server: 1.2.3.4
+    port: 443
+    uuid: 8f3fca8e-d381-402c-8fdf-71f461a0170e
+    alterId: 32
+    cipher: auto
+    udp: true
+    network: http
+    http-opts:
+      method: "GET"
+      path:
+        - "/"
+        - "/video"
+      headers:
+        Connection:
+          - keep-alive
+    # ip-version: ipv4 # 设置使用 IP 类型偏好，可选：ipv4，ipv6，dual，默认值：dual
+
+  - name: vmess-grpc
+    server: 1.2.3.4
+    port: 443
+    type: vmess
+    uuid: 8f3fca8e-d381-402c-8fdf-71f461a0170e
+    alterId: 32
+    cipher: auto
+    network: grpc
+    tls: true
+    fingerprint: chrome
+    servername: example.com
+    skip-cert-verify: true
+    grpc-opts:
+      grpc-service-name: "example"
+    ip-version: ipv4
+
+  # vless
+  - name: "vless-tcp"
+    type: vless
+    server: 1.2.3.4
+    port: 443
+    uuid: 8f3fca8e-d381-402c-8fdf-71f461a0170e
+    network: tcp
+    servername: example.com # AKA SNI
+    flow: xtls-rprx-vision # xtls-rprx-origin  # enable XTLS
+    skip-cert-verify: true
+    fingerprint: chrome
+    client-fingerprint: random # Available: "chrome","firefox","safari","random","none"
+
+  - name: "vless-vision"
+    type: vless
+    server: 1.2.3.4
+    port: 443
+    uuid: 8f3fca8e-d381-402c-8fdf-71f461a0170e
+    network: tcp
+    tls: true
+    udp: true
+    flow: xtls-rprx-vision
+    client-fingerprint: chrome
+    fingerprint: chrome
+    skip-cert-verify: true
+
+  - name: "vless-reality-vision"
+    type: vless
+    server: 1.2.3.4
+    port: 443
+    uuid: 8f3fca8e-d381-402c-8fdf-71f461a0170e
+    network: tcp
+    tls: true
+    udp: true
+    flow: xtls-rprx-vision
+    servername: www.microsoft.com # REALITY servername
+    reality-opts:
+      public-key: xxx
+      short-id: xxx # optional
+    client-fingerprint: chrome # cannot be empty
+
+  - name: "vless-reality-grpc"
+    type: vless
+    server: 1.2.3.4
+    port: 443
+    uuid: 8f3fca8e-d381-402c-8fdf-71f461a0170e
+    network: grpc
+    tls: true
+    udp: true
+    flow: xtls-rprx-vision
+    skip-cert-verify: true
+    client-fingerprint: chrome
+    servername: testingcf.jsdelivr.net
+    grpc-opts:
+      grpc-service-name: "grpc"
+    reality-opts:
+      public-key: CrrQSjAG_YkHLwvM2M-7XkKJilgL5upBKCp0od0tLhE
+      short-id: 10f897e26c4b9478
+
+  - name: "vless-ws"
+    type: vless
+    server: 1.2.3.4
+    port: 443
+    uuid: 8f3fca8e-d381-402c-8fdf-71f461a0170e
+    udp: true
+    tls: true
+    network: ws
+    client-fingerprint: random # Available: "chrome","firefox","safari","random","none"
+    servername: example.com # priority over wss host
+    skip-cert-verify: true
+    fingerprint: chrome
+    ws-opts:
+      path: "/"
+      headers:
+        Host: example.com
+      v2ray-http-upgrade: false
+      v2ray-http-upgrade-fast-open: false
+
+  # Trojan
+  - name: "trojan"
+    type: trojan
+    server: 1.2.3.4
+    port: 443
+    password: yourpsk
+    client-fingerprint: random # Available: "chrome","firefox","safari","random","none"
+    fingerprint: chrome
+    udp: true
+    sni: example.com # aka server name
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: true
+    ss-opts: # like trojan-go's `shadowsocks` config
+      enabled: false
+      method: aes-128-gcm # aes-128-gcm/aes-256-gcm/chacha20-ietf-poly1305
+      password: "example"
+
+  - name: trojan-grpc
+    server: 1.2.3.4
+    port: 443
+    type: trojan
+    password: "example"
+    network: grpc
+    sni: example.com
+    skip-cert-verify: true
+    fingerprint: chrome
+    udp: true
+    grpc-opts:
+      grpc-service-name: "example"
+
+  - name: trojan-ws
+    server: 1.2.3.4
+    port: 443
+    type: trojan
+    password: "example"
+    network: ws
+    sni: example.com
+    skip-cert-verify: true
+    fingerprint: chrome
+    udp: true
+    ws-opts:
+      path: /path
+      headers:
+        Host: example.com
+        v2ray-http-upgrade: false
+        v2ray-http-upgrade-fast-open: false
+
+  - name: "trojan-xtls"
+    type: trojan
+    server: 1.2.3.4
+    port: 443
+    password: yourpsk
+    flow: "xtls-rprx-direct" # xtls-rprx-origin xtls-rprx-direct
+    flow-show: true
+    udp: true
+    sni: example.com # aka server name
+    skip-cert-verify: true
+    fingerprint: chrome
+
+  #hysteria
+  - name: "hysteria"
+    type: hysteria
+    server: 1.2.3.4.com
+    port: 443
+    ports: 1000,2000-3000,5000 # port 不可省略
+    auth-str: yourpassword
+    obfs: obfs_str
+    alpn:
+      - h3
+    protocol: udp # 支持 udp/wechat-video/faketcp
+    up: "30 Mbps" # 若不写单位，默认为 Mbps
+    down: "200 Mbps" # 若不写单位，默认为 Mbps
+    sni: server.com
+    skip-cert-verify: false
+    recv-window-conn: 12582912
+    recv-window: 52428800
+    ca: "./my.ca"
+    ca-str: "xyz"
+    disable-mtu-discovery: false
+    fingerprint: chrome
+    fast-open: true # 支持 TCP 快速打开，默认为 false
+
+  #hysteria2
+  - name: "hysteria2"
+    type: hysteria2
+    server: 1.2.3.4.com
+    port: 443
+    ports: 1000,2000-3000,5000 # port 不可省略
+    hop-interval: 15
+    #  up 和 down 均不写或为 0 则使用 BBR 流控
+    up: "30 Mbps" # 若不写单位，默认为 Mbps
+    down: "200 Mbps" # 若不写单位，默认为 Mbps
+    password: yourpassword
+    obfs: salamander # 默认为空，如果填写则开启 obfs，目前仅支持 salamander
+    obfs-password: yourpassword
+    sni: server.com
+    skip-cert-verify: false
+    fingerprint: chrome
+    alpn:
+      - h3
+    ca: "./my.ca"
+    ca-str: "xyz"
+
+  # wireguard
+  - name: "wg"
+    type: wireguard
+    server: 162.159.192.1
+    port: 2480
+    ip: 172.16.0.2
+    ipv6: fd01:5ca1:ab1e:80fa:ab85:6eea:213f:f4a5
+    public-key: Cr8hWlKvtDt7nrvf+f0brNQQzabAqrjfBvas9pmowjo=
+    pre-shared-key: 31aIhAPwktDGpH4JDhA8GNvjFXEf/a6+UaQRyOAiyfM=
+    private-key: eCtXsJZ27+4PbhDkHnB923tkUn2Gj59wZw5wFA75MnU=
+    udp: true
+    # reserved: "U4An"
+    # 数组格式也是合法的
+    reserved: [209, 98, 59]
+    # 一个出站代理的标识。当值不为空时，将使用指定的 proxy 发出连接
+    dialer-proxy: "ss1"
+    remote-dns-resolve: true # 强制 dns 远程解析，默认值为 false
+    dns: [1.1.1.1, 8.8.8.8] # 仅在 remote-dns-resolve 为 true 时生效
+    # refresh-server-ip-interval: 60 # 重新解析server ip的间隔，单位为秒，默认值为0即仅第一次链接时解析server域名，仅应在server域名对应的IP会发生变化时启用该选项（如家宽ddns）
+    # 如果 peers 不为空，该段落中的 allowed-ips 不可为空；前面段落的 server,port,public-key,pre-shared-key 均会被忽略，但 private-key 会被保留且只能在顶层指定
+    peers:
+      - server: 162.159.192.1
+        port: 2480
+        public-key: Cr8hWlKvtDt7nrvf+f0brNQQzabAqrjfBvas9pmowjo=
+        pre-shared-key: 31aIhAPwktDGpH4JDhA8GNvjFXEf/a6+UaQRyOAiyfM=
+        allowed-ips: ["0.0.0.0/0"]
+        reserved: [209, 98, 59]
+        # 如果存在则开启AmneziaWG功能
+        amnezia-wg-option:
+          jc: 5
+          jmin: 500
+          jmax: 501
+          s1: 30
+          s2: 40
+          h1: 123456
+          h2: 67543
+          h4: 32345
+          h3: 123123
+
+  # tuic
+  - name: tuic
+    server: www.example.com
+    port: 10443
+    type: tuic
+    # tuicV4 必须填写 token（不可同时填写 uuid 和 password）
+    token: TOKEN
+    # tuicV5 必须填写 uuid 和 password（不可同时填写 token）
+    uuid: 00000000-0000-0000-0000-000000000001
+    password: PASSWORD_1
+    ip: 127.0.0.1 # for overwriting the DNS lookup result of the server address set in option 'server'
+    heartbeat-interval: 10000
+    alpn: [h3]
+    disable-sni: true
+    reduce-rtt: true
+    request-timeout: 8000
+    udp-relay-mode: native # Available: "native", "quic". Default: "native"
+    congestion-controller: bbr # Available: "cubic", "new_reno", "bbr". Default: "cubic"
+    cwnd: 10 # default: 32
+    max-udp-relay-packet-size: 1500
+    fast-open: true
+    skip-cert-verify: true
+    max-open-streams: 20 # default 100, too many open streams may hurt performance
+    sni: example.com
+    #
+    # meta 和 sing-box 私有扩展，将 ss-uot 用于 udp 中继，开启此选项后 udp-relay-mode 将失效
+    # 警告，与原版 tuic 不兼容！！！
+    udp-over-stream: false
+    udp-over-stream-version: 1
+
+  # ShadowsocksR
+  # The supported ciphers (encryption methods): all stream ciphers in ss
+  # The supported obfses:
+  #   plain http_simple http_post
+  #   random_head tls1.2_ticket_auth tls1.2_ticket_fastauth
+  # The supported protocols:
+  #   origin auth_sha1_v4 auth_aes128_md5
+  #   auth_aes128_sha1 auth_chain_a auth_chain_b
+  - name: "ssr"
+    type: ssr
+    server: 1.2.3.4
+    port: 443
+    cipher: chacha20-ietf
+    password: "password"
+    obfs: tls1.2_ticket_auth
+    protocol: auth_sha1_v4
+    obfs-param: domain.tld
+    protocol-param: "#"
+    udp: true
+
+  - name: "ssh-out"
+    type: ssh
+    server: 127.0.0.1
+    port: 22
+    username: root
+    password: password
+    privateKey: path
+
+  # mieru
+  - name: mieru
+    type: mieru
+    server: 1.2.3.4
+    port: 2999
+    # port-range: 2090-2099 #（不可同时填写 port 和 port-range）
+    transport: TCP # 只支持 TCP
+    username: user
+    password: password
+    # 可以使用的值包括 MULTIPLEXING_OFF, MULTIPLEXING_LOW, MULTIPLEXING_MIDDLE, MULTIPLEXING_HIGH。其中 MULTIPLEXING_OFF 会关闭多路复用功能。默认值为 MULTIPLEXING_LOW。
+    multiplexing: MULTIPLEXING_LOW
+
+  # dns 出站会将请求劫持到内部 dns 模块，所有请求均在内部处理
+  - name: "dns-out"
+    type: dns
 proxy-groups:
-  - name: 节点选择
-    type: select
-    icon: https://fastly.jsdelivr.net/gh/dongchengjie/metaST@main/metaST/Resources/icons/adjust.svg
+  # 代理链，目前 relay 可以支持 udp 的只有 vmess/vless/trojan/ss/ssr/tuic
+  # wireguard 目前不支持在 relay 中使用，请使用 proxy 中的 dialer-proxy 配置项
+  # Traffic: mihomo <-> http <-> vmess <-> ss1 <-> ss2 <-> Internet
+  - name: "relay"
+    type: relay
     proxies:
-      [
-        "自动选择",
-        "DIRECT",
-        "日本节点",
-        "新加坡节点",
-        "澳大利亚节点",
-        "香港节点",
-        "Cloudflare节点",
-        "美国节点",
-        "韩国节点",
-        "未知节点",
-        "阿联酋节点",
-        "德国节点",
-        "荷兰节点"
-      ]
+      - http
+      - vmess
+      - ss1
+      - ss2
 
-  - name: 自动选择
+  # url-test 将按照 url 测试结果使用延迟最低节点
+  - name: "auto"
     type: url-test
-    tolerance: 100
+    proxies:
+      - ss1
+      - ss2
+      - vmess1
+    tolerance: 150
     lazy: true
-    interval: 60
-    timeout: 2000
-    url: https://www.youtube.com/generate_204
-    max-failed-times: 3
-    icon: https://fastly.jsdelivr.net/gh/dongchengjie/metaST@main/metaST/Resources/icons/speed.svg
-    proxies:
-      [
-        "日本节点",
-        "新加坡节点",
-        "澳大利亚节点",
-        "香港节点",
-        "Cloudflare节点",
-        "美国节点",
-        "韩国节点",
-        "未知节点",
-        "阿联酋节点",
-        "德国节点",
-        "荷兰节点"
-      ]
+    expected-status: 204 # 当健康检查返回状态码与期望值不符时，认为节点不可用
+    url: "https://cp.cloudflare.com/generate_204"
+    interval: 300
 
-  - name: 谷歌服务
+  # fallback 将按照 url 测试结果按照节点顺序选择
+  - name: "fallback-auto"
+    type: fallback
+    proxies:
+      - ss1
+      - ss2
+      - vmess1
+    url: "https://cp.cloudflare.com/generate_204"
+    interval: 300
+
+  # load-balance 将按照算法随机选择节点
+  - name: "load-balance"
+    type: load-balance
+    proxies:
+      - ss1
+      - ss2
+      - vmess1
+    url: "https://cp.cloudflare.com/generate_204"
+    interval: 300
+    strategy: consistent-hashing # 可选 round-robin 和 sticky-sessions
+
+  # select 用户自行选择节点
+  - name: Proxy
     type: select
-    icon: https://fastly.jsdelivr.net/gh/dongchengjie/metaST@main/metaST/Resources/icons/google.svg
+    disable-udp: true
     proxies:
-      [
-        "节点选择",
-        "自动选择",
-        "全局直连",
-        "日本节点",
-        "新加坡节点",
-        "澳大利亚节点",
-        "香港节点",
-        "Cloudflare节点",
-        "美国节点",
-        "韩国节点",
-        "未知节点",
-        "阿联酋节点",
-        "德国节点",
-        "荷兰节点"
-      ]
+      - ss1
+      - ss2
+      - vmess1
+      - auto
 
-  - name: 国外媒体
+  # 配置指定 interface-name 和 fwmark 的 DIRECT
+  - name: en1
     type: select
-    icon: https://fastly.jsdelivr.net/gh/dongchengjie/metaST@main/metaST/Resources/icons/youtube.svg
+    interface-name: en1
+    routing-mark: 6667
     proxies:
-      [
-        "节点选择",
-        "自动选择",
-        "全局直连",
-        "日本节点",
-        "新加坡节点",
-        "澳大利亚节点",
-        "香港节点",
-        "Cloudflare节点",
-        "美国节点",
-        "韩国节点",
-        "未知节点",
-        "阿联酋节点",
-        "德国节点",
-        "荷兰节点"
-      ]
+      - DIRECT
 
-  - name: 电报消息
+  - name: UseProvider
     type: select
-    icon: https://fastly.jsdelivr.net/gh/dongchengjie/metaST@main/metaST/Resources/icons/telegram.svg
+    filter: "HK|TW" # 正则表达式，过滤 provider1 中节点名包含 HK 或 TW
+    use:
+      - provider1
     proxies:
-      [
-        "节点选择",
-        "自动选择",
-        "全局直连",
-        "日本节点",
-        "新加坡节点",
-        "澳大利亚节点",
-        "香港节点",
-        "Cloudflare节点",
-        "美国节点",
-        "韩国节点",
-        "未知节点",
-        "阿联酋节点",
-        "德国节点",
-        "荷兰节点"
-      ]
+      - Proxy
+      - DIRECT
 
-  - name: 微软服务
-    type: select
-    icon: https://fastly.jsdelivr.net/gh/dongchengjie/metaST@main/metaST/Resources/icons/microsoft.svg
-    proxies:
-      [
-        "全局直连",
-        "节点选择",
-        "自动选择",
-        "日本节点",
-        "新加坡节点",
-        "澳大利亚节点",
-        "香港节点",
-        "Cloudflare节点",
-        "美国节点",
-        "韩国节点",
-        "未知节点",
-        "阿联酋节点",
-        "德国节点",
-        "荷兰节点"
-      ]
+# Mihomo 格式的节点或支持 *ray 的分享格式
+proxy-providers:
+  provider1:
+    type: http # http 的 path 可空置，默认储存路径为 homedir 的 proxies 文件夹，文件名为 url 的 md5
+    url: "https://www.example.com/file.yaml"
+    interval: 3600
+    path: ./provider1.yaml # 默认只允许存储在 mihomo 的 Home Dir，如果想存储到任意位置，添加环境变量 SKIP_SAFE_PATH_CHECK=1
+    proxy: DIRECT
+    size-limit: 10240 # 限制下载文件最大为10kb，默认为0即不限制文件大小
+    header:
+      User-Agent:
+        - "Clash/v1.18.0"
+        - "mihomo/1.18.3"
+      Accept:
+        - "application/vnd.github.v3.raw"
+      Authorization:
+        - "token 1231231"
+    health-check:
+      enable: true
+      interval: 600
+      lazy: true
+      url: https://cp.cloudflare.com/generate_204
+      expected-status: 204 # 当健康检查返回状态码与期望值不符时，认为节点不可用
+    override: # 覆写节点加载时的一些配置项
+      skip-cert-verify: true
+      udp: true
+      down: "50 Mbps"
+      up: "10 Mbps"
+      dialer-proxy: proxy
+      interface-name: tailscale0
+      routing-mark: 233
+      ip-version: ipv4-prefer
+      additional-prefix: "[provider1]"
+      additional-suffix: "test"
+      # # 名字替换，支持正则表达式
+      proxy-name:
+        - pattern: "test"
+          target: "TEST"
+        - pattern: "IPLC-(.*?)倍"
+          target: "iplc x $1"
 
-  - name: 苹果服务
-    type: select
-    icon: https://fastly.jsdelivr.net/gh/dongchengjie/metaST@main/metaST/Resources/icons/apple.svg
-    proxies:
-      [
-        "节点选择",
-        "自动选择",
-        "全局直连",
-        "日本节点",
-        "新加坡节点",
-        "澳大利亚节点",
-        "香港节点",
-        "Cloudflare节点",
-        "美国节点",
-        "韩国节点",
-        "未知节点",
-        "阿联酋节点",
-        "德国节点",
-        "荷兰节点"
-      ]
-
-  - name: 广告过滤
-    type: select
-    icon: https://fastly.jsdelivr.net/gh/dongchengjie/metaST@main/metaST/Resources/icons/bug.svg
-    proxies: ["REJECT", "DIRECT"]
-
-  - name: 全局直连
-    type: select
-    icon: https://fastly.jsdelivr.net/gh/dongchengjie/metaST@main/metaST/Resources/icons/link.svg
-    proxies:
-      [
-        "DIRECT",
-        "节点选择",
-        "自动选择",
-        "日本节点",
-        "新加坡节点",
-        "澳大利亚节点",
-        "香港节点",
-        "Cloudflare节点",
-        "美国节点",
-        "韩国节点",
-        "未知节点",
-        "阿联酋节点",
-        "德国节点",
-        "荷兰节点"
-      ]
-
-  - name: 全局拦截
-    type: select
-    icon: https://fastly.jsdelivr.net/gh/dongchengjie/metaST@main/metaST/Resources/icons/block.svg
-    proxies: ["REJECT", "DIRECT"]
-
-  - name: 漏网之鱼
-    type: select
-    icon: https://fastly.jsdelivr.net/gh/dongchengjie/metaST@main/metaST/Resources/icons/fish.svg
-    proxies:
-      [
-        "节点选择",
-        "自动选择",
-        "全局直连",
-        "日本节点",
-        "新加坡节点",
-        "澳大利亚节点",
-        "香港节点",
-        "Cloudflare节点",
-        "美国节点",
-        "韩国节点",
-        "未知节点",
-        "阿联酋节点",
-        "德国节点",
-        "荷兰节点"
-      ]
-
-  - name: 日本节点
-    type: url-test
-    tolerance: 50
-    lazy: false
-    interval: 300
-    timeout: 2000
-    url: https://www.youtube.com/generate_204
-    max-failed-times: 3
-    icon: https://fastly.jsdelivr.net/gh/dongchengjie/metaST@main/metaST/Resources/icons/flags/jp.svg
-    hidden: false
-    proxies:
-      [
-        "🇯🇵 日本_1",
-        "🇯🇵 日本_2",
-        "🇯🇵 日本_3",
-        "🇯🇵 日本_4",
-        "🇯🇵 日本_5",
-        "🇯🇵 日本_6",
-        "🇯🇵 日本_7",
-        "🇯🇵 日本_8",
-        "🇯🇵 日本_9",
-        "🇯🇵 日本_10",
-        "🇯🇵 日本_11",
-        "🇯🇵 日本_12",
-        "🇯🇵 日本_13",
-        "🇯🇵 日本_14",
-        "🇯🇵 日本_15",
-        "🇯🇵 日本_16",
-        "🇯🇵 日本_17"
-      ]
-
-  - name: 新加坡节点
-    type: url-test
-    tolerance: 50
-    lazy: false
-    interval: 300
-    timeout: 2000
-    url: https://www.youtube.com/generate_204
-    max-failed-times: 3
-    icon: https://fastly.jsdelivr.net/gh/dongchengjie/metaST@main/metaST/Resources/icons/flags/sg.svg
-    hidden: false
-    proxies: ["🇸🇬 新加坡_1", "🇸🇬 新加坡_2", "🇸🇬 新加坡_3", "🇸🇬 新加坡_4", "🇸🇬 新加坡_5"]
-
-  - name: 澳大利亚节点
-    type: url-test
-    tolerance: 50
-    lazy: false
-    interval: 300
-    timeout: 2000
-    url: https://www.youtube.com/generate_204
-    max-failed-times: 3
-    icon: https://fastly.jsdelivr.net/gh/dongchengjie/metaST@main/metaST/Resources/icons/flags/au.svg
-    hidden: false
-    proxies: ["🇦🇺 澳大利亚"]
-
-  - name: 香港节点
-    type: url-test
-    tolerance: 50
-    lazy: false
-    interval: 300
-    timeout: 2000
-    url: https://www.youtube.com/generate_204
-    max-failed-times: 3
-    icon: https://fastly.jsdelivr.net/gh/dongchengjie/metaST@main/metaST/Resources/icons/flags/hk.svg
-    hidden: false
-    proxies: ["🇭🇰 香港"]
-
-  - name: Cloudflare节点
-    type: url-test
-    tolerance: 50
-    lazy: false
-    interval: 300
-    timeout: 2000
-    url: https://www.youtube.com/generate_204
-    max-failed-times: 3
-    icon: https://fastly.jsdelivr.net/gh/dongchengjie/metaST@main/metaST/Resources/icons/cloudflare.svg
-    hidden: false
-    proxies: ["🇺🇸 美国_2", "🇺🇸 美国_4", "🇺🇸 美国_10"]
-
-  - name: 美国节点
-    type: url-test
-    tolerance: 50
-    lazy: false
-    interval: 300
-    timeout: 2000
-    url: https://www.youtube.com/generate_204
-    max-failed-times: 3
-    icon: https://fastly.jsdelivr.net/gh/dongchengjie/metaST@main/metaST/Resources/icons/flags/us.svg
-    hidden: false
-    proxies:
-      ["🇺🇸 美国_1", "🇺🇸 美国_3", "🇺🇸 美国_5", "🇺🇸 美国_6", "🇺🇸 美国_7", "🇺🇸 美国_8", "🇺🇸 美国_9"]
-
-  - name: 韩国节点
-    type: url-test
-    tolerance: 50
-    lazy: false
-    interval: 300
-    timeout: 2000
-    url: https://www.youtube.com/generate_204
-    max-failed-times: 3
-    icon: https://fastly.jsdelivr.net/gh/dongchengjie/metaST@main/metaST/Resources/icons/flags/kr.svg
-    hidden: false
-    proxies:
-      ["🇰🇷 韩国_1", "🇰🇷 韩国_2", "🇰🇷 韩国_3", "🇰🇷 韩国_4", "🇰🇷 韩国_5", "🇰🇷 韩国_6", "🇰🇷 韩国_7"]
-
-  - name: 未知节点
-    type: url-test
-    tolerance: 50
-    lazy: false
-    interval: 300
-    timeout: 2000
-    url: https://www.youtube.com/generate_204
-    max-failed-times: 3
-    icon: https://fastly.jsdelivr.net/gh/dongchengjie/metaST@main/metaST/Resources/icons/unknown.svg
-    hidden: false
-    proxies:
-      [
-        "❓ 未知_1",
-        "❓ 未知_2",
-        "❓ 未知_3",
-        "❓ 未知_4",
-        "❓ 未知_5",
-        "❓ 未知_6",
-        "❓ 未知_7",
-        "❓ 未知_8"
-      ]
-
-  - name: 阿联酋节点
-    type: url-test
-    tolerance: 50
-    lazy: false
-    interval: 300
-    timeout: 2000
-    url: https://www.youtube.com/generate_204
-    max-failed-times: 3
-    icon: https://fastly.jsdelivr.net/gh/dongchengjie/metaST@main/metaST/Resources/icons/flags/ae.svg
-    hidden: false
-    proxies: ["🇦🇪 阿联酋"]
-
-  - name: 德国节点
-    type: url-test
-    tolerance: 50
-    lazy: false
-    interval: 300
-    timeout: 2000
-    url: https://www.youtube.com/generate_204
-    max-failed-times: 3
-    icon: https://fastly.jsdelivr.net/gh/dongchengjie/metaST@main/metaST/Resources/icons/flags/de.svg
-    hidden: false
-    proxies: ["🇩🇪 德国"]
-
-  - name: 荷兰节点
-    type: url-test
-    tolerance: 50
-    lazy: false
-    interval: 300
-    timeout: 2000
-    url: https://www.youtube.com/generate_204
-    max-failed-times: 3
-    icon: https://fastly.jsdelivr.net/gh/dongchengjie/metaST@main/metaST/Resources/icons/flags/nl.svg
-    hidden: false
-    proxies: ["🇳🇱 荷兰"]
-
-# 规则
-rule-providers:
-  reject:
-    type: http
-    behavior: domain
-    format: yaml
-    url: https://mirror.ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/reject.txt
-    path: ./ruleset/loyalsoldier/reject.yaml
-    interval: 86400
-  icloud:
-    type: http
-    behavior: domain
-    format: yaml
-    url: https://mirror.ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/icloud.txt
-    path: ./ruleset/loyalsoldier/icloud.yaml
-    interval: 86400
-  apple:
-    type: http
-    behavior: domain
-    format: yaml
-    url: https://mirror.ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/apple.txt
-    path: ./ruleset/loyalsoldier/apple.yaml
-    interval: 86400
-  google:
-    type: http
-    behavior: domain
-    format: yaml
-    url: https://mirror.ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/google.txt
-    path: ./ruleset/loyalsoldier/google.yaml
-    interval: 86400
-  proxy:
-    type: http
-    behavior: domain
-    format: yaml
-    url: https://mirror.ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/proxy.txt
-    path: ./ruleset/loyalsoldier/proxy.yaml
-    interval: 86400
-  direct:
-    type: http
-    behavior: domain
-    format: yaml
-    url: https://mirror.ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/direct.txt
-    path: ./ruleset/loyalsoldier/direct.yaml
-    interval: 86400
-  private:
-    type: http
-    behavior: domain
-    format: yaml
-    url: https://mirror.ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/private.txt
-    path: ./ruleset/loyalsoldier/private.yaml
-    interval: 86400
-  gfw:
-    type: http
-    behavior: domain
-    format: yaml
-    url: https://mirror.ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/gfw.txt
-    path: ./ruleset/loyalsoldier/gfw.yaml
-    interval: 86400
-  tld-not-cn:
-    type: http
-    behavior: domain
-    format: yaml
-    url: https://mirror.ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/tld-not-cn.txt
-    path: ./ruleset/loyalsoldier/tld-not-cn.yaml
-    interval: 86400
-  telegramcidr:
-    type: http
-    behavior: ipcidr
-    format: yaml
-    url: https://mirror.ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/telegramcidr.txt
-    path: ./ruleset/loyalsoldier/telegramcidr.yaml
-    interval: 86400
-  cncidr:
-    type: http
-    behavior: ipcidr
-    format: yaml
-    url: https://mirror.ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/cncidr.txt
-    path: ./ruleset/loyalsoldier/cncidr.yaml
-    interval: 86400
-  lancidr:
-    type: http
-    behavior: ipcidr
-    format: yaml
-    url: https://mirror.ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/lancidr.txt
-    path: ./ruleset/loyalsoldier/lancidr.yaml
-    interval: 86400
-  applications:
-    type: http
-    behavior: classical
-    format: yaml
-    url: https://mirror.ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/applications.txt
-    path: ./ruleset/loyalsoldier/applications.yaml
-    interval: 86400
-  # 文件规则
-  file-x:
-    type: file
-    path: ./ruleset/loyalsoldier/x.yaml
-    behavior: classical
-  # 内置规则
-  inline-ipcidr:
+  provider2:
     type: inline
-    behavior: ipcidr
+    dialer-proxy: proxy
     payload:
-      - "127.0.0.1/32"
-      - "::1/128"
-      - "192.168.1.0/24"
-      - "10.0.0.1/32"
-  inline-domain:
-    type: inline
+      - name: "ss1"
+        type: ss
+        server: 1.2.3.4
+        port: 443
+        cipher: chacha20-ietf-poly1305
+        password: "password"
+
+  test:
+    type: file
+    path: /test.yaml
+    health-check:
+      enable: true
+      interval: 36000
+      url: https://cp.cloudflare.com/generate_204
+rule-providers:
+  rule1:
+    behavior: classical # domain ipcidr
+    interval: 259200
+    path: /path/to/save/file.yaml # 默认只允许存储在 mihomo 的 Home Dir，如果想存储到任意位置，添加环境变量 SKIP_SAFE_PATH_CHECK=1
+    type: http # http 的 path 可空置，默认储存路径为 homedir 的 rules 文件夹，文件名为 url 的 md5
+    url: "https://www.example.com/file.list"
+    proxy: DIRECT
+    # size-limit: 10240 # 限制下载文件最大为10kb，默认为0即不限制文件大小
+  rule2:
+    behavior: classical
+    interval: 259200
+    path: /path/to/save/file.yaml
+    type: file
+  rule3:
+    # mrs类型ruleset，目前仅支持domain和ipcidr(即不支持classical），
+    #
+    # 对于behavior=domain:
+    #  - format=yaml 可以通过“mihomo convert-ruleset domain yaml XXX.yaml XXX.mrs”转换到mrs格式
+    #  - format=text 可以通过“mihomo convert-ruleset domain text XXX.text XXX.mrs”转换到mrs格式
+    #  - XXX.mrs 可以通过"mihomo convert-ruleset domain mrs XXX.mrs XXX.text"转换回text格式（暂不支持转换回yaml格式）
+    #
+    # 对于behavior=ipcidr:
+    #  - format=yaml 可以通过“mihomo convert-ruleset ipcidr yaml XXX.yaml XXX.mrs”转换到mrs格式
+    #  - format=text 可以通过“mihomo convert-ruleset ipcidr text XXX.text XXX.mrs”转换到mrs格式
+    #  - XXX.mrs 可以通过"mihomo convert-ruleset ipcidr mrs XXX.mrs XXX.text"转换回text格式（暂不支持转换回yaml格式）
+    #
+    type: http
+    url: "https://www.example.com/file.mrs"
+    format: mrs
     behavior: domain
+    path: /path/to/save/file.mrs
+  rule4:
+    type: inline
+    behavior: domain # classical / ipcidr
     payload:
       - ".blogger.com"
       - "*.*.microsoft.com"
       - "books.itunes.apple.com"
-  inline-classical:
-    type: inline
-    behavior: classical
-    payload:
-      - "DOMAIN,www.google.com"
-      - "DOMAIN,www.bing.com"
-      - DOMAIN-SUFFIX,google.com
-      - DOMAIN-KEYWORD,google
-      - DOMAIN,ad.com
-      - SRC-IP-CIDR,192.168.1.201/32
-      - IP-CIDR,127.0.0.0/8
-      - GEOIP,CN
-      - DST-PORT,80
-      - SRC-PORT,7777
 
 rules:
-  # Google
-  - DOMAIN-SUFFIX,googleapis.cn,节点选择
-  - DOMAIN-SUFFIX,gstatic.com,节点选择
-  # Google Play
-  - DOMAIN-SUFFIX,xn--ngstr-lra8j.com,节点选择
-  # Github Pages
-  - DOMAIN-SUFFIX,github.io,节点选择
-  # V2raySE
-  - DOMAIN,v2rayse.com,节点选择
-  # loyalsoldier 规则集
-  - RULE-SET,reject,广告过滤
-  - RULE-SET,icloud,微软服务
-  - RULE-SET,apple,苹果服务
-  - RULE-SET,google,谷歌服务
-  - RULE-SET,proxy,节点选择
-  - RULE-SET,gfw,节点选择
-  - RULE-SET,tld-not-cn,节点选择
-  - RULE-SET,applications,全局直连
-  - RULE-SET,private,全局直连
-  - RULE-SET,direct,全局直连
-  - RULE-SET,lancidr,全局直连,no-resolve
-  - RULE-SET,cncidr,全局直连,no-resolve
-  - RULE-SET,telegramcidr,电报消息,no-resolve
-  # 其他
-  - GEOIP,LAN,全局直连,no-resolve
-  - GEOIP,CN,全局直连,no-resolve
-  - MATCH,漏网之鱼
+  - RULE-SET,rule1,REJECT
+  - IP-ASN,1,PROXY
+  - DOMAIN-REGEX,^abc,DIRECT
+  - DOMAIN-SUFFIX,baidu.com,DIRECT
+  - DOMAIN-KEYWORD,google,ss1
+  - IP-CIDR,1.1.1.1/32,ss1
+  - IP-CIDR6,2409::/64,DIRECT
+  # 当满足条件是 TCP 或 UDP 流量时，使用名为 sub-rule-name1 的规则集
+  - SUB-RULE,(OR,((NETWORK,TCP),(NETWORK,UDP))),sub-rule-name1
+  - SUB-RULE,(AND,((NETWORK,UDP))),sub-rule-name2
+# 定义多个子规则集，规则将以分叉匹配，使用 SUB-RULE 使用
+#                                               google.com(not match)--> baidu.com(match)
+#                                                /                                ｜
+#                                               /                                 ｜
+#  https://baidu.com  --> rule1 --> rule2 --> sub-rule-name1(match tcp)          使用 DIRECT
+#
+#
+#                                              google.com(not match)--> baidu.com(not match)
+#                                                /                            ｜
+#                                               /                             ｜
+#  dns 1.1.1.1  --> rule1 --> rule2 --> sub-rule-name1(match udp)         sub-rule-name2(match udp)
+#                                                                             ｜
+#                                                                             ｜
+#                                                                 使用 REJECT <-- 1.1.1.1/32(match)
+#
+
+sub-rules:
+  sub-rule-name1:
+    - DOMAIN,google.com,ss1
+    - DOMAIN,baidu.com,DIRECT
+  sub-rule-name2:
+    - IP-CIDR,1.1.1.1/32,REJECT
+    - IP-CIDR,8.8.8.8/32,ss1
+    - DOMAIN,dns.alidns.com,REJECT
+
+# 流量入站
+listeners:
+  - name: socks5-in-1
+    type: socks
+    port: 10808
+    listen: 0.0.0.0 # 默认监听 0.0.0.0
+    rule: sub-rule-name1 # 默认使用 rules，如果未找到 sub-rule 则直接使用 rules
+    proxy: proxy # 如果不为空则直接将该入站流量交由指定 proxy 处理
+    udp: false # 默认 true
+    users: # 如果不填写users项，则遵从全局authentication设置，如果填写会忽略全局设置, 如想跳过该入站的验证可填写 users: []
+      - username: aaa
+        password: aaa
+
+  - name: http-in-1
+    type: http
+    port: 10809
+    listen: 0.0.0.0
+    rule: sub-rule-name1 # 默认使用 rules，如果未找到 sub-rule 则直接使用 rules
+    proxy: proxy # 如果不为空则直接将该入站流量交由指定 proxy 处理 (当 proxy 不为空时，这里的 proxy 名称必须合法，否则会出错)
+    users: # 如果不填写users项，则遵从全局authentication设置，如果填写会忽略全局设置, 如想跳过该入站的验证可填写 users: []
+      - username: aaa
+        password: aaa
+
+  - name: mixed-in-1
+    type: mixed #  HTTP(S) 和 SOCKS 代理混合
+    port: 10810
+    listen: 0.0.0.0
+    rule: sub-rule-name1 # 默认使用 rules，如果未找到 sub-rule 则直接使用 rules
+    # proxy: proxy # 如果不为空则直接将该入站流量交由指定 proxy 处理 (当 proxy 不为空时，这里的 proxy 名称必须合法，否则会出错)
+    udp: false # 默认 true
+    users: # 如果不填写users项，则遵从全局authentication设置，如果填写会忽略全局设置, 如想跳过该入站的验证可填写 users: []
+      - username: aaa
+        password: aaa
+
+  - name: reidr-in-1
+    type: redir
+    port: 10811
+    listen: 0.0.0.0
+    rule: sub-rule-name1 # 默认使用 rules，如果未找到 sub-rule 则直接使用 rules
+    proxy: proxy # 如果不为空则直接将该入站流量交由指定 proxy 处理 (当 proxy 不为空时，这里的 proxy 名称必须合法，否则会出错)
+
+  - name: tproxy-in-1
+    type: tproxy
+    port: 10812
+    listen: 0.0.0.0
+    rule: sub-rule-name1 # 默认使用 rules，如果未找到 sub-rule 则直接使用 rules
+    proxy: proxy # 如果不为空则直接将该入站流量交由指定 proxy 处理 (当 proxy 不为空时，这里的 proxy 名称必须合法，否则会出错)
+    # udp: false # 默认 true
+
+  - name: shadowsocks-in-1
+    type: shadowsocks
+    port: 10813
+    listen: 0.0.0.0
+    rule: sub-rule-name1 # 默认使用 rules，如果未找到 sub-rule 则直接使用 rules
+    proxy: proxy # 如果不为空则直接将该入站流量交由指定 proxy 处理 (当 proxy 不为空时，这里的 proxy 名称必须合法，否则会出错)
+    password: vlmpIPSyHH6f4S8WVPdRIHIlzmB+GIRfoH3aNJ/t9Gg=
+    cipher: 2022-blake3-aes-256-gcm
+
+  - name: vmess-in-1
+    type: vmess
+    port: 10814
+    listen: 0.0.0.0
+    rule: sub-rule-name1 # 默认使用 rules，如果未找到 sub-rule 则直接使用 rules
+    proxy: proxy # 如果不为空则直接将该入站流量交由指定 proxy 处理 (当 proxy 不为空时，这里的 proxy 名称必须合法，否则会出错)
+    users:
+      - username: "user1"
+        uuid: 9d0cb9d0-964f-4ef6-897d-6c6b3ccf9e68
+        alterId: 1
+    ws-path: "/" # 如果不为空则开启 websocket 传输层
+    # 下面两项如果填写则开启 tls（需要同时填写）
+    certificate: ./server.crt
+    private-key: ./server.key
+
+  - name: tuic-in-1
+    type: tuic
+    port: 10815
+    listen: 0.0.0.0
+    rule: sub-rule-name1 # 默认使用 rules，如果未找到 sub-rule 则直接使用 rules
+    proxy: proxy # 如果不为空则直接将该入站流量交由指定 proxy 处理 (当 proxy 不为空时，这里的 proxy 名称必须合法，否则会出错)
+    token: # tuicV4 填写（可以同时填写 users）
+      - TOKEN
+    users: # tuicV5 填写（可以同时填写 token）
+      00000000-0000-0000-0000-000000000000: PASSWORD_0
+      00000000-0000-0000-0000-000000000001: PASSWORD_1
+    certificate: ./server.crt
+    private-key: ./server.key
+    congestion-controller: bbr
+    max-idle-time: 15000
+    authentication-timeout: 1000
+    alpn:
+      - h3
+    max-udp-relay-packet-size: 1500
+
+  - name: tunnel-in-1
+    type: tunnel
+    port: 10816
+    listen: 0.0.0.0
+    rule: sub-rule-name1 # 默认使用 rules，如果未找到 sub-rule 则直接使用 rules
+    proxy: proxy # 如果不为空则直接将该入站流量交由指定 proxy 处理 (当 proxy 不为空时，这里的 proxy 名称必须合法，否则会出错)
+    network: [tcp, udp]
+    target: target.com
+
+  - name: tun-in-1
+    type: tun
+    rule: sub-rule-name1 # 默认使用 rules，如果未找到 sub-rule 则直接使用 rules
+    proxy: proxy # 如果不为空则直接将该入站流量交由指定 proxy 处理 (当 proxy 不为空时，这里的 proxy 名称必须合法，否则会出错)
+    stack: system # gvisor / mixed
+    dns-hijack:
+      - 0.0.0.0:53 # 需要劫持的 DNS
+    auto-detect-interface: false # 自动识别出口网卡
+    auto-route: false # 配置路由表
+    mtu: 9000 # 最大传输单元
+    inet4-address: # 必须手动设置 ipv4 地址段
+      - 198.19.0.1/30
+    inet6-address: # 必须手动设置 ipv6 地址段
+      - "fdfe:dcba:9877::1/126"
+    strict-route: true # 将所有连接路由到 tun 来防止泄漏，但你的设备将无法其他设备被访问
+    # inet4-route-address: # 启用 auto-route 时使用自定义路由而不是默认路由
+    #   - 0.0.0.0/1
+    #   - 128.0.0.0/1
+    # inet6-route-address: # 启用 auto-route 时使用自定义路由而不是默认路由
+    #   - "::/1"
+    #   - "8000::/1"
+    endpoint-independent-nat: false # 启用独立于端点的 NAT
+    include-uid: # UID 规则仅在 Linux 下被支持，并且需要 auto-route
+      - 0
+    include-uid-range: # 限制被路由的的用户范围
+      - 1000:99999
+    exclude-uid: # 排除路由的的用户
+      - 1000
+    exclude-uid-range: # 排除路由的的用户范围
+      - 1000:99999
+
+    # Android 用户和应用规则仅在 Android 下被支持
+    # 并且需要 auto-route
+
+    include-android-user: # 限制被路由的 Android 用户
+      - 0
+      - 10
+    include-package: # 限制被路由的 Android 应用包名
+      - com.android.chrome
+    exclude-package: # 排除被路由的 Android 应用包名
+      - com.android.captiveportallogin
+# 入口配置与 Listener 等价，传入流量将和 socks,mixed 等入口一样按照 mode 所指定的方式进行匹配处理
+# shadowsocks,vmess 入口配置（传入流量将和 socks,mixed 等入口一样按照 mode 所指定的方式进行匹配处理）
+ss-config: ss://2022-blake3-aes-256-gcm:vlmpIPSyHH6f4S8WVPdRIHIlzmB+GIRfoH3aNJ/t9Gg=@:23456
+vmess-config: vmess://1:9d0cb9d0-964f-4ef6-897d-6c6b3ccf9e68@:12345
+# tuic 服务器入口（传入流量将和 socks,mixed 等入口一样按照 mode 所指定的方式进行匹配处理）
+tuic-server:
+  enable: true
+  listen: 127.0.0.1:10443
+  token: # tuicV4 填写（可以同时填写 users）
+    - TOKEN
+  users: # tuicV5 填写（可以同时填写 token）
+    00000000-0000-0000-0000-000000000000: PASSWORD_0
+    00000000-0000-0000-0000-000000000001: PASSWORD_1
+  certificate: ./server.crt
+  private-key: ./server.key
+  congestion-controller: bbr
+  max-idle-time: 15000
+  authentication-timeout: 1000
+  alpn:
+    - h3
+  max-udp-relay-packet-size: 1500

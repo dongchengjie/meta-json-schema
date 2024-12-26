@@ -16,7 +16,7 @@
       "required": ["certificate", "private-key"],
       "properties": {
         "token": {
-          "type": "string",
+          "$ref": "#/definitions/types/stringArray",
           "title": "TUIC V4的用户标识",
           "description": "TUIC V4的用户标识",
           "markdownDescription": "TUIC `V4`的用户标识"

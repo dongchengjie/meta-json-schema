@@ -31,8 +31,7 @@
           "type": "object",
           "title": "请求头",
           "description": "请求头",
-          "markdownDescription": "请求头",
-          "additionalProperties": { "type": "string" }
+          "markdownDescription": "请求头"
         }
       }
     },
@@ -83,8 +82,7 @@
           "type": "object",
           "title": "请求头",
           "description": "请求头",
-          "markdownDescription": "请求头",
-          "additionalProperties": { "type": "string" }
+          "markdownDescription": "请求头"
         },
         "max-early-data": {
           "$ref": "#/definitions/compatible/integer",

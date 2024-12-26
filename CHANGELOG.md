@@ -3,6 +3,12 @@
 ### changes
 
 - 新增：rule-providers 新增 `inline` 内联规则配置
+- 新增：proxy-providers 新增 `inline` 内联proxies配置
+- 调整: outbound 的 `header` 配置项宽松，不再限制value的类型为 string
+
+### Bugs Fixes
+
+- 修复: `tuic` V4 的 `token` 配置项类型错误
 
 ---
 

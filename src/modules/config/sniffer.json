@@ -27,7 +27,7 @@
       "markdownDescription": "默认情况下只对IP进行嗅探"
     },
     "skip-domain": {
-      "$ref": "#/definitions/types/domainWildcardArray",
+      "$ref": "#/definitions/types/stringArray",
       "title": "需要跳过嗅探的域名",
       "description": "默认情况下只对IP进行嗅探",
       "markdownDescription": "默认情况下只对IP进行嗅探"
@@ -49,14 +49,14 @@
       "title": "限制嗅探类型范围",
       "description": "支持TLS,HTTP,QUIC",
       "markdownDescription": "支持`TLS`,`HTTP`,`QUIC`",
-      "deprecationMessage": "推荐使用sniff"
+      "deprecationMessage": "已废弃，使用sniff代替"
     },
     "port-whitelist": {
       "$ref": "#/definitions/types/portRangeArray",
       "title": "限制嗅探端口范围",
       "description": "要求搭配sniffing使用(格式:80 或 80-88)",
       "markdownDescription": "要求搭配`sniffing`使用(格式:`80` 或 `80-88`)",
-      "deprecationMessage": "推荐使用sniff"
+      "deprecationMessage": "已废弃，使用sniff代替"
     },
     "force-dns-mapping": {
       "type": "boolean",

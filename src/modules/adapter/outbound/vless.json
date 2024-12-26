@@ -120,8 +120,7 @@
           "type": "object",
           "title": "ws请求头",
           "description": "ws请求头",
-          "markdownDescription": "ws请求头",
-          "additionalProperties": { "type": "string" }
+          "markdownDescription": "ws请求头"
         },
         "fingerprint": {
           "$ref": "#/definitions/enums/fingerprint",

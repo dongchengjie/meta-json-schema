@@ -5,7 +5,8 @@
     "types": { "$ref": "../../definitions/types.json" },
     "patterns": { "$ref": "../../definitions/patterns.json" },
     "enums": { "$ref": "../../definitions/enums.json" },
-    "health-check": { "$ref": "../adapter/provider/health-check.json" }
+    "health-check": { "$ref": "../adapter/provider/health-check.json" },
+    "proxies": { "$ref": "../config/proxies.json" }
   },
   "$ref": "../adapter/provider/provider.json"
 }

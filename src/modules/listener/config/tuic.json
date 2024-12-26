@@ -22,7 +22,7 @@
       "markdownDescription": "多个使用,分隔"
     },
     "token": {
-      "type": "string",
+      "$ref": "#/definitions/types/stringArray",
       "title": "Token",
       "description": "Token",
       "markdownDescription": "Token"
