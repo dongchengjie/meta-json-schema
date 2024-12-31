@@ -1,6 +1,6 @@
 ## v1.19.1
 
-### changes
+### Changes
 
 - 新增：rule-providers 新增 `inline` 内联规则配置
 - 新增：proxy-providers 新增 `inline` 内联proxies配置
