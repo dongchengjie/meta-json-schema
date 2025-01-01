@@ -2,8 +2,8 @@
 
 ### Changes
 
-- 新增：rule-providers 新增 `inline` 内联规则配置
-- 新增：proxy-providers 新增 `inline` 内联proxies配置
+- 新增: rule-providers 新增 `inline` 内联规则配置
+- 新增: proxy-providers 新增 `inline` 内联proxies配置
 - 调整: outbound 的 `header` 配置项宽松，不再限制value的类型为 string
 
 ### Bugs Fixes
@@ -55,8 +55,6 @@
 - 新增: `dns` 新增 `fake-ip-filter-mode` 配置项
 - 调整: 规则 `GEOIP`、`IP-ASN`、`IP-CIDR`、`IP-CIDR6`、`IP-SUFFIX`、`RULE-SET` 支持追加 `,src` 选项
 
-### Bugs Fixes
-
 ---
 
 ## v1.18.7
@@ -69,8 +67,6 @@
 - 新增: 规则集新增 `mrs` 格式
 - 新增: 全局配置新增 `keep-alive-idle` 和 `disable-keep-alive` 保持连接相关配置
 - 移除: 不再支持 `ebpf` 配置
-
-### Bugs Fixes
 
 ---
 
@@ -135,8 +131,6 @@
 
 ### Features
 
-- 首个JSON Schema版本
-
-### Bugs Fixes
+- 首个 JSON Schema 版本
 
 ---
