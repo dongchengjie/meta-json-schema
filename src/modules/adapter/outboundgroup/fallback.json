@@ -9,10 +9,6 @@
   },
   "allOf": [
     { "title": "代理组基础配置", "$ref": "#/definitions/groupbase" },
-    {
-      "type": "object",
-      "title": "fallback配置",
-      "properties": {}
-    }
+    { "type": "object", "title": "fallback配置", "properties": {} }
   ]
 }

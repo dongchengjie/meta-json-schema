@@ -181,16 +181,9 @@
       "header": { "type": "object", "errorMessage": "类型应为object" }
     },
     "allOf": [
+      { "if": { "properties": { "type": { "const": "file" } } }, "then": { "required": ["path"] } },
       {
-        "if": { "properties": { "type": { "const": "file" } } },
-        "then": { "required": ["path"] }
-      },
-      {
-        "if": {
-          "properties": {
-            "type": { "const": "http" }
-          }
-        },
+        "if": { "properties": { "type": { "const": "http" } } },
         "then": {
           "required": ["url"],
           "properties": {

@@ -13,46 +13,24 @@
     "rules": { "$ref": "./modules/config/rules.json" },
     "nyanpasu-filter": {
       "anyOf": [
-        {
-          "type": "string",
-          "title": "筛选选定列表"
-        },
+        { "type": "string", "title": "筛选选定列表" },
         {
           "type": "object",
-          "properties": {
-            "when": {
-              "type": "string"
-            },
-            "expr": {
-              "type": "string"
-            }
-          },
+          "properties": { "when": { "type": "string" }, "expr": { "type": "string" } },
           "required": ["when", "expr"],
           "title": "筛选选定列表后，使用表达式处理列表元素"
         },
         {
           "type": "object",
-          "properties": {
-            "when": {
-              "type": "string"
-            },
-            "override": {
-              "title": "直接覆盖配置"
-            }
-          },
+          "properties": { "when": { "type": "string" }, "override": { "title": "直接覆盖配置" } },
           "required": ["when", "override"],
           "title": "筛选选定列表后，覆盖配置"
         },
         {
           "type": "object",
           "properties": {
-            "when": {
-              "type": "string"
-            },
-            "merge": {
-              "type": "object",
-              "title": "合并选项"
-            }
+            "when": { "type": "string" },
+            "merge": { "type": "object", "title": "合并选项" }
           },
           "required": ["when", "merge"],
           "title": "筛选选定列表后，合并配置"
@@ -60,18 +38,13 @@
         {
           "type": "object",
           "properties": {
-            "when": {
-              "type": "string"
-            },
+            "when": { "type": "string" },
             "remove": {
               "title": "删除选项",
               "type": "array",
               "items": {
                 "anyOf": [
-                  {
-                    "title": "数组索引",
-                    "type": "integer"
-                  },
+                  { "title": "数组索引", "type": "integer" },
                   {
                     "title": "对象键",
                     "type": "string",
@@ -88,19 +61,11 @@
     }
   },
   "allOf": [
-    {
-      "title": "覆写profile配置",
-      "$ref": "#/definitions/meta-json-schema"
-    },
+    { "title": "覆写profile配置", "$ref": "#/definitions/meta-json-schema" },
     {
       "type": "object",
       "title": "前置规则配置",
-      "properties": {
-        "prepend-rules": {
-          "title": "前置规则配置",
-          "$ref": "#/definitions/rules"
-        }
-      }
+      "properties": { "prepend-rules": { "title": "前置规则配置", "$ref": "#/definitions/rules" } }
     },
     {
       "type": "object",
@@ -205,10 +170,7 @@
       "type": "object",
       "title": "前置配置",
       "patternProperties": {
-        "^append__proxies": {
-          "title": "前置代理节点配置",
-          "$ref": "#/definitions/proxies"
-        },
+        "^append__proxies": { "title": "前置代理节点配置", "$ref": "#/definitions/proxies" },
         "^append__proxy-providers": {
           "title": "前置代理集合配置",
           "$ref": "#/definitions/proxy-providers"
@@ -217,28 +179,19 @@
           "title": "前置代理组配置",
           "$ref": "#/definitions/proxy-groups"
         },
-        "^append__rules": {
-          "title": "前置规则配置",
-          "$ref": "#/definitions/rules"
-        },
+        "^append__rules": { "title": "前置规则配置", "$ref": "#/definitions/rules" },
         "^append__rule-providers": {
           "title": "前置规则集合配置",
           "$ref": "#/definitions/rule-providers"
         },
-        "^append__[-a-zA-Z0-9]+(\\.[-a-zA-Z0-9]+)*$": {
-          "title": "前置配置",
-          "type": "object"
-        }
+        "^append__[-a-zA-Z0-9]+(\\.[-a-zA-Z0-9]+)*$": { "title": "前置配置", "type": "object" }
       }
     },
     {
       "type": "object",
       "title": "后置配置",
       "patternProperties": {
-        "^prepend__proxies": {
-          "title": "后置代理节点配置",
-          "$ref": "#/definitions/proxies"
-        },
+        "^prepend__proxies": { "title": "后置代理节点配置", "$ref": "#/definitions/proxies" },
         "^prepend__proxy-providers": {
           "title": "后置代理集合配置",
           "$ref": "#/definitions/proxy-providers"
@@ -247,26 +200,19 @@
           "title": "后置代理组配置",
           "$ref": "#/definitions/proxy-groups"
         },
-        "^prepend__rules": {
-          "title": "后置规则配置",
-          "$ref": "#/definitions/rules"
-        },
+        "^prepend__rules": { "title": "后置规则配置", "$ref": "#/definitions/rules" },
         "^prepend__rule-providers": {
           "title": "后置规则集合配置",
           "$ref": "#/definitions/rule-providers"
         },
-        "^prepend__[-a-zA-Z0-9]+(\\.[-a-zA-Z0-9]+)*$": {
-          "title": "后置配置"
-        }
+        "^prepend__[-a-zA-Z0-9]+(\\.[-a-zA-Z0-9]+)*$": { "title": "后置配置" }
       }
     },
     {
       "type": "object",
       "title": "覆盖配置",
       "patternProperties": {
-        "^override__[-a-zA-Z0-9]+(\\.[-a-zA-Z0-9]+)*$": {
-          "title": "直接覆盖配置"
-        }
+        "^override__[-a-zA-Z0-9]+(\\.[-a-zA-Z0-9]+)*$": { "title": "直接覆盖配置" }
       }
     },
     {
@@ -275,15 +221,8 @@
       "patternProperties": {
         "^filter__[-a-zA-Z0-9]+(\\.[-a-zA-Z0-9]+)*$": {
           "anyOf": [
-            {
-              "$ref": "#/definitions/nyanpasu-filter"
-            },
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/nyanpasu-filter"
-              }
-            }
+            { "$ref": "#/definitions/nyanpasu-filter" },
+            { "type": "array", "items": { "$ref": "#/definitions/nyanpasu-filter" } }
           ]
         }
       }

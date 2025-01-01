@@ -1,11 +1,7 @@
 {
   "type": "string",
   "anyOf": [
-    {
-      "title": "匹配完整域名",
-      "pattern": "^DOMAIN((?:,[^,]+){2})$",
-      "errorMessage": "无效的规则"
-    },
+    { "title": "匹配完整域名", "pattern": "^DOMAIN((?:,[^,]+){2})$", "errorMessage": "无效的规则" },
     {
       "title": "匹配域名后缀",
       "pattern": "^DOMAIN-SUFFIX((?:,[^,]+){2})$",
@@ -136,35 +132,15 @@
       "pattern": "^IN-NAME((?:,[^,]+){2})$",
       "errorMessage": "无效的规则"
     },
-    {
-      "title": "子规则",
-      "pattern": "^SUB-RULE,\\(.+\\),[^,]+$",
-      "errorMessage": "无效的规则"
-    },
+    { "title": "子规则", "pattern": "^SUB-RULE,\\(.+\\),[^,]+$", "errorMessage": "无效的规则" },
     {
       "title": "匹配规则集(rule-providers中定义)",
       "pattern": "^RULE-SET((?:,[^,]+){2})(?:,(no-resolve|src)){0,2}$",
       "errorMessage": "无效的规则"
     },
-    {
-      "title": "逻辑和",
-      "pattern": "^AND,\\(\\(.+,.+\\)\\),[^,]+$",
-      "errorMessage": "无效的规则"
-    },
-    {
-      "title": "逻辑或",
-      "pattern": "^OR,\\(\\(.+,.+\\)\\),[^,]+$",
-      "errorMessage": "无效的规则"
-    },
-    {
-      "title": "逻辑非",
-      "pattern": "^NOT,\\(\\(.+,.+\\)\\),[^,]+$",
-      "errorMessage": "无效的规则"
-    },
-    {
-      "title": "匹配所有请求(无需条件)",
-      "pattern": "^MATCH,[^,]+$",
-      "errorMessage": "无效的规则"
-    }
+    { "title": "逻辑和", "pattern": "^AND,\\(\\(.+,.+\\)\\),[^,]+$", "errorMessage": "无效的规则" },
+    { "title": "逻辑或", "pattern": "^OR,\\(\\(.+,.+\\)\\),[^,]+$", "errorMessage": "无效的规则" },
+    { "title": "逻辑非", "pattern": "^NOT,\\(\\(.+,.+\\)\\),[^,]+$", "errorMessage": "无效的规则" },
+    { "title": "匹配所有请求(无需条件)", "pattern": "^MATCH,[^,]+$", "errorMessage": "无效的规则" }
   ]
 }

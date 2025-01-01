@@ -1,70 +1,22 @@
 {
-  "stringArray": {
-    "type": "array",
-    "items": { "$ref": "./compatible.json#/string" }
-  },
-  "portArray": {
-    "type": "array",
-    "items": { "$ref": "./patterns.json#/port" }
-  },
-  "portRangeArray": {
-    "type": "array",
-    "items": { "$ref": "./patterns.json#/portRange" }
-  },
-  "ipv4Array": {
-    "type": "array",
-    "items": { "$ref": "./patterns.json#/ipv4" }
-  },
-  "ipv4PortArray": {
-    "type": "array",
-    "items": { "$ref": "./patterns.json#/ipv4Port" }
-  },
-  "ipv4CIDRArray": {
-    "type": "array",
-    "items": { "$ref": "./patterns.json#/ipv4CIDR" }
-  },
-  "ipv6Array": {
-    "type": "array",
-    "items": { "$ref": "./patterns.json#/ipv6" }
-  },
-  "ipv6PortArray": {
-    "type": "array",
-    "items": { "$ref": "./patterns.json#/ipv6Port" }
-  },
-  "ipv6CIDRArray": {
-    "type": "array",
-    "items": { "$ref": "./patterns.json#/ipv6CIDR" }
-  },
-  "ipArray": {
-    "type": "array",
-    "items": { "$ref": "./patterns.json#/ip" }
-  },
-  "ipPortArray": {
-    "type": "array",
-    "items": { "$ref": "./patterns.json#/ipPort" }
-  },
-  "ipCIDRArray": {
-    "type": "array",
-    "items": { "$ref": "./patterns.json#/ipCIDR" }
-  },
-  "serverArray": {
-    "type": "array",
-    "items": { "$ref": "./patterns.json#/server" }
-  },
-  "domainArray": {
-    "type": "array",
-    "items": { "$ref": "./patterns.json#/domain" }
-  },
+  "stringArray": { "type": "array", "items": { "$ref": "./compatible.json#/string" } },
+  "portArray": { "type": "array", "items": { "$ref": "./patterns.json#/port" } },
+  "portRangeArray": { "type": "array", "items": { "$ref": "./patterns.json#/portRange" } },
+  "ipv4Array": { "type": "array", "items": { "$ref": "./patterns.json#/ipv4" } },
+  "ipv4PortArray": { "type": "array", "items": { "$ref": "./patterns.json#/ipv4Port" } },
+  "ipv4CIDRArray": { "type": "array", "items": { "$ref": "./patterns.json#/ipv4CIDR" } },
+  "ipv6Array": { "type": "array", "items": { "$ref": "./patterns.json#/ipv6" } },
+  "ipv6PortArray": { "type": "array", "items": { "$ref": "./patterns.json#/ipv6Port" } },
+  "ipv6CIDRArray": { "type": "array", "items": { "$ref": "./patterns.json#/ipv6CIDR" } },
+  "ipArray": { "type": "array", "items": { "$ref": "./patterns.json#/ip" } },
+  "ipPortArray": { "type": "array", "items": { "$ref": "./patterns.json#/ipPort" } },
+  "ipCIDRArray": { "type": "array", "items": { "$ref": "./patterns.json#/ipCIDR" } },
+  "serverArray": { "type": "array", "items": { "$ref": "./patterns.json#/server" } },
+  "domainArray": { "type": "array", "items": { "$ref": "./patterns.json#/domain" } },
   "domainWildcardArray": {
     "type": "array",
     "items": { "$ref": "./patterns.json#/domainWildcard" }
   },
-  "urlArray": {
-    "type": "array",
-    "items": { "$ref": "./patterns.json#/url" }
-  },
-  "httpUrlArray": {
-    "type": "array",
-    "items": { "$ref": "./patterns.json#/httpUrl" }
-  }
+  "urlArray": { "type": "array", "items": { "$ref": "./patterns.json#/url" } },
+  "httpUrlArray": { "type": "array", "items": { "$ref": "./patterns.json#/httpUrl" } }
 }

@@ -13,7 +13,7 @@
     { "title": "basic配置", "$ref": "#/definitions/basic-option" },
     {
       "type": "object",
-      "title": "http配置",
+      "title": "mieru配置",
       "required": ["name", "server", "transport", "username", "password"],
       "properties": {
         "type": {
@@ -81,9 +81,7 @@
         }
       },
       "anyOf": [{ "required": ["port"] }, { "required": ["port-range"] }],
-      "if": {
-        "required": ["port", "port-range"]
-      },
+      "if": { "required": ["port", "port-range"] },
       "then": {
         "properties": {
           "port": { "deprecationMessage": "不可同时填写 port 和 port-range" },

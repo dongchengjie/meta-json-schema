@@ -16,10 +16,7 @@
         "properties": {
           "network": {
             "type": "array",
-            "items": {
-              "enum": ["tcp", "udp"],
-              "markdownEnumDescriptions": ["tcp", "udp"]
-            },
+            "items": { "enum": ["tcp", "udp"], "markdownEnumDescriptions": ["tcp", "udp"] },
             "title": "需要监听的网络类型",
             "description": "可为tcp/udp",
             "markdownDescription": "可为`tcp`/`udp`"

@@ -176,9 +176,7 @@
           "description": "单位:s",
           "markdownDescription": "单位:s"
         },
-        "amnezia-wg-option": {
-          "$ref": "#/definitions/amnezia-wg-option"
-        },
+        "amnezia-wg-option": { "$ref": "#/definitions/amnezia-wg-option" },
         "peers": {
           "type": "array",
           "title": "peer配置",
@@ -207,9 +205,7 @@
         }
       },
       "if": { "not": { "properties": { "peers": { "type": "array" } } } },
-      "then": {
-        "$ref": "#/definitions/wireguard-peer-option"
-      }
+      "then": { "$ref": "#/definitions/wireguard-peer-option" }
     },
     {
       "type": "object",

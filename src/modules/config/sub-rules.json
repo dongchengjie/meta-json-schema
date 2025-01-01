@@ -7,8 +7,5 @@
     "enums": { "$ref": "../../definitions/enums.json" },
     "rule": { "$ref": "../rules/rule.json" }
   },
-  "additionalProperties": {
-    "type": "array",
-    "items": { "$ref": "#/definitions/rule" }
-  }
+  "additionalProperties": { "type": "array", "items": { "$ref": "#/definitions/rule" } }
 }

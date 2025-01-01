@@ -1,11 +1,7 @@
 {
   "type": "string",
   "anyOf": [
-    {
-      "title": "匹配完整域名",
-      "pattern": "^DOMAIN((?:,[^,]+){1})$",
-      "errorMessage": "无效的规则"
-    },
+    { "title": "匹配完整域名", "pattern": "^DOMAIN((?:,[^,]+){1})$", "errorMessage": "无效的规则" },
     {
       "title": "匹配域名后缀",
       "pattern": "^DOMAIN-SUFFIX((?:,[^,]+){1})$",
@@ -136,20 +132,8 @@
       "pattern": "^IN-NAME((?:,[^,]+){1})$",
       "errorMessage": "无效的规则"
     },
-    {
-      "title": "逻辑和",
-      "pattern": "^AND,\\(\\(.+,.+\\)\\),[^,]+$",
-      "errorMessage": "无效的规则"
-    },
-    {
-      "title": "逻辑或",
-      "pattern": "^OR,\\(\\(.+,.+\\)\\),[^,]+$",
-      "errorMessage": "无效的规则"
-    },
-    {
-      "title": "逻辑非",
-      "pattern": "^NOT,\\(\\(.+,.+\\)\\),[^,]+$",
-      "errorMessage": "无效的规则"
-    }
+    { "title": "逻辑和", "pattern": "^AND,\\(\\(.+,.+\\)\\),[^,]+$", "errorMessage": "无效的规则" },
+    { "title": "逻辑或", "pattern": "^OR,\\(\\(.+,.+\\)\\),[^,]+$", "errorMessage": "无效的规则" },
+    { "title": "逻辑非", "pattern": "^NOT,\\(\\(.+,.+\\)\\),[^,]+$", "errorMessage": "无效的规则" }
   ]
 }

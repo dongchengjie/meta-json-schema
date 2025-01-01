@@ -50,16 +50,9 @@
       }
     },
     "allOf": [
+      { "if": { "properties": { "type": { "const": "file" } } }, "then": { "required": ["path"] } },
       {
-        "if": { "properties": { "type": { "const": "file" } } },
-        "then": { "required": ["path"] }
-      },
-      {
-        "if": {
-          "properties": {
-            "type": { "const": "http" }
-          }
-        },
+        "if": { "properties": { "type": { "const": "http" } } },
         "then": {
           "required": ["url"],
           "properties": {
@@ -94,32 +87,19 @@
               "if": { "properties": { "behavior": { "const": "classical" } } },
               "then": {
                 "properties": {
-                  "payload": {
-                    "type": "array",
-                    "items": { "$ref": "./inline-rule.json" }
-                  }
+                  "payload": { "type": "array", "items": { "$ref": "./inline-rule.json" } }
                 }
               }
             },
             {
               "if": { "properties": { "behavior": { "const": "domain" } } },
               "then": {
-                "properties": {
-                  "payload": {
-                    "$ref": "#/definitions/types/domainWildcardArray"
-                  }
-                }
+                "properties": { "payload": { "$ref": "#/definitions/types/domainWildcardArray" } }
               }
             },
             {
               "if": { "properties": { "behavior": { "const": "ipcidr" } } },
-              "then": {
-                "properties": {
-                  "payload": {
-                    "$ref": "#/definitions/types/ipCIDRArray"
-                  }
-                }
-              }
+              "then": { "properties": { "payload": { "$ref": "#/definitions/types/ipCIDRArray" } } }
             }
           ]
         }

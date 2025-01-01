@@ -30,177 +30,98 @@
     {
       "type": "object",
       "title": "实验性内容配置",
-      "properties": {
-        "experimental": {
-          "$ref": "#/definitions/experimental"
-        }
-      }
+      "properties": { "experimental": { "$ref": "#/definitions/experimental" } }
     },
     {
       "type": "object",
       "title": "缓存配置",
-      "properties": {
-        "profile": {
-          "$ref": "#/definitions/profile"
-        }
-      }
+      "properties": { "profile": { "$ref": "#/definitions/profile" } }
     },
     {
       "type": "object",
       "title": "iptables配置",
-      "properties": {
-        "iptables": {
-          "$ref": "#/definitions/iptables"
-        }
-      }
+      "properties": { "iptables": { "$ref": "#/definitions/iptables" } }
     },
     {
       "type": "object",
       "title": "TLS配置",
-      "properties": {
-        "tls": {
-          "$ref": "#/definitions/tls"
-        }
-      }
+      "properties": { "tls": { "$ref": "#/definitions/tls" } }
     },
-    {
-      "title": "全局配置",
-      "$ref": "#/definitions/general"
-    },
+    { "title": "全局配置", "$ref": "#/definitions/general" },
     {
       "type": "object",
       "title": "代理配置",
-      "properties": {
-        "proxies": {
-          "$ref": "#/definitions/proxies"
-        }
-      }
+      "properties": { "proxies": { "$ref": "#/definitions/proxies" } }
     },
     {
       "type": "object",
       "title": "代理集合配置",
-      "properties": {
-        "proxy-providers": {
-          "$ref": "#/definitions/proxy-providers"
-        }
-      }
+      "properties": { "proxy-providers": { "$ref": "#/definitions/proxy-providers" } }
     },
     {
       "type": "object",
       "title": "代理组配置",
-      "properties": {
-        "proxy-groups": {
-          "$ref": "#/definitions/proxy-groups"
-        }
-      }
+      "properties": { "proxy-groups": { "$ref": "#/definitions/proxy-groups" } }
     },
     {
       "type": "object",
       "title": "listeners配置",
-      "properties": {
-        "listeners": {
-          "$ref": "#/definitions/listeners"
-        }
-      }
+      "properties": { "listeners": { "$ref": "#/definitions/listeners" } }
     },
     {
       "type": "object",
       "title": "规则集合配置",
-      "properties": {
-        "rule-providers": {
-          "$ref": "#/definitions/rule-providers"
-        }
-      }
+      "properties": { "rule-providers": { "$ref": "#/definitions/rule-providers" } }
     },
     {
       "type": "object",
       "title": "子规则配置",
-      "properties": {
-        "sub-rules": {
-          "$ref": "#/definitions/sub-rules"
-        }
-      }
+      "properties": { "sub-rules": { "$ref": "#/definitions/sub-rules" } }
     },
     {
       "type": "object",
       "title": "规则配置",
-      "properties": {
-        "rules": {
-          "$ref": "#/definitions/rules"
-        }
-      }
+      "properties": { "rules": { "$ref": "#/definitions/rules" } }
     },
     {
       "type": "object",
       "title": "hosts配置",
-      "properties": {
-        "hosts": {
-          "$ref": "#/definitions/hosts"
-        }
-      }
+      "properties": { "hosts": { "$ref": "#/definitions/hosts" } }
     },
     {
       "type": "object",
       "title": "NTP配置",
-      "properties": {
-        "ntp": {
-          "$ref": "#/definitions/ntp"
-        }
-      }
+      "properties": { "ntp": { "$ref": "#/definitions/ntp" } }
     },
     {
       "type": "object",
       "title": "DNS配置",
-      "properties": {
-        "dns": {
-          "$ref": "#/definitions/dns"
-        }
-      }
+      "properties": { "dns": { "$ref": "#/definitions/dns" } }
     },
     {
       "type": "object",
       "title": "TUN配置",
-      "properties": {
-        "tun": {
-          "$ref": "#/definitions/tun"
-        }
-      }
+      "properties": { "tun": { "$ref": "#/definitions/tun" } }
     },
     {
       "type": "object",
       "title": "tuic-server配置",
-      "properties": {
-        "tuic-server": {
-          "$ref": "#/definitions/tuic-server"
-        }
-      }
+      "properties": { "tuic-server": { "$ref": "#/definitions/tuic-server" } }
     },
     {
       "type": "object",
       "title": "认证配置",
-      "properties": {
-        "authentication": {
-          "$ref": "#/definitions/authentication"
-        }
-      }
+      "properties": { "authentication": { "$ref": "#/definitions/authentication" } }
     },
     {
       "type": "object",
       "title": "隧道配置",
-      "properties": {
-        "tunnels": {
-          "$ref": "#/definitions/tunnels"
-        }
-      }
+      "properties": { "tunnels": { "$ref": "#/definitions/tunnels" } }
     },
     {
       "type": "object",
       "title": "域名嗅探配置",
-      "properties": {
-        "sniffer": {
-          "$ref": "#/definitions/sniffer"
-        }
-      }
+      "properties": { "sniffer": { "$ref": "#/definitions/sniffer" } }
     }
   ]
 }

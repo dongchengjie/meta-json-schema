@@ -9,10 +9,6 @@
   },
   "allOf": [
     { "title": "入站基础配置", "$ref": "#/definitions/base-option" },
-    {
-      "type": "object",
-      "title": "redir配置",
-      "properties": {}
-    }
+    { "type": "object", "title": "redir配置", "properties": {} }
   ]
 }

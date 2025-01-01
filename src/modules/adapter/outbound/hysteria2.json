@@ -15,9 +15,7 @@
       "type": "object",
       "title": "hysteria2配置",
       "required": ["name", "server"],
-      "dependentRequired": {
-        "obfs": ["obfs-password"]
-      },
+      "dependentRequired": { "obfs": ["obfs-password"] },
       "properties": {
         "type": {
           "$ref": "#/definitions/compatible/string",
