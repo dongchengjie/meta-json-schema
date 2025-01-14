@@ -8,7 +8,7 @@ commit-msg:
 pre-commit:
   parallel: true
   jobs:
-    - name: prettier
-      run: npx prettier {staged_files} --write --ignore-unknown
+    - name: fmt
+      run: npx dprint fmt --allow-no-files {staged_files}
       glob: "*.*"
       stage_fixed: true

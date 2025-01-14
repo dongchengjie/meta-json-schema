@@ -27,7 +27,7 @@ find-process-mode: strict
 
 mode: rule
 
-#自定义 geodata url
+# 自定义 geodata url
 geox-url:
   geoip: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat"
   geosite: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat"
@@ -50,9 +50,9 @@ tls:
   private-key: string # 证书对应的私钥 PEM 格式，或者私钥路径
   custom-certifactes:
     - |
-      -----BEGIN CERTIFICATE-----
-      format/pem...
-      -----END CERTIFICATE-----
+        -----BEGIN CERTIFICATE-----
+        format/pem...
+        -----END CERTIFICATE-----
 
 external-controller: 0.0.0.0:9093 # RESTful API 监听地址
 external-controller-tls: 0.0.0.0:9443 # RESTful API HTTPS 监听地址，需要配置 tls 部分配置文件
@@ -92,7 +92,7 @@ interface-name: en0 # 设置出口网卡
 global-client-fingerprint: chrome
 
 #  TCP keep alive interval
-disable-keep-alive: false #目前在android端强制为true
+disable-keep-alive: false # 目前在android端强制为true
 keep-alive-idle: 15
 keep-alive-interval: 15
 
@@ -179,10 +179,10 @@ tun:
 # 嗅探域名 可选配置
 sniffer:
   enable: false
-  ## 对 redir-host 类型识别的流量进行强制嗅探
-  ## 如：Tun、Redir 和 TProxy 并 DNS 为 redir-host 皆属于
+  # # 对 redir-host 类型识别的流量进行强制嗅探
+  # # 如：Tun、Redir 和 TProxy 并 DNS 为 redir-host 皆属于
   force-dns-mapping: false
-  ## 对所有未获取到域名的流量进行强制嗅探
+  # # 对所有未获取到域名的流量进行强制嗅探
   parse-pure-ip: false
   # 是否使用嗅探结果作为实际访问，默认 true
   # 全局配置，优先级低于 sniffer.sniff 实际配置
@@ -204,7 +204,7 @@ sniffer:
     - 192.168.0.3/32
   skip-dst-address: # 对于目标ip跳过嗅探
     - 192.168.0.3/32
-  ## 对嗅探结果进行跳过
+  # # 对嗅探结果进行跳过
   skip-domain:
     - Mijia Cloud
   # 需要嗅探协议
@@ -329,8 +329,8 @@ dns:
       - https://dns.alidns.com/dns-query
     "geosite:category-ads-all": rcode://success
     "www.baidu.com,+.google.cn": [223.5.5.5, https://dns.alidns.com/dns-query]
-    ## global，dns 为 rule-providers 中的名为 global 和 dns 规则订阅，
-    ## 且 behavior 必须为 domain/classical，当为 classical 时仅会生效域名类规则
+    # # global，dns 为 rule-providers 中的名为 global 和 dns 规则订阅，
+    # # 且 behavior 必须为 domain/classical，当为 classical 时仅会生效域名类规则
     "rule-set:global,dns": 8.8.8.8
 
 proxies: # socks5
@@ -457,12 +457,12 @@ proxies: # socks5
     password: [YOUR_SS_PASSWORD]
     client-fingerprint:
       chrome # One of: chrome, ios, firefox or safari
-      # 可以是 chrome, ios, firefox, safari 中的一个
+    # 可以是 chrome, ios, firefox, safari 中的一个
     plugin: restls
     plugin-opts:
       host:
         "www.microsoft.com" # Must be a TLS 1.3 server
-        # 应当是一个 TLS 1.3 服务器
+      # 应当是一个 TLS 1.3 服务器
       password: [YOUR_RESTLS_PASSWORD]
       version-hint: "tls13"
       # Control your post-handshake traffic through restls-script
@@ -480,12 +480,12 @@ proxies: # socks5
     password: [YOUR_SS_PASSWORD]
     client-fingerprint:
       chrome # One of: chrome, ios, firefox or safari
-      # 可以是 chrome, ios, firefox, safari 中的一个
+    # 可以是 chrome, ios, firefox, safari 中的一个
     plugin: restls
     plugin-opts:
       host:
         "vscode.dev" # Must be a TLS 1.2 server
-        # 应当是一个 TLS 1.2 服务器
+      # 应当是一个 TLS 1.2 服务器
       password: [YOUR_RESTLS_PASSWORD]
       version-hint: "tls12"
       restls-script: "1000?100<1,500~100,350~100,600~100,400~200"
@@ -705,7 +705,7 @@ proxies: # socks5
     skip-cert-verify: true
     fingerprint: chrome
 
-  #hysteria
+  # hysteria
   - name: "hysteria"
     type: hysteria
     server: 1.2.3.4.com
@@ -728,7 +728,7 @@ proxies: # socks5
     fingerprint: chrome
     fast-open: true # 支持 TCP 快速打开，默认为 false
 
-  #hysteria2
+  # hysteria2
   - name: "hysteria2"
     type: hysteria2
     server: 1.2.3.4.com
@@ -1116,7 +1116,7 @@ listeners:
     listen: 0.0.0.0
     rule: sub-rule-name1 # 默认使用 rules，如果未找到 sub-rule 则直接使用 rules
     proxy: proxy # 如果不为空则直接将该入站流量交由指定 proxy 处理 (当 proxy 不为空时，这里的 proxy 名称必须合法，否则会出错)
-    # udp: false # 默认 true
+  # udp: false # 默认 true
 
   - name: shadowsocks-in-1
     type: shadowsocks

@@ -1,0 +1,28 @@
+{
+  // global Configuration
+  "lineWidth": 100,
+  "indentWidth": 2,
+  "newLineKind": "lf",
+  "useTabs": false,
+  // Format only changed files to improve performance
+  "incremental": true,
+  // https://dprint.dev/plugins/json/config
+  "json": {
+    "commentLine.forceSpaceAfterSlashes": true,
+    "trailingCommas": "never"
+  },
+  // https://dprint.dev/plugins/markdown/config
+  "markdown": {},
+  // https://dprint.dev/plugins/yaml/config
+  "yaml": {
+    "trailingComma": false,
+    "formatComments": true,
+    "preferSingleLine": true
+  },
+  "excludes": ["node_modules", "pnpm-lock.yaml", "schemas"],
+  "plugins": [
+    "https://plugins.dprint.dev/json-0.19.4.wasm",
+    "https://plugins.dprint.dev/markdown-0.17.8.wasm",
+    "https://plugins.dprint.dev/g-plane/pretty_yaml-v0.5.0.wasm"
+  ]
+}

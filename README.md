@@ -21,59 +21,59 @@ VS Code 扩展商店搜索 `Meta JSON Schema` 或 `ClashMeta.meta-json-schema` �
 <details>
 <summary>Monaco Editor中使用</summary>
 
-1.  安装 `monaco-editor` （编辑器）和 `monaco-yaml` （YAML支持）。
+1. 安装 `monaco-editor` （编辑器）和 `monaco-yaml` （YAML支持）。
 
-    ```
-    npm install monaco-editor
-    npm install monaco-yaml
-    ```
+   ```
+   npm install monaco-editor
+   npm install monaco-yaml
+   ```
 
-2.  如果是vite项目，可通过安装插件简化初始化（其他构建工具如 `webpack` 请参考[monaco-yaml文档](https://github.com/remcohaszing/monaco-yaml?tab=readme-ov-file#using-monaco-webpack-loader-plugin)）。
+2. 如果是vite项目，可通过安装插件简化初始化（其他构建工具如 `webpack` 请参考[monaco-yaml文档](https://github.com/remcohaszing/monaco-yaml?tab=readme-ov-file#using-monaco-webpack-loader-plugin)）。
 
-    1.  安装 `vite-plugin-monaco-editor` 。
+   1. 安装 `vite-plugin-monaco-editor` 。
 
-    ```
-    npm install vite-plugin-monaco-editor
-    ```
+   ```
+   npm install vite-plugin-monaco-editor
+   ```
 
-    2.  配置 `vite.config.ts` 。
+   2. 配置 `vite.config.ts` 。
 
-    ```javascript
-    import { defineConfig } from "vite";
-    import monacoEditor from "vite-plugin-monaco-editor";
+   ```javascript
+   import { defineConfig } from "vite";
+   import monacoEditor from "vite-plugin-monaco-editor";
 
-    export default defineConfig({
-      plugins: [
-        monacoEditor({
-          languageWorkers: ["editorWorkerService"],
-          customWorkers: [
-            {
-              label: "yaml",
-              entry: "monaco-yaml/yaml.worker"
-            }
-          ]
-        })
-      ]
-    });
-    ```
+   export default defineConfig({
+     plugins: [
+       monacoEditor({
+         languageWorkers: ["editorWorkerService"],
+         customWorkers: [
+           {
+             label: "yaml",
+             entry: "monaco-yaml/yaml.worker"
+           }
+         ]
+       })
+     ]
+   });
+   ```
 
-    3.  代码中配置schema（请根据需求自行修改 `fileMatch` ）。
+   3. 代码中配置schema（请根据需求自行修改 `fileMatch` ）。
 
-    ```javascript
-    import * as monaco from "monaco-editor";
-    import { configureMonacoYaml } from "monaco-yaml";
+   ```javascript
+   import * as monaco from "monaco-editor";
+   import { configureMonacoYaml } from "monaco-yaml";
 
-    configureMonacoYaml(monaco, {
-      validate: true,
-      enableSchemaRequest: true,
-      schemas: [
-        {
-          uri: "https://fastly.jsdelivr.net/gh/dongchengjie/meta-json-schema@main/schemas/meta-json-schema.json",
-          fileMatch: ["**/*.clash.yaml"]
-        }
-      ]
-    });
-    ```
+   configureMonacoYaml(monaco, {
+     validate: true,
+     enableSchemaRequest: true,
+     schemas: [
+       {
+         uri: "https://fastly.jsdelivr.net/gh/dongchengjie/meta-json-schema@main/schemas/meta-json-schema.json",
+         fileMatch: ["**/*.clash.yaml"]
+       }
+     ]
+   });
+   ```
 
 </details>
 

@@ -17,9 +17,9 @@
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.expand": false,
   "explorer.fileNesting.patterns": {
-    ".gitignore": ".git*,lefthook.*,prettier.config.*,.prettierignore,.npmignore,LICENSE",
-    "README.md": "README.*.md",
-    "package.json": "package-lock.json,yarn.lock,pnpm-lock.yaml,bun.lockb"
+    ".gitignore": ".git*,lefthook.*,dprint.*",
+    "README.md": "README.*.md,LICENSE",
+    "package.json": "pnpm-lock.yaml"
   },
   "search.exclude": {
     "node_modules": true,
