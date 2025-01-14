@@ -27,7 +27,7 @@
     "prepare": "lefthook install",
     "dev": "npx json-schema-artifact --watch",
     "release": "npx json-schema-artifact",
-    "preview": "pnpm publish --dry-run"
+    "preview": "npm publish --dry-run"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.6.1",
