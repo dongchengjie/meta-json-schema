@@ -1,3 +1,13 @@
+## v1.19.2
+
+### Changes
+
+### Bugs Fixes
+
+- 修复: 枚举 `cipher` 缺失加密方法 `2022-blake3-aes-128-ccm`、`2022-blake3-aes-256-ccm`、`2022-blake3-chacha8-poly1305`、`chacha20-poly1305`、`chacha8-ietf-poly1305`、`xchacha8-ietf-poly1305`、`zero`
+
+---
+
 ## v1.19.1
 
 ### Changes
