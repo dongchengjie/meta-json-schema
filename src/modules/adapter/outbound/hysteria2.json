@@ -132,6 +132,34 @@
           "description": "UDP最大传输单元(Maximum Transmission Unit)",
           "markdownDescription": "UDP最大传输单元(Maximum Transmission Unit)",
           "default": 1197
+        },
+        "initial-stream-receive-window": {
+          "type": "integer",
+          "title": "流允许接收的初始数据量",
+          "description": "单位:KB",
+          "markdownDescription": "单位:KB",
+          "default": 1572864
+        },
+        "max-stream-receive-window": {
+          "type": "integer",
+          "title": "流允许接收的最大数据量",
+          "description": "单位:KB",
+          "markdownDescription": "单位:KB",
+          "default": 15728640
+        },
+        "initial-connection-receive-window": {
+          "type": "integer",
+          "title": "连接允许接收的初始数据量",
+          "description": "单位:KB",
+          "markdownDescription": "单位:KB",
+          "default": 6710886
+        },
+        "max-connection-receive-window": {
+          "type": "integer",
+          "title": "连接允许接收的最大数据量",
+          "description": "单位:KB",
+          "markdownDescription": "单位:KB",
+          "default": 67108864
         }
       }
     },

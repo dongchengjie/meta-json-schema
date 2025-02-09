@@ -1,0 +1,54 @@
+{
+  "type": "object",
+  "title": "reality配置",
+  "definitions": {
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" }
+  },
+  "required": ["dest", "private-key", "short-id", "server-names"],
+  "properties": {
+    "dest": {
+      "type": "string",
+      "title": "目标地址",
+      "description": "目标地址",
+      "markdownDescription": "目标地址"
+    },
+    "private-key": {
+      "type": "string",
+      "title": "私钥",
+      "description": "私钥",
+      "markdownDescription": "私钥"
+    },
+    "short-id": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "title": "short ID列表",
+      "description": "short ID列表",
+      "markdownDescription": "short ID列表"
+    },
+    "server-names": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "title": "服务器列表",
+      "description": "服务器列表",
+      "markdownDescription": "服务器列表"
+    },
+    "max-time-difference": {
+      "type": "integer",
+      "title": "最大时间差",
+      "description": "最大时间差",
+      "markdownDescription": "最大时间差"
+    },
+    "proxy": {
+      "type": "string",
+      "title": "代理",
+      "description": "代理",
+      "markdownDescription": "代理"
+    }
+  }
+}

@@ -14,6 +14,7 @@
     "tun": { "$ref": "../listener/inbound/tun.json" },
     "shadowsocks": { "$ref": "../listener/inbound/shadowsocks.json" },
     "vmess": { "$ref": "../listener/inbound/vmess.json" },
+    "vless": { "$ref": "../listener/inbound/vless.json" },
     "hysteria2": { "$ref": "../listener/inbound/hysteria2.json" },
     "tuic": { "$ref": "../listener/inbound/tuic.json" }
   },
@@ -72,6 +73,12 @@
         "title": "vmess配置",
         "properties": { "type": { "title": "vmess配置", "const": "vmess" } },
         "$ref": "#/definitions/vmess"
+      },
+      {
+        "type": "object",
+        "title": "vless配置",
+        "properties": { "type": { "title": "vless配置", "const": "vless" } },
+        "$ref": "#/definitions/vless"
       },
       {
         "type": "object",
