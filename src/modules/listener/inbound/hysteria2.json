@@ -101,30 +101,30 @@
         },
         "initial-stream-receive-window": {
           "type": "integer",
-          "title": "流允许接收的初始数据量",
-          "description": "单位:KB",
-          "markdownDescription": "单位:KB",
+          "title": "流初始数据窗口",
+          "description": "单位:bytes",
+          "markdownDescription": "单位:bytes",
           "default": 1572864
         },
         "max-stream-receive-window": {
           "type": "integer",
-          "title": "流允许接收的最大数据量",
-          "description": "单位:KB",
-          "markdownDescription": "单位:KB",
+          "title": "流最大数据窗口",
+          "description": "单位:bytes",
+          "markdownDescription": "单位:bytes",
           "default": 15728640
         },
         "initial-connection-receive-window": {
           "type": "integer",
-          "title": "连接允许接收的初始数据量",
-          "description": "单位:KB",
-          "markdownDescription": "单位:KB",
+          "title": "连接初始数据窗口",
+          "description": "单位:bytes",
+          "markdownDescription": "单位:bytes",
           "default": 6710886
         },
         "max-connection-receive-window": {
           "type": "integer",
-          "title": "连接允许接收的最大数据量",
-          "description": "单位:KB",
-          "markdownDescription": "单位:KB",
+          "title": "连接最大数据窗口",
+          "description": "单位:bytes",
+          "markdownDescription": "单位:bytes",
           "default": 67108864
         }
       }
