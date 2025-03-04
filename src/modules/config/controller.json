@@ -61,9 +61,9 @@
     },
     "external-ui-url": {
       "$ref": "#/definitions/patterns/httpUrl",
-      "title": "外部用户界面下载地址",
-      "description": "外部用户界面下载地址",
-      "markdownDescription": "外部用户界面下载地址",
+      "title": "外部用户界面压缩包下载地址",
+      "description": "支持文件格式：zip、tgz",
+      "markdownDescription": "支持文件格式：zip、tgz",
       "default": "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip"
     },
     "external-ui-name": {

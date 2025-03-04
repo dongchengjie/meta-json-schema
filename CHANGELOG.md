@@ -1,3 +1,13 @@
+## v1.19.3
+
+### Changes
+
+- 调整: `external-ui-url` 补充说明支持的压缩包格式
+
+### Bugs Fixes
+
+---
+
 ## v1.19.2
 
 ### Changes
