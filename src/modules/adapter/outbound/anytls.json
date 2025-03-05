@@ -1,0 +1,114 @@
+{
+  "type": "object",
+  "title": "outbound-anytls",
+  "definitions": {
+    "compatible": { "$ref": "../../../definitions/compatible.json" },
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" },
+    "basic-option": { "$ref": "./base.json#/definitions/basic-option" },
+    "smux": { "$ref": "./singmux.json" }
+  },
+  "allOf": [
+    { "title": "basic配置", "$ref": "#/definitions/basic-option" },
+    {
+      "type": "object",
+      "title": "anytls配置",
+      "required": ["name", "server", "port", "password"],
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "代理节点类型",
+          "description": "代理节点类型",
+          "markdownDescription": "代理节点类型"
+        },
+        "name": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "代理节点名称",
+          "description": "代理节点名称",
+          "markdownDescription": "代理节点名称"
+        },
+        "server": {
+          "$ref": "#/definitions/patterns/server",
+          "title": "代理节点服务器",
+          "description": "域名或IP",
+          "markdownDescription": "域名或IP"
+        },
+        "port": {
+          "$ref": "#/definitions/patterns/port",
+          "title": "代理节点端口号",
+          "description": "代理节点端口号",
+          "markdownDescription": "代理节点端口号"
+        },
+        "password": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "密码",
+          "description": "认证密码",
+          "markdownDescription": "认证密码"
+        },
+        "alpn": {
+          "$ref": "#/definitions/types/stringArray",
+          "title": "ALPN",
+          "description": "Application-Layer Protocol Negotiation(应用层协议协商)",
+          "markdownDescription": "Application-Layer Protocol Negotiation(应用层协议协商)"
+        },
+        "sni": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "SNI",
+          "description": "SNI(Server Name Indication)",
+          "markdownDescription": "`SNI`(Server Name Indication)"
+        },
+        "client-fingerprint": {
+          "$ref": "#/definitions/enums/fingerprint",
+          "title": "客户端指纹",
+          "description": "客户端指纹",
+          "markdownDescription": "客户端指纹"
+        },
+        "skip-cert-verify": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "跳过证书验证",
+          "description": "跳过证书验证",
+          "markdownDescription": "跳过证书验证"
+        },
+        "fingerprint": {
+          "$ref": "#/definitions/enums/fingerprint",
+          "title": "指纹",
+          "description": "指纹",
+          "markdownDescription": "指纹"
+        },
+        "udp": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用UDP",
+          "description": "启用UDP",
+          "markdownDescription": "启用`UDP`",
+          "default": true
+        },
+        "idle-session-check-interval": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "空闲会话检测间隔",
+          "description": "单位:s",
+          "markdownDescription": "单位:s"
+        },
+        "idle-session-timeout": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "空闲会话超时",
+          "description": "单位:s",
+          "markdownDescription": "单位:s"
+        },
+        "min-idle-session": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "最小空闲会话数量",
+          "description": "最小空闲会话数量",
+          "markdownDescription": "最小空闲会话数量"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "title": "smux配置",
+      "properties": {
+        "smux": { "title": "smux配置", "$ref": "#/definitions/smux" }
+      }
+    }
+  ]
+}

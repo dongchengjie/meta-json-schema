@@ -1,0 +1,46 @@
+{
+  "type": "object",
+  "title": "inbound-anytls",
+  "definitions": {
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" },
+    "base-option": { "$ref": "./base.json" },
+    "mux-option": { "$ref": "./mux.json" }
+  },
+  "allOf": [
+    { "title": "入站基础配置", "$ref": "#/definitions/base-option" },
+    {
+      "type": "object",
+      "title": "anytls配置",
+      "required": ["certificate", "private-key"],
+      "properties": {
+        "users": {
+          "type": "object",
+          "title": "用户列表(key: value格式)",
+          "description": "uuid:password",
+          "markdownDescription": "`uuid`:`password`",
+          "additionalProperties": { "type": "string" }
+        },
+        "certificate": {
+          "type": "string",
+          "title": "证书或证书路径",
+          "description": "PEM格式",
+          "markdownDescription": "PEM格式"
+        },
+        "private-key": {
+          "type": "string",
+          "title": "私钥",
+          "description": "私钥内容或私钥文件路径",
+          "markdownDescription": "私钥内容或私钥文件路径"
+        },
+        "padding-scheme": {
+          "type": "string",
+          "title": "填充策略",
+          "description": "https://github.com/anytls/anytls-go/blob/main/docs/protocol.md#cmdupdatepaddingscheme",
+          "markdownDescription": "[参考文档](https://github.com/anytls/anytls-go/blob/main/docs/protocol.md#cmdupdatepaddingscheme)"
+        }
+      }
+    }
+  ]
+}

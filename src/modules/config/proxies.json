@@ -20,7 +20,8 @@
     "wireguard": { "$ref": "../adapter/outbound/wireguard.json" },
     "tuic": { "$ref": "../adapter/outbound/tuic.json" },
     "ssh": { "$ref": "../adapter/outbound/ssh.json" },
-    "mieru": { "$ref": "../adapter/outbound/mieru.json" }
+    "mieru": { "$ref": "../adapter/outbound/mieru.json" },
+    "anytls": { "$ref": "../adapter/outbound/anytls.json" }
   },
   "items": {
     "anyOf": [
@@ -119,6 +120,12 @@
         "title": "mieru",
         "properties": { "type": { "title": "mieru配置", "const": "mieru" } },
         "$ref": "#/definitions/mieru"
+      },
+      {
+        "type": "object",
+        "title": "anytls",
+        "properties": { "type": { "title": "anytls配置", "const": "anytls" } },
+        "$ref": "#/definitions/anytls"
       }
     ]
   }

@@ -16,7 +16,8 @@
     "vmess": { "$ref": "../listener/inbound/vmess.json" },
     "vless": { "$ref": "../listener/inbound/vless.json" },
     "hysteria2": { "$ref": "../listener/inbound/hysteria2.json" },
-    "tuic": { "$ref": "../listener/inbound/tuic.json" }
+    "tuic": { "$ref": "../listener/inbound/tuic.json" },
+    "anytls": { "$ref": "../listener/inbound/anytls.json" }
   },
   "items": {
     "anyOf": [
@@ -65,7 +66,9 @@
       {
         "type": "object",
         "title": "shadowsocks配置",
-        "properties": { "type": { "title": "shadowsocks配置", "const": "shadowsocks" } },
+        "properties": {
+          "type": { "title": "shadowsocks配置", "const": "shadowsocks" }
+        },
         "$ref": "#/definitions/shadowsocks"
       },
       {
@@ -83,7 +86,9 @@
       {
         "type": "object",
         "title": "hysteria2配置",
-        "properties": { "type": { "title": "hysteria2配置", "const": "hysteria2" } },
+        "properties": {
+          "type": { "title": "hysteria2配置", "const": "hysteria2" }
+        },
         "$ref": "#/definitions/hysteria2"
       },
       {
@@ -91,6 +96,12 @@
         "title": "tuic配置",
         "properties": { "type": { "title": "tuic配置", "const": "tuic" } },
         "$ref": "#/definitions/tuic"
+      },
+      {
+        "type": "object",
+        "title": "anytls配置",
+        "properties": { "type": { "title": "anytls配置", "const": "anytls" } },
+        "$ref": "#/definitions/anytls"
       }
     ]
   }
