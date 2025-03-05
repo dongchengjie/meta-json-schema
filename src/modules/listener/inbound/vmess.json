@@ -81,6 +81,10 @@
           "title": "多路复用配置",
           "$ref": "#/definitions/mux-option"
         }
+      },
+      "dependencies": {
+        "certificate": ["private-key"],
+        "private-key": ["certificate"]
       }
     }
   ]

@@ -21,6 +21,18 @@
           "markdownDescription": "默认遵从全局`authentication`配置",
           "items": { "$ref": "#/definitions/auth-user" }
         },
+        "certificate": {
+          "type": "string",
+          "title": "证书或证书路径",
+          "description": "PEM格式",
+          "markdownDescription": "PEM格式"
+        },
+        "private-key": {
+          "type": "string",
+          "title": "私钥",
+          "description": "私钥内容或私钥文件路径",
+          "markdownDescription": "私钥内容或私钥文件路径"
+        },
         "udp": {
           "type": "boolean",
           "title": "启用UDP",
@@ -28,6 +40,10 @@
           "markdownDescription": "启用`UDP`",
           "default": true
         }
+      },
+      "dependencies": {
+        "certificate": ["private-key"],
+        "private-key": ["certificate"]
       }
     }
   ]

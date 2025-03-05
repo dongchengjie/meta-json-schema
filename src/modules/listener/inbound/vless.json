@@ -99,14 +99,10 @@
           "$ref": "#/definitions/mux-option"
         }
       },
-      "anyOf": [
-        {
-          "required": ["certificate"]
-        },
-        {
-          "required": ["private-key"]
-        }
-      ]
+      "dependencies": {
+        "certificate": ["private-key"],
+        "private-key": ["certificate"]
+      }
     }
   ]
 }

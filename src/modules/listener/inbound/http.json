@@ -20,7 +20,23 @@
           "description": "默认遵从全局authentication配置",
           "markdownDescription": "默认遵从全局`authentication`配置",
           "items": { "$ref": "#/definitions/auth-user" }
+        },
+        "certificate": {
+          "type": "string",
+          "title": "证书或证书路径",
+          "description": "PEM格式",
+          "markdownDescription": "PEM格式"
+        },
+        "private-key": {
+          "type": "string",
+          "title": "私钥",
+          "description": "私钥内容或私钥文件路径",
+          "markdownDescription": "私钥内容或私钥文件路径"
         }
+      },
+      "dependencies": {
+        "certificate": ["private-key"],
+        "private-key": ["certificate"]
       }
     }
   ]
