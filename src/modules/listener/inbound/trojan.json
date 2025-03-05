@@ -1,0 +1,121 @@
+{
+  "type": "object",
+  "title": "inbound-trojan",
+  "definitions": {
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" },
+    "base-option": { "$ref": "./base.json" },
+    "mux-option": { "$ref": "./mux.json" },
+    "trojan-user": {
+      "type": "object",
+      "title": "trojan用户",
+      "required": ["password"],
+      "properties": {
+        "username": {
+          "type": "string",
+          "title": "用户名",
+          "description": "认证用户名",
+          "markdownDescription": "认证用户名"
+        },
+        "password": {
+          "type": "string",
+          "title": "密码",
+          "description": "认证密码",
+          "markdownDescription": "认证密码"
+        }
+      }
+    },
+    "trojan-ss-option": {
+      "type": "object",
+      "title": "shadowsocks配置",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "title": "启用配置",
+          "description": "启用配置",
+          "markdownDescription": "启用配置"
+        },
+        "method": {
+          "$ref": "#/definitions/enums/cipher",
+          "title": "加密方法",
+          "description": "加密方法",
+          "markdownDescription": "加密方法",
+          "default": "aes-128-gcm"
+        },
+        "password": {
+          "type": "string",
+          "title": "密码",
+          "description": "认证密码",
+          "markdownDescription": "认证密码"
+        }
+      }
+    },
+    "reality-config": { "$ref": "./reality.json" }
+  },
+  "allOf": [
+    { "title": "入站基础配置", "$ref": "#/definitions/base-option" },
+    {
+      "type": "object",
+      "title": "trojan配置",
+      "required": ["users"],
+      "properties": {
+        "users": {
+          "type": "array",
+          "title": "用户列表",
+          "description": "用户列表",
+          "markdownDescription": "用户列表",
+          "items": { "$ref": "#/definitions/trojan-user" }
+        },
+        "ws-path": {
+          "type": "string",
+          "title": "ws路径",
+          "description": "ws路径",
+          "markdownDescription": "ws路径"
+        },
+        "grpc-service-name": {
+          "type": "string",
+          "title": "grpc服务名称",
+          "description": "如果不为空则开启 grpc 传输层",
+          "markdownDescription": "如果不为空则开启 grpc 传输层",
+          "default": "GunService"
+        },
+        "certificate": {
+          "type": "string",
+          "title": "证书或证书路径",
+          "description": "PEM格式",
+          "markdownDescription": "PEM格式"
+        },
+        "private-key": {
+          "type": "string",
+          "title": "私钥",
+          "description": "私钥内容或私钥文件路径",
+          "markdownDescription": "私钥内容或私钥文件路径"
+        },
+        "reality-config": {
+          "title": "reality配置",
+          "$ref": "#/definitions/reality-config"
+        },
+        "mux-option": {
+          "title": "多路复用配置",
+          "$ref": "#/definitions/mux-option"
+        },
+        "ss-option": {
+          "title": "shadowsocks配置",
+          "$ref": "#/definitions/trojan-ss-option"
+        }
+      },
+      "anyOf": [
+        {
+          "required": ["certificate", "private-key"]
+        },
+        {
+          "required": ["reality-config"]
+        },
+        {
+          "required": ["ss-option"]
+        }
+      ]
+    }
+  ]
+}

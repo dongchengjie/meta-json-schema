@@ -17,7 +17,8 @@
     "vless": { "$ref": "../listener/inbound/vless.json" },
     "hysteria2": { "$ref": "../listener/inbound/hysteria2.json" },
     "tuic": { "$ref": "../listener/inbound/tuic.json" },
-    "anytls": { "$ref": "../listener/inbound/anytls.json" }
+    "anytls": { "$ref": "../listener/inbound/anytls.json" },
+    "trojan": { "$ref": "../listener/inbound/trojan.json" }
   },
   "items": {
     "anyOf": [
@@ -102,6 +103,12 @@
         "title": "anytls配置",
         "properties": { "type": { "title": "anytls配置", "const": "anytls" } },
         "$ref": "#/definitions/anytls"
+      },
+      {
+        "type": "object",
+        "title": "trojan配置",
+        "properties": { "type": { "title": "trojan配置", "const": "trojan" } },
+        "$ref": "#/definitions/trojan"
       }
     ]
   }
