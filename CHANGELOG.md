@@ -4,7 +4,8 @@
 
 - 调整: `external-ui-url` 补充说明支持的压缩包格式
 - 新增: proxy 新增 `anytls` 协议
-- 新增: inbound 新增 anytls `listeners` 配置项
+- 新增: inbound 新增 anytls、trojan `listeners` 配置项
+- 新增: inbound（trojan、vless、vmess） 部分新增 `grpc-service-name` 配置项
 
 ### Bugs Fixes
 

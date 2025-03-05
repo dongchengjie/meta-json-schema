@@ -54,6 +54,13 @@
           "description": "ws路径",
           "markdownDescription": "ws路径"
         },
+        "grpc-service-name": {
+          "type": "string",
+          "title": "grpc服务名称",
+          "description": "如果不为空则开启 grpc 传输层",
+          "markdownDescription": "如果不为空则开启 grpc 传输层",
+          "default": "GunService"
+        },
         "certificate": {
           "type": "string",
           "title": "证书或证书路径",
@@ -70,7 +77,10 @@
           "title": "reality配置",
           "$ref": "#/definitions/reality-config"
         },
-        "mux-option": { "title": "多路复用配置", "$ref": "#/definitions/mux-option" }
+        "mux-option": {
+          "title": "多路复用配置",
+          "$ref": "#/definitions/mux-option"
+        }
       }
     }
   ]
