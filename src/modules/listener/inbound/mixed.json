@@ -6,7 +6,8 @@
     "patterns": { "$ref": "../../../definitions/patterns.json" },
     "enums": { "$ref": "../../../definitions/enums.json" },
     "base-option": { "$ref": "./base.json" },
-    "auth-user": { "$ref": "./auth.json#/definitions/auth-user" }
+    "auth-user": { "$ref": "./auth.json#/definitions/auth-user" },
+    "reality-config": { "$ref": "./reality.json" }
   },
   "allOf": [
     { "title": "入站基础配置", "$ref": "#/definitions/base-option" },
@@ -39,6 +40,10 @@
           "title": "私钥",
           "description": "私钥内容或私钥文件路径",
           "markdownDescription": "私钥内容或私钥文件路径"
+        },
+        "reality-config": {
+          "title": "reality配置",
+          "$ref": "#/definitions/reality-config"
         }
       },
       "dependencies": {

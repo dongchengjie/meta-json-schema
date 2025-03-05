@@ -6,7 +6,8 @@
     "patterns": { "$ref": "../../../definitions/patterns.json" },
     "enums": { "$ref": "../../../definitions/enums.json" },
     "base-option": { "$ref": "./base.json" },
-    "auth-user": { "$ref": "./auth.json#/definitions/auth-user" }
+    "auth-user": { "$ref": "./auth.json#/definitions/auth-user" },
+    "reality-config": { "$ref": "./reality.json" }
   },
   "allOf": [
     { "title": "入站基础配置", "$ref": "#/definitions/base-option" },
@@ -21,6 +22,13 @@
           "markdownDescription": "默认遵从全局`authentication`配置",
           "items": { "$ref": "#/definitions/auth-user" }
         },
+        "udp": {
+          "type": "boolean",
+          "title": "启用UDP",
+          "description": "启用UDP",
+          "markdownDescription": "启用`UDP`",
+          "default": true
+        },
         "certificate": {
           "type": "string",
           "title": "证书或证书路径",
@@ -33,12 +41,9 @@
           "description": "私钥内容或私钥文件路径",
           "markdownDescription": "私钥内容或私钥文件路径"
         },
-        "udp": {
-          "type": "boolean",
-          "title": "启用UDP",
-          "description": "启用UDP",
-          "markdownDescription": "启用`UDP`",
-          "default": true
+        "reality-config": {
+          "title": "reality配置",
+          "$ref": "#/definitions/reality-config"
         }
       },
       "dependencies": {

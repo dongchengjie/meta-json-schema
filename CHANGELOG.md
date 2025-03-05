@@ -7,8 +7,11 @@
 - 新增: inbound 新增 anytls、trojan `listeners` 配置项
 - 新增: inbound（trojan、vless、vmess） 部分新增 `grpc-service-name` 配置项
 - 调整: inbound 端口支持使用ports格式
+- 调整: inbound （socks5、http、mixed）支持 tls 配置
 
 ### Bugs Fixes
+
+- 修复: inbound （socks5、http、mixed）缺失 `reality-config` 配置项
 
 ---
 
