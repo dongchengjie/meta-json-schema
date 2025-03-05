@@ -6,6 +6,7 @@
 - 新增: proxy 新增 `anytls` 协议
 - 新增: inbound 新增 anytls、trojan `listeners` 配置项
 - 新增: inbound（trojan、vless、vmess） 部分新增 `grpc-service-name` 配置项
+- 调整: inbound 端口支持使用ports格式
 
 ### Bugs Fixes
 
