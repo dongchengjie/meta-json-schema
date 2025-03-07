@@ -5,6 +5,7 @@
     "types": { "$ref": "../../definitions/types.json" },
     "patterns": { "$ref": "../../definitions/patterns.json" },
     "enums": { "$ref": "../../definitions/enums.json" },
+    "selector": { "$ref": "../adapter/outboundgroup/selector.json" },
     "url-test": { "$ref": "../adapter/outboundgroup/urltest.json" },
     "fallback": { "$ref": "../adapter/outboundgroup/fallback.json" },
     "load-balance": { "$ref": "../adapter/outboundgroup/loadbalance.json" },
@@ -12,10 +13,31 @@
   },
   "items": {
     "anyOf": [
-      { "title": "url-test配置", "$ref": "#/definitions/url-test" },
-      { "title": "fallback配置", "$ref": "#/definitions/fallback" },
-      { "title": "load-balance配置", "$ref": "#/definitions/load-balance" },
-      { "title": "relay配置", "$ref": "#/definitions/relay" }
+      {
+        "title": "selector配置",
+        "properties": { "type": { "const": "select" } },
+        "$ref": "#/definitions/selector"
+      },
+      {
+        "title": "url-test配置",
+        "properties": { "type": { "const": "url-test" } },
+        "$ref": "#/definitions/url-test"
+      },
+      {
+        "title": "fallback配置",
+        "properties": { "type": { "const": "fallback" } },
+        "$ref": "#/definitions/fallback"
+      },
+      {
+        "title": "load-balance配置",
+        "properties": { "type": { "const": "load-balance" } },
+        "$ref": "#/definitions/load-balance"
+      },
+      {
+        "title": "relay配置",
+        "properties": { "type": { "const": "relay" } },
+        "$ref": "#/definitions/relay"
+      }
     ]
   }
 }
