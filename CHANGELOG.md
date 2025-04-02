@@ -2,6 +2,8 @@
 
 ### Changes
 
+- 新增: ss 新增 `gost-plugin` 插件支持
+
 ### Bugs Fixes
 
 - 修复: 代理组类型配置项 `type` 枚举重复显示
