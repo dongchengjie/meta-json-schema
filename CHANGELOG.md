@@ -2,7 +2,8 @@
 
 ### Changes
 
-- 新增: ss 新增 `gost-plugin` 插件支持
+- 新增: ss 协议 新增 `gost-plugin` 插件支持
+- 新增: mieru 协议 新增 `udp` 支持
 
 ### Bugs Fixes
 

@@ -53,6 +53,13 @@
           "description": "传输层协议",
           "markdownDescription": "传输层协议"
         },
+        "udp": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用UDP",
+          "description": "启用UDP",
+          "markdownDescription": "启用`UDP`",
+          "default": true
+        },
         "username": {
           "$ref": "#/definitions/compatible/string",
           "title": "用户名",
@@ -85,14 +92,18 @@
       "then": {
         "properties": {
           "port": { "deprecationMessage": "不可同时填写 port 和 port-range" },
-          "port-range": { "deprecationMessage": "不可同时填写 port 和 port-range" }
+          "port-range": {
+            "deprecationMessage": "不可同时填写 port 和 port-range"
+          }
         }
       }
     },
     {
       "type": "object",
       "title": "smux配置",
-      "properties": { "smux": { "title": "smux配置", "$ref": "#/definitions/smux" } }
+      "properties": {
+        "smux": { "title": "smux配置", "$ref": "#/definitions/smux" }
+      }
     }
   ]
 }

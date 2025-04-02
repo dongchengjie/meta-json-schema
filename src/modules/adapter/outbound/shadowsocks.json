@@ -49,7 +49,8 @@
           "$ref": "#/definitions/compatible/string",
           "title": "路径",
           "description": "路径",
-          "markdownDescription": "路径"
+          "markdownDescription": "路径",
+          "default": "/"
         },
         "tls": {
           "$ref": "#/definitions/compatible/boolean",
@@ -164,6 +165,64 @@
           "markdownDescription": "[Restls脚本隐藏代理流量行为](https://github.com/3andne/restls/blob/main/Restls-Script%3A%20Hide%20Your%20Proxy%20Traffic%20Behavior.md)"
         }
       }
+    },
+    "gost-obfs-option": {
+      "type": "object",
+      "title": "websocket配置",
+      "required": ["mode"],
+      "properties": {
+        "mode": {
+          "const": "websocket",
+          "title": "混淆模式",
+          "description": "混淆模式",
+          "markdownDescription": "混淆模式"
+        },
+        "host": {
+          "$ref": "#/definitions/patterns/server",
+          "title": "主机地址",
+          "description": "主机地址",
+          "markdownDescription": "主机地址",
+          "default": "bing.com"
+        },
+        "path": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "路径",
+          "description": "路径",
+          "markdownDescription": "路径",
+          "default": "/"
+        },
+        "tls": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用TLS",
+          "description": "启用TLS",
+          "markdownDescription": "启用`TLS`"
+        },
+        "fingerprint": {
+          "$ref": "#/definitions/enums/fingerprint",
+          "title": "指纹",
+          "description": "指纹",
+          "markdownDescription": "指纹"
+        },
+        "headers": {
+          "type": "object",
+          "title": "请求头",
+          "description": "请求头",
+          "markdownDescription": "请求头"
+        },
+        "skip-cert-verify": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "跳过证书验证",
+          "description": "跳过证书验证",
+          "markdownDescription": "跳过证书验证"
+        },
+        "mux": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用多路复用",
+          "description": "启用多路复用",
+          "markdownDescription": "启用多路复用",
+          "default": true
+        }
+      }
     }
   },
   "allOf": [
@@ -217,7 +276,13 @@
           "default": true
         },
         "plugin": {
-          "enum": ["obfs", "v2ray-plugin", "shadow-tls", "restls"],
+          "enum": [
+            "obfs",
+            "v2ray-plugin",
+            "shadow-tls",
+            "restls",
+            "gost-plugin"
+          ],
           "title": "插件",
           "description": "插件",
           "markdownDescription": "插件"
@@ -295,13 +360,28 @@
               }
             }
           }
+        },
+        {
+          "if": { "properties": { "plugin": { "const": "gost-plugin" } } },
+          "then": {
+            "properties": {
+              "plugin-opts": {
+                "type": "object",
+                "title": "插件配置",
+                "description": "gost插件配置",
+                "$ref": "#/definitions/gost-obfs-option"
+              }
+            }
+          }
         }
       ]
     },
     {
       "type": "object",
       "title": "smux配置",
-      "properties": { "smux": { "title": "smux配置", "$ref": "#/definitions/smux" } }
+      "properties": {
+        "smux": { "title": "smux配置", "$ref": "#/definitions/smux" }
+      }
     }
   ]
 }
