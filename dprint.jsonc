@@ -1,4 +1,5 @@
 {
+  "$schema": "https://plugins.dprint.dev/dprint/dprint-plugin-json/latest/schema.json",
   // global Configuration
   "lineWidth": 100,
   "indentWidth": 2,
