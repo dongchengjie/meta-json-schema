@@ -132,6 +132,12 @@
           "description": "版本",
           "markdownDescription": "版本",
           "default": 2
+        },
+        "alpn": {
+          "$ref": "#/definitions/types/stringArray",
+          "title": "ALPN",
+          "description": "Application-Layer Protocol Negotiation(应用层协议协商)",
+          "markdownDescription": "Application-Layer Protocol Negotiation(应用层协议协商)"
         }
       }
     },

@@ -1,3 +1,12 @@
+## v1.19.6
+
+### Changes
+
+- 新增: `shadowsocks` 的 `shadow-tls` 插件 新增 `alpn` 配置项
+- 新增: listener `shadowsocks` 新增 `shadow-tls` 配置项
+
+---
+
 ## v1.19.5
 
 ### Changes

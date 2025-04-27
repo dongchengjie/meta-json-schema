@@ -6,7 +6,44 @@
     "patterns": { "$ref": "../../../definitions/patterns.json" },
     "enums": { "$ref": "../../../definitions/enums.json" },
     "base-option": { "$ref": "./base.json" },
-    "mux-option": { "$ref": "./mux.json" }
+    "mux-option": { "$ref": "./mux.json" },
+    "shadow-tls-user": {
+      "type": "object",
+      "title": "TLS用户",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "用户",
+          "description": "用户",
+          "markdownDescription": "用户"
+        },
+        "password": {
+          "type": "string",
+          "title": "用户密码",
+          "description": "用户密码",
+          "markdownDescription": "用户密码"
+        }
+      }
+    },
+    "shadow-tls-handshake-options": {
+      "type": "object",
+      "title": "TLS握手选项",
+      "required": ["dest"],
+      "properties": {
+        "dest": {
+          "type": "string",
+          "title": "目标地址",
+          "description": "目标地址",
+          "markdownDescription": "目标地址"
+        },
+        "proxy": {
+          "type": "string",
+          "title": "代理服务器地址",
+          "description": "代理服务器地址",
+          "markdownDescription": "代理服务器地址"
+        }
+      }
+    }
   },
   "allOf": [
     { "title": "入站基础配置", "$ref": "#/definitions/base-option" },
@@ -34,7 +71,67 @@
           "markdownDescription": "启用`UDP`",
           "default": true
         },
-        "mux-option": { "title": "多路复用配置", "$ref": "#/definitions/mux-option" }
+        "mux-option": {
+          "title": "多路复用配置",
+          "$ref": "#/definitions/mux-option"
+        },
+        "shadow-tls": {
+          "type": "object",
+          "title": "TLS配置",
+          "required": ["enable"],
+          "properties": {
+            "enable": {
+              "type": "boolean",
+              "title": "启用TLS",
+              "description": "启用TLS",
+              "markdownDescription": "启用`TLS`",
+              "default": false
+            },
+            "version": {
+              "type": "number",
+              "title": "TLS版本",
+              "description": "TLS版本",
+              "markdownDescription": "TLS版本",
+              "enum": [1, 2, 3]
+            },
+            "password": {
+              "type": "string",
+              "title": "密码",
+              "description": "v2设置项",
+              "markdownDescription": "v2设置项"
+            },
+            "users": {
+              "type": "array",
+              "title": "用户列表",
+              "description": "v3设置项",
+              "markdownDescription": "v3设置项",
+              "items": { "$ref": "#/definitions/shadow-tls-user" }
+            },
+            "handshake": {
+              "$ref": "#/definitions/shadow-tls-handshake-options"
+            },
+            "handshake-for-server-name": {
+              "type": "object",
+              "title": "服务器名-TLS握手选项映射",
+              "description": "服务器名-TLS握手选项映射",
+              "additionalProperties": {
+                "$ref": "#/definitions/shadow-tls-handshake-options"
+              }
+            },
+            "strict-mode": {
+              "type": "boolean",
+              "title": "严格模式",
+              "description": "严格模式",
+              "markdownDescription": "严格模式"
+            },
+            "wildcard-sni": {
+              "type": "string",
+              "title": "SNI通配符",
+              "description": "SNI通配符",
+              "markdownDescription": "`SNI`通配符"
+            }
+          }
+        }
       }
     }
   ]
