@@ -1,3 +1,11 @@
+## v1.19.5
+
+### Changes
+
+- 新增: TUN 新增 `exclude-src-port`、`exclude-src-port-range`、`exclude-dst-port`、`exclude-dst-port-range` 配置项
+
+---
+
 ## v1.19.4
 
 ### Changes

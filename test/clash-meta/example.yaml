@@ -164,6 +164,14 @@ tun:
     - 1000
   exclude-uid-range: # 排除路由的的用户范围
     - 1000:9999
+  exclude-src-port:
+    - 1000
+  exclude-dst-port:
+    - 2000
+  exclude-src-port-range:
+    - 1-1024
+  exclude-dst-port-range:
+    - 1000-2000
 
   # Android 用户和应用规则仅在 Android 下被支持
   # 并且需要 auto-route

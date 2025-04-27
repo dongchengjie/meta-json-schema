@@ -189,6 +189,30 @@
           "description": "格式: <UID起始>:<UID终止>(需要启用auto-route)",
           "markdownDescription": "格式: <UID起始>:<UID终止>(需要启用`auto-route`)"
         },
+        "exclude-src-port": {
+          "$ref": "#/definitions/types/portArray",
+          "title": "排除被路由的源端口",
+          "description": "使其避免被Tun路由流量",
+          "markdownDescription": "使其避免被Tun路由流量"
+        },
+        "exclude-src-port-range": {
+          "$ref": "#/definitions/types/portRangeArray",
+          "title": "排除被路由的源端口范围",
+          "description": "使其避免被Tun路由流量",
+          "markdownDescription": "使其避免被Tun路由流量"
+        },
+        "exclude-dst-port": {
+          "$ref": "#/definitions/types/portArray",
+          "title": "排除被路由的目标端口",
+          "description": "使其避免被Tun路由流量",
+          "markdownDescription": "使其避免被Tun路由流量"
+        },
+        "exclude-dst-port-range": {
+          "$ref": "#/definitions/types/portRangeArray",
+          "title": "排除被路由的目标端口范围",
+          "description": "使其避免被Tun路由流量",
+          "markdownDescription": "使其避免被Tun路由流量"
+        },
         "include-android-user": {
           "$ref": "#/definitions/types/stringArray",
           "title": "包含被路由的Android用户",
