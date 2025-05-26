@@ -41,6 +41,12 @@
           "description": "私钥内容或私钥文件路径",
           "markdownDescription": "私钥内容或私钥文件路径"
         },
+        "ech-key": {
+          "type": "string",
+          "title": "ECH密钥",
+          "description": "可由 mihomo generate ech-keypair <明文域名> 生成",
+          "markdownDescription": "可由 mihomo generate ech-keypair <明文域名> 生成"
+        },
         "reality-config": {
           "title": "reality配置",
           "$ref": "#/definitions/reality-config"
