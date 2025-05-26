@@ -48,6 +48,13 @@ ipv6: true # 开启 IPv6 总开关，关闭阻断所有 IPv6 链接和屏蔽 DNS
 tls:
   certificate: string # 证书 PEM 格式，或者 证书的路径
   private-key: string # 证书对应的私钥 PEM 格式，或者私钥路径
+  # 如果填写则开启ech（可由 mihomo generate ech-keypair <明文域名> 生成）
+  ech-key: |
+    -----BEGIN ECH KEYS-----
+    ACATwY30o/RKgD6hgeQxwrSiApLaCgU+HKh7B6SUrAHaDwBD/g0APwAAIAAgHjzK
+    madSJjYQIf9o1N5GXjkW4DEEeb17qMxHdwMdNnwADAABAAEAAQACAAEAAwAIdGVz
+    dC5jb20AAA==
+    -----END ECH KEYS-----
   custom-certifactes:
     - |
         -----BEGIN CERTIFICATE-----

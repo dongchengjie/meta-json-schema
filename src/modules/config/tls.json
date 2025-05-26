@@ -18,6 +18,12 @@
       "description": "私钥",
       "markdownDescription": "私钥"
     },
+    "ech-key": {
+      "type": "string",
+      "title": "ECH密钥",
+      "description": "可由 mihomo generate ech-keypair <明文域名> 生成",
+      "markdownDescription": "可由 mihomo generate ech-keypair <明文域名> 生成"
+    },
     "custom-certifactes": {
       "$ref": "#/definitions/types/stringArray",
       "title": "自定义证书列表",
