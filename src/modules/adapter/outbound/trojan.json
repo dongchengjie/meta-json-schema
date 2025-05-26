@@ -7,6 +7,7 @@
     "patterns": { "$ref": "../../../definitions/patterns.json" },
     "enums": { "$ref": "../../../definitions/enums.json" },
     "basic-option": { "$ref": "./base.json#/definitions/basic-option" },
+    "ech-options": { "$ref": "./ech.json#/definitions/ech-options" },
     "smux": { "$ref": "./singmux.json" },
     "reality-option": { "$ref": "./reality.json" },
     "grpc-option": { "$ref": "./vmess.json#/definitions/grpc-option" },
@@ -98,6 +99,7 @@
           "description": "传输协议",
           "markdownDescription": "传输协议"
         },
+        "ech-opts": { "$ref": "#/definitions/ech-options" },
         "reality-opts": { "$ref": "#/definitions/reality-option" },
         "grpc-opts": { "$ref": "#/definitions/grpc-option" },
         "ws-opts": { "$ref": "#/definitions/ws-option" },
@@ -113,7 +115,9 @@
     {
       "type": "object",
       "title": "smux配置",
-      "properties": { "smux": { "title": "smux配置", "$ref": "#/definitions/smux" } }
+      "properties": {
+        "smux": { "title": "smux配置", "$ref": "#/definitions/smux" }
+      }
     }
   ]
 }

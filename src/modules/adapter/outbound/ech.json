@@ -1,0 +1,28 @@
+{
+  "type": "object",
+  "title": "outbound-ech",
+  "definitions": {
+    "compatible": { "$ref": "../../../definitions/compatible.json" },
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" },
+    "ech-options": {
+      "type": "object",
+      "title": "ECH配置",
+      "properties": {
+        "enable": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用ECH(Encrypted Client Hello)",
+          "description": "需要服务器支持",
+          "markdownDescription": "需要服务器支持"
+        },
+        "config": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "ECH配置",
+          "description": "如果为空则通过dns解析; 不为空则通过该值指定,格式为经过base64编码的ech参数(dig +short TYPE65 tls-ech.dev)",
+          "markdownDescription": "如果为空则通过dns解析; 不为空则通过该值指定,格式为经过base64编码的ech参数(dig +short TYPE65 tls-ech.dev)"
+        }
+      }
+    }
+  }
+}

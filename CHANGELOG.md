@@ -3,6 +3,7 @@
 ### Changes
 
 - 新增: reality 新增 `support-x25519mlkem768` 配置项
+- 新增: anytls/shadowsocks/trojan/vmess/vless 协议 新增 `ech-opts` 配置项
 
 ---
 

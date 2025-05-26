@@ -435,6 +435,10 @@ proxies: # socks5
       # 可使用 openssl x509 -noout -fingerprint -sha256 -inform pem -in yourcert.pem 获取
       # 配置指纹将实现 SSL Pining 效果
       fingerprint: chrome
+      ech-opts:
+        enable: true # 必须手动开启
+        # 如果config为空则通过dns解析，不为空则通过该值指定，格式为经过base64编码的ech参数（dig +short TYPE65 tls-ech.dev）
+        config: AEn+DQBFKwAgACABWIHUGj4u+PIggYXcR5JF0gYk3dCRioBW8uJq9H4mKAAIAAEAAQABAANAEnB1YmxpYy50bHMtZWNoLmRldgAA
       skip-cert-verify: true
       host: bing.com
       path: "/"
@@ -530,6 +534,10 @@ proxies: # socks5
     skip-cert-verify: true
     servername: example.com # priority over wss host
     network: ws
+    ech-opts:
+      enable: true # 必须手动开启
+      # 如果config为空则通过dns解析，不为空则通过该值指定，格式为经过base64编码的ech参数（dig +short TYPE65 tls-ech.dev）
+      config: AEn+DQBFKwAgACABWIHUGj4u+PIggYXcR5JF0gYk3dCRioBW8uJq9H4mKAAIAAEAAQABAANAEnB1YmxpYy50bHMtZWNoLmRldgAA
     ws-opts:
       path: /path
       headers:
@@ -602,6 +610,10 @@ proxies: # socks5
     skip-cert-verify: true
     fingerprint: chrome
     client-fingerprint: random # Available: "chrome","firefox","safari","random","none"
+    ech-opts:
+      enable: true # 必须手动开启
+      # 如果config为空则通过dns解析，不为空则通过该值指定，格式为经过base64编码的ech参数（dig +short TYPE65 tls-ech.dev）
+      config: AEn+DQBFKwAgACABWIHUGj4u+PIggYXcR5JF0gYk3dCRioBW8uJq9H4mKAAIAAEAAQABAANAEnB1YmxpYy50bHMtZWNoLmRldgAA
 
   - name: "vless-vision"
     type: vless
@@ -687,6 +699,10 @@ proxies: # socks5
       enabled: false
       method: aes-128-gcm # aes-128-gcm/aes-256-gcm/chacha20-ietf-poly1305
       password: "example"
+    ech-opts:
+      enable: true # 必须手动开启
+      # 如果config为空则通过dns解析，不为空则通过该值指定，格式为经过base64编码的ech参数（dig +short TYPE65 tls-ech.dev）
+      config: AEn+DQBFKwAgACABWIHUGj4u+PIggYXcR5JF0gYk3dCRioBW8uJq9H4mKAAIAAEAAQABAANAEnB1YmxpYy50bHMtZWNoLmRldgAA
 
   - name: trojan-grpc
     server: 1.2.3.4
@@ -744,6 +760,10 @@ proxies: # socks5
     up: "30 Mbps" # 若不写单位，默认为 Mbps
     down: "200 Mbps" # 若不写单位，默认为 Mbps
     sni: server.com
+    ech-opts:
+      enable: true # 必须手动开启
+      # 如果config为空则通过dns解析，不为空则通过该值指定，格式为经过base64编码的ech参数（dig +short TYPE65 tls-ech.dev）
+      config: AEn+DQBFKwAgACABWIHUGj4u+PIggYXcR5JF0gYk3dCRioBW8uJq9H4mKAAIAAEAAQABAANAEnB1YmxpYy50bHMtZWNoLmRldgAA
     skip-cert-verify: false
     recv-window-conn: 12582912
     recv-window: 52428800
@@ -767,6 +787,10 @@ proxies: # socks5
     obfs: salamander # 默认为空，如果填写则开启 obfs，目前仅支持 salamander
     obfs-password: yourpassword
     sni: server.com
+    ech-opts:
+      enable: true # 必须手动开启
+      # 如果config为空则通过dns解析，不为空则通过该值指定，格式为经过base64编码的ech参数（dig +short TYPE65 tls-ech.dev）
+      config: AEn+DQBFKwAgACABWIHUGj4u+PIggYXcR5JF0gYk3dCRioBW8uJq9H4mKAAIAAEAAQABAANAEnB1YmxpYy50bHMtZWNoLmRldgAA
     skip-cert-verify: false
     fingerprint: chrome
     alpn:
@@ -842,7 +866,10 @@ proxies: # socks5
     skip-cert-verify: true
     max-open-streams: 20 # default 100, too many open streams may hurt performance
     sni: example.com
-    #
+    ech-opts:
+      enable: true # 必须手动开启
+      # 如果config为空则通过dns解析，不为空则通过该值指定，格式为经过base64编码的ech参数（dig +short TYPE65 tls-ech.dev）
+      config: AEn+DQBFKwAgACABWIHUGj4u+PIggYXcR5JF0gYk3dCRioBW8uJq9H4mKAAIAAEAAQABAANAEnB1YmxpYy50bHMtZWNoLmRldgAA
     # meta 和 sing-box 私有扩展，将 ss-uot 用于 udp 中继，开启此选项后 udp-relay-mode 将失效
     # 警告，与原版 tuic 不兼容！！！
     udp-over-stream: false

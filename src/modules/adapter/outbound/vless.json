@@ -7,6 +7,7 @@
     "patterns": { "$ref": "../../../definitions/patterns.json" },
     "enums": { "$ref": "../../../definitions/enums.json" },
     "basic-option": { "$ref": "./base.json#/definitions/basic-option" },
+    "ech-options": { "$ref": "./ech.json#/definitions/ech-options" },
     "smux": { "$ref": "./singmux.json" },
     "reality-option": { "$ref": "./reality.json" },
     "http-option": { "$ref": "./vmess.json#/definitions/http-option" },
@@ -103,6 +104,7 @@
           "description": "传输协议",
           "markdownDescription": "传输协议"
         },
+        "ech-opts": { "$ref": "#/definitions/ech-options" },
         "reality-opts": { "$ref": "#/definitions/reality-option" },
         "http-opts": { "$ref": "#/definitions/http-option" },
         "h2-opts": { "$ref": "#/definitions/http2-option" },
