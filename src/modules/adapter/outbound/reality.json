@@ -20,6 +20,12 @@
       "title": "short ID",
       "description": "short ID",
       "markdownDescription": "short ID"
+    },
+    "support-x25519mlkem768": {
+      "$ref": "#/definitions/compatible/boolean",
+      "title": "启用 X25519MLKEM768 密钥交换",
+      "description": "需要服务端支持",
+      "markdownDescription": "需要服务端支持"
     }
   }
 }

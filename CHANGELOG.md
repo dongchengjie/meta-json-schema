@@ -1,3 +1,11 @@
+## v1.19.9
+
+### Changes
+
+- 新增: reality 新增 `support-x25519mlkem768` 配置项
+
+---
+
 ## v1.19.6
 
 ### Changes

@@ -618,7 +618,7 @@ proxies: # socks5
 
   - name: "vless-reality-vision"
     type: vless
-    server: 1.2.3.4
+    server: server
     port: 443
     uuid: 8f3fca8e-d381-402c-8fdf-71f461a0170e
     network: tcp
@@ -629,6 +629,7 @@ proxies: # socks5
     reality-opts:
       public-key: xxx
       short-id: xxx # optional
+      support-x25519mlkem768: false # 如果服务端支持可手动设置为true
     client-fingerprint: chrome # cannot be empty
 
   - name: "vless-reality-grpc"
