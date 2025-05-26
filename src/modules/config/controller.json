@@ -36,7 +36,7 @@
       "description": "跨域资源共享(CORS)配置",
       "markdownDescription": "跨域资源共享(CORS)配置",
       "properties": {
-        "allow-origin": {
+        "allow-origins": {
           "type": "array",
           "title": "允许的来源",
           "description": "允许的来源",
