@@ -967,8 +967,8 @@ proxy-groups:
   # 配置指定 interface-name 和 fwmark 的 DIRECT
   - name: en1
     type: select
-    interface-name: en1
-    routing-mark: 6667
+    # interface-name: en1
+    # routing-mark: 6667
     proxies:
       - DIRECT
 

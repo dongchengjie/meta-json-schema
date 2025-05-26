@@ -4,6 +4,11 @@
 
 - 新增: `shadowsocks` 的 `shadow-tls` 插件 新增 `alpn` 配置项
 - 新增: listener `shadowsocks` 新增 `shadow-tls` 配置项
+- 移除: 代理组移除 `routing-mark` 、`interface-name` 配置项
+
+### Bugs Fixes
+
+- 修复: 域名正则松散，支持单段/自定义域名，如：localhost、internal 等
 
 ---
 

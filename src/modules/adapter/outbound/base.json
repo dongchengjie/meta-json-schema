@@ -27,13 +27,15 @@
           "$ref": "#/definitions/compatible/string",
           "title": "流量出站接口",
           "description": "流量出站接口",
-          "markdownDescription": "流量出站接口"
+          "markdownDescription": "流量出站接口",
+          "deprecationMessage": "v1.19.6 已弃用(请直接在代理中配置)"
         },
         "routing-mark": {
           "$ref": "#/definitions/compatible/integer",
           "title": "节点发起连接时附加的路由标记",
           "description": "为Linux下的出站连接提供默认流量标记",
-          "markdownDescription": "为Linux下的出站连接提供默认流量标记"
+          "markdownDescription": "为Linux下的出站连接提供默认流量标记",
+          "deprecationMessage": "v1.19.6 已弃用(请直接在代理中配置)"
         }
       }
     },
