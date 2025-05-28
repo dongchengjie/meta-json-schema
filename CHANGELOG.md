@@ -5,6 +5,7 @@
 ### Bugs Fixes
 
 - 修复: `external-controller-cors` 配置的 `allow-origins` 配置项误写成 `allow-origin`
+- 修复: 路由规则的参数部分（no-resolve、src），其前后支持任意个数的空格
 
 ---
 
