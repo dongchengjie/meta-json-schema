@@ -128,7 +128,7 @@ pnpm dev
 
 6. 输出打包
 
-- 执行下列命令后，会根据 `package.json` 文件中定义的`releases`进行输出，并根据 `optimization` 决定是否进行压缩。
+- 执行下列命令后，会根据 `package.json` 文件中定义的`releases`进行输出，并根据 `optimize` 中的配置决定是否进行压缩。
 
 ```bash
 pnpm release
