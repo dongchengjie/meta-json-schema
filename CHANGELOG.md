@@ -1,3 +1,13 @@
+## v1.???.???
+
+### Changes
+
+### Bugs Fixes
+
+- 修复: `external-controller-cors` 配置的 `allow-origins` 配置项误写成 `allow-origin`
+
+---
+
 ## v1.19.9
 
 ### Changes
