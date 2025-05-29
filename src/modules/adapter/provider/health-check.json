@@ -16,7 +16,7 @@
       "default": false
     },
     "url": {
-      "$ref": "#/definitions/patterns/httpUrl",
+      "$ref": "#/definitions/patterns/url",
       "title": "健康检查地址",
       "description": "健康检查url",
       "markdownDescription": "健康检查url",

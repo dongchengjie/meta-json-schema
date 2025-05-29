@@ -72,13 +72,13 @@
       { "description": "域名", "$ref": "#/domain" }
     ]
   },
-  "url": {
+  "uri": {
     "pattern": "^.+:\\/\\/([^\\s/$.?#].[^\\s]*)\\.[^\\s]{2,}(\\/[^\\s]*)?$",
-    "errorMessage": "无效的URL"
+    "errorMessage": "无效的URI"
   },
-  "httpUrl": {
+  "url": {
     "pattern": "^https?:\\/\\/([^\\s/$.?#].[^\\s]*)\\.[^\\s]{2,}(\\/[^\\s]*)?$",
-    "errorMessage": "无效的HTTP-URL"
+    "errorMessage": "无效的URL"
   },
   "uuid": {
     "pattern": "^[0-9a-fA-F]{8}(?:-?[0-9a-fA-F]{4}){3}-?[0-9a-fA-F]{12}$",

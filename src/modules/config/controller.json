@@ -60,7 +60,7 @@
       "markdownDescription": "可以将静态网页资源运行在RESTful API(可以为绝对路径,或者内核工作目录的相对路径)"
     },
     "external-ui-url": {
-      "$ref": "#/definitions/patterns/httpUrl",
+      "$ref": "#/definitions/patterns/url",
       "title": "外部用户界面压缩包下载地址",
       "description": "支持文件格式：zip、tgz",
       "markdownDescription": "支持文件格式：zip、tgz",

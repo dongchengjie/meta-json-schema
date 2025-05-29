@@ -57,7 +57,7 @@
           "required": ["url"],
           "properties": {
             "url": {
-              "$ref": "#/definitions/patterns/httpUrl",
+              "$ref": "#/definitions/patterns/url",
               "title": "provider网络文件地址",
               "description": "provider网络文件地址",
               "markdownDescription": "provider网络文件地址"

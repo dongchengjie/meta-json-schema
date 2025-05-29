@@ -83,7 +83,7 @@
           "markdownDescription": "启用后使服务器忽略任何客户端设置的带宽带宽提示,使用传统的BBR拥塞控制算法"
         },
         "masquerade": {
-          "$ref": "#/definitions/patterns/url",
+          "$ref": "#/definitions/patterns/uri",
           "title": "伪装流量url",
           "description": "支持file://、http://、https://",
           "markdownDescription": "支持`file://`、`http://`、`https://`"
