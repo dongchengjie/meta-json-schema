@@ -2,6 +2,8 @@
 
 ### Changes
 
+- 调整: IPv6 格式支持 `IPv4-mapped IPv6`
+
 ### Bugs Fixes
 
 - 修复: `external-controller-cors` 配置的 `allow-origins` 配置项误写成 `allow-origin`
