@@ -77,13 +77,13 @@
           "default": 65536
         },
         "inet4-address": {
-          "$ref": "#/definitions/patterns/ipv4",
+          "$ref": "#/definitions/types/ipv4CIDRArray",
           "title": "TUN接口的IPv4前缀",
           "description": "TUN接口的IPv4前缀",
           "markdownDescription": "`TUN`接口的`IPv4`前缀"
         },
         "inet6-address": {
-          "$ref": "#/definitions/patterns/ipv6",
+          "$ref": "#/definitions/types/ipv6CIDRArray",
           "title": "TUN接口的IPv6前缀",
           "description": "TUN接口的IPv6前缀",
           "markdownDescription": "`TUN`接口的`IPv6`前缀"
