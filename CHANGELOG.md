@@ -1,13 +1,13 @@
-## v1.???.???
+## v1.19.10
 
 ### Changes
 
-- 调整: IPv6 格式支持 `IPv4-mapped IPv6`
+- 调整: 路由规则的参数部分（no-resolve、src），其前后支持任意个数的空格
+- 调整: IPv6 支持 `IPv4-mapped IPv6` 格式
 
 ### Bugs Fixes
 
 - 修复: `external-controller-cors` 配置的 `allow-origins` 配置项误写成 `allow-origin`
-- 修复: 路由规则的参数部分（no-resolve、src），其前后支持任意个数的空格
 - 修复: TUN 配置项 `inet4-address`、`inet6-address` 类型错误（应为CIDR数组）
 
 ---
