@@ -2,6 +2,8 @@
 
 ### Changes
 
+- 新增: TUN 新增 `loopback-address` 配置项
+
 ### Bugs Fixes
 
 - 修复: `sniffer` 配置的 `force-domain` 配置项不支持 `geosite:` 和 `rule-set:`

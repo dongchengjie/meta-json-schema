@@ -122,6 +122,12 @@
           "markdownDescription": "自动重定向输出标识",
           "default": 8228
         },
+        "loopback-address": {
+          "$ref": "#/definitions/types/ipArray",
+          "title": "环回地址",
+          "description": "环回地址",
+          "markdownDescription": "环回地址"
+        },
         "strict-route": {
           "type": "boolean",
           "title": "严格路由",
