@@ -1,3 +1,13 @@
+## v1.19.11
+
+### Changes
+
+### Bugs Fixes
+
+- 修复: `sniffer` 配置的 `force-domain` 配置项不支持 `geosite:` 和 `rule-set:`
+
+---
+
 ## v1.19.10
 
 ### Changes

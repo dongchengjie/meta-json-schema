@@ -7,6 +7,6 @@
   "number": { "title": "数值", "anyOf": [{ "type": "number" }, { "pattern": "^\\d+(\\.\\d+)?$" }] },
   "boolean": {
     "title": "布尔值",
-    "anyOf": [{ "type": "boolean" }, { "pattern": "^(?i)(true|false)$" }]
+    "anyOf": [{ "type": "boolean" }, { "pattern": "^([tT][rR][uU][eE]|[fF][aA][lL][sS][eE])$" }]
   }
 }

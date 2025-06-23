@@ -21,10 +21,31 @@
       "default": true
     },
     "force-domain": {
-      "$ref": "#/definitions/types/domainWildcardArray",
+      "type": "array",
       "title": "需要强制嗅探的域名",
       "description": "默认情况下只对IP进行嗅探",
-      "markdownDescription": "默认情况下只对IP进行嗅探"
+      "markdownDescription": "默认情况下只对IP进行嗅探",
+      "items": {
+        "anyOf": [
+          {
+            "type": "string",
+            "title": "Geosite域名集",
+            "description": "格式: geosite:Geosite1,Geosite2",
+            "markdownDescription": "格式: `geosite:Geosite1,Geosite2`",
+            "pattern": "^[gG][eE][oO][sS][iI][tT][eE]:.+$",
+            "errorMessage": "无效的Geosite"
+          },
+          {
+            "type": "string",
+            "title": "规则集域名集",
+            "description": "格式: rule-set:规则集1,规则集2",
+            "markdownDescription": "格式: `rule-set:规则集1,规则集2`",
+            "pattern": "^[rR][uU][lL][eE]-[sS][eE][tT]:.+$",
+            "errorMessage": "无效的规则集"
+          },
+          { "$ref": "#/definitions/patterns/domainWildcard", "title": "域名通配" }
+        ]
+      }
     },
     "skip-domain": {
       "$ref": "#/definitions/types/stringArray",
@@ -54,8 +75,8 @@
     "port-whitelist": {
       "$ref": "#/definitions/types/portRangeArray",
       "title": "限制嗅探端口范围",
-      "description": "要求搭配sniffing使用(格式:80 或 80-88)",
-      "markdownDescription": "要求搭配`sniffing`使用(格式:`80` 或 `80-88`)",
+      "description": "要求搭配sniffing使用(格式: 80 或 80-88)",
+      "markdownDescription": "要求搭配`sniffing`使用(格式: `80` 或 `80-88`)",
       "deprecationMessage": "已废弃，使用sniff代替"
     },
     "force-dns-mapping": {

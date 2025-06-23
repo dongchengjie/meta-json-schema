@@ -214,6 +214,15 @@ sniffer:
       # 可覆盖 sniffer.override-destination
       override-destination: true
   force-domain:
+    - geosite:facebook
+    - geosite:github
+    - geosite:youtube
+    - geosite:docker
+    - geosite:jsdelivr
+    - geosite:netflix
+    - geosite:disney
+    - geosite:microsoft
+    - geosite:amazon
     - +.v2ex.com
   skip-src-address: # 对于来源ip跳过嗅探
     - 192.168.0.3/32
