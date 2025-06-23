@@ -66,8 +66,8 @@
         "up": {
           "$ref": "#/definitions/compatible/string",
           "title": "上行带宽",
-          "description": "格式:<带宽数值> [带宽单位(默认:Mbps)]",
-          "markdownDescription": "格式:<带宽数值> [带宽单位(默认:`Mbps`)]"
+          "description": "格式: <带宽数值> [带宽单位(默认:Mbps)]",
+          "markdownDescription": "格式: <带宽数值> [带宽单位(默认:`Mbps`)]"
         },
         "up-speed": {
           "$ref": "#/definitions/compatible/integer",
@@ -78,8 +78,8 @@
         "down": {
           "$ref": "#/definitions/compatible/string",
           "title": "下行带宽",
-          "description": "格式:<带宽数值> [带宽单位(默认:Mbps)]",
-          "markdownDescription": "格式:<带宽数值> [带宽单位(默认:`Mbps`)]"
+          "description": "格式: <带宽数值> [带宽单位(默认:Mbps)]",
+          "markdownDescription": "格式: <带宽数值> [带宽单位(默认:`Mbps`)]"
         },
         "down-speed": {
           "$ref": "#/definitions/compatible/integer",

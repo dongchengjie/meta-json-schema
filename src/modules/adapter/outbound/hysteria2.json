@@ -58,14 +58,14 @@
         "up": {
           "$ref": "#/definitions/compatible/string",
           "title": "上行带宽",
-          "description": "格式:<带宽数值> [带宽单位(默认:Mbps)]",
-          "markdownDescription": "格式:<带宽数值> [带宽单位(默认:`Mbps`)]"
+          "description": "格式: <带宽数值> [带宽单位(默认:Mbps)]",
+          "markdownDescription": "格式: <带宽数值> [带宽单位(默认:`Mbps`)]"
         },
         "down": {
           "$ref": "#/definitions/compatible/string",
           "title": "下行带宽",
-          "description": "格式:<带宽数值> [带宽单位(默认:Mbps)]",
-          "markdownDescription": "格式:<带宽数值> [带宽单位(默认:`Mbps`)]"
+          "description": "格式: <带宽数值> [带宽单位(默认:Mbps)]",
+          "markdownDescription": "格式: <带宽数值> [带宽单位(默认:`Mbps`)]"
         },
         "password": {
           "$ref": "#/definitions/compatible/string",
