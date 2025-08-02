@@ -259,6 +259,7 @@ tunnels: # one line config
 # DNS 配置
 dns:
   cache-algorithm: arc
+  cache-max-size: 4096
   enable: false # 关闭将使用系统 DNS
   prefer-h3: false # 是否开启 DoH 支持 HTTP/3，将并发尝试
   listen: 0.0.0.0:53 # 开启 DNS 服务器监听

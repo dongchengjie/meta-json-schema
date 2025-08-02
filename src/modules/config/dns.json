@@ -160,6 +160,13 @@
       "markdownDescription": "缓存算法",
       "default": "lru"
     },
+    "cache-max-size": {
+      "type": "integer",
+      "title": "最大缓存大小",
+      "description": "缓存键值对的最大数量",
+      "markdownDescription": "缓存键值对的最大数量",
+      "default": 4096
+    },
     "nameserver-policy": {
       "type": "object",
       "additionalProperties": {
