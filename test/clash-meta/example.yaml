@@ -192,6 +192,8 @@ tun:
     - com.android.chrome
   exclude-package: # 排除被路由的 Android 应用包名
     - com.android.captiveportallogin
+  recvmsgx: true
+  sendmsgx: false
 
 # 嗅探域名 可选配置
 sniffer:

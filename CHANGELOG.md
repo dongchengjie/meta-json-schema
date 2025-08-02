@@ -1,3 +1,13 @@
+## v1.19.12
+
+### Changes
+
+- 新增: 规则 新增 `DOMAIN-WILDCARD` 规则的支持（匹配域名通配符）
+- 新增: TUN 新增 Darwin 平台特殊配置 `recvmsgx` 和 `sendmsgx`
+- 新增: DNS 新增 配置项 `cache-max-size` （最大缓存大小）
+
+---
+
 ## v1.19.11
 
 ### Changes
@@ -20,7 +30,7 @@
 ### Bugs Fixes
 
 - 修复: `external-controller-cors` 配置的 `allow-origins` 配置项误写成 `allow-origin`
-- 修复: TUN 配置项 `inet4-address`、`inet6-address` 类型错误（应为CIDR数组）
+- 修复: TUN 配置项 `inet4-address`、`inet6-address` 类型错误（应为 CIDR 数组）
 
 ---
 
@@ -78,7 +88,7 @@
 - 新增: proxy 新增 `anytls` 协议
 - 新增: inbound 新增 anytls、trojan `listeners` 配置项
 - 新增: inbound（trojan、vless、vmess） 部分新增 `grpc-service-name` 配置项
-- 调整: inbound 端口支持使用ports格式
+- 调整: inbound 端口支持使用 ports 格式
 - 调整: inbound （socks5、http、mixed）支持 tls 配置
 
 ### Bugs Fixes
@@ -91,7 +101,7 @@
 
 ### Changes
 
-- 新增: hy2 新增 `initial-stream-receive-window`、`max-stream-receive-window`、`initial-connection-receive-window`、`max-connection-receive-window` quic-go配置项
+- 新增: hy2 新增 `initial-stream-receive-window`、`max-stream-receive-window`、`initial-connection-receive-window`、`max-connection-receive-window` quic-go 配置项
 - 新增: inbound 新增 vless `listeners` 配置项
 
 ### Bugs Fixes
@@ -105,8 +115,8 @@
 ### Changes
 
 - 新增: rule-providers 新增 `inline` 内联规则配置
-- 新增: proxy-providers 新增 `inline` 内联proxies配置
-- 调整: outbound 的 `header` 配置项宽松，不再限制value的类型为 string
+- 新增: proxy-providers 新增 `inline` 内联 proxies 配置
+- 调整: outbound 的 `header` 配置项宽松，不再限制 value 的类型为 string
 
 ### Bugs Fixes
 
@@ -140,7 +150,7 @@
 ### Changes
 
 - 新增: 全局配置新增 `etag-support` 开关
-- 新增: 外部控制器 新增 `external-controller-pipe` 配置项，支持从Windows namedpipe访问API
+- 新增: 外部控制器 新增 `external-controller-pipe` 配置项，支持从 Windows namedpipe 访问 API
 - 新增: 外部控制器 新增 `external-controller-cors` 配置跨域响应头
 - 新增: proxy-provider 的 `override` 配置项新增 `proxy-name` 配置项，支持正则替换代理名称
 - 新增: `wireguard` 新增 `amnezia-wg-option` 配置项
@@ -165,7 +175,7 @@
 
 - 调整: `tun` 配置项 `route-exclude-address` 描述
 - 调整: 支持部分 `chacha8` 加密方法
-- 新增: 全局配置新增 `external-doh-server`，支持配置提供本地DOH服务
+- 新增: 全局配置新增 `external-doh-server`，支持配置提供本地 DOH 服务
 - 新增: 规则集新增 `mrs` 格式
 - 新增: 全局配置新增 `keep-alive-idle` 和 `disable-keep-alive` 保持连接相关配置
 - 移除: 不再支持 `ebpf` 配置
@@ -176,7 +186,7 @@
 
 ### Changes
 
-- 新增: `trojan`出站配置 新增配置项 `ss-opts` 以支持 Shadowsocks AEAD加密
+- 新增: `trojan`出站配置 新增配置项 `ss-opts` 以支持 Shadowsocks AEAD 加密
 - 新增: `dns` 新增配置项 `respect-rules`
 - 新增: `wireguard` 配置项 `refresh-server-ip-interval`
 - 调整: `rules` 正则表达式
@@ -208,7 +218,7 @@
 
 - 修复: cipher 缺少 `none`
 - 修复: `default-nameserver`类型错误
-- 修复: `nameserver-policy` 不支持配置单个DNS服务器字符串
+- 修复: `nameserver-policy` 不支持配置单个 DNS 服务器字符串
 - 修复: 域名通配格式错误
 
 ---
@@ -219,13 +229,13 @@
 
 - 新增: `proxy-providers` 新增配置项 `header`
 - 调整: `proxy-providers`,`proxy-group` 配置项 `health-check`的`interval` 和 `timeout` 属性类型变更(`integer` --> `string`), 支持配置时间单位
-- 新增: 新增配置项`external-controller-unix`,允许使用Unix Socket访问API
+- 新增: 新增配置项`external-controller-unix`,允许使用 Unix Socket 访问 API
 
 ### Bugs Fixes
 
 - 字符串数组类型错误
 - 监听地址支持`:port`
-- sniffer的http ports类型错误
+- sniffer 的 http ports 类型错误
 
 ---
 
