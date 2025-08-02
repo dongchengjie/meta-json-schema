@@ -285,6 +285,20 @@
       "description": "启用auto-route时,指定这些IPV6网段使用默认路由",
       "markdownDescription": "启用`auto-route`时,指定这些IPV6网段使用默认路由",
       "deprecationMessage": "即将废弃，使用route-exclude-address代替"
+    },
+    "recvmsgx": {
+      "type": "boolean",
+      "title": "启用接收消息扩展",
+      "description": "Darwin系统特殊配置",
+      "markdownDescription": "Darwin系统特殊配置",
+      "default": true
+    },
+    "sendmsgx": {
+      "type": "boolean",
+      "title": "启用发送消息扩展",
+      "description": "Darwin系统特殊配置",
+      "markdownDescription": "Darwin系统特殊配置",
+      "default": false
     }
   }
 }
