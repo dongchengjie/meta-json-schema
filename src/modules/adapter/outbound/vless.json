@@ -53,7 +53,12 @@
           "markdownDescription": "UUID"
         },
         "flow": {
-          "enum": ["xtls-rprx-origin", "xtls-rprx-direct", "xtls-rprx-splice", "xtls-rprx-vision"],
+          "enum": [
+            "xtls-rprx-origin",
+            "xtls-rprx-direct",
+            "xtls-rprx-splice",
+            "xtls-rprx-vision"
+          ],
           "markdownEnumDescriptions": [
             "将传入的连接直接转发到目标服务器,不做任何修改或处理",
             "解析传入的连接中的TLS握手信息,然后直接与目标服务器建立加密连接",
@@ -63,7 +68,9 @@
           "title": "流量控制方式",
           "description": "流量控制方式",
           "markdownDescription": "流量控制方式",
-          "if": { "enum": ["xtls-rprx-origin", "xtls-rprx-direct", "xtls-rprx-splice"] },
+          "if": {
+            "enum": ["xtls-rprx-origin", "xtls-rprx-direct", "xtls-rprx-splice"]
+          },
           "then": {
             "deprecationMessage": "旧版XTLS协议(xtls-rprx-origin、xtls-rprx-direct、xtls-rprx-splice)已弃用且不再支持"
           }
@@ -97,6 +104,12 @@
           "title": "数据包的编码方式",
           "description": "数据包的编码方式",
           "markdownDescription": "数据包的编码方式"
+        },
+        "encryption": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "vless encryption客户端配置",
+          "description": "（native/xorpub 的 XTLS 可以 Splice。只使用 1-RTT 模式 / 若服务端发的 ticket 中秒数不为零则 0-RTT 复用）。/ 是只能选一个，后面 base64 至少一个，无限串联，使用 mihomo generate vless-x25519 和 mihomo generate vless-mlkem768 生成，替换值时需去掉括号",
+          "markdownDescription": "（native/xorpub 的 XTLS 可以 Splice。只使用 1-RTT 模式 / 若服务端发的 ticket 中秒数不为零则 0-RTT 复用）。/ 是只能选一个，后面 base64 至少一个，无限串联，使用 mihomo generate vless-x25519 和 mihomo generate vless-mlkem768 生成，替换值时需去掉括号"
         },
         "network": {
           "enum": ["tcp", "ws", "http", "h2", "grpc"],
@@ -145,7 +158,9 @@
     {
       "type": "object",
       "title": "smux配置",
-      "properties": { "smux": { "title": "smux配置", "$ref": "#/definitions/smux" } }
+      "properties": {
+        "smux": { "title": "smux配置", "$ref": "#/definitions/smux" }
+      }
     }
   ]
 }

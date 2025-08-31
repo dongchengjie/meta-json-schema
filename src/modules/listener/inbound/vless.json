@@ -65,6 +65,12 @@
           "markdownDescription": "用户列表",
           "items": { "$ref": "#/definitions/vless-user" }
         },
+        "decryption": {
+          "type": "string",
+          "title": "vless encryption服务端配置",
+          "description": "（原生外观 / 只 XOR 公钥 / 全随机数。只允许 1-RTT 模式 / 同时允许 1-RTT 模式与 600 秒复用的 0-RTT 模式。/ 是只能选一个，后面 base64 至少一个，无限串联，使用 mihomo generate vless-x25519 和 mihomo generate vless-mlkem768 生成，替换值时需去掉括号",
+          "markdownDescription": "（原生外观 / 只 XOR 公钥 / 全随机数。只允许 1-RTT 模式 / 同时允许 1-RTT 模式与 600 秒复用的 0-RTT 模式。/ 是只能选一个，后面 base64 至少一个，无限串联，使用 mihomo generate vless-x25519 和 mihomo generate vless-mlkem768 生成，替换值时需去掉括号"
+        },
         "ws-path": {
           "type": "string",
           "title": "ws路径",
