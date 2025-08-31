@@ -11,61 +11,114 @@
     "amnezia-wg-option": {
       "type": "object",
       "title": "AmneziaWG配置",
-      "required": ["jc", "jmin", "jmax", "s1", "s2", "h1", "h2", "h3", "h4"],
       "properties": {
         "jc": {
           "type": "integer",
-          "title": "发送的垃圾包的数量",
-          "description": "用于在握手之前发送随机数据包，以混淆 DPI（深度包检测）系统",
-          "markdownDescription": "用于在握手之前发送随机数据包，以混淆 DPI（深度包检测）系统"
+          "title": "垃圾包数量",
+          "description": "在握手前发送的随机垃圾包数量",
+          "markdownDescription": "在握手前发送的随机垃圾包数量"
         },
         "jmin": {
           "type": "integer",
-          "title": "每个垃圾包的最小字节大小",
+          "title": "垃圾包的最小字节大小",
           "description": "最大值为 1280 字节",
           "markdownDescription": "最大值为 1280 字节"
         },
         "jmax": {
           "type": "integer",
-          "title": "每个垃圾包的最大字节大小",
+          "title": "垃圾包的最大字节大小",
           "description": "最大值为 1280 字节",
           "markdownDescription": "最大值为 1280 字节"
         },
         "s1": {
           "type": "integer",
-          "title": "在握手初始化包之前添加的随机数据字节数",
-          "description": "在握手初始化包之前添加的随机数据字节数",
-          "markdownDescription": "在握手初始化包之前添加的随机数据字节数"
+          "title": "握手初始化包前缀随机字节数",
+          "description": "在WireGuard握手初始化包（类型1）前填充的随机数据长度，用于干扰包头分析",
+          "markdownDescription": "在WireGuard握手初始化包（类型1）前填充的随机数据长度，用于干扰包头分析"
         },
         "s2": {
           "type": "integer",
-          "title": "在握手响应包之前添加的随机数据字节数",
-          "description": "在握手响应包之前添加的随机数据字节数",
-          "markdownDescription": "在握手响应包之前添加的随机数据字节数"
+          "title": "握手响应包前缀随机字节数",
+          "description": "在WireGuard握手响应包（类型2）前填充的随机数据长度",
+          "markdownDescription": "在WireGuard握手响应包（类型2）前填充的随机数据长度"
         },
         "h1": {
           "type": "integer",
-          "title": "h1",
-          "description": "用于替换 WireGuard 消息类型 1（握手初始化）",
-          "markdownDescription": "用于替换`WireGuard`消息类型 1（握手初始化）"
+          "title": "消息类型1覆盖值（Handshake Init）",
+          "description": "替换WireGuard握手初始化包（类型1）的固定协议头字段值",
+          "markdownDescription": "替换WireGuard握手初始化包（类型1）的固定协议头字段值"
         },
         "h2": {
           "type": "integer",
-          "title": "h2",
-          "description": "用于替换 WireGuard 消息类型 2（握手响应）",
-          "markdownDescription": "用于替换`WireGuard`消息类型 2（握手响应）"
+          "title": "消息类型2覆盖值（Handshake Response）",
+          "description": "替换WireGuard握手响应包（类型2）的固定协议头字段值",
+          "markdownDescription": "替换WireGuard握手响应包（类型2）的固定协议头字段值"
         },
         "h3": {
           "type": "integer",
-          "title": "h3",
-          "description": "用于替换 WireGuard 消息类型 3",
-          "markdownDescription": "用于替换`WireGuard`消息类型 3"
+          "title": "消息类型3覆盖值（Data Packet）",
+          "description": "替换WireGuard数据传输包（类型3）的固定协议头字段值",
+          "markdownDescription": "替换WireGuard数据传输包（类型3）的固定协议头字段值"
         },
         "h4": {
           "type": "integer",
-          "title": "h3",
-          "description": "用于替换 WireGuard 消息类型 4",
-          "markdownDescription": "用于替换`WireGuard`消息类型 4"
+          "title": "消息类型4覆盖值（Keepalive）",
+          "description": "替换WireGuard保活包（类型4）的固定协议头字段值",
+          "markdownDescription": "替换WireGuard保活包（类型4）的固定协议头字段值"
+        },
+        "i1": {
+          "type": "string",
+          "title": "主协议伪装规则（CPS格式）",
+          "description": "初始握手阶段的协议模仿规则",
+          "markdownDescription": "初始握手阶段的协议模仿规则"
+        },
+        "i2": {
+          "type": "string",
+          "title": "辅助协议伪装规则（CPS格式）",
+          "description": "扩展握手阶段的协议模仿规则",
+          "markdownDescription": "扩展握手阶段的协议模仿规则"
+        },
+        "i3": {
+          "type": "string",
+          "title": "动态噪声注入规则（CPS格式）",
+          "description": "在数据传输阶段插入的动态噪声规则",
+          "markdownDescription": "在数据传输阶段插入的动态噪声规则"
+        },
+        "i4": {
+          "type": "string",
+          "title": "保留协议伪装规则（CPS格式）",
+          "description": "备用伪装规则",
+          "markdownDescription": "备用伪装规则"
+        },
+        "i5": {
+          "type": "string",
+          "title": "连接终止伪装规则（CPS格式）",
+          "description": "连接关闭阶段的协议模仿规则",
+          "markdownDescription": "连接关闭阶段的协议模仿规则"
+        },
+        "j1": {
+          "type": "string",
+          "title": "消息类型1动态伪装（CPS格式）",
+          "description": "覆盖WireGuard类型1消息的完整动态规则",
+          "markdownDescription": "覆盖WireGuard类型1消息的完整动态规则"
+        },
+        "j2": {
+          "type": "string",
+          "title": "消息类型2动态伪装（CPS格式）",
+          "description": "覆盖WireGuard类型2消息的完整动态规则",
+          "markdownDescription": "覆盖WireGuard类型2消息的完整动态规则"
+        },
+        "j3": {
+          "type": "string",
+          "title": "消息类型3动态伪装（CPS格式）",
+          "description": "覆盖WireGuard类型3消息的完整动态规则",
+          "markdownDescription": "覆盖WireGuard类型3消息的完整动态规则"
+        },
+        "itime": {
+          "type": "integer",
+          "title": "动态规则刷新间隔",
+          "description": "单位:s",
+          "markdownDescription": "单位:s"
         }
       }
     },
