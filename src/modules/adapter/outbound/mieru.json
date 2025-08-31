@@ -85,6 +85,18 @@
           "description": "多路复用级别",
           "markdownDescription": "多路复用级别",
           "default": "MULTIPLEXING_LOW"
+        },
+        "handshake-mode": {
+          "enum": [
+            "HANDSHAKE_DEFAULT",
+            "HANDSHAKE_STANDARD",
+            "HANDSHAKE_NO_WAIT"
+          ],
+          "markdownEnumDescriptions": ["默认", "1-RTT", "0-RTT"],
+          "title": "握手模式",
+          "description": "握手模式",
+          "markdownDescription": "握手模式",
+          "default": "HANDSHAKE_STANDARD"
         }
       },
       "anyOf": [{ "required": ["port"] }, { "required": ["port-range"] }],

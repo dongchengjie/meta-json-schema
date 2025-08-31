@@ -951,6 +951,7 @@ proxies: # socks5
     password: password
     # 可以使用的值包括 MULTIPLEXING_OFF, MULTIPLEXING_LOW, MULTIPLEXING_MIDDLE, MULTIPLEXING_HIGH。其中 MULTIPLEXING_OFF 会关闭多路复用功能。默认值为 MULTIPLEXING_LOW。
     multiplexing: MULTIPLEXING_LOW
+    handshake-mode: HANDSHAKE_STANDARD
 
   # anytls
   - name: anytls
