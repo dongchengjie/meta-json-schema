@@ -1,3 +1,14 @@
+## v1.19.13
+
+### Changes
+
+- 新增: vless 新增 `encryption` 配置项（vless encryption 客户端配置）
+- 新增: listener vless 新增 `encryption` 配置项（vless encryption 服务端配置）
+- 新增: mieru 新增 `handshake-mode` 配置项（握手模式）
+- 新增: wireguard 新增 `i1`、`i2`、`i3`、`i4`、`i5`、`j1`、`j2`、`j3`、`itime` 配置项（AmneziaWG v1.5）
+
+---
+
 ## v1.19.12
 
 ### Changes
