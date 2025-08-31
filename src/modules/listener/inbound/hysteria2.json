@@ -101,10 +101,7 @@
           "markdownDescription": "UDP最大传输单元(Maximum Transmission Unit)",
           "default": 1197
         },
-        "mux-option": {
-          "title": "多路复用配置",
-          "$ref": "#/definitions/mux-option"
-        },
+        "mux-option": { "title": "多路复用配置", "$ref": "#/definitions/mux-option" },
         "initial-stream-receive-window": {
           "type": "integer",
           "title": "流初始数据窗口",

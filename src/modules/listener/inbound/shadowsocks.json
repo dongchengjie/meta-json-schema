@@ -71,10 +71,7 @@
           "markdownDescription": "启用`UDP`",
           "default": true
         },
-        "mux-option": {
-          "title": "多路复用配置",
-          "$ref": "#/definitions/mux-option"
-        },
+        "mux-option": { "title": "多路复用配置", "$ref": "#/definitions/mux-option" },
         "shadow-tls": {
           "type": "object",
           "title": "TLS配置",
@@ -107,16 +104,12 @@
               "markdownDescription": "v3设置项",
               "items": { "$ref": "#/definitions/shadow-tls-user" }
             },
-            "handshake": {
-              "$ref": "#/definitions/shadow-tls-handshake-options"
-            },
+            "handshake": { "$ref": "#/definitions/shadow-tls-handshake-options" },
             "handshake-for-server-name": {
               "type": "object",
               "title": "服务器名-TLS握手选项映射",
               "description": "服务器名-TLS握手选项映射",
-              "additionalProperties": {
-                "$ref": "#/definitions/shadow-tls-handshake-options"
-              }
+              "additionalProperties": { "$ref": "#/definitions/shadow-tls-handshake-options" }
             },
             "strict-mode": {
               "type": "boolean",

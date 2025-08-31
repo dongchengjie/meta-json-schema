@@ -285,13 +285,7 @@
           "default": true
         },
         "plugin": {
-          "enum": [
-            "obfs",
-            "v2ray-plugin",
-            "shadow-tls",
-            "restls",
-            "gost-plugin"
-          ],
+          "enum": ["obfs", "v2ray-plugin", "shadow-tls", "restls", "gost-plugin"],
           "title": "插件",
           "description": "插件",
           "markdownDescription": "插件"
@@ -388,9 +382,7 @@
     {
       "type": "object",
       "title": "smux配置",
-      "properties": {
-        "smux": { "title": "smux配置", "$ref": "#/definitions/smux" }
-      }
+      "properties": { "smux": { "title": "smux配置", "$ref": "#/definitions/smux" } }
     }
   ]
 }

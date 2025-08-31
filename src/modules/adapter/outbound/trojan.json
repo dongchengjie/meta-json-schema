@@ -115,9 +115,7 @@
     {
       "type": "object",
       "title": "smux配置",
-      "properties": {
-        "smux": { "title": "smux配置", "$ref": "#/definitions/smux" }
-      }
+      "properties": { "smux": { "title": "smux配置", "$ref": "#/definitions/smux" } }
     }
   ]
 }

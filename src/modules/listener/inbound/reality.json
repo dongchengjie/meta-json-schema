@@ -22,18 +22,14 @@
     },
     "short-id": {
       "type": "array",
-      "items": {
-        "type": "string"
-      },
+      "items": { "type": "string" },
       "title": "short ID列表",
       "description": "short ID列表",
       "markdownDescription": "short ID列表"
     },
     "server-names": {
       "type": "array",
-      "items": {
-        "type": "string"
-      },
+      "items": { "type": "string" },
       "title": "服务器列表",
       "description": "服务器列表",
       "markdownDescription": "服务器列表"

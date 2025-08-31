@@ -25,12 +25,7 @@
           "markdownDescription": "UUID"
         },
         "flow": {
-          "enum": [
-            "xtls-rprx-origin",
-            "xtls-rprx-direct",
-            "xtls-rprx-splice",
-            "xtls-rprx-vision"
-          ],
+          "enum": ["xtls-rprx-origin", "xtls-rprx-direct", "xtls-rprx-splice", "xtls-rprx-vision"],
           "markdownEnumDescriptions": [
             "将传入的连接直接转发到目标服务器,不做任何修改或处理",
             "解析传入的连接中的TLS握手信息,然后直接与目标服务器建立加密连接",
@@ -40,9 +35,7 @@
           "title": "流量控制方式",
           "description": "流量控制方式",
           "markdownDescription": "流量控制方式",
-          "if": {
-            "enum": ["xtls-rprx-origin", "xtls-rprx-direct", "xtls-rprx-splice"]
-          },
+          "if": { "enum": ["xtls-rprx-origin", "xtls-rprx-direct", "xtls-rprx-splice"] },
           "then": {
             "deprecationMessage": "旧版XTLS协议(xtls-rprx-origin、xtls-rprx-direct、xtls-rprx-splice)已弃用且不再支持"
           }
@@ -102,19 +95,10 @@
           "description": "可由 mihomo generate ech-keypair <明文域名> 生成",
           "markdownDescription": "可由 mihomo generate ech-keypair <明文域名> 生成"
         },
-        "reality-config": {
-          "title": "reality配置",
-          "$ref": "#/definitions/reality-config"
-        },
-        "mux-option": {
-          "title": "多路复用配置",
-          "$ref": "#/definitions/mux-option"
-        }
+        "reality-config": { "title": "reality配置", "$ref": "#/definitions/reality-config" },
+        "mux-option": { "title": "多路复用配置", "$ref": "#/definitions/mux-option" }
       },
-      "dependencies": {
-        "certificate": ["private-key"],
-        "private-key": ["certificate"]
-      }
+      "dependencies": { "certificate": ["private-key"], "private-key": ["certificate"] }
     }
   ]
 }

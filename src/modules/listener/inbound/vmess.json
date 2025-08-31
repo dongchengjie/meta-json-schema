@@ -79,19 +79,10 @@
           "description": "可由 mihomo generate ech-keypair <明文域名> 生成",
           "markdownDescription": "可由 mihomo generate ech-keypair <明文域名> 生成"
         },
-        "reality-config": {
-          "title": "reality配置",
-          "$ref": "#/definitions/reality-config"
-        },
-        "mux-option": {
-          "title": "多路复用配置",
-          "$ref": "#/definitions/mux-option"
-        }
+        "reality-config": { "title": "reality配置", "$ref": "#/definitions/reality-config" },
+        "mux-option": { "title": "多路复用配置", "$ref": "#/definitions/mux-option" }
       },
-      "dependencies": {
-        "certificate": ["private-key"],
-        "private-key": ["certificate"]
-      }
+      "dependencies": { "certificate": ["private-key"], "private-key": ["certificate"] }
     }
   ]
 }

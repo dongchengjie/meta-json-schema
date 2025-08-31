@@ -67,9 +67,7 @@
       {
         "type": "object",
         "title": "shadowsocks配置",
-        "properties": {
-          "type": { "title": "shadowsocks配置", "const": "shadowsocks" }
-        },
+        "properties": { "type": { "title": "shadowsocks配置", "const": "shadowsocks" } },
         "$ref": "#/definitions/shadowsocks"
       },
       {
@@ -87,9 +85,7 @@
       {
         "type": "object",
         "title": "hysteria2配置",
-        "properties": {
-          "type": { "title": "hysteria2配置", "const": "hysteria2" }
-        },
+        "properties": { "type": { "title": "hysteria2配置", "const": "hysteria2" } },
         "$ref": "#/definitions/hysteria2"
       },
       {

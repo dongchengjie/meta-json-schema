@@ -47,15 +47,9 @@
           "description": "可由 mihomo generate ech-keypair <明文域名> 生成",
           "markdownDescription": "可由 mihomo generate ech-keypair <明文域名> 生成"
         },
-        "reality-config": {
-          "title": "reality配置",
-          "$ref": "#/definitions/reality-config"
-        }
+        "reality-config": { "title": "reality配置", "$ref": "#/definitions/reality-config" }
       },
-      "dependencies": {
-        "certificate": ["private-key"],
-        "private-key": ["certificate"]
-      }
+      "dependencies": { "certificate": ["private-key"], "private-key": ["certificate"] }
     }
   ]
 }
