@@ -13,124 +13,124 @@
       "title": "AmneziaWG配置",
       "properties": {
         "jc": {
-          "type": "integer",
+          "$ref": "#/definitions/compatible/integer",
           "title": "垃圾包数量",
-          "description": "在握手前发送的随机垃圾包数量",
-          "markdownDescription": "在握手前发送的随机垃圾包数量"
+          "description": "在握手前发送的随机垃圾包数量，用于增加流量混淆",
+          "markdownDescription": "在握手前发送的随机垃圾包数量，用于增加流量混淆"
         },
         "jmin": {
-          "type": "integer",
+          "$ref": "#/definitions/compatible/integer",
           "title": "垃圾包的最小字节大小",
-          "description": "最大值为 1280 字节",
-          "markdownDescription": "最大值为 1280 字节"
+          "description": "单个垃圾包的最小长度，最大值建议不超过 1280 字节",
+          "markdownDescription": "单个垃圾包的最小长度，最大值建议不超过 1280 字节"
         },
         "jmax": {
-          "type": "integer",
+          "$ref": "#/definitions/compatible/integer",
           "title": "垃圾包的最大字节大小",
-          "description": "最大值为 1280 字节",
-          "markdownDescription": "最大值为 1280 字节"
+          "description": "单个垃圾包的最大长度，最大值建议不超过 1280 字节",
+          "markdownDescription": "单个垃圾包的最大长度，最大值建议不超过 1280 字节"
         },
         "s1": {
-          "type": "integer",
-          "title": "握手初始化包随机字节数",
-          "description": "设置初始化握手数据包中插入的填充数据大小",
-          "markdownDescription": "设置初始化握手数据包中插入的填充数据大小"
+          "$ref": "#/definitions/compatible/integer",
+          "title": "初始化握手包填充字节数",
+          "description": "设置初始化握手数据包中插入的随机填充数据长度（Junk Size）",
+          "markdownDescription": "设置初始化握手数据包中插入的随机填充数据长度（Junk Size）"
         },
         "s2": {
-          "type": "integer",
-          "title": "握手响应包随机字节数",
-          "description": "设置握手响应数据包中插入的填充数据大小",
-          "markdownDescription": "设置握手响应数据包中插入的填充数据大小"
+          "$ref": "#/definitions/compatible/integer",
+          "title": "握手响应包填充字节数",
+          "description": "设置握手响应数据包中插入的随机填充数据长度",
+          "markdownDescription": "设置握手响应数据包中插入的随机填充数据长度"
         },
         "s3": {
-          "type": "integer",
-          "title": "应答传输包随机字节数",
-          "description": "设置应答数据包中的填充数据大小",
-          "markdownDescription": "设置应答数据包中的填充数据大小"
+          "$ref": "#/definitions/compatible/integer",
+          "title": "Cookie Reply 包填充字节数",
+          "description": "设置 Cookie Reply 数据包中插入的随机填充数据长度",
+          "markdownDescription": "设置 Cookie Reply 数据包中插入的随机填充数据长度"
         },
         "s4": {
-          "type": "integer",
-          "title": "普通传输包随机字节数",
-          "description": "设置普通传输数据包中的填充数据大小",
-          "markdownDescription": "设置普通传输数据包中的填充数据大小"
+          "$ref": "#/definitions/compatible/integer",
+          "title": "普通传输包填充字节数",
+          "description": "设置普通传输数据包中插入的随机填充数据长度",
+          "markdownDescription": "设置普通传输数据包中插入的随机填充数据长度"
         },
         "h1": {
-          "type": "string",
-          "title": "消息类型1覆盖值（Handshake Init）",
-          "description": "替换WireGuard握手初始化包（类型1）的固定协议头字段值",
-          "markdownDescription": "替换WireGuard握手初始化包（类型1）的固定协议头字段值"
+          "$ref": "#/definitions/compatible/string",
+          "title": "初始化握手包 Magic Header",
+          "description": "指定初始化握手包的 Magic Header 内容，作为包体前缀插入，用于混淆协议特征",
+          "markdownDescription": "指定初始化握手包的 Magic Header 内容，作为包体前缀插入，用于混淆协议特征"
         },
         "h2": {
-          "type": "string",
-          "title": "消息类型2覆盖值（Handshake Response）",
-          "description": "替换WireGuard握手响应包（类型2）的固定协议头字段值",
-          "markdownDescription": "替换WireGuard握手响应包（类型2）的固定协议头字段值"
+          "$ref": "#/definitions/compatible/string",
+          "title": "握手响应包 Magic Header",
+          "description": "指定握手响应包的 Magic Header 内容，作为包体前缀插入，用于混淆协议特征",
+          "markdownDescription": "指定握手响应包的 Magic Header 内容，作为包体前缀插入，用于混淆协议特征"
         },
         "h3": {
-          "type": "string",
-          "title": "消息类型3覆盖值（Data Packet）",
-          "description": "替换WireGuard数据传输包（类型3）的固定协议头字段值",
-          "markdownDescription": "替换WireGuard数据传输包（类型3）的固定协议头字段值"
+          "$ref": "#/definitions/compatible/string",
+          "title": "Underload 包 Magic Header",
+          "description": "指定 Underload 包的 Magic Header 内容，用于协议混淆",
+          "markdownDescription": "指定 Underload 包的 Magic Header 内容，用于协议混淆"
         },
         "h4": {
-          "type": "string",
-          "title": "消息类型4覆盖值（Keepalive）",
-          "description": "替换WireGuard保活包（类型4）的固定协议头字段值",
-          "markdownDescription": "替换WireGuard保活包（类型4）的固定协议头字段值"
+          "$ref": "#/definitions/compatible/string",
+          "title": "普通传输包 Magic Header",
+          "description": "指定普通传输包的 Magic Header 内容，作为包体前缀插入，进一步防止流量被特征识别",
+          "markdownDescription": "指定普通传输包的 Magic Header 内容，作为包体前缀插入，进一步防止流量被特征识别"
         },
         "i1": {
-          "type": "string",
-          "title": "主协议伪装规则（CPS格式）",
-          "description": "初始握手阶段的协议模仿规则",
-          "markdownDescription": "初始握手阶段的协议模仿规则"
+          "$ref": "#/definitions/compatible/string",
+          "title": "特殊 Junk 字段1",
+          "description": "用于在数据包中插入自定义的特殊 Junk 数据段，用于协议混淆与增强抗检测能力",
+          "markdownDescription": "用于在数据包中插入自定义的特殊 Junk 数据段，用于协议混淆与增强抗检测能力"
         },
         "i2": {
-          "type": "string",
-          "title": "辅助协议伪装规则（CPS格式）",
-          "description": "扩展握手阶段的协议模仿规则",
-          "markdownDescription": "扩展握手阶段的协议模仿规则"
+          "$ref": "#/definitions/compatible/string",
+          "title": "特殊 Junk 字段2",
+          "description": "同上，用于插入第二段特殊 Junk 数据",
+          "markdownDescription": "同上，用于插入第二段特殊 Junk 数据"
         },
         "i3": {
-          "type": "string",
-          "title": "动态噪声注入规则（CPS格式）",
-          "description": "在数据传输阶段插入的动态噪声规则",
-          "markdownDescription": "在数据传输阶段插入的动态噪声规则"
+          "$ref": "#/definitions/compatible/string",
+          "title": "特殊 Junk 字段3",
+          "description": "同上，用于插入第三段特殊 Junk 数据",
+          "markdownDescription": "同上，用于插入第三段特殊 Junk 数据"
         },
         "i4": {
-          "type": "string",
-          "title": "保留协议伪装规则（CPS格式）",
-          "description": "备用伪装规则",
-          "markdownDescription": "备用伪装规则"
+          "$ref": "#/definitions/compatible/string",
+          "title": "特殊 Junk 字段4",
+          "description": "同上，用于插入第四段特殊 Junk 数据",
+          "markdownDescription": "同上，用于插入第四段特殊 Junk 数据"
         },
         "i5": {
-          "type": "string",
-          "title": "连接终止伪装规则（CPS格式）",
-          "description": "连接关闭阶段的协议模仿规则",
-          "markdownDescription": "连接关闭阶段的协议模仿规则"
+          "$ref": "#/definitions/compatible/string",
+          "title": "特殊 Junk 字段5",
+          "description": "同上，用于插入第五段特殊 Junk 数据",
+          "markdownDescription": "同上，用于插入第五段特殊 Junk 数据"
         },
         "j1": {
-          "type": "string",
-          "title": "消息类型1动态伪装（CPS格式）",
-          "description": "覆盖WireGuard类型1消息的完整动态规则（AmneziaWG v1.5特有，v2已被移除）",
-          "markdownDescription": "覆盖WireGuard类型1消息的完整动态规则（AmneziaWG v1.5特有，v2已被移除）"
+          "$ref": "#/definitions/compatible/string",
+          "title": "受控 Junk 字段1",
+          "description": "受控 Junk 字段，按需插入特定 Junk 数据，增强协议多样性（AmneziaWG v1.5特有，v2已被移除）",
+          "markdownDescription": "受控 Junk 字段，按需插入特定 Junk 数据，增强协议多样性（AmneziaWG v1.5特有，v2已被移除）"
         },
         "j2": {
-          "type": "string",
-          "title": "消息类型2动态伪装（CPS格式）",
-          "description": "覆盖WireGuard类型2消息的完整动态规则（AmneziaWG v1.5特有，v2已被移除）",
-          "markdownDescription": "覆盖WireGuard类型2消息的完整动态规则（AmneziaWG v1.5特有，v2已被移除）"
+          "$ref": "#/definitions/compatible/string",
+          "title": "受控 Junk 字段2",
+          "description": "同上，第二段受控 Junk 字段",
+          "markdownDescription": "同上，第二段受控 Junk 字段"
         },
         "j3": {
-          "type": "string",
-          "title": "消息类型3动态伪装（CPS格式）",
-          "description": "覆盖WireGuard类型3消息的完整动态规则（AmneziaWG v1.5特有，v2已被移除）",
-          "markdownDescription": "覆盖WireGuard类型3消息的完整动态规则（AmneziaWG v1.5特有，v2已被移除）"
+          "$ref": "#/definitions/compatible/string",
+          "title": "受控 Junk 字段3",
+          "description": "同上，第三段受控 Junk 字段",
+          "markdownDescription": "同上，第三段受控 Junk 字段"
         },
         "itime": {
-          "type": "integer",
-          "title": "动态规则刷新间隔（AmneziaWG v1.5特有，v2已被移除）",
-          "description": "单位:s",
-          "markdownDescription": "单位:s"
+          "$ref": "#/definitions/compatible/integer",
+          "title": "特殊握手超时时间（AmneziaWG v1.5特有，v2已被移除）",
+          "description": "单位：秒",
+          "markdownDescription": "单位：秒"
         }
       }
     },
@@ -275,7 +275,9 @@
     {
       "type": "object",
       "title": "smux配置",
-      "properties": { "smux": { "title": "smux配置", "$ref": "#/definitions/smux" } }
+      "properties": {
+        "smux": { "title": "smux配置", "$ref": "#/definitions/smux" }
+      }
     }
   ]
 }
