@@ -153,13 +153,15 @@
           "$ref": "#/definitions/compatible/string",
           "title": "CA证书文件路径",
           "description": "CA证书文件路径",
-          "markdownDescription": "CA证书文件路径"
+          "markdownDescription": "CA证书文件路径",
+          "deprecationMessage": "v1.19.14 已弃用(使用fingerprint代替)"
         },
         "ca-str": {
           "$ref": "#/definitions/compatible/string",
           "title": "CA证书内容",
           "description": "CA证书内容(优先级低于ca)",
-          "markdownDescription": "CA证书内容CA证书内容(优先级低于`ca`)"
+          "markdownDescription": "CA证书内容CA证书内容(优先级低于`ca`)",
+          "deprecationMessage": "v1.19.14 已弃用(使用fingerprint代替)"
         },
         "recv-window-conn": {
           "$ref": "#/definitions/compatible/integer",

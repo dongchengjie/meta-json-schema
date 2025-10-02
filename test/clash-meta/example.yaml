@@ -804,8 +804,8 @@ proxies: # socks5
     skip-cert-verify: false
     recv-window-conn: 12582912
     recv-window: 52428800
-    ca: "./my.ca"
-    ca-str: "xyz"
+    # ca: "./my.ca"
+    # ca-str: "xyz"
     disable-mtu-discovery: false
     fingerprint: chrome
     fast-open: true # 支持 TCP 快速打开，默认为 false
@@ -832,8 +832,8 @@ proxies: # socks5
     fingerprint: chrome
     alpn:
       - h3
-    ca: "./my.ca"
-    ca-str: "xyz"
+    # ca: "./my.ca"
+    # ca-str: "xyz"
     # ##quic-go特殊配置项，不要随意修改除非你知道你在干什么###
     initial-stream-receive-window: 8388608
     max-stream-receive-window: 8388608
