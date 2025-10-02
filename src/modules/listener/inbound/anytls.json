@@ -23,21 +23,11 @@
           "markdownDescription": "`uuid`:`password`",
           "additionalProperties": { "type": "string" }
         },
-        "certificate": {
-          "$ref": "#/definitions/tls/properties/certificate"
-        },
-        "private-key": {
-          "$ref": "#/definitions/tls/properties/private-key"
-        },
-        "client-auth-type": {
-          "$ref": "#/definitions/tls/properties/client-auth-type"
-        },
-        "client-auth-cert": {
-          "$ref": "#/definitions/tls/properties/client-auth-cert"
-        },
-        "ech-key": {
-          "$ref": "#/definitions/tls/properties/ech-key"
-        },
+        "certificate": { "$ref": "#/definitions/tls/properties/certificate" },
+        "private-key": { "$ref": "#/definitions/tls/properties/private-key" },
+        "client-auth-type": { "$ref": "#/definitions/tls/properties/client-auth-type" },
+        "client-auth-cert": { "$ref": "#/definitions/tls/properties/client-auth-cert" },
+        "ech-key": { "$ref": "#/definitions/tls/properties/ech-key" },
         "padding-scheme": {
           "type": "string",
           "title": "填充策略",

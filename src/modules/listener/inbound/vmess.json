@@ -62,34 +62,15 @@
           "markdownDescription": "如果不为空则开启 grpc 传输层",
           "default": "GunService"
         },
-        "certificate": {
-          "$ref": "#/definitions/tls/properties/certificate"
-        },
-        "private-key": {
-          "$ref": "#/definitions/tls/properties/private-key"
-        },
-        "client-auth-type": {
-          "$ref": "#/definitions/tls/properties/client-auth-type"
-        },
-        "client-auth-cert": {
-          "$ref": "#/definitions/tls/properties/client-auth-cert"
-        },
-        "ech-key": {
-          "$ref": "#/definitions/tls/properties/ech-key"
-        },
-        "reality-config": {
-          "title": "reality配置",
-          "$ref": "#/definitions/reality-config"
-        },
-        "mux-option": {
-          "title": "多路复用配置",
-          "$ref": "#/definitions/mux-option"
-        }
+        "certificate": { "$ref": "#/definitions/tls/properties/certificate" },
+        "private-key": { "$ref": "#/definitions/tls/properties/private-key" },
+        "client-auth-type": { "$ref": "#/definitions/tls/properties/client-auth-type" },
+        "client-auth-cert": { "$ref": "#/definitions/tls/properties/client-auth-cert" },
+        "ech-key": { "$ref": "#/definitions/tls/properties/ech-key" },
+        "reality-config": { "title": "reality配置", "$ref": "#/definitions/reality-config" },
+        "mux-option": { "title": "多路复用配置", "$ref": "#/definitions/mux-option" }
       },
-      "dependencies": {
-        "certificate": ["private-key"],
-        "private-key": ["certificate"]
-      }
+      "dependencies": { "certificate": ["private-key"], "private-key": ["certificate"] }
     }
   ]
 }

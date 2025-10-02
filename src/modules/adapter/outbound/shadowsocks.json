@@ -303,12 +303,7 @@
         },
         "mode": {
           "enum": ["normal", "fast", "fast2", "fast3"],
-          "markdownEnumDescriptions": [
-            "普通模式",
-            "快速模式",
-            "高速模式",
-            "极速模式"
-          ],
+          "markdownEnumDescriptions": ["普通模式", "快速模式", "高速模式", "极速模式"],
           "title": "预设模式",
           "description": "用于快速配置参数，也可手动配置参数",
           "markdownDescription": "用于快速配置参数，也可手动配置参数",
@@ -503,14 +498,7 @@
           "default": true
         },
         "plugin": {
-          "enum": [
-            "obfs",
-            "v2ray-plugin",
-            "shadow-tls",
-            "restls",
-            "gost-plugin",
-            "kcptun"
-          ],
+          "enum": ["obfs", "v2ray-plugin", "shadow-tls", "restls", "gost-plugin", "kcptun"],
           "title": "插件",
           "description": "插件",
           "markdownDescription": "插件"
@@ -620,9 +608,7 @@
     {
       "type": "object",
       "title": "smux配置",
-      "properties": {
-        "smux": { "title": "smux配置", "$ref": "#/definitions/smux" }
-      }
+      "properties": { "smux": { "title": "smux配置", "$ref": "#/definitions/smux" } }
     }
   ]
 }

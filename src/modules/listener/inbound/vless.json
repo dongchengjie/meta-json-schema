@@ -26,12 +26,7 @@
           "markdownDescription": "UUID"
         },
         "flow": {
-          "enum": [
-            "xtls-rprx-origin",
-            "xtls-rprx-direct",
-            "xtls-rprx-splice",
-            "xtls-rprx-vision"
-          ],
+          "enum": ["xtls-rprx-origin", "xtls-rprx-direct", "xtls-rprx-splice", "xtls-rprx-vision"],
           "markdownEnumDescriptions": [
             "将传入的连接直接转发到目标服务器,不做任何修改或处理",
             "解析传入的连接中的TLS握手信息,然后直接与目标服务器建立加密连接",
@@ -41,9 +36,7 @@
           "title": "流量控制方式",
           "description": "流量控制方式",
           "markdownDescription": "流量控制方式",
-          "if": {
-            "enum": ["xtls-rprx-origin", "xtls-rprx-direct", "xtls-rprx-splice"]
-          },
+          "if": { "enum": ["xtls-rprx-origin", "xtls-rprx-direct", "xtls-rprx-splice"] },
           "then": {
             "deprecationMessage": "旧版XTLS协议(xtls-rprx-origin、xtls-rprx-direct、xtls-rprx-splice)已弃用且不再支持"
           }
@@ -85,34 +78,15 @@
           "markdownDescription": "如果不为空则开启 grpc 传输层",
           "default": "GunService"
         },
-        "certificate": {
-          "$ref": "#/definitions/tls/properties/certificate"
-        },
-        "private-key": {
-          "$ref": "#/definitions/tls/properties/private-key"
-        },
-        "client-auth-type": {
-          "$ref": "#/definitions/tls/properties/client-auth-type"
-        },
-        "client-auth-cert": {
-          "$ref": "#/definitions/tls/properties/client-auth-cert"
-        },
-        "ech-key": {
-          "$ref": "#/definitions/tls/properties/ech-key"
-        },
-        "reality-config": {
-          "title": "reality配置",
-          "$ref": "#/definitions/reality-config"
-        },
-        "mux-option": {
-          "title": "多路复用配置",
-          "$ref": "#/definitions/mux-option"
-        }
+        "certificate": { "$ref": "#/definitions/tls/properties/certificate" },
+        "private-key": { "$ref": "#/definitions/tls/properties/private-key" },
+        "client-auth-type": { "$ref": "#/definitions/tls/properties/client-auth-type" },
+        "client-auth-cert": { "$ref": "#/definitions/tls/properties/client-auth-cert" },
+        "ech-key": { "$ref": "#/definitions/tls/properties/ech-key" },
+        "reality-config": { "title": "reality配置", "$ref": "#/definitions/reality-config" },
+        "mux-option": { "title": "多路复用配置", "$ref": "#/definitions/mux-option" }
       },
-      "dependencies": {
-        "certificate": ["private-key"],
-        "private-key": ["certificate"]
-      }
+      "dependencies": { "certificate": ["private-key"], "private-key": ["certificate"] }
     }
   ]
 }

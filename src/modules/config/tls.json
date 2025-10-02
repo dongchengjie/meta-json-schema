@@ -19,13 +19,7 @@
       "markdownDescription": "私钥"
     },
     "client-auth-type": {
-      "enum": [
-        "request",
-        "require-any",
-        "verify-if-given",
-        "require-and-verify",
-        ""
-      ],
+      "enum": ["request", "require-any", "verify-if-given", "require-and-verify", ""],
       "markdownEnumDescriptions": [
         "请求客户端提供证书，但不强制要求",
         "要求客户端必须提供证书，但不验证",

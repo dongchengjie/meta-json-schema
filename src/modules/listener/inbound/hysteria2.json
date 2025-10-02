@@ -35,21 +35,11 @@
           "description": "混淆密钥",
           "markdownDescription": "混淆密钥"
         },
-        "certificate": {
-          "$ref": "#/definitions/tls/properties/certificate"
-        },
-        "private-key": {
-          "$ref": "#/definitions/tls/properties/private-key"
-        },
-        "client-auth-type": {
-          "$ref": "#/definitions/tls/properties/client-auth-type"
-        },
-        "client-auth-cert": {
-          "$ref": "#/definitions/tls/properties/client-auth-cert"
-        },
-        "ech-key": {
-          "$ref": "#/definitions/tls/properties/ech-key"
-        },
+        "certificate": { "$ref": "#/definitions/tls/properties/certificate" },
+        "private-key": { "$ref": "#/definitions/tls/properties/private-key" },
+        "client-auth-type": { "$ref": "#/definitions/tls/properties/client-auth-type" },
+        "client-auth-cert": { "$ref": "#/definitions/tls/properties/client-auth-cert" },
+        "ech-key": { "$ref": "#/definitions/tls/properties/ech-key" },
         "max-idle-time": {
           "type": "integer",
           "title": "连接的最大空闲时间",
@@ -99,10 +89,7 @@
           "markdownDescription": "UDP最大传输单元(Maximum Transmission Unit)",
           "default": 1197
         },
-        "mux-option": {
-          "title": "多路复用配置",
-          "$ref": "#/definitions/mux-option"
-        },
+        "mux-option": { "title": "多路复用配置", "$ref": "#/definitions/mux-option" },
         "initial-stream-receive-window": {
           "type": "integer",
           "title": "流初始数据窗口",
