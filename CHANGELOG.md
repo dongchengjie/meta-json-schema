@@ -1,3 +1,11 @@
+## v1.19.14
+
+### Changes
+
+- 调整: 更新 vless `encryption` 客户端配置描述
+
+---
+
 ## v1.19.13
 
 ### Changes
