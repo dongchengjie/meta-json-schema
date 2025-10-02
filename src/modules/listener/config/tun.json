@@ -252,6 +252,13 @@
       "markdownDescription": "单位:s",
       "default": 300
     },
+    "disable-icmp-forwarding": {
+      "type": "boolean",
+      "title": "禁用 ICMP 转发",
+      "description": "防止某些情况下的 ICMP 环回问题，ping 将不会显示真实的延迟",
+      "markdownDescription": "防止某些情况下的 ICMP 环回问题，ping 将不会显示真实的延迟",
+      "default": false
+    },
     "file-descriptor": {
       "type": "integer",
       "title": "文件描述符",

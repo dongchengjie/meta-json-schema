@@ -143,6 +143,7 @@ tun:
   loopback-address:
     - 127.0.0.1
   strict-route: true # 将所有连接路由到 tun 来防止泄漏，但你的设备将无法其他设备被访问
+  disable-icmp-forwarding: true # 禁用 ICMP 转发，防止某些情况下的 ICMP 环回问题，ping 将不会显示真实的延迟
   route-address-set: # 将指定规则集中的目标 IP CIDR 规则添加到防火墙, 不匹配的流量将绕过路由, 仅支持 Linux，且需要 nftables，`auto-route` 和 `auto-redirect` 已启用。
     - ruleset-1
     - ruleset-2
@@ -1333,6 +1334,7 @@ listeners:
     inet6-address: # 必须手动设置 ipv6 地址段
       - "fdfe:dcba:9877::1/126"
     strict-route: true # 将所有连接路由到 tun 来防止泄漏，但你的设备将无法其他设备被访问
+    disable-icmp-forwarding: true # 禁用 ICMP 转发，防止某些情况下的 ICMP 环回问题，ping 将不会显示真实的延迟
     # inet4-route-address: # 启用 auto-route 时使用自定义路由而不是默认路由
     #   - 0.0.0.0/1
     #   - 128.0.0.0/1
