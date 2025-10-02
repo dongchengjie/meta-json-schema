@@ -200,7 +200,7 @@
     },
     "gost-obfs-option": {
       "type": "object",
-      "title": "websocket配置",
+      "title": "gost混淆配置",
       "required": ["mode"],
       "properties": {
         "mode": {
@@ -268,6 +268,188 @@
           "default": true
         }
       }
+    },
+    "kcptun-option": {
+      "type": "object",
+      "title": "kcptun插件配置",
+      "properties": {
+        "key": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "密钥",
+          "description": "密钥",
+          "markdownDescription": "密钥",
+          "default": "it's a secrect"
+        },
+        "crypt": {
+          "enum": [
+            "null",
+            "tea",
+            "xor",
+            "none",
+            "aes-128",
+            "aes-192",
+            "blowfish",
+            "twofish",
+            "cast5",
+            "3des",
+            "xtea",
+            "salsa20",
+            "aes"
+          ],
+          "title": "加密方式",
+          "description": "加密方式",
+          "markdownDescription": "加密方式",
+          "default": "aes"
+        },
+        "mode": {
+          "enum": ["normal", "fast", "fast2", "fast3"],
+          "markdownEnumDescriptions": [
+            "普通模式",
+            "快速模式",
+            "高速模式",
+            "极速模式"
+          ],
+          "title": "预设模式",
+          "description": "用于快速配置参数，也可手动配置参数",
+          "markdownDescription": "用于快速配置参数，也可手动配置参数",
+          "default": "fast"
+        },
+        "conn": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "UDP 连接数",
+          "description": "UDP 连接数",
+          "markdownDescription": "UDP 连接数",
+          "default": 1
+        },
+        "autoexpire": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "自动过期时间",
+          "description": "单位:s",
+          "markdownDescription": "单位:s",
+          "default": 0
+        },
+        "scavengettl": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "清理超时连接的时间间隔",
+          "description": "单位:s",
+          "markdownDescription": "单位:s",
+          "default": 600
+        },
+        "mtu": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "最大传输单元",
+          "description": "最大传输单元",
+          "markdownDescription": "最大传输单元",
+          "default": 1350
+        },
+        "sndwnd": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "发送窗口大小",
+          "description": "发送窗口大小",
+          "markdownDescription": "发送窗口大小",
+          "default": 128
+        },
+        "rcvwnd": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "接收窗口大小",
+          "description": "接收窗口大小",
+          "markdownDescription": "接收窗口大小",
+          "default": 512
+        },
+        "datashard": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "数据分片大小",
+          "description": "数据分片大小",
+          "markdownDescription": "数据分片大小",
+          "default": 10
+        },
+        "parityshard": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "纠错分片大小",
+          "description": "纠错分片大小",
+          "markdownDescription": "纠错分片大小",
+          "default": 3
+        },
+        "dscp": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "差分服务代码点（Differentiated Services Code Point）",
+          "description": "6bit",
+          "markdownDescription": "6bit"
+        },
+        "nocomp": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "禁用数据压缩",
+          "description": "禁用数据压缩",
+          "markdownDescription": "禁用数据压缩"
+        },
+        "acknodelay": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用ACK快速发送",
+          "description": "启用ACK快速发送",
+          "markdownDescription": "启用ACK快速发送"
+        },
+        "nodelay": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "禁用 Nagle 算法",
+          "description": "禁用 Nagle 算法",
+          "markdownDescription": "禁用 Nagle 算法"
+        },
+        "interval": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "发送数据包间隔",
+          "description": "单位:ms",
+          "markdownDescription": "单位:ms",
+          "default": 50
+        },
+        "resend": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "快速重传机制触发阈值",
+          "description": "快速重传机制触发阈值",
+          "markdownDescription": "快速重传机制触发阈值",
+          "default": 2
+        },
+        "nc": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "禁用拥塞控制",
+          "description": "禁用拥塞控制",
+          "markdownDescription": "禁用拥塞控制"
+        },
+        "sockbuf": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "套接字缓冲区大小",
+          "description": "单位:bytes",
+          "markdownDescription": "单位:bytes",
+          "default": 4194304
+        },
+        "smuxver": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "SMUX 协议版本",
+          "description": "SMUX 协议版本",
+          "markdownDescription": "SMUX 协议版本",
+          "default": 1
+        },
+        "smuxbuf": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "SMUX 多路复用缓冲区大小",
+          "description": "单位:bytes",
+          "markdownDescription": "单位:bytes",
+          "default": 4194304
+        },
+        "streambuf": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "单个流的缓冲区大小",
+          "description": "单位:bytes",
+          "markdownDescription": "单位:bytes",
+          "default": 4194304
+        },
+        "keepalive": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "保活间隔",
+          "description": "单位:s",
+          "markdownDescription": "单位:s",
+          "default": 10
+        }
+      }
     }
   },
   "allOf": [
@@ -321,7 +503,14 @@
           "default": true
         },
         "plugin": {
-          "enum": ["obfs", "v2ray-plugin", "shadow-tls", "restls", "gost-plugin"],
+          "enum": [
+            "obfs",
+            "v2ray-plugin",
+            "shadow-tls",
+            "restls",
+            "gost-plugin",
+            "kcptun"
+          ],
           "title": "插件",
           "description": "插件",
           "markdownDescription": "插件"
@@ -412,13 +601,28 @@
               }
             }
           }
+        },
+        {
+          "if": { "properties": { "plugin": { "const": "kcptun" } } },
+          "then": {
+            "properties": {
+              "plugin-opts": {
+                "type": "object",
+                "title": "插件配置",
+                "description": "kcptun插件配置",
+                "$ref": "#/definitions/kcptun-option"
+              }
+            }
+          }
         }
       ]
     },
     {
       "type": "object",
       "title": "smux配置",
-      "properties": { "smux": { "title": "smux配置", "$ref": "#/definitions/smux" } }
+      "properties": {
+        "smux": { "title": "smux配置", "$ref": "#/definitions/smux" }
+      }
     }
   ]
 }

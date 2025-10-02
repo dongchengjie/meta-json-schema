@@ -129,8 +129,8 @@
         "itime": {
           "$ref": "#/definitions/compatible/integer",
           "title": "特殊握手超时时间（AmneziaWG v1.5特有，v2已被移除）",
-          "description": "单位：秒",
-          "markdownDescription": "单位：秒"
+          "description": "单位:s",
+          "markdownDescription": "单位:s"
         }
       }
     },
