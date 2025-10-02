@@ -3,6 +3,8 @@
 ### Changes
 
 - 调整: 更新 vless `encryption` 客户端配置描述
+- 新增: wireguard 新增 `s3`、`s4` 配置项（AmneziaWG v2.0）
+- 调整: wireguard 的 `h1`、`h2`、`h3`、`h4` 配置项类型调整为字符串（AmneziaWG v2.0）
 
 ---
 

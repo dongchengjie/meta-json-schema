@@ -32,36 +32,48 @@
         },
         "s1": {
           "type": "integer",
-          "title": "握手初始化包前缀随机字节数",
-          "description": "在WireGuard握手初始化包（类型1）前填充的随机数据长度，用于干扰包头分析",
-          "markdownDescription": "在WireGuard握手初始化包（类型1）前填充的随机数据长度，用于干扰包头分析"
+          "title": "握手初始化包随机字节数",
+          "description": "设置初始化握手数据包中插入的填充数据大小",
+          "markdownDescription": "设置初始化握手数据包中插入的填充数据大小"
         },
         "s2": {
           "type": "integer",
-          "title": "握手响应包前缀随机字节数",
-          "description": "在WireGuard握手响应包（类型2）前填充的随机数据长度",
-          "markdownDescription": "在WireGuard握手响应包（类型2）前填充的随机数据长度"
+          "title": "握手响应包随机字节数",
+          "description": "设置握手响应数据包中插入的填充数据大小",
+          "markdownDescription": "设置握手响应数据包中插入的填充数据大小"
+        },
+        "s3": {
+          "type": "integer",
+          "title": "应答传输包随机字节数",
+          "description": "设置应答数据包中的填充数据大小",
+          "markdownDescription": "设置应答数据包中的填充数据大小"
+        },
+        "s4": {
+          "type": "integer",
+          "title": "普通传输包随机字节数",
+          "description": "设置普通传输数据包中的填充数据大小",
+          "markdownDescription": "设置普通传输数据包中的填充数据大小"
         },
         "h1": {
-          "type": "integer",
+          "type": "string",
           "title": "消息类型1覆盖值（Handshake Init）",
           "description": "替换WireGuard握手初始化包（类型1）的固定协议头字段值",
           "markdownDescription": "替换WireGuard握手初始化包（类型1）的固定协议头字段值"
         },
         "h2": {
-          "type": "integer",
+          "type": "string",
           "title": "消息类型2覆盖值（Handshake Response）",
           "description": "替换WireGuard握手响应包（类型2）的固定协议头字段值",
           "markdownDescription": "替换WireGuard握手响应包（类型2）的固定协议头字段值"
         },
         "h3": {
-          "type": "integer",
+          "type": "string",
           "title": "消息类型3覆盖值（Data Packet）",
           "description": "替换WireGuard数据传输包（类型3）的固定协议头字段值",
           "markdownDescription": "替换WireGuard数据传输包（类型3）的固定协议头字段值"
         },
         "h4": {
-          "type": "integer",
+          "type": "string",
           "title": "消息类型4覆盖值（Keepalive）",
           "description": "替换WireGuard保活包（类型4）的固定协议头字段值",
           "markdownDescription": "替换WireGuard保活包（类型4）的固定协议头字段值"
@@ -99,24 +111,24 @@
         "j1": {
           "type": "string",
           "title": "消息类型1动态伪装（CPS格式）",
-          "description": "覆盖WireGuard类型1消息的完整动态规则",
-          "markdownDescription": "覆盖WireGuard类型1消息的完整动态规则"
+          "description": "覆盖WireGuard类型1消息的完整动态规则（AmneziaWG v1.5特有，v2已被移除）",
+          "markdownDescription": "覆盖WireGuard类型1消息的完整动态规则（AmneziaWG v1.5特有，v2已被移除）"
         },
         "j2": {
           "type": "string",
           "title": "消息类型2动态伪装（CPS格式）",
-          "description": "覆盖WireGuard类型2消息的完整动态规则",
-          "markdownDescription": "覆盖WireGuard类型2消息的完整动态规则"
+          "description": "覆盖WireGuard类型2消息的完整动态规则（AmneziaWG v1.5特有，v2已被移除）",
+          "markdownDescription": "覆盖WireGuard类型2消息的完整动态规则（AmneziaWG v1.5特有，v2已被移除）"
         },
         "j3": {
           "type": "string",
           "title": "消息类型3动态伪装（CPS格式）",
-          "description": "覆盖WireGuard类型3消息的完整动态规则",
-          "markdownDescription": "覆盖WireGuard类型3消息的完整动态规则"
+          "description": "覆盖WireGuard类型3消息的完整动态规则（AmneziaWG v1.5特有，v2已被移除）",
+          "markdownDescription": "覆盖WireGuard类型3消息的完整动态规则（AmneziaWG v1.5特有，v2已被移除）"
         },
         "itime": {
           "type": "integer",
-          "title": "动态规则刷新间隔",
+          "title": "动态规则刷新间隔（AmneziaWG v1.5特有，v2已被移除）",
           "description": "单位:s",
           "markdownDescription": "单位:s"
         }
