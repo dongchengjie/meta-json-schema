@@ -9,6 +9,8 @@
 - 移除: hy1/hy2/tuic 移除 `ca`、`ca-str` 配置项（使用 fingerprint 代替）
 - 新增: anytls/http/hy/hy2/ss/socks/trojan/tuic/vless/vmess 新增 `certificate`、`private-key` 配置项
 - 新增: listener anytls/http/hy2/mixed/socks/trojan/tuic/vless/vmess 新增 `client-auth-type`、`client-auth-cert` 配置项
+- 新增: ss 新增 `kcptun` 插件相关配置项支持
+- 调整: mieru 弃用 `port-range` 字段（功能合并到 `port`）
 
 ---
 
