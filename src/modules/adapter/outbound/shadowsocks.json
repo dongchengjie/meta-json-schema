@@ -66,6 +66,18 @@
           "description": "指纹",
           "markdownDescription": "指纹"
         },
+        "certificate": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "证书或证书路径",
+          "description": "PEM格式",
+          "markdownDescription": "PEM格式"
+        },
+        "private-key": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "私钥",
+          "description": "私钥",
+          "markdownDescription": "私钥"
+        },
         "headers": {
           "type": "object",
           "title": "请求头",
@@ -121,6 +133,18 @@
           "title": "指纹",
           "description": "指纹",
           "markdownDescription": "指纹"
+        },
+        "certificate": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "证书或证书路径",
+          "description": "PEM格式",
+          "markdownDescription": "PEM格式"
+        },
+        "private-key": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "私钥",
+          "description": "私钥",
+          "markdownDescription": "私钥"
         },
         "skip-cert-verify": {
           "$ref": "#/definitions/compatible/boolean",
@@ -211,6 +235,18 @@
           "title": "指纹",
           "description": "指纹",
           "markdownDescription": "指纹"
+        },
+        "certificate": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "证书或证书路径",
+          "description": "PEM格式",
+          "markdownDescription": "PEM格式"
+        },
+        "private-key": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "私钥",
+          "description": "私钥",
+          "markdownDescription": "私钥"
         },
         "headers": {
           "type": "object",

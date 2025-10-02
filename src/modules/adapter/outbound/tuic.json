@@ -149,6 +149,18 @@
           "description": "指纹",
           "markdownDescription": "指纹"
         },
+        "certificate": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "证书或证书路径",
+          "description": "PEM格式",
+          "markdownDescription": "PEM格式"
+        },
+        "private-key": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "私钥",
+          "description": "私钥",
+          "markdownDescription": "私钥"
+        },
         "ca": {
           "$ref": "#/definitions/compatible/string",
           "title": "CA证书文件路径",

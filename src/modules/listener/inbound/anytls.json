@@ -5,6 +5,7 @@
     "types": { "$ref": "../../../definitions/types.json" },
     "patterns": { "$ref": "../../../definitions/patterns.json" },
     "enums": { "$ref": "../../../definitions/enums.json" },
+    "tls": { "$ref": "../../config/tls.json" },
     "base-option": { "$ref": "./base.json" },
     "mux-option": { "$ref": "./mux.json" }
   },
@@ -23,22 +24,19 @@
           "additionalProperties": { "type": "string" }
         },
         "certificate": {
-          "type": "string",
-          "title": "证书或证书路径",
-          "description": "PEM格式",
-          "markdownDescription": "PEM格式"
+          "$ref": "#/definitions/tls/properties/certificate"
         },
         "private-key": {
-          "type": "string",
-          "title": "私钥",
-          "description": "私钥内容或私钥文件路径",
-          "markdownDescription": "私钥内容或私钥文件路径"
+          "$ref": "#/definitions/tls/properties/private-key"
+        },
+        "client-auth-type": {
+          "$ref": "#/definitions/tls/properties/client-auth-type"
+        },
+        "client-auth-cert": {
+          "$ref": "#/definitions/tls/properties/client-auth-cert"
         },
         "ech-key": {
-          "type": "string",
-          "title": "ECH密钥",
-          "description": "可由 mihomo generate ech-keypair <明文域名> 生成",
-          "markdownDescription": "可由 mihomo generate ech-keypair <明文域名> 生成"
+          "$ref": "#/definitions/tls/properties/ech-key"
         },
         "padding-scheme": {
           "type": "string",

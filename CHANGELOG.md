@@ -7,6 +7,8 @@
 - 调整: wireguard 的 `h1`、`h2`、`h3`、`h4` 配置项类型调整为字符串（AmneziaWG v2.0）
 - 新增: TUN 新增 `disable-icmp-forwarding` 配置项
 - 移除: hy1/hy2/tuic 移除 `ca`、`ca-str` 配置项（使用 fingerprint 代替）
+- 新增: anytls/http/hy/hy2/ss/socks/trojan/tuic/vless/vmess 新增 `certificate`、`private-key` 配置项
+- 新增: listener anytls/http/hy2/mixed/socks/trojan/tuic/vless/vmess 新增 `client-auth-type`、`client-auth-cert` 配置项
 
 ---
 

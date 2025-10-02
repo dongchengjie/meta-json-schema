@@ -49,7 +49,11 @@
         },
         "protocol": {
           "enum": ["udp", "wechat-video", "faketcp"],
-          "markdownEnumDescriptions": ["伪装udp流量", "伪装微信视频流量", "伪装假tcp流量"],
+          "markdownEnumDescriptions": [
+            "伪装udp流量",
+            "伪装微信视频流量",
+            "伪装假tcp流量"
+          ],
           "title": "混淆方法",
           "description": "混淆方法",
           "markdownDescription": "混淆方法",
@@ -57,7 +61,11 @@
         },
         "obfs-protocol": {
           "enum": ["udp", "wechat-video", "faketcp"],
-          "markdownEnumDescriptions": ["伪装udp流量", "伪装微信视频流量", "伪装假tcp流量"],
+          "markdownEnumDescriptions": [
+            "伪装udp流量",
+            "伪装微信视频流量",
+            "伪装假tcp流量"
+          ],
           "title": "混淆方法",
           "description": "混淆方法(为兼容Stash引入,优先级高于protocol)",
           "markdownDescription": "混淆方法(为兼容Stash引入,优先级高于`protocol`)",
@@ -124,6 +132,18 @@
           "description": "指纹",
           "markdownDescription": "指纹"
         },
+        "certificate": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "证书或证书路径",
+          "description": "PEM格式",
+          "markdownDescription": "PEM格式"
+        },
+        "private-key": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "私钥",
+          "description": "私钥",
+          "markdownDescription": "私钥"
+        },
         "alpn": {
           "$ref": "#/definitions/types/stringArray",
           "title": "ALPN",
@@ -180,7 +200,9 @@
     {
       "type": "object",
       "title": "smux配置",
-      "properties": { "smux": { "title": "smux配置", "$ref": "#/definitions/smux" } }
+      "properties": {
+        "smux": { "title": "smux配置", "$ref": "#/definitions/smux" }
+      }
     }
   ]
 }

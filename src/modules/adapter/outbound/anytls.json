@@ -78,6 +78,18 @@
           "description": "指纹",
           "markdownDescription": "指纹"
         },
+        "certificate": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "证书或证书路径",
+          "description": "PEM格式",
+          "markdownDescription": "PEM格式"
+        },
+        "private-key": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "私钥",
+          "description": "私钥",
+          "markdownDescription": "私钥"
+        },
         "udp": {
           "$ref": "#/definitions/compatible/boolean",
           "title": "启用UDP",
@@ -108,7 +120,9 @@
     {
       "type": "object",
       "title": "smux配置",
-      "properties": { "smux": { "title": "smux配置", "$ref": "#/definitions/smux" } }
+      "properties": {
+        "smux": { "title": "smux配置", "$ref": "#/definitions/smux" }
+      }
     }
   ]
 }
