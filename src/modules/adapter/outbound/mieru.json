@@ -44,8 +44,7 @@
           "$ref": "#/definitions/patterns/portRange",
           "title": "代理节点端口范围",
           "description": "代理节点端口范围",
-          "markdownDescription": "代理节点端口范围",
-          "deprecationMessage": "v1.19.14 已弃用(使用port代替)"
+          "markdownDescription": "代理节点端口范围"
         },
         "transport": {
           "enum": ["TCP"],
