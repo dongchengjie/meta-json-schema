@@ -1,3 +1,11 @@
+## v1.19.16
+
+### Changes
+
+- 新增: DNS 新增 `fake-ip-range6` 配置项
+
+---
+
 ## v1.19.15
 
 ### Changes
