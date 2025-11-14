@@ -4,6 +4,18 @@ on:
   push:
     tags:
       - "v[0-9]+.[0-9]+.[0-9]+"
+  workflow_dispatch:
+    inputs:
+      publish_to_github:
+        type: boolean
+        description: "Publish to GitHub Releases"
+        required: true
+        default: true
+      publish_to_npm:
+        type: boolean
+        description: "Publish to NPM"
+        required: true
+        default: false
 
 permissions:
   id-token: write # Required for OIDC
@@ -54,6 +66,7 @@ jobs:
 
   github-release:
     needs: build
+    if: ${{ github.event_name == 'push' || github.event.inputs.publish_to_github == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - name: Download Schemas
@@ -68,6 +81,7 @@ jobs:
 
   npm-publish:
     needs: build
+    if: ${{ github.event_name == 'push' || github.event.inputs.publish_to_npm == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -88,6 +102,10 @@ jobs:
 
       - name: Download Schemas
         uses: actions/download-artifact@v4
+
+      # Ensure npm 11.5.1 or later is installed
+      - name: Update npm
+        run: npm install -g npm@latest
 
       - name: NPM Publish
         run: npm publish --access public --tag latest
