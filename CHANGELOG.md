@@ -3,6 +3,7 @@
 ### Changes
 
 - 新增: DNS 新增 `fake-ip-range6` 配置项
+- 新增: inbound 新增 mieru `listeners` 配置项
 
 ---
 

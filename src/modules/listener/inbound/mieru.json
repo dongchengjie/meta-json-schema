@@ -1,0 +1,35 @@
+{
+  "type": "object",
+  "title": "inbound-mieru",
+  "definitions": {
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" },
+    "base-option": { "$ref": "./base.json" },
+    "auth-user": { "$ref": "./auth.json#/definitions/auth-user" }
+  },
+  "allOf": [
+    { "title": "入站基础配置", "$ref": "#/definitions/base-option" },
+    {
+      "type": "object",
+      "title": "mieru配置",
+      "required": ["transport", "users"],
+      "properties": {
+        "transport": {
+          "enum": ["TCP", "UDP"],
+          "markdownEnumDescriptions": ["TCP", "UDP"],
+          "title": "传输层协议",
+          "description": "传输层协议",
+          "markdownDescription": "传输层协议"
+        },
+        "users": {
+          "type": "object",
+          "title": "用户列表(key: value格式)",
+          "description": "username:password",
+          "markdownDescription": "`username`:`password`",
+          "additionalProperties": { "type": "string" }
+        }
+      }
+    }
+  ]
+}
