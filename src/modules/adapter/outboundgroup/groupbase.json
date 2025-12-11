@@ -56,8 +56,8 @@
             "exclude-type": {
               "type": "string",
               "title": "根据出站类型排除节点",
-              "description": "Direct, Reject, RejectDrop, Compatible, Pass, Dns, Shadowsocks, ShadowsocksR, Snell, Socks5, Http, Vmess, Vless, Trojan, Hysteria, Hysteria2, WireGuard, Tuic, Ssh, Mieru, AnyTLS, Relay, Selector, Fallback, URLTest, LoadBalance(使用|分隔,不支持正则表达式,不区分大小写)",
-              "markdownDescription": "`Direct`, `Reject`, `RejectDrop`, `Compatible`, `Pass`, `Dns`, `Shadowsocks`, `ShadowsocksR`, `Snell`, `Socks5`, `Http`, `Vmess`, `Vless`, `Trojan`, `Hysteria`, `Hysteria2`, `WireGuard`, `Tuic`, `Ssh`, `Mieru`, `AnyTLS`, `Relay`, `Selector`, `Fallback`, `URLTest`, `LoadBalance`(使用`|`分隔,不支持正则表达式,不区分大小写)"
+              "description": "Direct, Reject, RejectDrop, Compatible, Pass, Dns, Shadowsocks, ShadowsocksR, Snell, Socks5, Http, Vmess, Vless, Trojan, Hysteria, Hysteria2, WireGuard, Tuic, Ssh, Mieru, AnyTLS, Sudoku, Relay, Selector, Fallback, URLTest, LoadBalance(使用|分隔,不支持正则表达式,不区分大小写)",
+              "markdownDescription": "`Direct`, `Reject`, `RejectDrop`, `Compatible`, `Pass`, `Dns`, `Shadowsocks`, `ShadowsocksR`, `Snell`, `Socks5`, `Http`, `Vmess`, `Vless`, `Trojan`, `Hysteria`, `Hysteria2`, `WireGuard`, `Tuic`, `Ssh`, `Mieru`, `AnyTLS`, `Sudoku`, `Relay`, `Selector`, `Fallback`, `URLTest`, `LoadBalance`(使用`|`分隔,不支持正则表达式,不区分大小写)"
             },
             "include-all": {
               "type": "boolean",

@@ -19,7 +19,8 @@
     "hysteria2": { "$ref": "../listener/inbound/hysteria2.json" },
     "tuic": { "$ref": "../listener/inbound/tuic.json" },
     "anytls": { "$ref": "../listener/inbound/anytls.json" },
-    "mieru": { "$ref": "../listener/inbound/mieru.json" }
+    "mieru": { "$ref": "../listener/inbound/mieru.json" },
+    "sudoku": { "$ref": "../listener/inbound/sudoku.json" }
   },
   "items": {
     "anyOf": [
@@ -112,6 +113,12 @@
         "title": "mieru配置",
         "properties": { "type": { "title": "mieru配置", "const": "mieru" } },
         "$ref": "#/definitions/mieru"
+      },
+      {
+        "type": "object",
+        "title": "sudoku配置",
+        "properties": { "type": { "title": "sudoku配置", "const": "sudoku" } },
+        "$ref": "#/definitions/sudoku"
       }
     ]
   }

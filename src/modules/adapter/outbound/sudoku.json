@@ -1,0 +1,116 @@
+{
+  "type": "object",
+  "title": "outbound-sudoku",
+  "definitions": {
+    "compatible": { "$ref": "../../../definitions/compatible.json" },
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" },
+    "basic-option": { "$ref": "./base.json#/definitions/basic-option" },
+    "smux": { "$ref": "./singmux.json" }
+  },
+  "allOf": [
+    { "title": "basic配置", "$ref": "#/definitions/basic-option" },
+    {
+      "type": "object",
+      "title": "sudoku配置",
+      "required": ["name", "server", "port", "key"],
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "代理节点类型",
+          "description": "代理节点类型",
+          "markdownDescription": "代理节点类型"
+        },
+        "name": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "代理节点名称",
+          "description": "代理节点名称",
+          "markdownDescription": "代理节点名称"
+        },
+        "server": {
+          "$ref": "#/definitions/patterns/server",
+          "title": "代理节点服务器",
+          "description": "域名或IP",
+          "markdownDescription": "域名或IP"
+        },
+        "port": {
+          "$ref": "#/definitions/patterns/port",
+          "title": "代理节点端口号",
+          "description": "代理节点端口号",
+          "markdownDescription": "代理节点端口号"
+        },
+        "key": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "客户端密钥",
+          "description": "如果你使用sudoku生成的ED25519密钥对，请填写密钥对中的私钥，否则填入和服务端相同的uuid",
+          "markdownDescription": "如果你使用sudoku生成的ED25519密钥对，请填写密钥对中的私钥，否则填入和服务端相同的uuid"
+        },
+        "aead-method": {
+          "enum": ["chacha20-poly1305", "aes-128-gcm", "none"],
+          "title": " 加密算法",
+          "description": " 加密算法",
+          "markdownDescription": " 加密算法",
+          "default": "chacha20-poly1305"
+        },
+        "padding-min": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "最小填充字节数",
+          "description": "最小填充字节数",
+          "markdownDescription": "最小填充字节数",
+          "default": 10
+        },
+        "padding-max": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "最大填充字节数",
+          "description": "最大填充字节数",
+          "markdownDescription": "最大填充字节数",
+          "default": 30
+        },
+        "table-type": {
+          "enum": ["prefer_ascii", "prefer_entropy"],
+          "markdownEnumDescriptions": ["全ascii映射", "保证熵值（汉明1）低于3"],
+          "title": "映射表类型",
+          "description": "映射表类型",
+          "markdownDescription": "映射表类型",
+          "default": "prefer_ascii"
+        },
+        "enable-pure-downlink": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用混淆下行",
+          "description": "禁用的情况下能在保证数据安全的前提下极大提升下行速度，与服务端端保持相同",
+          "markdownDescription": "禁用的情况下能在保证数据安全的前提下极大提升下行速度，与服务端端保持相同",
+          "default": true
+        },
+        "http-mask": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用HTTP掩码",
+          "description": "启用HTTP掩码",
+          "markdownDescription": "启用HTTP掩码",
+          "default": true
+        },
+        "custom-table": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "自定义字节布局",
+          "description": "必须包含2个x、2个p、4个v，可随意组合",
+          "markdownDescription": "必须包含2个x、2个p、4个v，可随意组合"
+        }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "enable-pure-downlink": { "const": false } } },
+          "then": { "properties": { "aead-method": { "not": { "const": "none" } } } }
+        },
+        {
+          "if": { "not": { "properties": { "custom-table": { "const": "" } } } },
+          "then": { "properties": { "table-type": { "const": "prefer_entropy" } } }
+        }
+      ]
+    },
+    {
+      "type": "object",
+      "title": "smux配置",
+      "properties": { "smux": { "title": "smux配置", "$ref": "#/definitions/smux" } }
+    }
+  ]
+}

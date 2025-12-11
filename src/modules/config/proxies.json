@@ -21,7 +21,8 @@
     "tuic": { "$ref": "../adapter/outbound/tuic.json" },
     "ssh": { "$ref": "../adapter/outbound/ssh.json" },
     "mieru": { "$ref": "../adapter/outbound/mieru.json" },
-    "anytls": { "$ref": "../adapter/outbound/anytls.json" }
+    "anytls": { "$ref": "../adapter/outbound/anytls.json" },
+    "sudoku": { "$ref": "../adapter/outbound/sudoku.json" }
   },
   "items": {
     "anyOf": [
@@ -126,6 +127,12 @@
         "title": "anytls",
         "properties": { "type": { "title": "anytls配置", "const": "anytls" } },
         "$ref": "#/definitions/anytls"
+      },
+      {
+        "type": "object",
+        "title": "sudoku",
+        "properties": { "type": { "title": "sudoku配置", "const": "sudoku" } },
+        "$ref": "#/definitions/sudoku"
       }
     ]
   }

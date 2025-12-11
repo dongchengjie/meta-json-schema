@@ -1,0 +1,87 @@
+{
+  "type": "object",
+  "title": "inbound-sudoku",
+  "definitions": {
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" },
+    "base-option": { "$ref": "./base.json" },
+    "mux-option": { "$ref": "./mux.json" }
+  },
+  "allOf": [
+    { "title": "入站基础配置", "$ref": "#/definitions/base-option" },
+    {
+      "type": "object",
+      "title": "sudoku配置",
+      "required": ["key"],
+      "properties": {
+        "key": {
+          "type": "string",
+          "title": "服务端密钥",
+          "description": "如果你使用sudoku生成的ED25519密钥对，此处是密钥对中的公钥，当然，你也可以仅仅使用任意uuid充当key",
+          "markdownDescription": "如果你使用sudoku生成的ED25519密钥对，此处是密钥对中的公钥，当然，你也可以仅仅使用任意uuid充当key"
+        },
+        "aead-method": {
+          "enum": ["chacha20-poly1305", "aes-128-gcm", "none"],
+          "title": " 加密算法",
+          "description": " 加密算法",
+          "markdownDescription": " 加密算法",
+          "default": "chacha20-poly1305"
+        },
+        "padding-min": {
+          "type": "integer",
+          "title": "最小填充字节数",
+          "description": "最小填充字节数",
+          "markdownDescription": "最小填充字节数",
+          "default": 10
+        },
+        "padding-max": {
+          "type": "integer",
+          "title": "最大填充字节数",
+          "description": "最大填充字节数",
+          "markdownDescription": "最大填充字节数",
+          "default": 30
+        },
+        "table-type": {
+          "enum": ["prefer_ascii", "prefer_entropy"],
+          "markdownEnumDescriptions": ["全ascii映射", "保证熵值（汉明1）低于3"],
+          "title": "映射表类型",
+          "description": "映射表类型",
+          "markdownDescription": "映射表类型",
+          "default": "prefer_ascii"
+        },
+        "handshake-timeout": {
+          "type": "integer",
+          "title": "握手超时",
+          "description": "单位: s",
+          "markdownDescription": "单位: s",
+          "default": 5
+        },
+        "enable-pure-downlink": {
+          "type": "boolean",
+          "title": "启用混淆下行",
+          "description": "禁用的情况下能在保证数据安全的前提下极大提升下行速度，与服务端端保持相同",
+          "markdownDescription": "禁用的情况下能在保证数据安全的前提下极大提升下行速度，与服务端端保持相同",
+          "default": true
+        },
+        "custom-table": {
+          "type": "string",
+          "title": "自定义字节布局",
+          "description": "必须包含2个x、2个p、4个v，可随意组合",
+          "markdownDescription": "必须包含2个x、2个p、4个v，可随意组合"
+        },
+        "mux-option": { "title": "多路复用配置", "$ref": "#/definitions/mux-option" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "enable-pure-downlink": { "const": false } } },
+          "then": { "properties": { "aead-method": { "not": { "const": "none" } } } }
+        },
+        {
+          "if": { "not": { "properties": { "custom-table": { "const": "" } } } },
+          "then": { "properties": { "table-type": { "const": "prefer_entropy" } } }
+        }
+      ]
+    }
+  ]
+}
