@@ -6,6 +6,7 @@
 - 新增: DNS 新增 `fake-ip-ttl` 配置项
 - 新增: proxy 新增 `sudoku` 协议
 - 新增: inbound 新增 sudoku `listeners` 配置项
+- 移除: 彻底移除 `relay` 代理组，使用 `dialer-proxy` 代替
 
 ---
 
