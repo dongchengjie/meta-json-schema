@@ -141,11 +141,7 @@
       "title": "fake-ip过滤",
       "description": "哪些域名不使用fake-ip",
       "markdownDescription": "哪些域名不使用`fake-ip`",
-      "default": [
-        "dns.msftnsci.com",
-        "www.msftnsci.com",
-        "www.msftconnecttest.com"
-      ]
+      "default": ["dns.msftnsci.com", "www.msftnsci.com", "www.msftconnecttest.com"]
     },
     "fake-ip-filter-mode": {
       "enum": ["blacklist", "whitelist"],
@@ -187,10 +183,7 @@
     "nameserver-policy": {
       "type": "object",
       "additionalProperties": {
-        "anyOf": [
-          { "type": "string" },
-          { "$ref": "#/definitions/types/stringArray" }
-        ]
+        "anyOf": [{ "type": "string" }, { "$ref": "#/definitions/types/stringArray" }]
       },
       "title": "DNS解析服务器策略",
       "description": "指定地址使用特定DNS解析服务器",

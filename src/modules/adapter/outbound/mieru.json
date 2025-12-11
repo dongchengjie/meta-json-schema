@@ -87,11 +87,7 @@
           "default": "MULTIPLEXING_LOW"
         },
         "handshake-mode": {
-          "enum": [
-            "HANDSHAKE_DEFAULT",
-            "HANDSHAKE_STANDARD",
-            "HANDSHAKE_NO_WAIT"
-          ],
+          "enum": ["HANDSHAKE_DEFAULT", "HANDSHAKE_STANDARD", "HANDSHAKE_NO_WAIT"],
           "markdownEnumDescriptions": ["默认", "1-RTT", "0-RTT"],
           "title": "握手模式",
           "description": "握手模式",
@@ -104,18 +100,14 @@
       "then": {
         "properties": {
           "port": { "deprecationMessage": "不可同时填写 port 和 port-range" },
-          "port-range": {
-            "deprecationMessage": "不可同时填写 port 和 port-range"
-          }
+          "port-range": { "deprecationMessage": "不可同时填写 port 和 port-range" }
         }
       }
     },
     {
       "type": "object",
       "title": "smux配置",
-      "properties": {
-        "smux": { "title": "smux配置", "$ref": "#/definitions/smux" }
-      }
+      "properties": { "smux": { "title": "smux配置", "$ref": "#/definitions/smux" } }
     }
   ]
 }
