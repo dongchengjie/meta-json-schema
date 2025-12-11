@@ -2,7 +2,8 @@
 
 ### Changes
 
-- 新增: mieru 出站传输层协议支持 UDP
+- 调整: mieru 出站传输层协议支持 UDP
+- 新增: DNS 新增 `fake-ip-ttl` 配置项
 
 ---
 
