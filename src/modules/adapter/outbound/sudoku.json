@@ -89,6 +89,26 @@
           "markdownDescription": "启用HTTP掩码",
           "default": true
         },
+        "http-mask-mode": {
+          "enum": ["legacy", "stream", "poll", "auto"],
+          "markdownEnumDescriptions": ["传统", "流式", "轮询", "自动"],
+          "title": "HTTP掩码模式",
+          "description": "支持走 CDN/反代",
+          "markdownDescription": "支持走 CDN/反代",
+          "default": "legacy"
+        },
+        "http-mask-tls": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "强制HTTP掩码使用TLS",
+          "description": "仅在 http-mask-mode 为 stream/poll/auto 时生效",
+          "markdownDescription": "仅在 `http-mask-mode` 为 `stream`/`poll`/`auto` 时生效"
+        },
+        "http-mask-host": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "HTTP掩码主机",
+          "description": "Host/SNI",
+          "markdownDescription": "Host/SNI"
+        },
         "http-mask-strategy": {
           "enum": ["random", "post", "websocket"],
           "markdownEnumDescriptions": ["随机", "POST伪装", "WebSocket伪装"],

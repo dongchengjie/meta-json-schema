@@ -76,6 +76,21 @@
           "description": "用于 xvp 模式轮换；非空时覆盖 custom-table",
           "markdownDescription": "用于 xvp 模式轮换；非空时覆盖 custom-table"
         },
+        "disable-http-mask": {
+          "type": "boolean",
+          "title": "禁用 http 掩码/隧道",
+          "description": "禁用 http 掩码/隧道",
+          "markdownDescription": "禁用 http 掩码/隧道",
+          "default": false
+        },
+        "http-mask-mode": {
+          "enum": ["legacy", "stream", "poll", "auto"],
+          "markdownEnumDescriptions": ["传统", "流式", "轮询", "自动"],
+          "title": "HTTP掩码模式",
+          "description": "支持走 CDN/反代",
+          "markdownDescription": "支持走 CDN/反代",
+          "default": "legacy"
+        },
         "mux-option": { "title": "多路复用配置", "$ref": "#/definitions/mux-option" }
       },
       "allOf": [

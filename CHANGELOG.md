@@ -1,3 +1,12 @@
+## v1.19.19
+
+### Changes
+
+- 新增: sudoku `listeners` 新增配置项 `disable-http-mask`、`http-mask-mode`
+- 新增: sudoku 新增配置项 `http-mask-mode`、`http-mask-tls`、`http-mask-host`
+
+---
+
 ## v1.19.18
 
 ### Changes
