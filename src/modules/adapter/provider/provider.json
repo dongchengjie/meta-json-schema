@@ -202,8 +202,8 @@
             "size-limit": {
               "type": "integer",
               "title": "限制下载文件大小",
-              "description": "单位:KB,0为不限制",
-              "markdownDescription": "单位:KB,0为不限制",
+              "description": "单位:B,0为不限制",
+              "markdownDescription": "单位:B,0为不限制",
               "default": 0
             }
           }

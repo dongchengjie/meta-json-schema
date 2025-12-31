@@ -4,6 +4,11 @@
 
 - 新增: sudoku `listeners` 新增配置项 `disable-http-mask`、`http-mask-mode`
 - 新增: sudoku 新增配置项 `http-mask-mode`、`http-mask-tls`、`http-mask-host`
+- 新增: `rule-provider` 新增 HTTP 配置项 `header`
+
+### Bugs Fixes
+
+- 修复: `proxy-provider` 和 `rule-provider` 配置的 `size-limit` 单位描述错误
 
 ---
 

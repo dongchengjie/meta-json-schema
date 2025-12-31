@@ -1186,6 +1186,8 @@ rule-providers:
     url: "https://www.example.com/file.list"
     proxy: DIRECT
     # size-limit: 10240 # 限制下载文件最大为10kb，默认为0即不限制文件大小
+    # header:
+    #   User-Agent: "clash.meta"
   rule2:
     behavior: classical
     interval: 259200
@@ -1488,7 +1490,6 @@ listeners:
     enable-pure-downlink: false # 是否启用混淆下行，false的情况下能在保证数据安全的前提下极大提升下行速度，与客户端保持相同(如果此处为false，则要求aead不可为none)
     disable-http-mask: false # 可选：禁用 http 掩码/隧道（默认为 false）
   # http-mask-mode: legacy # 可选：legacy（默认）、stream、poll、auto；stream/poll/auto 支持走 CDN/反代
-
   - name: trojan-in-1
     type: trojan
     port: 10819 # 支持使用ports格式，例如200,302 or 200,204,401-429,501-503

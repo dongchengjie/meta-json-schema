@@ -67,6 +67,19 @@
               "title": "使用指定代理下载/更新provider",
               "description": "使用指定代理下载/更新provider",
               "markdownDescription": "使用指定代理下载/更新provider"
+            },
+            "size-limit": {
+              "type": "integer",
+              "title": "限制下载文件大小",
+              "description": "单位:B,0为不限制",
+              "markdownDescription": "单位:B,0为不限制",
+              "default": 0
+            },
+            "header": {
+              "type": "object",
+              "title": "请求头",
+              "description": "请求头",
+              "markdownDescription": "请求头"
             }
           }
         }
