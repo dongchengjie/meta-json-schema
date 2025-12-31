@@ -1,3 +1,13 @@
+## v1.19.18
+
+### Changes
+
+- 移除: sudoku `listeners` 移除配置项 `seed`
+- 新增: sudoku `listeners` 新增配置项 `custom-table`、`custom-tables`
+- 新增: sudoku 新增配置项 `enable-pure-downlink`、`custom-table`、`custom-tables`、`http-mask-strategy`
+
+---
+
 ## v1.19.17
 
 ### Changes

@@ -89,11 +89,25 @@
           "markdownDescription": "启用HTTP掩码",
           "default": true
         },
+        "http-mask-strategy": {
+          "enum": ["random", "post", "websocket"],
+          "markdownEnumDescriptions": ["随机", "POST伪装", "WebSocket伪装"],
+          "title": "HTTP掩码策略",
+          "description": "HTTP掩码策略",
+          "markdownDescription": "HTTP掩码策略",
+          "default": "random"
+        },
         "custom-table": {
           "$ref": "#/definitions/compatible/string",
           "title": "自定义字节布局",
           "description": "必须包含2个x、2个p、4个v，可随意组合",
           "markdownDescription": "必须包含2个x、2个p、4个v，可随意组合"
+        },
+        "custom-tables": {
+          "$ref": "#/definitions/types/stringArray",
+          "title": "自定义字节布局列表（x/v/p）",
+          "description": "用于 xvp 模式轮换；非空时覆盖 custom-table",
+          "markdownDescription": "用于 xvp 模式轮换；非空时覆盖 custom-table"
         }
       },
       "allOf": [

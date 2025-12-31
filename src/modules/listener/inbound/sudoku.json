@@ -70,6 +70,12 @@
           "description": "必须包含2个x、2个p、4个v，可随意组合",
           "markdownDescription": "必须包含2个x、2个p、4个v，可随意组合"
         },
+        "custom-tables": {
+          "$ref": "#/definitions/types/stringArray",
+          "title": "自定义字节布局列表（x/v/p）",
+          "description": "用于 xvp 模式轮换；非空时覆盖 custom-table",
+          "markdownDescription": "用于 xvp 模式轮换；非空时覆盖 custom-table"
+        },
         "mux-option": { "title": "多路复用配置", "$ref": "#/definitions/mux-option" }
       },
       "allOf": [
