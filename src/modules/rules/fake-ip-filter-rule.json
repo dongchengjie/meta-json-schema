@@ -1,0 +1,60 @@
+{
+  "type": "string",
+  "anyOf": [
+    {
+      "title": "匹配完整域名",
+      "pattern": "^DOMAIN((?:,[^,]+){1}),\\s*([fF][aA][kK][eE]-[iI][pP]|[rR][eE][aA][lL]-[iI][pP])$",
+      "errorMessage": "无效的规则"
+    },
+    {
+      "title": "匹配域名后缀",
+      "pattern": "^DOMAIN-SUFFIX((?:,[^,]+){1}),\\s*([fF][aA][kK][eE]-[iI][pP]|[rR][eE][aA][lL]-[iI][pP])$",
+      "errorMessage": "无效的规则"
+    },
+    {
+      "title": "匹配域名关键字",
+      "pattern": "^DOMAIN-KEYWORD((?:,[^,]+){1}),\\s*([fF][aA][kK][eE]-[iI][pP]|[rR][eE][aA][lL]-[iI][pP])$",
+      "errorMessage": "无效的规则"
+    },
+    {
+      "title": "匹配域名正则表达式",
+      "pattern": "^DOMAIN-REGEX((?:,[^,]+){1}),\\s*([fF][aA][kK][eE]-[iI][pP]|[rR][eE][aA][lL]-[iI][pP])$",
+      "errorMessage": "无效的规则"
+    },
+    {
+      "title": "匹配域名通配符",
+      "pattern": "^DOMAIN-WILDCARD((?:,[^,]+){1}),\\s*([fF][aA][kK][eE]-[iI][pP]|[rR][eE][aA][lL]-[iI][pP])$",
+      "errorMessage": "无效的规则"
+    },
+    {
+      "title": "匹配Geosite内的域名",
+      "pattern": "^GEOSITE((?:,[^,]+){1}),\\s*([fF][aA][kK][eE]-[iI][pP]|[rR][eE][aA][lL]-[iI][pP])$",
+      "errorMessage": "无效的规则"
+    },
+    {
+      "title": "匹配规则集(rule-providers中定义)",
+      "pattern": "^RULE-SET((?:,[^,]+){1}),\\s*([fF][aA][kK][eE]-[iI][pP]|[rR][eE][aA][lL]-[iI][pP])(?:,\\s*(no-resolve|src)\\s*){0,2}$",
+      "errorMessage": "无效的规则"
+    },
+    {
+      "title": "逻辑和",
+      "pattern": "^AND,\\(\\(.+,.+\\)\\),\\s*([fF][aA][kK][eE]-[iI][pP]|[rR][eE][aA][lL]-[iI][pP])$",
+      "errorMessage": "无效的规则"
+    },
+    {
+      "title": "逻辑或",
+      "pattern": "^OR,\\(\\(.+,.+\\)\\),\\s*([fF][aA][kK][eE]-[iI][pP]|[rR][eE][aA][lL]-[iI][pP])$",
+      "errorMessage": "无效的规则"
+    },
+    {
+      "title": "逻辑非",
+      "pattern": "^NOT,\\(\\(.+,.+\\)\\),\\s*([fF][aA][kK][eE]-[iI][pP]|[rR][eE][aA][lL]-[iI][pP])$",
+      "errorMessage": "无效的规则"
+    },
+    {
+      "title": "匹配所有请求(无需条件)",
+      "pattern": "^MATCH,\\s*([fF][aA][kK][eE]-[iI][pP]|[rR][eE][aA][lL]-[iI][pP])$",
+      "errorMessage": "无效的规则"
+    }
+  ]
+}

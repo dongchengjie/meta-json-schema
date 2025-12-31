@@ -3,7 +3,8 @@
   "description": "DNS配置",
   "definitions": {
     "types": { "$ref": "../../definitions/types.json" },
-    "patterns": { "$ref": "../../definitions/patterns.json" }
+    "patterns": { "$ref": "../../definitions/patterns.json" },
+    "rule": { "$ref": "../rules/fake-ip-filter-rule.json" }
   },
   "properties": {
     "enable": {
@@ -144,11 +145,11 @@
       "default": ["dns.msftnsci.com", "www.msftnsci.com", "www.msftconnecttest.com"]
     },
     "fake-ip-filter-mode": {
-      "enum": ["blacklist", "whitelist"],
-      "markdownEnumDescriptions": ["黑名单模式", "白名单模式"],
+      "enum": ["blacklist", "whitelist", "rule"],
+      "markdownEnumDescriptions": ["黑名单模式", "白名单模式", "规则模式"],
       "title": "fake-ip过滤模式",
-      "description": "黑名单模式如果匹配成功则不返回fake-ip;白名单则相反",
-      "markdownDescription": "黑名单模式如果匹配成功则不返回fake-ip;白名单则相反",
+      "description": "黑名单模式如果匹配成功则不返回fake-ip;白名单则相反;规则模式与路由rules匹配逻辑一致",
+      "markdownDescription": "黑名单模式如果匹配成功则不返回fake-ip;白名单则相反;规则模式与路由rules匹配逻辑一致",
       "default": "blacklist"
     },
     "fake-ip-ttl": {
@@ -222,6 +223,14 @@
           "proxy-server-nameserver": {
             "deprecationMessage": "启用respect-rules时proxy-server-nameserver不能为空"
           }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "fake-ip-filter-mode": { "const": "rule" } } },
+      "then": {
+        "properties": {
+          "fake-ip-filter": { "type": "array", "items": { "$ref": "#/definitions/rule" } }
         }
       }
     }
