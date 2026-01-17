@@ -3,12 +3,11 @@
 ### Changes
 
 - 新增: sudoku `listeners` 新增配置项 `disable-http-mask`、`http-mask-mode`、`path-root`
-- 新增: sudoku 新增配置项 `http-mask-mode`、`http-mask-tls`、`http-mask-host`、`path-root`
+- 新增: sudoku 新增配置项 `http-mask-mode`、`http-mask-tls`、`http-mask-host`、`path-root`、`http-mask-multiplex`
+- 移除: sudoku 移除配置项 `http-mask-strategy`
 - 新增: `rule-provider` 新增 HTTP 配置项 `header`
 - 新增: `fake-ip-filter-mode` 支持 `rule` 模式
 - 新增: `fake-ip-filter` 支持配置规则，以此决定返回 `fake-ip` 或 `real-ip`
-- 移除: sudoku 移除配置项 `http-mask-strategy`
-- 新增: sudoku 新增配置项 `http-mask-multiplex`
 - 新增: ss kcptun插件支持 `aes-128-gcm` 加密、新增 `ratelimit`、`framesize` 配置项
 - 新增: 新增 `PROCESS-NAME-WILDCARD`、`PROCESS-PATH-WILDCARD`
 - 移除: 即将弃用 `global-client-fingerprint`

@@ -151,29 +151,19 @@
       },
       "allOf": [
         {
-          "if": {
-            "properties": { "enable-pure-downlink": { "const": false } }
-          },
-          "then": {
-            "properties": { "aead-method": { "not": { "const": "none" } } }
-          }
+          "if": { "properties": { "enable-pure-downlink": { "const": false } } },
+          "then": { "properties": { "aead-method": { "not": { "const": "none" } } } }
         },
         {
-          "if": {
-            "not": { "properties": { "custom-table": { "const": "" } } }
-          },
-          "then": {
-            "properties": { "table-type": { "const": "prefer_entropy" } }
-          }
+          "if": { "not": { "properties": { "custom-table": { "const": "" } } } },
+          "then": { "properties": { "table-type": { "const": "prefer_entropy" } } }
         }
       ]
     },
     {
       "type": "object",
       "title": "smux配置",
-      "properties": {
-        "smux": { "title": "smux配置", "$ref": "#/definitions/smux" }
-      }
+      "properties": { "smux": { "title": "smux配置", "$ref": "#/definitions/smux" } }
     }
   ]
 }
