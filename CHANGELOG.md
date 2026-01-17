@@ -10,10 +10,12 @@
 - 移除: sudoku 移除配置项 `http-mask-strategy`
 - 新增: sudoku 新增配置项 `http-mask-multiplex`
 - 新增: ss kcptun插件支持 `aes-128-gcm` 加密、新增 `ratelimit`、`framesize` 配置项
+- 新增: 新增 `PROCESS-NAME-WILDCARD`、`PROCESS-PATH-WILDCARD`
 
 ### Bugs Fixes
 
 - 修复: `proxy-provider` 和 `rule-provider` 配置的 `size-limit` 单位描述错误
+- 修复: `SRC-IP-ASN` 错误地拼写成 `SCR-IP-ASN`
 
 ---
 

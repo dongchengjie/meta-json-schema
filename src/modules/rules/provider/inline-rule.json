@@ -44,7 +44,7 @@
     },
     {
       "title": "匹配来源IP所属ASN",
-      "pattern": "^SCR-IP-ASN((?:,[^,]+){1})$",
+      "pattern": "^SRC-IP-ASN((?:,[^,]+){1})$",
       "errorMessage": "无效的规则"
     },
     {
@@ -110,6 +110,16 @@
     {
       "title": "正则匹配完整进程路径",
       "pattern": "^PROCESS-PATH-REGEX((?:,[^,]+){1})$",
+      "errorMessage": "无效的规则"
+    },
+    {
+      "title": "通配完整进程名称(Android包名)",
+      "pattern": "^PROCESS-NAME-WILDCARD((?:,[^,]+){1})$",
+      "errorMessage": "无效的规则"
+    },
+    {
+      "title": "通配完整进程路径",
+      "pattern": "^PROCESS-PATH-WILDCARD((?:,[^,]+){1})$",
       "errorMessage": "无效的规则"
     },
     {
