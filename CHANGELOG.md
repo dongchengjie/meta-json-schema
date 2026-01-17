@@ -9,6 +9,7 @@
 - 新增: `fake-ip-filter` 支持配置规则，以此决定返回 `fake-ip` 或 `real-ip`
 - 移除: sudoku 移除配置项 `http-mask-strategy`
 - 新增: sudoku 新增配置项 `http-mask-multiplex`
+- 新增: ss kcptun插件支持 `aes-128-gcm` 加密、新增 `ratelimit`、`framesize` 配置项
 
 ### Bugs Fixes
 

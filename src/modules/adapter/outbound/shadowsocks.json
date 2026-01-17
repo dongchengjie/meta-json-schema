@@ -287,6 +287,7 @@
             "xor",
             "none",
             "aes-128",
+            "aes-128-gcm",
             "aes-192",
             "blowfish",
             "twofish",
@@ -303,7 +304,12 @@
         },
         "mode": {
           "enum": ["normal", "fast", "fast2", "fast3"],
-          "markdownEnumDescriptions": ["普通模式", "快速模式", "高速模式", "极速模式"],
+          "markdownEnumDescriptions": [
+            "普通模式",
+            "快速模式",
+            "高速模式",
+            "极速模式"
+          ],
           "title": "预设模式",
           "description": "用于快速配置参数，也可手动配置参数",
           "markdownDescription": "用于快速配置参数，也可手动配置参数",
@@ -336,6 +342,13 @@
           "description": "最大传输单元",
           "markdownDescription": "最大传输单元",
           "default": 1350
+        },
+        "ratelimit": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "单个 KCP 连接的最大出站速度（数据包限速,0为禁用）",
+          "description": "单位:bytes",
+          "markdownDescription": "单位:bytes",
+          "default": 0
         },
         "sndwnd": {
           "$ref": "#/definitions/compatible/integer",
@@ -430,6 +443,13 @@
           "markdownDescription": "单位:bytes",
           "default": 4194304
         },
+        "framesize": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "SMUX 多路复用最大帧大小",
+          "description": "单位:bytes",
+          "markdownDescription": "单位:bytes",
+          "default": 8192
+        },
         "streambuf": {
           "$ref": "#/definitions/compatible/integer",
           "title": "单个流的缓冲区大小",
@@ -498,7 +518,14 @@
           "default": true
         },
         "plugin": {
-          "enum": ["obfs", "v2ray-plugin", "shadow-tls", "restls", "gost-plugin", "kcptun"],
+          "enum": [
+            "obfs",
+            "v2ray-plugin",
+            "shadow-tls",
+            "restls",
+            "gost-plugin",
+            "kcptun"
+          ],
           "title": "插件",
           "description": "插件",
           "markdownDescription": "插件"
@@ -608,7 +635,9 @@
     {
       "type": "object",
       "title": "smux配置",
-      "properties": { "smux": { "title": "smux配置", "$ref": "#/definitions/smux" } }
+      "properties": {
+        "smux": { "title": "smux配置", "$ref": "#/definitions/smux" }
+      }
     }
   ]
 }
