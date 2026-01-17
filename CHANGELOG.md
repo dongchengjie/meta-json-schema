@@ -11,6 +11,8 @@
 - 新增: sudoku 新增配置项 `http-mask-multiplex`
 - 新增: ss kcptun插件支持 `aes-128-gcm` 加密、新增 `ratelimit`、`framesize` 配置项
 - 新增: 新增 `PROCESS-NAME-WILDCARD`、`PROCESS-PATH-WILDCARD`
+- 移除: 即将弃用 `global-client-fingerprint`
+- 新增: trojan/vmess/vless grpc-opts 新增 `grpc-user-agent` 配置项
 
 ### Bugs Fixes
 

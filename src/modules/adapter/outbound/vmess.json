@@ -65,6 +65,12 @@
           "title": "GRPC服务名称",
           "description": "GRPC服务名称",
           "markdownDescription": "GRPC服务名称"
+        },
+        "grpc-user-agent": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "GRPC用户代理",
+          "description": "GRPC用户代理",
+          "markdownDescription": "GRPC用户代理"
         }
       }
     },
