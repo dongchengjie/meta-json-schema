@@ -1358,7 +1358,7 @@ listeners:
       - username: aaa
         password: aaa
 
-  - name: reidr-in-1
+  - name: redir-in-1
     type: redir
     port: 10811
     listen: 0.0.0.0
