@@ -91,6 +91,12 @@
           "markdownDescription": "支持走 CDN/反代",
           "default": "legacy"
         },
+        "path-root": {
+          "type": "string",
+          "title": "HTTP 隧道端点一级路径前缀（双方需一致）",
+          "description": "例如 \"aabbcc\" => /aabbcc/session、/aabbcc/stream、/aabbcc/api/v1/upload",
+          "markdownDescription": "例如 \"aabbcc\" => /aabbcc/session、/aabbcc/stream、/aabbcc/api/v1/upload"
+        },
         "mux-option": { "title": "多路复用配置", "$ref": "#/definitions/mux-option" }
       },
       "allOf": [

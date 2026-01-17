@@ -1039,6 +1039,7 @@ proxies: # socks5
     # http-mask-mode: legacy # 可选：legacy（默认）、stream、poll、auto；stream/poll/auto 支持走 CDN/反代
     # http-mask-tls: true # 可选：仅在 http-mask-mode 为 stream/poll/auto 时生效；true 强制 https；false 强制 http（不会根据端口自动推断）
     # http-mask-host: "" # 可选：覆盖 Host/SNI（支持 example.com 或 example.com:443）；仅在 http-mask-mode 为 stream/poll/auto 时生效
+    path-root: "" # 可选：HTTP 隧道端点一级路径前缀（双方需一致），例如 "aabbcc" => /aabbcc/session、/aabbcc/stream、/aabbcc/api/v1/upload
     # http-mask-strategy: random # 可选：random（默认）、post、websocket；仅 legacy 下生效
     # http-mask-multiplex: off # 可选：off（默认）、auto、on；复用单条隧道并在其内多路复用多个目标连接
     enable-pure-downlink: false # 是否启用混淆下行，false的情况下能在保证数据安全的前提下极大提升下行速度，与服务端端保持相同(如果此处为false，则要求aead不可为none)
@@ -1547,7 +1548,8 @@ listeners:
     handshake-timeout: 5 # optional
     enable-pure-downlink: false # 是否启用混淆下行，false的情况下能在保证数据安全的前提下极大提升下行速度，与客户端保持相同(如果此处为false，则要求aead不可为none)
     disable-http-mask: false # 可选：禁用 http 掩码/隧道（默认为 false）
-  # http-mask-mode: legacy # 可选：legacy（默认）、stream、poll、auto；stream/poll/auto 支持走 CDN/反代
+    # http-mask-mode: legacy # 可选：legacy（默认）、stream、poll、auto；stream/poll/auto 支持走 CDN/反代
+    path-root: "" # 可选：HTTP 隧道端点一级路径前缀（双方需一致），例如 "aabbcc" => /aabbcc/session、/aabbcc/stream、/aabbcc/api/v1/upload
   - name: trojan-in-1
     type: trojan
     port: 10819 # 支持使用ports格式，例如200,302 or 200,204,401-429,501-503

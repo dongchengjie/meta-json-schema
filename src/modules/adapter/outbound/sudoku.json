@@ -109,6 +109,12 @@
           "description": "Host/SNI",
           "markdownDescription": "Host/SNI"
         },
+        "path-root": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "HTTP 隧道端点一级路径前缀（双方需一致）",
+          "description": "例如 \"aabbcc\" => /aabbcc/session、/aabbcc/stream、/aabbcc/api/v1/upload",
+          "markdownDescription": "例如 \"aabbcc\" => /aabbcc/session、/aabbcc/stream、/aabbcc/api/v1/upload"
+        },
         "http-mask-strategy": {
           "enum": ["random", "post", "websocket"],
           "markdownEnumDescriptions": ["随机", "POST伪装", "WebSocket伪装"],
