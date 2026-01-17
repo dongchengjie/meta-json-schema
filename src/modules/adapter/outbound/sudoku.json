@@ -115,7 +115,16 @@
           "title": "HTTP掩码策略",
           "description": "HTTP掩码策略",
           "markdownDescription": "HTTP掩码策略",
-          "default": "random"
+          "default": "random",
+          "deprecationMessage": "v1.19.19 已弃用"
+        },
+        "http-mask-multiplex": {
+          "enum": ["off", "auto", "on"],
+          "markdownEnumDescriptions": ["关闭", "自动", "开启"],
+          "title": "HTTP掩码多路复用",
+          "description": "复用单条隧道并在其内多路复用多个目标连接",
+          "markdownDescription": "复用单条隧道并在其内多路复用多个目标连接",
+          "default": "off"
         },
         "custom-table": {
           "$ref": "#/definitions/compatible/string",
@@ -132,19 +141,29 @@
       },
       "allOf": [
         {
-          "if": { "properties": { "enable-pure-downlink": { "const": false } } },
-          "then": { "properties": { "aead-method": { "not": { "const": "none" } } } }
+          "if": {
+            "properties": { "enable-pure-downlink": { "const": false } }
+          },
+          "then": {
+            "properties": { "aead-method": { "not": { "const": "none" } } }
+          }
         },
         {
-          "if": { "not": { "properties": { "custom-table": { "const": "" } } } },
-          "then": { "properties": { "table-type": { "const": "prefer_entropy" } } }
+          "if": {
+            "not": { "properties": { "custom-table": { "const": "" } } }
+          },
+          "then": {
+            "properties": { "table-type": { "const": "prefer_entropy" } }
+          }
         }
       ]
     },
     {
       "type": "object",
       "title": "smux配置",
-      "properties": { "smux": { "title": "smux配置", "$ref": "#/definitions/smux" } }
+      "properties": {
+        "smux": { "title": "smux配置", "$ref": "#/definitions/smux" }
+      }
     }
   ]
 }

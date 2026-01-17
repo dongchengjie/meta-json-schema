@@ -7,6 +7,8 @@
 - 新增: `rule-provider` 新增 HTTP 配置项 `header`
 - 新增: `fake-ip-filter-mode` 支持 `rule` 模式
 - 新增: `fake-ip-filter` 支持配置规则，以此决定返回 `fake-ip` 或 `real-ip`
+- 移除: sudoku 移除配置项 `http-mask-strategy`
+- 新增: sudoku 新增配置项 `http-mask-multiplex`
 
 ### Bugs Fixes
 
