@@ -99,7 +99,7 @@ interface-name: en0 # 设置出口网卡
 # 全局 TLS 指纹，优先低于 proxy 内的 client-fingerprint
 # 可选： "chrome","firefox","safari","ios","random","none" options.
 # Utls is currently support TLS transport in TCP/grpc/WS/HTTP for VLESS/Vmess and trojan.
-global-client-fingerprint: chrome
+# global-client-fingerprint: chrome
 
 #  TCP keep alive interval
 disable-keep-alive: false # 目前在android端强制为true

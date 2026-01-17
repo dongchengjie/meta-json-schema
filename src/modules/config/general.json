@@ -131,7 +131,8 @@
           "$ref": "#/definitions/enums/fingerprint",
           "title": "全局客户端指纹",
           "description": "支持协议有VLESS,Vmess,trojan",
-          "markdownDescription": "支持协议有`VLESS`,`Vmess`,`trojan`"
+          "markdownDescription": "支持协议有`VLESS`,`Vmess`,`trojan`",
+          "deprecationMessage": "已弃用(请单独在代理中设置client-fingerprint)"
         },
         "global-ua": {
           "type": "string",
