@@ -120,7 +120,11 @@
         },
         "http-mask-multiplex": {
           "enum": ["off", "auto", "on"],
-          "markdownEnumDescriptions": ["关闭", "自动", "开启"],
+          "markdownEnumDescriptions": [
+            "默认",
+            "复用 h1.1 keep-alive / h2 连接，减少每次建链 RTT",
+            "单条隧道内多路复用多个目标连接；仅在 http-mask-mode=stream/poll/auto 生效"
+          ],
           "title": "HTTP掩码多路复用",
           "description": "复用单条隧道并在其内多路复用多个目标连接",
           "markdownDescription": "复用单条隧道并在其内多路复用多个目标连接",
