@@ -12,7 +12,7 @@ VS Code 扩展商店搜索 `Meta JSON Schema` 或 `ClashMeta.meta-json-schema` �
    ```json
    {
      "yaml.schemas": {
-       "https://fastly.jsdelivr.net/gh/dongchengjie/meta-json-schema@main/schemas/meta-json-schema.json": "**/*.yaml"
+       "https://unpkg.com/meta-json-schema/schemas/meta-json-schema.json": "**/*.yaml"
      }
    }
    ```
@@ -68,7 +68,7 @@ VS Code 扩展商店搜索 `Meta JSON Schema` 或 `ClashMeta.meta-json-schema` �
      enableSchemaRequest: true,
      schemas: [
        {
-         uri: "https://fastly.jsdelivr.net/gh/dongchengjie/meta-json-schema@main/schemas/meta-json-schema.json",
+         uri: "https://unpkg.com/meta-json-schema/schemas/meta-json-schema.json",
          fileMatch: ["**/*.clash.yaml"]
        }
      ]
