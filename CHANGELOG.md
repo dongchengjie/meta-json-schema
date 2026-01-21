@@ -1,3 +1,13 @@
+## v1.19.20
+
+### Changes
+
+### Bugs Fixes
+
+- 修复: `reality-opts` 的 `short-id` 配置项为可选项
+
+---
+
 ## v1.19.19
 
 ### Changes

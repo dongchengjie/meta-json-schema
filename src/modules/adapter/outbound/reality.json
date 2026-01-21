@@ -7,7 +7,7 @@
     "patterns": { "$ref": "../../../definitions/patterns.json" },
     "enums": { "$ref": "../../../definitions/enums.json" }
   },
-  "required": ["public-key", "short-id"],
+  "required": ["public-key"],
   "properties": {
     "public-key": {
       "$ref": "#/definitions/compatible/string",
@@ -18,8 +18,8 @@
     "short-id": {
       "$ref": "#/definitions/compatible/string",
       "title": "short ID",
-      "description": "short ID",
-      "markdownDescription": "short ID"
+      "description": "不超过8字节",
+      "markdownDescription": "不超过8字节"
     },
     "support-x25519mlkem768": {
       "$ref": "#/definitions/compatible/boolean",
