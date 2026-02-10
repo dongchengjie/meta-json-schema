@@ -55,16 +55,16 @@
         },
         "padding-min": {
           "$ref": "#/definitions/compatible/integer",
-          "title": "最小填充字节数",
-          "description": "最小填充字节数",
-          "markdownDescription": "最小填充字节数",
+          "title": "最小填充率",
+          "description": "0-100",
+          "markdownDescription": "0-100",
           "default": 10
         },
         "padding-max": {
           "$ref": "#/definitions/compatible/integer",
-          "title": "最大填充字节数",
-          "description": "最大填充字节数",
-          "markdownDescription": "最大填充字节数",
+          "title": "最大填充率",
+          "description": "0-100（要求不小于padding-min）",
+          "markdownDescription": "0-100（要求不小于`padding-min`）",
           "default": 30
         },
         "table-type": {
@@ -91,10 +91,10 @@
         },
         "http-mask-mode": {
           "enum": ["legacy", "stream", "poll", "auto"],
-          "markdownEnumDescriptions": ["传统", "流式", "轮询", "自动"],
+          "markdownEnumDescriptions": ["默认", "split-stream", "轮询", "先stream再poll"],
           "title": "HTTP掩码模式",
-          "description": "支持走 CDN/反代",
-          "markdownDescription": "支持走 CDN/反代",
+          "description": "stream/poll/auto 支持走 CDN/反代",
+          "markdownDescription": "stream/poll/auto 支持走 CDN/反代",
           "default": "legacy"
         },
         "http-mask-tls": {
@@ -112,8 +112,8 @@
         "path-root": {
           "$ref": "#/definitions/compatible/string",
           "title": "HTTP 隧道端点一级路径前缀（双方需一致）",
-          "description": "例如 \"aabbcc\" => /aabbcc/session、/aabbcc/stream、/aabbcc/api/v1/upload",
-          "markdownDescription": "例如 \"aabbcc\" => /aabbcc/session、/aabbcc/stream、/aabbcc/api/v1/upload"
+          "description": "例如 \"aabbcc\" 或 \"/aabbcc/\" => /aabbcc/session、/aabbcc/stream、/aabbcc/api/v1/upload",
+          "markdownDescription": "例如 \"aabbcc\" 或 \"/aabbcc/\" => /aabbcc/session、/aabbcc/stream、/aabbcc/api/v1/upload"
         },
         "http-mask-strategy": {
           "enum": ["random", "post", "websocket"],
@@ -128,8 +128,8 @@
           "enum": ["off", "auto", "on"],
           "markdownEnumDescriptions": [
             "默认",
-            "复用 h1.1 keep-alive / h2 连接，减少每次建链 RTT",
-            "单条隧道内多路复用多个目标连接；仅在 http-mask-mode=stream/poll/auto 生效"
+            "复用底层 HTTP 连接，减少建链 RTT",
+            "单条隧道内多路复用多个目标连接；仅在 http-mask-mode为stream/poll/auto 生效"
           ],
           "title": "HTTP掩码多路复用",
           "description": "复用单条隧道并在其内多路复用多个目标连接",
