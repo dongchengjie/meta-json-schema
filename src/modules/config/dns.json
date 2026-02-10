@@ -252,7 +252,10 @@
       }
     },
     {
-      "if": { "properties": { "fake-ip-filter-mode": { "const": "rule" } } },
+      "if": {
+        "required": ["fake-ip-filter-mode"],
+        "properties": { "fake-ip-filter-mode": { "const": "rule" } }
+      },
       "then": {
         "properties": {
           "fake-ip-filter": { "type": "array", "items": { "$ref": "#/definitions/rule" } }
