@@ -1,0 +1,134 @@
+{
+  "type": "object",
+  "title": "outbound-masque",
+  "definitions": {
+    "compatible": { "$ref": "../../../definitions/compatible.json" },
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" },
+    "basic-option": { "$ref": "./base.json#/definitions/basic-option" },
+    "smux": { "$ref": "./singmux.json" }
+  },
+  "allOf": [
+    { "title": "basic配置", "$ref": "#/definitions/basic-option" },
+    {
+      "type": "object",
+      "title": "masque配置",
+      "required": ["name", "server", "port", "private-key", "public-key"],
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "代理节点类型",
+          "description": "代理节点类型",
+          "markdownDescription": "代理节点类型"
+        },
+        "name": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "代理节点名称",
+          "description": "代理节点名称",
+          "markdownDescription": "代理节点名称"
+        },
+        "server": {
+          "$ref": "#/definitions/patterns/server",
+          "title": "代理节点服务器",
+          "description": "域名或IP",
+          "markdownDescription": "域名或IP"
+        },
+        "port": {
+          "$ref": "#/definitions/patterns/port",
+          "title": "代理节点端口号",
+          "description": "代理节点端口号",
+          "markdownDescription": "代理节点端口号"
+        },
+        "private-key": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "私钥",
+          "description": "私钥",
+          "markdownDescription": "私钥"
+        },
+        "public-key": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "公钥",
+          "description": "公钥",
+          "markdownDescription": "公钥"
+        },
+        "ip": {
+          "$ref": "#/definitions/patterns/ipv4",
+          "title": "IPv4地址",
+          "description": "IPv4地址",
+          "markdownDescription": "IPv4地址"
+        },
+        "ipv6": {
+          "$ref": "#/definitions/patterns/ipv6",
+          "title": "IPv6地址",
+          "description": "IPv6地址",
+          "markdownDescription": "IPv6地址"
+        },
+        "uri": {
+          "$ref": "#/definitions/patterns/uri",
+          "title": "URI",
+          "description": "URI",
+          "markdownDescription": "URI"
+        },
+        "sni": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "SNI",
+          "description": "SNI(Server Name Indication)",
+          "markdownDescription": "`SNI`(Server Name Indication)"
+        },
+        "mtu": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "最大传输单元",
+          "description": "最大传输单元",
+          "markdownDescription": "最大传输单元",
+          "default": 1280
+        },
+        "udp": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用UDP",
+          "description": "启用UDP",
+          "markdownDescription": "启用`UDP`",
+          "default": true
+        },
+        "congestion-controller": {
+          "enum": ["cubic", "new_reno", "bbr_meta_v1", "bbr_meta_v2", "bbr"],
+          "markdownEnumDescriptions": [
+            "CUBIC算法",
+            "New Reno算法",
+            "BBR Meta v1算法",
+            "BBR Meta v2算法",
+            "BBR算法"
+          ],
+          "title": "拥塞控制算法",
+          "description": "拥塞控制算法",
+          "markdownDescription": "拥塞控制算法"
+        },
+        "cwnd": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "拥塞窗口大小",
+          "description": "拥塞窗口大小(Congestion Window)",
+          "markdownDescription": "拥塞窗口大小(Congestion Window)",
+          "default": 32
+        },
+        "remote-dns-resolve": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "强制DNS远程解析",
+          "description": "强制DNS远程解析",
+          "markdownDescription": "强制DNS远程解析",
+          "default": false
+        },
+        "dns": {
+          "$ref": "#/definitions/types/stringArray",
+          "title": "DNS服务器列表",
+          "description": "仅在 remote-dns-resolve 为 true 时生效",
+          "markdownDescription": "仅在 `remote-dns-resolve` 为 `true` 时生效"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "title": "smux配置",
+      "properties": { "smux": { "title": "smux配置", "$ref": "#/definitions/smux" } }
+    }
+  ]
+}

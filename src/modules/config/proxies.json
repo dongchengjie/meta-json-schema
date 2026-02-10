@@ -22,7 +22,8 @@
     "ssh": { "$ref": "../adapter/outbound/ssh.json" },
     "mieru": { "$ref": "../adapter/outbound/mieru.json" },
     "anytls": { "$ref": "../adapter/outbound/anytls.json" },
-    "sudoku": { "$ref": "../adapter/outbound/sudoku.json" }
+    "sudoku": { "$ref": "../adapter/outbound/sudoku.json" },
+    "masque": { "$ref": "../adapter/outbound/masque.json" }
   },
   "items": {
     "anyOf": [
@@ -133,6 +134,12 @@
         "title": "sudoku",
         "properties": { "type": { "title": "sudoku配置", "const": "sudoku" } },
         "$ref": "#/definitions/sudoku"
+      },
+      {
+        "type": "object",
+        "title": "masque",
+        "properties": { "type": { "title": "masque配置", "const": "masque" } },
+        "$ref": "#/definitions/masque"
       }
     ]
   }
