@@ -228,6 +228,7 @@
         }
       },
       "then": {
+        "required": ["proxy-server-nameserver"],
         "properties": {
           "proxy-server-nameserver": {
             "deprecationMessage": "启用respect-rules时proxy-server-nameserver不能为空"

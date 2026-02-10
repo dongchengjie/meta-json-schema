@@ -965,7 +965,7 @@ proxies: # socks5
     public-key: MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEIaU7MToJm9NKp8YfGxR6r+/h4mcG7SxI8tsW8OR1A5tv/zCzVbCRRh2t87/kxnP6lAy0lkr7qYwu+ox+k3dr6w==
     ip: 172.16.0.2
     ipv6: 2606:4700:110:84c0:163a:4914:a0ad:3342
-    uri: http://aa.comasda
+    uri: http://example.com/endpoint
     mtu: 1280
     udp: true
     # 一个出站代理的标识。当值不为空时，将使用指定的 proxy 发出连接

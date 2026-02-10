@@ -10,6 +10,7 @@
 ### Bugs Fixes
 
 - 修复: `reality-opts` 的 `short-id` 配置项为可选项
+- 修复: `fake-ip-filter-mode` 未配置时，错误地使用了 `rule` 规则进行校验
 
 ---
 
