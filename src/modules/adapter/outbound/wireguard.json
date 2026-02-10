@@ -137,7 +137,6 @@
     "wireguard-peer-option": {
       "type": "object",
       "title": "peer配置",
-      "required": ["server", "port"],
       "properties": {
         "server": {
           "$ref": "#/definitions/patterns/server",
