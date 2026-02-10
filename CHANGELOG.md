@@ -4,6 +4,7 @@
 
 - 新增: `ech-opts` 新增配置项 `query-server-name`
 - 新增: proxy 新增 `masque` 协议
+- 调整: 调整 sudoku 配置项描述
 
 ### Bugs Fixes
 
