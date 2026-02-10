@@ -2,6 +2,8 @@
 
 ### Changes
 
+- 新增: `ech-opts` 新增配置项 `query-server-name`
+
 ### Bugs Fixes
 
 - 修复: `reality-opts` 的 `short-id` 配置项为可选项
