@@ -236,6 +236,22 @@
       }
     },
     {
+      "if": {
+        "properties": {
+          "proxy-server-nameserver-policy": { "type": "object" },
+          "proxy-server-nameserver": { "const": [] }
+        }
+      },
+      "then": {
+        "required": ["proxy-server-nameserver"],
+        "properties": {
+          "proxy-server-nameserver": {
+            "deprecationMessage": "配置proxy-server-nameserver-policy时proxy-server-nameserver不能为空"
+          }
+        }
+      }
+    },
+    {
       "if": { "properties": { "fake-ip-filter-mode": { "const": "rule" } } },
       "then": {
         "properties": {
