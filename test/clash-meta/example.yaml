@@ -345,8 +345,10 @@ dns:
 
   # 专用于节点域名解析的 DNS 服务器，非必要配置项，如果不填则遵循nameserver-policy、nameserver和fallback的配置
   proxy-server-nameserver:
-    - https://dns.google/dns-query
-    - tls://one.one.one.one
+    - https://doh.pub/dns-query
+    - tls://223.5.5.5:853
+  proxy-server-nameserver-policy: # 格式同nameserver-policy，仅用于节点域名解析，当且仅当proxy-server-nameserver不为空时生效
+    "www.yournode.com": "114.114.114.114"
 
   # 专用于direct出口域名解析的 DNS 服务器，非必要配置项，如果不填则遵循nameserver-policy、nameserver和fallback的配置
   direct-nameserver:
@@ -1572,8 +1574,8 @@ listeners:
     handshake-timeout: 5 # 可选（秒）
     enable-pure-downlink: false # 可选：false=带宽优化下行（更快，要求 aead-method != none）；true=纯 Sudoku 下行
     disable-http-mask: false # 可选：禁用 http 掩码/隧道（默认为 false）
-  # http-mask-mode: legacy # 可选：legacy（默认）、stream（split-stream）、poll、auto（先 stream 再 poll）；stream/poll/auto 支持走 CDN/反代
-  # path-root: "" # 可选：HTTP 隧道端点一级路径前缀（双方需一致），例如 "aabbcc" 或 "/aabbcc/" => /aabbcc/session、/aabbcc/stream、/aabbcc/api/v1/upload
+    http-mask-mode: legacy # 可选：legacy（默认）、stream（split-stream）、poll、auto（先 stream 再 poll）；stream/poll/auto 支持走 CDN/反代
+    path-root: "" # 可选：HTTP 隧道端点一级路径前缀（双方需一致），例如 "aabbcc" 或 "/aabbcc/" => /aabbcc/session、/aabbcc/stream、/aabbcc/api/v1/upload
 
   - name: trojan-in-1
     type: trojan

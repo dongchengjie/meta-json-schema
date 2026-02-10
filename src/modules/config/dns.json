@@ -187,14 +187,23 @@
         "anyOf": [{ "type": "string" }, { "$ref": "#/definitions/types/stringArray" }]
       },
       "title": "DNS解析服务器策略",
-      "description": "指定地址使用特定DNS解析服务器",
-      "markdownDescription": "指定地址使用特定DNS解析服务器"
+      "description": "指定域名使用特定DNS解析服务器",
+      "markdownDescription": "指定域名使用特定DNS解析服务器"
     },
     "proxy-server-nameserver": {
       "$ref": "#/definitions/types/stringArray",
       "title": "代理节点DNS解析服务器",
       "description": "用于解析代理节点的域名",
       "markdownDescription": "用于解析代理节点的域名"
+    },
+    "proxy-server-nameserver-policy": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [{ "type": "string" }, { "$ref": "#/definitions/types/stringArray" }]
+      },
+      "title": "DNS解析服务器策略",
+      "description": "指定节点域名使用特定DNS解析服务器",
+      "markdownDescription": "指定节点域名使用特定DNS解析服务器"
     },
     "direct-nameserver": {
       "$ref": "#/definitions/types/stringArray",
