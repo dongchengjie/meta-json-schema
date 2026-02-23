@@ -1,3 +1,13 @@
+## v1.19.21
+
+### Changes
+
+### Bugs Fixes
+
+- 修复: `proxy-server-nameserver` 在未显式配置 `respect-rules` 或 `proxy-server-nameserver-policy` 时变为必填项
+
+---
+
 ## v1.19.20
 
 ### Changes

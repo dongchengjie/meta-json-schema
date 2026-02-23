@@ -222,6 +222,7 @@
   "allOf": [
     {
       "if": {
+        "required": ["respect-rules"],
         "properties": {
           "respect-rules": { "const": true },
           "proxy-server-nameserver": { "const": [] }
@@ -238,6 +239,7 @@
     },
     {
       "if": {
+        "required": ["proxy-server-nameserver-policy"],
         "properties": {
           "proxy-server-nameserver-policy": { "type": "object" },
           "proxy-server-nameserver": { "const": [] }
