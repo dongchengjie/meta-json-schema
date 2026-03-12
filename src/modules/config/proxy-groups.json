@@ -14,29 +14,34 @@
   "items": {
     "anyOf": [
       {
-        "title": "selector配置",
-        "properties": { "type": { "const": "select" } },
-        "$ref": "#/definitions/selector"
+        "allOf": [
+          { "title": "selector配置", "properties": { "type": { "const": "select" } } },
+          { "$ref": "#/definitions/selector" }
+        ]
       },
       {
-        "title": "url-test配置",
-        "properties": { "type": { "const": "url-test" } },
-        "$ref": "#/definitions/url-test"
+        "allOf": [
+          { "title": "url-test配置", "properties": { "type": { "const": "url-test" } } },
+          { "$ref": "#/definitions/url-test" }
+        ]
       },
       {
-        "title": "fallback配置",
-        "properties": { "type": { "const": "fallback" } },
-        "$ref": "#/definitions/fallback"
+        "allOf": [
+          { "title": "fallback配置", "properties": { "type": { "const": "fallback" } } },
+          { "$ref": "#/definitions/fallback" }
+        ]
       },
       {
-        "title": "load-balance配置",
-        "properties": { "type": { "const": "load-balance" } },
-        "$ref": "#/definitions/load-balance"
+        "allOf": [
+          { "title": "load-balance配置", "properties": { "type": { "const": "load-balance" } } },
+          { "$ref": "#/definitions/load-balance" }
+        ]
       },
       {
-        "title": "relay配置",
-        "properties": { "type": { "const": "relay" } },
-        "$ref": "#/definitions/relay"
+        "allOf": [
+          { "title": "relay配置", "properties": { "type": { "const": "relay" } } },
+          { "$ref": "#/definitions/relay" }
+        ]
       }
     ]
   }
