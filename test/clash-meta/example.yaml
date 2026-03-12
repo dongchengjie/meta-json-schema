@@ -60,9 +60,9 @@ tls:
     -----END ECH KEYS-----
   custom-certifactes:
     - |
-        -----BEGIN CERTIFICATE-----
-        format/pem...
-        -----END CERTIFICATE-----
+      -----BEGIN CERTIFICATE-----
+      format/pem...
+      -----END CERTIFICATE-----
 
 external-controller: 0.0.0.0:9093 # RESTful API 监听地址
 external-controller-tls: 0.0.0.0:9443 # RESTful API HTTPS 监听地址，需要配置 tls 部分配置文件
@@ -1074,12 +1074,12 @@ proxies: # socks5
       multiplex: off # 可选：off（默认）、auto（复用底层 HTTP 连接，减少建链 RTT）、on（Sudoku mux 单隧道多目标；仅在 mode=stream/poll/auto 生效；ws 强制 off）
     #
     # 向后兼容旧写法：
-    http-mask: true # 是否启用 http 掩码
-    http-mask-mode: legacy # 可选：legacy（默认）、stream（split-stream）、poll、auto（先 stream 再 poll）、ws（WebSocket 隧道）
-    http-mask-tls: true # 可选：仅在 http-mask-mode 为 stream/poll/auto/ws 时生效；true 强制 https/wss；false 强制 http/ws
-    http-mask-host: "" # 可选：覆盖 Host/SNI（支持 example.com 或 example.com:443）；仅在 http-mask-mode 为 stream/poll/auto/ws 时生效
+    # http-mask: true # 是否启用 http 掩码
+    # http-mask-mode: legacy # 可选：legacy（默认）、stream（split-stream）、poll、auto（先 stream 再 poll）、ws（WebSocket 隧道）
+    # http-mask-tls: true # 可选：仅在 http-mask-mode 为 stream/poll/auto/ws 时生效；true 强制 https/wss；false 强制 http/ws
+    # http-mask-host: "" # 可选：覆盖 Host/SNI（支持 example.com 或 example.com:443）；仅在 http-mask-mode 为 stream/poll/auto/ws 时生效
     # path-root: "" # 可选：HTTP 隧道端点一级路径前缀（双方需一致）
-    http-mask-multiplex: off # 可选：off（默认）、auto（复用底层 HTTP 连接）、on（Sudoku mux 单隧道多目标；ws 强制 off）
+    # http-mask-multiplex: off # 可选：off（默认）、auto（复用底层 HTTP 连接）、on（Sudoku mux 单隧道多目标；ws 强制 off）
     enable-pure-downlink: false # 可选：false=带宽优化下行（更快，要求 aead-method != none）；true=纯 Sudoku 下行
 
   # anytls
@@ -1638,9 +1638,9 @@ listeners:
     fallback: "127.0.0.1:80"
 
     # 向后兼容旧写法：
-    disable-http-mask: false # 可选：禁用 http 掩码/隧道（默认为 false）
-    http-mask-mode: legacy # 可选：legacy（默认）、stream（split-stream）、poll、auto（先 stream 再 poll）、ws（WebSocket 隧道）
-    path-root: "" # 可选：HTTP 隧道端点一级路径前缀（双方需一致）
+    # disable-http-mask: false # 可选：禁用 http 掩码/隧道（默认为 false）
+    # http-mask-mode: legacy # 可选：legacy（默认）、stream（split-stream）、poll、auto（先 stream 再 poll）、ws（WebSocket 隧道）
+    # path-root: "" # 可选：HTTP 隧道端点一级路径前缀（双方需一致）
 
   - name: trojan-in-1
     type: trojan
