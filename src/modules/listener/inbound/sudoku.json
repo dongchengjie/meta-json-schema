@@ -6,7 +6,38 @@
     "patterns": { "$ref": "../../../definitions/patterns.json" },
     "enums": { "$ref": "../../../definitions/enums.json" },
     "base-option": { "$ref": "./base.json" },
-    "mux-option": { "$ref": "./mux.json" }
+    "mux-option": { "$ref": "./mux.json" },
+    "sudoku-http-mask-options": {
+      "properties": {
+        "disable": {
+          "type": "boolean",
+          "title": "禁用HTTP掩码",
+          "description": "禁用HTTP掩码",
+          "markdownDescription": "禁用HTTP掩码",
+          "default": false
+        },
+        "mode": {
+          "enum": ["legacy", "stream", "poll", "auto", "ws"],
+          "markdownEnumDescriptions": [
+            "默认",
+            "split-stream",
+            "轮询",
+            "先stream再poll",
+            "WebSocket 隧道"
+          ],
+          "title": "HTTP掩码模式",
+          "description": "stream/poll/auto 支持走 CDN/反代",
+          "markdownDescription": "stream/poll/auto 支持走 CDN/反代",
+          "default": "legacy"
+        },
+        "path-root": {
+          "type": "string",
+          "title": "HTTP 隧道端点一级路径前缀（双方需一致）",
+          "description": "例如 \"aabbcc\" 或 \"/aabbcc/\" => /aabbcc/session、/aabbcc/stream、/aabbcc/api/v1/upload",
+          "markdownDescription": "例如 \"aabbcc\" 或 \"/aabbcc/\" => /aabbcc/session、/aabbcc/stream、/aabbcc/api/v1/upload"
+        }
+      }
+    }
   },
   "allOf": [
     { "title": "入站基础配置", "$ref": "#/definitions/base-option" },
@@ -81,21 +112,42 @@
           "title": "禁用 http 掩码/隧道",
           "description": "禁用 http 掩码/隧道",
           "markdownDescription": "禁用 http 掩码/隧道",
-          "default": false
+          "default": false,
+          "deprecationMessage": "自v1.19.21 起，推荐使用 httpmask 配置"
         },
         "http-mask-mode": {
-          "enum": ["legacy", "stream", "poll", "auto"],
-          "markdownEnumDescriptions": ["默认", "split-stream", "轮询", "先stream再poll"],
+          "enum": ["legacy", "stream", "poll", "auto", "ws"],
+          "markdownEnumDescriptions": [
+            "默认",
+            "split-stream",
+            "轮询",
+            "先stream再poll",
+            "WebSocket 隧道"
+          ],
           "title": "HTTP掩码模式",
           "description": "stream/poll/auto 支持走 CDN/反代",
           "markdownDescription": "stream/poll/auto 支持走 CDN/反代",
-          "default": "legacy"
+          "default": "legacy",
+          "deprecationMessage": "自v1.19.21 起，推荐使用 httpmask 配置"
         },
         "path-root": {
           "type": "string",
           "title": "HTTP 隧道端点一级路径前缀（双方需一致）",
           "description": "例如 \"aabbcc\" 或 \"/aabbcc/\" => /aabbcc/session、/aabbcc/stream、/aabbcc/api/v1/upload",
-          "markdownDescription": "例如 \"aabbcc\" 或 \"/aabbcc/\" => /aabbcc/session、/aabbcc/stream、/aabbcc/api/v1/upload"
+          "markdownDescription": "例如 \"aabbcc\" 或 \"/aabbcc/\" => /aabbcc/session、/aabbcc/stream、/aabbcc/api/v1/upload",
+          "deprecationMessage": "自v1.19.21 起，推荐使用 httpmask 配置"
+        },
+        "fallback": {
+          "type": "string",
+          "title": "HTTP掩码回落",
+          "description": "当启用 HTTPMask 且识别到“像 HTTP 但不符合 tunnel/auth”的请求时，将原始字节透传给 fallback（常用于与其他服务共端口）",
+          "markdownDescription": "当启用 HTTPMask 且识别到“像 HTTP 但不符合 tunnel/auth”的请求时，将原始字节透传给 fallback（常用于与其他服务共端口）"
+        },
+        "httpmask": {
+          "$ref": "#/definitions/sudoku-http-mask-options",
+          "title": "HTTP掩码配置",
+          "description": "HTTP掩码配置",
+          "markdownDescription": "HTTP掩码配置"
         },
         "mux-option": { "title": "多路复用配置", "$ref": "#/definitions/mux-option" }
       },

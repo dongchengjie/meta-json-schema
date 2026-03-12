@@ -6,6 +6,9 @@
 - 新增: proxy 新增 `trusttunnel` 协议
 - 新增: inbound 新增 trusttunnel `listeners` 配置项
 - 新增: mieru 新增配置项 `traffic-pattern`
+- 新增: sudoku HTTP掩码支持 `ws` 模式
+- 调整: sudoku HTTP掩码相关配置 迁移至 `httpmask` 配置项
+- 新增: sudoku `listeners` 新增配置项 `fallback`
 
 ### Bugs Fixes
 
