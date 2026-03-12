@@ -20,105 +20,180 @@
     "tuic": { "$ref": "../listener/inbound/tuic.json" },
     "anytls": { "$ref": "../listener/inbound/anytls.json" },
     "mieru": { "$ref": "../listener/inbound/mieru.json" },
-    "sudoku": { "$ref": "../listener/inbound/sudoku.json" }
+    "sudoku": { "$ref": "../listener/inbound/sudoku.json" },
+    "trusttunnel": { "$ref": "../listener/inbound/trusttunnel.json" }
   },
   "items": {
     "anyOf": [
       {
-        "type": "object",
-        "title": "socks配置",
-        "properties": { "type": { "title": "socks配置", "const": "socks" } },
-        "$ref": "#/definitions/socks"
+        "allOf": [
+          {
+            "type": "object",
+            "title": "socks配置",
+            "properties": { "type": { "title": "socks配置", "const": "socks" } }
+          },
+          { "$ref": "#/definitions/socks" }
+        ]
       },
       {
-        "type": "object",
-        "title": "http配置",
-        "properties": { "type": { "title": "socks配置", "const": "http" } },
-        "$ref": "#/definitions/http"
+        "allOf": [
+          {
+            "type": "object",
+            "title": "http配置",
+            "properties": { "type": { "title": "http配置", "const": "http" } }
+          },
+          { "$ref": "#/definitions/http" }
+        ]
       },
       {
-        "type": "object",
-        "title": "tproxy配置",
-        "properties": { "type": { "title": "tproxy配置", "const": "tproxy" } },
-        "$ref": "#/definitions/tproxy"
+        "allOf": [
+          {
+            "type": "object",
+            "title": "tproxy配置",
+            "properties": { "type": { "title": "tproxy配置", "const": "tproxy" } }
+          },
+          { "$ref": "#/definitions/tproxy" }
+        ]
       },
       {
-        "type": "object",
-        "title": "redir配置",
-        "properties": { "type": { "title": "redir配置", "const": "redir" } },
-        "$ref": "#/definitions/redir"
+        "allOf": [
+          {
+            "type": "object",
+            "title": "redir配置",
+            "properties": { "type": { "title": "redir配置", "const": "redir" } }
+          },
+          { "$ref": "#/definitions/redir" }
+        ]
       },
       {
-        "type": "object",
-        "title": "mixed配置",
-        "properties": { "type": { "title": "mixed配置", "const": "mixed" } },
-        "$ref": "#/definitions/mixed"
+        "allOf": [
+          {
+            "type": "object",
+            "title": "mixed配置",
+            "properties": { "type": { "title": "mixed配置", "const": "mixed" } }
+          },
+          { "$ref": "#/definitions/mixed" }
+        ]
       },
       {
-        "type": "object",
-        "title": "tunnel配置",
-        "properties": { "type": { "title": "tunnel配置", "const": "tunnel" } },
-        "$ref": "#/definitions/tunnel"
+        "allOf": [
+          {
+            "type": "object",
+            "title": "tunnel配置",
+            "properties": { "type": { "title": "tunnel配置", "const": "tunnel" } }
+          },
+          { "$ref": "#/definitions/tunnel" }
+        ]
       },
       {
-        "type": "object",
-        "title": "TUN配置",
-        "properties": { "type": { "title": "TUN配置", "const": "tun" } },
-        "$ref": "#/definitions/tun"
+        "allOf": [
+          {
+            "type": "object",
+            "title": "TUN配置",
+            "properties": { "type": { "title": "TUN配置", "const": "tun" } }
+          },
+          { "$ref": "#/definitions/tun" }
+        ]
       },
       {
-        "type": "object",
-        "title": "shadowsocks配置",
-        "properties": { "type": { "title": "shadowsocks配置", "const": "shadowsocks" } },
-        "$ref": "#/definitions/shadowsocks"
+        "allOf": [
+          {
+            "type": "object",
+            "title": "shadowsocks配置",
+            "properties": { "type": { "title": "shadowsocks配置", "const": "shadowsocks" } }
+          },
+          { "$ref": "#/definitions/shadowsocks" }
+        ]
       },
       {
-        "type": "object",
-        "title": "vmess配置",
-        "properties": { "type": { "title": "vmess配置", "const": "vmess" } },
-        "$ref": "#/definitions/vmess"
+        "allOf": [
+          {
+            "type": "object",
+            "title": "vmess配置",
+            "properties": { "type": { "title": "vmess配置", "const": "vmess" } }
+          },
+          { "$ref": "#/definitions/vmess" }
+        ]
       },
       {
-        "type": "object",
-        "title": "vless配置",
-        "properties": { "type": { "title": "vless配置", "const": "vless" } },
-        "$ref": "#/definitions/vless"
+        "allOf": [
+          {
+            "type": "object",
+            "title": "vless配置",
+            "properties": { "type": { "title": "vless配置", "const": "vless" } }
+          },
+          { "$ref": "#/definitions/vless" }
+        ]
       },
       {
-        "type": "object",
-        "title": "trojan配置",
-        "properties": { "type": { "title": "trojan配置", "const": "trojan" } },
-        "$ref": "#/definitions/trojan"
+        "allOf": [
+          {
+            "type": "object",
+            "title": "trojan配置",
+            "properties": { "type": { "title": "trojan配置", "const": "trojan" } }
+          },
+          { "$ref": "#/definitions/trojan" }
+        ]
       },
       {
-        "type": "object",
-        "title": "hysteria2配置",
-        "properties": { "type": { "title": "hysteria2配置", "const": "hysteria2" } },
-        "$ref": "#/definitions/hysteria2"
+        "allOf": [
+          {
+            "type": "object",
+            "title": "hysteria2配置",
+            "properties": { "type": { "title": "hysteria2配置", "const": "hysteria2" } }
+          },
+          { "$ref": "#/definitions/hysteria2" }
+        ]
       },
       {
-        "type": "object",
-        "title": "tuic配置",
-        "properties": { "type": { "title": "tuic配置", "const": "tuic" } },
-        "$ref": "#/definitions/tuic"
+        "allOf": [
+          {
+            "type": "object",
+            "title": "tuic配置",
+            "properties": { "type": { "title": "tuic配置", "const": "tuic" } }
+          },
+          { "$ref": "#/definitions/tuic" }
+        ]
       },
       {
-        "type": "object",
-        "title": "anytls配置",
-        "properties": { "type": { "title": "anytls配置", "const": "anytls" } },
-        "$ref": "#/definitions/anytls"
+        "allOf": [
+          {
+            "type": "object",
+            "title": "anytls配置",
+            "properties": { "type": { "title": "anytls配置", "const": "anytls" } }
+          },
+          { "$ref": "#/definitions/anytls" }
+        ]
       },
       {
-        "type": "object",
-        "title": "mieru配置",
-        "properties": { "type": { "title": "mieru配置", "const": "mieru" } },
-        "$ref": "#/definitions/mieru"
+        "allOf": [
+          {
+            "type": "object",
+            "title": "mieru配置",
+            "properties": { "type": { "title": "mieru配置", "const": "mieru" } }
+          },
+          { "$ref": "#/definitions/mieru" }
+        ]
       },
       {
-        "type": "object",
-        "title": "sudoku配置",
-        "properties": { "type": { "title": "sudoku配置", "const": "sudoku" } },
-        "$ref": "#/definitions/sudoku"
+        "allOf": [
+          {
+            "type": "object",
+            "title": "sudoku配置",
+            "properties": { "type": { "title": "sudoku配置", "const": "sudoku" } }
+          },
+          { "$ref": "#/definitions/sudoku" }
+        ]
+      },
+      {
+        "allOf": [
+          {
+            "type": "object",
+            "title": "trusttunnel配置",
+            "properties": { "type": { "title": "trusttunnel配置", "const": "trusttunnel" } }
+          },
+          { "$ref": "#/definitions/trusttunnel" }
+        ]
       }
     ]
   }

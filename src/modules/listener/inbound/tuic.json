@@ -35,10 +35,7 @@
         "client-auth-cert": { "$ref": "#/definitions/tls/properties/client-auth-cert" },
         "ech-key": { "$ref": "#/definitions/tls/properties/ech-key" },
         "congestion-controller": {
-          "enum": ["cubic", "new_reno", "bbr"],
-          "title": "拥塞控制算法",
-          "description": "拥塞控制算法",
-          "markdownDescription": "拥塞控制算法"
+          "$ref": "#/definitions/enums/congestion-controller"
         },
         "max-idle-time": {
           "type": "integer",

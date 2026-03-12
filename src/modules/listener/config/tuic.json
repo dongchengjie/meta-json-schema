@@ -47,17 +47,7 @@
       "markdownDescription": "私钥"
     },
     "congestion-controller": {
-      "enum": ["cubic", "new_reno", "bbr_meta_v1", "bbr_meta_v2", "bbr"],
-      "markdownEnumDescriptions": [
-        "根据网络拥塞窗口的大小来调整传输速率,以使其在拥塞和非拥塞期间保持平衡",
-        "通过在网络发生拥塞时执行快速恢复和快速重传来改善数据传输性能",
-        "`BBR`算法变体版本,通过引入新的机制和策略来进一步提升网络性能",
-        "`BBR`算法变体版本,通过引入新的机制和策略来进一步提升网络性能",
-        "通过动态估计网络的带宽和往返时间(`RTT`),并根据这些信息来调整数据传输速率"
-      ],
-      "title": "拥塞控制算法",
-      "description": "拥塞控制算法",
-      "markdownDescription": "拥塞控制算法"
+      "$ref": "#/definitions/enums/congestion-controller"
     },
     "max-idle-time": {
       "type": "integer",

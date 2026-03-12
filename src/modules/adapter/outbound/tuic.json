@@ -99,10 +99,7 @@
           "default": "native"
         },
         "congestion-controller": {
-          "enum": ["cubic", "new_reno", "bbr"],
-          "title": "拥塞控制算法",
-          "description": "拥塞控制算法",
-          "markdownDescription": "拥塞控制算法"
+          "$ref": "#/definitions/enums/congestion-controller"
         },
         "disable-sni": {
           "$ref": "#/definitions/compatible/boolean",

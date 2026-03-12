@@ -66,5 +66,18 @@
       "random",
       "randomized"
     ]
+  },
+  "congestion-controller": {
+    "enum": ["cubic", "new_reno", "bbr_meta_v1", "bbr_meta_v2", "bbr"],
+    "markdownEnumDescriptions": [
+      "CUBIC算法",
+      "New Reno算法",
+      "BBR Meta v1算法",
+      "BBR Meta v2算法",
+      "BBR算法"
+    ],
+    "title": "拥塞控制算法",
+    "description": "拥塞控制算法",
+    "markdownDescription": "拥塞控制算法"
   }
 }

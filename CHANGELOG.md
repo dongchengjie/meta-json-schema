@@ -2,6 +2,10 @@
 
 ### Changes
 
+- 调整: listener vmess 配置项 `alterId` 为可选项
+- 新增: proxy 新增 `trusttunnel` 协议
+- 新增: inbound 新增 trusttunnel `listeners` 配置项
+
 ### Bugs Fixes
 
 - 修复: `proxy-server-nameserver` 在未显式配置 `respect-rules` 或 `proxy-server-nameserver-policy` 时变为必填项

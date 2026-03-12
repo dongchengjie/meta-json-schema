@@ -1,0 +1,51 @@
+{
+  "type": "object",
+  "title": "inbound-trusttunnel",
+  "definitions": {
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" },
+    "tls": { "$ref": "../../config/tls.json" },
+    "base-option": { "$ref": "./base.json" },
+    "auth-user": { "$ref": "./auth.json#/definitions/auth-user" },
+    "reality-config": { "$ref": "./reality.json" }
+  },
+  "allOf": [
+    { "title": "入站基础配置", "$ref": "#/definitions/base-option" },
+    {
+      "type": "object",
+      "title": "trusttunnel配置",
+      "properties": {
+        "users": {
+          "type": "array",
+          "title": "用户认证配置",
+          "description": "默认遵从全局authentication配置",
+          "markdownDescription": "默认遵从全局`authentication`配置",
+          "items": { "$ref": "#/definitions/auth-user" }
+        },
+        "certificate": { "$ref": "#/definitions/tls/properties/certificate" },
+        "private-key": { "$ref": "#/definitions/tls/properties/private-key" },
+        "client-auth-type": { "$ref": "#/definitions/tls/properties/client-auth-type" },
+        "client-auth-cert": { "$ref": "#/definitions/tls/properties/client-auth-cert" },
+        "ech-key": { "$ref": "#/definitions/tls/properties/ech-key" },
+        "network": {
+          "type": "array",
+          "items": { "enum": ["tcp", "udp"], "markdownEnumDescriptions": ["tcp", "udp"] },
+          "title": "需要监听的网络类型",
+          "description": "可为tcp/udp",
+          "markdownDescription": "可为`tcp`/`udp`"
+        },
+        "congestion-controller": {
+          "$ref": "#/definitions/enums/congestion-controller"
+        },
+        "cwnd": {
+          "type": "integer",
+          "title": "拥塞窗口大小",
+          "description": "拥塞窗口大小(Congestion Window)",
+          "markdownDescription": "拥塞窗口大小(Congestion Window)"
+        }
+      },
+      "dependencies": { "certificate": ["private-key"], "private-key": ["certificate"] }
+    }
+  ]
+}
