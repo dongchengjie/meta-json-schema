@@ -5,6 +5,7 @@
 - 调整: listener vmess 配置项 `alterId` 为可选项
 - 新增: proxy 新增 `trusttunnel` 协议
 - 新增: inbound 新增 trusttunnel `listeners` 配置项
+- 新增: mieru 新增配置项 `traffic-pattern`
 
 ### Bugs Fixes
 

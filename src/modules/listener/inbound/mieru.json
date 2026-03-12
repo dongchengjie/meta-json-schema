@@ -28,6 +28,12 @@
           "description": "username:password",
           "markdownDescription": "`username`:`password`",
           "additionalProperties": { "type": "string" }
+        },
+        "traffic-pattern": {
+          "type": "string",
+          "title": "Base64 字符串用于微调网络行为",
+          "description": "详见https://github.com/enfein/mieru/blob/main/docs/traffic-pattern.md",
+          "markdownDescription": "详见https://github.com/enfein/mieru/blob/main/docs/traffic-pattern.md"
         }
       }
     }

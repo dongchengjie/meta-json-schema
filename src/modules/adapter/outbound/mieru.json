@@ -93,6 +93,12 @@
           "description": "握手模式",
           "markdownDescription": "握手模式",
           "default": "HANDSHAKE_STANDARD"
+        },
+        "traffic-pattern": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "Base64 字符串用于微调网络行为",
+          "description": "详见https://github.com/enfein/mieru/blob/main/docs/traffic-pattern.md",
+          "markdownDescription": "详见https://github.com/enfein/mieru/blob/main/docs/traffic-pattern.md"
         }
       },
       "anyOf": [{ "required": ["port"] }, { "required": ["port-range"] }],

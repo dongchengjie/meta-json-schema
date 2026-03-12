@@ -1049,6 +1049,8 @@ proxies: # socks5
     # 可以使用的值包括 MULTIPLEXING_OFF, MULTIPLEXING_LOW, MULTIPLEXING_MIDDLE, MULTIPLEXING_HIGH。其中 MULTIPLEXING_OFF 会关闭多路复用功能。默认值为 MULTIPLEXING_LOW。
     multiplexing: MULTIPLEXING_LOW
     handshake-mode: HANDSHAKE_STANDARD
+    # 一个 base64 字符串用于微调网络行为
+    traffic-pattern: ""
 
   # sudoku
   - name: sudoku
@@ -1600,6 +1602,8 @@ listeners:
     users:
       username1: password1
       username2: password2
+    # 一个 base64 字符串用于微调网络行为
+    traffic-pattern: ""
 
   - name: sudoku-in-1
     type: sudoku
