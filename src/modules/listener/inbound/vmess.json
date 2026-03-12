@@ -11,7 +11,7 @@
     "vmess-user": {
       "type": "object",
       "title": "vmess用户",
-      "required": ["uuid", "alterId"],
+      "required": ["uuid"],
       "properties": {
         "username": {
           "type": "string",
