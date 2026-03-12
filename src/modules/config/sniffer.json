@@ -66,11 +66,15 @@
       "markdownDescription": "对于目标IP跳过嗅探"
     },
     "sniffing": {
-      "$ref": "#/definitions/types/stringArray",
-      "title": "限制嗅探类型范围",
-      "description": "支持TLS,HTTP,QUIC",
-      "markdownDescription": "支持`TLS`,`HTTP`,`QUIC`",
-      "deprecationMessage": "已废弃，使用sniff代替"
+      "allOf": [
+        {
+          "$ref": "#/definitions/types/stringArray",
+          "title": "限制嗅探类型范围",
+          "description": "支持TLS,HTTP,QUIC",
+          "markdownDescription": "支持`TLS`,`HTTP`,`QUIC`"
+        },
+        { "deprecationMessage": "已废弃，使用sniff代替" }
+      ]
     },
     "port-whitelist": {
       "$ref": "#/definitions/types/portRangeArray",

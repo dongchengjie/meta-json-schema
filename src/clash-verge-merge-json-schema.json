@@ -24,9 +24,10 @@
       "title": "前置规则集合配置",
       "properties": {
         "prepend-rule-providers": {
-          "title": "前置规则集合配置",
-          "$ref": "#/definitions/rule-providers",
-          "deprecationMessage": "v1.16.2已移除(请使用rule-providers代替)"
+          "allOf": [
+            { "title": "前置规则集合配置", "$ref": "#/definitions/rule-providers" },
+            { "deprecationMessage": "v1.16.2已移除(请使用rule-providers代替)" }
+          ]
         }
       }
     },
@@ -42,9 +43,10 @@
       "title": "前置代理集合配置",
       "properties": {
         "prepend-proxy-providers": {
-          "title": "前置代理集合配置",
-          "$ref": "#/definitions/proxy-providers",
-          "deprecationMessage": "v1.16.2已移除(请使用proxy-providers代替)"
+          "allOf": [
+            { "title": "前置代理集合配置", "$ref": "#/definitions/proxy-providers" },
+            { "deprecationMessage": "v1.16.2已移除(请使用proxy-providers代替)" }
+          ]
         }
       }
     },
@@ -65,9 +67,10 @@
       "title": "后置规则集合配置",
       "properties": {
         "append-rule-providers": {
-          "title": "后置规则集合配置",
-          "$ref": "#/definitions/rule-providers",
-          "deprecationMessage": "v1.16.2已移除(请使用rule-providers代替)"
+          "allOf": [
+            { "title": "后置规则集合配置", "$ref": "#/definitions/rule-providers" },
+            { "deprecationMessage": "v1.16.2已移除(请使用rule-providers代替)" }
+          ]
         }
       }
     },
@@ -83,9 +86,10 @@
       "title": "后置代理集合配置",
       "properties": {
         "append-proxy-providers": {
-          "title": "后置代理集合配置",
-          "$ref": "#/definitions/proxy-providers",
-          "deprecationMessage": "v1.16.2已移除(请使用proxy-providers代替)"
+          "allOf": [
+            { "title": "后置代理集合配置", "$ref": "#/definitions/proxy-providers" },
+            { "deprecationMessage": "v1.16.2已移除(请使用proxy-providers代替)" }
+          ]
         }
       }
     },

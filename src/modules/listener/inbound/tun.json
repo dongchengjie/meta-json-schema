@@ -265,32 +265,48 @@
           "markdownDescription": "绑定到文件描述符对应设备接口(Unix-like系统)"
         },
         "inet4-route-address": {
-          "$ref": "#/definitions/types/ipv4CIDRArray",
-          "title": "启用auto-route时,指定这些IPV4网段使用自定义路由",
-          "description": "启用auto-route时,指定这些IPV4网段使用自定义路由",
-          "markdownDescription": "启用`auto-route`时,指定这些IPV4网段使用自定义路由",
-          "deprecationMessage": "即将废弃，使用route-address代替"
+          "allOf": [
+            {
+              "$ref": "#/definitions/types/ipv4CIDRArray",
+              "title": "启用auto-route时,指定这些IPV4网段使用自定义路由",
+              "description": "启用auto-route时,指定这些IPV4网段使用自定义路由",
+              "markdownDescription": "启用`auto-route`时,指定这些IPV4网段使用自定义路由"
+            },
+            { "deprecationMessage": "即将废弃，使用route-address代替" }
+          ]
         },
         "inet6-route-address": {
-          "$ref": "#/definitions/types/ipv6CIDRArray",
-          "title": "启用auto-route时,指定这些IPV6网段使用自定义路由",
-          "description": "启用auto-route时,指定这些IPV6网段使用自定义路由",
-          "markdownDescription": "启用`auto-route`时,指定这些IPV6网段使用自定义路由",
-          "deprecationMessage": "即将废弃，使用route-address代替"
+          "allOf": [
+            {
+              "$ref": "#/definitions/types/ipv6CIDRArray",
+              "title": "启用auto-route时,指定这些IPV6网段使用自定义路由",
+              "description": "启用auto-route时,指定这些IPV6网段使用自定义路由",
+              "markdownDescription": "启用`auto-route`时,指定这些IPV6网段使用自定义路由"
+            },
+            { "deprecationMessage": "即将废弃，使用route-address代替" }
+          ]
         },
         "inet4-route-exclude-address": {
-          "$ref": "#/definitions/types/ipv4CIDRArray",
-          "title": "启用auto-route时,指定这些IPV4网段使用默认路由",
-          "description": "启用auto-route时,指定这些IPV4网段使用默认路由",
-          "markdownDescription": "启用`auto-route`时,指定这些IPV4网段使用默认路由",
-          "deprecationMessage": "即将废弃，使用route-exclude-address代替"
+          "allOf": [
+            {
+              "$ref": "#/definitions/types/ipv4CIDRArray",
+              "title": "启用auto-route时,指定这些IPV4网段使用默认路由",
+              "description": "启用auto-route时,指定这些IPV4网段使用默认路由",
+              "markdownDescription": "启用`auto-route`时,指定这些IPV4网段使用默认路由"
+            },
+            { "deprecationMessage": "即将废弃，使用route-exclude-address代替" }
+          ]
         },
         "inet6-route-exclude-address": {
-          "$ref": "#/definitions/types/ipv6CIDRArray",
-          "title": "启用auto-route时,指定这些IPV6网段使用默认路由",
-          "description": "启用auto-route时,指定这些IPV6网段使用默认路由",
-          "markdownDescription": "启用`auto-route`时,指定这些IPV6网段使用默认路由",
-          "deprecationMessage": "即将废弃，使用route-exclude-address代替"
+          "allOf": [
+            {
+              "$ref": "#/definitions/types/ipv6CIDRArray",
+              "title": "启用auto-route时,指定这些IPV6网段使用默认路由",
+              "description": "启用auto-route时,指定这些IPV6网段使用默认路由",
+              "markdownDescription": "启用`auto-route`时,指定这些IPV6网段使用默认路由"
+            },
+            { "deprecationMessage": "即将废弃，使用route-exclude-address代替" }
+          ]
         },
         "recvmsgx": {
           "type": "boolean",

@@ -72,9 +72,10 @@
       "title": "前置规则集合配置",
       "properties": {
         "prepend-rule-providers": {
-          "title": "前置规则集合配置",
-          "$ref": "#/definitions/rule-providers",
-          "deprecationMessage": "v1.6.0 已弃用(使用prepend__rule-providers代替)"
+          "allOf": [
+            { "title": "前置规则集合配置", "$ref": "#/definitions/rule-providers" },
+            { "deprecationMessage": "v1.6.0 已弃用(使用prepend__rule-providers代替)" }
+          ]
         }
       }
     },
@@ -83,9 +84,10 @@
       "title": "前置代理节点配置",
       "properties": {
         "prepend-proxies": {
-          "title": "前置代理节点配置",
-          "$ref": "#/definitions/proxies",
-          "deprecationMessage": "v1.6.0 已弃用(使用prepend__proxies代替)"
+          "allOf": [
+            { "title": "前置代理节点配置", "$ref": "#/definitions/proxies" },
+            { "deprecationMessage": "v1.6.0 已弃用(使用prepend__proxies代替)" }
+          ]
         }
       }
     },
@@ -94,9 +96,10 @@
       "title": "前置代理集合配置",
       "properties": {
         "prepend-proxy-providers": {
-          "title": "前置代理集合配置",
-          "$ref": "#/definitions/proxy-providers",
-          "deprecationMessage": "v1.6.0 已弃用(使用prepend__proxy-providers代替)"
+          "allOf": [
+            { "title": "前置代理集合配置", "$ref": "#/definitions/proxy-providers" },
+            { "deprecationMessage": "v1.6.0 已弃用(使用prepend__proxy-providers代替)" }
+          ]
         }
       }
     },
@@ -105,9 +108,10 @@
       "title": "前置代理组配置",
       "properties": {
         "prepend-proxy-groups": {
-          "title": "前置代理组配置",
-          "$ref": "#/definitions/proxy-groups",
-          "deprecationMessage": "v1.6.0 已弃用(使用prepend__proxy-groups代替)"
+          "allOf": [
+            { "title": "前置代理组配置", "$ref": "#/definitions/proxy-groups" },
+            { "deprecationMessage": "v1.6.0 已弃用(使用prepend__proxy-groups代替)" }
+          ]
         }
       }
     },
@@ -116,9 +120,10 @@
       "title": "后置规则配置",
       "properties": {
         "append-rules": {
-          "title": "后置规则配置",
-          "$ref": "#/definitions/rules",
-          "deprecationMessage": "v1.6.0 已弃用(使用append__rules代替)"
+          "allOf": [
+            { "title": "后置规则配置", "$ref": "#/definitions/rules" },
+            { "deprecationMessage": "v1.6.0 已弃用(使用append__rules代替)" }
+          ]
         }
       }
     },
@@ -127,9 +132,10 @@
       "title": "后置规则集合配置",
       "properties": {
         "append-rule-providers": {
-          "title": "后置规则集合配置",
-          "$ref": "#/definitions/rule-providers",
-          "deprecationMessage": "v1.6.0 已弃用(使用append__rule-providers代替)"
+          "allOf": [
+            { "title": "后置规则集合配置", "$ref": "#/definitions/rule-providers" },
+            { "deprecationMessage": "v1.6.0 已弃用(使用append__rule-providers代替)" }
+          ]
         }
       }
     },
@@ -138,9 +144,10 @@
       "title": "后置代理节点配置",
       "properties": {
         "append-proxies": {
-          "title": "后置代理节点配置",
-          "$ref": "#/definitions/proxies",
-          "deprecationMessage": "v1.6.0 已弃用(使用append__proxies代替)"
+          "allOf": [
+            { "title": "后置代理节点配置", "$ref": "#/definitions/proxies" },
+            { "deprecationMessage": "v1.6.0 已弃用(使用append__proxies代替)" }
+          ]
         }
       }
     },
@@ -149,9 +156,10 @@
       "title": "后置代理集合配置",
       "properties": {
         "append-proxy-providers": {
-          "title": "后置代理集合配置",
-          "$ref": "#/definitions/proxy-providers",
-          "deprecationMessage": "v1.6.0 已弃用(使用append__proxy-providers代替)"
+          "allOf": [
+            { "title": "后置代理集合配置", "$ref": "#/definitions/proxy-providers" },
+            { "deprecationMessage": "v1.6.0 已弃用(使用append__proxy-providers代替)" }
+          ]
         }
       }
     },
@@ -160,9 +168,10 @@
       "title": "后置代理组配置",
       "properties": {
         "append-proxy-groups": {
-          "title": "后置代理组配置",
-          "$ref": "#/definitions/proxy-groups",
-          "deprecationMessage": "v1.6.0 已弃用(使用append__proxy-groups代替)"
+          "allOf": [
+            { "title": "后置代理组配置", "$ref": "#/definitions/proxy-groups" },
+            { "deprecationMessage": "v1.6.0 已弃用(使用append__proxy-groups代替)" }
+          ]
         }
       }
     },

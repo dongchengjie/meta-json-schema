@@ -108,34 +108,46 @@
           "markdownDescription": "用于 xvp 模式轮换；非空时覆盖 custom-table"
         },
         "disable-http-mask": {
-          "type": "boolean",
-          "title": "禁用 http 掩码/隧道",
-          "description": "禁用 http 掩码/隧道",
-          "markdownDescription": "禁用 http 掩码/隧道",
-          "default": false,
-          "deprecationMessage": "自v1.19.21 起，推荐使用 httpmask 配置"
+          "allOf": [
+            {
+              "type": "boolean",
+              "title": "禁用 http 掩码/隧道",
+              "description": "禁用 http 掩码/隧道",
+              "markdownDescription": "禁用 http 掩码/隧道",
+              "default": false
+            },
+            { "deprecationMessage": "自v1.19.21 起，推荐使用 httpmask 配置" }
+          ]
         },
         "http-mask-mode": {
-          "enum": ["legacy", "stream", "poll", "auto", "ws"],
-          "markdownEnumDescriptions": [
-            "默认",
-            "split-stream",
-            "轮询",
-            "先stream再poll",
-            "WebSocket 隧道"
-          ],
-          "title": "HTTP掩码模式",
-          "description": "stream/poll/auto 支持走 CDN/反代",
-          "markdownDescription": "stream/poll/auto 支持走 CDN/反代",
-          "default": "legacy",
-          "deprecationMessage": "自v1.19.21 起，推荐使用 httpmask 配置"
+          "allOf": [
+            {
+              "enum": ["legacy", "stream", "poll", "auto", "ws"],
+              "markdownEnumDescriptions": [
+                "默认",
+                "split-stream",
+                "轮询",
+                "先stream再poll",
+                "WebSocket 隧道"
+              ],
+              "title": "HTTP掩码模式",
+              "description": "stream/poll/auto 支持走 CDN/反代",
+              "markdownDescription": "stream/poll/auto 支持走 CDN/反代",
+              "default": "legacy"
+            },
+            { "deprecationMessage": "自v1.19.21 起，推荐使用 httpmask 配置" }
+          ]
         },
         "path-root": {
-          "type": "string",
-          "title": "HTTP 隧道端点一级路径前缀（双方需一致）",
-          "description": "例如 \"aabbcc\" 或 \"/aabbcc/\" => /aabbcc/session、/aabbcc/stream、/aabbcc/api/v1/upload",
-          "markdownDescription": "例如 \"aabbcc\" 或 \"/aabbcc/\" => /aabbcc/session、/aabbcc/stream、/aabbcc/api/v1/upload",
-          "deprecationMessage": "自v1.19.21 起，推荐使用 httpmask 配置"
+          "allOf": [
+            {
+              "type": "string",
+              "title": "HTTP 隧道端点一级路径前缀（双方需一致）",
+              "description": "例如 \"aabbcc\" 或 \"/aabbcc/\" => /aabbcc/session、/aabbcc/stream、/aabbcc/api/v1/upload",
+              "markdownDescription": "例如 \"aabbcc\" 或 \"/aabbcc/\" => /aabbcc/session、/aabbcc/stream、/aabbcc/api/v1/upload"
+            },
+            { "deprecationMessage": "自v1.19.21 起，推荐使用 httpmask 配置" }
+          ]
         },
         "fallback": {
           "type": "string",
@@ -149,16 +161,27 @@
           "description": "HTTP掩码配置",
           "markdownDescription": "HTTP掩码配置"
         },
-        "mux-option": { "title": "多路复用配置", "$ref": "#/definitions/mux-option" }
+        "mux-option": {
+          "title": "多路复用配置",
+          "$ref": "#/definitions/mux-option"
+        }
       },
       "allOf": [
         {
-          "if": { "properties": { "enable-pure-downlink": { "const": false } } },
-          "then": { "properties": { "aead-method": { "not": { "const": "none" } } } }
+          "if": {
+            "properties": { "enable-pure-downlink": { "const": false } }
+          },
+          "then": {
+            "properties": { "aead-method": { "not": { "const": "none" } } }
+          }
         },
         {
-          "if": { "not": { "properties": { "custom-table": { "const": "" } } } },
-          "then": { "properties": { "table-type": { "const": "prefer_entropy" } } }
+          "if": {
+            "not": { "properties": { "custom-table": { "const": "" } } }
+          },
+          "then": {
+            "properties": { "table-type": { "const": "prefer_entropy" } }
+          }
         }
       ]
     }

@@ -98,9 +98,7 @@
           "markdownDescription": "UDP数据包中继模式",
           "default": "native"
         },
-        "congestion-controller": {
-          "$ref": "#/definitions/enums/congestion-controller"
-        },
+        "congestion-controller": { "$ref": "#/definitions/enums/congestion-controller" },
         "disable-sni": {
           "$ref": "#/definitions/compatible/boolean",
           "title": "禁用SNI",
@@ -159,18 +157,26 @@
           "markdownDescription": "私钥"
         },
         "ca": {
-          "$ref": "#/definitions/compatible/string",
-          "title": "CA证书文件路径",
-          "description": "CA证书文件路径",
-          "markdownDescription": "CA证书文件路径",
-          "deprecationMessage": "v1.19.14 已弃用(使用fingerprint代替)"
+          "allOf": [
+            {
+              "$ref": "#/definitions/compatible/string",
+              "title": "CA证书文件路径",
+              "description": "CA证书文件路径",
+              "markdownDescription": "CA证书文件路径"
+            },
+            { "deprecationMessage": "v1.19.14 已弃用(使用fingerprint代替)" }
+          ]
         },
         "ca-str": {
-          "$ref": "#/definitions/compatible/string",
-          "title": "CA证书内容",
-          "description": "CA证书内容(优先级低于ca)",
-          "markdownDescription": "CA证书内容CA证书内容(优先级低于`ca`)",
-          "deprecationMessage": "v1.19.14 已弃用(使用fingerprint代替)"
+          "allOf": [
+            {
+              "$ref": "#/definitions/compatible/string",
+              "title": "CA证书内容",
+              "description": "CA证书内容(优先级低于ca)",
+              "markdownDescription": "CA证书内容CA证书内容(优先级低于`ca`)"
+            },
+            { "deprecationMessage": "v1.19.14 已弃用(使用fingerprint代替)" }
+          ]
         },
         "recv-window-conn": {
           "$ref": "#/definitions/compatible/integer",
