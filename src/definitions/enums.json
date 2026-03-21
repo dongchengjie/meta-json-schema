@@ -51,11 +51,6 @@
     "description": "指纹",
     "enum": [
       "chrome",
-      "chrome_psk",
-      "chrome_psk_shuffle",
-      "chrome_padding_psk_shuffle",
-      "chrome_pq",
-      "chrome_pq_psk",
       "firefox",
       "safari",
       "ios",
@@ -64,6 +59,14 @@
       "360",
       "qq",
       "random",
+      "chrome120",
+      "firefox120",
+      "safari16",
+      "chrome_psk",
+      "chrome_psk_shuffle",
+      "chrome_padding_psk_shuffle",
+      "chrome_pq",
+      "chrome_pq_psk",
       "randomized"
     ]
   },
