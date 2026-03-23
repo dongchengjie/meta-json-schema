@@ -22,7 +22,7 @@
   },
   "excludes": ["node_modules", "pnpm-lock.yaml", "schemas"],
   "plugins": [
-    "https://plugins.dprint.dev/json-0.21.1.wasm",
+    "https://plugins.dprint.dev/json-0.21.3.wasm",
     "https://plugins.dprint.dev/markdown-0.21.1.wasm",
     "https://plugins.dprint.dev/g-plane/pretty_yaml-v0.6.0.wasm"
   ]

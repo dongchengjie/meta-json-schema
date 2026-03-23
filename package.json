@@ -30,9 +30,9 @@
     "preview": "npm publish --dry-run"
   },
   "devDependencies": {
-    "@commitlint/cli": "^20.4.4",
-    "@commitlint/config-conventional": "^20.4.4",
-    "dprint": "^0.52.0",
+    "@commitlint/cli": "^20.5.0",
+    "@commitlint/config-conventional": "^20.5.0",
+    "dprint": "^0.53.0",
     "json-schema-artifact": "^2.0.3",
     "lefthook": "^2.1.4"
   },
