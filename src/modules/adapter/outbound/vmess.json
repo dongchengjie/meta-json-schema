@@ -71,6 +71,12 @@
           "title": "GRPC用户代理",
           "description": "GRPC用户代理",
           "markdownDescription": "GRPC用户代理"
+        },
+        "ping-interval": {
+          "$ref": "#/definitions/compatible/number",
+          "title": "GRPC心跳间隔",
+          "description": "单位:s",
+          "markdownDescription": "单位:s"
         }
       }
     },

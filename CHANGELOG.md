@@ -1,3 +1,11 @@
+## v1.19.22
+
+### Changes
+
+- 新增: vmess `grpc-opts` 新增配置项 `ping-interval`
+
+---
+
 ## v1.19.21
 
 ### Changes
