@@ -359,16 +359,16 @@ dns:
   fallback-filter:
     geoip: true # 配置是否使用 geoip
     geoip-code: CN # 当 nameserver 域名的 IP 查询 geoip 库为 CN 时，不使用 fallback 中的 DNS 查询结果
-  #   配置强制 fallback，优先于 IP 判断，具体分类自行查看 geosite 库
-  geosite:
-    - gfw
-  #   如果不匹配 ipcidr 则使用 nameservers 中的结果
-  ipcidr:
-    - 240.0.0.0/4
-  domain:
-    - "+.google.com"
-    - "+.facebook.com"
-    - "+.youtube.com"
+    # 配置强制 fallback，优先于 IP 判断，具体分类自行查看 geosite 库
+    # geosite:
+    #   - gfw
+    # 如果不匹配 ipcidr 则使用 nameservers 中的结果
+    ipcidr:
+      - 240.0.0.0/4
+    domain:
+      - "+.google.com"
+      - "+.facebook.com"
+      - "+.youtube.com"
 
   # 配置查询域名使用的 DNS 服务器
   nameserver-policy:
