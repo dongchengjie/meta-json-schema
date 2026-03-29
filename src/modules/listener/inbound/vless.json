@@ -43,6 +43,37 @@
         }
       }
     },
+    "xhttp-opts": {
+      "type": "object",
+      "title": "xHTTP配置",
+      "properties": {
+        "path": {
+          "type": "string",
+          "title": "路径",
+          "description": "路径",
+          "markdownDescription": "路径",
+          "default": "/"
+        },
+        "host": {
+          "$ref": "#/definitions/patterns/server",
+          "title": "主机地址",
+          "description": "主机地址",
+          "markdownDescription": "主机地址"
+        },
+        "mode": {
+          "enum": ["auto", "stream-one", "packet-up"],
+          "markdownEnumDescriptions": [
+            "自动选择模式（根据服务端支持情况或配置自动判断）",
+            "将数据以单一流的形式通过 HTTP 传输（适合常规 TCP/UDP 流量）",
+            "将 UDP 数据包以上行流式方式传输（优化 UDP 性能，减少延迟）"
+          ],
+          "title": "模式",
+          "description": "模式",
+          "markdownDescription": "模式",
+          "default": "auto"
+        }
+      }
+    },
     "reality-config": { "$ref": "./reality.json" }
   },
   "allOf": [
@@ -71,6 +102,7 @@
           "description": "ws路径",
           "markdownDescription": "ws路径"
         },
+        "xhttp-opts": { "$ref": "#/definitions/xhttp-opts" },
         "grpc-service-name": {
           "type": "string",
           "title": "grpc服务名称",

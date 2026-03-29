@@ -674,7 +674,7 @@ proxies: # socks5
     grpc-opts:
       grpc-service-name: "example"
       grpc-user-agent: "grpc-go/1.36.0"
-      ping-interval: 0 # 默认关闭，单位为秒e6x
+      ping-interval: 0 # 默认关闭，单位为秒
     ip-version: ipv4
 
   # vless
@@ -777,6 +777,23 @@ proxies: # socks5
         Host: example.com
       v2ray-http-upgrade: false
       v2ray-http-upgrade-fast-open: false
+
+  - name: "vless-xhttp"
+    type: vless
+    server: 1.2.3.4
+    port: 443
+    uuid: 8f3fca8e-d381-402c-8fdf-71f461a0170e
+    udp: true
+    tls: true
+    network: xhttp
+    client-fingerprint: random # Available: "chrome","firefox","safari","random","none"
+    servername: example.com # priority over wss host
+    skip-cert-verify: true
+    fingerprint: chrome
+    xhttp-opts:
+      path: /
+      host: example.com
+      mode: auto
 
   # Trojan
   - name: "trojan"
@@ -1575,6 +1592,10 @@ listeners:
         uuid: 9d0cb9d0-964f-4ef6-897d-6c6b3ccf9e68
         flow: xtls-rprx-vision
     ws-path: "/" # 如果不为空则开启 websocket 传输层
+    xhttp-opts:
+      path: /
+      host: example.com
+      mode: auto
     grpc-service-name: "GunService" # 如果不为空则开启 grpc 传输层
     # -------------------------
     # vless encryption服务端配置：

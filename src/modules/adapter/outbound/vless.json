@@ -13,7 +13,58 @@
     "http-option": { "$ref": "./vmess.json#/definitions/http-option" },
     "http2-option": { "$ref": "./vmess.json#/definitions/http2-option" },
     "grpc-option": { "$ref": "./vmess.json#/definitions/grpc-option" },
-    "ws-option": { "$ref": "./vmess.json#/definitions/ws-option" }
+    "ws-option": { "$ref": "./vmess.json#/definitions/ws-option" },
+    "xhttp-opts": {
+      "type": "object",
+      "title": "xHTTP配置",
+      "properties": {
+        "path": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "路径",
+          "description": "路径",
+          "markdownDescription": "路径",
+          "default": "/"
+        },
+        "host": {
+          "$ref": "#/definitions/patterns/server",
+          "title": "主机地址",
+          "description": "主机地址",
+          "markdownDescription": "主机地址"
+        },
+        "mode": {
+          "enum": ["auto", "stream-one", "packet-up"],
+          "markdownEnumDescriptions": [
+            "自动选择模式（根据服务端支持情况或配置自动判断）",
+            "将数据以单一流的形式通过 HTTP 传输（适合常规 TCP/UDP 流量）",
+            "将 UDP 数据包以上行流式方式传输（优化 UDP 性能，减少延迟）"
+          ],
+          "title": "模式",
+          "description": "模式",
+          "markdownDescription": "模式",
+          "default": "auto"
+        },
+        "headers": {
+          "type": "object",
+          "title": "请求头",
+          "description": "请求头",
+          "markdownDescription": "请求头"
+        },
+        "no-grpc-header": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "不添加 gRPC 相关的请求头",
+          "description": "不添加 gRPC 相关的请求头",
+          "markdownDescription": "不添加 gRPC 相关的请求头",
+          "default": false
+        },
+        "x-padding-bytes": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "HTTP 请求中添加的额外随机字节数（范围）",
+          "description": "支持固定值（如：200）或范围（如：100-1000）",
+          "markdownDescription": "支持固定值（如：200）或范围（如：100-1000）",
+          "default": "100-1000"
+        }
+      }
+    }
   },
   "allOf": [
     { "title": "basic配置", "$ref": "#/definitions/basic-option" },
@@ -105,7 +156,7 @@
           "markdownDescription": "（native/xorpub 的 XTLS Vision 可以 Splice。只使用 1-RTT 模式 / 若服务端发的 ticket 中秒数不为零则 0-RTT 复用）。/ 是只能选一个，后面 base64 至少一个，无限串联，使用 mihomo generate vless-x25519 和 mihomo generate vless-mlkem768 生成，替换值时需去掉括号。Padding 是可选的参数，仅作用于 1-RTT 以消除握手的长度特征，双端默认值均为 100-111-1111.75-0-111.50-0-3333 ：在 1-RTT client/server hello 后以 100% 的概率粘上随机 111 到 1111 字节的 padding，以 75% 的概率等待随机 0 到 111 毫秒（probability-from-to），再次以 50% 的概率发送随机 0 到 3333 字节的 padding（若为 0 则不 Write()），服务端、客户端可以设置不同的 padding 参数，按 len、gap 的顺序无限串联，第一个 padding 需概率 100%、至少 35 字节"
         },
         "network": {
-          "enum": ["tcp", "ws", "http", "h2", "grpc"],
+          "enum": ["tcp", "ws", "http", "h2", "grpc", "xhttp"],
           "title": "传输协议",
           "description": "传输协议",
           "markdownDescription": "传输协议"
@@ -116,6 +167,7 @@
         "h2-opts": { "$ref": "#/definitions/http2-option" },
         "grpc-opts": { "$ref": "#/definitions/grpc-option" },
         "ws-opts": { "$ref": "#/definitions/ws-option" },
+        "xhttp-opts": { "$ref": "#/definitions/xhttp-opts" },
         "ws-path": {
           "allOf": [
             {

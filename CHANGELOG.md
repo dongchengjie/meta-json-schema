@@ -3,6 +3,7 @@
 ### Changes
 
 - 新增: vmess `grpc-opts` 新增配置项 `ping-interval`
+- 新增: vless 支持 `xhttp` 传输协议，并新增配置项 `xhttp-opts`
 
 ---
 
