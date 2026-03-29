@@ -117,10 +117,15 @@
         "grpc-opts": { "$ref": "#/definitions/grpc-option" },
         "ws-opts": { "$ref": "#/definitions/ws-option" },
         "ws-path": {
-          "$ref": "#/definitions/compatible/string",
-          "title": "ws路径",
-          "description": "ws路径",
-          "markdownDescription": "ws路径"
+          "allOf": [
+            {
+              "$ref": "#/definitions/compatible/string",
+              "title": "ws路径",
+              "description": "ws路径",
+              "markdownDescription": "ws路径"
+            },
+            { "deprecationMessage": "v1.19.14 已弃用" }
+          ]
         },
         "ws-headers": {
           "type": "object",

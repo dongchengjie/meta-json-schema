@@ -114,6 +114,7 @@
 - 新增: listener anytls/http/hy2/mixed/socks/trojan/tuic/vless/vmess 新增 `client-auth-type`、`client-auth-cert` 配置项
 - 新增: ss 新增 `kcptun` 插件相关配置项支持
 - 调整: mieru 弃用 `port-range` 字段（功能合并到 `port`）
+- 移除: vless 移除配置项 `ws-path`
 
 ---
 
