@@ -133,6 +133,12 @@
           "description": "ws请求头",
           "markdownDescription": "ws请求头"
         },
+        "skip-cert-verify": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "跳过证书验证",
+          "description": "跳过证书验证",
+          "markdownDescription": "跳过证书验证"
+        },
         "fingerprint": {
           "$ref": "#/definitions/enums/fingerprint",
           "title": "指纹",
