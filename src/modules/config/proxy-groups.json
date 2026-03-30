@@ -9,7 +9,8 @@
     "url-test": { "$ref": "../adapter/outboundgroup/urltest.json" },
     "fallback": { "$ref": "../adapter/outboundgroup/fallback.json" },
     "load-balance": { "$ref": "../adapter/outboundgroup/loadbalance.json" },
-    "relay": { "$ref": "../adapter/outboundgroup/relay.json" }
+    "relay": { "$ref": "../adapter/outboundgroup/relay.json" },
+    "smart": { "$ref": "../adapter/outboundgroup/smart.json" }
   },
   "items": {
     "anyOf": [
@@ -41,6 +42,12 @@
         "allOf": [
           { "title": "relay配置", "properties": { "type": { "const": "relay" } } },
           { "$ref": "#/definitions/relay" }
+        ]
+      },
+      {
+        "allOf": [
+          { "title": "smart配置", "properties": { "type": { "const": "smart" } } },
+          { "$ref": "#/definitions/smart" }
         ]
       }
     ]

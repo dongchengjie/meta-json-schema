@@ -14,7 +14,7 @@
   },
   // https://dprint.dev/plugins/markdown/config
   "markdown": {},
-  // https://dprint.dev/plugins/yaml/config
+  // https://dprint.dev/plugins/pretty_yaml/config
   "yaml": {
     "trailingComma": false,
     "formatComments": true,

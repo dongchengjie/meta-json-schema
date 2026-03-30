@@ -17,8 +17,15 @@
           "markdownDescription": "出站名称"
         },
         "type": {
-          "enum": ["select", "url-test", "fallback", "load-balance", "relay"],
-          "markdownEnumDescriptions": ["手动选择", "延迟选优", "故障转移", "负载均衡", "链式代理"],
+          "enum": ["select", "url-test", "fallback", "load-balance", "relay", "smart"],
+          "markdownEnumDescriptions": [
+            "手动选择",
+            "延迟选优",
+            "故障转移",
+            "负载均衡",
+            "链式代理",
+            "智能选择"
+          ],
           "title": "出站类型",
           "description": "出站类型",
           "markdownDescription": "出站类型"

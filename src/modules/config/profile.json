@@ -19,6 +19,13 @@
       "description": "缓存fake-ip映射表,域名再次发生连接时,使用原有映射地址",
       "markdownDescription": "缓存`fake-ip`映射表,域名再次发生连接时,使用原有映射地址",
       "default": false
+    },
+    "smart-collector-size": {
+      "type": "number",
+      "title": "Smart训练数据收集文件大小限制",
+      "description": "单位:MB",
+      "markdownDescription": "单位:MB",
+      "default": 100
     }
   }
 }

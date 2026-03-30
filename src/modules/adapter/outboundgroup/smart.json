@@ -1,0 +1,68 @@
+{
+  "type": "object",
+  "title": "outboundgroup-smart",
+  "definitions": {
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" },
+    "groupbase": { "$ref": "./groupbase.json" }
+  },
+  "allOf": [
+    { "title": "代理组基础配置", "$ref": "#/definitions/groupbase" },
+    {
+      "type": "object",
+      "title": "smart配置",
+      "properties": {
+        "strategy": {
+          "allOf": [
+            {
+              "enum": ["round-robin", "sticky-sessions"],
+              "title": "策略选择策略",
+              "markdownEnumDescriptions": [
+                "轮询,轮询所有可用节点",
+                "粘性会话,更稳定和平滑的节点切换逻辑"
+              ],
+              "default": "sticky-sessions"
+            },
+            { "deprecationMessage": "v1.19.17 已弃用" }
+          ]
+        },
+        "policy-priority": {
+          "type": "string",
+          "title": "策略优先级",
+          "description": "通过节点名称模式为节点施加优先级因子\n\n格式：pattern:factor;pattern2:factor2",
+          "markdownDescription": "通过节点名称模式为节点施加优先级因子\n\n格式：`pattern:factor;pattern2:factor2`",
+          "default": "1.0"
+        },
+        "uselightgbm": {
+          "type": "boolean",
+          "title": "启用 LightGBM 模型预测",
+          "description": "使用预训练的通用模型，可快速提升节点选择效果，但可能不适合您的特定网络环境",
+          "markdownDescription": "使用预训练的通用模型，可快速提升节点选择效果，但可能不适合您的特定网络环境",
+          "default": false
+        },
+        "collectdata": {
+          "type": "boolean",
+          "title": "收集您的网络使用数据",
+          "description": "可用于训练更适合您的网络环境的自定义模型（数据收集文件都保存在软件的工作目录中）",
+          "markdownDescription": "可用于训练更适合您的网络环境的自定义模型（数据收集文件都保存在软件的工作目录中）",
+          "default": false
+        },
+        "sample-rate": {
+          "type": "number",
+          "title": "数据采样比例",
+          "description": "范围:(0, 1]",
+          "markdownDescription": "范围:(0, 1]",
+          "default": 1.0
+        },
+        "prefer-asn": {
+          "type": "boolean",
+          "title": "优先补齐 ASN",
+          "description": "当目标 ASN 信息为空时，尝试解析目标 IP 并通过 MMDB 查询补齐 ASN，以支持 ASN 维度匹配与优化",
+          "markdownDescription": "当目标 ASN 信息为空时，尝试解析目标 IP 并通过 MMDB 查询补齐 ASN，以支持 ASN 维度匹配与优化",
+          "default": false
+        }
+      }
+    }
+  ]
+}

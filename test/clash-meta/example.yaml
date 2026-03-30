@@ -106,6 +106,13 @@ disable-keep-alive: false # 目前在android端强制为true
 keep-alive-idle: 15
 keep-alive-interval: 15
 
+# 启用 LightGBM 模型自动更新
+lgbm-auto-update: true
+# LightGBM 模型更新间隔（小时）
+lgbm-update-interval: 72
+# LightGBM 模型下载地址
+lgbm-url: "https://github.com/vernesong/mihomo/releases/download/LightGBM-Model/Model.bin"
+
 # routing-mark:6666 # 配置 fwmark 仅用于 Linux
 experimental:
   # Disable quic-go GSO support. This may result in reduced performance on Linux.
@@ -125,11 +132,13 @@ hosts:
   home.lan: lan # lan 为特别字段，将加入本地所有网卡的地址
   baidu.com: google.com # 只允许配置一个别名
 
-profile: # 存储 select 选择记录
+profile:
+  # 存储 select 选择记录
   store-selected: false
-
   # 持久化 fake-ip
   store-fake-ip: true
+  # 数据收集文件大小限制（MB）
+  smart-collector-size: 100
 
 # Tun 配置
 tun:
@@ -1215,6 +1224,20 @@ proxy-groups:
     proxies:
       - Proxy
       - DIRECT
+
+  # 要求内核版本 >= v1.19.10
+  # 详见文档：https://clashparty.org/docs/guide/smart-core-principles
+  - name: UseProvider
+    type: smart
+    proxies:
+      - Proxy
+      - DIRECT
+    # strategy: sticky-sessions
+    policy-priority: "1.0"
+    uselightgbm: true
+    collectdata: false
+    sample-rate: 1
+    prefer-asn: false
 
 # Mihomo 格式的节点或支持 *ray 的分享格式
 proxy-providers:

@@ -169,6 +169,27 @@
           "title": "禁用保持活跃探测",
           "description": "禁用保持活跃探测",
           "markdownDescription": "禁用保持活跃探测"
+        },
+        "lgbm-auto-update": {
+          "type": "boolean",
+          "title": "启用 LightGBM 模型自动更新",
+          "description": "启用 LightGBM 模型自动更新",
+          "markdownDescription": "启用 LightGBM 模型自动更新",
+          "default": false
+        },
+        "lgbm-update-interval": {
+          "type": "integer",
+          "title": "LightGBM 模型自动更新间隔",
+          "description": "单位:h",
+          "markdownDescription": "单位:h",
+          "default": 72
+        },
+        "lgbm-url": {
+          "type": "string",
+          "title": "LightGBM 模型下载地址",
+          "description": "LightGBM 模型下载地址",
+          "markdownDescription": "LightGBM 模型下载地址",
+          "default": "https://github.com/vernesong/mihomo/releases/download/LightGBM-Model/Model.bin"
         }
       }
     }
