@@ -24,7 +24,8 @@
     "tuic-server": { "$ref": "./modules/listener/config/tuic.json" },
     "authentication": { "$ref": "./modules/config/authentication.json" },
     "tunnels": { "$ref": "./modules/config/tunnels.json" },
-    "sniffer": { "$ref": "./modules/config/sniffer.json" }
+    "sniffer": { "$ref": "./modules/config/sniffer.json" },
+    "clash-for-android": { "$ref": "./modules/config/clash-for-android.json" }
   },
   "allOf": [
     {
@@ -122,6 +123,11 @@
       "type": "object",
       "title": "域名嗅探配置",
       "properties": { "sniffer": { "$ref": "#/definitions/sniffer" } }
+    },
+    {
+      "type": "object",
+      "title": "ClashForAndroid配置",
+      "properties": { "clash-for-android": { "$ref": "#/definitions/clash-for-android" } }
     }
   ]
 }

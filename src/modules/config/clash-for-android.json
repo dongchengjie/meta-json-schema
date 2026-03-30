@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "title": "ClashForAndroid配置",
+  "definitions": {
+    "types": { "$ref": "../../definitions/types.json" },
+    "patterns": { "$ref": "../../definitions/patterns.json" }
+  },
+  "properties": {
+    "append-system-dns": {
+      "type": "boolean",
+      "title": "在默认域名解析服务器附加系统DNS",
+      "description": "等价于在dns.nameserver列表末尾追加 system://",
+      "markdownDescription": "等价于在dns.nameserver列表末尾追加 `system://`"
+    },
+    "ui-subtitle-pattern": {
+      "type": "string",
+      "title": "UI 子标题正则表达式",
+      "description": "默认情况下，UI 标题显示节点名称，副标题显示节点类型。设置该正则表达式后，会在节点名称中查找匹配内容，并将首次匹配到的文本从标题中移除，提取为副标题进行显示。",
+      "markdownDescription": "默认情况下，UI 标题显示节点名称，副标题显示节点类型。设置该正则表达式后，会在节点名称中查找匹配内容，并将**首次匹配到的文本**从标题中移除，提取为副标题进行显示。"
+    }
+  }
+}

@@ -253,6 +253,10 @@ sniffer:
   #   - "443"
   #   - 8000-9999
 
+clash-for-android:
+  append-system-dns: true
+  ui-subtitle-pattern: "\\[HK\\]"
+
 tunnels: # one line config
   - tcp/udp,127.0.0.1:6553,114.114.114.114:53,proxy
   - tcp,127.0.0.1:6666,rds.mysql.com:3306,vpn
