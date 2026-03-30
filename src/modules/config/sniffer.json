@@ -77,11 +77,15 @@
       ]
     },
     "port-whitelist": {
-      "$ref": "#/definitions/types/portRangeArray",
-      "title": "限制嗅探端口范围",
-      "description": "要求搭配sniffing使用(格式: 80 或 80-88)",
-      "markdownDescription": "要求搭配`sniffing`使用(格式: `80` 或 `80-88`)",
-      "deprecationMessage": "已废弃，使用sniff代替"
+      "allOf": [
+        {
+          "$ref": "#/definitions/types/portRangeArray",
+          "title": "限制嗅探端口范围",
+          "description": "要求搭配sniffing使用(格式: 80 或 80-88)",
+          "markdownDescription": "要求搭配`sniffing`使用(格式: `80` 或 `80-88`)"
+        },
+        { "deprecationMessage": "已废弃，使用sniff代替" }
+      ]
     },
     "force-dns-mapping": {
       "type": "boolean",

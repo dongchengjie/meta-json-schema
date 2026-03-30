@@ -10,10 +10,10 @@
   "allOf": [
     { "title": "代理组基础配置", "$ref": "#/definitions/groupbase" },
     {
-      "type": "object",
-      "title": "relay配置",
-      "properties": {},
-      "deprecationMessage": "v1.19.17 已弃用(使用dialer-proxy代替)"
+      "allOf": [
+        { "type": "object", "title": "relay配置", "properties": {} },
+        { "deprecationMessage": "v1.19.17 已弃用(使用dialer-proxy代替)" }
+      ]
     }
   ]
 }
