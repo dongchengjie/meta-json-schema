@@ -57,9 +57,9 @@
         },
         "prefer-asn": {
           "type": "boolean",
-          "title": "优先补齐 ASN",
-          "description": "当目标 ASN 信息为空时，尝试解析目标 IP 并通过 MMDB 查询补齐 ASN，以支持 ASN 维度匹配与优化",
-          "markdownDescription": "当目标 ASN 信息为空时，尝试解析目标 IP 并通过 MMDB 查询补齐 ASN，以支持 ASN 维度匹配与优化",
+          "title": "偏好 ASN",
+          "description": "倾向选择 ASN 更匹配的节点",
+          "markdownDescription": "倾向选择 ASN 更匹配的节点",
           "default": false
         }
       }

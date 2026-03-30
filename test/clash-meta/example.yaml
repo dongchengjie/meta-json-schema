@@ -1227,7 +1227,7 @@ proxy-groups:
 
   # 要求内核版本 >= v1.19.10
   # 详见文档：https://clashparty.org/docs/guide/smart-core-principles
-  - name: UseProvider
+  - name: SmartGroup
     type: smart
     proxies:
       - Proxy
