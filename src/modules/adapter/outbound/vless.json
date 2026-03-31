@@ -131,6 +131,13 @@
           "description": "Application-Layer Protocol Negotiation(应用层协议协商)",
           "markdownDescription": "Application-Layer Protocol Negotiation(应用层协议协商)"
         },
+        "udp": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用UDP",
+          "description": "启用UDP",
+          "markdownDescription": "启用`UDP`",
+          "default": true
+        },
         "packet-addr": {
           "$ref": "#/definitions/compatible/boolean",
           "title": "保留原始数据包的地址信息",
