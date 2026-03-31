@@ -34,8 +34,8 @@
         "tls": {
           "$ref": "#/definitions/compatible/boolean",
           "title": "强制HTTP掩码使用TLS",
-          "description": "仅在 http-mask-mode 为 stream/poll/auto 时生效",
-          "markdownDescription": "仅在 `http-mask-mode` 为 `stream`/`poll`/`auto` 时生效"
+          "description": "按需开启 HTTPS/WSS",
+          "markdownDescription": "按需开启 HTTPS/WSS"
         },
         "host": {
           "$ref": "#/definitions/compatible/string",
@@ -54,7 +54,7 @@
           "markdownEnumDescriptions": [
             "默认",
             "复用底层 HTTP 连接，减少建链 RTT",
-            "单条隧道内多路复用多个目标连接；仅在 http-mask-mode为stream/poll/auto 生效"
+            "Sudoku mux 单隧道多目标；仅在 mode=stream/poll/auto 生效；ws 强制 off"
           ],
           "title": "HTTP掩码多路复用",
           "description": "复用单条隧道并在其内多路复用多个目标连接",
@@ -123,12 +123,26 @@
           "default": 30
         },
         "table-type": {
-          "enum": ["prefer_ascii", "prefer_entropy"],
-          "markdownEnumDescriptions": ["全ascii映射", "保证熵值（汉明1）低于3"],
+          "enum": [
+            "entropy",
+            "prefer_entropy",
+            "ascii",
+            "prefer_ascii",
+            "up_ascii_down_entropy",
+            "up_entropy_down_ascii"
+          ],
+          "markdownEnumDescriptions": [
+            "上行使用 “低熵” 表；下行使用 “低熵” 表（约束：熵值/汉明权重(1) < 3）",
+            "上行使用 “低熵” 表；下行使用 “低熵” 表（约束：熵值/汉明权重(1) < 3）",
+            "上行使用 ASCII 表；下行使用 ASCII 表",
+            "上行使用 ASCII 表；下行使用 ASCII 表",
+            "上行使用 ASCII 表；下行使用 “低熵” 表（约束：熵值/汉明权重(1) < 3）",
+            "上行使用 “低熵” 表（约束：熵值/汉明权重(1) < 3）；下行使用 ASCII 表"
+          ],
           "title": "映射表类型",
           "description": "映射表类型",
           "markdownDescription": "映射表类型",
-          "default": "prefer_ascii"
+          "default": "prefer_entropy"
         },
         "enable-pure-downlink": {
           "$ref": "#/definitions/compatible/boolean",
@@ -241,23 +255,19 @@
           "$ref": "#/definitions/compatible/string",
           "title": "自定义字节布局",
           "description": "必须包含2个x、2个p、4个v，可随意组合",
-          "markdownDescription": "必须包含2个x、2个p、4个v，可随意组合"
+          "markdownDescription": "必须包含2个x、2个p、4个v，可随意组合；只对 entropy 方向生效"
         },
         "custom-tables": {
           "$ref": "#/definitions/types/stringArray",
           "title": "自定义字节布局列表（x/v/p）",
-          "description": "用于 xvp 模式轮换；非空时覆盖 custom-table",
-          "markdownDescription": "用于 xvp 模式轮换；非空时覆盖 custom-table"
+          "description": "非空时覆盖 custom-table",
+          "markdownDescription": "非空时覆盖 custom-table"
         }
       },
       "allOf": [
         {
           "if": { "properties": { "enable-pure-downlink": { "const": false } } },
           "then": { "properties": { "aead-method": { "not": { "const": "none" } } } }
-        },
-        {
-          "if": { "not": { "properties": { "custom-table": { "const": "" } } } },
-          "then": { "properties": { "table-type": { "const": "prefer_entropy" } } }
         }
       ]
     },

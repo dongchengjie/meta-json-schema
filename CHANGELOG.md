@@ -6,6 +6,7 @@
 - 新增: vless 支持 `xhttp` 传输协议，并新增配置项 `xhttp-opts`
 - 新增: 兼容安卓端 `clash-for-android` 配置项
 - 新增: 兼容 [Smart](https://github.com/vernesong/mihomo) 代理组相关配置项
+- 新增: sudoku `table-type` 支持 `up_ascii_down_entropy`、`up_entropy_down_ascii`
 
 ### Bugs Fixes
 
