@@ -61,11 +61,12 @@
           "markdownDescription": "主机地址"
         },
         "mode": {
-          "enum": ["auto", "stream-one", "packet-up"],
+          "enum": ["auto", "stream-one", "stream-up", "packet-up"],
           "markdownEnumDescriptions": [
-            "自动选择模式（根据服务端支持情况或配置自动判断）",
-            "将数据以单一流的形式通过 HTTP 传输（适合常规 TCP/UDP 流量）",
-            "将 UDP 数据包以上行流式方式传输（优化 UDP 性能，减少延迟）"
+            "自动选择",
+            "将数据以单一流式传输（适合常规 TCP/UDP 流量）",
+            "将数据以上行流式方式传输（适合 TCP 流量）",
+            "将数据以数据包上行流式传输（适合 UDP 流量）"
           ],
           "title": "模式",
           "description": "模式",

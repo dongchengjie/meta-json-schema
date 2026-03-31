@@ -801,17 +801,59 @@ proxies: # socks5
     network: xhttp
     alpn:
       - h2
-    client-fingerprint: chrome
+    ech-opts:
+      enable: true # 必须手动开启
+      # 如果config为空则通过dns解析，不为空则通过该值指定，格式为经过base64编码的ech参数（dig +shorTYPE65     tls-ech.dev）
+      config: AEn+DQBFKwAgACABWIHUGj4u  +PIggYXcR5JF0gYk3dCRioBW8uJq9H4mKAAIAAEAAQABAANAEnB1YmxpYy50bHMtZWNoLmRldgAA
+      query-server-name: xxx.com # 可选项，不为空时用于指定通过dns解析时的域名
+    reality-opts:
+      public-key: xxx
+      short-id: xxx # optional
+      support-x25519mlkem768: false # 如果服务端支持可手动设置为true
+    skip-cert-verify: false
+    fingerprint: chrome
+    certificate: ...
+    private-key: ...
     servername: xxx.com
+    client-fingerprint: chrome
     encryption: ""
     xhttp-opts:
       path: "/"
       host: xxx.com
-      mode: "stream-one" # Available: "stream-one" or "packet-up"
+      mode: "stream-one" # Available: "stream-one", "stream-up" or "packet-up"
       headers:
         X-Forwarded-For: ""
       no-grpc-header: false
       x-padding-bytes: "100-1000"
+      download-settings:
+        # # xhttp part
+        path: "/"
+        host: xxx.com
+        headers:
+          X-Forwarded-For: ""
+        no-grpc-header: false
+        x-padding-bytes: "100-1000"
+        # # proxy part
+        server: server
+        port: 443
+        tls: true
+        alpn:
+          - h2
+        ech-opts:
+          enable: true # 必须手动开启
+          # 如果config为空则通过dns解析，不为空则通过该值指定，格式为经过base64编码的ech参数（dig +short TYPE65     tls-ech.dev）
+          config: AEn+DQBFKwAgACABWIHUGj4u    +PIggYXcR5JF0gYk3dCRioBW8uJq9H4mKAAIAAEAAQABAANAEnB1YmxpYy50bHMtZWNoLmRldgAA
+          query-server-name: xxx.com # 可选项，不为空时用于指定通过dns解析时的域名
+        reality-opts:
+          public-key: xxx
+          short-id: xxx # optional
+          support-x25519mlkem768: false # 如果服务端支持可手动设置为true
+        skip-cert-verify: false
+        fingerprint: chrome
+        certificate: ...
+        private-key: ...
+        servername: xxx.com
+        client-fingerprint: chrome
 
   # Trojan
   - name: "trojan"

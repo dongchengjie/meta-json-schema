@@ -32,11 +32,12 @@
           "markdownDescription": "主机地址"
         },
         "mode": {
-          "enum": ["auto", "stream-one", "packet-up"],
+          "enum": ["auto", "stream-one", "stream-up", "packet-up"],
           "markdownEnumDescriptions": [
-            "自动选择模式（根据服务端支持情况或配置自动判断）",
-            "将数据以单一流的形式通过 HTTP 传输（适合常规 TCP/UDP 流量）",
-            "将 UDP 数据包以上行流式方式传输（优化 UDP 性能，减少延迟）"
+            "自动选择",
+            "将数据以单一流式传输（适合常规 TCP/UDP 流量）",
+            "将数据以上行流式方式传输（适合 TCP 流量）",
+            "将数据以数据包上行流式传输（适合 UDP 流量）"
           ],
           "title": "模式",
           "description": "模式",
@@ -62,6 +63,108 @@
           "description": "支持固定值（如：200）或范围（如：100-1000）",
           "markdownDescription": "支持固定值（如：200）或范围（如：100-1000）",
           "default": "100-1000"
+        },
+        "download-settings": { "title": "下载配置", "$ref": "#/definitions/download-settings" }
+      }
+    },
+    "download-settings": {
+      "type": "object",
+      "title": "下载设置",
+      "properties": {
+        "path": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "路径",
+          "description": "路径",
+          "markdownDescription": "路径",
+          "default": "/"
+        },
+        "host": {
+          "$ref": "#/definitions/patterns/server",
+          "title": "主机地址",
+          "description": "主机地址",
+          "markdownDescription": "主机地址"
+        },
+        "headers": {
+          "type": "object",
+          "title": "请求头",
+          "description": "请求头",
+          "markdownDescription": "请求头"
+        },
+        "no-grpc-header": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "不添加 gRPC 相关的请求头",
+          "description": "不添加 gRPC 相关的请求头",
+          "markdownDescription": "不添加 gRPC 相关的请求头",
+          "default": false
+        },
+        "x-padding-bytes": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "HTTP 请求中添加的额外随机字节数（范围）",
+          "description": "支持固定值（如：200）或范围（如：100-1000）",
+          "markdownDescription": "支持固定值（如：200）或范围（如：100-1000）",
+          "default": "100-1000"
+        },
+        "server": {
+          "$ref": "#/definitions/patterns/server",
+          "title": "下载服务器",
+          "description": "域名或IP",
+          "markdownDescription": "域名或IP"
+        },
+        "port": {
+          "$ref": "#/definitions/patterns/port",
+          "title": "下载服务器端口号",
+          "description": "下载服务器端口号",
+          "markdownDescription": "下载服务器端口号"
+        },
+        "tls": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用TLS",
+          "description": "启用TLS",
+          "markdownDescription": "启用`TLS`"
+        },
+        "alpn": {
+          "$ref": "#/definitions/types/stringArray",
+          "title": "ALPN",
+          "description": "Application-Layer Protocol Negotiation(应用层协议协商)",
+          "markdownDescription": "Application-Layer Protocol Negotiation(应用层协议协商)"
+        },
+        "ech-opts": { "$ref": "#/definitions/ech-options" },
+        "reality-opts": { "$ref": "#/definitions/reality-option" },
+        "skip-cert-verify": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "跳过证书验证",
+          "description": "跳过证书验证",
+          "markdownDescription": "跳过证书验证"
+        },
+        "fingerprint": {
+          "$ref": "#/definitions/enums/fingerprint",
+          "title": "指纹",
+          "description": "指纹",
+          "markdownDescription": "指纹"
+        },
+        "certificate": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "证书或证书路径",
+          "description": "PEM格式",
+          "markdownDescription": "PEM格式"
+        },
+        "private-key": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "私钥",
+          "description": "私钥",
+          "markdownDescription": "私钥"
+        },
+        "servername": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "服务器名称",
+          "description": "服务器名称",
+          "markdownDescription": "服务器名称"
+        },
+        "client-fingerprint": {
+          "$ref": "#/definitions/enums/fingerprint",
+          "title": "客户端指纹",
+          "description": "客户端指纹",
+          "markdownDescription": "客户端指纹"
         }
       }
     }
