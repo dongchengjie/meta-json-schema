@@ -530,7 +530,7 @@
           "title": "UDP over TCP的协议版本",
           "description": "UDP over TCP的协议版本",
           "markdownDescription": "UDP over TCP的协议版本",
-          "default": 2
+          "default": 1
         },
         "client-fingerprint": {
           "$ref": "#/definitions/enums/fingerprint",

@@ -140,7 +140,8 @@
           "$ref": "#/definitions/types/stringArray",
           "title": "ALPN",
           "description": "Application-Layer Protocol Negotiation(应用层协议协商)",
-          "markdownDescription": "Application-Layer Protocol Negotiation(应用层协议协商)"
+          "markdownDescription": "Application-Layer Protocol Negotiation(应用层协议协商)",
+          "default": ["hysteria"]
         },
         "ca": {
           "allOf": [

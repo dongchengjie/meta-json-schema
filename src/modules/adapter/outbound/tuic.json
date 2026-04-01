@@ -76,7 +76,8 @@
           "$ref": "#/definitions/types/stringArray",
           "title": "ALPN",
           "description": "Application-Layer Protocol Negotiation(应用层协议协商)",
-          "markdownDescription": "Application-Layer Protocol Negotiation(应用层协议协商)"
+          "markdownDescription": "Application-Layer Protocol Negotiation(应用层协议协商)",
+          "default": ["h3"]
         },
         "reduce-rtt": {
           "$ref": "#/definitions/compatible/boolean",
@@ -219,7 +220,8 @@
           "$ref": "#/definitions/compatible/integer",
           "title": "UDP over Stream版本",
           "description": "UDP over Stream版本",
-          "markdownDescription": "UDP over Stream版本"
+          "markdownDescription": "UDP over Stream版本",
+          "default": 1
         }
       }
     },
