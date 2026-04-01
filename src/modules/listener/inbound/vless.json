@@ -43,7 +43,7 @@
         }
       }
     },
-    "xhttp-opts": {
+    "xhttp-config": {
       "type": "object",
       "title": "xHTTP配置",
       "properties": {
@@ -103,7 +103,7 @@
           "description": "ws路径",
           "markdownDescription": "ws路径"
         },
-        "xhttp-opts": { "$ref": "#/definitions/xhttp-opts" },
+        "xhttp-config": { "$ref": "#/definitions/xhttp-config" },
         "grpc-service-name": {
           "type": "string",
           "title": "grpc服务名称",
