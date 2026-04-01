@@ -126,7 +126,7 @@
       "title": "增强模式",
       "description": "DNS处理模式",
       "markdownDescription": "DNS处理模式",
-      "default": "fake-ip"
+      "default": "redir-host"
     },
     "fake-ip-range": {
       "$ref": "#/definitions/patterns/ipv4CIDR",

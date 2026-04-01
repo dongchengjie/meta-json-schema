@@ -47,8 +47,8 @@
       "exclude-type": {
         "type": "string",
         "title": "根据节点类型排除节点",
-        "description": "direct, dns, ss, ssr, snell, socks5, http, vmess, vless, trojan, hysteria, hysteria2, wireguard, tuic, ssh(使用|分隔,不支持正则表达式)",
-        "markdownDescription": "`direct`,`dns`,`ss`,`ssr`,`snell`,`socks5`,`http`,`vmess`,`vless`,`trojan`,`hysteria`,`hysteria2`,`wireguard`,`tuic`,`ssh`(使用`|`分隔,不支持正则表达式)"
+        "description": "direct, dns, ss, ssr, snell, socks5, http, vmess, vless, trojan, hysteria, hysteria2, wireguard, tuic, ssh, mieru, anytls, sudoku, masque, trusttunnel(使用|分隔,不支持正则表达式)",
+        "markdownDescription": "`direct`,`dns`,`ss`,`ssr`,`snell`,`socks5`,`http`,`vmess`,`vless`,`trojan`,`hysteria`,`hysteria2`,`wireguard`,`tuic`,`ssh`,`mieru`,`anytls`,`sudoku`,`masque`,`trusttunnel`(使用`|`分隔,不支持正则表达式)"
       },
       "dialer-proxy": {
         "type": "string",

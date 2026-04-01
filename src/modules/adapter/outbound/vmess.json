@@ -52,7 +52,7 @@
           "title": "路径",
           "description": "路径",
           "markdownDescription": "路径",
-          "default": ["/"]
+          "default": "/"
         }
       }
     },
@@ -89,7 +89,7 @@
           "title": "路径",
           "description": "路径",
           "markdownDescription": "路径",
-          "default": ["/"]
+          "default": "/"
         },
         "headers": {
           "type": "object",
