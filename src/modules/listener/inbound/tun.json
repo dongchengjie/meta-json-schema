@@ -122,6 +122,13 @@
           "markdownDescription": "自动重定向输出标识",
           "default": 8228
         },
+        "auto-redirect-iproute2-fallback-rule-index": {
+          "type": "integer",
+          "title": "自动重定向iproute2回退规则优先级",
+          "description": "自动重定向iproute2回退规则优先级",
+          "markdownDescription": "自动重定向iproute2回退规则优先级",
+          "default": 0
+        },
         "loopback-address": {
           "$ref": "#/definitions/types/ipArray",
           "title": "环回地址",

@@ -198,6 +198,12 @@
           "description": "Application-Layer Protocol Negotiation(应用层协议协商)",
           "markdownDescription": "Application-Layer Protocol Negotiation(应用层协议协商)"
         },
+        "skip-cert-verify": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "跳过证书验证",
+          "description": "跳过证书验证",
+          "markdownDescription": "跳过证书验证"
+        },
         "fingerprint": {
           "$ref": "#/definitions/enums/fingerprint",
           "title": "指纹",

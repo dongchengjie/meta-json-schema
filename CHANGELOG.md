@@ -1,3 +1,17 @@
+## v1.19.23
+
+### Changes
+
+- 调整: masque 的 `ip` 、`ipv6` 要求至少填一项
+
+### Bugs Fixes
+
+- 修复: TUN 缺失 `auto-redirect-iproute2-fallback-rule-index` 配置项
+- 修复: vmess 缺失 `skip-cert-verify` 配置项
+- 修复: masque 的 `ip` 、`ipv6` 配置项不支持配置为 CIDR 格式
+
+---
+
 ## v1.19.22
 
 ### Changes

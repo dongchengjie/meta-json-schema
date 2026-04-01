@@ -53,16 +53,36 @@
           "markdownDescription": "公钥"
         },
         "ip": {
-          "$ref": "#/definitions/patterns/ipv4",
-          "title": "IPv4地址",
-          "description": "IPv4地址",
-          "markdownDescription": "IPv4地址"
+          "anyOf": [
+            {
+              "$ref": "#/definitions/patterns/ipv4",
+              "title": "IPv4地址",
+              "description": "IPv4地址",
+              "markdownDescription": "IPv4地址"
+            },
+            {
+              "$ref": "#/definitions/patterns/ipv4CIDR",
+              "title": "IPv4网段",
+              "description": "IPv4网段",
+              "markdownDescription": "IPv4网段"
+            }
+          ]
         },
         "ipv6": {
-          "$ref": "#/definitions/patterns/ipv6",
-          "title": "IPv6地址",
-          "description": "IPv6地址",
-          "markdownDescription": "IPv6地址"
+          "anyOf": [
+            {
+              "$ref": "#/definitions/patterns/ipv6",
+              "title": "IPv6地址",
+              "description": "IPv6地址",
+              "markdownDescription": "IPv6地址"
+            },
+            {
+              "$ref": "#/definitions/patterns/ipv6CIDR",
+              "title": "IPv6网段",
+              "description": "IPv6网段",
+              "markdownDescription": "IPv6网段"
+            }
+          ]
         },
         "uri": {
           "$ref": "#/definitions/patterns/uri",
@@ -90,9 +110,7 @@
           "markdownDescription": "启用`UDP`",
           "default": true
         },
-        "congestion-controller": {
-          "$ref": "#/definitions/enums/congestion-controller"
-        },
+        "congestion-controller": { "$ref": "#/definitions/enums/congestion-controller" },
         "cwnd": {
           "$ref": "#/definitions/compatible/integer",
           "title": "拥塞窗口大小",
@@ -115,6 +133,7 @@
         }
       }
     },
+    { "anyOf": [{ "required": ["ip"] }, { "required": ["ipv6"] }] },
     {
       "type": "object",
       "title": "smux配置",
