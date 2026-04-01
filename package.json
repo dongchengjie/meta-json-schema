@@ -1,6 +1,6 @@
 {
   "name": "meta-json-schema",
-  "version": "1.19.22",
+  "version": "1.19.23",
   "description": "JSON Schema for Clash Meta",
   "keywords": [
     "clash",
@@ -32,7 +32,7 @@
   "devDependencies": {
     "@commitlint/cli": "^20.5.0",
     "@commitlint/config-conventional": "^20.5.0",
-    "dprint": "^0.53.1",
+    "dprint": "^0.53.2",
     "json-schema-artifact": "^2.0.3",
     "lefthook": "^2.1.4"
   },
