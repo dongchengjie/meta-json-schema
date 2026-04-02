@@ -723,7 +723,7 @@ proxies: # socks5
 
   - name: "vless-encryption"
     type: vless
-    server: server
+    server: example.com
     port: 443
     uuid: 8f3fca8e-d381-402c-8fdf-71f461a0170e
     network: tcp
@@ -738,7 +738,7 @@ proxies: # socks5
 
   - name: "vless-reality-vision"
     type: vless
-    server: server
+    server: example.com
     port: 443
     uuid: 8f3fca8e-d381-402c-8fdf-71f461a0170e
     network: tcp
@@ -793,7 +793,7 @@ proxies: # socks5
 
   - name: "vless-xhttp"
     type: vless
-    server: server
+    server: example.com
     port: 443
     uuid: 00000000-0000-0000-0000-000000000001
     udp: true
@@ -834,7 +834,7 @@ proxies: # socks5
         no-grpc-header: false
         x-padding-bytes: "100-1000"
         # # proxy part
-        server: server
+        server: example.com
         port: 443
         tls: true
         alpn:
@@ -1135,7 +1135,7 @@ proxies: # socks5
   # sudoku
   - name: sudoku
     type: sudoku
-    server: server_ipordomain # 1.2.3.4 or domain
+    server: example.com # 1.2.3.4 or domain
     port: 443
     key: "<client_key>" # 如果你使用sudoku生成的ED25519密钥对，请填写密钥对中的私钥，否则填入和服务端相同的uuid
     aead-method: chacha20-poly1305 # 可选：chacha20-poly1305、aes-128-gcm、none（不建议；且 enable-pure-downlink=false 时不可用）

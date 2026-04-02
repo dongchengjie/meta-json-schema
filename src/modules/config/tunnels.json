@@ -8,7 +8,7 @@
   "items": {
     "anyOf": [
       {
-        "pattern": "^(tcp)?/?(udp)?(?:,[^,]+){2,3}$",
+        "pattern": "^(?:tcp|udp|tcp\\/udp)(?:,[^,]+){2,3}$",
         "errorMessage": "格式(<tcp|udp|tcp/udp>,<address>,<target>,[proxy])"
       },
       {
