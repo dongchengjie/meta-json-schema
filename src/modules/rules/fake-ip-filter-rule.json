@@ -37,21 +37,6 @@
       "errorMessage": "无效的规则"
     },
     {
-      "title": "逻辑和",
-      "pattern": "^AND,\\(\\(.+,.+\\)\\),\\s*([fF][aA][kK][eE]-[iI][pP]|[rR][eE][aA][lL]-[iI][pP])$",
-      "errorMessage": "无效的规则"
-    },
-    {
-      "title": "逻辑或",
-      "pattern": "^OR,\\(\\(.+,.+\\)\\),\\s*([fF][aA][kK][eE]-[iI][pP]|[rR][eE][aA][lL]-[iI][pP])$",
-      "errorMessage": "无效的规则"
-    },
-    {
-      "title": "逻辑非",
-      "pattern": "^NOT,\\(\\(.+,.+\\)\\),\\s*([fF][aA][kK][eE]-[iI][pP]|[rR][eE][aA][lL]-[iI][pP])$",
-      "errorMessage": "无效的规则"
-    },
-    {
       "title": "匹配所有请求(无需条件)",
       "pattern": "^MATCH,\\s*([fF][aA][kK][eE]-[iI][pP]|[rR][eE][aA][lL]-[iI][pP])$",
       "errorMessage": "无效的规则"

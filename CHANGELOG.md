@@ -10,6 +10,8 @@
 - 修复: vmess 缺失 `skip-cert-verify` 配置项
 - 修复: masque 的 `ip` 、`ipv6` 配置项不支持配置为 CIDR 格式
 - 修复: 部分配置项的类型错误/过时、默认值错误/过时
+- 修复: `rule-provider` 的 `inline` 类型规则的 `AND` 、`OR`、`NOT` 的 target 不应存在
+- 修复: `fake-ip-filter` 的 `rule` 模式下的规则不应支持 `AND` 、`OR`、`NOT`
 
 ---
 
@@ -59,7 +61,7 @@
 
 ### Bugs Fixes
 
-- 修复: `reality-opts` 的 `short-id` 配置项为可选项
+- 修复: `reality-opts` 的 `short-id` 配置项应为可选项
 - 修复: `fake-ip-filter-mode` 未配置时，错误地使用了 `rule` 规则进行校验
 
 ---

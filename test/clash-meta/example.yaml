@@ -1376,11 +1376,77 @@ rule-providers:
     path: /path/to/save/file.mrs
   rule4:
     type: inline
-    behavior: domain # classical / ipcidr
+    behavior: domain
     payload:
       - ".blogger.com"
       - "*.*.microsoft.com"
       - "books.itunes.apple.com"
+  rule5:
+    type: inline
+    behavior: classical
+    payload:
+      # DOMAIN family
+      - "DOMAIN,example.com"
+      - "DOMAIN-SUFFIX,example.org"
+      - "DOMAIN-KEYWORD,google"
+      - "DOMAIN-REGEX,^.*\\.example\\.net$"
+      - "DOMAIN-WILDCARD,*.*.microsoft.com"
+
+      # GEOSITE / GEOIP / ASN / CIDR / suffix
+      - "GEOSITE,geolocation-!cn"
+      - "GEOIP,CN"
+      - "GEOIP,CN,no-resolve"
+      - "GEOIP,CN,src" # src implies no-resolve in param parsing
+      - "SRC-GEOIP,CN"
+
+      - "IP-ASN,13335"
+      - "IP-ASN,13335,no-resolve"
+      - "IP-ASN,13335,src"
+      - "SRC-IP-ASN,13335"
+
+      - "IP-CIDR,1.1.1.0/24"
+      - "IP-CIDR,1.1.1.0/24,no-resolve"
+      - "IP-CIDR,1.1.1.0/24,src"
+      - "IP-CIDR6,2001:db8::/32"
+      - "SRC-IP-CIDR,10.0.0.0/8"
+
+      - "IP-SUFFIX,1.1.1.0/24"
+      - "IP-SUFFIX,1.1.1.0/24,no-resolve"
+      - "IP-SUFFIX,1.1.1.0/24,src"
+      - "SRC-IP-SUFFIX,10.0.0.0/8"
+
+      # Port / DSCP
+      - "SRC-PORT,443"
+      - "DST-PORT,53"
+      - "IN-PORT,7890"
+      - "DSCP,46"
+
+      # Process
+      - "PROCESS-NAME,com.example.app"
+      - "PROCESS-PATH,/usr/bin/curl"
+      - "PROCESS-NAME-REGEX,^com\\.example\\..*$"
+      - "PROCESS-PATH-REGEX,^/usr/bin/.*$"
+      - "PROCESS-NAME-WILDCARD,com.example.*"
+      - "PROCESS-PATH-WILDCARD,/usr/*"
+
+      # Misc
+      - "NETWORK,tcp"
+      - "UID,1000"
+      - "IN-TYPE,socks"
+      - "IN-USER,alice"
+      - "IN-NAME,MyInbound"
+
+      # Logic rules (AND/OR/NOT)
+      - "AND,((DOMAIN,example.com),(DST-PORT,443),(DST-PORT,443),(DST-PORT,443))"
+      - "OR,((DOMAIN-SUFFIX,example.org),(NETWORK,udp))"
+      - "NOT,((DOMAIN,blocked.example))"
+  rule6:
+    type: inline
+    behavior: ipcidr
+    payload:
+      - "127.0.0.1/32"
+      - "192.168.1.0/24"
+      - "2001:db8::/32"
 
 rules:
   - DOMAIN,ad.com,REJECT
