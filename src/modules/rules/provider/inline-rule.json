@@ -147,8 +147,20 @@
       "pattern": "^IN-NAME((?:,[^,]+){1})$",
       "errorMessage": "无效的规则"
     },
-    { "title": "逻辑和", "pattern": "^AND,\\(\\(.+,.+\\)\\),[^,]+$", "errorMessage": "无效的规则" },
-    { "title": "逻辑或", "pattern": "^OR,\\(\\(.+,.+\\)\\),[^,]+$", "errorMessage": "无效的规则" },
-    { "title": "逻辑非", "pattern": "^NOT,\\(\\(.+,.+\\)\\),[^,]+$", "errorMessage": "无效的规则" }
+    {
+      "title": "逻辑和",
+      "pattern": "^AND,\\(\\(.+,.+\\)\\)(?:,[^,]+)?$",
+      "errorMessage": "无效的规则"
+    },
+    {
+      "title": "逻辑或",
+      "pattern": "^OR,\\(\\(.+,.+\\)\\)(?:,[^,]+)?$",
+      "errorMessage": "无效的规则"
+    },
+    {
+      "title": "逻辑非",
+      "pattern": "^NOT,\\(\\(.+,.+\\)\\)(?:,[^,]+)?$",
+      "errorMessage": "无效的规则"
+    }
   ]
 }
