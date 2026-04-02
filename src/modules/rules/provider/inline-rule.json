@@ -1,152 +1,124 @@
 {
   "type": "string",
   "anyOf": [
-    { "title": "匹配完整域名", "pattern": "^DOMAIN((?:,[^,]+){1})$", "errorMessage": "无效的规则" },
-    {
-      "title": "匹配域名后缀",
-      "pattern": "^DOMAIN-SUFFIX((?:,[^,]+){1})$",
-      "errorMessage": "无效的规则"
-    },
+    { "title": "匹配完整域名", "pattern": "^DOMAIN,[^,]+$", "errorMessage": "无效的规则" },
+    { "title": "匹配域名后缀", "pattern": "^DOMAIN-SUFFIX,[^,]+$", "errorMessage": "无效的规则" },
     {
       "title": "匹配域名关键字",
-      "pattern": "^DOMAIN-KEYWORD((?:,[^,]+){1})$",
+      "pattern": "^DOMAIN-KEYWORD,[^,]+$",
       "errorMessage": "无效的规则"
     },
     {
       "title": "匹配域名正则表达式",
-      "pattern": "^DOMAIN-REGEX((?:,[^,]+){1})$",
+      "pattern": "^DOMAIN-REGEX,[^,]+$",
       "errorMessage": "无效的规则"
     },
     {
       "title": "匹配域名通配符",
-      "pattern": "^DOMAIN-WILDCARD((?:,[^,]+){1})$",
+      "pattern": "^DOMAIN-WILDCARD,[^,]+$",
       "errorMessage": "无效的规则"
     },
-    {
-      "title": "匹配Geosite内的域名",
-      "pattern": "^GEOSITE((?:,[^,]+){1})$",
-      "errorMessage": "无效的规则"
-    },
+    { "title": "匹配Geosite内的域名", "pattern": "^GEOSITE,[^,]+$", "errorMessage": "无效的规则" },
     {
       "title": "匹配IP所属国家代码",
-      "pattern": "^GEOIP((?:,[^,]+){1})(?:,\\s*(no-resolve|src)\\s*){0,2}$",
+      "pattern": "^GEOIP,[^,]+(?:,(?:no-resolve|src)){0,2}$",
       "errorMessage": "无效的规则"
     },
     {
       "title": "匹配来源IP所属国家代码",
-      "pattern": "^SRC-GEOIP((?:,[^,]+){1})$",
+      "pattern": "^SRC-GEOIP,[^,]+$",
       "errorMessage": "无效的规则"
     },
     {
       "title": "匹配IP所属ASN",
-      "pattern": "^IP-ASN((?:,[^,]+){1})(?:,\\s*(no-resolve|src)\\s*){0,2}$",
+      "pattern": "^IP-ASN,[^,]+(?:,(?:no-resolve|src)){0,2}$",
       "errorMessage": "无效的规则"
     },
+    { "title": "匹配来源IP所属ASN", "pattern": "^SRC-IP-ASN,[^,]+$", "errorMessage": "无效的规则" },
     {
-      "title": "匹配来源IP所属ASN",
-      "pattern": "^SRC-IP-ASN((?:,[^,]+){1})$",
+      "title": "匹配IP地址范围",
+      "pattern": "^IP-CIDR,[^,]+(?:,(?:no-resolve|src)){0,2}$",
       "errorMessage": "无效的规则"
     },
     {
       "title": "匹配IP地址范围",
-      "pattern": "^IP-CIDR((?:,[^,]+){1})(?:,\\s*(no-resolve|src)\\s*){0,2}$",
-      "errorMessage": "无效的规则"
-    },
-    {
-      "title": "匹配IP地址范围",
-      "pattern": "^IP-CIDR6((?:,[^,]+){1})(?:,\\s*(no-resolve|src)\\s*){0,2}$",
+      "pattern": "^IP-CIDR6,[^,]+(?:,(?:no-resolve|src)){0,2}$",
       "errorMessage": "无效的规则"
     },
     {
       "title": "匹配来源IP地址范围",
-      "pattern": "^SRC-IP-CIDR((?:,[^,]+){1})$",
+      "pattern": "^SRC-IP-CIDR,[^,]+$",
       "errorMessage": "无效的规则"
     },
     {
       "title": "匹配IP后缀范围",
-      "pattern": "^IP-SUFFIX((?:,[^,]+){1})(?:,\\s*(no-resolve|src)\\s*){0,2}$",
+      "pattern": "^IP-SUFFIX,[^,]+(?:,(?:no-resolve|src)){0,2}$",
       "errorMessage": "无效的规则"
     },
     {
       "title": "匹配来源IP后缀范围",
-      "pattern": "^SRC-IP-SUFFIX((?:,[^,]+){1})$",
+      "pattern": "^SRC-IP-SUFFIX,[^,]+$",
       "errorMessage": "无效的规则"
     },
     {
       "title": "匹配请求来源端口范围",
-      "pattern": "^SRC-PORT((?:,[^,]+){1})$",
+      "pattern": "^SRC-PORT,[^,]+$",
       "errorMessage": "无效的规则"
     },
     {
       "title": "匹配请求目标端口范围",
-      "pattern": "^DST-PORT((?:,[^,]+){1})$",
+      "pattern": "^DST-PORT,[^,]+$",
       "errorMessage": "无效的规则"
     },
     {
       "title": "匹配入站端口,可用端口范围",
-      "pattern": "^IN-PORT((?:,[^,]+){1})$",
+      "pattern": "^IN-PORT,[^,]+$",
       "errorMessage": "无效的规则"
     },
     {
       "title": "DSCP标记(仅限tproxy udp入站)",
-      "pattern": "^DSCP((?:,[^,]+){1})$",
+      "pattern": "^DSCP,[^,]+$",
       "errorMessage": "无效的规则"
     },
     {
       "title": "匹配进程名称(Android包名)",
-      "pattern": "^PROCESS-NAME((?:,[^,]+){1})$",
+      "pattern": "^PROCESS-NAME,[^,]+$",
       "errorMessage": "无效的规则"
     },
     {
       "title": "匹配完整进程路径",
-      "pattern": "^PROCESS-PATH((?:,[^,]+){1})$",
+      "pattern": "^PROCESS-PATH,[^,]+$",
       "errorMessage": "无效的规则"
     },
     {
       "title": "正则匹配完整进程名称(Android包名)",
-      "pattern": "^PROCESS-NAME-REGEX((?:,[^,]+){1})$",
+      "pattern": "^PROCESS-NAME-REGEX,[^,]+$",
       "errorMessage": "无效的规则"
     },
     {
       "title": "正则匹配完整进程路径",
-      "pattern": "^PROCESS-PATH-REGEX((?:,[^,]+){1})$",
+      "pattern": "^PROCESS-PATH-REGEX,[^,]+$",
       "errorMessage": "无效的规则"
     },
     {
       "title": "通配完整进程名称(Android包名)",
-      "pattern": "^PROCESS-NAME-WILDCARD((?:,[^,]+){1})$",
+      "pattern": "^PROCESS-NAME-WILDCARD,[^,]+$",
       "errorMessage": "无效的规则"
     },
     {
       "title": "通配完整进程路径",
-      "pattern": "^PROCESS-PATH-WILDCARD((?:,[^,]+){1})$",
+      "pattern": "^PROCESS-PATH-WILDCARD,[^,]+$",
       "errorMessage": "无效的规则"
     },
     {
       "title": "匹配传输协议(tcp/udp)",
-      "pattern": "^NETWORK((?:,[^,]+){1})$",
+      "pattern": "^NETWORK,[^,]+$",
       "errorMessage": "无效的规则"
     },
-    {
-      "title": "匹配Linux USER ID",
-      "pattern": "^UID((?:,[^,]+){1})$",
-      "errorMessage": "无效的规则"
-    },
-    {
-      "title": "匹配入站类型",
-      "pattern": "^IN-TYPE((?:,[^,]+){1})$",
-      "errorMessage": "无效的规则"
-    },
-    {
-      "title": "匹配入站用户名",
-      "pattern": "^IN-USER((?:,[^,]+){1})$",
-      "errorMessage": "无效的规则"
-    },
-    {
-      "title": "匹配入站名称",
-      "pattern": "^IN-NAME((?:,[^,]+){1})$",
-      "errorMessage": "无效的规则"
-    },
+    { "title": "匹配Linux USER ID", "pattern": "^UID,[^,]+$", "errorMessage": "无效的规则" },
+    { "title": "匹配入站类型", "pattern": "^IN-TYPE,[^,]+$", "errorMessage": "无效的规则" },
+    { "title": "匹配入站用户名", "pattern": "^IN-USER,[^,]+$", "errorMessage": "无效的规则" },
+    { "title": "匹配入站名称", "pattern": "^IN-NAME,[^,]+$", "errorMessage": "无效的规则" },
     {
       "title": "逻辑和",
       "pattern": "^AND,\\((?:\\([^()]*\\))(?:,\\([^()]*\\))+\\)$",
