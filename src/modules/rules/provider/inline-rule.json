@@ -10,7 +10,7 @@
     },
     {
       "title": "匹配域名正则表达式",
-      "pattern": "^DOMAIN-REGEX,[^,]+$",
+      "pattern": "^DOMAIN-REGEX,.+$",
       "errorMessage": "无效的规则"
     },
     {
@@ -92,12 +92,12 @@
     },
     {
       "title": "正则匹配完整进程名称(Android包名)",
-      "pattern": "^PROCESS-NAME-REGEX,[^,]+$",
+      "pattern": "^PROCESS-NAME-REGEX,.+$",
       "errorMessage": "无效的规则"
     },
     {
       "title": "正则匹配完整进程路径",
-      "pattern": "^PROCESS-PATH-REGEX,[^,]+$",
+      "pattern": "^PROCESS-PATH-REGEX,.+$",
       "errorMessage": "无效的规则"
     },
     {

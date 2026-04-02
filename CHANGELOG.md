@@ -12,6 +12,7 @@
 - 修复: 部分配置项的类型错误/过时、默认值错误/过时
 - 修复: `rule-provider` 的 `inline` 类型规则的 `AND` 、`OR`、`NOT` 的 target 不应存在
 - 修复: `fake-ip-filter` 的 `rule` 模式下的规则不应支持 `AND` 、`OR`、`NOT`
+- 修复: 规则 `DOMAIN-REGEX`、`PROCESS-NAME-REGEX`、`PROCESS-PATH-REGEX` 的 `payload` 应支持含有逗号
 
 ---
 

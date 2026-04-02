@@ -18,7 +18,7 @@
     },
     {
       "title": "匹配域名正则表达式",
-      "pattern": "^DOMAIN-REGEX,[^,]+(?:,(?:[fF][aA][kK][eE]-[iI][pP]|[rR][eE][aA][lL]-[iI][pP]))$",
+      "pattern": "^DOMAIN-REGEX,.+(?:,(?:[fF][aA][kK][eE]-[iI][pP]|[rR][eE][aA][lL]-[iI][pP]))$",
       "errorMessage": "无效的规则"
     },
     {
@@ -38,7 +38,7 @@
     },
     {
       "title": "匹配所有请求(无需条件)",
-      "pattern": "^MATCH,(?:[fF][aA][kK][eE]-[iI][pP]|[rR][eE][aA][lL]-[iI][pP])$",
+      "pattern": "^MATCH(?:,(?:[fF][aA][kK][eE]-[iI][pP]|[rR][eE][aA][lL]-[iI][pP]))$",
       "errorMessage": "无效的规则"
     }
   ]
