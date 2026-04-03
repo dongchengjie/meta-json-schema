@@ -4,11 +4,11 @@
 
 - 新增: 约束 masque 的 `ip` 、`ipv6` 至少填一项
 
-### Bugs Fixes
+### Bug Fixes
 
 - 修复: TUN 缺失 `auto-redirect-iproute2-fallback-rule-index` 配置项
 - 修复: vmess 缺失 `skip-cert-verify` 配置项
-- 修复: masque 的 `ip` 、`ipv6` 配置项不支持配置为 CIDR 格式
+- 修复: masque 的 `ip` 、`ipv6` 配置项应支持配置为 CIDR 格式
 - 修复: 部分配置项的类型错误/过时、默认值错误/过时
 - 修复: `rule-provider` 的 `inline` 类型规则的 `AND` 、`OR`、`NOT` 的 target 不应存在
 - 修复: `fake-ip-filter` 的 `rule` 模式下的规则不应支持 `AND` 、`OR`、`NOT`
@@ -27,7 +27,7 @@
 - 新增: 兼容 [Smart](https://github.com/vernesong/mihomo/blob/Alpha/adapter/outboundgroup/smart.go) 代理组相关配置项
 - 新增: sudoku `table-type` 支持 `up_ascii_down_entropy`、`up_entropy_down_ascii`
 
-### Bugs Fixes
+### Bug Fixes
 
 - 修复: 补充 vless 缺失 `udp` 配置项
 
@@ -45,7 +45,7 @@
 - 调整: sudoku HTTP掩码相关配置 迁移至 `httpmask` 配置项
 - 新增: sudoku `listeners` 新增配置项 `fallback`
 
-### Bugs Fixes
+### Bug Fixes
 
 - 修复: `proxy-server-nameserver` 在未显式配置 `respect-rules` 或 `proxy-server-nameserver-policy` 时变为必填项
 
@@ -60,7 +60,7 @@
 - 调整: 调整 sudoku 配置项描述
 - 新增: DNS 新增配置项 `proxy-server-nameserver-policy`
 
-### Bugs Fixes
+### Bug Fixes
 
 - 修复: `reality-opts` 的 `short-id` 配置项应为可选项
 - 修复: `fake-ip-filter-mode` 未配置时，错误地使用了 `rule` 规则进行校验
@@ -82,7 +82,7 @@
 - 移除: 即将弃用 `global-client-fingerprint`
 - 新增: trojan/vmess/vless grpc-opts 新增 `grpc-user-agent` 配置项
 
-### Bugs Fixes
+### Bug Fixes
 
 - 修复: `proxy-provider` 和 `rule-provider` 配置的 `size-limit` 单位描述错误
 - 修复: `SRC-IP-ASN` 错误地拼写成 `SCR-IP-ASN`
@@ -172,7 +172,7 @@
 
 - 新增: TUN 新增 `loopback-address` 配置项
 
-### Bugs Fixes
+### Bug Fixes
 
 - 修复: `sniffer` 配置的 `force-domain` 配置项不支持 `geosite:` 和 `rule-set:`
 
@@ -185,10 +185,10 @@
 - 调整: 路由规则的参数部分（no-resolve、src），其前后支持任意个数的空格
 - 调整: IPv6 支持 `IPv4-mapped IPv6` 格式
 
-### Bugs Fixes
+### Bug Fixes
 
 - 修复: `external-controller-cors` 配置的 `allow-origins` 配置项误写成 `allow-origin`
-- 修复: TUN 配置项 `inet4-address`、`inet6-address` 类型错误（应为 CIDR 数组）
+- 修复: TUN 配置项 `inet4-address`、`inet6-address` 类型应为 CIDR 数组
 
 ---
 
@@ -211,9 +211,9 @@
 - 新增: listener `shadowsocks` 新增 `shadow-tls` 配置项
 - 移除: 代理组移除 `routing-mark` 、`interface-name` 配置项
 
-### Bugs Fixes
+### Bug Fixes
 
-- 修复: 域名正则松散，支持单段/自定义域名，如：localhost、internal 等
+- 修复: 域名正则宽松，支持单段/自定义域名，如：localhost、internal 等
 
 ---
 
@@ -232,7 +232,7 @@
 - 新增: ss 协议 新增 `gost-plugin` 插件支持
 - 新增: mieru 协议 新增 `udp` 支持
 
-### Bugs Fixes
+### Bug Fixes
 
 - 修复: 代理组类型配置项 `type` 枚举重复显示
 
@@ -249,7 +249,7 @@
 - 调整: inbound 端口支持使用 ports 格式
 - 调整: inbound （socks5、http、mixed）支持 tls 配置
 
-### Bugs Fixes
+### Bug Fixes
 
 - 修复: inbound （socks5、http、mixed）缺失 `reality-config` 配置项
 
@@ -262,7 +262,7 @@
 - 新增: hy2 新增 `initial-stream-receive-window`、`max-stream-receive-window`、`initial-connection-receive-window`、`max-connection-receive-window` quic-go 配置项
 - 新增: inbound 新增 vless `listeners` 配置项
 
-### Bugs Fixes
+### Bug Fixes
 
 - 修复: 枚举 `cipher` 缺失加密方法 `2022-blake3-aes-128-ccm`、`2022-blake3-aes-256-ccm`、`2022-blake3-chacha8-poly1305`、`chacha20-poly1305`、`chacha8-ietf-poly1305`、`xchacha8-ietf-poly1305`、`zero`
 
@@ -276,7 +276,7 @@
 - 新增: proxy-providers 新增 `inline` 内联 proxies 配置
 - 调整: outbound 的 `header` 配置项宽松，不再限制 value 的类型为 string
 
-### Bugs Fixes
+### Bug Fixes
 
 - 修复: `tuic` V4 的 `token` 配置项类型错误
 
@@ -297,7 +297,7 @@
 
 - 新增: DNS 新增 `direct-nameserver`、`direct-nameserver-follow-policy` 配置项
 
-### Bugs Fixes
+### Bug Fixes
 
 - 修复: `skip-auth-prefixes`、`lan-allowed-ips`、`lan-disallowed-ips` 类型错误
 
@@ -353,7 +353,7 @@
 - 调整: `tun` 配置项 `table-index` 重命名为 `iproute2-table-index`
 - 新增: `tun` 新增配置项 `iproute2-rule-index`、`auto-redirect`、`auto-redirect-input-mark`、`auto-redirect-output-mark`、`route-address-set`、`route-exclude-address-set`
 
-### Bugs Fixes
+### Bug Fixes
 
 - 修复: `bind-address` 类型错误
 - 修复: 字符串数组提示错误
@@ -372,7 +372,7 @@
 - 新增: `vless` 使用旧版 `XTLS` 协议警告
 - 新增: `rules` 新增规则 `PROCESS-NAME-REGEX` 、 `PROCESS-PATH-REGEX`
 
-### Bugs Fixes
+### Bug Fixes
 
 - 修复: cipher 缺少 `none`
 - 修复: `default-nameserver`类型错误
@@ -389,7 +389,7 @@
 - 调整: `proxy-providers`,`proxy-group` 配置项 `health-check`的`interval` 和 `timeout` 属性类型变更(`integer` --> `string`), 支持配置时间单位
 - 新增: 新增配置项`external-controller-unix`,允许使用 Unix Socket 访问 API
 
-### Bugs Fixes
+### Bug Fixes
 
 - 字符串数组类型错误
 - 监听地址支持`:port`

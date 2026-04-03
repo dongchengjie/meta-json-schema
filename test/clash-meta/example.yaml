@@ -1437,8 +1437,10 @@ rule-providers:
       - "IN-NAME,MyInbound"
 
       # Logic rules (AND/OR/NOT)
-      - "AND,((DOMAIN,example.com),(DST-PORT,443),(DST-PORT,443),(DST-PORT,443))"
-      - "OR,((DOMAIN-SUFFIX,example.org),(NETWORK,udp))"
+      - "AND,((DOMAIN,example.com),(DST-PORT,443))"
+      - "AND,((DOMAIN,example.com),(DST-PORT,443),(NETWORK,udp))"
+      - "OR,((DOMAIN-SUFFIX,example.org),(DST-PORT,443))"
+      - "OR,((DOMAIN-SUFFIX,example.org),(DST-PORT,443),(NETWORK,udp))"
       - "NOT,((DOMAIN,blocked.example))"
   rule6:
     type: inline
