@@ -72,6 +72,20 @@
           "description": "模式",
           "markdownDescription": "模式",
           "default": "auto"
+        },
+        "no-sse-header": {
+          "type": "boolean",
+          "title": "禁用 SSE 防缓冲头",
+          "description": "禁用 SSE 防缓冲头",
+          "markdownDescription": "禁用 SSE 防缓冲头",
+          "default": false
+        },
+        "sc-stream-up-server-secs": {
+          "type": "string",
+          "title": "Stream-Up 服务端保活/填充间隔（秒）",
+          "description": "支持固定值（如：20）或范围（如：20-80）",
+          "markdownDescription": "支持固定值（如：20）或范围（如：20-80）",
+          "default": "20-80"
         }
       }
     },

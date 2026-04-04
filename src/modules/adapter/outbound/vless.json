@@ -59,7 +59,7 @@
         },
         "x-padding-bytes": {
           "$ref": "#/definitions/compatible/string",
-          "title": "HTTP 请求中添加的额外随机字节数（范围）",
+          "title": "HTTP 请求中添加的额外随机字节数",
           "description": "支持固定值（如：200）或范围（如：100-1000）",
           "markdownDescription": "支持固定值（如：200）或范围（如：100-1000）",
           "default": "100-1000"
@@ -74,7 +74,7 @@
       "properties": {
         "max-connections": {
           "$ref": "#/definitions/compatible/string",
-          "title": "最大连接数（范围）",
+          "title": "最大连接数",
           "description": "支持固定值（如：16）或范围（如：16-32）",
           "markdownDescription": "支持固定值（如：16）或范围（如：16-32）",
           "default": "0"
@@ -141,7 +141,7 @@
         },
         "x-padding-bytes": {
           "$ref": "#/definitions/compatible/string",
-          "title": "HTTP 请求中添加的额外随机字节数（范围）",
+          "title": "HTTP 请求中添加的额外随机字节数",
           "description": "支持固定值（如：200）或范围（如：100-1000）",
           "markdownDescription": "支持固定值（如：200）或范围（如：100-1000）",
           "default": "100-1000"
