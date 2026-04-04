@@ -825,6 +825,12 @@ proxies: # socks5
         X-Forwarded-For: ""
       no-grpc-header: false
       x-padding-bytes: "100-1000"
+      reuse-settings: # aka XMUX
+        max-connections: "16-32"
+        max-concurrency: "0"
+        c-max-reuse-times: "0"
+        h-max-request-times: "600-900"
+        h-max-reusable-secs: "1800-3000"
       download-settings:
         # # xhttp part
         path: "/"
@@ -833,6 +839,12 @@ proxies: # socks5
           X-Forwarded-For: ""
         no-grpc-header: false
         x-padding-bytes: "100-1000"
+        reuse-settings: # aka XMUX
+          max-connections: "16-32"
+          max-concurrency: "0"
+          c-max-reuse-times: "0"
+          h-max-request-times: "600-900"
+          h-max-reusable-secs: "1800-3000"
         # # proxy part
         server: example.com
         port: 443

@@ -64,7 +64,49 @@
           "markdownDescription": "支持固定值（如：200）或范围（如：100-1000）",
           "default": "100-1000"
         },
+        "reuse-settings": { "title": "复用配置", "$ref": "#/definitions/reuse-settings" },
         "download-settings": { "title": "下载配置", "$ref": "#/definitions/download-settings" }
+      }
+    },
+    "reuse-settings": {
+      "type": "object",
+      "title": "复用配置",
+      "properties": {
+        "max-connections": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "最大连接数（范围）",
+          "description": "支持固定值（如：16）或范围（如：16-32）",
+          "markdownDescription": "支持固定值（如：16）或范围（如：16-32）",
+          "default": "0"
+        },
+        "max-concurrency": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "单连接最大并发数",
+          "description": "支持固定值（如：2）或范围（如：2-4）",
+          "markdownDescription": "支持固定值（如：2）或范围（如：2-4）",
+          "default": "0"
+        },
+        "c-max-reuse-times": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "连接最大复用次数",
+          "description": "支持固定值（如：5）或范围（如：5-10）",
+          "markdownDescription": "支持固定值（如：5）或范围（如：5-10）",
+          "default": "0"
+        },
+        "h-max-request-times": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "单连接最大请求次数",
+          "description": "支持固定值（如：600）或范围（如：600-900）",
+          "markdownDescription": "支持固定值（如：600）或范围（如：600-900）",
+          "default": "0"
+        },
+        "h-max-reusable-secs": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "单连接最大可复用时长（秒）",
+          "description": "支持固定值（如：1800）或范围（如：1800-3000）",
+          "markdownDescription": "支持固定值（如：1800）或范围（如：1800-3000）",
+          "default": "0"
+        }
       }
     },
     "download-settings": {
@@ -104,6 +146,7 @@
           "markdownDescription": "支持固定值（如：200）或范围（如：100-1000）",
           "default": "100-1000"
         },
+        "reuse-settings": { "title": "复用配置", "$ref": "#/definitions/reuse-settings" },
         "server": {
           "$ref": "#/definitions/patterns/server",
           "title": "下载服务器",

@@ -3,6 +3,7 @@
 ### Changes
 
 - 新增: 约束 masque 的 `ip` 、`ipv6` 至少填一项
+- 新增: vless `xhttp` 传输协议新增配置项 `reuse-settings`
 
 ### Bug Fixes
 
