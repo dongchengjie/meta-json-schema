@@ -5,6 +5,7 @@
 - 新增: 约束 masque 的 `ip` 、`ipv6` 至少填一项
 - 新增: vless `xhttp` 新增配置项 `reuse-settings`
 - 新增: listener vless `xhttp` 新增配置项 `sc-stream-up-server-secs`、`no-sse-header`
+- 新增: vmess/vless/trojan `grpc-opts` 新增配置项 `max-connections`、`min-streams`、`max-streams`
 
 ### Bug Fixes
 
@@ -22,7 +23,7 @@
 
 ### Changes
 
-- 新增: vmess `grpc-opts` 新增配置项 `ping-interval`
+- 新增: vmess/vless/trojan `grpc-opts` 新增配置项 `ping-interval`
 - 新增: vless 支持 `xhttp` 传输协议，并新增配置项 `xhttp-opts`
 - 新增: listener vless 支持 `xhttp` 传输协议，并新增配置项 `xhttp-config`
 - 新增: 兼容安卓端 `clash-for-android` 配置项 [#11](https://github.com/dongchengjie/meta-json-schema/issues/11)

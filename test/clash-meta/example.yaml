@@ -688,6 +688,9 @@ proxies: # socks5
       grpc-service-name: "example"
       grpc-user-agent: "grpc-go/1.36.0"
       ping-interval: 0 # 默认关闭，单位为秒
+      max-connections: 1 # Maximum connections. Conflict with max-streams.
+    # min-streams: 0 # Minimum multiplexed streams in a connection before opening a new connection. Conflict with max-streams.
+    # max-streams: 0 # Maximum multiplexed streams in a connection before opening a new connection. Conflict with max-connections and min-streams.
     ip-version: ipv4
 
   # vless
@@ -768,6 +771,9 @@ proxies: # socks5
       grpc-service-name: "grpc"
       grpc-user-agent: "grpc-go/1.36.0"
       ping-interval: 0 # 默认关闭，单位为秒
+      max-connections: 1 # Maximum connections. Conflict with max-streams.
+    # min-streams: 0 # Minimum multiplexed streams in a connection before opening a new connection. Conflict with max-streams.
+    # max-streams: 0 # Maximum multiplexed streams in a connection before opening a new connection. Conflict with max-connections and min-streams.
     reality-opts:
       public-key: CrrQSjAG_YkHLwvM2M-7XkKJilgL5upBKCp0od0tLhE
       short-id: 10f897e26c4b9478
@@ -905,6 +911,9 @@ proxies: # socks5
       grpc-service-name: "example"
       grpc-user-agent: "grpc-go/1.36.0"
       ping-interval: 0 # 默认关闭，单位为秒
+      max-connections: 1 # Maximum connections. Conflict with max-streams.
+  # min-streams: 0 # Minimum multiplexed streams in a connection before opening a new connection. Conflict with max-streams.
+  # max-streams: 0 # Maximum multiplexed streams in a connection before opening a new connection. Conflict with max-connections and min-streams.
 
   - name: trojan-ws
     server: 1.2.3.4
