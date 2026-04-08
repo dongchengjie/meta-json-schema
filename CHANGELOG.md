@@ -7,6 +7,7 @@
 - 新增: listener vless `xhttp` 新增配置项 `sc-stream-up-server-secs`、`no-sse-header`、`sc-max-each-post-bytes`
 - 新增: vmess/vless/trojan `grpc-opts` 新增配置项 `max-connections`、`min-streams`、`max-streams`
 - 新增: trusttunnel 新增配置项 `max-connections`、`min-streams`、`max-streams`
+- 新增: sing-tun 新增配置项 `include-mac-address`、`exclude-mac-address`
 
 ### Bug Fixes
 

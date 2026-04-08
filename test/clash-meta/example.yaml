@@ -186,6 +186,10 @@ tun:
     - 1000
   exclude-uid-range: # 排除路由的的用户范围
     - 1000:9999
+  include-mac-address:
+    - 00:11:22:33:44:55
+  exclude-mac-address:
+    - 00:11:22:33:44:55
   exclude-src-port:
     - 1000
   exclude-dst-port:
@@ -1734,6 +1738,10 @@ listeners:
       - 1000
     exclude-uid-range: # 排除路由的的用户范围
       - 1000:99999
+    include-mac-address:
+      - 00:11:22:33:44:55
+    exclude-mac-address:
+      - 00:11:22:33:44:55
 
     # Android 用户和应用规则仅在 Android 下被支持
     # 并且需要 auto-route

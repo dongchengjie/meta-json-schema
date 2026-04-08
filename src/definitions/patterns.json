@@ -111,5 +111,19 @@
   "uuid": {
     "pattern": "^[0-9a-fA-F]{8}(?:-?[0-9a-fA-F]{4}){3}-?[0-9a-fA-F]{12}$",
     "errorMessage": "无效的UUID"
+  },
+  "macAddress": {
+    "anyOf": [
+      {
+        "description": "6组2位十六进制",
+        "pattern": "^[0-9a-fA-F]{2}(?:[:-][0-9a-fA-F]{2}){5}$",
+        "errorMessage": "无效的MAC地址"
+      },
+      {
+        "description": "8组2位十六进制",
+        "pattern": "^[0-9a-fA-F]{2}(?:[:-][0-9a-fA-F]{2}){7}$",
+        "errorMessage": "无效的MAC地址"
+      }
+    ]
   }
 }

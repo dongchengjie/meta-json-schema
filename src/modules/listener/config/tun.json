@@ -245,6 +245,18 @@
       "description": "使其避免被Tun路由流量",
       "markdownDescription": "使其避免被Tun路由流量"
     },
+    "include-mac-address": {
+      "$ref": "#/definitions/types/macAddressArray",
+      "title": "包含被路由的MAC地址",
+      "description": "使其被Tun路由流量(需要启用auto-route)",
+      "markdownDescription": "使其被Tun路由流量(需要启用`auto-route`)"
+    },
+    "exclude-mac-address": {
+      "$ref": "#/definitions/types/macAddressArray",
+      "title": "排除被路由的MAC地址",
+      "description": "使其避免被Tun路由流量",
+      "markdownDescription": "使其避免被Tun路由流量"
+    },
     "endpoint-independent-nat": {
       "type": "boolean",
       "title": "启用独立于端点的NAT",

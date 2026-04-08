@@ -18,5 +18,6 @@
     "items": { "$ref": "./patterns.json#/domainWildcard" }
   },
   "uriArray": { "type": "array", "items": { "$ref": "./patterns.json#/uri" } },
-  "urlArray": { "type": "array", "items": { "$ref": "./patterns.json#/url" } }
+  "urlArray": { "type": "array", "items": { "$ref": "./patterns.json#/url" } },
+  "macAddressArray": { "type": "array", "items": { "$ref": "./patterns.json#/macAddress" } }
 }
