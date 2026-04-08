@@ -124,8 +124,36 @@
           "title": "拥塞窗口大小",
           "description": "拥塞窗口大小(Congestion Window)",
           "markdownDescription": "拥塞窗口大小(Congestion Window)"
+        },
+        "max-connections": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "最大连接数",
+          "description": "与 max-streams 冲突",
+          "markdownDescription": "与 `max-streams` 冲突"
+        },
+        "min-streams": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "每连接最小复用流数",
+          "description": "与 max-streams 冲突",
+          "markdownDescription": "与 `max-streams` 冲突"
+        },
+        "max-streams": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "每连接最大复用流数",
+          "description": "与 max-connections 、 min-streams 冲突",
+          "markdownDescription": "与 `max-connections` 、 `min-streams` 冲突"
         }
-      }
+      },
+      "allOf": [
+        {
+          "if": { "required": ["max-connections", "max-streams"] },
+          "then": { "deprecationMessage": "max-connections 与 max-streams 不能同时设置" }
+        },
+        {
+          "if": { "required": ["min-streams", "max-streams"] },
+          "then": { "deprecationMessage": "min-streams 与 max-streams 不能同时设置" }
+        }
+      ]
     },
     {
       "type": "object",
