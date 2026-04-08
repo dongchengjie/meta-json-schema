@@ -86,6 +86,13 @@
           "description": "支持固定值（如：20）或范围（如：20-80）",
           "markdownDescription": "支持固定值（如：20）或范围（如：20-80）",
           "default": "20-80"
+        },
+        "sc-max-each-post-bytes": {
+          "type": "integer",
+          "title": "单次 POST 请求允许的最大 body 字节数",
+          "description": "超过限制服务端将拒绝（HTTP 413）",
+          "markdownDescription": "超过限制服务端将拒绝（HTTP 413）",
+          "default": 1000000
         }
       }
     },

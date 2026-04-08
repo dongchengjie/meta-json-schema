@@ -3,8 +3,8 @@
 ### Changes
 
 - 新增: 约束 masque 的 `ip` 、`ipv6` 至少填一项
-- 新增: vless `xhttp` 新增配置项 `reuse-settings`
-- 新增: listener vless `xhttp` 新增配置项 `sc-stream-up-server-secs`、`no-sse-header`
+- 新增: vless `xhttp` 新增配置项 `reuse-settings`、`sc-max-each-post-bytes`
+- 新增: listener vless `xhttp` 新增配置项 `sc-stream-up-server-secs`、`no-sse-header`、`sc-max-each-post-bytes`
 - 新增: vmess/vless/trojan `grpc-opts` 新增配置项 `max-connections`、`min-streams`、`max-streams`
 
 ### Bug Fixes

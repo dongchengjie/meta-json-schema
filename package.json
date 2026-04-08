@@ -34,7 +34,7 @@
     "@commitlint/config-conventional": "^20.5.0",
     "dprint": "^0.53.2",
     "json-schema-artifact": "^2.0.3",
-    "lefthook": "^2.1.4"
+    "lefthook": "^2.1.5"
   },
   "commitlint": {
     "extends": [
