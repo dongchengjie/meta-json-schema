@@ -408,7 +408,7 @@ proxies: # socks5
     username: username
     password: password
     tls: true
-    fingerprint: chrome
+    fingerprint: AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99:AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99
     skip-cert-verify: true
     udp: true
     ip-version: ipv6
@@ -423,7 +423,7 @@ proxies: # socks5
     tls: true # https
     skip-cert-verify: true
     sni: custom.com
-    fingerprint: chrome # 同 experimental.fingerprints 使用 sha256 指纹，配置协议独立的指纹，将忽略 experimental.fingerprints
+    fingerprint: AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99:AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99 # 同 experimental.fingerprints 使用 sha256 指纹，配置协议独立的指纹，将忽略 experimental.fingerprints
     ip-version: dual
 
   # Snell
@@ -493,7 +493,7 @@ proxies: # socks5
       tls: true # wss
       # 可使用 openssl x509 -noout -fingerprint -sha256 -inform pem -in yourcert.pem 获取
       # 配置指纹将实现 SSL Pining 效果
-      fingerprint: chrome
+      fingerprint: AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99:AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99
       ech-opts:
         enable: true # 必须手动开启
         # 如果config为空则通过dns解析，不为空则通过该值指定，格式为经过base64编码的ech参数（dig +short TYPE65 tls-ech.dev）
@@ -533,7 +533,7 @@ proxies: # socks5
       tls: true # wss
       # 可使用 openssl x509 -noout -fingerprint -sha256 -inform pem -in yourcert.pem 获取
       # 配置指纹将实现 SSL Pining 效果
-      fingerprint: chrome
+      fingerprint: AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99:AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99
       skip-cert-verify: true
       host: bing.com
       path: "/"
@@ -622,7 +622,7 @@ proxies: # socks5
     cipher: auto
     udp: true
     tls: true
-    fingerprint: chrome
+    fingerprint: AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99:AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99
     client-fingerprint: chrome # Available: "chrome","firefox","safari","ios","random", currently only support TLS transport in TCP/GRPC/WS/HTTP for VLESS/Vmess and trojan.
     skip-cert-verify: true
     servername: example.com # priority over wss host
@@ -650,7 +650,7 @@ proxies: # socks5
     cipher: auto
     network: h2
     tls: true
-    fingerprint: chrome
+    fingerprint: AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99:AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99
     h2-opts:
       host:
         - http.example.com
@@ -685,7 +685,7 @@ proxies: # socks5
     cipher: auto
     network: grpc
     tls: true
-    fingerprint: chrome
+    fingerprint: AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99:AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99
     servername: example.com
     skip-cert-verify: true
     grpc-opts:
@@ -707,7 +707,7 @@ proxies: # socks5
     servername: example.com # AKA SNI
     flow: xtls-rprx-vision # xtls-rprx-origin  # enable XTLS
     skip-cert-verify: true
-    fingerprint: chrome
+    fingerprint: AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99:AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99
     client-fingerprint: random # Available: "chrome","firefox","safari","random","none"
     ech-opts:
       enable: true # 必须手动开启
@@ -725,7 +725,7 @@ proxies: # socks5
     udp: true
     flow: xtls-rprx-vision
     client-fingerprint: chrome
-    fingerprint: chrome
+    fingerprint: AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99:AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99
     skip-cert-verify: true
 
   - name: "vless-encryption"
@@ -793,7 +793,7 @@ proxies: # socks5
     client-fingerprint: random # Available: "chrome","firefox","safari","random","none"
     servername: example.com # priority over wss host
     skip-cert-verify: true
-    fingerprint: chrome
+    fingerprint: AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99:AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99
     ws-opts:
       path: "/"
       headers:
@@ -821,7 +821,7 @@ proxies: # socks5
       short-id: xxx # optional
       support-x25519mlkem768: false # 如果服务端支持可手动设置为true
     skip-cert-verify: false
-    fingerprint: chrome
+    fingerprint: AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99:AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99
     certificate: ...
     private-key: ...
     servername: xxx.com
@@ -873,7 +873,7 @@ proxies: # socks5
           short-id: xxx # optional
           support-x25519mlkem768: false # 如果服务端支持可手动设置为true
         skip-cert-verify: false
-        fingerprint: chrome
+        fingerprint: AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99:AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99
         certificate: ...
         private-key: ...
         servername: xxx.com
@@ -886,7 +886,7 @@ proxies: # socks5
     port: 443
     password: yourpsk
     client-fingerprint: random # Available: "chrome","firefox","safari","random","none"
-    fingerprint: chrome
+    fingerprint: AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99:AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99
     udp: true
     sni: example.com # aka server name
     alpn:
@@ -911,7 +911,7 @@ proxies: # socks5
     network: grpc
     sni: example.com
     skip-cert-verify: true
-    fingerprint: chrome
+    fingerprint: AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99:AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99
     udp: true
     grpc-opts:
       grpc-service-name: "example"
@@ -929,7 +929,7 @@ proxies: # socks5
     network: ws
     sni: example.com
     skip-cert-verify: true
-    fingerprint: chrome
+    fingerprint: AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99:AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99
     udp: true
     ws-opts:
       path: /path
@@ -948,7 +948,7 @@ proxies: # socks5
     udp: true
     sni: example.com # aka server name
     skip-cert-verify: true
-    fingerprint: chrome
+    fingerprint: AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99:AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99
 
   # hysteria
   - name: "hysteria"
@@ -975,7 +975,7 @@ proxies: # socks5
     # ca: "./my.ca"
     # ca-str: "xyz"
     disable-mtu-discovery: false
-    fingerprint: chrome
+    fingerprint: AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99:AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99
     fast-open: true # 支持 TCP 快速打开，默认为 false
 
   # hysteria2
@@ -998,7 +998,7 @@ proxies: # socks5
       config: AEn+DQBFKwAgACABWIHUGj4u+PIggYXcR5JF0gYk3dCRioBW8uJq9H4mKAAIAAEAAQABAANAEnB1YmxpYy50bHMtZWNoLmRldgAA
       query-server-name: xxx.com # 可选项，不为空时用于指定通过dns解析时的域名
     skip-cert-verify: false
-    fingerprint: chrome
+    fingerprint: AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99:AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99
     alpn:
       - h3
     # ca: "./my.ca"

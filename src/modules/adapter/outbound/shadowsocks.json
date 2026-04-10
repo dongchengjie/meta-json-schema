@@ -61,10 +61,10 @@
         },
         "ech-opts": { "$ref": "#/definitions/ech-options" },
         "fingerprint": {
-          "$ref": "#/definitions/enums/fingerprint",
-          "title": "指纹",
-          "description": "指纹",
-          "markdownDescription": "指纹"
+          "$ref": "#/definitions/patterns/sha256Fingerprint",
+          "title": "SHA-256证书指纹",
+          "description": "服务端证书的SHA-256指纹",
+          "markdownDescription": "服务端证书的`SHA-256`指纹"
         },
         "certificate": {
           "$ref": "#/definitions/compatible/string",
@@ -129,10 +129,10 @@
           "markdownDescription": "主机地址"
         },
         "fingerprint": {
-          "$ref": "#/definitions/enums/fingerprint",
-          "title": "指纹",
-          "description": "指纹",
-          "markdownDescription": "指纹"
+          "$ref": "#/definitions/patterns/sha256Fingerprint",
+          "title": "SHA-256证书指纹",
+          "description": "服务端证书的SHA-256指纹",
+          "markdownDescription": "服务端证书的`SHA-256`指纹"
         },
         "certificate": {
           "$ref": "#/definitions/compatible/string",
@@ -231,10 +231,10 @@
         },
         "ech-opts": { "$ref": "#/definitions/ech-options" },
         "fingerprint": {
-          "$ref": "#/definitions/enums/fingerprint",
-          "title": "指纹",
-          "description": "指纹",
-          "markdownDescription": "指纹"
+          "$ref": "#/definitions/patterns/sha256Fingerprint",
+          "title": "SHA-256证书指纹",
+          "description": "服务端证书的SHA-256指纹",
+          "markdownDescription": "服务端证书的`SHA-256`指纹"
         },
         "certificate": {
           "$ref": "#/definitions/compatible/string",
