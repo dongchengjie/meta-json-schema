@@ -67,7 +67,7 @@
         },
         "ech-opts": { "$ref": "#/definitions/ech-options" },
         "client-fingerprint": {
-          "$ref": "#/definitions/enums/fingerprint",
+          "$ref": "#/definitions/enums/client-fingerprint",
           "title": "客户端指纹",
           "description": "客户端指纹",
           "markdownDescription": "客户端指纹"

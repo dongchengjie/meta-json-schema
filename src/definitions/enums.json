@@ -50,8 +50,8 @@
       "2022-blake3-chacha8-poly1305"
     ]
   },
-  "fingerprint": {
-    "description": "指纹",
+  "client-fingerprint": {
+    "description": "客户端指纹",
     "enum": [
       "chrome",
       "firefox",

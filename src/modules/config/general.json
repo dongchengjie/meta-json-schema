@@ -130,7 +130,7 @@
         "global-client-fingerprint": {
           "allOf": [
             {
-              "$ref": "#/definitions/enums/fingerprint",
+              "$ref": "#/definitions/enums/client-fingerprint",
               "title": "全局客户端指纹",
               "description": "支持协议有VLESS,Vmess,trojan",
               "markdownDescription": "支持协议有`VLESS`,`Vmess`,`trojan`"

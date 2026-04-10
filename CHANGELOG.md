@@ -1,3 +1,13 @@
+## v1.19.24
+
+### Changes
+
+### Bug Fixes
+
+- 修复: outbound 的 `fingerprint` 配置项描述错误
+
+---
+
 ## v1.19.23
 
 ### Changes
