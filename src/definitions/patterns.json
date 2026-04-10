@@ -108,6 +108,10 @@
   },
   "uri": { "pattern": "^[^\\s:]+:\/\/[^\\s]+$", "errorMessage": "无效的URI" },
   "url": { "pattern": "^https?:\\/\\/[^\\s]+$", "errorMessage": "无效的URL" },
+  "sha256Fingerprint": {
+    "pattern": "^(?:[0-9A-Fa-f]{2}:){31}[0-9A-Fa-f]{2}$",
+    "errorMessage": "无效的SHA-256证书指纹"
+  },
   "uuid": {
     "pattern": "^[0-9a-fA-F]{8}(?:-?[0-9a-fA-F]{4}){3}-?[0-9a-fA-F]{12}$",
     "errorMessage": "无效的UUID"
