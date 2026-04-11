@@ -110,6 +110,18 @@
           "markdownDescription": "启用`UDP`",
           "default": true
         },
+        "skip-cert-verify": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "跳过证书验证",
+          "description": "跳过证书验证",
+          "markdownDescription": "跳过证书验证"
+        },
+        "network": {
+          "enum": ["h2"],
+          "title": "传输协议",
+          "description": "传输协议",
+          "markdownDescription": "传输协议"
+        },
         "congestion-controller": { "$ref": "#/definitions/enums/congestion-controller" },
         "cwnd": {
           "$ref": "#/definitions/compatible/integer",
