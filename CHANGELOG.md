@@ -3,6 +3,7 @@
 ### Changes
 
 - 调整: vless `xhttp` 配置项 `sc-max-each-post-bytes` 支持配置范围
+- 调整: vless `xhttp` 复用配置新增配置项 `h-keep-alive-period`
 
 ### Bug Fixes
 

@@ -114,6 +114,13 @@
           "description": "支持固定值（如：1800）或范围（如：1800-3000）",
           "markdownDescription": "支持固定值（如：1800）或范围（如：1800-3000）",
           "default": "0"
+        },
+        "h-keep-alive-period": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "Keep-Alive 间隔",
+          "description": "单位:s",
+          "markdownDescription": "单位:s",
+          "default": 0
         }
       }
     },
