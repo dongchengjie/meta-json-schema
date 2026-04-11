@@ -79,16 +79,17 @@
       "type": "object",
       "title": "复用配置",
       "properties": {
-        "max-connections": {
+        "max-concurrency": {
           "$ref": "#/definitions/compatible/string",
-          "title": "最大连接数",
+          "title": "单连接最大并发数",
           "description": "支持固定值（如：16）或范围（如：16-32）",
           "markdownDescription": "支持固定值（如：16）或范围（如：16-32）",
           "default": "0"
         },
-        "max-concurrency": {
+        "max-connections": {
           "$ref": "#/definitions/compatible/string",
-          "title": "单连接最大并发数",
+          "title": "最大连接数",
+
           "description": "支持固定值（如：2）或范围（如：2-4）",
           "markdownDescription": "支持固定值（如：2）或范围（如：2-4）",
           "default": "0"
