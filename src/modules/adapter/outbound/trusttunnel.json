@@ -129,13 +129,15 @@
           "$ref": "#/definitions/compatible/integer",
           "title": "最大连接数",
           "description": "与 max-streams 冲突",
-          "markdownDescription": "与 `max-streams` 冲突"
+          "markdownDescription": "与 `max-streams` 冲突",
+          "default": 8
         },
         "min-streams": {
           "$ref": "#/definitions/compatible/integer",
           "title": "每连接最小复用流数",
           "description": "与 max-streams 冲突",
-          "markdownDescription": "与 `max-streams` 冲突"
+          "markdownDescription": "与 `max-streams` 冲突",
+          "default": 5
         },
         "max-streams": {
           "$ref": "#/definitions/compatible/integer",
