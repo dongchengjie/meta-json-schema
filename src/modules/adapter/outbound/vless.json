@@ -65,11 +65,11 @@
           "default": "100-1000"
         },
         "sc-max-each-post-bytes": {
-          "$ref": "#/definitions/compatible/integer",
+          "$ref": "#/definitions/compatible/string",
           "title": "单次 POST 请求允许的最大 body 字节数",
-          "description": "超过限制服务端将拒绝（HTTP 413）",
-          "markdownDescription": "超过限制服务端将拒绝（HTTP 413）",
-          "default": 1000000
+          "description": "支持固定值（如：1000000）或范围（如：1-1000000）",
+          "markdownDescription": "支持固定值（如：1000000）或范围（如：1-1000000）",
+          "default": "1000000"
         },
         "reuse-settings": { "title": "复用配置", "$ref": "#/definitions/reuse-settings" },
         "download-settings": { "title": "下载配置", "$ref": "#/definitions/download-settings" }
@@ -154,11 +154,11 @@
           "default": "100-1000"
         },
         "sc-max-each-post-bytes": {
-          "$ref": "#/definitions/compatible/integer",
+          "$ref": "#/definitions/compatible/string",
           "title": "单次 POST 请求允许的最大 body 字节数",
-          "description": "超过限制服务端将拒绝（HTTP 413）",
-          "markdownDescription": "超过限制服务端将拒绝（HTTP 413）",
-          "default": 1000000
+          "description": "支持固定值（如：1000000）或范围（如：1-1000000）",
+          "markdownDescription": "支持固定值（如：1000000）或范围（如：1-1000000）",
+          "default": "1000000"
         },
         "reuse-settings": { "title": "复用配置", "$ref": "#/definitions/reuse-settings" },
         "server": {

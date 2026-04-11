@@ -2,6 +2,8 @@
 
 ### Changes
 
+- 调整: vless `xhttp` 配置项 `sc-max-each-post-bytes` 支持配置范围
+
 ### Bug Fixes
 
 - 修复: outbound 的 `fingerprint` 配置项描述错误
