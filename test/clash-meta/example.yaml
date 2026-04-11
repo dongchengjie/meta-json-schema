@@ -809,8 +809,7 @@ proxies: # socks5
     udp: true
     tls: true
     network: xhttp
-    alpn:
-      - h2
+    alpn: [h2] # 默认为h2，如果开启h3模式需要设置alpn: [h3]
     ech-opts:
       enable: true # 必须手动开启
       # 如果config为空则通过dns解析，不为空则通过该值指定，格式为经过base64编码的ech参数（dig +shorTYPE65     tls-ech.dev）
