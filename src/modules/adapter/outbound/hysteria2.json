@@ -49,11 +49,11 @@
           "markdownDescription": "占用端口范围"
         },
         "hop-interval": {
-          "$ref": "#/definitions/compatible/integer",
-          "title": "UDP端口跳跃间隔",
-          "description": "单位:s",
-          "markdownDescription": "单位:s",
-          "default": 30
+          "$ref": "#/definitions/compatible/string",
+          "title": "UDP端口跳跃间隔秒数",
+          "description": "支持固定值（如：30）或范围（如：15-30）",
+          "markdownDescription": "支持固定值（如：30）或范围（如：15-30）",
+          "default": "30"
         },
         "up": {
           "$ref": "#/definitions/compatible/string",

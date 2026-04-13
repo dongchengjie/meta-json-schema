@@ -5,6 +5,7 @@
 - 调整: vless `xhttp` 配置项 `sc-max-each-post-bytes` 支持配置范围
 - 调整: vless `xhttp` 复用配置新增配置项 `h-keep-alive-period`
 - 新增: masque 新增配置项 `skip-cert-verify`、`network`
+- 调整: hysteria2 配置项 `hop-interval` 支持配置范围
 
 ### Bug Fixes
 
