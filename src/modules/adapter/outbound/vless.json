@@ -71,6 +71,13 @@
           "markdownDescription": "支持固定值（如：1000000）或范围（如：1-1000000）",
           "default": "1000000"
         },
+        "sc-min-posts-interval-ms": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "POST 请求的最小间隔时间（毫秒）",
+          "description": "支持固定值（如：30）或范围（如：80-120）",
+          "markdownDescription": "支持固定值（如：30）或范围（如：80-120）",
+          "default": "30"
+        },
         "reuse-settings": { "title": "复用配置", "$ref": "#/definitions/reuse-settings" },
         "download-settings": { "title": "下载配置", "$ref": "#/definitions/download-settings" }
       }
@@ -167,6 +174,13 @@
           "description": "支持固定值（如：1000000）或范围（如：1-1000000）",
           "markdownDescription": "支持固定值（如：1000000）或范围（如：1-1000000）",
           "default": "1000000"
+        },
+        "sc-min-posts-interval-ms": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "POST 请求的最小间隔时间（毫秒）",
+          "description": "支持固定值（如：30）或范围（如：80-120）",
+          "markdownDescription": "支持固定值（如：30）或范围（如：80-120）",
+          "default": "30"
         },
         "reuse-settings": { "title": "复用配置", "$ref": "#/definitions/reuse-settings" },
         "server": {
