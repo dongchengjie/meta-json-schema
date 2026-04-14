@@ -1799,6 +1799,7 @@ listeners:
       host: example.com
       mode: auto # Available: "stream-one", "stream-up" or "packet-up"
       no-sse-header: false
+      sc-max-buffered-posts: "30"
       sc-stream-up-server-secs: "20-80"
       sc-max-each-post-bytes: "1000000"
     # -------------------------

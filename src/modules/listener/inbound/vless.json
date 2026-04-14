@@ -87,6 +87,13 @@
           "markdownDescription": "支持固定值（如：20）或范围（如：20-80）",
           "default": "20-80"
         },
+        "sc-max-buffered-posts": {
+          "type": "string",
+          "title": "最大缓冲 POST 请求数量",
+          "description": "支持固定值（如：30）或范围（如：30-60）",
+          "markdownDescription": "支持固定值（如：30）或范围（如：30-60）",
+          "default": "30"
+        },
         "sc-max-each-post-bytes": {
           "type": "string",
           "title": "单次 POST 请求允许的最大 body 字节数",

@@ -9,6 +9,7 @@
 - 新增: hysteria2/tuic/trusttunnel/masque 新增配置项 `bbr-profile`
 - 新增: listener hysteria2/tuic/trusttunnel 新增配置项 `bbr-profile`
 - 新增: vless `xhttp` 新增配置项 `sc-min-posts-interval-ms`
+- 新增: listener vless `xhttp` 新增配置项 `sc-max-buffered-posts`
 
 ### Bug Fixes
 
