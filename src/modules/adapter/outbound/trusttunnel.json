@@ -125,6 +125,14 @@
           "description": "拥塞窗口大小(Congestion Window)",
           "markdownDescription": "拥塞窗口大小(Congestion Window)"
         },
+        "bbr-profile": {
+          "enum": ["standard", "conservative", "aggressive"],
+          "markdownEnumDescriptions": ["标准", "保守", "激进"],
+          "title": "拥塞控制预设方案",
+          "description": "拥塞控制预设方案",
+          "markdownDescription": "拥塞控制预设方案",
+          "default": "standard"
+        },
         "max-connections": {
           "$ref": "#/definitions/compatible/integer",
           "title": "最大连接数",

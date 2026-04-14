@@ -6,6 +6,8 @@
 - 调整: vless `xhttp` 复用配置新增配置项 `h-keep-alive-period`
 - 新增: masque 新增配置项 `skip-cert-verify`、`network`
 - 调整: hysteria2 配置项 `hop-interval` 支持配置范围
+- 新增: hysteria2/tuic/trusttunnel/masque 新增配置项 `bbr-profile`
+- 新增: listener hysteria2/tuic/trusttunnel 新增配置项 `bbr-profile`
 
 ### Bug Fixes
 
