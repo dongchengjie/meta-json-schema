@@ -1825,12 +1825,12 @@ listeners:
       host: example.com
       mode: auto # Available: "stream-one", "stream-up" or "packet-up"
       no-sse-header: false
-      xpadding-bytes: "100-1000"
-      xpadding-obfs-mode: false
-      xpadding-key: x_padding
-      xpadding-header: Referer
-      xpadding-placement: queryInHeader # Available: queryInHeader, cookie, header, query
-      xpadding-method: repeat-x # Available: repeat-x, tokenish
+      x-padding-bytes: "100-1000"
+      x-padding-obfs-mode: false
+      x-padding-key: x_padding
+      x-padding-header: Referer
+      x-padding-placement: queryInHeader # Available: queryInHeader, cookie, header, query
+      x-padding-method: repeat-x # Available: repeat-x, tokenish
       uplink-http-method: POST # Available: POST, PUT, PATCH, DELETE
       session-placement: path # Available: path, query, cookie, header
       session-key: ""
