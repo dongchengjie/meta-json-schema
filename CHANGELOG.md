@@ -15,6 +15,7 @@
 ### Bug Fixes
 
 - 修复: outbound 的 `fingerprint` 配置项描述错误
+- 修复: wireguard 的 `ip` 、`ipv6` 配置项应支持配置为 CIDR 格式
 
 ---
 

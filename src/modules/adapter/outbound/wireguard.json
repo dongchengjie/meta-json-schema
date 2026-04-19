@@ -197,16 +197,36 @@
           "markdownDescription": "代理节点名称"
         },
         "ip": {
-          "$ref": "#/definitions/patterns/ipv4",
-          "title": "本机在Wireguard网络中使用的IPv4地址",
-          "description": "本机在Wireguard网络中使用的IPv4地址",
-          "markdownDescription": "本机在`Wireguard`网络中使用的`IPv4`地址"
+          "anyOf": [
+            {
+              "$ref": "#/definitions/patterns/ipv4",
+              "title": "IPv4地址",
+              "description": "IPv4地址",
+              "markdownDescription": "IPv4地址"
+            },
+            {
+              "$ref": "#/definitions/patterns/ipv4CIDR",
+              "title": "IPv4网段",
+              "description": "IPv4网段",
+              "markdownDescription": "IPv4网段"
+            }
+          ]
         },
         "ipv6": {
-          "$ref": "#/definitions/patterns/ipv6",
-          "title": "本机在Wireguard网络中使用的IPv6地址",
-          "description": "本机在Wireguard网络中使用的IPv6地址",
-          "markdownDescription": "本机在`Wireguard`网络中使用的`IPv6`地址"
+          "anyOf": [
+            {
+              "$ref": "#/definitions/patterns/ipv6",
+              "title": "IPv6地址",
+              "description": "IPv6地址",
+              "markdownDescription": "IPv6地址"
+            },
+            {
+              "$ref": "#/definitions/patterns/ipv6CIDR",
+              "title": "IPv6网段",
+              "description": "IPv6网段",
+              "markdownDescription": "IPv6网段"
+            }
+          ]
         },
         "private-key": {
           "$ref": "#/definitions/compatible/string",
