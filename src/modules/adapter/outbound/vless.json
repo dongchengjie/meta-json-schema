@@ -73,9 +73,9 @@
         },
         "x-padding-key": {
           "$ref": "#/definitions/compatible/string",
-          "title": "填充密钥",
-          "description": "填充密钥",
-          "markdownDescription": "填充密钥"
+          "title": "填充字段名",
+          "description": "填充字段名",
+          "markdownDescription": "填充字段名"
         },
         "x-padding-header": {
           "$ref": "#/definitions/compatible/string",
@@ -120,16 +120,16 @@
             "在Cookie中",
             "在HTTP头部"
           ],
-          "title": "会话信息放置位置",
-          "description": "会话信息放置位置",
-          "markdownDescription": "会话信息放置位置",
+          "title": "会话信息承载位置",
+          "description": "会话信息承载位置",
+          "markdownDescription": "会话信息承载位置",
           "default": "path"
         },
         "session-key": {
           "$ref": "#/definitions/compatible/string",
-          "title": "会话信息密钥",
-          "description": "会话信息密钥",
-          "markdownDescription": "会话信息密钥"
+          "title": "会话字段名",
+          "description": "会话字段名",
+          "markdownDescription": "会话字段名"
         },
         "seq-placement": {
           "enum": ["path", "query", "cookie", "header"],
@@ -139,16 +139,16 @@
             "在Cookie中",
             "在HTTP头部"
           ],
-          "title": "序列号放置位置",
-          "description": "序列号放置位置",
-          "markdownDescription": "序列号放置位置",
+          "title": "序列号承载位置",
+          "description": "序列号承载位置",
+          "markdownDescription": "序列号承载位置",
           "default": "path"
         },
         "seq-key": {
           "$ref": "#/definitions/compatible/string",
-          "title": "序列号密钥",
-          "description": "序列号密钥",
-          "markdownDescription": "序列号密钥"
+          "title": "序列号字段名",
+          "description": "序列号字段名",
+          "markdownDescription": "序列号字段名"
         },
         "uplink-data-placement": {
           "enum": ["body", "cookie", "header", "auto"],
@@ -158,16 +158,16 @@
             "在HTTP头部",
             "自动判断"
           ],
-          "title": "上行数据放置位置",
-          "description": "上行数据放置位置",
-          "markdownDescription": "上行数据放置位置",
+          "title": "上行数据承载位置",
+          "description": "上行数据承载位置",
+          "markdownDescription": "上行数据承载位置",
           "default": "body"
         },
         "uplink-data-key": {
           "$ref": "#/definitions/compatible/string",
-          "title": "上行数据密钥",
-          "description": "上行数据密钥",
-          "markdownDescription": "上行数据密钥"
+          "title": "上行数据字段名",
+          "description": "上行数据字段名",
+          "markdownDescription": "上行数据字段名"
         },
         "uplink-chunk-size": {
           "$ref": "#/definitions/compatible/string",
@@ -288,9 +288,9 @@
         },
         "x-padding-key": {
           "$ref": "#/definitions/compatible/string",
-          "title": "填充密钥",
-          "description": "填充密钥",
-          "markdownDescription": "填充密钥"
+          "title": "填充字段名",
+          "description": "填充字段名",
+          "markdownDescription": "填充字段名"
         },
         "x-padding-header": {
           "$ref": "#/definitions/compatible/string",
@@ -335,16 +335,16 @@
             "在Cookie中",
             "在HTTP头部"
           ],
-          "title": "会话信息放置位置",
-          "description": "会话信息放置位置",
-          "markdownDescription": "会话信息放置位置",
+          "title": "会话信息承载位置",
+          "description": "会话信息承载位置",
+          "markdownDescription": "会话信息承载位置",
           "default": "path"
         },
         "session-key": {
           "$ref": "#/definitions/compatible/string",
-          "title": "会话信息密钥",
-          "description": "会话信息密钥",
-          "markdownDescription": "会话信息密钥"
+          "title": "会话字段名",
+          "description": "会话字段名",
+          "markdownDescription": "会话字段名"
         },
         "seq-placement": {
           "enum": ["path", "query", "cookie", "header"],
@@ -354,16 +354,16 @@
             "在Cookie中",
             "在HTTP头部"
           ],
-          "title": "序列号放置位置",
-          "description": "序列号放置位置",
-          "markdownDescription": "序列号放置位置",
+          "title": "序列号承载位置",
+          "description": "序列号承载位置",
+          "markdownDescription": "序列号承载位置",
           "default": "path"
         },
         "seq-key": {
           "$ref": "#/definitions/compatible/string",
-          "title": "序列号密钥",
-          "description": "序列号密钥",
-          "markdownDescription": "序列号密钥"
+          "title": "序列号字段名",
+          "description": "序列号字段名",
+          "markdownDescription": "序列号字段名"
         },
         "uplink-data-placement": {
           "enum": ["body", "cookie", "header", "auto"],
@@ -373,16 +373,16 @@
             "在HTTP头部",
             "自动判断"
           ],
-          "title": "上行数据放置位置",
-          "description": "上行数据放置位置",
-          "markdownDescription": "上行数据放置位置",
+          "title": "上行数据承载位置",
+          "description": "上行数据承载位置",
+          "markdownDescription": "上行数据承载位置",
           "default": "body"
         },
         "uplink-data-key": {
           "$ref": "#/definitions/compatible/string",
-          "title": "上行数据密钥",
-          "description": "上行数据密钥",
-          "markdownDescription": "上行数据密钥"
+          "title": "上行数据字段名",
+          "description": "上行数据字段名",
+          "markdownDescription": "上行数据字段名"
         },
         "uplink-chunk-size": {
           "$ref": "#/definitions/compatible/string",
