@@ -73,6 +73,124 @@
           "markdownDescription": "模式",
           "default": "auto"
         },
+        "xpadding-bytes": {
+          "type": "string",
+          "title": "HTTP 请求中添加的额外随机字节数",
+          "description": "支持固定值（如：200）或范围（如：100-1000）",
+          "markdownDescription": "支持固定值（如：200）或范围（如：100-1000）",
+          "default": "100-1000"
+        },
+        "xpadding-obfs-mode": {
+          "type": "boolean",
+          "title": "启用填充混淆模式",
+          "description": "启用填充混淆模式",
+          "markdownDescription": "启用填充混淆模式",
+          "default": false
+        },
+        "xpadding-key": {
+          "type": "string",
+          "title": "填充密钥",
+          "description": "填充密钥",
+          "markdownDescription": "填充密钥"
+        },
+        "xpadding-header": {
+          "type": "string",
+          "title": "填充头部",
+          "description": "填充头部",
+          "markdownDescription": "填充头部"
+        },
+        "xpadding-placement": {
+          "enum": ["queryInHeader", "cookie", "header", "query"],
+          "markdownEnumDescriptions": [
+            "在HTTP头部的查询字符串中",
+            "在Cookie中",
+            "在HTTP头部",
+            "在查询字符串中"
+          ],
+          "title": "填充位置",
+          "description": "填充位置",
+          "markdownDescription": "填充位置"
+        },
+        "xpadding-method": {
+          "enum": ["repeat-x", "tokenish"],
+          "markdownEnumDescriptions": [
+            "重复填充直到达到指定的字节数",
+            "根据特定算法生成类似于token的随机字符串进行填充"
+          ],
+          "title": "填充方法",
+          "description": "填充方法",
+          "markdownDescription": "填充方法"
+        },
+        "uplink-http-method": {
+          "enum": ["POST", "PUT", "PATCH", "DELETE"],
+          "title": "上行HTTP方法",
+          "description": "上行HTTP方法",
+          "markdownDescription": "上行HTTP方法",
+          "default": "POST"
+        },
+        "session-placement": {
+          "enum": ["path", "query", "cookie", "header"],
+          "markdownEnumDescriptions": [
+            "在路径中",
+            "在查询字符串中",
+            "在Cookie中",
+            "在HTTP头部"
+          ],
+          "title": "会话信息放置位置",
+          "description": "会话信息放置位置",
+          "markdownDescription": "会话信息放置位置",
+          "default": "path"
+        },
+        "session-key": {
+          "type": "string",
+          "title": "会话信息密钥",
+          "description": "会话信息密钥",
+          "markdownDescription": "会话信息密钥"
+        },
+        "seq-placement": {
+          "enum": ["path", "query", "cookie", "header"],
+          "markdownEnumDescriptions": [
+            "在路径中",
+            "在查询字符串中",
+            "在Cookie中",
+            "在HTTP头部"
+          ],
+          "title": "序列号放置位置",
+          "description": "序列号放置位置",
+          "markdownDescription": "序列号放置位置",
+          "default": "path"
+        },
+        "seq-key": {
+          "type": "string",
+          "title": "序列号密钥",
+          "description": "序列号密钥",
+          "markdownDescription": "序列号密钥"
+        },
+        "uplink-data-placement": {
+          "enum": ["body", "cookie", "header", "auto"],
+          "markdownEnumDescriptions": [
+            "在HTTP请求体中",
+            "在Cookie中",
+            "在HTTP头部",
+            "自动判断"
+          ],
+          "title": "上行数据放置位置",
+          "description": "上行数据放置位置",
+          "markdownDescription": "上行数据放置位置",
+          "default": "body"
+        },
+        "uplink-data-key": {
+          "type": "string",
+          "title": "上行数据密钥",
+          "description": "上行数据密钥",
+          "markdownDescription": "上行数据密钥"
+        },
+        "uplink-chunk-size": {
+          "type": "string",
+          "title": "上行数据分块大小",
+          "description": "支持固定值（如：1024）或范围（如：512-2048）",
+          "markdownDescription": "支持固定值（如：1024）或范围（如：512-2048）"
+        },
         "no-sse-header": {
           "type": "boolean",
           "title": "禁用 SSE 防缓冲头",
