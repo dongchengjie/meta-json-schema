@@ -10,6 +10,7 @@
 - 新增: listener hysteria2/tuic/trusttunnel 新增配置项 `bbr-profile`
 - 新增: vless `xhttp` 新增配置项 `sc-min-posts-interval-ms`、`x-padding-obfs-mode`、`x-padding-key`、`x-padding-header`、`x-padding-placement`、`x-padding-method`、`uplink-http-method`、`session-placement`、`session-key`、`seq-placement`、`seq-key`、`uplink-data-placement`、`uplink-data-key`、`uplink-chunk-size`
 - 新增: listener vless `xhttp` 新增配置项 `sc-max-buffered-posts`、`xpadding-bytes`、`xpadding-obfs-mode`、`xpadding-key`、`xpadding-header`、`xpadding-placement`、`xpadding-method`、`uplink-http-method`、`session-placement`、`session-key`、`seq-placement`、`seq-key`、`uplink-data-placement`、`uplink-data-key`、`uplink-chunk-size`
+- 新增: listener mieru 新增配置项 `user-hint-is-mandatory`
 
 ### Bug Fixes
 

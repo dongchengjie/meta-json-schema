@@ -34,6 +34,13 @@
           "title": "Base64 字符串用于微调网络行为",
           "description": "详见https://github.com/enfein/mieru/blob/main/docs/traffic-pattern.md",
           "markdownDescription": "详见https://github.com/enfein/mieru/blob/main/docs/traffic-pattern.md"
+        },
+        "user-hint-is-mandatory": {
+          "type": "boolean",
+          "title": "强制客户端必须发送用户提示",
+          "description": "加速 mita 服务器对网络数据包的解密（如果不发送用户提示，代理服务器将拒绝连接）",
+          "markdownDescription": "加速 mita 服务器对网络数据包的解密（如果不发送用户提示，代理服务器将拒绝连接）",
+          "default": false
         }
       }
     }
