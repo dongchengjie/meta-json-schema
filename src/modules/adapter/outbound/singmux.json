@@ -30,19 +30,20 @@
     "max-connections": {
       "$ref": "#/definitions/compatible/integer",
       "title": "最大连接数量",
-      "description": "与max-streams冲突",
-      "markdownDescription": "与`max-streams`冲突"
+      "description": "与 max-streams 冲突",
+      "markdownDescription": "与 `max-streams` 冲突"
     },
     "min-streams": {
       "$ref": "#/definitions/compatible/integer",
       "title": "在打开新连接之前,连接中的最小多路复用流数量",
-      "description": "与max-streams冲突",
-      "markdownDescription": "与`max-streams`冲突"
+      "description": "与 max-streams 冲突",
+      "markdownDescription": "与 `max-streams` 冲突"
     },
     "max-streams": {
       "$ref": "#/definitions/compatible/integer",
       "title": "在打开新连接之前,连接中的最大多路复用流数量",
-      "description": "与max-connections, max-streams冲突"
+      "description": "与 max-connections 、 min-streams 冲突",
+      "markdownDescription": "与 `max-connections` 、 `min-streams` 冲突"
     },
     "padding": {
       "$ref": "#/definitions/compatible/boolean",
@@ -91,5 +92,15 @@
       "description": "smux配置将不会对udp生效(udp连接会直接走节点默认udp协议传输)",
       "markdownDescription": "smux配置将不会对`udp`生效(udp连接会直接走节点默认`udp`协议传输)"
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": { "required": ["max-connections", "max-streams"] },
+      "then": { "deprecationMessage": "max-connections 与 max-streams 不能同时设置" }
+    },
+    {
+      "if": { "required": ["min-streams", "max-streams"] },
+      "then": { "deprecationMessage": "min-streams 与 max-streams 不能同时设置" }
+    }
+  ]
 }

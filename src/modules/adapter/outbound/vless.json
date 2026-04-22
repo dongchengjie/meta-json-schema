@@ -207,7 +207,6 @@
         "max-connections": {
           "$ref": "#/definitions/compatible/string",
           "title": "最大连接数",
-
           "description": "支持固定值（如：2）或范围（如：2-4）",
           "markdownDescription": "支持固定值（如：2）或范围（如：2-4）",
           "default": "0"
