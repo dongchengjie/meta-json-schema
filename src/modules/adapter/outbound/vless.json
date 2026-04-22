@@ -266,143 +266,228 @@
           "markdownDescription": "请求头"
         },
         "no-grpc-header": {
-          "$ref": "#/definitions/compatible/boolean",
-          "title": "不添加 gRPC 相关的请求头",
-          "description": "不添加 gRPC 相关的请求头",
-          "markdownDescription": "不添加 gRPC 相关的请求头",
-          "default": false
+          "allOf": [
+            {
+              "$ref": "#/definitions/compatible/boolean",
+              "title": "不添加 gRPC 相关的请求头",
+              "description": "不添加 gRPC 相关的请求头",
+              "markdownDescription": "不添加 gRPC 相关的请求头",
+              "default": false
+            },
+            { "deprecationMessage": "v1.19.25 已弃用" }
+          ]
         },
         "x-padding-bytes": {
-          "$ref": "#/definitions/compatible/string",
-          "title": "HTTP 请求中添加的额外随机字节数",
-          "description": "支持固定值（如：200）或范围（如：100-1000）",
-          "markdownDescription": "支持固定值（如：200）或范围（如：100-1000）",
-          "default": "100-1000"
+          "allOf": [
+            {
+              "$ref": "#/definitions/compatible/string",
+              "title": "HTTP 请求中添加的额外随机字节数",
+              "description": "支持固定值（如：200）或范围（如：100-1000）",
+              "markdownDescription": "支持固定值（如：200）或范围（如：100-1000）",
+              "default": "100-1000"
+            },
+            { "deprecationMessage": "v1.19.25 已弃用" }
+          ]
         },
         "x-padding-obfs-mode": {
-          "$ref": "#/definitions/compatible/boolean",
-          "title": "启用填充混淆模式",
-          "description": "启用填充混淆模式",
-          "markdownDescription": "启用填充混淆模式",
-          "default": false
+          "allOf": [
+            {
+              "$ref": "#/definitions/compatible/boolean",
+              "title": "启用填充混淆模式",
+              "description": "启用填充混淆模式",
+              "markdownDescription": "启用填充混淆模式",
+              "default": false
+            },
+            { "deprecationMessage": "v1.19.25 已弃用" }
+          ]
         },
         "x-padding-key": {
-          "$ref": "#/definitions/compatible/string",
-          "title": "填充字段名",
-          "description": "填充字段名",
-          "markdownDescription": "填充字段名"
+          "allOf": [
+            {
+              "$ref": "#/definitions/compatible/string",
+              "title": "填充字段名",
+              "description": "填充字段名",
+              "markdownDescription": "填充字段名"
+            },
+            { "deprecationMessage": "v1.19.25 已弃用" }
+          ]
         },
         "x-padding-header": {
-          "$ref": "#/definitions/compatible/string",
-          "title": "填充头部",
-          "description": "填充头部",
-          "markdownDescription": "填充头部"
+          "allOf": [
+            {
+              "$ref": "#/definitions/compatible/string",
+              "title": "填充头部",
+              "description": "填充头部",
+              "markdownDescription": "填充头部"
+            },
+            { "deprecationMessage": "v1.19.25 已弃用" }
+          ]
         },
         "x-padding-placement": {
-          "enum": ["queryInHeader", "cookie", "header", "query"],
-          "markdownEnumDescriptions": [
-            "在HTTP头部的查询字符串中",
-            "在Cookie中",
-            "在HTTP头部",
-            "在查询字符串中"
-          ],
-          "title": "填充位置",
-          "description": "填充位置",
-          "markdownDescription": "填充位置"
+          "allOf": [
+            {
+              "enum": ["queryInHeader", "cookie", "header", "query"],
+              "markdownEnumDescriptions": [
+                "在HTTP头部的查询字符串中",
+                "在Cookie中",
+                "在HTTP头部",
+                "在查询字符串中"
+              ],
+              "title": "填充位置",
+              "description": "填充位置",
+              "markdownDescription": "填充位置"
+            },
+            { "deprecationMessage": "v1.19.25 已弃用" }
+          ]
         },
         "x-padding-method": {
-          "enum": ["repeat-x", "tokenish"],
-          "markdownEnumDescriptions": [
-            "重复填充直到达到指定的字节数",
-            "根据特定算法生成类似于token的随机字符串进行填充"
-          ],
-          "title": "填充方法",
-          "description": "填充方法",
-          "markdownDescription": "填充方法"
+          "allOf": [
+            {
+              "enum": ["repeat-x", "tokenish"],
+              "markdownEnumDescriptions": [
+                "重复填充直到达到指定的字节数",
+                "根据特定算法生成类似于token的随机字符串进行填充"
+              ],
+              "title": "填充方法",
+              "description": "填充方法",
+              "markdownDescription": "填充方法"
+            },
+            { "deprecationMessage": "v1.19.25 已弃用" }
+          ]
         },
         "uplink-http-method": {
-          "enum": ["POST", "PUT", "PATCH", "DELETE"],
-          "title": "上行HTTP方法",
-          "description": "上行HTTP方法",
-          "markdownDescription": "上行HTTP方法",
-          "default": "POST"
+          "allOf": [
+            {
+              "enum": ["POST", "PUT", "PATCH", "DELETE"],
+              "title": "上行HTTP方法",
+              "description": "上行HTTP方法",
+              "markdownDescription": "上行HTTP方法",
+              "default": "POST"
+            },
+            { "deprecationMessage": "v1.19.25 已弃用" }
+          ]
         },
         "session-placement": {
-          "enum": ["path", "query", "cookie", "header"],
-          "markdownEnumDescriptions": [
-            "在路径中",
-            "在查询字符串中",
-            "在Cookie中",
-            "在HTTP头部"
-          ],
-          "title": "会话信息承载位置",
-          "description": "会话信息承载位置",
-          "markdownDescription": "会话信息承载位置",
-          "default": "path"
+          "allOf": [
+            {
+              "enum": ["path", "query", "cookie", "header"],
+              "markdownEnumDescriptions": [
+                "在路径中",
+                "在查询字符串中",
+                "在Cookie中",
+                "在HTTP头部"
+              ],
+              "title": "会话信息承载位置",
+              "description": "会话信息承载位置",
+              "markdownDescription": "会话信息承载位置",
+              "default": "path"
+            },
+            { "deprecationMessage": "v1.19.25 已弃用" }
+          ]
         },
         "session-key": {
-          "$ref": "#/definitions/compatible/string",
-          "title": "会话字段名",
-          "description": "会话字段名",
-          "markdownDescription": "会话字段名"
+          "allOf": [
+            {
+              "$ref": "#/definitions/compatible/string",
+              "title": "会话字段名",
+              "description": "会话字段名",
+              "markdownDescription": "会话字段名"
+            },
+            { "deprecationMessage": "v1.19.25 已弃用" }
+          ]
         },
         "seq-placement": {
-          "enum": ["path", "query", "cookie", "header"],
-          "markdownEnumDescriptions": [
-            "在路径中",
-            "在查询字符串中",
-            "在Cookie中",
-            "在HTTP头部"
-          ],
-          "title": "序列号承载位置",
-          "description": "序列号承载位置",
-          "markdownDescription": "序列号承载位置",
-          "default": "path"
+          "allOf": [
+            {
+              "enum": ["path", "query", "cookie", "header"],
+              "markdownEnumDescriptions": [
+                "在路径中",
+                "在查询字符串中",
+                "在Cookie中",
+                "在HTTP头部"
+              ],
+              "title": "序列号承载位置",
+              "description": "序列号承载位置",
+              "markdownDescription": "序列号承载位置",
+              "default": "path"
+            },
+            { "deprecationMessage": "v1.19.25 已弃用" }
+          ]
         },
         "seq-key": {
-          "$ref": "#/definitions/compatible/string",
-          "title": "序列号字段名",
-          "description": "序列号字段名",
-          "markdownDescription": "序列号字段名"
+          "allOf": [
+            {
+              "$ref": "#/definitions/compatible/string",
+              "title": "序列号字段名",
+              "description": "序列号字段名",
+              "markdownDescription": "序列号字段名"
+            },
+            { "deprecationMessage": "v1.19.25 已弃用" }
+          ]
         },
         "uplink-data-placement": {
-          "enum": ["body", "cookie", "header", "auto"],
-          "markdownEnumDescriptions": [
-            "在HTTP请求体中",
-            "在Cookie中",
-            "在HTTP头部",
-            "自动判断"
-          ],
-          "title": "上行数据承载位置",
-          "description": "上行数据承载位置",
-          "markdownDescription": "上行数据承载位置",
-          "default": "body"
+          "allOf": [
+            {
+              "enum": ["body", "cookie", "header", "auto"],
+              "markdownEnumDescriptions": [
+                "在HTTP请求体中",
+                "在Cookie中",
+                "在HTTP头部",
+                "自动判断"
+              ],
+              "title": "上行数据承载位置",
+              "description": "上行数据承载位置",
+              "markdownDescription": "上行数据承载位置",
+              "default": "body"
+            },
+            { "deprecationMessage": "v1.19.25 已弃用" }
+          ]
         },
         "uplink-data-key": {
-          "$ref": "#/definitions/compatible/string",
-          "title": "上行数据字段名",
-          "description": "上行数据字段名",
-          "markdownDescription": "上行数据字段名"
+          "allOf": [
+            {
+              "$ref": "#/definitions/compatible/string",
+              "title": "上行数据字段名",
+              "description": "上行数据字段名",
+              "markdownDescription": "上行数据字段名"
+            },
+            { "deprecationMessage": "v1.19.25 已弃用" }
+          ]
         },
         "uplink-chunk-size": {
-          "$ref": "#/definitions/compatible/string",
-          "title": "上行数据分块大小",
-          "description": "支持固定值（如：1024）或范围（如：512-2048）",
-          "markdownDescription": "支持固定值（如：1024）或范围（如：512-2048）"
+          "allOf": [
+            {
+              "$ref": "#/definitions/compatible/string",
+              "title": "上行数据分块大小",
+              "description": "支持固定值（如：1024）或范围（如：512-2048）",
+              "markdownDescription": "支持固定值（如：1024）或范围（如：512-2048）"
+            },
+            { "deprecationMessage": "v1.19.25 已弃用" }
+          ]
         },
         "sc-max-each-post-bytes": {
-          "$ref": "#/definitions/compatible/string",
-          "title": "单次 POST 请求允许的最大 body 字节数",
-          "description": "支持固定值（如：1000000）或范围（如：1-1000000）",
-          "markdownDescription": "支持固定值（如：1000000）或范围（如：1-1000000）",
-          "default": "1000000"
+          "allOf": [
+            {
+              "$ref": "#/definitions/compatible/string",
+              "title": "单次 POST 请求允许的最大 body 字节数",
+              "description": "支持固定值（如：1000000）或范围（如：1-1000000）",
+              "markdownDescription": "支持固定值（如：1000000）或范围（如：1-1000000）",
+              "default": "1000000"
+            },
+            { "deprecationMessage": "v1.19.25 已弃用" }
+          ]
         },
         "sc-min-posts-interval-ms": {
-          "$ref": "#/definitions/compatible/string",
-          "title": "POST 请求的最小间隔时间（毫秒）",
-          "description": "支持固定值（如：30）或范围（如：80-120）",
-          "markdownDescription": "支持固定值（如：30）或范围（如：80-120）",
-          "default": "30"
+          "allOf": [
+            {
+              "$ref": "#/definitions/compatible/string",
+              "title": "POST 请求的最小间隔时间（毫秒）",
+              "description": "支持固定值（如：30）或范围（如：80-120）",
+              "markdownDescription": "支持固定值（如：30）或范围（如：80-120）",
+              "default": "30"
+            },
+            { "deprecationMessage": "v1.19.25 已弃用" }
+          ]
         },
         "reuse-settings": { "title": "复用配置", "$ref": "#/definitions/reuse-settings" },
         "server": {
