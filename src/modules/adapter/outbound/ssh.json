@@ -72,9 +72,9 @@
         },
         "host-key-algorithms": {
           "$ref": "#/definitions/types/stringArray",
-          "title": "主机私钥算法",
-          "description": "主机私钥算法",
-          "markdownDescription": "主机私钥算法"
+          "title": "主机密钥算法",
+          "description": "主机密钥算法",
+          "markdownDescription": "主机密钥算法"
         }
       }
     },
