@@ -66,15 +66,53 @@
         },
         "host-key": {
           "$ref": "#/definitions/types/stringArray",
-          "title": "主机私钥",
-          "description": "主机私钥",
-          "markdownDescription": "主机私钥"
+          "title": "主机密钥",
+          "description": "主机密钥",
+          "markdownDescription": "主机密钥"
         },
         "host-key-algorithms": {
-          "$ref": "#/definitions/types/stringArray",
-          "title": "主机私钥算法",
-          "description": "主机私钥算法",
-          "markdownDescription": "主机私钥算法"
+          "type": "array",
+          "items": {
+            "enum": [
+              "rsa-sha2-256-cert-v01@openssh.com",
+              "rsa-sha2-512-cert-v01@openssh.com",
+              "ecdsa-sha2-nistp256-cert-v01@openssh.com",
+              "ecdsa-sha2-nistp384-cert-v01@openssh.com",
+              "ecdsa-sha2-nistp521-cert-v01@openssh.com",
+              "ssh-ed25519-cert-v01@openssh.com",
+              "rsa-sha2-256",
+              "rsa-sha2-512",
+              "ecdsa-sha2-nistp256",
+              "ecdsa-sha2-nistp384",
+              "ecdsa-sha2-nistp521",
+              "ssh-ed25519",
+              "ssh-rsa",
+              "ssh-dss",
+              "ssh-rsa-cert-v01@openssh.com",
+              "ssh-dss-cert-v01@openssh.com"
+            ]
+          },
+          "title": "主机密钥算法",
+          "description": "主机密钥算法",
+          "markdownDescription": "主机密钥算法",
+          "default": [
+            "rsa-sha2-256-cert-v01@openssh.com",
+            "rsa-sha2-512-cert-v01@openssh.com",
+            "ssh-rsa-cert-v01@openssh.com",
+            "ssh-dss-cert-v01@openssh.com",
+            "ecdsa-sha2-nistp256-cert-v01@openssh.com",
+            "ecdsa-sha2-nistp384-cert-v01@openssh.com",
+            "ecdsa-sha2-nistp521-cert-v01@openssh.com",
+            "ssh-ed25519-cert-v01@openssh.com",
+            "ecdsa-sha2-nistp256",
+            "ecdsa-sha2-nistp384",
+            "ecdsa-sha2-nistp521",
+            "rsa-sha2-256",
+            "rsa-sha2-512",
+            "ssh-rsa",
+            "ssh-dss",
+            "ssh-ed25519"
+          ]
         }
       }
     },
