@@ -53,6 +53,7 @@
   "client-fingerprint": {
     "description": "客户端指纹",
     "enum": [
+      "none",
       "chrome",
       "firefox",
       "safari",
