@@ -34,9 +34,7 @@
         "client-auth-type": { "$ref": "#/definitions/tls/properties/client-auth-type" },
         "client-auth-cert": { "$ref": "#/definitions/tls/properties/client-auth-cert" },
         "ech-key": { "$ref": "#/definitions/tls/properties/ech-key" },
-        "congestion-controller": {
-          "$ref": "#/definitions/enums/congestion-controller"
-        },
+        "congestion-controller": { "$ref": "#/definitions/enums/congestion-controller" },
         "max-idle-time": {
           "type": "integer",
           "title": "连接的最大空闲时间",

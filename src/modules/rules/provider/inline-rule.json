@@ -8,11 +8,7 @@
       "pattern": "^DOMAIN-KEYWORD,[^,]+$",
       "errorMessage": "无效的规则"
     },
-    {
-      "title": "匹配域名正则表达式",
-      "pattern": "^DOMAIN-REGEX,.+$",
-      "errorMessage": "无效的规则"
-    },
+    { "title": "匹配域名正则表达式", "pattern": "^DOMAIN-REGEX,.+$", "errorMessage": "无效的规则" },
     {
       "title": "匹配域名通配符",
       "pattern": "^DOMAIN-WILDCARD,[^,]+$",

@@ -6,8 +6,12 @@ commit-msg:
       run: npx --no-install commitlint --edit
 
 pre-commit:
-  parallel: true
+  parallel: false
   jobs:
+    - name: minify
+      run: npx minijson {staged_files}
+      glob: "*.json"
+      stage_fixed: true
     - name: fmt
       run: npx dprint fmt --allow-no-files {staged_files}
       glob: "*.*"

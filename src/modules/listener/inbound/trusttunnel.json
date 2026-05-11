@@ -35,9 +35,7 @@
           "description": "可为tcp/udp",
           "markdownDescription": "可为`tcp`/`udp`"
         },
-        "congestion-controller": {
-          "$ref": "#/definitions/enums/congestion-controller"
-        },
+        "congestion-controller": { "$ref": "#/definitions/enums/congestion-controller" },
         "cwnd": {
           "type": "integer",
           "title": "拥塞窗口大小",

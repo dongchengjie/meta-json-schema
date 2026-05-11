@@ -116,9 +116,7 @@
           "markdownDescription": "启用QUIC",
           "default": false
         },
-        "congestion-controller": {
-          "$ref": "#/definitions/enums/congestion-controller"
-        },
+        "congestion-controller": { "$ref": "#/definitions/enums/congestion-controller" },
         "cwnd": {
           "$ref": "#/definitions/compatible/integer",
           "title": "拥塞窗口大小",
@@ -168,9 +166,7 @@
     {
       "type": "object",
       "title": "smux配置",
-      "properties": {
-        "smux": { "title": "smux配置", "$ref": "#/definitions/smux" }
-      }
+      "properties": { "smux": { "title": "smux配置", "$ref": "#/definitions/smux" } }
     }
   ]
 }

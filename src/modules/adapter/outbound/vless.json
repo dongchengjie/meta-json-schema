@@ -114,12 +114,7 @@
         },
         "session-placement": {
           "enum": ["path", "query", "cookie", "header"],
-          "markdownEnumDescriptions": [
-            "在路径中",
-            "在查询字符串中",
-            "在Cookie中",
-            "在HTTP头部"
-          ],
+          "markdownEnumDescriptions": ["在路径中", "在查询字符串中", "在Cookie中", "在HTTP头部"],
           "title": "会话信息承载位置",
           "description": "会话信息承载位置",
           "markdownDescription": "会话信息承载位置",
@@ -133,12 +128,7 @@
         },
         "seq-placement": {
           "enum": ["path", "query", "cookie", "header"],
-          "markdownEnumDescriptions": [
-            "在路径中",
-            "在查询字符串中",
-            "在Cookie中",
-            "在HTTP头部"
-          ],
+          "markdownEnumDescriptions": ["在路径中", "在查询字符串中", "在Cookie中", "在HTTP头部"],
           "title": "序列号承载位置",
           "description": "序列号承载位置",
           "markdownDescription": "序列号承载位置",
@@ -152,12 +142,7 @@
         },
         "uplink-data-placement": {
           "enum": ["body", "cookie", "header", "auto"],
-          "markdownEnumDescriptions": [
-            "在HTTP请求体中",
-            "在Cookie中",
-            "在HTTP头部",
-            "自动判断"
-          ],
+          "markdownEnumDescriptions": ["在HTTP请求体中", "在Cookie中", "在HTTP头部", "自动判断"],
           "title": "上行数据承载位置",
           "description": "上行数据承载位置",
           "markdownDescription": "上行数据承载位置",

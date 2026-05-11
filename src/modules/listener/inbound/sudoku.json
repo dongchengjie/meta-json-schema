@@ -175,19 +175,12 @@
           "description": "HTTP掩码配置",
           "markdownDescription": "HTTP掩码配置"
         },
-        "mux-option": {
-          "title": "多路复用配置",
-          "$ref": "#/definitions/mux-option"
-        }
+        "mux-option": { "title": "多路复用配置", "$ref": "#/definitions/mux-option" }
       },
       "allOf": [
         {
-          "if": {
-            "properties": { "enable-pure-downlink": { "const": false } }
-          },
-          "then": {
-            "properties": { "aead-method": { "not": { "const": "none" } } }
-          }
+          "if": { "properties": { "enable-pure-downlink": { "const": false } } },
+          "then": { "properties": { "aead-method": { "not": { "const": "none" } } } }
         }
       ]
     }
