@@ -3,14 +3,13 @@ name: publish
 on:
   push:
     tags:
-      - "v[0-9]+.[0-9]+.[0-9]+"
+      - "v*.*.*"
   workflow_dispatch:
     inputs:
-      publish_to_github:
-        type: boolean
-        description: "Publish to GitHub Releases"
+      github_tag_name:
+        type: string
+        description: "Tag name for the release"
         required: true
-        default: true
       publish_to_npm:
         type: boolean
         description: "Publish to NPM"
@@ -66,15 +65,20 @@ jobs:
 
   github-release:
     needs: build
-    if: ${{ github.event_name == 'push' || github.event.inputs.publish_to_github == 'true' }}
+    if: ${{ github.event_name == 'push' || github.event.inputs.github_tag_name }}
     runs-on: ubuntu-latest
     steps:
       - name: Download Schemas
         uses: actions/download-artifact@v8
+        with:
+          name: schemas
+          path: schemas
 
       - name: Github Release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
+          name: ${{ github.event_name == 'push' && github.ref_name || github.event.inputs.github_tag_name }}
+          tag_name: ${{ github.event_name == 'push' && github.ref_name || github.event.inputs.github_tag_name }}
           prerelease: false
           make_latest: true
           files: schemas/*
@@ -102,6 +106,9 @@ jobs:
 
       - name: Download Schemas
         uses: actions/download-artifact@v8
+        with:
+          name: schemas
+          path: schemas
 
       # Ensure npm 11.5.1 or later is installed
       - name: Update npm
