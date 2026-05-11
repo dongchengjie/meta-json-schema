@@ -71,7 +71,10 @@
           "markdownDescription": "启用`UDP`",
           "default": true
         },
-        "mux-option": { "title": "多路复用配置", "$ref": "#/definitions/mux-option" },
+        "mux-option": {
+          "title": "多路复用配置",
+          "$ref": "#/definitions/mux-option"
+        },
         "shadow-tls": {
           "type": "object",
           "title": "TLS配置",
@@ -104,12 +107,16 @@
               "markdownDescription": "v3设置项",
               "items": { "$ref": "#/definitions/shadow-tls-user" }
             },
-            "handshake": { "$ref": "#/definitions/shadow-tls-handshake-options" },
+            "handshake": {
+              "$ref": "#/definitions/shadow-tls-handshake-options"
+            },
             "handshake-for-server-name": {
               "type": "object",
               "title": "服务器名-TLS握手选项映射",
               "description": "服务器名-TLS握手选项映射",
-              "additionalProperties": { "$ref": "#/definitions/shadow-tls-handshake-options" }
+              "additionalProperties": {
+                "$ref": "#/definitions/shadow-tls-handshake-options"
+              }
             },
             "strict-mode": {
               "type": "boolean",
@@ -122,6 +129,26 @@
               "title": "SNI通配符",
               "description": "SNI通配符",
               "markdownDescription": "`SNI`通配符"
+            }
+          }
+        },
+        "simple-obfs": {
+          "type": "object",
+          "title": "混淆配置",
+          "properties": {
+            "enable": {
+              "type": "boolean",
+              "title": "启用混淆",
+              "description": "启用混淆",
+              "markdownDescription": "启用混淆",
+              "default": false
+            },
+            "mode": {
+              "enum": ["http", "tls"],
+              "markdownEnumDescriptions": ["伪装HTTP流量", "伪装TLS流量"],
+              "title": "混淆方式",
+              "description": "混淆方式",
+              "markdownDescription": "混淆方式"
             }
           }
         }
