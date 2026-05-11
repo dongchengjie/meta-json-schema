@@ -1018,6 +1018,18 @@ proxies: # socks5
       - h3
     # ca: "./my.ca"
     # ca-str: "xyz"
+    realm-opts:
+      enable: true # 必须手动开启
+      server-url: https://realm.hy2.io
+      token: public
+      realm-id: my-cabin-1f3a8c2e9b
+      stun-servers:
+        - stun.nextcloud.com:3478
+        - stun.sip.us:3478
+        - global.stun.twilio.com:3478
+      # 下面支持填写针对server-url的TLS配置(sni, skip-cert-verify, fingerprint, certificate, private-key, alpn)
+      skip-cert-verify: false
+      # ......
     # quic-go特殊配置项，不要随意修改除非你知道你在干什么
     initial-stream-receive-window: 8388608
     max-stream-receive-window: 8388608
@@ -1958,6 +1970,18 @@ listeners:
     # masquerade: file:///var/www # 作为文件服务器
     # masquerade: http://127.0.0.1:8080	#作为反向代理
     masquerade: https://127.0.0.1:8080 # 作为反向代理
+    realm-opts:
+      enable: true # 必须手动开启
+      server-url: https://realm.hy2.io
+      token: public
+      realm-id: my-cabin-1f3a8c2e9b
+      stun-servers:
+        - stun.nextcloud.com:3478
+        - stun.sip.us:3478
+        - global.stun.twilio.com:3478
+      # 下面支持填写针对server-url的TLS配置(sni, skip-cert-verify, fingerprint, certificate,private-key, alpn)
+      skip-cert-verify: false
+      # ......
 
 # 入口配置与 Listener 等价，传入流量将和 socks,mixed 等入口一样按照 mode 所指定的方式进行匹配处理
 # shadowsocks,vmess 入口配置（传入流量将和 socks,mixed 等入口一样按照 mode 所指定的方式进行匹配处理）

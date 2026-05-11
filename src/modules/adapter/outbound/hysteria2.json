@@ -8,7 +8,80 @@
     "enums": { "$ref": "../../../definitions/enums.json" },
     "basic-option": { "$ref": "./base.json#/definitions/basic-option" },
     "ech-options": { "$ref": "./ech.json#/definitions/ech-options" },
-    "smux": { "$ref": "./singmux.json" }
+    "smux": { "$ref": "./singmux.json" },
+    "realm-opts": {
+      "type": "object",
+      "title": "Realm配置",
+      "properties": {
+        "enable": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用配置",
+          "description": "启用配置",
+          "markdownDescription": "启用配置",
+          "default": false
+        },
+        "server-url": {
+          "$ref": "#/definitions/patterns/url",
+          "title": "服务器URL",
+          "description": "服务器URL",
+          "markdownDescription": "服务器URL"
+        },
+        "token": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "Token",
+          "description": "Token",
+          "markdownDescription": "Token"
+        },
+        "realm-id": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "Realm ID",
+          "description": "Realm ID",
+          "markdownDescription": "Realm ID"
+        },
+        "stun-servers": {
+          "$ref": "#/definitions/types/serverArray",
+          "title": "STUN服务器列表",
+          "description": "STUN服务器列表",
+          "markdownDescription": "STUN服务器列表"
+        },
+        "sni": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "SNI",
+          "description": "SNI(Server Name Indication)",
+          "markdownDescription": "`SNI`(Server Name Indication)"
+        },
+        "skip-cert-verify": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "跳过证书验证",
+          "description": "跳过证书验证",
+          "markdownDescription": "跳过证书验证"
+        },
+        "fingerprint": {
+          "$ref": "#/definitions/patterns/sha256Fingerprint",
+          "title": "SHA-256证书指纹",
+          "description": "服务端证书的SHA-256指纹",
+          "markdownDescription": "服务端证书的`SHA-256`指纹"
+        },
+        "certificate": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "证书或证书路径",
+          "description": "PEM格式",
+          "markdownDescription": "PEM格式"
+        },
+        "private-key": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "私钥",
+          "description": "私钥",
+          "markdownDescription": "私钥"
+        },
+        "alpn": {
+          "$ref": "#/definitions/types/stringArray",
+          "title": "ALPN",
+          "description": "Application-Layer Protocol Negotiation(应用层协议协商)",
+          "markdownDescription": "Application-Layer Protocol Negotiation(应用层协议协商)"
+        }
+      }
+    }
   },
   "allOf": [
     { "title": "basic配置", "$ref": "#/definitions/basic-option" },
@@ -165,6 +238,7 @@
           "markdownDescription": "UDP最大传输单元(Maximum Transmission Unit)",
           "default": 1197
         },
+        "realm-opts": { "title": "Realm配置", "$ref": "#/definitions/realm-opts" },
         "initial-stream-receive-window": {
           "type": "integer",
           "title": "流初始数据窗口",
