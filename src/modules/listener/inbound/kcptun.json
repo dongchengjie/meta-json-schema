@@ -1,0 +1,204 @@
+{
+  "type": "object",
+  "title": "kcptun配置",
+  "definitions": {
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" }
+  },
+  "required": ["enable"],
+  "properties": {
+    "enable": {
+      "type": "boolean",
+      "title": "启用KCP-TUN",
+      "description": "启用KCP-TUN",
+      "markdownDescription": "启用`KCP-TUN`"
+    },
+    "key": {
+      "type": "string",
+      "title": "密钥",
+      "description": "密钥",
+      "markdownDescription": "密钥",
+      "default": "it's a secrect"
+    },
+    "crypt": {
+      "enum": [
+        "null",
+        "tea",
+        "xor",
+        "none",
+        "aes-128",
+        "aes-128-gcm",
+        "aes-192",
+        "blowfish",
+        "twofish",
+        "cast5",
+        "3des",
+        "xtea",
+        "salsa20",
+        "aes"
+      ],
+      "title": "加密方式",
+      "description": "加密方式",
+      "markdownDescription": "加密方式",
+      "default": "aes"
+    },
+    "mode": {
+      "enum": ["normal", "fast", "fast2", "fast3"],
+      "markdownEnumDescriptions": ["普通模式", "快速模式", "高速模式", "极速模式"],
+      "title": "预设模式",
+      "description": "用于快速配置参数，也可手动配置参数",
+      "markdownDescription": "用于快速配置参数，也可手动配置参数",
+      "default": "fast"
+    },
+    "conn": {
+      "type": "integer",
+      "title": "UDP 连接数",
+      "description": "UDP 连接数",
+      "markdownDescription": "UDP 连接数",
+      "default": 1
+    },
+    "autoexpire": {
+      "type": "integer",
+      "title": "自动过期时间",
+      "description": "单位:s",
+      "markdownDescription": "单位:s",
+      "default": 0
+    },
+    "scavengettl": {
+      "type": "integer",
+      "title": "清理超时连接的时间间隔",
+      "description": "单位:s",
+      "markdownDescription": "单位:s",
+      "default": 600
+    },
+    "mtu": {
+      "type": "integer",
+      "title": "最大传输单元",
+      "description": "最大传输单元",
+      "markdownDescription": "最大传输单元",
+      "default": 1350
+    },
+    "ratelimit": {
+      "type": "integer",
+      "title": "单个 KCP 连接的最大出站速度（数据包限速,0为禁用）",
+      "description": "单位:bytes",
+      "markdownDescription": "单位:bytes",
+      "default": 0
+    },
+    "sndwnd": {
+      "type": "integer",
+      "title": "发送窗口大小",
+      "description": "发送窗口大小",
+      "markdownDescription": "发送窗口大小",
+      "default": 128
+    },
+    "rcvwnd": {
+      "type": "integer",
+      "title": "接收窗口大小",
+      "description": "接收窗口大小",
+      "markdownDescription": "接收窗口大小",
+      "default": 512
+    },
+    "datashard": {
+      "type": "integer",
+      "title": "数据分片大小",
+      "description": "数据分片大小",
+      "markdownDescription": "数据分片大小",
+      "default": 10
+    },
+    "parityshard": {
+      "type": "integer",
+      "title": "纠错分片大小",
+      "description": "纠错分片大小",
+      "markdownDescription": "纠错分片大小",
+      "default": 3
+    },
+    "dscp": {
+      "type": "integer",
+      "title": "差分服务代码点（Differentiated Services Code Point）",
+      "description": "6bit",
+      "markdownDescription": "6bit"
+    },
+    "nocomp": {
+      "type": "boolean",
+      "title": "禁用数据压缩",
+      "description": "禁用数据压缩",
+      "markdownDescription": "禁用数据压缩"
+    },
+    "acknodelay": {
+      "type": "boolean",
+      "title": "启用ACK快速发送",
+      "description": "启用ACK快速发送",
+      "markdownDescription": "启用ACK快速发送"
+    },
+    "nodelay": {
+      "type": "integer",
+      "title": "禁用 Nagle 算法",
+      "description": "禁用 Nagle 算法",
+      "markdownDescription": "禁用 Nagle 算法"
+    },
+    "interval": {
+      "type": "integer",
+      "title": "发送数据包间隔",
+      "description": "单位:ms",
+      "markdownDescription": "单位:ms",
+      "default": 50
+    },
+    "resend": {
+      "type": "integer",
+      "title": "快速重传机制触发阈值",
+      "description": "快速重传机制触发阈值",
+      "markdownDescription": "快速重传机制触发阈值",
+      "default": 2
+    },
+    "nc": {
+      "type": "integer",
+      "title": "禁用拥塞控制",
+      "description": "禁用拥塞控制",
+      "markdownDescription": "禁用拥塞控制"
+    },
+    "sockbuf": {
+      "type": "integer",
+      "title": "套接字缓冲区大小",
+      "description": "单位:bytes",
+      "markdownDescription": "单位:bytes",
+      "default": 4194304
+    },
+    "smuxver": {
+      "type": "integer",
+      "title": "SMUX 协议版本",
+      "description": "SMUX 协议版本",
+      "markdownDescription": "SMUX 协议版本",
+      "default": 1
+    },
+    "smuxbuf": {
+      "type": "integer",
+      "title": "SMUX 多路复用缓冲区大小",
+      "description": "单位:bytes",
+      "markdownDescription": "单位:bytes",
+      "default": 4194304
+    },
+    "framesize": {
+      "type": "integer",
+      "title": "SMUX 多路复用最大帧大小",
+      "description": "单位:bytes",
+      "markdownDescription": "单位:bytes",
+      "default": 8192
+    },
+    "streambuf": {
+      "type": "integer",
+      "title": "单个流的缓冲区大小",
+      "description": "单位:bytes",
+      "markdownDescription": "单位:bytes",
+      "default": 4194304
+    },
+    "keepalive": {
+      "type": "integer",
+      "title": "保活间隔",
+      "description": "单位:s",
+      "markdownDescription": "单位:s",
+      "default": 10
+    }
+  }
+}

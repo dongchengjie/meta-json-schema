@@ -7,6 +7,7 @@
     "enums": { "$ref": "../../../definitions/enums.json" },
     "base-option": { "$ref": "./base.json" },
     "mux-option": { "$ref": "./mux.json" },
+    "kcptun": { "$ref": "./kcptun.json" },
     "shadow-tls-user": {
       "type": "object",
       "title": "TLS用户",
@@ -125,6 +126,7 @@
             }
           }
         },
+        "kcp-tun": { "title": "KCP-TUN配置", "$ref": "#/definitions/kcptun" },
         "simple-obfs": {
           "type": "object",
           "title": "简易混淆配置",
