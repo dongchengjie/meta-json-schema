@@ -17,6 +17,7 @@
     "vless": { "$ref": "../listener/inbound/vless.json" },
     "trojan": { "$ref": "../listener/inbound/trojan.json" },
     "hysteria2": { "$ref": "../listener/inbound/hysteria2.json" },
+    "hysteria2-realm": { "$ref": "../listener/inbound/hysteria2-realm.json" },
     "tuic": { "$ref": "../listener/inbound/tuic.json" },
     "anytls": { "$ref": "../listener/inbound/anytls.json" },
     "mieru": { "$ref": "../listener/inbound/mieru.json" },
@@ -143,6 +144,16 @@
             "properties": { "type": { "title": "hysteria2配置", "const": "hysteria2" } }
           },
           { "$ref": "#/definitions/hysteria2" }
+        ]
+      },
+      {
+        "allOf": [
+          {
+            "type": "object",
+            "title": "hysteria2-realm配置",
+            "properties": { "type": { "title": "hysteria2-realm配置", "const": "hysteria2-realm" } }
+          },
+          { "$ref": "#/definitions/hysteria2-realm" }
         ]
       },
       {

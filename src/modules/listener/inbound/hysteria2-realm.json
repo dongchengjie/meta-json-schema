@@ -1,0 +1,66 @@
+{
+  "type": "object",
+  "title": "inbound-hysteria2-realm",
+  "definitions": {
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" },
+    "tls": { "$ref": "../../config/tls.json" },
+    "base-option": { "$ref": "./base.json" }
+  },
+  "allOf": [
+    { "title": "入站基础配置", "$ref": "#/definitions/base-option" },
+    {
+      "type": "object",
+      "title": "hysteria2-realm配置",
+      "required": ["token"],
+      "properties": {
+        "token": {
+          "type": "string",
+          "title": "Bearer 令牌",
+          "description": "hysteria2 入站和出站通过 Authorization: Bearer <token> 出示的 Bearer 令牌",
+          "markdownDescription": "hysteria2 入站和出站通过 `Authorization: Bearer <token>` 出示的 Bearer 令牌"
+        },
+        "max-realms": {
+          "type": "integer",
+          "title": "最大 realm 总数",
+          "description": "全局最大 realm 数量限制，0 表示不限制",
+          "markdownDescription": "全局最大 realm 数量限制，`0` 表示不限制",
+          "default": 65536
+        },
+        "max-realms-per-ip": {
+          "type": "integer",
+          "title": "每 IP 最大 realm 数",
+          "description": "每个客户端 IP 的最大 realm 数量限制，0 表示不限制",
+          "markdownDescription": "每个客户端 IP 的最大 realm 数量限制，`0` 表示不限制",
+          "default": 4
+        },
+        "trusted-proxy-header": {
+          "type": "string",
+          "title": "可信代理请求头",
+          "description": "从指定请求头中读取真实客户端 IP（如 X-Forwarded-For）",
+          "markdownDescription": "从指定请求头中读取真实客户端 IP（如 `X-Forwarded-For`）"
+        },
+        "realm-name-pattern": {
+          "type": "string",
+          "title": "realm 名称正则",
+          "description": "realm 名称必须匹配的正则表达式",
+          "markdownDescription": "realm 名称必须匹配的正则表达式",
+          "default": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$"
+        },
+        "certificate": { "$ref": "#/definitions/tls/properties/certificate" },
+        "private-key": { "$ref": "#/definitions/tls/properties/private-key" },
+        "client-auth-type": { "$ref": "#/definitions/tls/properties/client-auth-type" },
+        "client-auth-cert": { "$ref": "#/definitions/tls/properties/client-auth-cert" },
+        "ech-key": { "$ref": "#/definitions/tls/properties/ech-key" },
+        "alpn": {
+          "$ref": "#/definitions/types/stringArray",
+          "title": "ALPN",
+          "description": "Application-Layer Protocol Negotiation(应用层协议协商)",
+          "markdownDescription": "Application-Layer Protocol Negotiation(应用层协议协商)",
+          "default": ["h2", "http1.1"]
+        }
+      }
+    }
+  ]
+}

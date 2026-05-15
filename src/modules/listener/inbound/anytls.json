@@ -6,8 +6,7 @@
     "patterns": { "$ref": "../../../definitions/patterns.json" },
     "enums": { "$ref": "../../../definitions/enums.json" },
     "tls": { "$ref": "../../config/tls.json" },
-    "base-option": { "$ref": "./base.json" },
-    "mux-option": { "$ref": "./mux.json" }
+    "base-option": { "$ref": "./base.json" }
   },
   "allOf": [
     { "title": "入站基础配置", "$ref": "#/definitions/base-option" },
