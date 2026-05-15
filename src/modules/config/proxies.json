@@ -5,49 +5,30 @@
     "types": { "$ref": "../../definitions/types.json" },
     "patterns": { "$ref": "../../definitions/patterns.json" },
     "enums": { "$ref": "../../definitions/enums.json" },
-    "direct": { "$ref": "../adapter/outbound/direct.json" },
-    "dns": { "$ref": "../adapter/outbound/dns.json" },
     "shadowsocks": { "$ref": "../adapter/outbound/shadowsocks.json" },
     "shadowsocksr": { "$ref": "../adapter/outbound/shadowsocksr.json" },
-    "snell": { "$ref": "../adapter/outbound/snell.json" },
     "socks5": { "$ref": "../adapter/outbound/socks5.json" },
     "http": { "$ref": "../adapter/outbound/http.json" },
     "vmess": { "$ref": "../adapter/outbound/vmess.json" },
     "vless": { "$ref": "../adapter/outbound/vless.json" },
+    "snell": { "$ref": "../adapter/outbound/snell.json" },
     "trojan": { "$ref": "../adapter/outbound/trojan.json" },
     "hysteria": { "$ref": "../adapter/outbound/hysteria.json" },
     "hysteria2": { "$ref": "../adapter/outbound/hysteria2.json" },
     "wireguard": { "$ref": "../adapter/outbound/wireguard.json" },
     "tuic": { "$ref": "../adapter/outbound/tuic.json" },
+    "direct": { "$ref": "../adapter/outbound/direct.json" },
+    "dns": { "$ref": "../adapter/outbound/dns.json" },
     "ssh": { "$ref": "../adapter/outbound/ssh.json" },
     "mieru": { "$ref": "../adapter/outbound/mieru.json" },
     "anytls": { "$ref": "../adapter/outbound/anytls.json" },
     "sudoku": { "$ref": "../adapter/outbound/sudoku.json" },
     "masque": { "$ref": "../adapter/outbound/masque.json" },
-    "trusttunnel": { "$ref": "../adapter/outbound/trusttunnel.json" }
+    "trusttunnel": { "$ref": "../adapter/outbound/trusttunnel.json" },
+    "openvpn": { "$ref": "../adapter/outbound/openvpn.json" }
   },
   "items": {
     "anyOf": [
-      {
-        "allOf": [
-          {
-            "type": "object",
-            "title": "direct",
-            "properties": { "type": { "title": "direct配置", "const": "direct" } }
-          },
-          { "$ref": "#/definitions/direct" }
-        ]
-      },
-      {
-        "allOf": [
-          {
-            "type": "object",
-            "title": "dns",
-            "properties": { "type": { "title": "dns配置", "const": "dns" } }
-          },
-          { "$ref": "#/definitions/dns" }
-        ]
-      },
       {
         "allOf": [
           {
@@ -66,16 +47,6 @@
             "properties": { "type": { "title": "shadowsocksr配置", "const": "ssr" } }
           },
           { "$ref": "#/definitions/shadowsocksr" }
-        ]
-      },
-      {
-        "allOf": [
-          {
-            "type": "object",
-            "title": "snell",
-            "properties": { "type": { "title": "snell配置", "const": "snell" } }
-          },
-          { "$ref": "#/definitions/snell" }
         ]
       },
       {
@@ -116,6 +87,16 @@
             "properties": { "type": { "title": "vless配置", "const": "vless" } }
           },
           { "$ref": "#/definitions/vless" }
+        ]
+      },
+      {
+        "allOf": [
+          {
+            "type": "object",
+            "title": "snell",
+            "properties": { "type": { "title": "snell配置", "const": "snell" } }
+          },
+          { "$ref": "#/definitions/snell" }
         ]
       },
       {
@@ -166,6 +147,26 @@
             "properties": { "type": { "title": "tuic配置", "const": "tuic" } }
           },
           { "$ref": "#/definitions/tuic" }
+        ]
+      },
+      {
+        "allOf": [
+          {
+            "type": "object",
+            "title": "direct",
+            "properties": { "type": { "title": "direct配置", "const": "direct" } }
+          },
+          { "$ref": "#/definitions/direct" }
+        ]
+      },
+      {
+        "allOf": [
+          {
+            "type": "object",
+            "title": "dns",
+            "properties": { "type": { "title": "dns配置", "const": "dns" } }
+          },
+          { "$ref": "#/definitions/dns" }
         ]
       },
       {
@@ -226,6 +227,16 @@
             "properties": { "type": { "title": "trusttunnel配置", "const": "trusttunnel" } }
           },
           { "$ref": "#/definitions/trusttunnel" }
+        ]
+      },
+      {
+        "allOf": [
+          {
+            "type": "object",
+            "title": "openvpn",
+            "properties": { "type": { "title": "openvpn配置", "const": "openvpn" } }
+          },
+          { "$ref": "#/definitions/openvpn" }
         ]
       }
     ]

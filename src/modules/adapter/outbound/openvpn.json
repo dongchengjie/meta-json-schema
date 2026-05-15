@@ -1,0 +1,147 @@
+{
+  "type": "object",
+  "title": "outbound-openvpn",
+  "definitions": {
+    "compatible": { "$ref": "../../../definitions/compatible.json" },
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" },
+    "basic-option": { "$ref": "./base.json#/definitions/basic-option" },
+    "smux": { "$ref": "./singmux.json" }
+  },
+  "allOf": [
+    { "title": "basic配置", "$ref": "#/definitions/basic-option" },
+    {
+      "type": "object",
+      "title": "openvpn配置",
+      "required": ["name", "server", "port", "ca", "tls-crypt"],
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "代理节点类型",
+          "description": "代理节点类型",
+          "markdownDescription": "代理节点类型"
+        },
+        "name": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "代理节点名称",
+          "description": "代理节点名称",
+          "markdownDescription": "代理节点名称"
+        },
+        "server": {
+          "$ref": "#/definitions/patterns/server",
+          "title": "代理节点服务器",
+          "description": "域名或IP",
+          "markdownDescription": "域名或IP"
+        },
+        "port": {
+          "$ref": "#/definitions/patterns/port",
+          "title": "代理节点端口号",
+          "description": "代理节点端口号",
+          "markdownDescription": "代理节点端口号"
+        },
+        "proto": {
+          "enum": ["udp", "udp4", "tcp", "tcp-client", "tcp4", "tcp4-client"],
+          "title": "传输协议",
+          "description": "传输协议",
+          "markdownDescription": "传输协议",
+          "default": "udp"
+        },
+        "dev": {
+          "enum": ["tun"],
+          "title": "设备类型",
+          "description": "设备类型",
+          "markdownDescription": "设备类型",
+          "default": "tun"
+        },
+        "cipher": {
+          "enum": ["AES-128-GCM", "AES-256-GCM"],
+          "title": "加密方式",
+          "description": "加密方式",
+          "markdownDescription": "加密方式",
+          "default": "AES-128-GCM"
+        },
+        "auth": {
+          "enum": ["SHA256"],
+          "title": "认证方式",
+          "description": "认证方式",
+          "markdownDescription": "认证方式",
+          "default": "SHA256"
+        },
+        "ca": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "CA证书内容",
+          "description": "从 .ovpn 中复制 \\<ca>\\</ca> 内的内容，不需要保留 \\<ca> 标签",
+          "markdownDescription": "从 `.ovpn` 中复制 `<ca></ca>` 内的内容，不需要保留 `<ca>` 标签"
+        },
+        "cert": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "证书内容",
+          "description": "从 .ovpn 中复制 \\<cert>\\</cert> 内的内容，不需要保留 \\<cert> 标签",
+          "markdownDescription": "从 `.ovpn` 中复制 `<cert></cert>` 内的内容，不需要保留 `<cert>` 标签"
+        },
+        "key": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "私钥内容",
+          "description": "从 .ovpn 中复制 \\<key>\\</key> 内的内容，不需要保留 \\<key> 标签",
+          "markdownDescription": "从 `.ovpn` 中复制 `<key></key>` 内的内容，不需要保留 `<key>` 标签"
+        },
+        "tls-crypt": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "静态密钥内容",
+          "description": "从 .ovpn 中复制 \\<tls-crypt>\\</tls-crypt> 内的内容，不需要保留 \\<tls-crypt> 标签",
+          "markdownDescription": "从 `.ovpn` 中复制 `<tls-crypt></tls-crypt>` 内的内容，不需要保留 `<tls-crypt>` 标签"
+        },
+        "username": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "用户名",
+          "description": "认证用户名",
+          "markdownDescription": "认证用户名"
+        },
+        "password": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "密码",
+          "description": "认证密码",
+          "markdownDescription": "认证密码"
+        },
+        "mtu": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "最大传输单元",
+          "description": "最大传输单元",
+          "markdownDescription": "最大传输单元",
+          "default": 1500
+        },
+        "udp": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用UDP",
+          "description": "启用UDP",
+          "markdownDescription": "启用`UDP`",
+          "default": true
+        },
+        "remote-dns-resolve": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "强制DNS远程解析",
+          "description": "强制DNS远程解析",
+          "markdownDescription": "强制DNS远程解析",
+          "default": false
+        },
+        "dns": {
+          "$ref": "#/definitions/types/stringArray",
+          "title": "DNS服务器列表",
+          "description": "仅在 remote-dns-resolve 为 true 时生效",
+          "markdownDescription": "仅在 `remote-dns-resolve` 为 `true` 时生效"
+        }
+      },
+      "allOf": [
+        { "if": { "required": ["cert"] }, "then": { "required": ["cert", "key"] } },
+        { "if": { "required": ["key"] }, "then": { "required": ["cert", "key"] } },
+        { "if": { "not": { "required": ["cert", "key"] } }, "then": { "required": ["username"] } }
+      ]
+    },
+    {
+      "type": "object",
+      "title": "smux配置",
+      "properties": { "smux": { "title": "smux配置", "$ref": "#/definitions/smux" } }
+    }
+  ]
+}
