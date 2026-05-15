@@ -6,6 +6,11 @@
 - 新增: listener shadowsocks 新增配置项 `simple-obfs`
 - 新增: hysteria2 新增配置项 `realm-opts`
 - 新增: listener hysteria2 新增配置项 `realm-opts`
+- 新增: inbound 新增 hysteria2-realm `listeners` 配置项
+
+### Bug Fixes
+
+- 修复: 补充 shadowsocks/trojan `alpn` 配置项的默认值
 
 ## v1.19.24
 

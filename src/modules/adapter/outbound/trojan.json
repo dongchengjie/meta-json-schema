@@ -79,7 +79,8 @@
           "$ref": "#/definitions/types/stringArray",
           "title": "ALPN",
           "description": "Application-Layer Protocol Negotiation(应用层协议协商)",
-          "markdownDescription": "Application-Layer Protocol Negotiation(应用层协议协商)"
+          "markdownDescription": "Application-Layer Protocol Negotiation(应用层协议协商)",
+          "default": ["h2", "http/1.1"]
         },
         "sni": {
           "$ref": "#/definitions/compatible/string",
