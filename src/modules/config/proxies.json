@@ -25,7 +25,8 @@
     "sudoku": { "$ref": "../adapter/outbound/sudoku.json" },
     "masque": { "$ref": "../adapter/outbound/masque.json" },
     "trusttunnel": { "$ref": "../adapter/outbound/trusttunnel.json" },
-    "openvpn": { "$ref": "../adapter/outbound/openvpn.json" }
+    "openvpn": { "$ref": "../adapter/outbound/openvpn.json" },
+    "tailscale": { "$ref": "../adapter/outbound/tailscale.json" }
   },
   "items": {
     "anyOf": [
@@ -237,6 +238,16 @@
             "properties": { "type": { "title": "openvpn配置", "const": "openvpn" } }
           },
           { "$ref": "#/definitions/openvpn" }
+        ]
+      },
+      {
+        "allOf": [
+          {
+            "type": "object",
+            "title": "tailscale",
+            "properties": { "type": { "title": "tailscale配置", "const": "tailscale" } }
+          },
+          { "$ref": "#/definitions/tailscale" }
         ]
       }
     ]

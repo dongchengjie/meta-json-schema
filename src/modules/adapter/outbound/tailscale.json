@@ -1,0 +1,99 @@
+{
+  "type": "object",
+  "title": "outbound-tailscale",
+  "definitions": {
+    "compatible": { "$ref": "../../../definitions/compatible.json" },
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" },
+    "basic-option": { "$ref": "./base.json#/definitions/basic-option" },
+    "smux": { "$ref": "./singmux.json" }
+  },
+  "allOf": [
+    { "title": "basic配置", "$ref": "#/definitions/basic-option" },
+    {
+      "type": "object",
+      "title": "tailscale配置",
+      "required": ["name"],
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "代理节点类型",
+          "description": "代理节点类型",
+          "markdownDescription": "代理节点类型"
+        },
+        "name": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "代理节点名称",
+          "description": "代理节点名称",
+          "markdownDescription": "代理节点名称"
+        },
+        "hostname": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "Tailscale 设备名称",
+          "description": "默认由 tsnet 处理",
+          "markdownDescription": "默认由 tsnet 处理"
+        },
+        "auth-key": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "Tailscale 认证密钥",
+          "description": "不填写时首次启动会输出交互式登录 URL",
+          "markdownDescription": "不填写时首次启动会输出交互式登录 URL"
+        },
+        "control-url": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "Tailscale 控制服务器 URL",
+          "description": "自定义 Headscale/Tailscale control server",
+          "markdownDescription": "自定义 Headscale/Tailscale control server",
+          "default": "tailscale"
+        },
+        "state-dir": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "Tailscale 状态文件目录",
+          "description": "默认由 tsnet 处理",
+          "markdownDescription": "默认由 tsnet 处理",
+          "default": "tailscale"
+        },
+        "ephemeral": {
+          "type": "boolean",
+          "title": "临时节点模式",
+          "description": "启用后以 ephemeral node 身份登录，节点下线后自动从 Tailnet 中移除，适用于临时访问场景",
+          "markdownDescription": "启用后以 ephemeral node 身份登录，节点下线后自动从 Tailnet 中移除，适用于临时访问场景",
+          "default": false
+        },
+        "udp": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用UDP",
+          "description": "启用UDP",
+          "markdownDescription": "启用`UDP`",
+          "default": false
+        },
+        "accept-routes": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "是否接受 Tailnet 中发布的 subnet routes",
+          "description": "适用于需要访问 Tailnet 内子网的场景",
+          "markdownDescription": "适用于需要访问 Tailnet 内子网的场景",
+          "default": false
+        },
+        "exit-node": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "使用指定 exit node",
+          "description": "可填写节点 IP，也支持 auto:any",
+          "markdownDescription": "可填写节点 IP，也支持 auto:any"
+        },
+        "exit-node-allow-lan-access": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "允许 exit node 访问局域网",
+          "description": "是否允许访问本地 LAN",
+          "markdownDescription": "是否允许访问本地 LAN",
+          "default": false
+        }
+      }
+    },
+    {
+      "type": "object",
+      "title": "smux配置",
+      "properties": { "smux": { "title": "smux配置", "$ref": "#/definitions/smux" } }
+    }
+  ]
+}
