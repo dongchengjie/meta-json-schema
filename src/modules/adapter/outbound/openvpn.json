@@ -77,14 +77,14 @@
         "cert": {
           "$ref": "#/definitions/compatible/string",
           "title": "证书内容",
-          "description": "从 .ovpn 中复制 \\<cert>\\</cert> 内的内容，不需要保留 \\<cert> 标签",
-          "markdownDescription": "从 `.ovpn` 中复制 `<cert></cert>` 内的内容，不需要保留 `<cert>` 标签"
+          "description": "从 .ovpn 中复制 \\<cert>\\</cert> 内的内容（auth-user-pass 时可省略 cert / key）",
+          "markdownDescription": "从 `.ovpn` 中复制 `<cert></cert>` 内的内容（auth-user-pass 时可省略 cert / key）"
         },
         "key": {
           "$ref": "#/definitions/compatible/string",
           "title": "私钥内容",
-          "description": "从 .ovpn 中复制 \\<key>\\</key> 内的内容，不需要保留 \\<key> 标签",
-          "markdownDescription": "从 `.ovpn` 中复制 `<key></key>` 内的内容，不需要保留 `<key>` 标签"
+          "description": "从 .ovpn 中复制 \\<key>\\</key> 内的内容",
+          "markdownDescription": "从 `.ovpn` 中复制 `<key></key>` 内的内容"
         },
         "tls-crypt": {
           "$ref": "#/definitions/compatible/string",
