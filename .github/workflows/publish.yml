@@ -43,7 +43,7 @@ jobs:
 
       - name: Bundle JSON Schemas
         run: |
-          pnpm install
+          pnpm install --frozen-lockfile
           pnpm run release
 
       - name: Upload Schemas
@@ -102,7 +102,7 @@ jobs:
           cache: "pnpm"
 
       - name: Install Dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
       - name: Download Schemas
         uses: actions/download-artifact@v8

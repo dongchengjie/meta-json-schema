@@ -24,7 +24,7 @@
   "explorer.fileNesting.patterns": {
     ".gitignore": ".git*,lefthook.*,dprint.*",
     "README.md": "README.*.md,LICENSE",
-    "package.json": "pnpm-lock.yaml"
+    "package.json": "pnpm-lock.yaml,pnpm-workspace.yaml"
   },
   "search.exclude": {
     "node_modules": true,

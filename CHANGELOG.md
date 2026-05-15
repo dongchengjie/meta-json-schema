@@ -2,7 +2,7 @@
 
 ### Changes
 
-- 调整: vless `xhttp` 下载配置移除未使用的配置项 `no-grpc-header`、`x-padding-bytes`、`x-padding-obfs-mode`、`x-padding-key`、`x-padding-header`、`x-padding-placement`、`x-padding-method`、`uplink-http-method`、`session-placement`、`session-key`、`seq-placement`、`seq-key`、`uplink-data-placement`、`uplink-data-key`、`uplink-chunk-size`、`sc-max-each-post-bytes`、`sc-min-posts-interval-ms`
+- 移除: vless `xhttp` 下载配置移除未使用的配置项 `no-grpc-header`、`x-padding-bytes`、`x-padding-obfs-mode`、`x-padding-key`、`x-padding-header`、`x-padding-placement`、`x-padding-method`、`uplink-http-method`、`session-placement`、`session-key`、`seq-placement`、`seq-key`、`uplink-data-placement`、`uplink-data-key`、`uplink-chunk-size`、`sc-max-each-post-bytes`、`sc-min-posts-interval-ms`
 - 新增: listener shadowsocks 新增配置项 `simple-obfs`
 - 新增: hysteria2 新增配置项 `realm-opts`
 - 新增: listener hysteria2 新增配置项 `realm-opts`
