@@ -41,8 +41,8 @@
       "exclude-filter": {
         "type": "string",
         "title": "节点排除",
-        "description": "排除满足关键词或正则表达式的节点(不支持多个表达式)",
-        "markdownDescription": "排除满足关键词或`正则表达式`的节点(不支持多个表达式)"
+        "description": "排除满足关键词或正则表达式的节点(使用`号分隔)",
+        "markdownDescription": "排除满足关键词或`正则表达式`的节点(使用`号分隔)"
       },
       "exclude-type": {
         "type": "string",

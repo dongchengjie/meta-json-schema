@@ -11,6 +11,7 @@
 ### Bug Fixes
 
 - 修复: 补充 shadowsocks/trojan `alpn` 配置项的默认值
+- 修复: `exclude-filter` 现有描述描述应为支持使用 `重音符` 分隔多个关键词或正则表达式
 
 ## v1.19.24
 
