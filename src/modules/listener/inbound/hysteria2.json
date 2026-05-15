@@ -78,6 +78,12 @@
           "title": "ALPN",
           "description": "Application-Layer Protocol Negotiation(应用层协议协商)",
           "markdownDescription": "Application-Layer Protocol Negotiation(应用层协议协商)"
+        },
+        "proxy": {
+          "type": "string",
+          "title": "代理",
+          "description": "设置server-url通过哪个代理进行连接",
+          "markdownDescription": "设置server-url通过哪个代理进行连接"
         }
       }
     }
