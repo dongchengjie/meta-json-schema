@@ -133,8 +133,8 @@
         "private-key": {
           "$ref": "#/definitions/compatible/string",
           "title": "私钥",
-          "description": "私钥",
-          "markdownDescription": "私钥"
+          "description": "私钥内容或私钥文件路径",
+          "markdownDescription": "私钥内容或私钥文件路径"
         },
         "alpn": {
           "$ref": "#/definitions/types/stringArray",

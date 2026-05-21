@@ -43,8 +43,8 @@
     "private-key": {
       "type": "string",
       "title": "私钥",
-      "description": "私钥",
-      "markdownDescription": "私钥"
+      "description": "私钥内容或私钥文件路径",
+      "markdownDescription": "私钥内容或私钥文件路径"
     },
     "congestion-controller": { "$ref": "#/definitions/enums/congestion-controller" },
     "max-idle-time": {
