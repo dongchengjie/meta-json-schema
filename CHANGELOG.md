@@ -7,7 +7,7 @@
 - 新增: hysteria2 新增配置项 `realm-opts`
 - 新增: listener hysteria2 新增配置项 `realm-opts`
 - 新增: inbound 新增 hysteria2-realm `listeners` 配置项
-- 新增: proxy 新增 `openvpn`、`tailscale` 协议
+- 新增: proxy 新增 `openvpn`、`tailscale`、`gost-relay` 协议
 
 ### Bug Fixes
 

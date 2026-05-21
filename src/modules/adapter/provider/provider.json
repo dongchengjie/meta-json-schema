@@ -47,8 +47,8 @@
       "exclude-type": {
         "type": "string",
         "title": "根据节点类型排除节点",
-        "description": "ss, ssr, socks5, http, vmess, vless, snell, trojan, hysteria, hysteria2, wireguard, tuic, direct, dns, reject, ssh, mieru, anytls, sudoku, masque, trusttunnel, openvpn, tailscale(使用|分隔,不支持正则表达式)",
-        "markdownDescription": "`ss`, `ssr`, `socks5`, `http`, `vmess`, `vless`, `snell`, `trojan`, `hysteria`, `hysteria2`, `wireguard`, `tuic`, `direct`, `dns`, `reject`, `ssh`, `mieru`, `anytls`, `sudoku`, `masque`, `trusttunnel`, `openvpn`, `tailscale`(使用`|`分隔,不支持正则表达式)"
+        "description": "ss, ssr, socks5, http, vmess, vless, snell, trojan, hysteria, hysteria2, wireguard, tuic, direct, dns, reject, ssh, mieru, anytls, sudoku, masque, trusttunnel, openvpn, tailscale, gost-relay(使用|分隔,不支持正则表达式)",
+        "markdownDescription": "`ss`, `ssr`, `socks5`, `http`, `vmess`, `vless`, `snell`, `trojan`, `hysteria`, `hysteria2`, `wireguard`, `tuic`, `direct`, `dns`, `reject`, `ssh`, `mieru`, `anytls`, `sudoku`, `masque`, `trusttunnel`, `openvpn`, `tailscale`, `gost-relay`(使用`|`分隔,不支持正则表达式)"
       },
       "dialer-proxy": {
         "type": "string",

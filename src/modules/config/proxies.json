@@ -17,6 +17,7 @@
     "hysteria2": { "$ref": "../adapter/outbound/hysteria2.json" },
     "wireguard": { "$ref": "../adapter/outbound/wireguard.json" },
     "tuic": { "$ref": "../adapter/outbound/tuic.json" },
+    "gost-relay": { "$ref": "../adapter/outbound/gost-relay.json" },
     "direct": { "$ref": "../adapter/outbound/direct.json" },
     "dns": { "$ref": "../adapter/outbound/dns.json" },
     "ssh": { "$ref": "../adapter/outbound/ssh.json" },
@@ -148,6 +149,16 @@
             "properties": { "type": { "title": "tuic配置", "const": "tuic" } }
           },
           { "$ref": "#/definitions/tuic" }
+        ]
+      },
+      {
+        "allOf": [
+          {
+            "type": "object",
+            "title": "gost-relay",
+            "properties": { "type": { "title": "gost-relay配置", "const": "gost-relay" } }
+          },
+          { "$ref": "#/definitions/gost-relay" }
         ]
       },
       {
