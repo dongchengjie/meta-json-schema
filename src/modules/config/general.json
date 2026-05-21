@@ -111,8 +111,8 @@
         "tcp-concurrent": {
           "type": "boolean",
           "title": "TCP并发",
-          "description": "TCP并发",
-          "markdownDescription": "TCP并发",
+          "description": "当域名解析出多个 IP 时，并发向所有 IP 发起 TCP 连接，并使用最快握手的连接",
+          "markdownDescription": "当域名解析出多个 IP 时，并发向所有 IP 发起 TCP 连接，并使用最快握手的连接",
           "default": false
         },
         "find-process-mode": {
