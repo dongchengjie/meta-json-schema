@@ -55,7 +55,7 @@
           "default": "tun"
         },
         "cipher": {
-          "enum": ["AES-128-GCM", "AES-256-GCM"],
+          "enum": ["AES-128-GCM", "AES-256-GCM", "CHACHA20-POLY1305"],
           "title": "加密方式",
           "description": "加密方式",
           "markdownDescription": "加密方式",

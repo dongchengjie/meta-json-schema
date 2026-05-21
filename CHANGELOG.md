@@ -1,3 +1,11 @@
+## v1.19.26
+
+### Changes
+
+- 新增: openvpn 配置项 `cipher` 新增 `CHACHA20-POLY1305` 支持
+
+---
+
 ## v1.19.25
 
 ### Changes
@@ -12,8 +20,10 @@
 ### Bug Fixes
 
 - 修复: 补充 shadowsocks/trojan `alpn` 配置项的默认值
-- 修复: `exclude-filter` 现有描述描述应为支持使用 `重音符` 分隔多个关键词或正则表达式
+- 修复: `exclude-filter` 现有描述应为支持使用 `重音符` 分隔多个关键词或正则表达式
 - 修复: 补充 shadowsocks `listeners` 缺失 `kcp-tun` 配置项
+
+---
 
 ## v1.19.24
 
