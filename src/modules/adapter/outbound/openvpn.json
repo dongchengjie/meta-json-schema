@@ -14,7 +14,7 @@
     {
       "type": "object",
       "title": "openvpn配置",
-      "required": ["name", "server", "port", "ca", "tls-crypt"],
+      "required": ["name", "server", "port", "ca"],
       "properties": {
         "type": {
           "$ref": "#/definitions/compatible/string",
@@ -55,17 +55,24 @@
           "default": "tun"
         },
         "cipher": {
-          "enum": ["AES-128-GCM", "AES-256-GCM", "CHACHA20-POLY1305"],
+          "enum": [
+            "AES-128-GCM",
+            "AES-256-GCM",
+            "AES-CBC",
+            "AES-128-CBC",
+            "AES-256-CBC",
+            "CHACHA20-POLY1305"
+          ],
           "title": "加密方式",
           "description": "加密方式",
           "markdownDescription": "加密方式",
           "default": "AES-128-GCM"
         },
         "auth": {
-          "enum": ["SHA256"],
+          "enum": ["MD5", "SHA1", "SHA256", "SHA384", "SHA512"],
           "title": "认证方式",
-          "description": "认证方式",
-          "markdownDescription": "认证方式",
+          "description": "AEAD cipher 会忽略 auth",
+          "markdownDescription": "AEAD cipher 会忽略 auth",
           "default": "SHA256"
         },
         "ca": {
@@ -89,8 +96,8 @@
         "tls-crypt": {
           "$ref": "#/definitions/compatible/string",
           "title": "静态密钥内容",
-          "description": "从 .ovpn 中复制 \\<tls-crypt>\\</tls-crypt> 内的内容，不需要保留 \\<tls-crypt> 标签",
-          "markdownDescription": "从 `.ovpn` 中复制 `<tls-crypt></tls-crypt>` 内的内容，不需要保留 `<tls-crypt>` 标签"
+          "description": "从 .ovpn 中复制 \\<tls-crypt>\\</tls-crypt> 内的内容，不需要保留 \\<tls-crypt> 标签；没有 tls-crypt 的配置可省略",
+          "markdownDescription": "从 `.ovpn` 中复制 `<tls-crypt></tls-crypt>` 内的内容，不需要保留 `<tls-crypt>` 标签；没有 tls-crypt 的配置可省略"
         },
         "username": {
           "$ref": "#/definitions/compatible/string",
