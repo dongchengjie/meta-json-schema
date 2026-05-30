@@ -13,6 +13,7 @@
     "tunnel": { "$ref": "../listener/inbound/tunnel.json" },
     "tun": { "$ref": "../listener/inbound/tun.json" },
     "shadowsocks": { "$ref": "../listener/inbound/shadowsocks.json" },
+    "snell": { "$ref": "../listener/inbound/snell.json" },
     "vmess": { "$ref": "../listener/inbound/vmess.json" },
     "vless": { "$ref": "../listener/inbound/vless.json" },
     "trojan": { "$ref": "../listener/inbound/trojan.json" },
@@ -104,6 +105,16 @@
             "properties": { "type": { "title": "shadowsocks配置", "const": "shadowsocks" } }
           },
           { "$ref": "#/definitions/shadowsocks" }
+        ]
+      },
+      {
+        "allOf": [
+          {
+            "type": "object",
+            "title": "snell配置",
+            "properties": { "type": { "title": "snell配置", "const": "snell" } }
+          },
+          { "$ref": "#/definitions/snell" }
         ]
       },
       {

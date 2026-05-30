@@ -46,12 +46,24 @@
           "description": "公钥",
           "markdownDescription": "公钥"
         },
+        "udp": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用UDP",
+          "description": "仅v3/4/5支持",
+          "markdownDescription": "仅v3/4/5支持"
+        },
         "version": {
-          "$ref": "#/definitions/compatible/integer",
+          "enum": [1, 2, 3, 4, 5],
           "title": "版本",
           "description": "版本",
           "markdownDescription": "版本",
           "default": 1
+        },
+        "reuse": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "连接复用",
+          "description": "仅v4/5支持",
+          "markdownDescription": "仅v4/5支持"
         },
         "obfs-opts": { "$ref": "./shadowsocks.json#/definitions/simple-obfs-option" }
       }
