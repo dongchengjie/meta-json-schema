@@ -6,6 +6,8 @@
 - 新增: openvpn 配置项 `auth` 新增 `MD5`、`SHA1`、`SHA384`、`SHA512` 支持
 - 新增: snell 支持 v4/5 支持
 - 新增: inbound 新增 snell `listeners` 配置项
+- 新增: hysteria2 新增 gecko 配置项 `obfs-min-packet-size`、`obfs-max-packet-size`
+- 新增: listener hysteria2 新增 gecko 配置项 `obfs-min-packet-size`、`obfs-max-packet-size`
 
 ---
 
