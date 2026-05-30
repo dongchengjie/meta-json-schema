@@ -2,7 +2,7 @@
 
 ### Changes
 
-- 新增: openvpn 配置项 `cipher` 新增 `AES-128-CBC`、`AES-256-CBC`、`CHACHA20-POLY1305` 支持
+- 新增: openvpn 配置项 `cipher` 新增 `AES-192-GCM`、`AES-128-CBC`、`AES-192-CBC`、`AES-256-CBC`、`CHACHA20-POLY1305` 支持
 - 新增: openvpn 配置项 `auth` 新增 `MD5`、`SHA1`、`SHA384`、`SHA512` 支持
 - 新增: snell 支持 v4/5 支持
 - 新增: inbound 新增 snell `listeners` 配置项

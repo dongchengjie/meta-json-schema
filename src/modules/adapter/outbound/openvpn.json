@@ -57,9 +57,11 @@
         "cipher": {
           "enum": [
             "AES-128-GCM",
+            "AES-192-GCM",
             "AES-256-GCM",
             "AES-CBC",
             "AES-128-CBC",
+            "AES-192-CBC",
             "AES-256-CBC",
             "CHACHA20-POLY1305"
           ],
