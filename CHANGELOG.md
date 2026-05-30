@@ -5,10 +5,14 @@
 - 新增: openvpn 配置项 `cipher` 新增 `AES-192-GCM`、`AES-128-CBC`、`AES-192-CBC`、`AES-256-CBC`、`CHACHA20-POLY1305` 支持
 - 新增: openvpn 配置项 `auth` 新增 `MD5`、`SHA1`、`SHA384`、`SHA512` 支持
 - 新增: openvpn 新增配置项 `comp-lzo`
-- 新增: snell 支持 v4/5 支持
+- 新增: snell 新增 v4/5 相关配置项支持
 - 新增: inbound 新增 snell `listeners` 配置项
-- 新增: hysteria2 新增 gecko 配置项 `obfs-min-packet-size`、`obfs-max-packet-size`
-- 新增: listener hysteria2 新增 gecko 配置项 `obfs-min-packet-size`、`obfs-max-packet-size`
+- 新增: hysteria2 新增 Gecko混淆 配置项 `obfs-min-packet-size`、`obfs-max-packet-size`
+- 新增: listener hysteria2 新增 Gecko混淆 配置项 `obfs-min-packet-size`、`obfs-max-packet-size`
+
+### Bug Fixes
+
+- 修复: 补充 snell 缺失 `udp` 配置项
 
 ---
 
