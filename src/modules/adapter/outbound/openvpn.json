@@ -77,6 +77,14 @@
           "markdownDescription": "AEAD cipher 会忽略 auth",
           "default": "SHA256"
         },
+        "comp-lzo": {
+          "enum": ["yes", "no", "adaptive"],
+          "markdownEnumDescriptions": ["启用", "禁用", "自动"],
+          "title": "LZO压缩",
+          "description": "Lempel-Ziv-Oberhumer 压缩策略",
+          "markdownDescription": "Lempel-Ziv-Oberhumer 压缩策略",
+          "default": "no"
+        },
         "ca": {
           "$ref": "#/definitions/compatible/string",
           "title": "CA证书内容",
