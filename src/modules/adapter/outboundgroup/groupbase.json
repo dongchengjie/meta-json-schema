@@ -35,6 +35,13 @@
               "markdownDescription": "在`timeout`时间长度内,请求失败`max-failed-times`次,强制提前主动触发健康检查",
               "default": 5
             },
+            "empty-fallback": {
+              "type": "string",
+              "title": "代理组为空时使用的回退 outbound",
+              "description": "默认使用兼容模式作为回退",
+              "markdownDescription": "默认使用兼容模式作为回退",
+              "default": "COMPATIBLE"
+            },
             "disable-udp": {
               "type": "boolean",
               "title": "禁用UDP",

@@ -6,6 +6,7 @@
 - 移除: 弃用 `global-client-fingerprint`
 - 新增: openvpn 新增配置项 `ping`、`ping-restart`
 - 新增: proxy-provider 新增配置项 `age-secret-key`
+- 新增: proxy-group 新增配置项 `empty-fallback` ，支持设置当代理组为空时的回退proxy
 
 ---
 
