@@ -468,9 +468,9 @@
 
 ### Bug Fixes
 
-- 字符串数组类型错误
-- 监听地址支持`:port`
-- sniffer 的 http ports 类型错误
+- 修复: 字符串数组类型错误
+- 修复: 监听地址支持`:port`
+- 修复: sniffer 的 http ports 类型错误
 
 ---
 
