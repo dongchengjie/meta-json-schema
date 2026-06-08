@@ -27,6 +27,13 @@
         "client-auth-type": { "$ref": "#/definitions/tls/properties/client-auth-type" },
         "client-auth-cert": { "$ref": "#/definitions/tls/properties/client-auth-cert" },
         "ech-key": { "$ref": "#/definitions/tls/properties/ech-key" },
+        "allow-insecure": {
+          "type": "boolean",
+          "title": "是否允许不开启TLS加密",
+          "description": "仅用于有 nginx, caddy 前置的情况",
+          "markdownDescription": "仅用于有 nginx, caddy 前置的情况",
+          "default": false
+        },
         "padding-scheme": {
           "type": "string",
           "title": "填充策略",

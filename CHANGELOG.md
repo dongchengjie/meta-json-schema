@@ -1,3 +1,11 @@
+## v1.19.27
+
+### Changes
+
+- 新增: listener anytls/trojan/vless 新增配置项 `allow-insecure`
+
+---
+
 ## v1.19.26
 
 ### Changes
