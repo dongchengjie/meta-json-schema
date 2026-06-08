@@ -34,6 +34,12 @@
         "description": "默认使用MD5(url)作为文件名。内核工作目录的相对路径(如果想保存到任意位置,配置环境变量 SAFE_PATHS 指定额外的安全路径)",
         "markdownDescription": "默认使用MD5(`url`)作为文件名。内核工作目录的相对路径(如果想保存到任意位置,配置环境变量 `SAFE_PATHS` 指定额外的安全路径)"
       },
+      "path-in-bundle": {
+        "type": "string",
+        "title": "provider文件在 BundleMRS.7z 压缩包中的路径",
+        "description": "如果本地文件不存在，会尝试从工作目录中的 BundleMRS.7z 压缩包解压该文件。此项用于指定该文件在压缩包中的路径。",
+        "markdownDescription": "如果本地文件不存在，会尝试从工作目录中的 `BundleMRS.7z` 压缩包解压该文件。此项用于指定该文件在压缩包中的路径。"
+      },
       "format": {
         "enum": ["yaml", "text", "mrs"],
         "markdownEnumDescriptions": ["YAML格式", "普通文本格式", "内核专用格式"],

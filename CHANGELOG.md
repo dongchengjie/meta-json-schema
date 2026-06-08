@@ -8,6 +8,7 @@
 - 新增: proxy-provider 新增配置项 `age-secret-key`
 - 新增: proxy-group 新增配置项 `empty-fallback` ，支持设置当代理组为空时的回退proxy
 - 新增: 内置 proxy 新增 `PASS-RULE`
+- 新增: rule-provider 新增配置项 `path-in-bundle`
 
 ---
 
