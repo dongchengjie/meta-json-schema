@@ -135,7 +135,7 @@
               "description": "支持协议有VLESS,Vmess,trojan",
               "markdownDescription": "支持协议有`VLESS`,`Vmess`,`trojan`"
             },
-            { "deprecationMessage": "已弃用(请单独在代理中设置client-fingerprint)" }
+            { "deprecationMessage": "v1.19.27 已弃用(请单独在代理中设置client-fingerprint)" }
           ]
         },
         "global-ua": {
