@@ -4,6 +4,7 @@
 
 - 新增: listener anytls/trojan/vless 新增配置项 `allow-insecure`
 - 移除: 弃用 `global-client-fingerprint`
+- 新增: openvpn 新增配置项 `ping`、`ping-restart`
 
 ---
 

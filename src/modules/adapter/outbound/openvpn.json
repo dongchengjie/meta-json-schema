@@ -121,6 +121,20 @@
           "description": "认证密码",
           "markdownDescription": "认证密码"
         },
+        "ping": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "每隔多长时间发送一次保活包",
+          "description": "单位:s",
+          "markdownDescription": "单位:s",
+          "default": 0
+        },
+        "ping-restart": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "多长时间内没有响应就判定超时并重连",
+          "description": "单位:s",
+          "markdownDescription": "单位:s",
+          "default": 0
+        },
         "mtu": {
           "$ref": "#/definitions/compatible/integer",
           "title": "最大传输单元",
