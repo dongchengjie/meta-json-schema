@@ -1489,6 +1489,21 @@ proxy-providers:
     path: ./provider1.yaml # 默认只允许存储在 mihomo 的 Home Dir，如果想存储到任意位置，添加环境变量 SKIP_SAFE_PATH_CHECK=1
     proxy: DIRECT
     size-limit: 10240 # 限制下载文件最大为10kb，默认为0即不限制文件大小
+    #
+    # 如果设置会age-secret-key尝试通过此secret解密age armor格式加密的配置文件
+    #
+    # 注意：
+    #   对于加密内容，目前仅支持 age-encryption.org/v1 的 official ASCII "armor" format
+    #   对于key格式，目前仅支持 age-encryption.org/v1 的 x25519 recipient type 和 The mlkem768-X25519 hybrid post-quantum recipient type
+    # 实用工具：
+    #   您可以通过 "mihomo age keygen" 生成符合要求的 x25519 key
+    #   您可以通过 "mihomo age keygen-pq" 生成符合要求的 mlkem768-X25519 key
+    #   您可以通过 "mihome age decrypt <secret_key> <source_file> <target_file>" 将已加密文件解密
+    #   您可以通过 "mihome age encrypt <public_key> <source_file> <target_file>" 将未加密文件加密
+    # 参考实现：
+    #   https://github.com/FiloSottile/awesome-age#implementations
+    #
+    age-secret-key: AGE-SECRET-KEY-1ZTQLLN0A4U3ZTT3DCZKYN0CGZEZQLWX2DFTXUWMT4ZHR0N2UG6LSW9NT0N
     header:
       User-Agent:
         - "Clash/v1.18.0"

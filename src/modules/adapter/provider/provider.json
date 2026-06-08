@@ -56,6 +56,12 @@
         "description": "取值为proxy-groups,proxy的name",
         "markdownDescription": "取值为`proxy-groups`,`proxy`的`name`"
       },
+      "age-secret-key": {
+        "type": "string",
+        "title": "AGE加密密钥",
+        "description": "尝试使用该密钥解密采用 age armor 格式加密的配置内容",
+        "markdownDescription": "尝试使用该密钥解密采用 age armor 格式加密的配置内容"
+      },
       "health-check": { "$ref": "#/definitions/health-check" },
       "override": {
         "allOf": [
