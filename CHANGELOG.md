@@ -4,6 +4,8 @@
 
 - 新增: vless `xhttp-opts` 新增配置项 `session-table`、`session-length`
 - 调整: `empty-fallback` 严禁填写代理组名称
+- 新增: listener 新增配置项 `routing-mark`（仅支持linux）
+- 新增: 新增配置项 `external-controller-routing-mark`
 
 ---
 

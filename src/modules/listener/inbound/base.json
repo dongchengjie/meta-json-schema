@@ -27,6 +27,13 @@
       "description": "监听端口",
       "markdownDescription": "监听端口"
     },
+    "routing-mark": {
+      "type": "integer",
+      "title": "监听socket路由标记",
+      "description": "为监听socket设置routing-mark（仅支持linux）",
+      "markdownDescription": "为监听socket设置routing-mark（仅支持linux）",
+      "default": 0
+    },
     "rule": {
       "type": "string",
       "title": "出站规则",
