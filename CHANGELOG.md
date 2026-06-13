@@ -1,3 +1,11 @@
+## v1.19.28
+
+### Changes
+
+- 新增: vless `xhttp-opts` 新增配置项 `session-table`、`session-length`
+
+---
+
 ## v1.19.27
 
 ### Changes
