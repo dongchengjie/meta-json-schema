@@ -120,6 +120,13 @@
       "markdownDescription": "DNS服务器监听地址",
       "default": "127.0.0.1:53"
     },
+    "listen-routing-mark": {
+      "type": "integer",
+      "title": "DNS监听socket路由标记",
+      "description": "为DNS监听socket设置routing-mark（仅支持linux）",
+      "markdownDescription": "为DNS监听socket设置routing-mark（仅支持linux）",
+      "default": 0
+    },
     "enhanced-mode": {
       "enum": ["normal", "fake-ip", "redir-host"],
       "markdownEnumDescriptions": ["普通模式", "fake-ip模式", "redir-host模式"],
