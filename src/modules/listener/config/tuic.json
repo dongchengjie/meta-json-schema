@@ -5,6 +5,7 @@
     "types": { "$ref": "../../../definitions/types.json" },
     "patterns": { "$ref": "../../../definitions/patterns.json" },
     "enums": { "$ref": "../../../definitions/enums.json" },
+    "tls": { "$ref": "../../config/tls.json" },
     "mux-option": { "$ref": "../sing/sing.json" }
   },
   "required": ["enable", "listen"],
@@ -46,6 +47,9 @@
       "description": "私钥内容或私钥文件路径",
       "markdownDescription": "私钥内容或私钥文件路径"
     },
+    "client-auth-type": { "$ref": "#/definitions/tls/properties/client-auth-type" },
+    "client-auth-cert": { "$ref": "#/definitions/tls/properties/client-auth-cert" },
+    "ech-key": { "$ref": "#/definitions/tls/properties/ech-key" },
     "congestion-controller": { "$ref": "#/definitions/enums/congestion-controller" },
     "max-idle-time": {
       "type": "integer",
@@ -94,5 +98,6 @@
       "default": "standard"
     },
     "mux-option": { "title": "多路复用配置", "$ref": "#/definitions/mux-option" }
-  }
+  },
+  "dependencies": { "certificate": ["private-key"], "private-key": ["certificate"] }
 }

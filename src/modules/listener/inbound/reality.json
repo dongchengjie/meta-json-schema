@@ -4,7 +4,31 @@
   "definitions": {
     "types": { "$ref": "../../../definitions/types.json" },
     "patterns": { "$ref": "../../../definitions/patterns.json" },
-    "enums": { "$ref": "../../../definitions/enums.json" }
+    "enums": { "$ref": "../../../definitions/enums.json" },
+    "reality-limit-fallback": {
+      "type": "object",
+      "title": "reality限速回退配置",
+      "properties": {
+        "after-bytes": {
+          "type": "integer",
+          "title": "触发字节数",
+          "description": "触发字节数",
+          "markdownDescription": "触发字节数"
+        },
+        "bytes-per-sec": {
+          "type": "integer",
+          "title": "每秒字节数",
+          "description": "每秒字节数",
+          "markdownDescription": "每秒字节数"
+        },
+        "burst-bytes-per-sec": {
+          "type": "integer",
+          "title": "突发每秒字节数",
+          "description": "突发每秒字节数",
+          "markdownDescription": "突发每秒字节数"
+        }
+      }
+    }
   },
   "required": ["dest", "private-key", "short-id", "server-names"],
   "properties": {
@@ -45,6 +69,18 @@
       "title": "代理",
       "description": "代理",
       "markdownDescription": "代理"
+    },
+    "limit-fallback-upload": {
+      "title": "上传回落限速",
+      "description": "上传回落限速",
+      "markdownDescription": "上传回落限速",
+      "$ref": "#/definitions/reality-limit-fallback"
+    },
+    "limit-fallback-download": {
+      "title": "下载回落限速",
+      "description": "下载回落限速",
+      "markdownDescription": "下载回落限速",
+      "$ref": "#/definitions/reality-limit-fallback"
     }
   }
 }

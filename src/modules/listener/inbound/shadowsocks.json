@@ -69,8 +69,7 @@
           "type": "boolean",
           "title": "启用UDP",
           "description": "启用UDP",
-          "markdownDescription": "启用`UDP`",
-          "default": true
+          "markdownDescription": "启用`UDP`"
         },
         "mux-option": { "title": "多路复用配置", "$ref": "#/definitions/mux-option" },
         "shadow-tls": {

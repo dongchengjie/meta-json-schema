@@ -1,6 +1,6 @@
 {
   "type": "object",
-  "title": "outbound-dns",
+  "title": "outbound-socks5",
   "definitions": {
     "compatible": { "$ref": "../../../definitions/compatible.json" },
     "types": { "$ref": "../../../definitions/types.json" },
@@ -13,7 +13,7 @@
     { "title": "basic配置", "$ref": "#/definitions/basic-option" },
     {
       "type": "object",
-      "title": "dns配置",
+      "title": "socks5配置",
       "required": ["name", "server", "port"],
       "properties": {
         "type": {
@@ -62,8 +62,7 @@
           "$ref": "#/definitions/compatible/boolean",
           "title": "启用UDP",
           "description": "启用UDP",
-          "markdownDescription": "启用`UDP`",
-          "default": true
+          "markdownDescription": "启用`UDP`"
         },
         "skip-cert-verify": {
           "$ref": "#/definitions/compatible/boolean",

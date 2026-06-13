@@ -10,7 +10,7 @@
       "title": "brutal配置",
       "properties": {
         "enabled": {
-          "type": "string",
+          "type": "boolean",
           "title": "启用Brutal拥塞控制算法",
           "description": "启用Brutal拥塞控制算法",
           "markdownDescription": "启用Brutal拥塞控制算法"
@@ -22,7 +22,7 @@
           "markdownDescription": "格式: <带宽数值> [带宽单位(默认:`Mbps`)]"
         },
         "down": {
-          "type": "integer",
+          "type": "string",
           "title": "下行带宽",
           "description": "格式: <带宽数值> [带宽单位(默认:Mbps)]",
           "markdownDescription": "格式: <带宽数值> [带宽单位(默认:`Mbps`)]"

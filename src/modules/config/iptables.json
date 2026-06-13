@@ -8,9 +8,9 @@
   "properties": {
     "enable": {
       "type": "boolean",
-      "title": "持久化策略组的选择",
-      "description": "缓存对策略组的选择,以供下次启动时使用",
-      "markdownDescription": "缓存对策略组的选择,以供下次启动时使用",
+      "title": "启用iptables",
+      "description": "启用iptables转发规则",
+      "markdownDescription": "启用iptables转发规则",
       "default": false
     },
     "inbound-interface": {

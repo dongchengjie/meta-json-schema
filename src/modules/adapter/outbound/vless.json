@@ -647,8 +647,7 @@
           "$ref": "#/definitions/compatible/boolean",
           "title": "启用UDP",
           "description": "启用UDP",
-          "markdownDescription": "启用`UDP`",
-          "default": true
+          "markdownDescription": "启用`UDP`"
         },
         "packet-addr": {
           "$ref": "#/definitions/compatible/boolean",

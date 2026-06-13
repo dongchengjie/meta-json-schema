@@ -14,7 +14,7 @@
       "title": "简易混淆配置",
       "properties": {
         "mode": {
-          "enums": ["tls", "http"],
+          "enum": ["tls", "http"],
           "title": "混淆模式",
           "description": "混淆模式",
           "markdownDescription": "混淆模式"
@@ -510,8 +510,7 @@
           "$ref": "#/definitions/compatible/boolean",
           "title": "启用UDP",
           "description": "启用UDP",
-          "markdownDescription": "启用`UDP`",
-          "default": true
+          "markdownDescription": "启用`UDP`"
         },
         "plugin": {
           "enum": ["obfs", "v2ray-plugin", "shadow-tls", "restls", "gost-plugin", "kcptun"],

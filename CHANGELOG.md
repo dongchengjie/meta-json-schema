@@ -10,6 +10,12 @@
 - 新增: proxy 新增 `rematch` 出站
 - 新增: rules 新增 `REMATCH-NAME` 规则类型
 
+### Bug Fixes
+
+- 修复: 补充 tuic server 缺失 `client-auth-type`、`client-auth-cert`、`ech-key` 配置项
+- 修复: 补充 listener reality 缺失 `limit-fallback-upload`、`limit-fallback-download` 配置项
+- 修复: 修补部分配置项 类型/描述 错误
+
 ---
 
 ## v1.19.27

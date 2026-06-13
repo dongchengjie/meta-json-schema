@@ -128,7 +128,7 @@
       "title": "自动重定向iproute2回退规则优先级",
       "description": "自动重定向iproute2回退规则优先级",
       "markdownDescription": "自动重定向iproute2回退规则优先级",
-      "default": 0
+      "default": 32768
     },
     "loopback-address": {
       "$ref": "#/definitions/types/ipArray",
@@ -180,7 +180,8 @@
       "markdownDescription": "与`include-interface`冲突"
     },
     "include-uid": {
-      "$ref": "#/definitions/types/stringArray",
+      "type": "array",
+      "items": { "type": "integer" },
       "title": "包含被路由的Linux用户",
       "description": "使其被Tun路由流量(需要启用auto-route)",
       "markdownDescription": "使其被Tun路由流量(需要启用`auto-route`)"
@@ -192,7 +193,8 @@
       "markdownDescription": "格式: <UID起始>:<UID终止>(需要启用`auto-route`)"
     },
     "exclude-uid": {
-      "$ref": "#/definitions/types/stringArray",
+      "type": "array",
+      "items": { "type": "integer" },
       "title": "排除被路由的Linux用户",
       "description": "使其避免被Tun路由流量",
       "markdownDescription": "使其避免被Tun路由流量"
@@ -228,7 +230,8 @@
       "markdownDescription": "使其避免被Tun路由流量"
     },
     "include-android-user": {
-      "$ref": "#/definitions/types/stringArray",
+      "type": "array",
+      "items": { "type": "integer" },
       "title": "包含被路由的Android用户",
       "description": "使其被Tun路由流量(需要启用auto-route)",
       "markdownDescription": "使其被Tun路由流量(需要启用`auto-route`)"
@@ -292,7 +295,7 @@
           "description": "启用auto-route时,指定这些IPV4网段使用自定义路由",
           "markdownDescription": "启用`auto-route`时,指定这些IPV4网段使用自定义路由"
         },
-        { "deprecationMessage": "即将废弃，使用route-address代替" }
+        { "deprecationMessage": "旧写法，推荐使用route-address" }
       ]
     },
     "inet6-route-address": {
@@ -303,7 +306,7 @@
           "description": "启用auto-route时,指定这些IPV6网段使用自定义路由",
           "markdownDescription": "启用`auto-route`时,指定这些IPV6网段使用自定义路由"
         },
-        { "deprecationMessage": "即将废弃，使用route-address代替" }
+        { "deprecationMessage": "旧写法，推荐使用route-address" }
       ]
     },
     "inet4-route-exclude-address": {
@@ -314,7 +317,7 @@
           "description": "启用auto-route时,指定这些IPV4网段使用默认路由",
           "markdownDescription": "启用`auto-route`时,指定这些IPV4网段使用默认路由"
         },
-        { "deprecationMessage": "即将废弃，使用route-exclude-address代替" }
+        { "deprecationMessage": "旧写法，推荐使用route-exclude-address" }
       ]
     },
     "inet6-route-exclude-address": {
@@ -325,7 +328,7 @@
           "description": "启用auto-route时,指定这些IPV6网段使用默认路由",
           "markdownDescription": "启用`auto-route`时,指定这些IPV6网段使用默认路由"
         },
-        { "deprecationMessage": "即将废弃，使用route-exclude-address代替" }
+        { "deprecationMessage": "旧写法，推荐使用route-exclude-address" }
       ]
     },
     "recvmsgx": {

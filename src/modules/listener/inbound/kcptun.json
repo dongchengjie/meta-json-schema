@@ -143,7 +143,7 @@
       "title": "发送数据包间隔",
       "description": "单位:ms",
       "markdownDescription": "单位:ms",
-      "default": 50
+      "default": 30
     },
     "resend": {
       "type": "integer",
@@ -191,7 +191,7 @@
       "title": "单个流的缓冲区大小",
       "description": "单位:bytes",
       "markdownDescription": "单位:bytes",
-      "default": 4194304
+      "default": 2097152
     },
     "keepalive": {
       "type": "integer",

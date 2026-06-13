@@ -27,8 +27,7 @@
           "type": "boolean",
           "title": "启用UDP",
           "description": "启用UDP",
-          "markdownDescription": "启用`UDP`",
-          "default": true
+          "markdownDescription": "启用`UDP`"
         },
         "certificate": { "$ref": "#/definitions/tls/properties/certificate" },
         "private-key": { "$ref": "#/definitions/tls/properties/private-key" },

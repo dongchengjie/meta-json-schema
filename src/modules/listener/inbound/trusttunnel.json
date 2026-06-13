@@ -15,6 +15,7 @@
     {
       "type": "object",
       "title": "trusttunnel配置",
+      "required": ["certificate", "private-key"],
       "properties": {
         "users": {
           "type": "array",
