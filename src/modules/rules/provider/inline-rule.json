@@ -115,6 +115,7 @@
     { "title": "匹配入站类型", "pattern": "^IN-TYPE,[^,]+$", "errorMessage": "无效的规则" },
     { "title": "匹配入站用户名", "pattern": "^IN-USER,[^,]+$", "errorMessage": "无效的规则" },
     { "title": "匹配入站名称", "pattern": "^IN-NAME,[^,]+$", "errorMessage": "无效的规则" },
+    { "title": "匹配重匹配名称", "pattern": "^REMATCH-NAME,[^,]+$", "errorMessage": "无效的规则" },
     {
       "title": "逻辑和",
       "pattern": "^AND,\\((?:\\([^()]*\\))(?:,\\([^()]*\\))+\\)$",

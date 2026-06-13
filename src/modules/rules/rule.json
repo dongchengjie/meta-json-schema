@@ -135,6 +135,11 @@
       "errorMessage": "无效的规则"
     },
     { "title": "匹配入站名称", "pattern": "^IN-NAME(?:,[^,]+){2}$", "errorMessage": "无效的规则" },
+    {
+      "title": "匹配重匹配名称",
+      "pattern": "^REMATCH-NAME,[^,]+,[^,]+$",
+      "errorMessage": "无效的规则"
+    },
     { "title": "子规则", "pattern": "^SUB-RULE,\\(.+\\),[^,]+$", "errorMessage": "无效的规则" },
     {
       "title": "匹配规则集(rule-providers中定义)",

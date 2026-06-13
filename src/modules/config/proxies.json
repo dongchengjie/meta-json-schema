@@ -21,6 +21,7 @@
     "direct": { "$ref": "../adapter/outbound/direct.json" },
     "dns": { "$ref": "../adapter/outbound/dns.json" },
     "reject": { "$ref": "../adapter/outbound/reject.json" },
+    "rematch": { "$ref": "../adapter/outbound/rematch.json" },
     "ssh": { "$ref": "../adapter/outbound/ssh.json" },
     "mieru": { "$ref": "../adapter/outbound/mieru.json" },
     "anytls": { "$ref": "../adapter/outbound/anytls.json" },
@@ -190,6 +191,16 @@
             "properties": { "type": { "title": "reject配置", "const": "reject" } }
           },
           { "$ref": "#/definitions/reject" }
+        ]
+      },
+      {
+        "allOf": [
+          {
+            "type": "object",
+            "title": "rematch",
+            "properties": { "type": { "title": "rematch配置", "const": "rematch" } }
+          },
+          { "$ref": "#/definitions/rematch" }
         ]
       },
       {

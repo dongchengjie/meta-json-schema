@@ -1,0 +1,51 @@
+{
+  "type": "object",
+  "title": "outbound-rematch",
+  "definitions": {
+    "compatible": { "$ref": "../../../definitions/compatible.json" },
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" },
+    "basic-option": { "$ref": "./base.json#/definitions/basic-option" },
+    "smux": { "$ref": "./singmux.json" }
+  },
+  "allOf": [
+    { "title": "basic配置", "$ref": "#/definitions/basic-option" },
+    {
+      "type": "object",
+      "title": "rematch配置",
+      "required": ["name"],
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "代理节点类型",
+          "description": "代理节点类型",
+          "markdownDescription": "代理节点类型"
+        },
+        "name": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "代理节点名称",
+          "description": "代理节点名称",
+          "markdownDescription": "代理节点名称"
+        },
+        "target-rematch-name": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "目标重匹配名称",
+          "description": "如果填写则覆盖原始 metadata 中的 rematch-name（可用REMATCH-NAME规则匹配）",
+          "markdownDescription": "如果填写则覆盖原始 metadata 中的 rematch-name（可用`REMATCH-NAME`规则匹配）"
+        },
+        "target-sub-rule": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "目标子规则",
+          "description": "如果填写则接下来会直接用指定的 sub-rule 匹配，如果名字不存在或为空会回退到主rules",
+          "markdownDescription": "如果填写则接下来会直接用指定的 sub-rule 匹配，如果名字不存在或为空会回退到主`rules`"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "title": "smux配置",
+      "properties": { "smux": { "title": "smux配置", "$ref": "#/definitions/smux" } }
+    }
+  ]
+}
