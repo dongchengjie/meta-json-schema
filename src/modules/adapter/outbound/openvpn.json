@@ -142,6 +142,13 @@
           "markdownDescription": "单位:s",
           "default": 0
         },
+        "handshake-timeout": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "握手超时时间",
+          "description": "单位:s，0表示使用外层连接超时",
+          "markdownDescription": "单位:s，`0`表示使用外层连接超时",
+          "default": 0
+        },
         "mtu": {
           "$ref": "#/definitions/compatible/integer",
           "title": "最大传输单元",

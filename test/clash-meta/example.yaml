@@ -1229,6 +1229,7 @@ proxies: # socks5
       -----END OpenVPN Static key V1-----
     ping: 10 # 默认值为 0
     ping-restart: 60 # 默认值为 0
+    handshake-timeout: 30 # 单位为秒，0 表示使用外层连接超时
     mtu: 1500
     udp: true
     # 一个出站代理的标识。当值不为空时，将使用指定的 proxy 发出连接
