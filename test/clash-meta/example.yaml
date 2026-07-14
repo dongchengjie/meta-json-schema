@@ -775,6 +775,32 @@ proxies: # socks5
       seed: ""
       header: ""
 
+  - name: "vmess-mekya"
+    type: vmess
+    server: 1.2.3.4
+    port: 443
+    uuid: 8f3fca8e-d381-402c-8fdf-71f461a0170e
+    alterId: 32
+    cipher: auto
+    network: mekya
+    tls: true
+    mekya-opts:
+      url: https://example.com/mekya
+      max-write-delay: 80
+      max-request-size: 96000
+      polling-interval-initial: 200
+      h2-pool-size: 8
+      kcp:
+        mtu: 1350
+        tti: 15
+        uplink-capacity: 40
+        downlink-capacity: 2000
+        congestion: false
+        write-buffer: 67108864
+        read-buffer: 67108864
+        seed: ""
+        header: ""
+
   - name: "vmess-http"
     type: vmess
     server: 1.2.3.4
@@ -2015,6 +2041,22 @@ listeners:
       read-buffer: 2097152
       seed: ""
       header: ""
+    mekya-config:
+      enable: false
+      max-write-size: 10485760
+      max-write-duration-ms: 5000
+      max-simultaneous-write-connection: 128
+      packet-writing-buffer: 65536
+      kcp:
+        mtu: 1350
+        tti: 15
+        uplink-capacity: 40
+        downlink-capacity: 2000
+        congestion: false
+        write-buffer: 67108864
+        read-buffer: 67108864
+        seed: ""
+        header: ""
 
   - name: tuic-in-1
     type: tuic

@@ -219,6 +219,79 @@
           "default": ""
         }
       }
+    },
+    "mekya-config": {
+      "type": "object",
+      "title": "Mekya 配置",
+      "properties": {
+        "enable": {
+          "type": "boolean",
+          "title": "启用Mekya",
+          "description": "启用Mekya",
+          "markdownDescription": "启用`Mekya`",
+          "default": false
+        },
+        "url": {
+          "type": "string",
+          "title": "Mekya请求地址",
+          "description": "客户端Mekya请求地址",
+          "markdownDescription": "客户端`Mekya`请求地址"
+        },
+        "h2-pool-size": {
+          "type": "integer",
+          "title": "HTTP/2连接池大小",
+          "description": "客户端HTTP/2连接池大小",
+          "markdownDescription": "客户端`HTTP/2`连接池大小"
+        },
+        "max-write-delay": {
+          "type": "integer",
+          "title": "首包后的最大聚合等待时间",
+          "description": "客户端参数，单位:ms",
+          "markdownDescription": "客户端参数，单位:`ms`"
+        },
+        "max-request-size": {
+          "type": "integer",
+          "title": "单次 HTTP 请求的最大负载大小",
+          "description": "客户端参数，单位:bytes，0 不限制",
+          "markdownDescription": "客户端参数，单位:`bytes`，0 不限制"
+        },
+        "polling-interval-initial": {
+          "type": "integer",
+          "title": "初始空轮询间隔",
+          "description": "客户端参数，单位:ms",
+          "markdownDescription": "客户端参数，单位:`ms`"
+        },
+        "max-write-size": {
+          "type": "integer",
+          "title": "单个响应写回的最大负载大小",
+          "description": "单位:bytes，0 不限制",
+          "markdownDescription": "单位:`bytes`，0 不限制"
+        },
+        "max-write-duration-ms": {
+          "type": "integer",
+          "title": "单个响应写回的最大持续时间",
+          "description": "单位:ms",
+          "markdownDescription": "单位:`ms`"
+        },
+        "max-simultaneous-write-connection": {
+          "type": "integer",
+          "title": "同时等待写回的最大请求数",
+          "description": "0 不限制",
+          "markdownDescription": "0 不限制"
+        },
+        "packet-writing-buffer": {
+          "type": "integer",
+          "title": "写包缓冲区大小",
+          "description": "服务端写包缓冲区大小",
+          "markdownDescription": "服务端写包缓冲区大小"
+        },
+        "kcp": {
+          "$ref": "#/definitions/mkcp-config",
+          "title": "mKCP配置",
+          "description": "Mekya使用的mKCP配置",
+          "markdownDescription": "`Mekya`使用的`mKCP`配置"
+        }
+      }
     }
   },
   "allOf": [
@@ -256,9 +329,35 @@
         "reality-config": { "title": "reality配置", "$ref": "#/definitions/reality-config" },
         "tlsmirror-config": { "$ref": "#/definitions/tlsmirror-config" },
         "mkcp-config": { "$ref": "#/definitions/mkcp-config" },
+        "mekya-config": { "$ref": "#/definitions/mekya-config" },
         "mux-option": { "title": "多路复用配置", "$ref": "#/definitions/mux-option" }
       },
-      "dependencies": { "certificate": ["private-key"], "private-key": ["certificate"] }
+      "dependencies": { "certificate": ["private-key"], "private-key": ["certificate"] },
+      "allOf": [
+        {
+          "if": {
+            "required": ["mekya-config"],
+            "properties": {
+              "mekya-config": {
+                "required": ["enable"],
+                "properties": { "enable": { "const": true } }
+              }
+            }
+          },
+          "then": {
+            "properties": { "ws-path": { "const": "" }, "grpc-service-name": { "const": "" } },
+            "not": {
+              "required": ["mkcp-config"],
+              "properties": {
+                "mkcp-config": {
+                  "required": ["enable"],
+                  "properties": { "enable": { "const": true } }
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   ]
 }

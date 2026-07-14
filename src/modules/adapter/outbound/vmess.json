@@ -309,6 +309,72 @@
         }
       }
     },
+    "mekya-option": {
+      "type": "object",
+      "title": "Mekya 配置",
+      "properties": {
+        "url": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "Mekya 请求地址",
+          "description": "留空时使用当前 VMess 服务器地址",
+          "markdownDescription": "留空时使用当前 `VMess` 服务器地址"
+        },
+        "h2-pool-size": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "HTTP/2连接池大小",
+          "description": "HTTP/2连接池大小",
+          "markdownDescription": "`HTTP/2`连接池大小"
+        },
+        "max-write-delay": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "首包后的最大聚合等待时间",
+          "description": "单位:ms",
+          "markdownDescription": "单位:`ms`"
+        },
+        "max-request-size": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "单次 HTTP 请求的最大负载大小",
+          "description": "单位:bytes，0 不限制",
+          "markdownDescription": "单位:`bytes`，0 不限制"
+        },
+        "polling-interval-initial": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "初始空轮询间隔",
+          "description": "单位:ms",
+          "markdownDescription": "单位:`ms`"
+        },
+        "max-write-size": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "单个响应写回的最大负载大小",
+          "description": "服务端参数，单位:bytes，0 不限制",
+          "markdownDescription": "服务端参数，单位:`bytes`，0 不限制"
+        },
+        "max-write-duration-ms": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "单个响应写回的最大持续时间",
+          "description": "服务端参数，单位:ms",
+          "markdownDescription": "服务端参数，单位:`ms`"
+        },
+        "max-simultaneous-write-connection": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "同时等待写回的最大请求数",
+          "description": "服务端参数，0 不限制",
+          "markdownDescription": "服务端参数，0 不限制"
+        },
+        "packet-writing-buffer": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "写包缓冲区大小",
+          "description": "服务端参数",
+          "markdownDescription": "服务端参数"
+        },
+        "kcp": {
+          "$ref": "#/definitions/mkcp-option",
+          "title": "mKCP配置",
+          "description": "Mekya使用的mKCP配置",
+          "markdownDescription": "`Mekya`使用的`mKCP`配置"
+        }
+      }
+    },
     "http-option": {
       "type": "object",
       "title": "HTTP配置",
@@ -507,7 +573,7 @@
           "markdownDescription": "启用`UDP`"
         },
         "network": {
-          "enum": ["tcp", "ws", "http", "h2", "grpc", "mkcp", "kcp"],
+          "enum": ["tcp", "ws", "http", "h2", "grpc", "mkcp", "kcp", "mekya"],
           "title": "传输协议",
           "description": "传输协议",
           "markdownDescription": "传输协议"
@@ -558,6 +624,7 @@
         "reality-opts": { "$ref": "#/definitions/reality-option" },
         "tlsmirror-opts": { "$ref": "#/definitions/tlsmirror-option" },
         "mkcp-opts": { "$ref": "#/definitions/mkcp-option" },
+        "mekya-opts": { "$ref": "#/definitions/mekya-option" },
         "http-opts": { "$ref": "#/definitions/http-option" },
         "h2-opts": { "$ref": "#/definitions/http2-option" },
         "grpc-opts": { "$ref": "#/definitions/grpc-option" },

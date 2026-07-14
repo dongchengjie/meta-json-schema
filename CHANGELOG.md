@@ -22,6 +22,7 @@
 - 新增: vmess 出站和 listener 支持 `TLSMirror`
 - 调整: vmess listener 的 `tlsmirror` 重命名为 `tlsmirror-config`
 - 新增: vmess 出站和 listener 支持 `mKCP`
+- 新增: vmess 出站和 listener 支持 `Mekya`
 
 ### Bug Fixes
 
