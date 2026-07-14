@@ -9,6 +9,17 @@
   },
   "allOf": [
     { "title": "代理组基础配置", "$ref": "#/definitions/groupbase" },
-    { "type": "object", "title": "selector配置", "properties": {} }
+    {
+      "type": "object",
+      "title": "selector配置",
+      "properties": {
+        "default-selected": {
+          "type": "string",
+          "title": "默认选择的代理节点",
+          "description": "为空或指定的代理节点不存在时，默认选择代理组中的第一个节点",
+          "markdownDescription": "为空或指定的代理节点不存在时，默认选择代理组中的第一个节点"
+        }
+      }
+    }
   ]
 }

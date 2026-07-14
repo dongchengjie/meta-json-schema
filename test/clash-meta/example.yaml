@@ -1466,6 +1466,7 @@ proxy-groups:
       - ss2
       - vmess1
       - auto
+    default-selected: ss1 # 为空或设置的节点名不存在时，默认选择组中第一个节点
 
   # 配置指定 interface-name 和 fwmark 的 DIRECT
   - name: en1
