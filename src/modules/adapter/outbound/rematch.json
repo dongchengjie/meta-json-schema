@@ -6,8 +6,7 @@
     "types": { "$ref": "../../../definitions/types.json" },
     "patterns": { "$ref": "../../../definitions/patterns.json" },
     "enums": { "$ref": "../../../definitions/enums.json" },
-    "basic-option": { "$ref": "./base.json#/definitions/basic-option" },
-    "smux": { "$ref": "./singmux.json" }
+    "basic-option": { "$ref": "./base.json#/definitions/basic-option" }
   },
   "allOf": [
     { "title": "basic配置", "$ref": "#/definitions/basic-option" },
@@ -40,12 +39,8 @@
           "description": "如果填写则接下来会直接用指定的 sub-rule 匹配，如果名字不存在或为空会回退到主rules",
           "markdownDescription": "如果填写则接下来会直接用指定的 sub-rule 匹配，如果名字不存在或为空会回退到主`rules`"
         }
-      }
-    },
-    {
-      "type": "object",
-      "title": "smux配置",
-      "properties": { "smux": { "title": "smux配置", "$ref": "#/definitions/smux" } }
+      },
+      "anyOf": [{ "required": ["target-rematch-name"] }, { "required": ["target-sub-rule"] }]
     }
   ]
 }

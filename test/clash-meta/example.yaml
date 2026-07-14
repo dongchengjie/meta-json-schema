@@ -773,7 +773,7 @@ proxies: # socks5
       write-buffer: 2097152
       read-buffer: 2097152
       seed: ""
-      header: ""
+      header: none
 
   - name: "vmess-mekya"
     type: vmess
@@ -799,7 +799,7 @@ proxies: # socks5
         write-buffer: 67108864
         read-buffer: 67108864
         seed: ""
-        header: ""
+        header: none
 
   - name: "vmess-http"
     type: vmess
@@ -988,8 +988,8 @@ proxies: # socks5
       uplink-http-method: POST # Available: POST, PUT, PATCH, DELETE
       session-placement: path # Available: path, query, cookie, header
       session-key: ""
-      session-table: "" # Available: "", "uuid", "ALPHABET", "Alphabet", "BASE36", "Base62", "HEX", "alphabet", "base36", "hex", "number"
-      session-length: "16-32" # 起始值不可为 0，总的 id 空间必须大于 21 亿，仅当session-table不为空或uuid时生效
+      session-table: Base62 # Available: "uuid", "ALPHABET", "Alphabet", "BASE36", "Base62", "HEX", "alphabet", "base36", "hex", "number"，也支持自定义 ASCII 字符表
+      session-length: "16-32" # 起始值不可为 0，总的 id 空间必须大于 21 亿，仅当 session-table 不是 uuid 时生效
       seq-placement: path # Available: path, query, cookie, header
       seq-key: ""
       uplink-data-placement: body # Available: body, cookie, header
@@ -1297,7 +1297,7 @@ proxies: # socks5
       -----END OpenVPN Static key V1-----
     ping: 10 # 默认值为 0
     ping-restart: 60 # 默认值为 0
-    handshake-timeout: 30 # 单位为秒，0 表示使用外层连接超时
+    handshake-timeout: 30 # 单位为秒，0 不设置额外握手超时，受外层上下文控制
     mtu: 1500
     udp: true
     # 一个出站代理的标识。当值不为空时，将使用指定的 proxy 发出连接
@@ -1317,7 +1317,7 @@ proxies: # socks5
     uri: http://example.com/endpoint
     mtu: 1280
     udp: true
-    handshake-timeout: 30 # 单位为秒，0 表示使用外层连接超时
+    handshake-timeout: 30 # 单位为秒，0 不设置额外握手超时，受外层上下文控制
     # 一个出站代理的标识。当值不为空时，将使用指定的 proxy 发出连接
     # dialer-proxy: "ss1"
     remote-dns-resolve: true # 强制 dns 远程解析，默认值为 false
@@ -2040,7 +2040,7 @@ listeners:
       write-buffer: 2097152
       read-buffer: 2097152
       seed: ""
-      header: ""
+      header: none
     mekya-config:
       enable: false
       max-write-size: 10485760
@@ -2056,7 +2056,7 @@ listeners:
         write-buffer: 67108864
         read-buffer: 67108864
         seed: ""
-        header: ""
+        header: none
 
   - name: tuic-in-1
     type: tuic
@@ -2214,8 +2214,6 @@ listeners:
       uplink-http-method: POST # Available: POST, PUT, PATCH, DELETE
       session-placement: path # Available: path, query, cookie, header
       session-key: ""
-      session-table: "" # Available: "", "uuid", "ALPHABET", "Alphabet", "BASE36", "Base62", "HEX", "alphabet", "base36", "hex", "number"
-      session-length: "16-32" # 起始值不可为 0，总的 id 空间必须大于 21 亿，仅当session-table不为空或uuid时生效
       seq-placement: path # Available: path, query, cookie, header
       seq-key: ""
       uplink-data-placement: body # Available: body, cookie, header

@@ -8,10 +8,28 @@
     "enums": { "$ref": "../../../definitions/enums.json" },
     "basic-option": { "$ref": "./base.json#/definitions/basic-option" },
     "smux": { "$ref": "./singmux.json" },
-    "simple-obfs-option": { "$ref": "./shadowsocks.json#/definitions/simple-obfs-option" },
+    "simple-obfs-option": {
+      "type": "object",
+      "title": "简易混淆配置",
+      "properties": {
+        "mode": {
+          "enum": ["tls", "http"],
+          "title": "混淆模式",
+          "description": "混淆模式",
+          "markdownDescription": "混淆模式"
+        },
+        "host": {
+          "$ref": "#/definitions/patterns/server",
+          "title": "主机地址",
+          "description": "主机地址",
+          "markdownDescription": "主机地址",
+          "default": "bing.com"
+        }
+      }
+    },
     "shadow-tls-option": {
       "type": "object",
-      "title": "shadow-tls配置",
+      "title": "ShadowTLS混淆配置",
       "required": ["mode", "host"],
       "properties": {
         "mode": {
@@ -23,8 +41,8 @@
         "password": {
           "$ref": "#/definitions/compatible/string",
           "title": "密码",
-          "description": "ShadowTLS v2/v3 密码",
-          "markdownDescription": "`ShadowTLS` v2/v3 密码"
+          "description": "ShadowTLS v2/v3密码",
+          "markdownDescription": "`ShadowTLS` v2/v3密码"
         },
         "host": {
           "$ref": "#/definitions/patterns/server",
@@ -106,9 +124,9 @@
         },
         "psk": {
           "$ref": "#/definitions/compatible/string",
-          "title": "公钥",
-          "description": "公钥",
-          "markdownDescription": "公钥"
+          "title": "预共享密钥",
+          "description": "预共享密钥",
+          "markdownDescription": "预共享密钥"
         },
         "udp": {
           "$ref": "#/definitions/compatible/boolean",
@@ -129,17 +147,20 @@
           "description": "仅v4/5支持",
           "markdownDescription": "仅v4/5支持"
         },
+        "obfs-opts": {
+          "title": "混淆配置",
+          "description": "Snell混淆配置",
+          "markdownDescription": "`Snell`混淆配置",
+          "anyOf": [
+            { "$ref": "#/definitions/simple-obfs-option" },
+            { "$ref": "#/definitions/shadow-tls-option" }
+          ]
+        },
         "client-fingerprint": {
           "$ref": "#/definitions/enums/client-fingerprint",
           "title": "客户端指纹",
           "description": "客户端指纹",
           "markdownDescription": "客户端指纹"
-        },
-        "obfs-opts": {
-          "anyOf": [
-            { "$ref": "#/definitions/simple-obfs-option" },
-            { "$ref": "#/definitions/shadow-tls-option" }
-          ]
         }
       }
     },

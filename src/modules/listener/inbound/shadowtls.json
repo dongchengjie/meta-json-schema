@@ -1,0 +1,110 @@
+{
+  "type": "object",
+  "title": "ShadowTLS配置",
+  "definitions": {
+    "shadow-tls-user": {
+      "type": "object",
+      "title": "ShadowTLS用户",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "用户",
+          "description": "用户",
+          "markdownDescription": "用户"
+        },
+        "password": {
+          "type": "string",
+          "title": "用户密码",
+          "description": "用户密码",
+          "markdownDescription": "用户密码"
+        }
+      }
+    },
+    "shadow-tls-handshake-options": {
+      "type": "object",
+      "title": "ShadowTLS握手选项",
+      "required": ["dest"],
+      "properties": {
+        "dest": {
+          "type": "string",
+          "title": "目标地址",
+          "description": "目标地址",
+          "markdownDescription": "目标地址"
+        },
+        "proxy": {
+          "type": "string",
+          "title": "代理服务器地址",
+          "description": "代理服务器地址",
+          "markdownDescription": "代理服务器地址"
+        }
+      }
+    }
+  },
+  "required": ["enable"],
+  "properties": {
+    "enable": {
+      "type": "boolean",
+      "title": "启用ShadowTLS",
+      "description": "启用ShadowTLS",
+      "markdownDescription": "启用`ShadowTLS`",
+      "default": false
+    },
+    "version": {
+      "type": "integer",
+      "enum": [1, 2, 3],
+      "title": "ShadowTLS版本",
+      "description": "ShadowTLS版本",
+      "markdownDescription": "`ShadowTLS`版本"
+    },
+    "password": {
+      "type": "string",
+      "title": "密码",
+      "description": "ShadowTLS v2密码",
+      "markdownDescription": "`ShadowTLS v2`密码"
+    },
+    "users": {
+      "type": "array",
+      "title": "用户列表",
+      "description": "ShadowTLS v3用户列表",
+      "markdownDescription": "`ShadowTLS v3`用户列表",
+      "items": { "$ref": "#/definitions/shadow-tls-user" }
+    },
+    "handshake": { "$ref": "#/definitions/shadow-tls-handshake-options" },
+    "handshake-for-server-name": {
+      "type": "object",
+      "title": "服务器名-TLS握手选项映射",
+      "description": "服务器名-TLS握手选项映射",
+      "markdownDescription": "服务器名-`TLS`握手选项映射",
+      "additionalProperties": { "$ref": "#/definitions/shadow-tls-handshake-options" }
+    },
+    "strict-mode": {
+      "type": "boolean",
+      "title": "严格模式",
+      "description": "严格模式",
+      "markdownDescription": "严格模式"
+    },
+    "wildcard-sni": {
+      "enum": ["authed", "all"],
+      "markdownEnumDescriptions": ["仅认证成功的连接使用请求SNI", "所有连接使用请求SNI"],
+      "title": "SNI通配符",
+      "description": "ShadowTLS v3 SNI通配模式",
+      "markdownDescription": "`ShadowTLS v3 SNI`通配模式"
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "enable": { "const": true } }, "required": ["enable"] },
+      "then": {
+        "required": ["version"],
+        "anyOf": [{ "required": ["handshake"] }, { "required": ["wildcard-sni"] }]
+      }
+    },
+    {
+      "if": {
+        "properties": { "enable": { "const": true }, "version": { "const": 3 } },
+        "required": ["enable", "version"]
+      },
+      "then": { "required": ["users"], "properties": { "users": { "minItems": 1 } } }
+    }
+  ]
+}

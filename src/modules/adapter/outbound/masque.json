@@ -112,8 +112,8 @@
         "handshake-timeout": {
           "$ref": "#/definitions/compatible/integer",
           "title": "握手超时时间",
-          "description": "单位:s，0表示使用外层连接超时",
-          "markdownDescription": "单位:s，`0`表示使用外层连接超时",
+          "description": "单位:s，0不设置额外握手超时，受外层上下文控制",
+          "markdownDescription": "单位:`s`，`0`不设置额外握手超时，受外层上下文控制",
           "default": 0
         },
         "skip-cert-verify": {

@@ -34,265 +34,9 @@
       }
     },
     "reality-config": { "$ref": "./reality.json" },
-    "tlsmirror-time-spec": {
-      "type": "object",
-      "title": "TLSMirror 延迟配置",
-      "properties": {
-        "base-nanoseconds": {
-          "type": "integer",
-          "title": "固定延迟",
-          "description": "单位:ns",
-          "markdownDescription": "单位:`ns`",
-          "default": 0
-        },
-        "uniform-random-multiplier-nanoseconds": {
-          "type": "integer",
-          "title": "随机延迟上限",
-          "description": "单位:ns",
-          "markdownDescription": "单位:`ns`",
-          "default": 0
-        }
-      }
-    },
-    "tlsmirror-config": {
-      "type": "object",
-      "title": "TLSMirror 配置",
-      "required": ["primary-key"],
-      "properties": {
-        "primary-key": {
-          "type": "string",
-          "title": "TLSMirror 主密钥",
-          "description": "标准 Base64 编码的 32 字节主密钥",
-          "markdownDescription": "标准 Base64 编码的 32 字节主密钥"
-        },
-        "dest": {
-          "type": "string",
-          "title": "回落目标地址",
-          "description": "TLS 载体连接的转发目标",
-          "markdownDescription": "TLS 载体连接的转发目标"
-        },
-        "proxy": {
-          "type": "string",
-          "title": "回落转发代理",
-          "description": "回落连接使用的代理",
-          "markdownDescription": "回落连接使用的代理"
-        },
-        "explicit-nonce-ciphersuites": {
-          "type": "array",
-          "title": "TLS 1.2 显式 nonce 加密套件",
-          "description": "TLS 1.2载体使用显式nonce的加密套件",
-          "markdownDescription": "`TLS 1.2`载体使用显式`nonce`的加密套件",
-          "items": { "type": "integer" }
-        },
-        "defer-instance-derived-write-time": {
-          "$ref": "#/definitions/tlsmirror-time-spec",
-          "title": "首次写入延迟",
-          "description": "首次写入前的延迟",
-          "markdownDescription": "首次写入前的延迟"
-        },
-        "transport-layer-padding": {
-          "type": "object",
-          "title": "传输层填充配置",
-          "description": "传输层填充配置",
-          "markdownDescription": "传输层填充配置",
-          "properties": {
-            "enabled": {
-              "type": "boolean",
-              "title": "启用传输层填充",
-              "description": "启用传输层填充",
-              "markdownDescription": "启用传输层填充",
-              "default": false
-            }
-          }
-        },
-        "connection-enrolment": {
-          "type": "object",
-          "title": "TLSMirror 连接登记配置",
-          "description": "启用兼容V2Ray的连接登记确认",
-          "markdownDescription": "启用兼容`V2Ray`的连接登记确认",
-          "properties": {
-            "primary-ingress-outbound": {
-              "type": "string",
-              "title": "主入站控制出站",
-              "description": "连接登记使用的主入站控制出站",
-              "markdownDescription": "连接登记使用的主入站控制出站"
-            },
-            "primary-egress-outbound": {
-              "type": "string",
-              "title": "主出站控制出站",
-              "description": "连接登记使用的主出站控制出站",
-              "markdownDescription": "连接登记使用的主出站控制出站"
-            }
-          }
-        },
-        "sequence-watermarking-enabled": {
-          "type": "boolean",
-          "title": "启用序列水印",
-          "description": "启用序列水印",
-          "markdownDescription": "启用序列水印",
-          "default": false
-        }
-      }
-    },
-    "mkcp-config": {
-      "type": "object",
-      "title": "mKCP 配置",
-      "properties": {
-        "enable": {
-          "type": "boolean",
-          "title": "启用mKCP",
-          "description": "启用mKCP",
-          "markdownDescription": "启用`mKCP`",
-          "default": false
-        },
-        "mtu": {
-          "type": "integer",
-          "title": "最大传输单元",
-          "description": "最大传输单元",
-          "markdownDescription": "最大传输单元",
-          "default": 1350
-        },
-        "tti": {
-          "type": "integer",
-          "title": "传输时间间隔",
-          "description": "单位:ms",
-          "markdownDescription": "单位:`ms`",
-          "default": 50
-        },
-        "uplink-capacity": {
-          "type": "integer",
-          "title": "上行容量",
-          "description": "单位:MB/s",
-          "markdownDescription": "单位:`MB/s`",
-          "default": 5
-        },
-        "downlink-capacity": {
-          "type": "integer",
-          "title": "下行容量",
-          "description": "单位:MB/s",
-          "markdownDescription": "单位:`MB/s`",
-          "default": 20
-        },
-        "congestion": {
-          "type": "boolean",
-          "title": "启用拥塞控制",
-          "description": "启用拥塞控制",
-          "markdownDescription": "启用拥塞控制",
-          "default": false
-        },
-        "write-buffer": {
-          "type": "integer",
-          "title": "写缓冲区大小",
-          "description": "单位:bytes",
-          "markdownDescription": "单位:`bytes`",
-          "default": 2097152
-        },
-        "read-buffer": {
-          "type": "integer",
-          "title": "读缓冲区大小",
-          "description": "单位:bytes",
-          "markdownDescription": "单位:`bytes`",
-          "default": 2097152
-        },
-        "seed": {
-          "type": "string",
-          "title": "AES-GCM 认证种子",
-          "description": "留空使用默认认证",
-          "markdownDescription": "留空使用默认认证",
-          "default": ""
-        },
-        "header": {
-          "enum": [
-            "",
-            "none",
-            "noop",
-            "srtp",
-            "utp",
-            "wechat-video",
-            "wechat",
-            "dtls",
-            "wireguard"
-          ],
-          "title": "伪装包头",
-          "description": "伪装包头",
-          "markdownDescription": "伪装包头",
-          "default": ""
-        }
-      }
-    },
-    "mekya-config": {
-      "type": "object",
-      "title": "Mekya 配置",
-      "properties": {
-        "enable": {
-          "type": "boolean",
-          "title": "启用Mekya",
-          "description": "启用Mekya",
-          "markdownDescription": "启用`Mekya`",
-          "default": false
-        },
-        "url": {
-          "type": "string",
-          "title": "Mekya请求地址",
-          "description": "客户端Mekya请求地址",
-          "markdownDescription": "客户端`Mekya`请求地址"
-        },
-        "h2-pool-size": {
-          "type": "integer",
-          "title": "HTTP/2连接池大小",
-          "description": "客户端HTTP/2连接池大小",
-          "markdownDescription": "客户端`HTTP/2`连接池大小"
-        },
-        "max-write-delay": {
-          "type": "integer",
-          "title": "首包后的最大聚合等待时间",
-          "description": "客户端参数，单位:ms",
-          "markdownDescription": "客户端参数，单位:`ms`"
-        },
-        "max-request-size": {
-          "type": "integer",
-          "title": "单次 HTTP 请求的最大负载大小",
-          "description": "客户端参数，单位:bytes，0 不限制",
-          "markdownDescription": "客户端参数，单位:`bytes`，0 不限制"
-        },
-        "polling-interval-initial": {
-          "type": "integer",
-          "title": "初始空轮询间隔",
-          "description": "客户端参数，单位:ms",
-          "markdownDescription": "客户端参数，单位:`ms`"
-        },
-        "max-write-size": {
-          "type": "integer",
-          "title": "单个响应写回的最大负载大小",
-          "description": "单位:bytes，0 不限制",
-          "markdownDescription": "单位:`bytes`，0 不限制"
-        },
-        "max-write-duration-ms": {
-          "type": "integer",
-          "title": "单个响应写回的最大持续时间",
-          "description": "单位:ms",
-          "markdownDescription": "单位:`ms`"
-        },
-        "max-simultaneous-write-connection": {
-          "type": "integer",
-          "title": "同时等待写回的最大请求数",
-          "description": "0 不限制",
-          "markdownDescription": "0 不限制"
-        },
-        "packet-writing-buffer": {
-          "type": "integer",
-          "title": "写包缓冲区大小",
-          "description": "服务端写包缓冲区大小",
-          "markdownDescription": "服务端写包缓冲区大小"
-        },
-        "kcp": {
-          "$ref": "#/definitions/mkcp-config",
-          "title": "mKCP配置",
-          "description": "Mekya使用的mKCP配置",
-          "markdownDescription": "`Mekya`使用的`mKCP`配置"
-        }
-      }
-    }
+    "tlsmirror-config": { "$ref": "./tlsmirror.json" },
+    "mekya-config": { "$ref": "./mekya.json" },
+    "mkcp-config": { "$ref": "./mkcp.json" }
   },
   "allOf": [
     { "title": "入站基础配置", "$ref": "#/definitions/base-option" },
@@ -328,8 +72,8 @@
         "ech-key": { "$ref": "#/definitions/tls/properties/ech-key" },
         "reality-config": { "title": "reality配置", "$ref": "#/definitions/reality-config" },
         "tlsmirror-config": { "$ref": "#/definitions/tlsmirror-config" },
-        "mkcp-config": { "$ref": "#/definitions/mkcp-config" },
         "mekya-config": { "$ref": "#/definitions/mekya-config" },
+        "mkcp-config": { "$ref": "#/definitions/mkcp-config" },
         "mux-option": { "title": "多路复用配置", "$ref": "#/definitions/mux-option" }
       },
       "dependencies": { "certificate": ["private-key"], "private-key": ["certificate"] },
@@ -345,16 +89,21 @@
             }
           },
           "then": {
-            "properties": { "ws-path": { "const": "" }, "grpc-service-name": { "const": "" } },
-            "not": {
-              "required": ["mkcp-config"],
-              "properties": {
-                "mkcp-config": {
-                  "required": ["enable"],
-                  "properties": { "enable": { "const": true } }
+            "allOf": [
+              { "not": { "required": ["ws-path"] } },
+              { "not": { "required": ["grpc-service-name"] } },
+              {
+                "not": {
+                  "required": ["mkcp-config"],
+                  "properties": {
+                    "mkcp-config": {
+                      "required": ["enable"],
+                      "properties": { "enable": { "const": true } }
+                    }
+                  }
                 }
               }
-            }
+            ]
           }
         }
       ]

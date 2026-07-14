@@ -142,45 +142,6 @@
           "description": "会话字段名",
           "markdownDescription": "会话字段名"
         },
-        "session-table": {
-          "enum": [
-            "",
-            "uuid",
-            "ALPHABET",
-            "Alphabet",
-            "BASE36",
-            "Base62",
-            "HEX",
-            "alphabet",
-            "base36",
-            "hex",
-            "number"
-          ],
-          "markdownEnumDescriptions": [
-            "随机生成",
-            "UUID",
-            "大写字母",
-            "大小写字母",
-            "大写字母和数字",
-            "大小写字母和数字",
-            "大写十六进制",
-            "小写字母",
-            "小写字母和数字",
-            "小写十六进制",
-            "数字"
-          ],
-          "title": "会话ID字符表",
-          "description": "会话ID字符表",
-          "markdownDescription": "会话ID字符表",
-          "default": ""
-        },
-        "session-length": {
-          "type": "string",
-          "title": "会话ID长度",
-          "description": "支持固定值（如：16）或范围（如：16-32）。起始值不可为 0，总的 id 空间必须大于 21 亿，仅当session-table不为空或uuid时生效",
-          "markdownDescription": "支持固定值（如：16）或范围（如：16-32）。起始值不可为 0，总的 id 空间必须大于 21 亿，仅当`session-table`不为空或`uuid`时生效",
-          "default": "16-32"
-        },
         "seq-placement": {
           "enum": ["path", "query", "cookie", "header"],
           "markdownEnumDescriptions": ["在路径中", "在查询字符串中", "在Cookie中", "在HTTP头部"],

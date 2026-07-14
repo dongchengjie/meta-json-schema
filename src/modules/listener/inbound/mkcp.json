@@ -1,0 +1,74 @@
+{
+  "type": "object",
+  "title": "mKCP配置",
+  "properties": {
+    "enable": {
+      "type": "boolean",
+      "title": "启用mKCP",
+      "description": "启用mKCP",
+      "markdownDescription": "启用`mKCP`",
+      "default": false
+    },
+    "mtu": {
+      "type": "integer",
+      "title": "最大传输单元",
+      "description": "最大传输单元，0使用默认值1350",
+      "markdownDescription": "最大传输单元，`0`使用默认值`1350`",
+      "default": 1350
+    },
+    "tti": {
+      "type": "integer",
+      "title": "传输时间间隔",
+      "description": "单位:ms，0使用默认值50",
+      "markdownDescription": "单位:`ms`，`0`使用默认值`50`",
+      "default": 50
+    },
+    "uplink-capacity": {
+      "type": "integer",
+      "title": "上行容量",
+      "description": "单位:MB/s，0使用默认值5",
+      "markdownDescription": "单位:`MB/s`，`0`使用默认值`5`",
+      "default": 5
+    },
+    "downlink-capacity": {
+      "type": "integer",
+      "title": "下行容量",
+      "description": "单位:MB/s，0使用默认值20",
+      "markdownDescription": "单位:`MB/s`，`0`使用默认值`20`",
+      "default": 20
+    },
+    "congestion": {
+      "type": "boolean",
+      "title": "启用拥塞控制",
+      "description": "启用拥塞控制",
+      "markdownDescription": "启用拥塞控制",
+      "default": false
+    },
+    "write-buffer": {
+      "type": "integer",
+      "title": "写缓冲区大小",
+      "description": "单位:bytes，0使用默认值2097152",
+      "markdownDescription": "单位:`bytes`，`0`使用默认值`2097152`",
+      "default": 2097152
+    },
+    "read-buffer": {
+      "type": "integer",
+      "title": "读缓冲区大小",
+      "description": "单位:bytes，0使用默认值2097152",
+      "markdownDescription": "单位:`bytes`，`0`使用默认值`2097152`",
+      "default": 2097152
+    },
+    "seed": {
+      "type": "string",
+      "title": "AES-GCM认证种子",
+      "description": "未配置时使用默认认证",
+      "markdownDescription": "未配置时使用默认认证"
+    },
+    "header": {
+      "enum": ["none", "noop", "srtp", "utp", "wechat-video", "wechat", "dtls", "wireguard"],
+      "title": "伪装包头",
+      "description": "未配置时不添加伪装包头",
+      "markdownDescription": "未配置时不添加伪装包头"
+    }
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "type": "object",
+  "title": "TLSMirror 配置",
+  "definitions": {
+    "tlsmirror-connection-enrolment": {
+      "type": "object",
+      "title": "TLSMirror 连接登记配置",
+      "properties": {
+        "primary-ingress-outbound": {
+          "type": "string",
+          "title": "主入站控制出站",
+          "description": "连接登记使用的主入站控制出站",
+          "markdownDescription": "连接登记使用的主入站控制出站"
+        },
+        "primary-egress-outbound": {
+          "type": "string",
+          "title": "主出站控制出站",
+          "description": "连接登记使用的主出站控制出站",
+          "markdownDescription": "连接登记使用的主出站控制出站"
+        }
+      }
+    },
+    "tlsmirror-time-spec": {
+      "type": "object",
+      "title": "TLSMirror 延迟配置",
+      "properties": {
+        "base-nanoseconds": {
+          "type": "integer",
+          "title": "固定延迟",
+          "description": "单位:ns",
+          "markdownDescription": "单位:`ns`",
+          "default": 0
+        },
+        "uniform-random-multiplier-nanoseconds": {
+          "type": "integer",
+          "title": "随机延迟上限",
+          "description": "单位:ns",
+          "markdownDescription": "单位:`ns`",
+          "default": 0
+        }
+      }
+    },
+    "tlsmirror-transport-layer-padding": {
+      "type": "object",
+      "title": "传输层填充配置",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "title": "启用传输层填充",
+          "description": "启用传输层填充",
+          "markdownDescription": "启用传输层填充",
+          "default": false
+        }
+      }
+    }
+  },
+  "properties": {
+    "primary-key": {
+      "type": "string",
+      "title": "TLSMirror 主密钥",
+      "description": "标准 Base64 编码的 32 字节主密钥",
+      "markdownDescription": "标准 Base64 编码的 32 字节主密钥"
+    },
+    "dest": {
+      "type": "string",
+      "title": "回落目标地址",
+      "description": "TLS 载体连接的转发目标",
+      "markdownDescription": "TLS 载体连接的转发目标"
+    },
+    "proxy": {
+      "type": "string",
+      "title": "回落转发代理",
+      "description": "回落连接使用的代理",
+      "markdownDescription": "回落连接使用的代理"
+    },
+    "explicit-nonce-ciphersuites": {
+      "type": "array",
+      "title": "TLS 1.2 显式 nonce 加密套件",
+      "description": "TLS 1.2载体使用显式nonce的加密套件",
+      "markdownDescription": "`TLS 1.2`载体使用显式`nonce`的加密套件",
+      "items": { "type": "integer" }
+    },
+    "defer-instance-derived-write-time": {
+      "$ref": "#/definitions/tlsmirror-time-spec",
+      "title": "首次写入延迟",
+      "description": "首次写入前的延迟",
+      "markdownDescription": "首次写入前的延迟"
+    },
+    "transport-layer-padding": {
+      "$ref": "#/definitions/tlsmirror-transport-layer-padding",
+      "title": "传输层填充配置",
+      "description": "传输层填充配置",
+      "markdownDescription": "传输层填充配置"
+    },
+    "connection-enrolment": {
+      "$ref": "#/definitions/tlsmirror-connection-enrolment",
+      "title": "TLSMirror 连接登记配置",
+      "description": "启用兼容V2Ray的连接登记确认",
+      "markdownDescription": "启用兼容`V2Ray`的连接登记确认"
+    },
+    "sequence-watermarking-enabled": {
+      "type": "boolean",
+      "title": "启用序列水印",
+      "description": "启用序列水印",
+      "markdownDescription": "启用序列水印",
+      "default": false
+    }
+  }
+}

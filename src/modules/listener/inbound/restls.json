@@ -1,0 +1,44 @@
+{
+  "type": "object",
+  "title": "Restls配置",
+  "required": ["enable"],
+  "properties": {
+    "enable": {
+      "type": "boolean",
+      "title": "启用Restls",
+      "description": "启用Restls",
+      "markdownDescription": "启用`Restls`",
+      "default": false
+    },
+    "dest": {
+      "type": "string",
+      "title": "目标地址",
+      "description": "TLS握手目标地址",
+      "markdownDescription": "`TLS`握手目标地址"
+    },
+    "password": {
+      "type": "string",
+      "title": "密码",
+      "description": "Restls认证密码",
+      "markdownDescription": "`Restls`认证密码"
+    },
+    "restls-script": {
+      "type": "string",
+      "title": "Restls脚本",
+      "description": "Restls脚本隐藏代理流量行为",
+      "markdownDescription": "`Restls`脚本隐藏代理流量行为"
+    },
+    "min-record-len": {
+      "type": "integer",
+      "title": "最小TLS记录长度",
+      "description": "最小TLS记录长度",
+      "markdownDescription": "最小`TLS`记录长度"
+    },
+    "proxy": {
+      "type": "string",
+      "title": "握手代理",
+      "description": "TLS握手使用的代理",
+      "markdownDescription": "`TLS`握手使用的代理"
+    }
+  }
+}

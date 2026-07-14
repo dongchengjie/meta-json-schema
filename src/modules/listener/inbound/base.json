@@ -27,13 +27,6 @@
       "description": "监听端口",
       "markdownDescription": "监听端口"
     },
-    "routing-mark": {
-      "type": "integer",
-      "title": "监听socket路由标记",
-      "description": "为监听socket设置routing-mark（仅支持linux）",
-      "markdownDescription": "为监听socket设置routing-mark（仅支持linux）",
-      "default": 0
-    },
     "rule": {
       "type": "string",
       "title": "出站规则",
@@ -45,6 +38,13 @@
       "title": "出站代理",
       "description": "取值为proxy-groups,proxy的name",
       "markdownDescription": "取值为proxy-groups,proxy的name"
+    },
+    "routing-mark": {
+      "type": "integer",
+      "title": "监听socket路由标记",
+      "description": "为监听socket设置routing-mark（仅支持linux，tun、redir和tproxy不生效）",
+      "markdownDescription": "为监听socket设置routing-mark（仅支持linux，tun、redir和tproxy不生效）",
+      "default": 0
     }
   }
 }

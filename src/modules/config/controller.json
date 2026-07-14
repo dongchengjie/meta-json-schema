@@ -12,18 +12,6 @@
       "description": "可以使用RESTful API来控制内核",
       "markdownDescription": "可以使用RESTful API来控制内核"
     },
-    "external-controller-tls": {
-      "$ref": "#/definitions/patterns/ipPort",
-      "title": "外部控制器(HTTPS)监听地址",
-      "description": "可以使用RESTful API over HTTPS来控制内核",
-      "markdownDescription": "可以使用RESTful API over HTTPS来控制内核"
-    },
-    "external-controller-pipe": {
-      "type": "string",
-      "title": "外部控制器(Windows namedpipe)监听地址",
-      "description": "从Windows namedpipe访问api接口不会验证secret， 如果开启请自行保证安全问题",
-      "markdownDescription": "从Windows namedpipe访问api接口不会验证secret， 如果开启请自行保证安全问题"
-    },
     "external-controller-routing-mark": {
       "type": "integer",
       "title": "外部控制器监听socket路由标记",
@@ -31,11 +19,23 @@
       "markdownDescription": "为 external-controller 和 external-controller-tls 的监听socket设置routing-mark（仅支持linux）",
       "default": 0
     },
+    "external-controller-pipe": {
+      "type": "string",
+      "title": "外部控制器(Windows namedpipe)监听地址",
+      "description": "从Windows namedpipe访问api接口不会验证secret， 如果开启请自行保证安全问题",
+      "markdownDescription": "从Windows namedpipe访问api接口不会验证secret， 如果开启请自行保证安全问题"
+    },
     "external-controller-unix": {
       "type": "string",
       "title": "外部控制器(Unix Socket)监听地址",
       "description": "从Unix Socket访问api接口不会验证secret,如果开启请自行保证安全问题(Windows版本大于17063也可以使用,即大于等于1803/RS4版本即可使用)",
       "markdownDescription": "从Unix Socket访问api接口不会验证secret,如果开启请自行保证安全问题(Windows版本大于17063也可以使用,即大于等于1803/RS4版本即可使用)"
+    },
+    "external-controller-tls": {
+      "$ref": "#/definitions/patterns/ipPort",
+      "title": "外部控制器(HTTPS)监听地址",
+      "description": "可以使用RESTful API over HTTPS来控制内核",
+      "markdownDescription": "可以使用RESTful API over HTTPS来控制内核"
     },
     "external-controller-cors": {
       "type": "object",

@@ -6,7 +6,7 @@
     "patterns": { "$ref": "../../../definitions/patterns.json" },
     "enums": { "$ref": "../../../definitions/enums.json" },
     "base-option": { "$ref": "./base.json" },
-    "shadow-tls": { "$ref": "./shadowsocks.json#/allOf/1/properties/shadow-tls" },
+    "shadow-tls": { "$ref": "./shadowtls.json" },
     "obfs-opts": {
       "type": "object",
       "title": "混淆配置",
@@ -36,15 +36,9 @@
       "properties": {
         "psk": {
           "type": "string",
-          "title": "公钥",
-          "description": "公钥",
-          "markdownDescription": "公钥"
-        },
-        "udp": {
-          "type": "boolean",
-          "title": "启用UDP",
-          "description": "启用UDP",
-          "markdownDescription": "启用`UDP`"
+          "title": "预共享密钥",
+          "description": "预共享密钥",
+          "markdownDescription": "预共享密钥"
         },
         "version": {
           "enum": [1, 2, 3, 4, 5],
@@ -52,6 +46,12 @@
           "description": "版本",
           "markdownDescription": "版本",
           "default": 4
+        },
+        "udp": {
+          "type": "boolean",
+          "title": "启用UDP",
+          "description": "启用UDP",
+          "markdownDescription": "启用`UDP`"
         },
         "obfs-opts": { "$ref": "#/definitions/obfs-opts" },
         "shadow-tls": { "$ref": "#/definitions/shadow-tls" }
