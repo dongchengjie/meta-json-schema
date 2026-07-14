@@ -756,6 +756,25 @@ proxies: # socks5
         - http-alt.example.com
       path: /
 
+  - name: "vmess-mkcp"
+    type: vmess
+    server: 1.2.3.4
+    port: 443
+    uuid: 8f3fca8e-d381-402c-8fdf-71f461a0170e
+    alterId: 32
+    cipher: auto
+    network: mkcp
+    mkcp-opts:
+      mtu: 1350
+      tti: 50
+      uplink-capacity: 5
+      downlink-capacity: 20
+      congestion: false
+      write-buffer: 2097152
+      read-buffer: 2097152
+      seed: ""
+      header: ""
+
   - name: "vmess-http"
     type: vmess
     server: 1.2.3.4
@@ -1985,6 +2004,17 @@ listeners:
       connection-enrolment:
         primary-ingress-outbound: ""
       sequence-watermarking-enabled: false
+    mkcp-config:
+      enable: false
+      mtu: 1350
+      tti: 50
+      uplink-capacity: 5
+      downlink-capacity: 20
+      congestion: false
+      write-buffer: 2097152
+      read-buffer: 2097152
+      seed: ""
+      header: ""
 
   - name: tuic-in-1
     type: tuic

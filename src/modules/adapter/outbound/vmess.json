@@ -230,6 +230,85 @@
         }
       }
     },
+    "mkcp-option": {
+      "type": "object",
+      "title": "mKCP 配置",
+      "properties": {
+        "mtu": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "最大传输单元",
+          "description": "最大传输单元",
+          "markdownDescription": "最大传输单元",
+          "default": 1350
+        },
+        "tti": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "传输时间间隔",
+          "description": "单位:ms，0 使用默认值 50",
+          "markdownDescription": "单位:`ms`，0 使用默认值 50",
+          "default": 50
+        },
+        "uplink-capacity": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "上行容量",
+          "description": "单位:MB/s",
+          "markdownDescription": "单位:`MB/s`",
+          "default": 5
+        },
+        "downlink-capacity": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "下行容量",
+          "description": "单位:MB/s",
+          "markdownDescription": "单位:`MB/s`",
+          "default": 20
+        },
+        "congestion": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用拥塞控制",
+          "description": "启用拥塞控制",
+          "markdownDescription": "启用拥塞控制",
+          "default": false
+        },
+        "write-buffer": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "写缓冲区大小",
+          "description": "单位:bytes",
+          "markdownDescription": "单位:`bytes`",
+          "default": 2097152
+        },
+        "read-buffer": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "读缓冲区大小",
+          "description": "单位:bytes",
+          "markdownDescription": "单位:`bytes`",
+          "default": 2097152
+        },
+        "seed": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "AES-GCM 认证种子",
+          "description": "留空使用默认认证",
+          "markdownDescription": "留空使用默认认证",
+          "default": ""
+        },
+        "header": {
+          "enum": [
+            "",
+            "none",
+            "noop",
+            "srtp",
+            "utp",
+            "wechat-video",
+            "wechat",
+            "dtls",
+            "wireguard"
+          ],
+          "title": "伪装包头",
+          "description": "伪装包头",
+          "markdownDescription": "伪装包头",
+          "default": ""
+        }
+      }
+    },
     "http-option": {
       "type": "object",
       "title": "HTTP配置",
@@ -428,7 +507,7 @@
           "markdownDescription": "启用`UDP`"
         },
         "network": {
-          "enum": ["tcp", "ws", "http", "h2", "grpc"],
+          "enum": ["tcp", "ws", "http", "h2", "grpc", "mkcp", "kcp"],
           "title": "传输协议",
           "description": "传输协议",
           "markdownDescription": "传输协议"
@@ -478,6 +557,7 @@
         "ech-opts": { "$ref": "#/definitions/ech-options" },
         "reality-opts": { "$ref": "#/definitions/reality-option" },
         "tlsmirror-opts": { "$ref": "#/definitions/tlsmirror-option" },
+        "mkcp-opts": { "$ref": "#/definitions/mkcp-option" },
         "http-opts": { "$ref": "#/definitions/http-option" },
         "h2-opts": { "$ref": "#/definitions/http2-option" },
         "grpc-opts": { "$ref": "#/definitions/grpc-option" },
