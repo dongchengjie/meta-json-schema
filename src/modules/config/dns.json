@@ -113,6 +113,13 @@
         }
       }
     },
+    "fallback-lazy-query": {
+      "type": "boolean",
+      "title": "延迟查询备用域名解析服务器",
+      "description": "先判断nameserver的查询结果是否满足fallback-filter，再按需查询fallback",
+      "markdownDescription": "先判断`nameserver`的查询结果是否满足`fallback-filter`，再按需查询`fallback`",
+      "default": false
+    },
     "listen": {
       "$ref": "#/definitions/patterns/ipPort",
       "title": "DNS服务器监听地址",

@@ -392,6 +392,7 @@ dns:
       - "+.google.com"
       - "+.facebook.com"
       - "+.youtube.com"
+  fallback-lazy-query: false # 为 true 时先判断 nameserver 结果是否满足 fallback-filter，再按需查询 fallback
 
   # 配置查询域名使用的 DNS 服务器
   nameserver-policy:

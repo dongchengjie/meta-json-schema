@@ -12,6 +12,7 @@
 - 新增: masque 出站支持 `network: h3-l4proxy`
 - 新增: select 代理组新增配置项 `default-selected`
 - 新增: TUN 新增配置项 `icmp-timeout`
+- 新增: dns 新增配置项 `fallback-lazy-query`
 
 ### Bug Fixes
 
