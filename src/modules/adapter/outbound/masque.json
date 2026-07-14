@@ -116,7 +116,7 @@
           "markdownDescription": "跳过证书验证"
         },
         "network": {
-          "enum": ["h2"],
+          "enum": ["h2", "h3-l4proxy"],
           "title": "传输协议",
           "description": "传输协议",
           "markdownDescription": "传输协议"
@@ -152,7 +152,12 @@
         }
       }
     },
-    { "anyOf": [{ "required": ["ip"] }, { "required": ["ipv6"] }] },
+    {
+      "anyOf": [
+        { "required": ["network"], "properties": { "network": { "const": "h3-l4proxy" } } },
+        { "anyOf": [{ "required": ["ip"] }, { "required": ["ipv6"] }] }
+      ]
+    },
     {
       "type": "object",
       "title": "smux配置",

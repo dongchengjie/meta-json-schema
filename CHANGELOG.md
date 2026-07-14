@@ -9,6 +9,7 @@
 - 新增: dns 新增配置项 `listen-routing-mark`（仅支持linux）
 - 新增: proxy 新增 `rematch` 出站
 - 新增: rules 新增 `REMATCH-NAME` 规则类型
+- 新增: masque 出站支持 `network: h3-l4proxy`
 
 ### Bug Fixes
 
