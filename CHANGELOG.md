@@ -17,6 +17,7 @@
 - 新增: snell 出站和 listener 支持 `shadow-tls`
 - 新增: openvpn 新增配置项 `handshake-timeout`
 - 新增: masque 新增配置项 `handshake-timeout`
+- 新增: listener shadowsocks 新增配置项 `res-tls`
 
 ### Bug Fixes
 

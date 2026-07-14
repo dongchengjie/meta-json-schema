@@ -1871,6 +1871,13 @@ listeners:
           password: password
       handshake:
         dest: test.com:443
+    res-tls:
+      enable: false
+      dest: test.com:443
+      password: password
+      restls-script: ""
+      min-record-len: 0
+      proxy: ""
     kcp-tun:
       enable: false
       key: it's a secrect # pre-shared secret between client and server
