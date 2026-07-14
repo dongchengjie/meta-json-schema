@@ -168,7 +168,7 @@
         "client-auth-cert": { "$ref": "#/definitions/tls/properties/client-auth-cert" },
         "ech-key": { "$ref": "#/definitions/tls/properties/ech-key" },
         "reality-config": { "title": "reality配置", "$ref": "#/definitions/reality-config" },
-        "tlsmirror": { "$ref": "#/definitions/tlsmirror-config" },
+        "tlsmirror-config": { "$ref": "#/definitions/tlsmirror-config" },
         "mux-option": { "title": "多路复用配置", "$ref": "#/definitions/mux-option" }
       },
       "dependencies": { "certificate": ["private-key"], "private-key": ["certificate"] }
