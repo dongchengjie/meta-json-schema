@@ -273,6 +273,13 @@
           "markdownDescription": "单位:s",
           "default": 300
         },
+        "icmp-timeout": {
+          "type": "integer",
+          "title": "ICMP NAT过期时间",
+          "description": "单位:s",
+          "markdownDescription": "单位:s",
+          "default": 10
+        },
         "disable-icmp-forwarding": {
           "type": "boolean",
           "title": "禁用 ICMP 转发",

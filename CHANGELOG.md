@@ -11,6 +11,7 @@
 - 新增: rules 新增 `REMATCH-NAME` 规则类型
 - 新增: masque 出站支持 `network: h3-l4proxy`
 - 新增: select 代理组新增配置项 `default-selected`
+- 新增: TUN 新增配置项 `icmp-timeout`
 
 ### Bug Fixes
 
