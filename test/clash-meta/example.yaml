@@ -1249,6 +1249,7 @@ proxies: # socks5
     uri: http://example.com/endpoint
     mtu: 1280
     udp: true
+    handshake-timeout: 30 # 单位为秒，0 表示使用外层连接超时
     # 一个出站代理的标识。当值不为空时，将使用指定的 proxy 发出连接
     # dialer-proxy: "ss1"
     remote-dns-resolve: true # 强制 dns 远程解析，默认值为 false

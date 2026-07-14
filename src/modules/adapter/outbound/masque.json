@@ -109,6 +109,13 @@
           "description": "启用UDP",
           "markdownDescription": "启用`UDP`"
         },
+        "handshake-timeout": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "握手超时时间",
+          "description": "单位:s，0表示使用外层连接超时",
+          "markdownDescription": "单位:s，`0`表示使用外层连接超时",
+          "default": 0
+        },
         "skip-cert-verify": {
           "$ref": "#/definitions/compatible/boolean",
           "title": "跳过证书验证",
