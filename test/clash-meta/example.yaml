@@ -2180,7 +2180,7 @@ listeners:
       version: 3
       password: password
       users:
-        - name: 1
+        - name: username
           password: password
       handshake:
         dest: test.com:443

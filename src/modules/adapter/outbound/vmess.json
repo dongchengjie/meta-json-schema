@@ -244,8 +244,8 @@
         "tti": {
           "$ref": "#/definitions/compatible/integer",
           "title": "传输时间间隔",
-          "description": "单位:ms，0 使用默认值 50",
-          "markdownDescription": "单位:`ms`，0 使用默认值 50",
+          "description": "单位:ms",
+          "markdownDescription": "单位:`ms`",
           "default": 50
         },
         "uplink-capacity": {

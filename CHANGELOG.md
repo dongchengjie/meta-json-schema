@@ -10,7 +10,7 @@
 - 新增: proxy 新增 `rematch` 出站
 - 新增: rules 新增 `REMATCH-NAME` 规则类型
 - 新增: masque 出站支持 `network: h3-l4proxy`
-- 新增: select 代理组新增配置项 `default-selected`
+- 新增: selector 代理组新增配置项 `default-selected`
 - 新增: TUN 新增配置项 `icmp-timeout`
 - 新增: dns 新增配置项 `fallback-lazy-query`
 - 新增: openvpn 新增配置项 `peer-info`
@@ -19,10 +19,8 @@
 - 新增: masque 新增配置项 `handshake-timeout`
 - 新增: listener shadowsocks 新增配置项 `res-tls`
 - 调整: listener snell 支持版本 1/2/3/4/5
-- 新增: vmess 出站和 listener 支持 `TLSMirror`
-- 调整: vmess listener 的 `tlsmirror` 重命名为 `tlsmirror-config`
-- 新增: vmess 出站和 listener 支持 `mKCP`
-- 新增: vmess 出站和 listener 支持 `Mekya`
+- 新增: vmess 出站 `tlsmirror-opts` 和 listener `tlsmirror-config` 支持 `TLSMirror`
+- 新增: vmess 出站和 listener 支持 `mKCP`、`Mekya`
 
 ### Bug Fixes
 
