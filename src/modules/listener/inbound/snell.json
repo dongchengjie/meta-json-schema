@@ -47,7 +47,7 @@
           "markdownDescription": "启用`UDP`"
         },
         "version": {
-          "enum": [4, 5],
+          "enum": [1, 2, 3, 4, 5],
           "title": "版本",
           "description": "版本",
           "markdownDescription": "版本",
