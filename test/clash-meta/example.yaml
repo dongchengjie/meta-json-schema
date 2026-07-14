@@ -447,6 +447,19 @@ proxies: # socks5
       mode: http # or tls
       host: bing.com
 
+  - name: "snell-shadow-tls"
+    type: snell
+    server: server
+    port: 44046
+    psk: yourpsk
+    client-fingerprint: chrome
+    obfs-opts:
+      mode: shadow-tls
+      host: bing.com
+      password: "shadow_tls_password"
+      version: 2
+      alpn: [h2, http/1.1]
+
   # Shadowsocks
   # cipher支持:
   #   aes-128-gcm aes-192-gcm aes-256-gcm
@@ -2045,6 +2058,15 @@ listeners:
     obfs-opts:
       mode: http # 可选：http / tls
       host: bing.com
+    shadow-tls:
+      enable: false
+      version: 3
+      password: password
+      users:
+        - name: 1
+          password: password
+      handshake:
+        dest: test.com:443
     rule: sub-rule-name1
     proxy: proxy
 

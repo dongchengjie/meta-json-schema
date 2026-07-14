@@ -6,6 +6,7 @@
     "patterns": { "$ref": "../../../definitions/patterns.json" },
     "enums": { "$ref": "../../../definitions/enums.json" },
     "base-option": { "$ref": "./base.json" },
+    "shadow-tls": { "$ref": "./shadowsocks.json#/allOf/1/properties/shadow-tls" },
     "obfs-opts": {
       "type": "object",
       "title": "混淆配置",
@@ -52,7 +53,8 @@
           "markdownDescription": "版本",
           "default": 4
         },
-        "obfs-opts": { "$ref": "#/definitions/obfs-opts" }
+        "obfs-opts": { "$ref": "#/definitions/obfs-opts" },
+        "shadow-tls": { "$ref": "#/definitions/shadow-tls" }
       }
     }
   ]

@@ -14,6 +14,7 @@
 - 新增: TUN 新增配置项 `icmp-timeout`
 - 新增: dns 新增配置项 `fallback-lazy-query`
 - 新增: openvpn 新增配置项 `peer-info`
+- 新增: snell 出站和 listener 支持 `shadow-tls`
 
 ### Bug Fixes
 

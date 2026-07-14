@@ -7,7 +7,71 @@
     "patterns": { "$ref": "../../../definitions/patterns.json" },
     "enums": { "$ref": "../../../definitions/enums.json" },
     "basic-option": { "$ref": "./base.json#/definitions/basic-option" },
-    "smux": { "$ref": "./singmux.json" }
+    "smux": { "$ref": "./singmux.json" },
+    "simple-obfs-option": { "$ref": "./shadowsocks.json#/definitions/simple-obfs-option" },
+    "shadow-tls-option": {
+      "type": "object",
+      "title": "shadow-tls配置",
+      "required": ["mode", "host"],
+      "properties": {
+        "mode": {
+          "const": "shadow-tls",
+          "title": "混淆模式",
+          "description": "混淆模式",
+          "markdownDescription": "混淆模式"
+        },
+        "password": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "密码",
+          "description": "ShadowTLS v2/v3 密码",
+          "markdownDescription": "`ShadowTLS` v2/v3 密码"
+        },
+        "host": {
+          "$ref": "#/definitions/patterns/server",
+          "title": "主机地址",
+          "description": "TLS服务器名称",
+          "markdownDescription": "`TLS`服务器名称"
+        },
+        "fingerprint": {
+          "$ref": "#/definitions/patterns/sha256Fingerprint",
+          "title": "SHA-256证书指纹",
+          "description": "服务端证书的SHA-256指纹",
+          "markdownDescription": "服务端证书的`SHA-256`指纹"
+        },
+        "certificate": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "证书或证书路径",
+          "description": "PEM格式",
+          "markdownDescription": "PEM格式"
+        },
+        "private-key": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "私钥",
+          "description": "私钥内容或私钥文件路径",
+          "markdownDescription": "私钥内容或私钥文件路径"
+        },
+        "skip-cert-verify": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "跳过证书验证",
+          "description": "跳过证书验证",
+          "markdownDescription": "跳过证书验证"
+        },
+        "version": {
+          "enum": [1, 2, 3],
+          "title": "版本",
+          "description": "版本",
+          "markdownDescription": "版本",
+          "default": 2
+        },
+        "alpn": {
+          "$ref": "#/definitions/types/stringArray",
+          "title": "ALPN",
+          "description": "Application-Layer Protocol Negotiation(应用层协议协商)",
+          "markdownDescription": "Application-Layer Protocol Negotiation(应用层协议协商)",
+          "default": ["h2", "http/1.1"]
+        }
+      }
+    }
   },
   "allOf": [
     { "title": "basic配置", "$ref": "#/definitions/basic-option" },
@@ -65,7 +129,18 @@
           "description": "仅v4/5支持",
           "markdownDescription": "仅v4/5支持"
         },
-        "obfs-opts": { "$ref": "./shadowsocks.json#/definitions/simple-obfs-option" }
+        "client-fingerprint": {
+          "$ref": "#/definitions/enums/client-fingerprint",
+          "title": "客户端指纹",
+          "description": "客户端指纹",
+          "markdownDescription": "客户端指纹"
+        },
+        "obfs-opts": {
+          "anyOf": [
+            { "$ref": "#/definitions/simple-obfs-option" },
+            { "$ref": "#/definitions/shadow-tls-option" }
+          ]
+        }
       }
     },
     {
