@@ -10,6 +10,226 @@
     "ech-options": { "$ref": "./ech.json#/definitions/ech-options" },
     "smux": { "$ref": "./singmux.json" },
     "reality-option": { "$ref": "./reality.json" },
+    "tlsmirror-time-spec": {
+      "type": "object",
+      "title": "TLSMirror 延迟配置",
+      "properties": {
+        "base-nanoseconds": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "固定延迟",
+          "description": "单位:ns",
+          "markdownDescription": "单位:`ns`",
+          "default": 0
+        },
+        "uniform-random-multiplier-nanoseconds": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "随机延迟上限",
+          "description": "单位:ns",
+          "markdownDescription": "单位:`ns`",
+          "default": 0
+        }
+      }
+    },
+    "tlsmirror-connection-enrolment": {
+      "type": "object",
+      "title": "TLSMirror 连接登记配置",
+      "properties": {
+        "primary-ingress-outbound": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "主入站控制出站",
+          "description": "连接登记使用的主入站控制出站",
+          "markdownDescription": "连接登记使用的主入站控制出站"
+        },
+        "primary-egress-outbound": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "主出站控制出站",
+          "description": "连接登记使用的主出站控制出站",
+          "markdownDescription": "连接登记使用的主出站控制出站"
+        }
+      }
+    },
+    "tlsmirror-traffic-header": {
+      "type": "object",
+      "title": "TLSMirror HTTP 请求头",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "请求头名称",
+          "description": "HTTP请求头名称",
+          "markdownDescription": "`HTTP`请求头名称"
+        },
+        "value": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "请求头值",
+          "description": "HTTP请求头值",
+          "markdownDescription": "`HTTP`请求头值"
+        },
+        "values": {
+          "$ref": "#/definitions/types/stringArray",
+          "title": "请求头值列表",
+          "description": "HTTP请求头值列表",
+          "markdownDescription": "`HTTP`请求头值列表"
+        }
+      }
+    },
+    "tlsmirror-next-step": {
+      "type": "object",
+      "title": "TLSMirror 后续步骤候选",
+      "properties": {
+        "weight": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "候选权重",
+          "description": "后续步骤候选权重",
+          "markdownDescription": "后续步骤候选权重"
+        },
+        "goto-location": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "目标步骤索引",
+          "description": "目标步骤索引",
+          "markdownDescription": "目标步骤索引"
+        }
+      }
+    },
+    "tlsmirror-traffic-step": {
+      "type": "object",
+      "title": "TLSMirror HTTP 流量步骤",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "步骤名称",
+          "description": "流量步骤名称",
+          "markdownDescription": "流量步骤名称"
+        },
+        "host": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "HTTP主机",
+          "description": "HTTP请求主机",
+          "markdownDescription": "`HTTP`请求主机"
+        },
+        "path": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "HTTP路径",
+          "description": "HTTP请求路径",
+          "markdownDescription": "`HTTP`请求路径"
+        },
+        "method": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "HTTP方法",
+          "description": "HTTP请求方法",
+          "markdownDescription": "`HTTP`请求方法"
+        },
+        "headers": {
+          "type": "array",
+          "title": "HTTP 请求头列表",
+          "description": "HTTP请求头列表",
+          "markdownDescription": "`HTTP`请求头列表",
+          "items": { "$ref": "#/definitions/tlsmirror-traffic-header" }
+        },
+        "next-step": {
+          "type": "array",
+          "title": "后续步骤候选列表",
+          "description": "后续步骤候选列表",
+          "markdownDescription": "后续步骤候选列表",
+          "items": { "$ref": "#/definitions/tlsmirror-next-step" }
+        },
+        "connection-ready": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "连接就绪标记",
+          "description": "此步骤完成后交付代理连接",
+          "markdownDescription": "此步骤完成后交付代理连接",
+          "default": false
+        },
+        "connection-recall-exit": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "连接回收后退出",
+          "description": "代理连接关闭后退出载体流量",
+          "markdownDescription": "代理连接关闭后退出载体流量",
+          "default": false
+        },
+        "wait-time": {
+          "$ref": "#/definitions/tlsmirror-time-spec",
+          "title": "等待时间",
+          "description": "步骤完成后的等待时间",
+          "markdownDescription": "步骤完成后的等待时间"
+        },
+        "h2-do-not-wait-for-download-finish": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "HTTP/2 不等待响应体读取完成",
+          "description": "HTTP/2下不等待响应体读取完成",
+          "markdownDescription": "`HTTP/2`下不等待响应体读取完成",
+          "default": false
+        }
+      }
+    },
+    "tlsmirror-option": {
+      "type": "object",
+      "title": "TLSMirror 配置",
+      "required": ["primary-key"],
+      "properties": {
+        "primary-key": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "TLSMirror 主密钥",
+          "description": "标准 Base64 编码的 32 字节主密钥",
+          "markdownDescription": "标准 Base64 编码的 32 字节主密钥"
+        },
+        "explicit-nonce-ciphersuites": {
+          "type": "array",
+          "title": "TLS 1.2 显式 nonce 加密套件",
+          "description": "TLS 1.2载体使用显式nonce的加密套件",
+          "markdownDescription": "`TLS 1.2`载体使用显式`nonce`的加密套件",
+          "items": { "$ref": "#/definitions/compatible/integer" }
+        },
+        "defer-instance-derived-write-time": {
+          "$ref": "#/definitions/tlsmirror-time-spec",
+          "title": "首次写入延迟",
+          "description": "首次写入前的延迟",
+          "markdownDescription": "首次写入前的延迟"
+        },
+        "transport-layer-padding": {
+          "type": "object",
+          "title": "传输层填充配置",
+          "description": "传输层填充配置",
+          "markdownDescription": "传输层填充配置",
+          "properties": {
+            "enabled": {
+              "$ref": "#/definitions/compatible/boolean",
+              "title": "启用传输层填充",
+              "description": "启用传输层填充",
+              "markdownDescription": "启用传输层填充",
+              "default": false
+            }
+          }
+        },
+        "connection-enrolment": {
+          "$ref": "#/definitions/tlsmirror-connection-enrolment",
+          "title": "连接登记配置",
+          "description": "启用兼容V2Ray的连接登记确认",
+          "markdownDescription": "启用兼容`V2Ray`的连接登记确认"
+        },
+        "embedded-traffic-generator": {
+          "type": "object",
+          "title": "内嵌 HTTP 流量生成器",
+          "description": "生成额外的HTTP载体流量",
+          "markdownDescription": "生成额外的`HTTP`载体流量",
+          "properties": {
+            "steps": {
+              "type": "array",
+              "title": "流量步骤列表",
+              "description": "HTTP载体流量步骤列表",
+              "markdownDescription": "`HTTP`载体流量步骤列表",
+              "items": { "$ref": "#/definitions/tlsmirror-traffic-step" }
+            }
+          }
+        },
+        "sequence-watermarking-enabled": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用序列水印",
+          "description": "启用序列水印",
+          "markdownDescription": "启用序列水印",
+          "default": false
+        }
+      }
+    },
     "http-option": {
       "type": "object",
       "title": "HTTP配置",
@@ -257,6 +477,7 @@
         },
         "ech-opts": { "$ref": "#/definitions/ech-options" },
         "reality-opts": { "$ref": "#/definitions/reality-option" },
+        "tlsmirror-opts": { "$ref": "#/definitions/tlsmirror-option" },
         "http-opts": { "$ref": "#/definitions/http-option" },
         "h2-opts": { "$ref": "#/definitions/http2-option" },
         "grpc-opts": { "$ref": "#/definitions/grpc-option" },

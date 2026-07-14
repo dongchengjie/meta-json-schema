@@ -19,6 +19,7 @@
 - 新增: masque 新增配置项 `handshake-timeout`
 - 新增: listener shadowsocks 新增配置项 `res-tls`
 - 调整: listener snell 支持版本 1/2/3/4/5
+- 新增: vmess 出站和 listener 支持 `TLSMirror`
 
 ### Bug Fixes
 

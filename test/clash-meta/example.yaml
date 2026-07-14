@@ -702,6 +702,29 @@ proxies: # socks5
     client-fingerprint: chrome # Available: "chrome","firefox","safari","ios","random", currently only support TLS transport in TCP/GRPC/WS/HTTP for VLESS/Vmess and trojan.
     skip-cert-verify: true
     servername: example.com # priority over wss host
+    tlsmirror-opts:
+      primary-key: MDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3ODlhYmNkZWY=
+      explicit-nonce-ciphersuites: [156, 157]
+      defer-instance-derived-write-time:
+        base-nanoseconds: 0
+        uniform-random-multiplier-nanoseconds: 0
+      transport-layer-padding:
+        enabled: false
+      connection-enrolment:
+        primary-egress-outbound: ""
+      sequence-watermarking-enabled: false
+      embedded-traffic-generator:
+        steps:
+          - host: example.com
+            path: /
+            method: GET
+            connection-ready: true
+            connection-recall-exit: true
+            wait-time:
+              base-nanoseconds: 1000000000
+            next-step:
+              - weight: 1
+                goto-location: 0
     network: ws
     ech-opts:
       enable: true # 必须手动开启
@@ -1949,6 +1972,19 @@ listeners:
         after-bytes: 0 # 传输指定字节后开始限速
         bytes-per-sec: 0 # 基准速率（字节/秒）
         burst-bytes-per-sec: 0 # 突发速率（字节/秒），大于 bytesPerSec 时生效
+    tlsmirror:
+      dest: test.com:443
+      primary-key: MDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3ODlhYmNkZWY=
+      proxy: ""
+      explicit-nonce-ciphersuites: [156, 157]
+      defer-instance-derived-write-time:
+        base-nanoseconds: 0
+        uniform-random-multiplier-nanoseconds: 0
+      transport-layer-padding:
+        enabled: false
+      connection-enrolment:
+        primary-ingress-outbound: ""
+      sequence-watermarking-enabled: false
 
   - name: tuic-in-1
     type: tuic
