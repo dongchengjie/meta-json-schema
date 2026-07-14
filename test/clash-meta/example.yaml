@@ -1190,6 +1190,9 @@ proxies: # socks5
     # username / password: auth-user-pass 模式（与下方 cert+key 二选一，不能都不填）
     username: "user"
     password: "pass"
+    peer-info:
+      IV_HWADDR: "52:54:00:ff:72:87"
+      UV_DEVICE_ID: "laptop-001"
     # 从 .ovpn 中复制 <ca></ca> 内的内容，不需要保留 <ca> 标签
     ca: |
       -----BEGIN CERTIFICATE-----

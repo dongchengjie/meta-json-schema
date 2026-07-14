@@ -13,6 +13,7 @@
 - 新增: select 代理组新增配置项 `default-selected`
 - 新增: TUN 新增配置项 `icmp-timeout`
 - 新增: dns 新增配置项 `fallback-lazy-query`
+- 新增: openvpn 新增配置项 `peer-info`
 
 ### Bug Fixes
 
