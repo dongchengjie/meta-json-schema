@@ -90,6 +90,18 @@
           "markdownDescription": "单位:`ms`"
         },
         "congestion-controller": { "$ref": "#/definitions/enums/congestion-controller" },
+        "up": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "上行带宽",
+          "description": "启用 brutal 时的上行带宽限制",
+          "markdownDescription": "启用 `brutal` 时的上行带宽限制"
+        },
+        "down": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "下行带宽",
+          "description": "启用 brutal 时的下行带宽限制",
+          "markdownDescription": "启用 `brutal` 时的下行带宽限制"
+        },
         "cwnd": {
           "$ref": "#/definitions/compatible/integer",
           "title": "拥塞窗口大小",

@@ -1542,6 +1542,8 @@ proxies: # socks5
     username: username
     password: password
     quic-versions: [v1]
+    up: 100 Mbps
+    down: 100 Mbps
     client-fingerprint: chrome
     udp: true
     idle-session-check-interval: 30 # seconds
@@ -1945,6 +1947,9 @@ listeners:
         password: password
     jls-upstream:
       addr: example.com:443
+    up: 100 Mbps
+    down: 100 Mbps
+    ignore-client-bandwidth: false
 
   - name: socks5-in-1
     type: socks

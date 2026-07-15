@@ -97,6 +97,24 @@
           "markdownDescription": "启用`QUIC` `0-RTT`握手"
         },
         "congestion-controller": { "$ref": "#/definitions/enums/congestion-controller" },
+        "up": {
+          "type": "string",
+          "title": "上行带宽",
+          "description": "启用 brutal 时的上行带宽限制",
+          "markdownDescription": "启用 `brutal` 时的上行带宽限制"
+        },
+        "down": {
+          "type": "string",
+          "title": "下行带宽",
+          "description": "启用 brutal 时的下行带宽限制",
+          "markdownDescription": "启用 `brutal` 时的下行带宽限制"
+        },
+        "ignore-client-bandwidth": {
+          "type": "boolean",
+          "title": "忽略客户端带宽",
+          "description": "brutal 模式下忽略出站 down",
+          "markdownDescription": "`brutal` 模式下忽略出站 `down`"
+        },
         "max-idle-time": {
           "type": "integer",
           "title": "最大空闲时间",
