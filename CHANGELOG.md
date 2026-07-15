@@ -4,6 +4,7 @@
 
 - 新增: proxy-provider override 支持按顺序执行的 `override-expr` 表达式数组
 - 新增: sudoku 出站新增顶层 `multiplex` 配置项，统一控制会话多路复用
+- 新增: openvpn 出站支持 `tls-auth` 和 `key-direction`
 
 ### Bug Fixes
 

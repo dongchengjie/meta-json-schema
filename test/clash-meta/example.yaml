@@ -1289,6 +1289,13 @@ proxies: # socks5
       -----BEGIN PRIVATE KEY-----
       MIIE...example
       -----END PRIVATE KEY-----
+    # tls-auth 与 tls-crypt 互斥；key-direction 支持 "1"、"0" 或留空（双向）
+    # tls-auth: |
+    #   -----BEGIN OpenVPN Static key V1-----
+    #   00000000000000000000000000000000
+    #   ...
+    #   -----END OpenVPN Static key V1-----
+    # key-direction: "1"
     # 从 .ovpn 中复制 <tls-crypt></tls-crypt> 内的内容，不需要保留 <tls-crypt> 标签；没有 tls-crypt 的配置可省略
     tls-crypt: |
       -----BEGIN OpenVPN Static key V1-----
