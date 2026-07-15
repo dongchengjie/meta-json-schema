@@ -1,5 +1,9 @@
 ## v1.19.29
 
+### Changes
+
+- 新增: proxy-provider override 支持按顺序执行的 `override-expr` 表达式数组
+
 ### Bug Fixes
 
 - 修复: `rematch` 出站移除不适用的 `smux`，并要求填写 `target-rematch-name` 或 `target-sub-rule`

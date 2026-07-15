@@ -1645,6 +1645,9 @@ proxy-providers:
           target: "TEST"
         - pattern: "IPLC-(.*?)倍"
           target: "iplc x $1"
+      override-expr:
+        - '.name = "[provider1] " + .name'
+        - ".udp = true"
 
   provider2:
     type: inline

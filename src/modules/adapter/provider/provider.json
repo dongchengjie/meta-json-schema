@@ -179,6 +179,13 @@
                     }
                   }
                 }
+              },
+              "override-expr": {
+                "type": "array",
+                "title": "使用表达式覆写节点内容",
+                "description": "按顺序执行的 yq 风格配置覆写表达式",
+                "markdownDescription": "按顺序执行的 `yq` 风格配置覆写表达式",
+                "items": { "type": "string" }
               }
             }
           }
