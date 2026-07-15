@@ -1067,6 +1067,9 @@ proxies: # socks5
           # 如果config为空则通过dns解析，不为空则通过该值指定，格式为经过base64编码的ech参数（dig +short TYPE65     tls-ech.dev）
           config: AEn+DQBFKwAgACABWIHUGj4u    +PIggYXcR5JF0gYk3dCRioBW8uJq9H4mKAAIAAEAAQABAANAEnB1YmxpYy50bHMtZWNoLmRldgAA
           query-server-name: xxx.com # 可选项，不为空时用于指定通过dns解析时的域名
+        # jls-opts:
+        #   username: jls-user
+        #   password: jls-password
         reality-opts:
           public-key: xxx
           short-id: xxx # optional

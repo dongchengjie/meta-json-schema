@@ -513,6 +513,7 @@
           "markdownDescription": "Application-Layer Protocol Negotiation(应用层协议协商)"
         },
         "ech-opts": { "$ref": "#/definitions/ech-options" },
+        "jls-opts": { "$ref": "#/definitions/jls-options" },
         "reality-opts": { "$ref": "#/definitions/reality-option" },
         "skip-cert-verify": {
           "$ref": "#/definitions/compatible/boolean",
