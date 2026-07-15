@@ -2403,10 +2403,13 @@ listeners:
     users:
       username1: password1
       username2: password2
-    # "certificate" and "private-key" are required
-    certificate: ./server.crt
-    private-key: ./server.key
-    # 注意，anytls listener, 如果 "allow-insecure" 不为 true, 必须填写 “certificate和private-key”
+    jls-config:
+      enable: true
+      users:
+        - username: jls-user
+          password: jls-password
+      dest: example.com:443
+    # 未启用 jls-config 且 allow-insecure 不为 true 时，必须填写 certificate 和 private-key；启用 JLS 时不要填写证书
     allow-insecure: false # 是否允许不开启tls加密（注意：仅用于有 nginx, caddy 前置的情况）
     padding-scheme: "" # https://github.com/anytls/anytls-go/blob/main/docs/protocol.md#cmdupdatepaddingscheme
 

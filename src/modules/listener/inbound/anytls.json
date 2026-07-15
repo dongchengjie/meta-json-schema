@@ -14,7 +14,6 @@
     {
       "type": "object",
       "title": "anytls配置",
-      "required": ["certificate", "private-key"],
       "properties": {
         "users": {
           "type": "object",
@@ -42,7 +41,40 @@
           "description": "https://github.com/anytls/anytls-go/blob/main/docs/protocol.md#cmdupdatepaddingscheme",
           "markdownDescription": "[参考文档](https://github.com/anytls/anytls-go/blob/main/docs/protocol.md#cmdupdatepaddingscheme)"
         }
-      }
+      },
+      "dependencies": { "certificate": ["private-key"], "private-key": ["certificate"] },
+      "allOf": [
+        {
+          "if": {
+            "required": ["jls-config"],
+            "properties": {
+              "jls-config": {
+                "required": ["enable"],
+                "properties": { "enable": { "const": true } }
+              }
+            }
+          },
+          "then": {
+            "not": {
+              "anyOf": [
+                { "required": ["certificate"] },
+                { "required": ["private-key"] },
+                { "required": ["client-auth-type"] }
+              ]
+            }
+          }
+        }
+      ],
+      "anyOf": [
+        { "required": ["certificate", "private-key"] },
+        {
+          "required": ["jls-config"],
+          "properties": {
+            "jls-config": { "required": ["enable"], "properties": { "enable": { "const": true } } }
+          }
+        },
+        { "required": ["allow-insecure"], "properties": { "allow-insecure": { "const": true } } }
+      ]
     }
   ]
 }
