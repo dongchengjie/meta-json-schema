@@ -6,7 +6,8 @@
     "types": { "$ref": "../../../definitions/types.json" },
     "patterns": { "$ref": "../../../definitions/patterns.json" },
     "enums": { "$ref": "../../../definitions/enums.json" },
-    "basic-option": { "$ref": "./base.json#/definitions/basic-option" }
+    "basic-option": { "$ref": "./base.json#/definitions/basic-option" },
+    "smux": { "$ref": "./singmux.json" }
   },
   "allOf": [
     { "title": "basic配置", "$ref": "#/definitions/basic-option" },
@@ -41,6 +42,11 @@
         }
       },
       "anyOf": [{ "required": ["target-rematch-name"] }, { "required": ["target-sub-rule"] }]
+    },
+    {
+      "type": "object",
+      "title": "smux配置",
+      "properties": { "smux": { "title": "smux配置", "$ref": "#/definitions/smux" } }
     }
   ]
 }

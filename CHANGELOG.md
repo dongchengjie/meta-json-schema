@@ -10,12 +10,13 @@
 - 新增: shadowsocks 出站插件和 listener 支持 JLS
 - 新增: vmess、vless、trojan 出站和 listener 支持 JLS，vless xhttp `download-settings` 可独立覆写 `jls-opts`
 - 新增: anytls 出站和 listener 支持 JLS
+- 调整: anytls listener 允许使用 JLS 或 `allow-insecure` 替代证书，并禁止 JLS 与证书配置同时使用
+- 调整: `rematch` 出站要求填写 `target-rematch-name` 或 `target-sub-rule`
 
 ### Bug Fixes
 
-- 修复: anytls listener 允许使用 JLS 或 `allow-insecure` 替代证书，并禁止 JLS 与证书配置同时使用
-- 修复: `rematch` 出站移除不适用的 `smux`，并要求填写 `target-rematch-name` 或 `target-sub-rule`
-- 修复: vless 出站 `xhttp-opts.session-table` 支持预定义值或自定义 ASCII 字符表，vless listener 移除误收录的 `session-table`、`session-length`
+- 修复: vless 出站 `xhttp-opts.session-table` 支持预定义值或自定义 ASCII 字符表
+- 修复: vless listener 移除误收录的 `session-table`、`session-length`
 - 修复: vmess 出站 `tlsmirror-opts` 和 listener `tlsmirror-config` 分别匹配各自的输入结构
 - 修复: shadowsocks listener 的 ShadowTLS、RESTLS 和 snell listener 的 ShadowTLS 配置匹配实际输入结构
 - 修复: mKCP `header` 使用明确值 `none` 表示无伪装包头
