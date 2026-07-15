@@ -215,6 +215,18 @@
             { "deprecationMessage": "自v1.19.21 起，推荐使用 httpmask 配置" }
           ]
         },
+        "multiplex": {
+          "enum": ["off", "auto", "on"],
+          "markdownEnumDescriptions": [
+            "默认",
+            "仅复用 HTTP 掩码底层连接",
+            "在原始 TCP 或 HTTP 掩码上启用 Sudoku 单会话多目标复用"
+          ],
+          "title": "多路复用",
+          "description": "控制 Sudoku 会话多路复用模式",
+          "markdownDescription": "控制 `Sudoku` 会话多路复用模式",
+          "default": "off"
+        },
         "http-mask-strategy": {
           "allOf": [
             {

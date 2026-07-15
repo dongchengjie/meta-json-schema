@@ -1452,6 +1452,7 @@ proxies: # socks5
       "xpxvvpvv",
       "vxpvxvvp"
     ] # 可选，自定义字节布局列表（x/v/p），非空时覆盖 custom-table
+    multiplex: off # 可选：off（默认）、auto、on
     # 推荐：使用 httpmask 对象统一管理 HTTPMask 相关字段：
     httpmask:
       disable: false # true 禁用所有 HTTP 伪装/隧道
