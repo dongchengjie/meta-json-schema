@@ -70,6 +70,12 @@
           "description": "跳过证书验证",
           "markdownDescription": "跳过证书验证"
         },
+        "name-cert-verify": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "证书 DNSName 校验目标",
+          "description": "仅修改证书 DNSName 校验目标，不修改 SNI",
+          "markdownDescription": "仅修改证书 `DNSName` 校验目标，不修改 `SNI`"
+        },
         "fingerprint": {
           "$ref": "#/definitions/patterns/sha256Fingerprint",
           "title": "SHA-256证书指纹",
