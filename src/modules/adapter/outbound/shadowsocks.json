@@ -211,6 +211,37 @@
         }
       }
     },
+    "jls-option": {
+      "type": "object",
+      "title": "JLS插件配置",
+      "required": ["host", "username", "password"],
+      "properties": {
+        "host": {
+          "$ref": "#/definitions/patterns/server",
+          "title": "JLS服务器名称",
+          "description": "JLS服务器名称",
+          "markdownDescription": "`JLS`服务器名称"
+        },
+        "username": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "JLS用户名",
+          "description": "JLS认证用户名",
+          "markdownDescription": "`JLS`认证用户名"
+        },
+        "password": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "JLS密码",
+          "description": "JLS认证密码",
+          "markdownDescription": "`JLS`认证密码"
+        },
+        "alpn": {
+          "$ref": "#/definitions/types/stringArray",
+          "title": "ALPN",
+          "description": "Application-Layer Protocol Negotiation(应用层协议协商)",
+          "markdownDescription": "Application-Layer Protocol Negotiation(应用层协议协商)"
+        }
+      }
+    },
     "gost-obfs-option": {
       "type": "object",
       "title": "gost混淆配置",
@@ -531,7 +562,7 @@
           "markdownDescription": "启用`UDP`"
         },
         "plugin": {
-          "enum": ["obfs", "v2ray-plugin", "shadow-tls", "restls", "gost-plugin", "kcptun"],
+          "enum": ["obfs", "v2ray-plugin", "shadow-tls", "restls", "jls", "gost-plugin", "kcptun"],
           "title": "插件",
           "description": "插件",
           "markdownDescription": "插件"
@@ -606,6 +637,20 @@
                 "title": "插件配置",
                 "description": "restls插件配置",
                 "$ref": "#/definitions/restls-option"
+              }
+            }
+          }
+        },
+        {
+          "if": { "required": ["plugin"], "properties": { "plugin": { "const": "jls" } } },
+          "then": {
+            "required": ["plugin-opts"],
+            "properties": {
+              "plugin-opts": {
+                "type": "object",
+                "title": "插件配置",
+                "description": "JLS插件配置",
+                "$ref": "#/definitions/jls-option"
               }
             }
           }

@@ -1,0 +1,75 @@
+{
+  "type": "object",
+  "title": "JLS配置",
+  "definitions": { "types": { "$ref": "../../../definitions/types.json" } },
+  "properties": {
+    "enable": {
+      "type": "boolean",
+      "title": "启用JLS",
+      "description": "启用JLS",
+      "markdownDescription": "启用`JLS`",
+      "default": false
+    },
+    "users": {
+      "type": "array",
+      "minItems": 1,
+      "title": "用户列表",
+      "description": "JLS认证用户列表",
+      "markdownDescription": "`JLS`认证用户列表",
+      "items": {
+        "type": "object",
+        "required": ["username", "password"],
+        "properties": {
+          "username": {
+            "type": "string",
+            "title": "用户名",
+            "description": "用户名",
+            "markdownDescription": "用户名"
+          },
+          "password": {
+            "type": "string",
+            "title": "密码",
+            "description": "密码",
+            "markdownDescription": "密码"
+          }
+        }
+      }
+    },
+    "sni": {
+      "type": "string",
+      "title": "JLS SNI",
+      "description": "留空时从 dest 推导",
+      "markdownDescription": "留空时从 `dest` 推导"
+    },
+    "dest": {
+      "type": "string",
+      "title": "回落目标",
+      "description": "认证失败连接的回落目标地址",
+      "markdownDescription": "认证失败连接的回落目标地址"
+    },
+    "alpn": {
+      "$ref": "#/definitions/types/stringArray",
+      "title": "ALPN",
+      "description": "Application-Layer Protocol Negotiation(应用层协议协商)",
+      "markdownDescription": "Application-Layer Protocol Negotiation(应用层协议协商)"
+    },
+    "proxy": {
+      "type": "string",
+      "title": "回落代理",
+      "description": "回落连接使用的代理",
+      "markdownDescription": "回落连接使用的代理"
+    },
+    "rate-limit": {
+      "type": "integer",
+      "title": "回落限速",
+      "description": "单位bit/s，0表示不限速",
+      "markdownDescription": "单位`bit/s`，`0`表示不限速"
+    }
+  },
+  "allOf": [
+    {
+      "if": { "required": ["enable"], "properties": { "enable": { "const": true } } },
+      "then": { "required": ["users", "dest"] }
+    }
+  ]
+}

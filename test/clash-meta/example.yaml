@@ -564,6 +564,18 @@ proxies: # socks5
       headers:
         custom: value
 
+  - name: "ss-jls"
+    type: ss
+    server: example.com
+    port: 443
+    cipher: chacha20-ietf-poly1305
+    password: "password"
+    plugin: jls
+    plugin-opts:
+      host: example.com
+      username: jls-user
+      password: jls-password
+
   - name: "gost-relay-hop"
     type: gost-relay
     # Dynamic mode: relay connects to the target address requested by the upper proxy.
@@ -1964,6 +1976,12 @@ listeners:
     proxy: proxy # 如果不为空则直接将该入站流量交由指定 proxy 处理 (当 proxy 不为空时，这里的 proxy 名称必须合法，否则会出错)
     password: vlmpIPSyHH6f4S8WVPdRIHIlzmB+GIRfoH3aNJ/t9Gg=
     cipher: 2022-blake3-aes-256-gcm
+    jls-config:
+      enable: true
+      users:
+        - username: jls-user
+          password: jls-password
+      dest: example.com:443
     simple-obfs:
       enable: false # 设置为true时开启
       mode: http # Available: http, tls

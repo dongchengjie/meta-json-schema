@@ -9,7 +9,8 @@
     "mux-option": { "$ref": "./mux.json" },
     "kcptun": { "$ref": "./kcptun.json" },
     "shadow-tls": { "$ref": "./shadowtls.json" },
-    "res-tls": { "$ref": "./restls.json" }
+    "res-tls": { "$ref": "./restls.json" },
+    "jls-config": { "$ref": "./jls.json" }
   },
   "allOf": [
     { "title": "入站基础配置", "$ref": "#/definitions/base-option" },
@@ -39,6 +40,7 @@
         "mux-option": { "title": "多路复用配置", "$ref": "#/definitions/mux-option" },
         "shadow-tls": { "$ref": "#/definitions/shadow-tls" },
         "res-tls": { "$ref": "#/definitions/res-tls" },
+        "jls-config": { "$ref": "#/definitions/jls-config" },
         "kcp-tun": { "title": "KCP-TUN配置", "$ref": "#/definitions/kcptun" },
         "simple-obfs": {
           "type": "object",
