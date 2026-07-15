@@ -6,7 +6,8 @@
     "patterns": { "$ref": "../../../definitions/patterns.json" },
     "enums": { "$ref": "../../../definitions/enums.json" },
     "tls": { "$ref": "../../config/tls.json" },
-    "base-option": { "$ref": "./base.json" }
+    "base-option": { "$ref": "./base.json" },
+    "jls-config": { "$ref": "./jls.json" }
   },
   "allOf": [
     { "title": "入站基础配置", "$ref": "#/definitions/base-option" },
@@ -27,6 +28,7 @@
         "client-auth-type": { "$ref": "#/definitions/tls/properties/client-auth-type" },
         "client-auth-cert": { "$ref": "#/definitions/tls/properties/client-auth-cert" },
         "ech-key": { "$ref": "#/definitions/tls/properties/ech-key" },
+        "jls-config": { "$ref": "#/definitions/jls-config" },
         "allow-insecure": {
           "type": "boolean",
           "title": "是否允许不开启TLS加密",

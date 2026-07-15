@@ -8,6 +8,7 @@
     "enums": { "$ref": "../../../definitions/enums.json" },
     "basic-option": { "$ref": "./base.json#/definitions/basic-option" },
     "ech-options": { "$ref": "./ech.json#/definitions/ech-options" },
+    "jls-options": { "$ref": "./jls.json" },
     "smux": { "$ref": "./singmux.json" }
   },
   "allOf": [
@@ -60,6 +61,7 @@
           "markdownDescription": "`SNI`(Server Name Indication)"
         },
         "ech-opts": { "$ref": "#/definitions/ech-options" },
+        "jls-opts": { "$ref": "#/definitions/jls-options" },
         "client-fingerprint": {
           "$ref": "#/definitions/enums/client-fingerprint",
           "title": "客户端指纹",

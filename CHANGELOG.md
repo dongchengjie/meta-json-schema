@@ -9,6 +9,7 @@
 - 新增: proxy 和 listener 支持 `shadowquic`，包含 JLS 认证及 QUIC 传输配置
 - 新增: shadowsocks 出站插件和 listener 支持 JLS
 - 新增: vmess、vless、trojan 出站和 listener 支持 JLS
+- 新增: anytls 出站和 listener 支持 JLS
 
 ### Bug Fixes
 
