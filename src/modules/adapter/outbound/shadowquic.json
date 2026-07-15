@@ -1,0 +1,148 @@
+{
+  "type": "object",
+  "title": "outbound-shadowquic",
+  "definitions": {
+    "compatible": { "$ref": "../../../definitions/compatible.json" },
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" },
+    "basic-option": { "$ref": "./base.json#/definitions/basic-option" },
+    "smux": { "$ref": "./singmux.json" }
+  },
+  "allOf": [
+    { "title": "basic配置", "$ref": "#/definitions/basic-option" },
+    {
+      "type": "object",
+      "title": "shadowquic配置",
+      "required": ["name", "server", "port"],
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "代理节点类型",
+          "description": "代理节点类型",
+          "markdownDescription": "代理节点类型"
+        },
+        "name": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "代理节点名称",
+          "description": "代理节点名称",
+          "markdownDescription": "代理节点名称"
+        },
+        "server": {
+          "$ref": "#/definitions/patterns/server",
+          "title": "代理节点服务器",
+          "description": "域名或IP",
+          "markdownDescription": "域名或IP"
+        },
+        "port": {
+          "$ref": "#/definitions/patterns/port",
+          "title": "代理节点端口号",
+          "description": "代理节点端口号",
+          "markdownDescription": "代理节点端口号"
+        },
+        "username": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "JLS用户名",
+          "description": "JLS认证用户名",
+          "markdownDescription": "`JLS`认证用户名"
+        },
+        "password": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "JLS密码",
+          "description": "JLS认证密码",
+          "markdownDescription": "`JLS`认证密码"
+        },
+        "sni": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "SNI",
+          "description": "SNI(Server Name Indication)",
+          "markdownDescription": "`SNI`(Server Name Indication)"
+        },
+        "alpn": {
+          "$ref": "#/definitions/types/stringArray",
+          "title": "ALPN",
+          "description": "Application-Layer Protocol Negotiation(应用层协议协商)",
+          "markdownDescription": "Application-Layer Protocol Negotiation(应用层协议协商)",
+          "default": ["h3"]
+        },
+        "quic-versions": {
+          "$ref": "#/definitions/types/stringArray",
+          "title": "QUIC版本列表",
+          "description": "支持 v1、v2（也可写 1、2 或对应 RFC 名称）",
+          "markdownDescription": "支持 `v1`、`v2`（也可写 `1`、`2` 或对应 `RFC` 名称）"
+        },
+        "udp-over-stream": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用UDP over Stream",
+          "description": "使用流承载UDP",
+          "markdownDescription": "使用流承载`UDP`"
+        },
+        "zero-rtt": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用0-RTT",
+          "description": "启用QUIC 0-RTT握手",
+          "markdownDescription": "启用`QUIC` `0-RTT`握手"
+        },
+        "keep-alive-interval": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "保活间隔",
+          "description": "单位:ms",
+          "markdownDescription": "单位:`ms`"
+        },
+        "congestion-controller": { "$ref": "#/definitions/enums/congestion-controller" },
+        "cwnd": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "拥塞窗口大小",
+          "description": "拥塞窗口大小",
+          "markdownDescription": "拥塞窗口大小",
+          "default": 32
+        },
+        "bbr-profile": {
+          "enum": ["standard", "conservative", "aggressive"],
+          "markdownEnumDescriptions": ["标准", "保守", "激进"],
+          "title": "拥塞控制预设方案",
+          "description": "拥塞控制预设方案",
+          "markdownDescription": "拥塞控制预设方案",
+          "default": "standard"
+        },
+        "recv-window-conn": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "最大流接收窗口大小",
+          "description": "最大流接收窗口大小",
+          "markdownDescription": "最大流接收窗口大小"
+        },
+        "recv-window": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "最大连接接收窗口大小",
+          "description": "最大连接接收窗口大小",
+          "markdownDescription": "最大连接接收窗口大小"
+        },
+        "disable-mtu-discovery": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "禁用MTU发现",
+          "description": "禁用MTU发现",
+          "markdownDescription": "禁用`MTU`发现"
+        },
+        "max-datagram-frame-size": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "最大数据帧大小",
+          "description": "最大数据帧大小",
+          "markdownDescription": "最大数据帧大小",
+          "default": 1400
+        },
+        "max-open-streams": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "最大打开流的数量",
+          "description": "最大打开流的数量",
+          "markdownDescription": "最大打开流的数量",
+          "default": 1024
+        }
+      }
+    },
+    {
+      "type": "object",
+      "title": "smux配置",
+      "properties": { "smux": { "title": "smux配置", "$ref": "#/definitions/smux" } }
+    }
+  ]
+}

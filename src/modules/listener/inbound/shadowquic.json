@@ -1,0 +1,149 @@
+{
+  "type": "object",
+  "title": "inbound-shadowquic",
+  "definitions": {
+    "types": { "$ref": "../../../definitions/types.json" },
+    "patterns": { "$ref": "../../../definitions/patterns.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" },
+    "base-option": { "$ref": "./base.json" },
+    "mux-option": { "$ref": "./mux.json" }
+  },
+  "allOf": [
+    { "title": "入站基础配置", "$ref": "#/definitions/base-option" },
+    {
+      "type": "object",
+      "title": "shadowquic配置",
+      "required": ["jls-upstream"],
+      "properties": {
+        "users": {
+          "type": "array",
+          "title": "用户列表",
+          "description": "JLS认证用户列表",
+          "markdownDescription": "`JLS`认证用户列表",
+          "items": {
+            "type": "object",
+            "required": ["username", "password"],
+            "properties": {
+              "username": {
+                "type": "string",
+                "title": "用户名",
+                "description": "用户名",
+                "markdownDescription": "用户名"
+              },
+              "password": {
+                "type": "string",
+                "title": "密码",
+                "description": "密码",
+                "markdownDescription": "密码"
+              }
+            }
+          }
+        },
+        "jls-upstream": {
+          "type": "object",
+          "title": "JLS伪装上游",
+          "description": "未通过JLS认证的连接转发到该QUIC伪装上游",
+          "markdownDescription": "未通过`JLS`认证的连接转发到该`QUIC`伪装上游",
+          "required": ["addr"],
+          "properties": {
+            "addr": {
+              "type": "string",
+              "title": "上游地址",
+              "description": "伪装上游地址",
+              "markdownDescription": "伪装上游地址"
+            },
+            "sni": {
+              "type": "string",
+              "title": "上游SNI",
+              "description": "留空时从 addr 推导",
+              "markdownDescription": "留空时从 `addr` 推导"
+            },
+            "proxy": {
+              "type": "string",
+              "title": "上游代理",
+              "description": "伪装上游使用的代理",
+              "markdownDescription": "伪装上游使用的代理"
+            },
+            "rate-limit": {
+              "type": "integer",
+              "title": "转发限速",
+              "description": "单位bit/s，0表示不限速",
+              "markdownDescription": "单位`bit/s`，`0`表示不限速"
+            },
+            "quic-version-probe": {
+              "type": "boolean",
+              "title": "探测QUIC版本",
+              "description": "首次连接时探测伪装上游版本",
+              "markdownDescription": "首次连接时探测伪装上游`QUIC`版本"
+            }
+          }
+        },
+        "alpn": {
+          "$ref": "#/definitions/types/stringArray",
+          "title": "ALPN",
+          "description": "Application-Layer Protocol Negotiation(应用层协议协商)",
+          "markdownDescription": "Application-Layer Protocol Negotiation(应用层协议协商)"
+        },
+        "quic-versions": {
+          "$ref": "#/definitions/types/stringArray",
+          "title": "QUIC版本列表",
+          "description": "支持 v1、v2（也可写 1、2 或对应 RFC 名称）",
+          "markdownDescription": "支持 `v1`、`v2`（也可写 `1`、`2` 或对应 `RFC` 名称）"
+        },
+        "zero-rtt": {
+          "type": "boolean",
+          "title": "启用0-RTT",
+          "description": "启用QUIC 0-RTT握手",
+          "markdownDescription": "启用`QUIC` `0-RTT`握手"
+        },
+        "congestion-controller": { "$ref": "#/definitions/enums/congestion-controller" },
+        "max-idle-time": {
+          "type": "integer",
+          "title": "最大空闲时间",
+          "description": "单位:ms",
+          "markdownDescription": "单位:`ms`"
+        },
+        "max-datagram-frame-size": {
+          "type": "integer",
+          "title": "最大数据帧大小",
+          "description": "最大数据帧大小",
+          "markdownDescription": "最大数据帧大小"
+        },
+        "recv-window-conn": {
+          "type": "integer",
+          "title": "最大流接收窗口大小",
+          "description": "最大流接收窗口大小",
+          "markdownDescription": "最大流接收窗口大小"
+        },
+        "recv-window": {
+          "type": "integer",
+          "title": "最大连接接收窗口大小",
+          "description": "最大连接接收窗口大小",
+          "markdownDescription": "最大连接接收窗口大小"
+        },
+        "disable-mtu-discovery": {
+          "type": "boolean",
+          "title": "禁用MTU发现",
+          "description": "禁用MTU发现",
+          "markdownDescription": "禁用`MTU`发现"
+        },
+        "cwnd": {
+          "type": "integer",
+          "title": "拥塞窗口大小",
+          "description": "拥塞窗口大小",
+          "markdownDescription": "拥塞窗口大小",
+          "default": 32
+        },
+        "bbr-profile": {
+          "enum": ["standard", "conservative", "aggressive"],
+          "markdownEnumDescriptions": ["标准", "保守", "激进"],
+          "title": "拥塞控制预设方案",
+          "description": "拥塞控制预设方案",
+          "markdownDescription": "拥塞控制预设方案",
+          "default": "standard"
+        },
+        "mux-option": { "title": "多路复用配置", "$ref": "#/definitions/mux-option" }
+      }
+    }
+  ]
+}

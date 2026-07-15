@@ -29,7 +29,8 @@
     "masque": { "$ref": "../adapter/outbound/masque.json" },
     "trusttunnel": { "$ref": "../adapter/outbound/trusttunnel.json" },
     "openvpn": { "$ref": "../adapter/outbound/openvpn.json" },
-    "tailscale": { "$ref": "../adapter/outbound/tailscale.json" }
+    "tailscale": { "$ref": "../adapter/outbound/tailscale.json" },
+    "shadowquic": { "$ref": "../adapter/outbound/shadowquic.json" }
   },
   "items": {
     "anyOf": [
@@ -281,6 +282,16 @@
             "properties": { "type": { "title": "tailscale配置", "const": "tailscale" } }
           },
           { "$ref": "#/definitions/tailscale" }
+        ]
+      },
+      {
+        "allOf": [
+          {
+            "type": "object",
+            "title": "shadowquic",
+            "properties": { "type": { "title": "shadowquic配置", "const": "shadowquic" } }
+          },
+          { "$ref": "#/definitions/shadowquic" }
         ]
       }
     ]

@@ -1479,6 +1479,15 @@ proxies: # socks5
     server: 1.2.3.4
     port: 443
     password: "<your password>"
+
+  # shadowquic
+  - name: shadowquic
+    type: shadowquic
+    server: example.com
+    port: 443
+    username: username
+    password: password
+    quic-versions: [v1]
     client-fingerprint: chrome
     udp: true
     idle-session-check-interval: 30 # seconds
@@ -1489,6 +1498,10 @@ proxies: # socks5
       - h2
       - http/1.1
     skip-cert-verify: true
+    smux:
+      enabled: true
+      protocol: h2mux
+      only-tcp: true
 
   # trusttunnel
   - name: trusttunnel
@@ -1869,6 +1882,16 @@ sub-rules:
 
 # 流量入站
 listeners:
+  - name: shadowquic-in-1
+    type: shadowquic
+    port: 10822
+    listen: 0.0.0.0
+    users:
+      - username: username
+        password: password
+    jls-upstream:
+      addr: example.com:443
+
   - name: socks5-in-1
     type: socks
     port: 10808
