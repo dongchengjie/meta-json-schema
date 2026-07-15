@@ -34,6 +34,7 @@
       }
     },
     "reality-config": { "$ref": "./reality.json" },
+    "jls-config": { "$ref": "./jls.json" },
     "tlsmirror-config": { "$ref": "./tlsmirror.json" },
     "mekya-config": { "$ref": "./mekya.json" },
     "mkcp-config": { "$ref": "./mkcp.json" }
@@ -70,6 +71,7 @@
         "client-auth-type": { "$ref": "#/definitions/tls/properties/client-auth-type" },
         "client-auth-cert": { "$ref": "#/definitions/tls/properties/client-auth-cert" },
         "ech-key": { "$ref": "#/definitions/tls/properties/ech-key" },
+        "jls-config": { "$ref": "#/definitions/jls-config" },
         "reality-config": { "title": "reality配置", "$ref": "#/definitions/reality-config" },
         "tlsmirror-config": { "$ref": "#/definitions/tlsmirror-config" },
         "mekya-config": { "$ref": "#/definitions/mekya-config" },

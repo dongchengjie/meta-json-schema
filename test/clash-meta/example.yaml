@@ -855,6 +855,19 @@ proxies: # socks5
     # max-streams: 0 # Maximum multiplexed streams in a connection before opening a new connection. Conflict with max-connections and min-streams.
     ip-version: ipv4
 
+  - name: "vmess-jls"
+    type: vmess
+    server: example.com
+    port: 443
+    uuid: 8f3fca8e-d381-402c-8fdf-71f461a0170e
+    alterId: 0
+    cipher: auto
+    tls: true
+    servername: example.com
+    jls-opts:
+      username: jls-user
+      password: jls-password
+
   # vless
   - name: "vless-tcp"
     type: vless
@@ -885,6 +898,18 @@ proxies: # socks5
     client-fingerprint: chrome
     fingerprint: AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99:AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99
     skip-cert-verify: true
+
+  - name: "vless-jls"
+    type: vless
+    server: example.com
+    port: 443
+    uuid: 8f3fca8e-d381-402c-8fdf-71f461a0170e
+    tls: true
+    network: tcp
+    servername: example.com
+    jls-opts:
+      username: jls-user
+      password: jls-password
 
   - name: "vless-encryption"
     type: vless
@@ -1076,6 +1101,16 @@ proxies: # socks5
       # 如果config为空则通过dns解析，不为空则通过该值指定，格式为经过base64编码的ech参数（dig +short TYPE65 tls-ech.dev）
       config: AEn+DQBFKwAgACABWIHUGj4u+PIggYXcR5JF0gYk3dCRioBW8uJq9H4mKAAIAAEAAQABAANAEnB1YmxpYy50bHMtZWNoLmRldgAA
       query-server-name: xxx.com # 可选项，不为空时用于指定通过dns解析时的域名
+
+  - name: trojan-jls
+    server: example.com
+    port: 443
+    type: trojan
+    password: "example"
+    sni: example.com
+    jls-opts:
+      username: jls-user
+      password: jls-password
 
   - name: trojan-grpc
     server: 1.2.3.4
@@ -2027,6 +2062,47 @@ listeners:
       framesize: 8192 # smux max frame size
       streambuf: 2097152 # per stream receive buffer in bytes, smux v2+
       keepalive: 10 # seconds between heartbeats
+
+  - name: vmess-jls-in
+    type: vmess
+    port: 10830
+    listen: 0.0.0.0
+    users:
+      - username: user1
+        uuid: 9d0cb9d0-964f-4ef6-897d-6c6b3ccf9e68
+        alterId: 0
+    jls-config:
+      enable: true
+      users:
+        - username: jls-user
+          password: jls-password
+      dest: example.com:443
+
+  - name: vless-jls-in
+    type: vless
+    port: 10831
+    listen: 0.0.0.0
+    users:
+      - uuid: 9d0cb9d0-964f-4ef6-897d-6c6b3ccf9e68
+    jls-config:
+      enable: true
+      users:
+        - username: jls-user
+          password: jls-password
+      dest: example.com:443
+
+  - name: trojan-jls-in
+    type: trojan
+    port: 10832
+    listen: 0.0.0.0
+    users:
+      - password: password
+    jls-config:
+      enable: true
+      users:
+        - username: jls-user
+          password: jls-password
+      dest: example.com:443
 
   - name: vmess-in-1
     type: vmess

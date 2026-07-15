@@ -8,6 +8,7 @@
     "enums": { "$ref": "../../../definitions/enums.json" },
     "basic-option": { "$ref": "./base.json#/definitions/basic-option" },
     "ech-options": { "$ref": "./ech.json#/definitions/ech-options" },
+    "jls-options": { "$ref": "./jls.json" },
     "smux": { "$ref": "./singmux.json" },
     "reality-option": { "$ref": "./reality.json" },
     "tlsmirror-option": { "$ref": "./tlsmirror.json" },
@@ -396,6 +397,7 @@
           "markdownDescription": "服务器名称"
         },
         "ech-opts": { "$ref": "#/definitions/ech-options" },
+        "jls-opts": { "$ref": "#/definitions/jls-options" },
         "reality-opts": { "$ref": "#/definitions/reality-option" },
         "tlsmirror-opts": { "$ref": "#/definitions/tlsmirror-option" },
         "mekya-opts": { "$ref": "#/definitions/mekya-option" },

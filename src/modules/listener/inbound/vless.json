@@ -206,6 +206,7 @@
         }
       }
     },
+    "jls-config": { "$ref": "./jls.json" },
     "reality-config": { "$ref": "./reality.json" }
   },
   "allOf": [
@@ -254,6 +255,7 @@
           "markdownDescription": "仅用于有 nginx, caddy 前置的情况",
           "default": false
         },
+        "jls-config": { "$ref": "#/definitions/jls-config" },
         "reality-config": { "title": "reality配置", "$ref": "#/definitions/reality-config" },
         "mux-option": { "title": "多路复用配置", "$ref": "#/definitions/mux-option" }
       },

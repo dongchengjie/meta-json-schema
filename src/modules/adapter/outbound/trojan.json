@@ -8,6 +8,7 @@
     "enums": { "$ref": "../../../definitions/enums.json" },
     "basic-option": { "$ref": "./base.json#/definitions/basic-option" },
     "ech-options": { "$ref": "./ech.json#/definitions/ech-options" },
+    "jls-options": { "$ref": "./jls.json" },
     "smux": { "$ref": "./singmux.json" },
     "reality-option": { "$ref": "./reality.json" },
     "grpc-option": { "$ref": "./vmess.json#/definitions/grpc-option" },
@@ -131,6 +132,7 @@
           "markdownDescription": "传输协议"
         },
         "ech-opts": { "$ref": "#/definitions/ech-options" },
+        "jls-opts": { "$ref": "#/definitions/jls-options" },
         "reality-opts": { "$ref": "#/definitions/reality-option" },
         "grpc-opts": { "$ref": "#/definitions/grpc-option" },
         "ws-opts": { "$ref": "#/definitions/ws-option" },
