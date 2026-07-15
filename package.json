@@ -22,13 +22,13 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dongchengjie/meta-json-schema.git"
+    "url": "git+https://github.com/dongchengjie/meta-json-schema.git"
   },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "prepare": "lefthook install",
-    "dev": "npx json-schema-artifact --watch",
-    "release": "npx json-schema-artifact",
+    "dev": "json-schema-artifact --watch",
+    "release": "json-schema-artifact",
     "preview": "npm publish --dry-run"
   },
   "devDependencies": {
@@ -45,7 +45,7 @@
     ]
   },
   "engines": {
-    "node": ">=22",
+    "node": ">=22.12.0",
     "pnpm": ">=10"
   },
   "packageManager": "pnpm@10.33.4"
