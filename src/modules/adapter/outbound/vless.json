@@ -515,6 +515,8 @@
           "markdownDescription": "Application-Layer Protocol Negotiation(应用层协议协商)"
         },
         "ech-opts": { "$ref": "#/definitions/ech-options" },
+        "shadow-tls-opts": { "$ref": "#/definitions/shadow-tls-options" },
+        "restls-opts": { "$ref": "#/definitions/restls-options" },
         "jls-opts": { "$ref": "#/definitions/jls-options" },
         "reality-opts": { "$ref": "#/definitions/reality-option" },
         "skip-cert-verify": {
@@ -559,7 +561,51 @@
           "description": "客户端指纹",
           "markdownDescription": "客户端指纹"
         }
-      }
+      },
+      "allOf": [
+        {
+          "not": {
+            "anyOf": [
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/shadow-tls-security-mode" },
+                  { "$ref": "#/definitions/restls-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/shadow-tls-security-mode" },
+                  { "$ref": "#/definitions/jls-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/shadow-tls-security-mode" },
+                  { "$ref": "#/definitions/reality-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/restls-security-mode" },
+                  { "$ref": "#/definitions/jls-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/restls-security-mode" },
+                  { "$ref": "#/definitions/reality-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/jls-security-mode" },
+                  { "$ref": "#/definitions/reality-security-mode" }
+                ]
+              }
+            ]
+          }
+        }
+      ]
     },
     "shadow-tls-security-mode": {
       "required": ["shadow-tls-opts"],
@@ -573,7 +619,170 @@
       "required": ["jls-opts"],
       "properties": { "jls-opts": { "$ref": "./jls.json#/definitions/security-mode" } }
     },
-    "reality-security-mode": { "required": ["reality-opts"] }
+    "reality-security-mode": { "required": ["reality-opts"] },
+    "download-tls-override": {
+      "required": ["xhttp-opts"],
+      "properties": {
+        "xhttp-opts": {
+          "required": ["download-settings"],
+          "properties": { "download-settings": { "required": ["tls"] } }
+        }
+      }
+    },
+    "download-tls-enabled": {
+      "allOf": [
+        { "$ref": "#/definitions/download-tls-override" },
+        {
+          "properties": {
+            "xhttp-opts": {
+              "properties": { "download-settings": { "properties": { "tls": { "const": true } } } }
+            }
+          }
+        }
+      ]
+    },
+    "effective-download-tls-enabled": {
+      "anyOf": [
+        { "$ref": "#/definitions/download-tls-enabled" },
+        {
+          "required": ["tls"],
+          "properties": { "tls": { "const": true } },
+          "not": { "$ref": "#/definitions/download-tls-override" }
+        }
+      ]
+    },
+    "download-shadow-tls-override": {
+      "required": ["xhttp-opts"],
+      "properties": {
+        "xhttp-opts": {
+          "required": ["download-settings"],
+          "properties": { "download-settings": { "required": ["shadow-tls-opts"] } }
+        }
+      }
+    },
+    "download-shadow-tls-security-mode": {
+      "allOf": [
+        { "$ref": "#/definitions/download-shadow-tls-override" },
+        {
+          "properties": {
+            "xhttp-opts": {
+              "properties": {
+                "download-settings": {
+                  "properties": {
+                    "shadow-tls-opts": { "$ref": "./shadowtls.json#/definitions/security-mode" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "download-restls-override": {
+      "required": ["xhttp-opts"],
+      "properties": {
+        "xhttp-opts": {
+          "required": ["download-settings"],
+          "properties": { "download-settings": { "required": ["restls-opts"] } }
+        }
+      }
+    },
+    "download-restls-security-mode": {
+      "allOf": [
+        { "$ref": "#/definitions/download-restls-override" },
+        {
+          "properties": {
+            "xhttp-opts": {
+              "properties": {
+                "download-settings": {
+                  "properties": {
+                    "restls-opts": { "$ref": "./restls.json#/definitions/security-mode" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "download-jls-override": {
+      "required": ["xhttp-opts"],
+      "properties": {
+        "xhttp-opts": {
+          "required": ["download-settings"],
+          "properties": { "download-settings": { "required": ["jls-opts"] } }
+        }
+      }
+    },
+    "download-jls-security-mode": {
+      "allOf": [
+        { "$ref": "#/definitions/download-jls-override" },
+        {
+          "properties": {
+            "xhttp-opts": {
+              "properties": {
+                "download-settings": {
+                  "properties": { "jls-opts": { "$ref": "./jls.json#/definitions/security-mode" } }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "download-reality-security-mode": {
+      "required": ["xhttp-opts"],
+      "properties": {
+        "xhttp-opts": {
+          "required": ["download-settings"],
+          "properties": { "download-settings": { "required": ["reality-opts"] } }
+        }
+      }
+    },
+    "effective-download-shadow-tls-security-mode": {
+      "anyOf": [
+        { "$ref": "#/definitions/download-shadow-tls-security-mode" },
+        {
+          "allOf": [
+            { "$ref": "#/definitions/shadow-tls-security-mode" },
+            { "not": { "$ref": "#/definitions/download-shadow-tls-override" } }
+          ]
+        }
+      ]
+    },
+    "effective-download-restls-security-mode": {
+      "anyOf": [
+        { "$ref": "#/definitions/download-restls-security-mode" },
+        {
+          "allOf": [
+            { "$ref": "#/definitions/restls-security-mode" },
+            { "not": { "$ref": "#/definitions/download-restls-override" } }
+          ]
+        }
+      ]
+    },
+    "effective-download-jls-security-mode": {
+      "anyOf": [
+        { "$ref": "#/definitions/download-jls-security-mode" },
+        {
+          "allOf": [
+            { "$ref": "#/definitions/jls-security-mode" },
+            { "not": { "$ref": "#/definitions/download-jls-override" } }
+          ]
+        }
+      ]
+    },
+    "effective-download-reality-security-mode": {
+      "anyOf": [
+        { "$ref": "#/definitions/download-reality-security-mode" },
+        {
+          "allOf": [
+            { "$ref": "#/definitions/reality-security-mode" },
+            { "not": { "$ref": "#/definitions/download-reality-security-mode" } }
+          ]
+        }
+      ]
+    }
   },
   "allOf": [
     { "title": "basic配置", "$ref": "#/definitions/basic-option" },
@@ -759,6 +968,17 @@
           "then": { "required": ["tls"], "properties": { "tls": { "const": true } } }
         },
         {
+          "if": {
+            "anyOf": [
+              { "$ref": "#/definitions/effective-download-shadow-tls-security-mode" },
+              { "$ref": "#/definitions/effective-download-restls-security-mode" },
+              { "$ref": "#/definitions/effective-download-jls-security-mode" },
+              { "$ref": "#/definitions/effective-download-reality-security-mode" }
+            ]
+          },
+          "then": { "$ref": "#/definitions/effective-download-tls-enabled" }
+        },
+        {
           "not": {
             "anyOf": [
               {
@@ -795,6 +1015,48 @@
                 "allOf": [
                   { "$ref": "#/definitions/jls-security-mode" },
                   { "$ref": "#/definitions/reality-security-mode" }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "not": {
+            "anyOf": [
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/effective-download-shadow-tls-security-mode" },
+                  { "$ref": "#/definitions/effective-download-restls-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/effective-download-shadow-tls-security-mode" },
+                  { "$ref": "#/definitions/effective-download-jls-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/effective-download-shadow-tls-security-mode" },
+                  { "$ref": "#/definitions/effective-download-reality-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/effective-download-restls-security-mode" },
+                  { "$ref": "#/definitions/effective-download-jls-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/effective-download-restls-security-mode" },
+                  { "$ref": "#/definitions/effective-download-reality-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/effective-download-jls-security-mode" },
+                  { "$ref": "#/definitions/effective-download-reality-security-mode" }
                 ]
               }
             ]

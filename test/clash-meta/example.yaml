@@ -1108,6 +1108,40 @@ proxies: # socks5
         servername: xxx.com
         client-fingerprint: chrome
 
+  - name: "vless-xhttp-shadow-tls-download"
+    type: vless
+    server: example.com
+    port: 443
+    uuid: 00000000-0000-0000-0000-000000000001
+    network: xhttp
+    tls: true
+    xhttp-opts:
+      download-settings:
+        server: download.example.com
+        port: 443
+        tls: true
+        servername: download.example.com
+        shadow-tls-opts:
+          password: shadow-tls-password
+          version: 3
+
+  - name: "vless-xhttp-restls-download"
+    type: vless
+    server: example.com
+    port: 443
+    uuid: 00000000-0000-0000-0000-000000000001
+    network: xhttp
+    tls: true
+    xhttp-opts:
+      download-settings:
+        server: download.example.com
+        port: 443
+        tls: true
+        servername: download.example.com
+        restls-opts:
+          password: restls-download-password
+          version-hint: tls13
+
   # Trojan
   - name: "trojan"
     type: trojan
