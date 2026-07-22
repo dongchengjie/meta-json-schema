@@ -4,7 +4,7 @@
 
 - 新增: proxy-provider override 支持按顺序执行的 `override-expr` 表达式数组
 - 新增: sudoku 出站新增顶层 `multiplex` 配置项，统一控制会话多路复用
-- 新增: openvpn 出站支持 `tls-auth` 和 `key-direction`
+- 新增: openvpn 出站支持 `tls-auth`、`key-direction`、`data-ciphers` 协商、`data-ciphers-fallback` 和 `tls-crypt-v2`
 - 新增: TLS 出站和 Hysteria2 realm 支持 `name-cert-verify` 指定证书 DNSName 校验目标
 - 新增: proxy 和 listener 支持 `shadowquic`，包含 JLS 认证、QUIC 传输配置和 brutal 异步可选协商
 - 新增: shadowsocks 出站插件和 listener 支持 JLS

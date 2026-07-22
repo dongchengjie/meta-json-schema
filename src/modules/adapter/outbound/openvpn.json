@@ -6,6 +6,33 @@
     "types": { "$ref": "../../../definitions/types.json" },
     "patterns": { "$ref": "../../../definitions/patterns.json" },
     "enums": { "$ref": "../../../definitions/enums.json" },
+    "data-cipher": {
+      "enum": [
+        "AES-128-GCM",
+        "AES-192-GCM",
+        "AES-256-GCM",
+        "AES-CBC",
+        "AES-128-CBC",
+        "AES-192-CBC",
+        "AES-256-CBC",
+        "CHACHA20-POLY1305"
+      ]
+    },
+    "non-whitespace-value": {
+      "anyOf": [{ "type": "string", "pattern": "\\S" }, { "not": { "type": "string" } }]
+    },
+    "tls-auth-mode": {
+      "required": ["tls-auth"],
+      "properties": { "tls-auth": { "$ref": "#/definitions/non-whitespace-value" } }
+    },
+    "tls-crypt-mode": {
+      "required": ["tls-crypt"],
+      "properties": { "tls-crypt": { "$ref": "#/definitions/non-whitespace-value" } }
+    },
+    "tls-crypt-v2-mode": {
+      "required": ["tls-crypt-v2"],
+      "properties": { "tls-crypt-v2": { "$ref": "#/definitions/non-whitespace-value" } }
+    },
     "basic-option": { "$ref": "./base.json#/definitions/basic-option" },
     "smux": { "$ref": "./singmux.json" }
   },
@@ -55,20 +82,24 @@
           "default": "tun"
         },
         "cipher": {
-          "enum": [
-            "AES-128-GCM",
-            "AES-192-GCM",
-            "AES-256-GCM",
-            "AES-CBC",
-            "AES-128-CBC",
-            "AES-192-CBC",
-            "AES-256-CBC",
-            "CHACHA20-POLY1305"
-          ],
+          "$ref": "#/definitions/data-cipher",
           "title": "加密方式",
           "description": "加密方式",
           "markdownDescription": "加密方式",
           "default": "AES-128-GCM"
+        },
+        "data-ciphers": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/compatible/string" },
+          "title": "数据通道加密协商列表",
+          "description": "向服务端通告的数据通道加密方式列表，按服务端列表顺序选择首个双方支持的值",
+          "markdownDescription": "向服务端通告的数据通道加密方式列表，按服务端列表顺序选择首个双方支持的值"
+        },
+        "data-ciphers-fallback": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "数据通道回退加密方式",
+          "description": "协商无共同加密方式时使用的回退加密方式",
+          "markdownDescription": "协商无共同加密方式时使用的回退加密方式"
         },
         "auth": {
           "enum": ["MD5", "SHA1", "SHA256", "SHA384", "SHA512"],
@@ -106,8 +137,8 @@
         "tls-auth": {
           "$ref": "#/definitions/compatible/string",
           "title": "TLS-Auth 静态密钥内容",
-          "description": "从 .ovpn 中复制 \\<tls-auth>\\</tls-auth> 内的内容，不需要保留标签；与 tls-crypt 互斥",
-          "markdownDescription": "从 `.ovpn` 中复制 `<tls-auth></tls-auth>` 内的内容，不需要保留标签；与 `tls-crypt` 互斥"
+          "description": "从 .ovpn 中复制 \\<tls-auth>\\</tls-auth> 内的内容，不需要保留标签；与 tls-crypt、tls-crypt-v2 互斥",
+          "markdownDescription": "从 `.ovpn` 中复制 `<tls-auth></tls-auth>` 内的内容，不需要保留标签；与 `tls-crypt`、`tls-crypt-v2` 互斥"
         },
         "key-direction": {
           "enum": ["1", "0", ""],
@@ -119,8 +150,14 @@
         "tls-crypt": {
           "$ref": "#/definitions/compatible/string",
           "title": "静态密钥内容",
-          "description": "从 .ovpn 中复制 \\<tls-crypt>\\</tls-crypt> 内的内容，不需要保留 \\<tls-crypt> 标签；没有 tls-crypt 的配置可省略",
-          "markdownDescription": "从 `.ovpn` 中复制 `<tls-crypt></tls-crypt>` 内的内容，不需要保留 `<tls-crypt>` 标签；没有 tls-crypt 的配置可省略"
+          "description": "从 .ovpn 中复制 \\<tls-crypt>\\</tls-crypt> 内的内容，不需要保留 \\<tls-crypt> 标签；与 tls-auth、tls-crypt-v2 互斥",
+          "markdownDescription": "从 `.ovpn` 中复制 `<tls-crypt></tls-crypt>` 内的内容，不需要保留 `<tls-crypt>` 标签；与 `tls-auth`、`tls-crypt-v2` 互斥"
+        },
+        "tls-crypt-v2": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "TLS-Crypt-v2 客户端密钥内容",
+          "description": "从 .ovpn 中复制 \\<tls-crypt-v2>\\</tls-crypt-v2> 内包含 PEM 标签的客户端密钥内容；与 tls-auth、tls-crypt 互斥",
+          "markdownDescription": "从 `.ovpn` 中复制 `<tls-crypt-v2></tls-crypt-v2>` 内包含 PEM 标签的客户端密钥内容；与 `tls-auth`、`tls-crypt` 互斥"
         },
         "username": {
           "$ref": "#/definitions/compatible/string",
@@ -193,8 +230,30 @@
       "allOf": [
         { "if": { "required": ["cert"] }, "then": { "required": ["cert", "key"] } },
         { "if": { "required": ["key"] }, "then": { "required": ["cert", "key"] } },
-        { "if": { "required": ["tls-auth"] }, "then": { "not": { "required": ["tls-crypt"] } } },
-        { "if": { "required": ["tls-crypt"] }, "then": { "not": { "required": ["tls-auth"] } } },
+        {
+          "not": {
+            "anyOf": [
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/tls-auth-mode" },
+                  { "$ref": "#/definitions/tls-crypt-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/tls-auth-mode" },
+                  { "$ref": "#/definitions/tls-crypt-v2-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/tls-crypt-mode" },
+                  { "$ref": "#/definitions/tls-crypt-v2-mode" }
+                ]
+              }
+            ]
+          }
+        },
         { "if": { "not": { "required": ["cert", "key"] } }, "then": { "required": ["username"] } }
       ]
     },
