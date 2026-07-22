@@ -1620,6 +1620,7 @@ proxies: # socks5
     port: 443
     password: "<your password>"
     sni: example.com
+    disable-reuse: false
     jls-opts:
       username: jls-user
       password: jls-password

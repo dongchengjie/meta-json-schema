@@ -137,6 +137,13 @@
           "title": "最小空闲会话数量",
           "description": "最小空闲会话数量",
           "markdownDescription": "最小空闲会话数量"
+        },
+        "disable-reuse": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "禁用会话复用",
+          "description": "每个流使用独立会话，并在流关闭时关闭该会话",
+          "markdownDescription": "每个流使用独立会话，并在流关闭时关闭该会话",
+          "default": false
         }
       },
       "allOf": [
