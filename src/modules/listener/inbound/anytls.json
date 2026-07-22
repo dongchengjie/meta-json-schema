@@ -8,12 +8,19 @@
     "tls": { "$ref": "../../config/tls.json" },
     "base-option": { "$ref": "./base.json" },
     "shadow-tls": { "$ref": "./shadowtls.json" },
+    "res-tls": { "$ref": "./restls.json" },
     "jls-config": { "$ref": "./jls.json" },
     "certificate-security-mode": { "required": ["certificate", "private-key"] },
     "shadow-tls-security-mode": {
       "required": ["shadow-tls"],
       "properties": {
         "shadow-tls": { "required": ["enable"], "properties": { "enable": { "const": true } } }
+      }
+    },
+    "restls-security-mode": {
+      "required": ["res-tls"],
+      "properties": {
+        "res-tls": { "required": ["enable"], "properties": { "enable": { "const": true } } }
       }
     },
     "jls-security-mode": {
@@ -42,6 +49,7 @@
         "client-auth-cert": { "$ref": "#/definitions/tls/properties/client-auth-cert" },
         "ech-key": { "$ref": "#/definitions/tls/properties/ech-key" },
         "shadow-tls": { "$ref": "#/definitions/shadow-tls" },
+        "res-tls": { "$ref": "#/definitions/res-tls" },
         "jls-config": { "$ref": "#/definitions/jls-config" },
         "allow-insecure": {
           "type": "boolean",
@@ -71,12 +79,30 @@
               {
                 "allOf": [
                   { "$ref": "#/definitions/certificate-security-mode" },
+                  { "$ref": "#/definitions/restls-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/certificate-security-mode" },
                   { "$ref": "#/definitions/jls-security-mode" }
                 ]
               },
               {
                 "allOf": [
                   { "$ref": "#/definitions/shadow-tls-security-mode" },
+                  { "$ref": "#/definitions/restls-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/shadow-tls-security-mode" },
+                  { "$ref": "#/definitions/jls-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/restls-security-mode" },
                   { "$ref": "#/definitions/jls-security-mode" }
                 ]
               }
@@ -87,6 +113,7 @@
       "anyOf": [
         { "$ref": "#/definitions/certificate-security-mode" },
         { "$ref": "#/definitions/shadow-tls-security-mode" },
+        { "$ref": "#/definitions/restls-security-mode" },
         { "$ref": "#/definitions/jls-security-mode" },
         { "required": ["allow-insecure"], "properties": { "allow-insecure": { "const": true } } }
       ]

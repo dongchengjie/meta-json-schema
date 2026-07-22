@@ -1571,6 +1571,17 @@ proxies: # socks5
       password: shadow-tls-password
       version: 3
 
+  - name: anytls-restls
+    type: anytls
+    server: example.com
+    port: 443
+    password: "<your password>"
+    sni: example.com
+    restls-opts:
+      password: restls-password
+      version-hint: tls13
+      restls-script: "250?100<1,350~100<1,600~100,300~200,300~100"
+
   # shadowquic
   - name: shadowquic
     type: shadowquic
@@ -2493,6 +2504,20 @@ listeners:
           password: shadow-tls-password
       handshake:
         dest: example.com:443
+
+  - name: anytls-restls-in
+    type: anytls
+    port: 10836
+    listen: 0.0.0.0
+    users:
+      username1: password1
+    res-tls:
+      enable: true
+      dest: example.com:443
+      password: restls-password
+      restls-script: "250?100<1,350~100<1,600~100,300~200,300~100"
+      min-record-len: 1
+      proxy: DIRECT
 
   - name: mieru-in-1
     type: mieru

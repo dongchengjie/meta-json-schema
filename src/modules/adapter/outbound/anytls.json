@@ -9,11 +9,16 @@
     "basic-option": { "$ref": "./base.json#/definitions/basic-option" },
     "ech-options": { "$ref": "./ech.json#/definitions/ech-options" },
     "shadow-tls-options": { "$ref": "./shadowtls.json" },
+    "restls-options": { "$ref": "./restls.json" },
     "jls-options": { "$ref": "./jls.json" },
     "smux": { "$ref": "./singmux.json" },
     "shadow-tls-security-mode": {
       "required": ["shadow-tls-opts"],
       "properties": { "shadow-tls-opts": { "$ref": "./shadowtls.json#/definitions/security-mode" } }
+    },
+    "restls-security-mode": {
+      "required": ["restls-opts"],
+      "properties": { "restls-opts": { "$ref": "./restls.json#/definitions/security-mode" } }
     },
     "jls-security-mode": {
       "required": ["jls-opts"],
@@ -71,6 +76,7 @@
         },
         "ech-opts": { "$ref": "#/definitions/ech-options" },
         "shadow-tls-opts": { "$ref": "#/definitions/shadow-tls-options" },
+        "restls-opts": { "$ref": "#/definitions/restls-options" },
         "jls-opts": { "$ref": "#/definitions/jls-options" },
         "client-fingerprint": {
           "$ref": "#/definitions/enums/client-fingerprint",
@@ -136,9 +142,25 @@
       "allOf": [
         {
           "not": {
-            "allOf": [
-              { "$ref": "#/definitions/shadow-tls-security-mode" },
-              { "$ref": "#/definitions/jls-security-mode" }
+            "anyOf": [
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/shadow-tls-security-mode" },
+                  { "$ref": "#/definitions/restls-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/shadow-tls-security-mode" },
+                  { "$ref": "#/definitions/jls-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/restls-security-mode" },
+                  { "$ref": "#/definitions/jls-security-mode" }
+                ]
+              }
             ]
           }
         }
