@@ -8,6 +8,7 @@
     "enums": { "$ref": "../../../definitions/enums.json" },
     "basic-option": { "$ref": "./base.json#/definitions/basic-option" },
     "ech-options": { "$ref": "./ech.json#/definitions/ech-options" },
+    "shadow-tls-options": { "$ref": "./shadowtls.json" },
     "jls-options": { "$ref": "./jls.json" },
     "smux": { "$ref": "./singmux.json" },
     "reality-option": { "$ref": "./reality.json" },
@@ -558,7 +559,16 @@
           "markdownDescription": "客户端指纹"
         }
       }
-    }
+    },
+    "shadow-tls-security-mode": {
+      "required": ["shadow-tls-opts"],
+      "properties": { "shadow-tls-opts": { "$ref": "./shadowtls.json#/definitions/security-mode" } }
+    },
+    "jls-security-mode": {
+      "required": ["jls-opts"],
+      "properties": { "jls-opts": { "$ref": "./jls.json#/definitions/security-mode" } }
+    },
+    "reality-security-mode": { "required": ["reality-opts"] }
   },
   "allOf": [
     { "title": "basic配置", "$ref": "#/definitions/basic-option" },
@@ -662,6 +672,7 @@
           "markdownDescription": "传输协议"
         },
         "ech-opts": { "$ref": "#/definitions/ech-options" },
+        "shadow-tls-opts": { "$ref": "#/definitions/shadow-tls-options" },
         "jls-opts": { "$ref": "#/definitions/jls-options" },
         "reality-opts": { "$ref": "#/definitions/reality-option" },
         "http-opts": { "$ref": "#/definitions/http-option" },
@@ -728,7 +739,43 @@
           "description": "客户端指纹",
           "markdownDescription": "客户端指纹"
         }
-      }
+      },
+      "allOf": [
+        {
+          "if": {
+            "anyOf": [
+              { "$ref": "#/definitions/shadow-tls-security-mode" },
+              { "$ref": "#/definitions/jls-security-mode" },
+              { "$ref": "#/definitions/reality-security-mode" }
+            ]
+          },
+          "then": { "required": ["tls"], "properties": { "tls": { "const": true } } }
+        },
+        {
+          "not": {
+            "anyOf": [
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/shadow-tls-security-mode" },
+                  { "$ref": "#/definitions/jls-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/shadow-tls-security-mode" },
+                  { "$ref": "#/definitions/reality-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/jls-security-mode" },
+                  { "$ref": "#/definitions/reality-security-mode" }
+                ]
+              }
+            ]
+          }
+        }
+      ]
     },
     {
       "type": "object",

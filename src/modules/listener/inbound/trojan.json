@@ -8,6 +8,7 @@
     "tls": { "$ref": "../../config/tls.json" },
     "base-option": { "$ref": "./base.json" },
     "mux-option": { "$ref": "./mux.json" },
+    "shadow-tls": { "$ref": "./shadowtls.json" },
     "trojan-user": {
       "type": "object",
       "title": "trojan用户",
@@ -53,7 +54,27 @@
       }
     },
     "jls-config": { "$ref": "./jls.json" },
-    "reality-config": { "$ref": "./reality.json" }
+    "reality-config": { "$ref": "./reality.json" },
+    "certificate-security-mode": { "required": ["certificate", "private-key"] },
+    "shadow-tls-security-mode": {
+      "required": ["shadow-tls"],
+      "properties": {
+        "shadow-tls": { "required": ["enable"], "properties": { "enable": { "const": true } } }
+      }
+    },
+    "jls-security-mode": {
+      "required": ["jls-config"],
+      "properties": {
+        "jls-config": { "required": ["enable"], "properties": { "enable": { "const": true } } }
+      }
+    },
+    "reality-security-mode": { "required": ["reality-config"] },
+    "ss-security-mode": {
+      "required": ["ss-option"],
+      "properties": {
+        "ss-option": { "required": ["enabled"], "properties": { "enabled": { "const": true } } }
+      }
+    }
   },
   "allOf": [
     { "title": "入站基础配置", "$ref": "#/definitions/base-option" },
@@ -94,16 +115,63 @@
           "markdownDescription": "仅用于有 nginx, caddy 前置的情况",
           "default": false
         },
+        "shadow-tls": { "$ref": "#/definitions/shadow-tls" },
         "jls-config": { "$ref": "#/definitions/jls-config" },
         "reality-config": { "title": "reality配置", "$ref": "#/definitions/reality-config" },
         "mux-option": { "title": "多路复用配置", "$ref": "#/definitions/mux-option" },
         "ss-option": { "title": "shadowsocks配置", "$ref": "#/definitions/trojan-ss-option" }
       },
+      "allOf": [
+        {
+          "not": {
+            "anyOf": [
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/certificate-security-mode" },
+                  { "$ref": "#/definitions/shadow-tls-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/certificate-security-mode" },
+                  { "$ref": "#/definitions/jls-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/certificate-security-mode" },
+                  { "$ref": "#/definitions/reality-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/shadow-tls-security-mode" },
+                  { "$ref": "#/definitions/jls-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/shadow-tls-security-mode" },
+                  { "$ref": "#/definitions/reality-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/jls-security-mode" },
+                  { "$ref": "#/definitions/reality-security-mode" }
+                ]
+              }
+            ]
+          }
+        }
+      ],
       "anyOf": [
-        { "required": ["certificate", "private-key"] },
-        { "required": ["jls-config"] },
-        { "required": ["reality-config"] },
-        { "required": ["ss-option"] }
+        { "$ref": "#/definitions/certificate-security-mode" },
+        { "$ref": "#/definitions/shadow-tls-security-mode" },
+        { "$ref": "#/definitions/jls-security-mode" },
+        { "$ref": "#/definitions/reality-security-mode" },
+        { "$ref": "#/definitions/ss-security-mode" },
+        { "required": ["allow-insecure"], "properties": { "allow-insecure": { "const": true } } }
       ]
     }
   ]

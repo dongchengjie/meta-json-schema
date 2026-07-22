@@ -8,6 +8,7 @@
     "tls": { "$ref": "../../config/tls.json" },
     "base-option": { "$ref": "./base.json" },
     "mux-option": { "$ref": "./mux.json" },
+    "shadow-tls": { "$ref": "./shadowtls.json" },
     "vmess-user": {
       "type": "object",
       "title": "vmess用户",
@@ -37,7 +38,25 @@
     "jls-config": { "$ref": "./jls.json" },
     "tlsmirror-config": { "$ref": "./tlsmirror.json" },
     "mekya-config": { "$ref": "./mekya.json" },
-    "mkcp-config": { "$ref": "./mkcp.json" }
+    "mkcp-config": { "$ref": "./mkcp.json" },
+    "certificate-security-mode": { "required": ["certificate", "private-key"] },
+    "shadow-tls-security-mode": {
+      "required": ["shadow-tls"],
+      "properties": {
+        "shadow-tls": { "required": ["enable"], "properties": { "enable": { "const": true } } }
+      }
+    },
+    "jls-security-mode": {
+      "required": ["jls-config"],
+      "properties": {
+        "jls-config": { "required": ["enable"], "properties": { "enable": { "const": true } } }
+      }
+    },
+    "reality-security-mode": { "required": ["reality-config"] },
+    "tlsmirror-security-mode": {
+      "required": ["tlsmirror-config"],
+      "properties": { "tlsmirror-config": { "required": ["primary-key"] } }
+    }
   },
   "allOf": [
     { "title": "入站基础配置", "$ref": "#/definitions/base-option" },
@@ -71,6 +90,7 @@
         "client-auth-type": { "$ref": "#/definitions/tls/properties/client-auth-type" },
         "client-auth-cert": { "$ref": "#/definitions/tls/properties/client-auth-cert" },
         "ech-key": { "$ref": "#/definitions/tls/properties/ech-key" },
+        "shadow-tls": { "$ref": "#/definitions/shadow-tls" },
         "jls-config": { "$ref": "#/definitions/jls-config" },
         "reality-config": { "title": "reality配置", "$ref": "#/definitions/reality-config" },
         "tlsmirror-config": { "$ref": "#/definitions/tlsmirror-config" },
@@ -80,6 +100,91 @@
       },
       "dependencies": { "certificate": ["private-key"], "private-key": ["certificate"] },
       "allOf": [
+        {
+          "not": {
+            "anyOf": [
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/certificate-security-mode" },
+                  { "$ref": "#/definitions/shadow-tls-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/certificate-security-mode" },
+                  { "$ref": "#/definitions/jls-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/certificate-security-mode" },
+                  { "$ref": "#/definitions/reality-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/certificate-security-mode" },
+                  { "$ref": "#/definitions/tlsmirror-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/shadow-tls-security-mode" },
+                  { "$ref": "#/definitions/jls-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/shadow-tls-security-mode" },
+                  { "$ref": "#/definitions/reality-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/shadow-tls-security-mode" },
+                  { "$ref": "#/definitions/tlsmirror-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/jls-security-mode" },
+                  { "$ref": "#/definitions/reality-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/jls-security-mode" },
+                  { "$ref": "#/definitions/tlsmirror-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/reality-security-mode" },
+                  { "$ref": "#/definitions/tlsmirror-security-mode" }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "if": {
+            "anyOf": [
+              { "$ref": "#/definitions/shadow-tls-security-mode" },
+              { "$ref": "#/definitions/jls-security-mode" }
+            ]
+          },
+          "then": {
+            "not": {
+              "required": ["mkcp-config"],
+              "properties": {
+                "mkcp-config": {
+                  "required": ["enable"],
+                  "properties": { "enable": { "const": true } }
+                }
+              }
+            }
+          }
+        },
         {
           "if": {
             "required": ["mekya-config"],

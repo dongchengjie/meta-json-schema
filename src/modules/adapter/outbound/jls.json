@@ -1,7 +1,20 @@
 {
   "type": "object",
   "title": "JLS配置",
-  "required": ["username", "password"],
+  "definitions": {
+    "security-mode": {
+      "required": ["username", "password"],
+      "properties": { "username": { "minLength": 1 }, "password": { "minLength": 1 } }
+    },
+    "inactive-options": {
+      "not": {
+        "anyOf": [
+          { "required": ["username"], "properties": { "username": { "minLength": 1 } } },
+          { "required": ["password"], "properties": { "password": { "minLength": 1 } } }
+        ]
+      }
+    }
+  },
   "properties": {
     "username": {
       "type": "string",
@@ -15,5 +28,6 @@
       "description": "JLS认证密码",
       "markdownDescription": "`JLS`认证密码"
     }
-  }
+  },
+  "anyOf": [{ "$ref": "#/definitions/inactive-options" }, { "$ref": "#/definitions/security-mode" }]
 }

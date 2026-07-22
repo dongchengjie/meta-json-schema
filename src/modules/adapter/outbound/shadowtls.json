@@ -1,0 +1,28 @@
+{
+  "type": "object",
+  "title": "ShadowTLS配置",
+  "definitions": {
+    "compatible": { "$ref": "../../../definitions/compatible.json" },
+    "security-mode": {
+      "anyOf": [
+        { "required": ["password"], "properties": { "password": { "not": { "const": "" } } } },
+        { "required": ["version"], "properties": { "version": { "enum": [1, 2, 3] } } }
+      ]
+    }
+  },
+  "properties": {
+    "password": {
+      "$ref": "#/definitions/compatible/string",
+      "title": "密码",
+      "description": "ShadowTLS认证密码",
+      "markdownDescription": "`ShadowTLS`认证密码"
+    },
+    "version": {
+      "enum": [0, 1, 2, 3],
+      "title": "ShadowTLS版本",
+      "description": "ShadowTLS版本",
+      "markdownDescription": "`ShadowTLS`版本",
+      "default": 2
+    }
+  }
+}

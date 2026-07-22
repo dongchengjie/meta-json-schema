@@ -8,6 +8,7 @@
     "enums": { "$ref": "../../../definitions/enums.json" },
     "basic-option": { "$ref": "./base.json#/definitions/basic-option" },
     "ech-options": { "$ref": "./ech.json#/definitions/ech-options" },
+    "shadow-tls-options": { "$ref": "./shadowtls.json" },
     "jls-options": { "$ref": "./jls.json" },
     "smux": { "$ref": "./singmux.json" },
     "reality-option": { "$ref": "./reality.json" },
@@ -285,6 +286,19 @@
           "markdownDescription": "启用`TFO`(TCP Fast Open)"
         }
       }
+    },
+    "shadow-tls-security-mode": {
+      "required": ["shadow-tls-opts"],
+      "properties": { "shadow-tls-opts": { "$ref": "./shadowtls.json#/definitions/security-mode" } }
+    },
+    "jls-security-mode": {
+      "required": ["jls-opts"],
+      "properties": { "jls-opts": { "$ref": "./jls.json#/definitions/security-mode" } }
+    },
+    "reality-security-mode": { "required": ["reality-opts"] },
+    "tlsmirror-security-mode": {
+      "required": ["tlsmirror-opts"],
+      "properties": { "tlsmirror-opts": { "required": ["primary-key"] } }
     }
   },
   "allOf": [
@@ -397,6 +411,7 @@
           "markdownDescription": "服务器名称"
         },
         "ech-opts": { "$ref": "#/definitions/ech-options" },
+        "shadow-tls-opts": { "$ref": "#/definitions/shadow-tls-options" },
         "jls-opts": { "$ref": "#/definitions/jls-options" },
         "reality-opts": { "$ref": "#/definitions/reality-option" },
         "tlsmirror-opts": { "$ref": "#/definitions/tlsmirror-option" },
@@ -442,7 +457,76 @@
           "description": "客户端指纹",
           "markdownDescription": "客户端指纹"
         }
-      }
+      },
+      "allOf": [
+        {
+          "if": {
+            "anyOf": [
+              { "$ref": "#/definitions/shadow-tls-security-mode" },
+              { "$ref": "#/definitions/jls-security-mode" },
+              { "$ref": "#/definitions/reality-security-mode" },
+              { "$ref": "#/definitions/tlsmirror-security-mode" }
+            ]
+          },
+          "then": { "required": ["tls"], "properties": { "tls": { "const": true } } }
+        },
+        {
+          "not": {
+            "anyOf": [
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/shadow-tls-security-mode" },
+                  { "$ref": "#/definitions/jls-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/shadow-tls-security-mode" },
+                  { "$ref": "#/definitions/reality-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/shadow-tls-security-mode" },
+                  { "$ref": "#/definitions/tlsmirror-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/jls-security-mode" },
+                  { "$ref": "#/definitions/reality-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/jls-security-mode" },
+                  { "$ref": "#/definitions/tlsmirror-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/reality-security-mode" },
+                  { "$ref": "#/definitions/tlsmirror-security-mode" }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "if": {
+            "anyOf": [
+              { "$ref": "#/definitions/shadow-tls-security-mode" },
+              { "$ref": "#/definitions/jls-security-mode" }
+            ]
+          },
+          "then": {
+            "not": {
+              "required": ["network"],
+              "properties": { "network": { "enum": ["kcp", "mkcp"] } }
+            }
+          }
+        }
+      ]
     },
     {
       "type": "object",
