@@ -3,9 +3,6 @@
   "title": "outbound-tailscale",
   "definitions": {
     "compatible": { "$ref": "../../../definitions/compatible.json" },
-    "types": { "$ref": "../../../definitions/types.json" },
-    "patterns": { "$ref": "../../../definitions/patterns.json" },
-    "enums": { "$ref": "../../../definitions/enums.json" },
     "basic-option": { "$ref": "./base.json#/definitions/basic-option" },
     "smux": { "$ref": "./singmux.json" }
   },

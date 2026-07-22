@@ -1,10 +1,7 @@
 {
   "type": "object",
   "title": "NTP配置",
-  "definitions": {
-    "types": { "$ref": "../../definitions/types.json" },
-    "patterns": { "$ref": "../../definitions/patterns.json" }
-  },
+  "definitions": { "patterns": { "$ref": "../../definitions/patterns.json" } },
   "properties": {
     "enable": {
       "type": "boolean",

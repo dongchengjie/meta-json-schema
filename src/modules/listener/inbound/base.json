@@ -1,11 +1,7 @@
 {
   "type": "object",
   "title": "inbound-base",
-  "definitions": {
-    "types": { "$ref": "../../../definitions/types.json" },
-    "patterns": { "$ref": "../../../definitions/patterns.json" },
-    "enums": { "$ref": "../../../definitions/enums.json" }
-  },
+  "definitions": { "patterns": { "$ref": "../../../definitions/patterns.json" } },
   "required": ["name"],
   "properties": {
     "name": {

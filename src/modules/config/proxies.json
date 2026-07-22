@@ -2,9 +2,6 @@
   "type": "array",
   "title": "代理配置",
   "definitions": {
-    "types": { "$ref": "../../definitions/types.json" },
-    "patterns": { "$ref": "../../definitions/patterns.json" },
-    "enums": { "$ref": "../../definitions/enums.json" },
     "shadowsocks": { "$ref": "../adapter/outbound/shadowsocks.json" },
     "shadowsocksr": { "$ref": "../adapter/outbound/shadowsocksr.json" },
     "socks5": { "$ref": "../adapter/outbound/socks5.json" },

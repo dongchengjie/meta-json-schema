@@ -2,9 +2,7 @@
   "type": "object",
   "title": "inbound-vless",
   "definitions": {
-    "types": { "$ref": "../../../definitions/types.json" },
     "patterns": { "$ref": "../../../definitions/patterns.json" },
-    "enums": { "$ref": "../../../definitions/enums.json" },
     "tls": { "$ref": "../../config/tls.json" },
     "base-option": { "$ref": "./base.json" },
     "mux-option": { "$ref": "./mux.json" },

@@ -5,7 +5,6 @@
     "compatible": { "$ref": "../../../definitions/compatible.json" },
     "types": { "$ref": "../../../definitions/types.json" },
     "patterns": { "$ref": "../../../definitions/patterns.json" },
-    "enums": { "$ref": "../../../definitions/enums.json" },
     "data-cipher": {
       "enum": [
         "AES-128-GCM",

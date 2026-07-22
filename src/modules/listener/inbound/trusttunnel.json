@@ -2,13 +2,10 @@
   "type": "object",
   "title": "inbound-trusttunnel",
   "definitions": {
-    "types": { "$ref": "../../../definitions/types.json" },
-    "patterns": { "$ref": "../../../definitions/patterns.json" },
     "enums": { "$ref": "../../../definitions/enums.json" },
     "tls": { "$ref": "../../config/tls.json" },
     "base-option": { "$ref": "./base.json" },
-    "auth-user": { "$ref": "./auth.json#/definitions/auth-user" },
-    "reality-config": { "$ref": "./reality.json" }
+    "auth-user": { "$ref": "./auth.json#/definitions/auth-user" }
   },
   "allOf": [
     { "title": "入站基础配置", "$ref": "#/definitions/base-option" },

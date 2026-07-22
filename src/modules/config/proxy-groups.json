@@ -2,9 +2,6 @@
   "type": "array",
   "title": "代理组配置",
   "definitions": {
-    "types": { "$ref": "../../definitions/types.json" },
-    "patterns": { "$ref": "../../definitions/patterns.json" },
-    "enums": { "$ref": "../../definitions/enums.json" },
     "selector": { "$ref": "../adapter/outboundgroup/selector.json" },
     "url-test": { "$ref": "../adapter/outboundgroup/urltest.json" },
     "fallback": { "$ref": "../adapter/outboundgroup/fallback.json" },

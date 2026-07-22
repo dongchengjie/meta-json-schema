@@ -3,8 +3,6 @@
   "title": "outboundgroup-groupbase",
   "definitions": {
     "types": { "$ref": "../../../definitions/types.json" },
-    "patterns": { "$ref": "../../../definitions/patterns.json" },
-    "enums": { "$ref": "../../../definitions/enums.json" },
     "base-option": { "$ref": "../outbound/base.json#/definitions/base-option" },
     "health-check": { "$ref": "../provider/health-check.json" }
   },

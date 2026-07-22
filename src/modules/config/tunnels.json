@@ -1,10 +1,7 @@
 {
   "type": "array",
   "description": "隧道配置",
-  "definitions": {
-    "types": { "$ref": "../../definitions/types.json" },
-    "patterns": { "$ref": "../../definitions/patterns.json" }
-  },
+  "definitions": { "patterns": { "$ref": "../../definitions/patterns.json" } },
   "items": {
     "anyOf": [
       {

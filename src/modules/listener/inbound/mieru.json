@@ -1,13 +1,7 @@
 {
   "type": "object",
   "title": "inbound-mieru",
-  "definitions": {
-    "types": { "$ref": "../../../definitions/types.json" },
-    "patterns": { "$ref": "../../../definitions/patterns.json" },
-    "enums": { "$ref": "../../../definitions/enums.json" },
-    "base-option": { "$ref": "./base.json" },
-    "auth-user": { "$ref": "./auth.json#/definitions/auth-user" }
-  },
+  "definitions": { "base-option": { "$ref": "./base.json" } },
   "allOf": [
     { "title": "入站基础配置", "$ref": "#/definitions/base-option" },
     {

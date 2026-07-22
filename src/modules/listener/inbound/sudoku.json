@@ -3,8 +3,6 @@
   "title": "inbound-sudoku",
   "definitions": {
     "types": { "$ref": "../../../definitions/types.json" },
-    "patterns": { "$ref": "../../../definitions/patterns.json" },
-    "enums": { "$ref": "../../../definitions/enums.json" },
     "base-option": { "$ref": "./base.json" },
     "mux-option": { "$ref": "./mux.json" },
     "sudoku-http-mask-options": {

@@ -3,8 +3,7 @@
   "title": "规则集合配置",
   "definitions": {
     "types": { "$ref": "../../../definitions/types.json" },
-    "patterns": { "$ref": "../../../definitions/patterns.json" },
-    "enums": { "$ref": "../../../definitions/enums.json" }
+    "patterns": { "$ref": "../../../definitions/patterns.json" }
   },
   "additionalProperties": {
     "type": "object",

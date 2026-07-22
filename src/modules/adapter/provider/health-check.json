@@ -3,9 +3,7 @@
   "title": "健康检查",
   "definitions": {
     "compatible": { "$ref": "../../../definitions/compatible.json" },
-    "types": { "$ref": "../../../definitions/types.json" },
-    "patterns": { "$ref": "../../../definitions/patterns.json" },
-    "enums": { "$ref": "../../../definitions/enums.json" }
+    "patterns": { "$ref": "../../../definitions/patterns.json" }
   },
   "properties": {
     "enable": {

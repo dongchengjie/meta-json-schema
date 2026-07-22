@@ -3,7 +3,6 @@
   "title": "tuic-server配置",
   "definitions": {
     "types": { "$ref": "../../../definitions/types.json" },
-    "patterns": { "$ref": "../../../definitions/patterns.json" },
     "enums": { "$ref": "../../../definitions/enums.json" },
     "tls": { "$ref": "../../config/tls.json" },
     "mux-option": { "$ref": "../sing/sing.json" }

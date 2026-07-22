@@ -2,9 +2,6 @@
   "type": "object",
   "title": "reality配置",
   "definitions": {
-    "types": { "$ref": "../../../definitions/types.json" },
-    "patterns": { "$ref": "../../../definitions/patterns.json" },
-    "enums": { "$ref": "../../../definitions/enums.json" },
     "reality-limit-fallback": {
       "type": "object",
       "title": "reality限速回退配置",

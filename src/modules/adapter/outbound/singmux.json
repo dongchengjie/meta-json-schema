@@ -1,12 +1,7 @@
 {
   "type": "object",
   "description": "sing-mux多路复用配置",
-  "definitions": {
-    "compatible": { "$ref": "../../../definitions/compatible.json" },
-    "types": { "$ref": "../../../definitions/types.json" },
-    "patterns": { "$ref": "../../../definitions/patterns.json" },
-    "enums": { "$ref": "../../../definitions/enums.json" }
-  },
+  "definitions": { "compatible": { "$ref": "../../../definitions/compatible.json" } },
   "properties": {
     "enabled": {
       "$ref": "#/definitions/compatible/boolean",

@@ -5,7 +5,6 @@
     "compatible": { "$ref": "../../../definitions/compatible.json" },
     "types": { "$ref": "../../../definitions/types.json" },
     "patterns": { "$ref": "../../../definitions/patterns.json" },
-    "enums": { "$ref": "../../../definitions/enums.json" },
     "basic-option": { "$ref": "./base.json#/definitions/basic-option" },
     "ech-options": { "$ref": "./ech.json#/definitions/ech-options" },
     "smux": { "$ref": "./singmux.json" },

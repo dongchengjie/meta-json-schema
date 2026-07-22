@@ -1,11 +1,7 @@
 {
   "type": "object",
   "title": "proxy-provider",
-  "definitions": {
-    "types": { "$ref": "../../../definitions/types.json" },
-    "patterns": { "$ref": "../../../definitions/patterns.json" },
-    "enums": { "$ref": "../../../definitions/enums.json" }
-  },
+  "definitions": { "patterns": { "$ref": "../../../definitions/patterns.json" } },
   "patternProperties": {
     "^default$": { "type": "null", "errorMessage": "不能使用default作为provider的名称" }
   },

@@ -1,11 +1,6 @@
 {
   "type": "object",
   "title": "kcptun配置",
-  "definitions": {
-    "types": { "$ref": "../../../definitions/types.json" },
-    "patterns": { "$ref": "../../../definitions/patterns.json" },
-    "enums": { "$ref": "../../../definitions/enums.json" }
-  },
   "required": ["enable"],
   "properties": {
     "enable": {

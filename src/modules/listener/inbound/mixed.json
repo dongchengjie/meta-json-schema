@@ -2,9 +2,6 @@
   "type": "object",
   "title": "inbound-mixed",
   "definitions": {
-    "types": { "$ref": "../../../definitions/types.json" },
-    "patterns": { "$ref": "../../../definitions/patterns.json" },
-    "enums": { "$ref": "../../../definitions/enums.json" },
     "tls": { "$ref": "../../config/tls.json" },
     "base-option": { "$ref": "./base.json" },
     "auth-user": { "$ref": "./auth.json#/definitions/auth-user" },

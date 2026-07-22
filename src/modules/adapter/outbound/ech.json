@@ -3,9 +3,6 @@
   "title": "outbound-ech",
   "definitions": {
     "compatible": { "$ref": "../../../definitions/compatible.json" },
-    "types": { "$ref": "../../../definitions/types.json" },
-    "patterns": { "$ref": "../../../definitions/patterns.json" },
-    "enums": { "$ref": "../../../definitions/enums.json" },
     "ech-options": {
       "type": "object",
       "title": "ECH配置",

@@ -1,12 +1,7 @@
 {
   "type": "object",
   "title": "outbound-reality",
-  "definitions": {
-    "compatible": { "$ref": "../../../definitions/compatible.json" },
-    "types": { "$ref": "../../../definitions/types.json" },
-    "patterns": { "$ref": "../../../definitions/patterns.json" },
-    "enums": { "$ref": "../../../definitions/enums.json" }
-  },
+  "definitions": { "compatible": { "$ref": "../../../definitions/compatible.json" } },
   "required": ["public-key"],
   "properties": {
     "public-key": {

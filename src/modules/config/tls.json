@@ -1,10 +1,7 @@
 {
   "type": "object",
   "title": "TLS配置",
-  "definitions": {
-    "types": { "$ref": "../../definitions/types.json" },
-    "patterns": { "$ref": "../../definitions/patterns.json" }
-  },
+  "definitions": { "types": { "$ref": "../../definitions/types.json" } },
   "properties": {
     "certificate": {
       "type": "string",

@@ -2,9 +2,7 @@
   "type": "object",
   "title": "代理集合配置",
   "definitions": {
-    "types": { "$ref": "../../definitions/types.json" },
     "patterns": { "$ref": "../../definitions/patterns.json" },
-    "enums": { "$ref": "../../definitions/enums.json" },
     "health-check": { "$ref": "../adapter/provider/health-check.json" },
     "proxies": { "$ref": "../config/proxies.json" }
   },

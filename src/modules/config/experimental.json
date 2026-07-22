@@ -1,10 +1,6 @@
 {
   "type": "object",
   "title": "实验性内容配置",
-  "definitions": {
-    "types": { "$ref": "../../definitions/types.json" },
-    "patterns": { "$ref": "../../definitions/patterns.json" }
-  },
   "properties": {
     "quic-go-disable-gso": {
       "type": "boolean",

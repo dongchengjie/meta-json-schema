@@ -2,9 +2,6 @@
   "type": "array",
   "title": "listeners配置",
   "definitions": {
-    "types": { "$ref": "../../definitions/types.json" },
-    "patterns": { "$ref": "../../definitions/patterns.json" },
-    "enums": { "$ref": "../../definitions/enums.json" },
     "socks": { "$ref": "../listener/inbound/socks.json" },
     "http": { "$ref": "../listener/inbound/http.json" },
     "tproxy": { "$ref": "../listener/inbound/tproxy.json" },

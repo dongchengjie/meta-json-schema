@@ -3,9 +3,6 @@
   "title": "outbound-base",
   "definitions": {
     "compatible": { "$ref": "../../../definitions/compatible.json" },
-    "types": { "$ref": "../../../definitions/types.json" },
-    "patterns": { "$ref": "../../../definitions/patterns.json" },
-    "enums": { "$ref": "../../../definitions/enums.json" },
     "base-option": {
       "type": "object",
       "title": "出站基础配置",

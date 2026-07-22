@@ -2,8 +2,6 @@
   "type": "object",
   "title": "全局配置",
   "definitions": {
-    "types": { "$ref": "../../definitions/types.json" },
-    "patterns": { "$ref": "../../definitions/patterns.json" },
     "enums": { "$ref": "../../definitions/enums.json" },
     "inbound": { "$ref": "./inbound.json" },
     "controller": { "$ref": "./controller.json" },
