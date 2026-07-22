@@ -2300,37 +2300,38 @@ listeners:
       madSJjYQIf9o1N5GXjkW4DEEeb17qMxHdwMdNnwADAABAAEAAQACAAEAAwAIdGVz
       dC5jb20AAA==
       -----END ECH KEYS-----
-    # 如果填写reality-config则开启reality（注意不可与certificate和private-key同时填写）
-    reality-config:
-      dest: test.com:443
-      private-key: jNXHt1yRo0vDuchQlIP6Z0ZvjT3KtzVI-T4E7RoLJS0 # 可由 mihomo generate reality-keypair 命令生成
-      short-id:
-        - 0123456789abcdef
-      server-names:
-        - test.com
-      # 下列两个 limit 为选填，可对未通过验证的回落连接限速，bytesPerSec 默认为 0 即不启用
-      # 回落限速是一种特征，不建议启用，如果您是面板/一键脚本开发者，务必让这些参数随机化
-      limit-fallback-upload:
-        after-bytes: 0 # 传输指定字节后开始限速
-        bytes-per-sec: 0 # 基准速率（字节/秒）
-        burst-bytes-per-sec: 0 # 突发速率（字节/秒），大于 bytesPerSec 时生效
-      limit-fallback-download:
-        after-bytes: 0 # 传输指定字节后开始限速
-        bytes-per-sec: 0 # 基准速率（字节/秒）
-        burst-bytes-per-sec: 0 # 突发速率（字节/秒），大于 bytesPerSec 时生效
-    tlsmirror-config:
-      dest: test.com:443
-      primary-key: MDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3ODlhYmNkZWY=
-      proxy: ""
-      explicit-nonce-ciphersuites: [156, 157]
-      defer-instance-derived-write-time:
-        base-nanoseconds: 0
-        uniform-random-multiplier-nanoseconds: 0
-      transport-layer-padding:
-        enabled: false
-      connection-enrolment:
-        primary-ingress-outbound: ""
-      sequence-watermarking-enabled: false
+    # reality-config 与 certificate/private-key、tlsmirror-config 互斥；使用 Reality 时取消下面整块注释并注释其他模式
+    # reality-config:
+    #   dest: test.com:443
+    #   private-key: jNXHt1yRo0vDuchQlIP6Z0ZvjT3KtzVI-T4E7RoLJS0 # 可由 mihomo generate reality-keypair 命令生成
+    #   short-id:
+    #     - 0123456789abcdef
+    #   server-names:
+    #     - test.com
+    #   # 下列两个 limit 为选填，可对未通过验证的回落连接限速，bytesPerSec 默认为 0 即不启用
+    #   # 回落限速是一种特征，不建议启用，如果您是面板/一键脚本开发者，务必让这些参数随机化
+    #   limit-fallback-upload:
+    #     after-bytes: 0 # 传输指定字节后开始限速
+    #     bytes-per-sec: 0 # 基准速率（字节/秒）
+    #     burst-bytes-per-sec: 0 # 突发速率（字节/秒），大于 bytesPerSec 时生效
+    #   limit-fallback-download:
+    #     after-bytes: 0 # 传输指定字节后开始限速
+    #     bytes-per-sec: 0 # 基准速率（字节/秒）
+    #     burst-bytes-per-sec: 0 # 突发速率（字节/秒），大于 bytesPerSec 时生效
+    # tlsmirror-config 与 certificate/private-key、reality-config 互斥；使用 TLSMirror 时取消下面整块注释并注释其他模式
+    # tlsmirror-config:
+    #   dest: test.com:443
+    #   primary-key: MDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3ODlhYmNkZWY=
+    #   proxy: ""
+    #   explicit-nonce-ciphersuites: [156, 157]
+    #   defer-instance-derived-write-time:
+    #     base-nanoseconds: 0
+    #     uniform-random-multiplier-nanoseconds: 0
+    #   transport-layer-padding:
+    #     enabled: false
+    #   connection-enrolment:
+    #     primary-ingress-outbound: ""
+    #   sequence-watermarking-enabled: false
     mkcp-config:
       enable: false
       mtu: 1350
@@ -2563,24 +2564,23 @@ listeners:
     # 下面两项如果填写则开启 tls（需要同时填写）
     certificate: ./server.crt
     private-key: ./server.key
-    # 如果填写reality-config则开启reality（注意不可与certificate和private-key同时填写）
-    reality-config:
-      dest: test.com:443
-      private-key: jNXHt1yRo0vDuchQlIP6Z0ZvjT3KtzVI-T4E7RoLJS0 # 可由 mihomo generate reality-keypair 命令生成
-      short-id:
-        - 0123456789abcdef
-      server-names:
-        - test.com
-      # 下列两个 limit 为选填，可对未通过验证的回落连接限速，bytesPerSec 默认为 0 即不启用
-      # 回落限速是一种特征，不建议启用，如果您是面板/一键脚本开发者，务必让这些参数随机化
-      limit-fallback-upload:
-        after-bytes: 0 # 传输指定字节后开始限速
-        bytes-per-sec: 0 # 基准速率（字节/秒）
-        burst-bytes-per-sec: 0 # 突发速率（字节/秒），大于 bytesPerSec 时生效
-      limit-fallback-download:
-        after-bytes: 0 # 传输指定字节后开始限速
-        bytes-per-sec: 0 # 基准速率（字节/秒）
-        burst-bytes-per-sec: 0 # 突发速率（字节/秒），大于 bytesPerSec 时生效
+    # reality-config:
+    #   dest: test.com:443
+    #   private-key: jNXHt1yRo0vDuchQlIP6Z0ZvjT3KtzVI-T4E7RoLJS0 # 可由 mihomo generate reality-keypair 命令生成
+    #   short-id:
+    #     - 0123456789abcdef
+    #   server-names:
+    #     - test.com
+    #   # 下列两个 limit 为选填，可对未通过验证的回落连接限速，bytesPerSec 默认为 0 即不启用
+    #   # 回落限速是一种特征，不建议启用，如果您是面板/一键脚本开发者，务必让这些参数随机化
+    #   limit-fallback-upload:
+    #     after-bytes: 0 # 传输指定字节后开始限速
+    #     bytes-per-sec: 0 # 基准速率（字节/秒）
+    #     burst-bytes-per-sec: 0 # 突发速率（字节/秒），大于 bytesPerSec 时生效
+    #   limit-fallback-download:
+    #     after-bytes: 0 # 传输指定字节后开始限速
+    #     bytes-per-sec: 0 # 基准速率（字节/秒）
+    #     burst-bytes-per-sec: 0 # 突发速率（字节/秒），大于 bytesPerSec 时生效
     # 注意，对于vless listener, 如果 "allow-insecure" 不为 true, 至少需要填写 “certificate和private-key” 或 “reality-config” 或 “decryption”
     allow-insecure: false # 是否允许不开启tls加密（注意：仅用于有 nginx, caddy 前置的情况）
 
@@ -2684,24 +2684,23 @@ listeners:
     # 下面两项如果填写则开启 tls（需要同时填写）
     certificate: ./server.crt
     private-key: ./server.key
-    # 如果填写reality-config则开启reality（注意不可与certificate和private-key同时填写）
-    reality-config:
-      dest: test.com:443
-      private-key: jNXHt1yRo0vDuchQlIP6Z0ZvjT3KtzVI-T4E7RoLJS0 # 可由 mihomo generate reality-keypair 命令生成
-      short-id:
-        - 0123456789abcdef
-      server-names:
-        - test.com
-      # 下列两个 limit 为选填，可对未通过验证的回落连接限速，bytesPerSec 默认为 0 即不启用
-      # 回落限速是一种特征，不建议启用，如果您是面板/一键脚本开发者，务必让这些参数随机化
-      limit-fallback-upload:
-        after-bytes: 0 # 传输指定字节后开始限速
-        bytes-per-sec: 0 # 基准速率（字节/秒）
-        burst-bytes-per-sec: 0 # 突发速率（字节/秒），大于 bytesPerSec 时生效
-      limit-fallback-download:
-        after-bytes: 0 # 传输指定字节后开始限速
-        bytes-per-sec: 0 # 基准速率（字节/秒）
-        burst-bytes-per-sec: 0 # 突发速率（字节/秒），大于 bytesPerSec 时生效
+    # reality-config:
+    #   dest: test.com:443
+    #   private-key: jNXHt1yRo0vDuchQlIP6Z0ZvjT3KtzVI-T4E7RoLJS0 # 可由 mihomo generate reality-keypair 命令生成
+    #   short-id:
+    #     - 0123456789abcdef
+    #   server-names:
+    #     - test.com
+    #   # 下列两个 limit 为选填，可对未通过验证的回落连接限速，bytesPerSec 默认为 0 即不启用
+    #   # 回落限速是一种特征，不建议启用，如果您是面板/一键脚本开发者，务必让这些参数随机化
+    #   limit-fallback-upload:
+    #     after-bytes: 0 # 传输指定字节后开始限速
+    #     bytes-per-sec: 0 # 基准速率（字节/秒）
+    #     burst-bytes-per-sec: 0 # 突发速率（字节/秒），大于 bytesPerSec 时生效
+    #   limit-fallback-download:
+    #     after-bytes: 0 # 传输指定字节后开始限速
+    #     bytes-per-sec: 0 # 基准速率（字节/秒）
+    #     burst-bytes-per-sec: 0 # 突发速率（字节/秒），大于 bytesPerSec 时生效
     ss-option: # like trojan-go's `shadowsocks` config
       enabled: false
       method: aes-128-gcm # aes-128-gcm/aes-256-gcm/chacha20-ietf-poly1305
