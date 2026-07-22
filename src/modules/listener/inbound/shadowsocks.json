@@ -10,7 +10,25 @@
     "kcptun": { "$ref": "./kcptun.json" },
     "shadow-tls": { "$ref": "./shadowtls.json" },
     "res-tls": { "$ref": "./restls.json" },
-    "jls-config": { "$ref": "./jls.json" }
+    "jls-config": { "$ref": "./jls.json" },
+    "shadow-tls-security-mode": {
+      "required": ["shadow-tls"],
+      "properties": {
+        "shadow-tls": { "required": ["enable"], "properties": { "enable": { "const": true } } }
+      }
+    },
+    "restls-security-mode": {
+      "required": ["res-tls"],
+      "properties": {
+        "res-tls": { "required": ["enable"], "properties": { "enable": { "const": true } } }
+      }
+    },
+    "jls-security-mode": {
+      "required": ["jls-config"],
+      "properties": {
+        "jls-config": { "required": ["enable"], "properties": { "enable": { "const": true } } }
+      }
+    }
   },
   "allOf": [
     { "title": "入站基础配置", "$ref": "#/definitions/base-option" },
@@ -64,7 +82,33 @@
             }
           }
         }
-      }
+      },
+      "allOf": [
+        {
+          "not": {
+            "anyOf": [
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/shadow-tls-security-mode" },
+                  { "$ref": "#/definitions/restls-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/shadow-tls-security-mode" },
+                  { "$ref": "#/definitions/jls-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/restls-security-mode" },
+                  { "$ref": "#/definitions/jls-security-mode" }
+                ]
+              }
+            ]
+          }
+        }
+      ]
     }
   ]
 }
