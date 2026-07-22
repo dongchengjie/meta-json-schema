@@ -2,20 +2,16 @@
 
 ### Changes
 
-- 新增: proxy-provider override 支持按顺序执行的 `override-expr` 表达式数组
+- 新增: proxy-provider `override` 新增配置项 `override-expr`，支持按顺序执行表达式数组
 - 新增: sudoku 出站新增顶层 `multiplex` 配置项，统一控制会话多路复用
-- 新增: openvpn 出站支持 `tls-auth`、`key-direction`、`data-ciphers` 协商、`data-ciphers-fallback` 和 `tls-crypt-v2`
-- 新增: TLS 出站和 Hysteria2 realm 支持 `name-cert-verify` 指定证书 DNSName 校验目标
-- 新增: proxy 和 listener 支持 `shadowquic`，包含 JLS 认证、QUIC 传输配置和 brutal 异步可选协商
-- 新增: shadowsocks 出站插件和 listener 支持 JLS
-- 新增: vmess、vless、trojan 出站和 listener 支持 JLS
-- 新增: vmess、vless、trojan 出站和 listener 支持 ShadowTLS
-- 新增: vmess、vless、trojan 出站和 listener 支持 Restls，vless xhttp `download-settings` 可独立覆写 `shadow-tls-opts`、`restls-opts` 和 `jls-opts`
-- 新增: anytls 出站和 listener 支持 JLS
-- 新增: anytls 出站和 listener 支持 ShadowTLS
-- 新增: anytls 出站和 listener 支持 Restls
-- 新增: anytls 出站支持 `disable-reuse` 禁用会话复用
-- 新增: snell 出站和 listener 支持 Restls 和 JLS
+- 新增: openvpn 出站新增配置项 `tls-auth`、`key-direction`、`data-ciphers`、`data-ciphers-fallback` 和 `tls-crypt-v2`，支持数据加密协商和 tls-crypt-v2 客户端密钥
+- 新增: TLS 出站和 Hysteria2 realm 新增配置项 `name-cert-verify`，支持指定证书 DNSName 校验目标
+- 新增: proxy 和 listener 新增 `shadowquic` 协议，包含 JLS 认证、QUIC 传输配置和 brutal 异步可选协商相关配置项
+- 新增: shadowsocks 出站插件和 listener，以及 vmess、vless、trojan、anytls、snell 出站和 listener 新增 JLS 相关配置项
+- 新增: vmess、vless、trojan、anytls 出站和 listener 新增 ShadowTLS 相关配置项
+- 新增: vmess、vless、trojan、anytls、snell 出站和 listener 新增 Restls 相关配置项
+- 新增: vless xhttp `download-settings` 新增配置项 `shadow-tls-opts`、`restls-opts` 和 `jls-opts`，支持独立覆写下载连接的安全模式
+- 新增: anytls 出站新增配置项 `disable-reuse`，支持禁用会话复用
 - 调整: anytls listener 允许使用 JLS 或 `allow-insecure` 替代证书，并禁止 JLS 与证书配置同时使用
 - 调整: shadowsocks listener 启用的 ShadowTLS、Restls 和 JLS 安全模式互斥
 - 调整: `rematch` 出站要求填写 `target-rematch-name` 或 `target-sub-rule`
