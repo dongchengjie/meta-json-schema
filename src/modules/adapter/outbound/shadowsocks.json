@@ -198,10 +198,10 @@
           "markdownDescription": "主机地址"
         },
         "version-hint": {
-          "$ref": "#/definitions/compatible/string",
-          "title": "版本",
-          "description": "版本",
-          "markdownDescription": "版本"
+          "enum": ["tls12", "tls13"],
+          "title": "TLS版本提示",
+          "description": "TLS版本提示",
+          "markdownDescription": "TLS版本提示"
         },
         "restls-script": {
           "$ref": "#/definitions/compatible/string",
@@ -575,7 +575,7 @@
           "default": false
         },
         "udp-over-tcp-version": {
-          "enum": [0, 1, 2],
+          "enum": [1, 2],
           "title": "UDP over TCP的协议版本",
           "description": "UDP over TCP的协议版本",
           "markdownDescription": "UDP over TCP的协议版本",

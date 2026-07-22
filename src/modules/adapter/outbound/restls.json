@@ -28,11 +28,10 @@
       "markdownDescription": "`Restls`认证密码"
     },
     "version-hint": {
-      "type": "string",
-      "anyOf": [{ "const": "" }, { "pattern": "^[tT][lL][sS]1[23]$" }],
+      "enum": ["tls12", "tls13"],
       "title": "TLS版本提示",
-      "description": "TLS版本提示，支持tls12或tls13（大小写不敏感）",
-      "markdownDescription": "`TLS`版本提示，支持`tls12`或`tls13`（大小写不敏感）"
+      "description": "TLS版本提示",
+      "markdownDescription": "TLS版本提示"
     },
     "restls-script": {
       "$ref": "#/definitions/compatible/string",

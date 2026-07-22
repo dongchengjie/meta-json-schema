@@ -18,7 +18,7 @@
       "markdownDescription": "`ShadowTLS`认证密码"
     },
     "version": {
-      "enum": [0, 1, 2, 3],
+      "enum": [1, 2, 3],
       "title": "ShadowTLS版本",
       "description": "ShadowTLS版本",
       "markdownDescription": "`ShadowTLS`版本",

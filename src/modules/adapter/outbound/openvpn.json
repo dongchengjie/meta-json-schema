@@ -140,11 +140,11 @@
           "markdownDescription": "从 `.ovpn` 中复制 `<tls-auth></tls-auth>` 内的内容，不需要保留标签；与 `tls-crypt`、`tls-crypt-v2` 互斥"
         },
         "key-direction": {
-          "enum": ["1", "0", ""],
-          "markdownEnumDescriptions": ["单向模式（方向 1）", "单向模式（方向 0）", "双向模式"],
+          "enum": ["1", "0"],
+          "markdownEnumDescriptions": ["单向模式（方向 1）", "单向模式（方向 0）"],
           "title": "TLS-Auth 密钥方向",
-          "description": "仅用于 tls-auth；留空为双向模式",
-          "markdownDescription": "仅用于 `tls-auth`；留空为双向模式"
+          "description": "未配置时使用双向模式",
+          "markdownDescription": "未配置时使用双向模式"
         },
         "tls-crypt": {
           "$ref": "#/definitions/compatible/string",

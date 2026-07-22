@@ -16,13 +16,12 @@
       "markdownDescription": "私钥内容或私钥文件路径"
     },
     "client-auth-type": {
-      "enum": ["request", "require-any", "verify-if-given", "require-and-verify", ""],
+      "enum": ["request", "require-any", "verify-if-given", "require-and-verify"],
       "markdownEnumDescriptions": [
         "请求客户端提供证书，但不强制要求",
         "要求客户端必须提供证书，但不验证",
         "如果客户端提供了证书，则验证",
-        "要求客户端必须提供证书，并验证",
-        "禁用客户端证书认证"
+        "要求客户端必须提供证书，并验证"
       ],
       "title": "客户端认证类型",
       "description": "客户端认证类型",
