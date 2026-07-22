@@ -3,6 +3,7 @@
 ### Changes
 
 - 新增: hysteria2 出站新增配置项 `handshake-timeout`，支持独立控制握手超时
+- 新增: listener Restls 新增配置项 `rate-limit`，支持限制回落连接双向转发速率
 
 ---
 

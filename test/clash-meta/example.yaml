@@ -2247,6 +2247,7 @@ listeners:
       password: restls-password
       restls-script: "250?100<1,350~100<1,600~100,300~200,300~100"
       min-record-len: 1
+      rate-limit: 1000000 # 回落双向转发限速，单位 bit/s；0 表示不限速
       proxy: DIRECT
 
   - name: vless-jls-in
@@ -2502,6 +2503,7 @@ listeners:
       password: restls-password
       restls-script: "250?100<1,350~100<1,600~100,300~200,300~100"
       min-record-len: 1
+      rate-limit: 1000000 # 回落双向转发限速，单位 bit/s；0 表示不限速
       proxy: DIRECT
 
   - name: snell-jls-in
@@ -2630,6 +2632,7 @@ listeners:
       password: restls-password
       restls-script: "250?100<1,350~100<1,600~100,300~200,300~100"
       min-record-len: 1
+      rate-limit: 1000000 # 回落双向转发限速，单位 bit/s；0 表示不限速
       proxy: DIRECT
 
   - name: mieru-in-1

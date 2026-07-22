@@ -34,6 +34,12 @@
       "description": "最小TLS记录长度",
       "markdownDescription": "最小`TLS`记录长度"
     },
+    "rate-limit": {
+      "type": "integer",
+      "title": "回落限速",
+      "description": "单位bit/s，0表示不限速",
+      "markdownDescription": "单位`bit/s`，`0`表示不限速"
+    },
     "proxy": {
       "type": "string",
       "title": "握手代理",
