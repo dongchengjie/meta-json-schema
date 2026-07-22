@@ -93,14 +93,14 @@
         "up": {
           "$ref": "#/definitions/compatible/string",
           "title": "上行带宽",
-          "description": "启用 brutal 时的上行带宽限制",
-          "markdownDescription": "启用 `brutal` 时的上行带宽限制"
+          "description": "通过Mihomo私有扩展异步协商brutal的客户端上行带宽；对端不支持或协商失败时保留congestion-controller",
+          "markdownDescription": "通过`Mihomo`私有扩展异步协商`brutal`的客户端上行带宽；对端不支持或协商失败时保留`congestion-controller`"
         },
         "down": {
           "$ref": "#/definitions/compatible/string",
           "title": "下行带宽",
-          "description": "启用 brutal 时的下行带宽限制",
-          "markdownDescription": "启用 `brutal` 时的下行带宽限制"
+          "description": "通过Mihomo私有扩展异步协商brutal的客户端下行带宽请求，上限为listener的up；对端不支持或协商失败时保留congestion-controller",
+          "markdownDescription": "通过`Mihomo`私有扩展异步协商`brutal`的客户端下行带宽请求，上限为`listener`的`up`；对端不支持或协商失败时保留`congestion-controller`"
         },
         "cwnd": {
           "$ref": "#/definitions/compatible/integer",
