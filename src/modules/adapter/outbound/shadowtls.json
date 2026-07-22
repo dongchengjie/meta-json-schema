@@ -19,9 +19,10 @@
     },
     "version": {
       "enum": [1, 2, 3],
+      "markdownEnumDescriptions": ["ShadowTLS v1", "ShadowTLS v2", "ShadowTLS v3"],
       "title": "ShadowTLS版本",
-      "description": "ShadowTLS版本",
-      "markdownDescription": "`ShadowTLS`版本",
+      "description": "应与服务端保持一致",
+      "markdownDescription": "应与服务端保持一致",
       "default": 2
     }
   }

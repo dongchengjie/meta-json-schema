@@ -199,9 +199,10 @@
         },
         "version-hint": {
           "enum": ["tls12", "tls13"],
+          "markdownEnumDescriptions": ["TLS 1.2", "TLS 1.3"],
           "title": "TLS版本提示",
-          "description": "TLS版本提示",
-          "markdownDescription": "TLS版本提示"
+          "description": "Restls握手使用的TLS版本，应与伪装目标服务器一致",
+          "markdownDescription": "`Restls`握手使用的`TLS`版本，应与伪装目标服务器一致"
         },
         "restls-script": {
           "$ref": "#/definitions/compatible/string",
@@ -576,9 +577,10 @@
         },
         "udp-over-tcp-version": {
           "enum": [1, 2],
+          "markdownEnumDescriptions": ["旧版协议（legacy）", "当前协议"],
           "title": "UDP over TCP的协议版本",
-          "description": "UDP over TCP的协议版本",
-          "markdownDescription": "UDP over TCP的协议版本",
+          "description": "应与服务端支持的版本一致",
+          "markdownDescription": "应与服务端支持的版本一致",
           "default": 1
         },
         "client-fingerprint": {

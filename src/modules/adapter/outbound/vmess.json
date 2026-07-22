@@ -75,6 +75,16 @@
         },
         "header": {
           "enum": ["none", "noop", "srtp", "utp", "wechat-video", "wechat", "dtls", "wireguard"],
+          "markdownEnumDescriptions": [
+            "不添加伪装包头",
+            "不添加伪装包头",
+            "模拟SRTP",
+            "模拟uTP",
+            "模拟微信视频",
+            "模拟微信视频",
+            "模拟DTLS",
+            "模拟WireGuard"
+          ],
           "title": "伪装包头",
           "description": "未配置时不添加伪装包头",
           "markdownDescription": "未配置时不添加伪装包头"

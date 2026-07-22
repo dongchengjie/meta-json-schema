@@ -52,9 +52,10 @@
     "version": {
       "type": "integer",
       "enum": [1, 2, 3],
+      "markdownEnumDescriptions": ["ShadowTLS v1", "ShadowTLS v2", "ShadowTLS v3"],
       "title": "ShadowTLS版本",
-      "description": "ShadowTLS版本",
-      "markdownDescription": "`ShadowTLS`版本"
+      "description": "应与客户端保持一致",
+      "markdownDescription": "应与客户端保持一致"
     },
     "password": {
       "type": "string",
@@ -80,8 +81,8 @@
     "strict-mode": {
       "type": "boolean",
       "title": "严格模式",
-      "description": "严格模式",
-      "markdownDescription": "严格模式"
+      "description": "仅用于ShadowTLS v3；要求握手目标支持TLS 1.3，否则回落为普通转发",
+      "markdownDescription": "仅用于`ShadowTLS v3`；要求握手目标支持`TLS 1.3`，否则回落为普通转发"
     },
     "wildcard-sni": {
       "enum": ["authed", "all"],

@@ -141,10 +141,13 @@
         },
         "key-direction": {
           "enum": ["1", "0"],
-          "markdownEnumDescriptions": ["单向模式（方向 1）", "单向模式（方向 0）"],
+          "markdownEnumDescriptions": [
+            "出站使用第二组密钥，入站使用第一组密钥",
+            "出站使用第一组密钥，入站使用第二组密钥"
+          ],
           "title": "TLS-Auth 密钥方向",
-          "description": "未配置时使用双向模式",
-          "markdownDescription": "未配置时使用双向模式"
+          "description": "仅用于 tls-auth；未配置时出站入站均使用第一组密钥（双向模式）；配置方向时应与服务端相反",
+          "markdownDescription": "仅用于 tls-auth；未配置时出站入站均使用第一组密钥（双向模式）；配置方向时应与服务端相反"
         },
         "tls-crypt": {
           "$ref": "#/definitions/compatible/string",
