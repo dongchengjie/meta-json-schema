@@ -263,6 +263,13 @@
           "markdownDescription": "UDP最大传输单元(Maximum Transmission Unit)",
           "default": 1197
         },
+        "handshake-timeout": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "握手超时时间",
+          "description": "单位:s，0不设置额外握手超时，受外层上下文控制",
+          "markdownDescription": "单位:`s`，`0`不设置额外握手超时，受外层上下文控制",
+          "default": 0
+        },
         "realm-opts": { "title": "Realm配置", "$ref": "#/definitions/realm-opts" },
         "initial-stream-receive-window": {
           "type": "integer",

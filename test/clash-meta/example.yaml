@@ -1306,6 +1306,7 @@ proxies: # socks5
     fingerprint: AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99:AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99
     alpn:
       - h3
+    handshake-timeout: 30 # 单位为秒；配置后握手时不受外层连接超时影响；默认值为 0，表示仅使用外层连接超时
     # ca: "./my.ca"
     # ca-str: "xyz"
     realm-opts:

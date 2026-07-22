@@ -1,3 +1,11 @@
+## v1.19.30
+
+### Changes
+
+- 新增: hysteria2 出站新增配置项 `handshake-timeout`，支持独立控制握手超时
+
+---
+
 ## v1.19.29
 
 ### Changes
