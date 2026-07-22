@@ -8,8 +8,17 @@
     "enums": { "$ref": "../../../definitions/enums.json" },
     "basic-option": { "$ref": "./base.json#/definitions/basic-option" },
     "ech-options": { "$ref": "./ech.json#/definitions/ech-options" },
+    "shadow-tls-options": { "$ref": "./shadowtls.json" },
     "jls-options": { "$ref": "./jls.json" },
-    "smux": { "$ref": "./singmux.json" }
+    "smux": { "$ref": "./singmux.json" },
+    "shadow-tls-security-mode": {
+      "required": ["shadow-tls-opts"],
+      "properties": { "shadow-tls-opts": { "$ref": "./shadowtls.json#/definitions/security-mode" } }
+    },
+    "jls-security-mode": {
+      "required": ["jls-opts"],
+      "properties": { "jls-opts": { "$ref": "./jls.json#/definitions/security-mode" } }
+    }
   },
   "allOf": [
     { "title": "basic配置", "$ref": "#/definitions/basic-option" },
@@ -61,6 +70,7 @@
           "markdownDescription": "`SNI`(Server Name Indication)"
         },
         "ech-opts": { "$ref": "#/definitions/ech-options" },
+        "shadow-tls-opts": { "$ref": "#/definitions/shadow-tls-options" },
         "jls-opts": { "$ref": "#/definitions/jls-options" },
         "client-fingerprint": {
           "$ref": "#/definitions/enums/client-fingerprint",
@@ -122,7 +132,17 @@
           "description": "最小空闲会话数量",
           "markdownDescription": "最小空闲会话数量"
         }
-      }
+      },
+      "allOf": [
+        {
+          "not": {
+            "allOf": [
+              { "$ref": "#/definitions/shadow-tls-security-mode" },
+              { "$ref": "#/definitions/jls-security-mode" }
+            ]
+          }
+        }
+      ]
     },
     {
       "type": "object",
