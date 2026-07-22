@@ -461,6 +461,35 @@ proxies: # socks5
       version: 2
       alpn: [h2, http/1.1]
 
+  - name: "snell-restls"
+    type: snell
+    server: server
+    port: 44046
+    psk: yourpsk
+    client-fingerprint: chrome
+    obfs-opts:
+      mode: restls
+      password: restls-password
+      host: example.com
+      version-hint: tls13
+      restls-script: "250?100<1,350~100<1,600~100,300~200,300~100"
+      fingerprint: AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99:AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99
+      skip-cert-verify: false
+      name-cert-verify: example.com
+
+  - name: "snell-jls"
+    type: snell
+    server: server
+    port: 44046
+    psk: yourpsk
+    client-fingerprint: chrome
+    obfs-opts:
+      mode: jls
+      host: example.com
+      username: jls-user
+      password: jls-password
+      alpn: [h2, http/1.1]
+
   # Shadowsocks
   # cipher支持:
   #   aes-128-gcm aes-192-gcm aes-256-gcm
@@ -2440,6 +2469,37 @@ listeners:
         dest: test.com:443
     rule: sub-rule-name1
     proxy: proxy
+
+  - name: snell-restls-in
+    type: snell
+    port: 10837
+    listen: 0.0.0.0
+    psk: your-password
+    version: 4
+    res-tls:
+      enable: true
+      dest: example.com:443
+      password: restls-password
+      restls-script: "250?100<1,350~100<1,600~100,300~200,300~100"
+      min-record-len: 1
+      proxy: DIRECT
+
+  - name: snell-jls-in
+    type: snell
+    port: 10838
+    listen: 0.0.0.0
+    psk: your-password
+    version: 4
+    jls-config:
+      enable: true
+      users:
+        - username: jls-user
+          password: jls-password
+      sni: example.com
+      dest: example.com:443
+      alpn: [h2, http/1.1]
+      proxy: DIRECT
+      rate-limit: 0
 
   - name: vless-in-1
     type: vless

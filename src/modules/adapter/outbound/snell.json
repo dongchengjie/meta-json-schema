@@ -95,6 +95,99 @@
           "default": ["h2", "http/1.1"]
         }
       }
+    },
+    "restls-option": {
+      "type": "object",
+      "title": "Restls混淆配置",
+      "required": ["mode", "version-hint"],
+      "properties": {
+        "mode": {
+          "const": "restls",
+          "title": "混淆模式",
+          "description": "混淆模式",
+          "markdownDescription": "混淆模式"
+        },
+        "password": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "密码",
+          "description": "Restls认证密码",
+          "markdownDescription": "`Restls`认证密码"
+        },
+        "host": {
+          "$ref": "#/definitions/patterns/server",
+          "title": "主机地址",
+          "description": "TLS服务器名称",
+          "markdownDescription": "`TLS`服务器名称"
+        },
+        "version-hint": {
+          "type": "string",
+          "pattern": "^[tT][lL][sS]1[23]$",
+          "title": "TLS版本提示",
+          "description": "TLS版本提示，支持tls12或tls13（大小写不敏感）",
+          "markdownDescription": "`TLS`版本提示，支持`tls12`或`tls13`（大小写不敏感）"
+        },
+        "restls-script": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "Restls脚本",
+          "description": "Restls脚本隐藏代理流量行为",
+          "markdownDescription": "[Restls脚本隐藏代理流量行为](https://github.com/3andne/restls/blob/main/Restls-Script%3A%20Hide%20Your%20Proxy%20Traffic%20Behavior.md)"
+        },
+        "fingerprint": {
+          "$ref": "#/definitions/patterns/sha256Fingerprint",
+          "title": "SHA-256证书指纹",
+          "description": "服务端证书的SHA-256指纹",
+          "markdownDescription": "服务端证书的`SHA-256`指纹"
+        },
+        "skip-cert-verify": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "跳过证书验证",
+          "description": "跳过证书验证",
+          "markdownDescription": "跳过证书验证"
+        },
+        "name-cert-verify": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "证书 DNSName 校验目标",
+          "description": "仅修改证书 DNSName 校验目标，不修改 SNI",
+          "markdownDescription": "仅修改证书 `DNSName` 校验目标，不修改 `SNI`"
+        }
+      }
+    },
+    "jls-option": {
+      "type": "object",
+      "title": "JLS混淆配置",
+      "required": ["mode", "host", "username", "password"],
+      "properties": {
+        "mode": {
+          "const": "jls",
+          "title": "混淆模式",
+          "description": "混淆模式",
+          "markdownDescription": "混淆模式"
+        },
+        "host": {
+          "$ref": "#/definitions/patterns/server",
+          "title": "主机地址",
+          "description": "TLS服务器名称",
+          "markdownDescription": "`TLS`服务器名称"
+        },
+        "username": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "JLS用户名",
+          "description": "JLS认证用户名",
+          "markdownDescription": "`JLS`认证用户名"
+        },
+        "password": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "JLS密码",
+          "description": "JLS认证密码",
+          "markdownDescription": "`JLS`认证密码"
+        },
+        "alpn": {
+          "$ref": "#/definitions/types/stringArray",
+          "title": "ALPN",
+          "description": "Application-Layer Protocol Negotiation(应用层协议协商)",
+          "markdownDescription": "Application-Layer Protocol Negotiation(应用层协议协商)"
+        }
+      }
     }
   },
   "allOf": [
@@ -159,7 +252,9 @@
           "markdownDescription": "`Snell`混淆配置",
           "anyOf": [
             { "$ref": "#/definitions/simple-obfs-option" },
-            { "$ref": "#/definitions/shadow-tls-option" }
+            { "$ref": "#/definitions/shadow-tls-option" },
+            { "$ref": "#/definitions/restls-option" },
+            { "$ref": "#/definitions/jls-option" }
           ]
         },
         "client-fingerprint": {

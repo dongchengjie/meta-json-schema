@@ -7,6 +7,8 @@
     "enums": { "$ref": "../../../definitions/enums.json" },
     "base-option": { "$ref": "./base.json" },
     "shadow-tls": { "$ref": "./shadowtls.json" },
+    "res-tls": { "$ref": "./restls.json" },
+    "jls-config": { "$ref": "./jls.json" },
     "obfs-opts": {
       "type": "object",
       "title": "混淆配置",
@@ -24,6 +26,24 @@
           "markdownDescription": "主机地址",
           "default": "bing.com"
         }
+      }
+    },
+    "shadow-tls-security-mode": {
+      "required": ["shadow-tls"],
+      "properties": {
+        "shadow-tls": { "required": ["enable"], "properties": { "enable": { "const": true } } }
+      }
+    },
+    "restls-security-mode": {
+      "required": ["res-tls"],
+      "properties": {
+        "res-tls": { "required": ["enable"], "properties": { "enable": { "const": true } } }
+      }
+    },
+    "jls-security-mode": {
+      "required": ["jls-config"],
+      "properties": {
+        "jls-config": { "required": ["enable"], "properties": { "enable": { "const": true } } }
       }
     }
   },
@@ -54,8 +74,36 @@
           "markdownDescription": "启用`UDP`"
         },
         "obfs-opts": { "$ref": "#/definitions/obfs-opts" },
-        "shadow-tls": { "$ref": "#/definitions/shadow-tls" }
-      }
+        "shadow-tls": { "$ref": "#/definitions/shadow-tls" },
+        "res-tls": { "$ref": "#/definitions/res-tls" },
+        "jls-config": { "$ref": "#/definitions/jls-config" }
+      },
+      "allOf": [
+        {
+          "not": {
+            "anyOf": [
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/shadow-tls-security-mode" },
+                  { "$ref": "#/definitions/restls-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/shadow-tls-security-mode" },
+                  { "$ref": "#/definitions/jls-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/restls-security-mode" },
+                  { "$ref": "#/definitions/jls-security-mode" }
+                ]
+              }
+            ]
+          }
+        }
+      ]
     }
   ]
 }
