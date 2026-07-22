@@ -868,6 +868,21 @@ proxies: # socks5
       username: jls-user
       password: jls-password
 
+  - name: "vmess-restls"
+    type: vmess
+    server: example.com
+    port: 443
+    uuid: 8f3fca8e-d381-402c-8fdf-71f461a0170e
+    alterId: 0
+    cipher: auto
+    network: tcp
+    tls: true
+    servername: example.com
+    restls-opts:
+      password: restls-password
+      version-hint: tls13
+      restls-script: "250?100<1,350~100<1,600~100,300~200,300~100"
+
   # vless
   - name: "vless-tcp"
     type: vless
@@ -2126,6 +2141,20 @@ listeners:
           password: shadow-tls-password
       handshake:
         dest: example.com:443
+
+  - name: vmess-restls-in
+    type: vmess
+    port: 10835
+    listen: 0.0.0.0
+    users:
+      - uuid: 9d0cb9d0-964f-4ef6-897d-6c6b3ccf9e68
+    res-tls:
+      enable: true
+      dest: example.com:443
+      password: restls-password
+      restls-script: "250?100<1,350~100<1,600~100,300~200,300~100"
+      min-record-len: 1
+      proxy: DIRECT
 
   - name: vless-jls-in
     type: vless

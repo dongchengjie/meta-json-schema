@@ -9,6 +9,7 @@
     "base-option": { "$ref": "./base.json" },
     "mux-option": { "$ref": "./mux.json" },
     "shadow-tls": { "$ref": "./shadowtls.json" },
+    "res-tls": { "$ref": "./restls.json" },
     "vmess-user": {
       "type": "object",
       "title": "vmess用户",
@@ -44,6 +45,12 @@
       "required": ["shadow-tls"],
       "properties": {
         "shadow-tls": { "required": ["enable"], "properties": { "enable": { "const": true } } }
+      }
+    },
+    "restls-security-mode": {
+      "required": ["res-tls"],
+      "properties": {
+        "res-tls": { "required": ["enable"], "properties": { "enable": { "const": true } } }
       }
     },
     "jls-security-mode": {
@@ -91,6 +98,7 @@
         "client-auth-cert": { "$ref": "#/definitions/tls/properties/client-auth-cert" },
         "ech-key": { "$ref": "#/definitions/tls/properties/ech-key" },
         "shadow-tls": { "$ref": "#/definitions/shadow-tls" },
+        "res-tls": { "$ref": "#/definitions/res-tls" },
         "jls-config": { "$ref": "#/definitions/jls-config" },
         "reality-config": { "title": "reality配置", "$ref": "#/definitions/reality-config" },
         "tlsmirror-config": { "$ref": "#/definitions/tlsmirror-config" },
@@ -107,6 +115,12 @@
                 "allOf": [
                   { "$ref": "#/definitions/certificate-security-mode" },
                   { "$ref": "#/definitions/shadow-tls-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/certificate-security-mode" },
+                  { "$ref": "#/definitions/restls-security-mode" }
                 ]
               },
               {
@@ -130,6 +144,12 @@
               {
                 "allOf": [
                   { "$ref": "#/definitions/shadow-tls-security-mode" },
+                  { "$ref": "#/definitions/restls-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/shadow-tls-security-mode" },
                   { "$ref": "#/definitions/jls-security-mode" }
                 ]
               },
@@ -142,6 +162,24 @@
               {
                 "allOf": [
                   { "$ref": "#/definitions/shadow-tls-security-mode" },
+                  { "$ref": "#/definitions/tlsmirror-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/restls-security-mode" },
+                  { "$ref": "#/definitions/jls-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/restls-security-mode" },
+                  { "$ref": "#/definitions/reality-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/restls-security-mode" },
                   { "$ref": "#/definitions/tlsmirror-security-mode" }
                 ]
               },
@@ -170,6 +208,7 @@
           "if": {
             "anyOf": [
               { "$ref": "#/definitions/shadow-tls-security-mode" },
+              { "$ref": "#/definitions/restls-security-mode" },
               { "$ref": "#/definitions/jls-security-mode" }
             ]
           },

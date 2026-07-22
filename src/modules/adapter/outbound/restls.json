@@ -1,0 +1,45 @@
+{
+  "type": "object",
+  "title": "Restls配置",
+  "definitions": {
+    "compatible": { "$ref": "../../../definitions/compatible.json" },
+    "security-mode": {
+      "required": ["version-hint"],
+      "properties": { "version-hint": { "pattern": "^[tT][lL][sS]1[23]$" } }
+    },
+    "inactive-options": {
+      "not": {
+        "anyOf": [
+          { "required": ["password"], "properties": { "password": { "not": { "const": "" } } } },
+          { "required": ["version-hint"], "properties": { "version-hint": { "minLength": 1 } } },
+          {
+            "required": ["restls-script"],
+            "properties": { "restls-script": { "not": { "const": "" } } }
+          }
+        ]
+      }
+    }
+  },
+  "properties": {
+    "password": {
+      "$ref": "#/definitions/compatible/string",
+      "title": "密码",
+      "description": "Restls认证密码",
+      "markdownDescription": "`Restls`认证密码"
+    },
+    "version-hint": {
+      "type": "string",
+      "anyOf": [{ "const": "" }, { "pattern": "^[tT][lL][sS]1[23]$" }],
+      "title": "TLS版本提示",
+      "description": "TLS版本提示，支持tls12或tls13（大小写不敏感）",
+      "markdownDescription": "`TLS`版本提示，支持`tls12`或`tls13`（大小写不敏感）"
+    },
+    "restls-script": {
+      "$ref": "#/definitions/compatible/string",
+      "title": "Restls脚本",
+      "description": "Restls脚本隐藏代理流量行为",
+      "markdownDescription": "[Restls脚本隐藏代理流量行为](https://github.com/3andne/restls/blob/main/Restls-Script%3A%20Hide%20Your%20Proxy%20Traffic%20Behavior.md)"
+    }
+  },
+  "anyOf": [{ "$ref": "#/definitions/inactive-options" }, { "$ref": "#/definitions/security-mode" }]
+}

@@ -9,6 +9,7 @@
     "base-option": { "$ref": "./base.json" },
     "mux-option": { "$ref": "./mux.json" },
     "shadow-tls": { "$ref": "./shadowtls.json" },
+    "res-tls": { "$ref": "./restls.json" },
     "trojan-user": {
       "type": "object",
       "title": "trojan用户",
@@ -60,6 +61,12 @@
       "required": ["shadow-tls"],
       "properties": {
         "shadow-tls": { "required": ["enable"], "properties": { "enable": { "const": true } } }
+      }
+    },
+    "restls-security-mode": {
+      "required": ["res-tls"],
+      "properties": {
+        "res-tls": { "required": ["enable"], "properties": { "enable": { "const": true } } }
       }
     },
     "jls-security-mode": {
@@ -116,6 +123,7 @@
           "default": false
         },
         "shadow-tls": { "$ref": "#/definitions/shadow-tls" },
+        "res-tls": { "$ref": "#/definitions/res-tls" },
         "jls-config": { "$ref": "#/definitions/jls-config" },
         "reality-config": { "title": "reality配置", "$ref": "#/definitions/reality-config" },
         "mux-option": { "title": "多路复用配置", "$ref": "#/definitions/mux-option" },
@@ -134,6 +142,12 @@
               {
                 "allOf": [
                   { "$ref": "#/definitions/certificate-security-mode" },
+                  { "$ref": "#/definitions/restls-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/certificate-security-mode" },
                   { "$ref": "#/definitions/jls-security-mode" }
                 ]
               },
@@ -146,12 +160,30 @@
               {
                 "allOf": [
                   { "$ref": "#/definitions/shadow-tls-security-mode" },
+                  { "$ref": "#/definitions/restls-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/shadow-tls-security-mode" },
                   { "$ref": "#/definitions/jls-security-mode" }
                 ]
               },
               {
                 "allOf": [
                   { "$ref": "#/definitions/shadow-tls-security-mode" },
+                  { "$ref": "#/definitions/reality-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/restls-security-mode" },
+                  { "$ref": "#/definitions/jls-security-mode" }
+                ]
+              },
+              {
+                "allOf": [
+                  { "$ref": "#/definitions/restls-security-mode" },
                   { "$ref": "#/definitions/reality-security-mode" }
                 ]
               },
@@ -168,6 +200,7 @@
       "anyOf": [
         { "$ref": "#/definitions/certificate-security-mode" },
         { "$ref": "#/definitions/shadow-tls-security-mode" },
+        { "$ref": "#/definitions/restls-security-mode" },
         { "$ref": "#/definitions/jls-security-mode" },
         { "$ref": "#/definitions/reality-security-mode" },
         { "$ref": "#/definitions/ss-security-mode" },

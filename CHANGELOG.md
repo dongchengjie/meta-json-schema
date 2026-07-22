@@ -10,6 +10,7 @@
 - 新增: shadowsocks 出站插件和 listener 支持 JLS
 - 新增: vmess、vless、trojan 出站和 listener 支持 JLS，vless xhttp `download-settings` 可独立覆写 `jls-opts`
 - 新增: vmess、vless、trojan 出站和 listener 支持 ShadowTLS
+- 新增: vmess、vless、trojan 出站和 listener 支持 Restls
 - 新增: anytls 出站和 listener 支持 JLS
 - 新增: anytls 出站和 listener 支持 ShadowTLS
 - 调整: anytls listener 允许使用 JLS 或 `allow-insecure` 替代证书，并禁止 JLS 与证书配置同时使用
