@@ -1500,6 +1500,9 @@ proxies: # socks5
     handshake-timeout: 30 # 单位为秒，0 不设置额外握手超时，受外层上下文控制
     mtu: 1500
     udp: true
+    ip-stack:
+      mode: auto
+      congestion-controller: cubic
     # 一个出站代理的标识。当值不为空时，将使用指定的 proxy 发出连接
     dialer-proxy: "ss1"
     remote-dns-resolve: true # 强制 dns 远程解析，默认值为 false

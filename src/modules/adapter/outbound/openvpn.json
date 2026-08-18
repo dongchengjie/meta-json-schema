@@ -33,6 +33,7 @@
       "properties": { "tls-crypt-v2": { "$ref": "#/definitions/non-whitespace-value" } }
     },
     "basic-option": { "$ref": "./base.json#/definitions/basic-option" },
+    "ip-stack": { "$ref": "./ip-stack.json" },
     "smux": { "$ref": "./singmux.json" }
   },
   "allOf": [
@@ -215,6 +216,7 @@
           "markdownDescription": "启用`UDP`",
           "default": true
         },
+        "ip-stack": { "$ref": "#/definitions/ip-stack" },
         "remote-dns-resolve": {
           "$ref": "#/definitions/compatible/boolean",
           "title": "强制DNS远程解析",
