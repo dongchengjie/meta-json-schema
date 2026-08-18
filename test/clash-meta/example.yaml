@@ -1339,6 +1339,9 @@ proxies: # socks5
     pre-shared-key: 31aIhAPwktDGpH4JDhA8GNvjFXEf/a6+UaQRyOAiyfM=
     private-key: eCtXsJZ27+4PbhDkHnB923tkUn2Gj59wZw5wFA75MnU=
     udp: true
+    ip-stack:
+      mode: auto
+      congestion-controller: cubic
     # reserved: "U4An"
     # 数组格式也是合法的
     reserved: [209, 98, 59]

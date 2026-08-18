@@ -6,6 +6,7 @@
     "types": { "$ref": "../../../definitions/types.json" },
     "patterns": { "$ref": "../../../definitions/patterns.json" },
     "basic-option": { "$ref": "./base.json#/definitions/basic-option" },
+    "ip-stack": { "$ref": "./ip-stack.json" },
     "smux": { "$ref": "./singmux.json" },
     "amnezia-wg-option": {
       "type": "object",
@@ -306,6 +307,7 @@
           "description": "单位:s",
           "markdownDescription": "单位:s"
         },
+        "ip-stack": { "$ref": "#/definitions/ip-stack" },
         "amnezia-wg-option": { "$ref": "#/definitions/amnezia-wg-option" },
         "peers": {
           "type": "array",
