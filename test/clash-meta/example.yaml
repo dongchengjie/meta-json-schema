@@ -1427,6 +1427,9 @@ proxies: # socks5
     network: "0123456789abcdef"
     planet: ./planet
     mtu: 1400
+    ip-stack:
+      mode: auto
+      congestion-controller: cubic
     udp: true
     remote-dns-resolve: true
     dns: [10.147.17.1]

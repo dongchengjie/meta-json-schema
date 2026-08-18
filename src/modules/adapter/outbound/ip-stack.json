@@ -1,0 +1,26 @@
+{
+  "type": "object",
+  "title": "ip-stack配置",
+  "properties": {
+    "mode": {
+      "enum": ["auto", "gvisor", "mips"],
+      "markdownEnumDescriptions": [
+        "编译包含 gVisor 时使用 gVisor，否则使用 Mihomo IP 栈",
+        "gVisor 用户态协议栈",
+        "Mihomo IP 栈"
+      ],
+      "title": "协议栈模式",
+      "description": "用户态 IP 协议栈；auto 在编译包含 gVisor 时使用 gVisor，否则使用 Mihomo IP 栈",
+      "markdownDescription": "用户态 IP 协议栈；`auto` 在编译包含 `gVisor` 时使用 `gVisor`，否则使用 Mihomo IP 栈",
+      "default": "auto"
+    },
+    "congestion-controller": {
+      "enum": ["cubic", "reno", "bbr"],
+      "markdownEnumDescriptions": ["CUBIC算法", "Reno算法", "BBR算法"],
+      "title": "TCP拥塞控制算法",
+      "description": "仅 Mihomo IP 栈生效，gVisor 会忽略该配置",
+      "markdownDescription": "仅 Mihomo IP 栈生效，`gVisor` 会忽略该配置",
+      "default": "cubic"
+    }
+  }
+}

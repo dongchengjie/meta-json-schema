@@ -5,6 +5,7 @@
     "compatible": { "$ref": "../../../definitions/compatible.json" },
     "types": { "$ref": "../../../definitions/types.json" },
     "basic-option": { "$ref": "./base.json#/definitions/basic-option" },
+    "ip-stack": { "$ref": "./ip-stack.json" },
     "smux": { "$ref": "./singmux.json" }
   },
   "allOf": [
@@ -50,6 +51,7 @@
           "description": "可选本地 MTU 覆盖，范围 1280-10000，且不能超过控制器 MTU",
           "markdownDescription": "可选本地 MTU 覆盖，范围 1280-10000，且不能超过控制器 MTU"
         },
+        "ip-stack": { "$ref": "#/definitions/ip-stack" },
         "physical-mtu": {
           "$ref": "#/definitions/compatible/integer",
           "title": "物理路径 MTU",
