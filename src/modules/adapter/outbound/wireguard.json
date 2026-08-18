@@ -179,6 +179,18 @@
           "title": "最大握手次数（AmneziaWG v3+）",
           "description": "最大握手尝试次数",
           "markdownDescription": "最大握手尝试次数"
+        },
+        "random-trailers": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "随机尾部填充（AmneziaWG v3.1+）",
+          "description": "在数据包后附加随机尾部",
+          "markdownDescription": "在数据包后附加随机尾部"
+        },
+        "disable-cookies": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "禁用Cookie（AmneziaWG v3.1+）",
+          "description": "禁用Cookie握手保护",
+          "markdownDescription": "禁用Cookie握手保护"
         }
       }
     },
