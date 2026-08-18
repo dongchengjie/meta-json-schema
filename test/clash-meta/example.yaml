@@ -1691,6 +1691,7 @@ proxies: # socks5
     port: 443
     password: "<your password>"
     sni: example.com
+    client-metadata: mihomo
     disable-reuse: false
     jls-opts:
       username: jls-user

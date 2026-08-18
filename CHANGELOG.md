@@ -9,6 +9,7 @@
 - 新增: wireguard `amnezia-wg-option` 新增配置项 `version`、`header-protection-key`、`content-padding-addition`、`rekey-after-time`、`rekey-timeout`、`reject-after-time`、`keepalive-timeout` 和 `max-handshake-attempts`，支持 AmneziaWG v3
 - 新增: proxy 新增 `zerotier` 协议
 - 新增: zerotier、wireguard、masque、openvpn 出站新增配置项 `ip-stack`，支持选择用户态 IP 协议栈；`congestion-controller` 支持 `cubic`、`reno`、`bbr`、`bbr3`
+- 新增: anytls 出站新增配置项 `client-metadata`，支持自定义发送给服务端的客户端标识
 
 ---
 

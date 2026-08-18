@@ -120,6 +120,12 @@
           "description": "启用UDP",
           "markdownDescription": "启用`UDP`"
         },
+        "client-metadata": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "客户端元数据",
+          "description": "发送给服务端的客户端标识；省略时不发送",
+          "markdownDescription": "发送给服务端的客户端标识；省略时不发送"
+        },
         "idle-session-check-interval": {
           "$ref": "#/definitions/compatible/integer",
           "title": "空闲会话检测间隔",
