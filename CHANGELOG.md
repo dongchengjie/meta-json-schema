@@ -5,13 +5,17 @@
 - 新增: hysteria2 出站新增配置项 `handshake-timeout`，支持独立控制握手超时
 - 新增: listener Restls 新增配置项 `rate-limit`，支持限制回落连接双向转发速率
 - 移除: listener shadowquic `jls-upstream` 弃用配置项 `quic-version-probe`
-- 调整: Clash 风格域名通配仅允许完整标签 `*`，以及仅出现在首标签的 `+`
 - 新增: wireguard `amnezia-wg-option` 新增配置项 `version`、`header-protection-key`、`content-padding-addition`、`rekey-after-time`、`rekey-timeout`、`reject-after-time`、`keepalive-timeout`、`max-handshake-attempts`、`random-trailers` 和 `disable-cookies`，支持 AmneziaWG v3 / v3.1
 - 新增: proxy 新增 `zerotier` 协议
 - 新增: zerotier、wireguard、masque、openvpn 出站新增配置项 `ip-stack`，支持选择用户态 IP 协议栈；`congestion-controller` 支持 `cubic`、`reno`、`bbr`、`bbr3`
 - 新增: anytls 出站新增配置项 `client-metadata`，支持自定义发送给服务端的客户端标识
 - 调整: openvpn `peer-info` 允许用 `IV_VER` 覆盖内置版本标识
 - 新增: openvpn 出站新增配置项 `tran-window`，支持控制 rekey 后旧数据密钥的保留时间
+
+### Bug Fixes
+
+- 调整: Clash 风格域名通配仅允许完整标签 `*`，以及仅出现在首标签的 `+`
+- 修复: 按 AmneziaWG 实现重写 wireguard 各配置项描述
 
 ---
 

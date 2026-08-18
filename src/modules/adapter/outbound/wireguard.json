@@ -15,182 +15,187 @@
         "version": {
           "$ref": "#/definitions/compatible/integer",
           "title": "AmneziaWG 实现版本",
-          "description": "仅 version 为 3 时使用 v3 实现，其余值使用旧实现",
-          "markdownDescription": "仅 `version` 为 `3` 时使用 v3 实现，其余值使用旧实现"
+          "description": "仅 3 使用 v3 实现，其余值默认使用旧实现",
+          "markdownDescription": "仅 `3` 使用 v3 实现，其余值默认使用旧实现"
         },
         "jc": {
           "$ref": "#/definitions/compatible/integer",
-          "title": "垃圾包数量",
-          "description": "在握手前发送的随机垃圾包数量，用于增加流量混淆",
-          "markdownDescription": "在握手前发送的随机垃圾包数量，用于增加流量混淆"
+          "title": "握手前垃圾包数量",
+          "description": "每次握手前额外发送的独立随机包个数，不含有效载荷",
+          "markdownDescription": "每次握手前额外发送的独立随机包个数，不含有效载荷"
         },
         "jmin": {
           "$ref": "#/definitions/compatible/integer",
-          "title": "垃圾包的最小字节大小",
-          "description": "单个垃圾包的最小长度，最大值建议不超过 1280 字节",
-          "markdownDescription": "单个垃圾包的最小长度，最大值建议不超过 1280 字节"
+          "title": "垃圾包最小长度",
+          "description": "单位:字节，与 jmax 组成单个垃圾包的随机长度区间",
+          "markdownDescription": "单位:`字节`，与 `jmax` 组成单个垃圾包的随机长度区间"
         },
         "jmax": {
           "$ref": "#/definitions/compatible/integer",
-          "title": "垃圾包的最大字节大小",
-          "description": "单个垃圾包的最大长度，最大值建议不超过 1280 字节",
-          "markdownDescription": "单个垃圾包的最大长度，最大值建议不超过 1280 字节"
+          "title": "垃圾包最大长度",
+          "description": "单位:字节，应不小于 jmin；超过系统 MTU 会被分片",
+          "markdownDescription": "单位:`字节`，应不小于 `jmin`；超过系统 `MTU` 会被分片"
         },
         "s1": {
           "$ref": "#/definitions/compatible/integer",
-          "title": "初始化握手包填充字节数",
-          "description": "设置初始化握手数据包中插入的随机填充数据长度（Junk Size）",
-          "markdownDescription": "设置初始化握手数据包中插入的随机填充数据长度（Junk Size）"
+          "title": "握手初始化包前缀填充",
+          "description": "单位:字节，加在 Handshake Initiation 报文之前的随机填充长度",
+          "markdownDescription": "单位:`字节`，加在 Handshake Initiation 报文之前的随机填充长度"
         },
         "s2": {
           "$ref": "#/definitions/compatible/integer",
-          "title": "握手响应包填充字节数",
-          "description": "设置握手响应数据包中插入的随机填充数据长度",
-          "markdownDescription": "设置握手响应数据包中插入的随机填充数据长度"
+          "title": "握手响应包前缀填充",
+          "description": "单位:字节，加在 Handshake Response 报文之前的随机填充长度",
+          "markdownDescription": "单位:`字节`，加在 Handshake Response 报文之前的随机填充长度"
         },
         "s3": {
           "$ref": "#/definitions/compatible/integer",
-          "title": "Cookie Reply 包填充字节数",
-          "description": "设置 Cookie Reply 数据包中插入的随机填充数据长度",
-          "markdownDescription": "设置 Cookie Reply 数据包中插入的随机填充数据长度"
+          "title": "Cookie 应答包前缀填充（AmneziaWG v1.5+）",
+          "description": "单位:字节，加在 Cookie Reply 报文之前的随机填充长度",
+          "markdownDescription": "单位:`字节`，加在 Cookie Reply 报文之前的随机填充长度"
         },
         "s4": {
           "$ref": "#/definitions/compatible/integer",
-          "title": "普通传输包填充字节数",
-          "description": "设置普通传输数据包中插入的随机填充数据长度",
-          "markdownDescription": "设置普通传输数据包中插入的随机填充数据长度"
+          "title": "传输包前缀填充（AmneziaWG v1.5+）",
+          "description": "单位:字节，加在 Transport 报文之前的随机填充长度",
+          "markdownDescription": "单位:`字节`，加在 Transport 报文之前的随机填充长度"
         },
         "h1": {
           "$ref": "#/definitions/compatible/string",
-          "title": "初始化握手包 Magic Header（v1.0/v1.5 仅支持单值，v2+ 还支持范围）",
-          "description": "指定初始化握手包的 Magic Header 内容，作为包体前缀插入，用于混淆协议特征",
-          "markdownDescription": "指定初始化握手包的 Magic Header 内容，作为包体前缀插入，用于混淆协议特征"
+          "title": "握手初始化包类型字段（v1.0/v1.5 仅单值，v2+ 还支持范围）",
+          "description": "覆盖报文开头 4 字节小端类型字段，可写单值或 min-max；四个 h 值不能重叠",
+          "markdownDescription": "覆盖报文开头 4 字节小端类型字段，可写单值或 `min-max`；四个 `h` 值不能重叠"
         },
         "h2": {
           "$ref": "#/definitions/compatible/string",
-          "title": "握手响应包 Magic Header（v1.0/v1.5 仅支持单值，v2+ 还支持范围）",
-          "description": "指定握手响应包的 Magic Header 内容，作为包体前缀插入，用于混淆协议特征",
-          "markdownDescription": "指定握手响应包的 Magic Header 内容，作为包体前缀插入，用于混淆协议特征"
+          "title": "握手响应包类型字段（v1.0/v1.5 仅单值，v2+ 还支持范围）",
+          "description": "覆盖 Handshake Response 的类型字段，可写单值或 min-max；四个 h 值不能重叠",
+          "markdownDescription": "覆盖 Handshake Response 的类型字段，可写单值或 `min-max`；四个 `h` 值不能重叠"
         },
         "h3": {
           "$ref": "#/definitions/compatible/string",
-          "title": "Underload 包 Magic Header（v1.0/v1.5 仅支持单值，v2+ 还支持范围）",
-          "description": "指定 Underload 包的 Magic Header 内容，用于协议混淆",
-          "markdownDescription": "指定 Underload 包的 Magic Header 内容，用于协议混淆"
+          "title": "Cookie 应答包类型字段（v1.0/v1.5 仅单值，v2+ 还支持范围）",
+          "description": "覆盖 Cookie Reply 的类型字段，可写单值或 min-max；四个 h 值不能重叠",
+          "markdownDescription": "覆盖 Cookie Reply 的类型字段，可写单值或 `min-max`；四个 `h` 值不能重叠"
         },
         "h4": {
           "$ref": "#/definitions/compatible/string",
-          "title": "普通传输包 Magic Header（v1.0/v1.5 仅支持单值，v2+ 还支持范围）",
-          "description": "指定普通传输包的 Magic Header 内容，作为包体前缀插入，进一步防止流量被特征识别",
-          "markdownDescription": "指定普通传输包的 Magic Header 内容，作为包体前缀插入，进一步防止流量被特征识别"
+          "title": "传输包类型字段（v1.0/v1.5 仅单值，v2+ 还支持范围）",
+          "description": "覆盖 Transport 的类型字段，可写单值或 min-max；四个 h 值不能重叠",
+          "markdownDescription": "覆盖 Transport 的类型字段，可写单值或 `min-max`；四个 `h` 值不能重叠"
         },
         "i1": {
           "$ref": "#/definitions/compatible/string",
-          "title": "特殊 Junk 字段1",
-          "description": "用于在数据包中插入自定义的特殊 Junk 数据段，用于协议混淆与增强抗检测能力",
-          "markdownDescription": "用于在数据包中插入自定义的特殊 Junk 数据段，用于协议混淆与增强抗检测能力"
+          "title": "自定义特征包 I1（AmneziaWG v1.5+）",
+          "description": "握手前按 I1 到 I5 顺序单独发送的标签序列包，空值跳过；旧实现首次发送后还按 itime 周期重发",
+          "markdownDescription": "握手前按 `I1` 到 `I5` 顺序单独发送的标签序列包，空值跳过；旧实现首次发送后还按 `itime` 周期重发"
         },
         "i2": {
           "$ref": "#/definitions/compatible/string",
-          "title": "特殊 Junk 字段2",
-          "description": "同上，用于插入第二段特殊 Junk 数据",
-          "markdownDescription": "同上，用于插入第二段特殊 Junk 数据"
+          "title": "自定义特征包 I2（AmneziaWG v1.5+）",
+          "description": "握手前发送的第 2 个标签序列包，空值跳过",
+          "markdownDescription": "握手前发送的第 2 个标签序列包，空值跳过"
         },
         "i3": {
           "$ref": "#/definitions/compatible/string",
-          "title": "特殊 Junk 字段3",
-          "description": "同上，用于插入第三段特殊 Junk 数据",
-          "markdownDescription": "同上，用于插入第三段特殊 Junk 数据"
+          "title": "自定义特征包 I3（AmneziaWG v1.5+）",
+          "description": "握手前发送的第 3 个标签序列包，空值跳过",
+          "markdownDescription": "握手前发送的第 3 个标签序列包，空值跳过"
         },
         "i4": {
           "$ref": "#/definitions/compatible/string",
-          "title": "特殊 Junk 字段4",
-          "description": "同上，用于插入第四段特殊 Junk 数据",
-          "markdownDescription": "同上，用于插入第四段特殊 Junk 数据"
+          "title": "自定义特征包 I4（AmneziaWG v1.5+）",
+          "description": "握手前发送的第 4 个标签序列包，空值跳过",
+          "markdownDescription": "握手前发送的第 4 个标签序列包，空值跳过"
         },
         "i5": {
           "$ref": "#/definitions/compatible/string",
-          "title": "特殊 Junk 字段5",
-          "description": "同上，用于插入第五段特殊 Junk 数据",
-          "markdownDescription": "同上，用于插入第五段特殊 Junk 数据"
+          "title": "自定义特征包 I5（AmneziaWG v1.5+）",
+          "description": "握手前发送的第 5 个标签序列包，空值跳过",
+          "markdownDescription": "握手前发送的第 5 个标签序列包，空值跳过"
         },
         "j1": {
           "$ref": "#/definitions/compatible/string",
-          "title": "受控 Junk 字段1",
-          "description": "受控 Junk 字段，按需插入特定 Junk 数据，增强协议多样性（AmneziaWG v1.5特有，v2+ 已被移除）",
-          "markdownDescription": "受控 Junk 字段，按需插入特定 Junk 数据，增强协议多样性（AmneziaWG v1.5特有，v2+ 已被移除）"
+          "title": "受控特征包 J1（AmneziaWG v1.5，v2+ 已移除）",
+          "description": "本轮未发送 I1-I5 时，每次握手前按 J1 到 J3 顺序发送的标签序列包",
+          "markdownDescription": "本轮未发送 `I1`-`I5` 时，每次握手前按 `J1` 到 `J3` 顺序发送的标签序列包"
         },
         "j2": {
           "$ref": "#/definitions/compatible/string",
-          "title": "受控 Junk 字段2",
-          "description": "同上，第二段受控 Junk 字段",
-          "markdownDescription": "同上，第二段受控 Junk 字段"
+          "title": "受控特征包 J2（AmneziaWG v1.5，v2+ 已移除）",
+          "description": "本轮未发送 I1-I5 时发送的第 2 个受控标签序列包",
+          "markdownDescription": "本轮未发送 `I1`-`I5` 时发送的第 2 个受控标签序列包"
         },
         "j3": {
           "$ref": "#/definitions/compatible/string",
-          "title": "受控 Junk 字段3",
-          "description": "同上，第三段受控 Junk 字段",
-          "markdownDescription": "同上，第三段受控 Junk 字段"
+          "title": "受控特征包 J3（AmneziaWG v1.5，v2+ 已移除）",
+          "description": "本轮未发送 I1-I5 时发送的第 3 个受控标签序列包",
+          "markdownDescription": "本轮未发送 `I1`-`I5` 时发送的第 3 个受控标签序列包"
         },
         "itime": {
           "$ref": "#/definitions/compatible/integer",
-          "title": "特殊握手超时时间（AmneziaWG v1.5特有，v2+ 已被移除）",
-          "description": "单位:s",
-          "markdownDescription": "单位:s"
+          "title": "特征包重发间隔（AmneziaWG v1.5，v2+ 已移除）",
+          "description": "单位:s，首次握手发送 I1-I5 后，间隔到期才再次发送这组特征包",
+          "markdownDescription": "单位:`s`，首次握手发送 `I1`-`I5` 后，间隔到期才再次发送这组特征包"
         },
         "header-protection-key": {
           "$ref": "#/definitions/compatible/string",
           "title": "包头保护密钥（AmneziaWG v3+）",
-          "description": "Base64编码",
-          "markdownDescription": "`Base64`编码"
+          "description": "Base64 编码的 32 字节密钥，用 s1-s4 前 12 字节作 nonce 加密报文头；启用时 s1-s4 均须至少为 12",
+          "markdownDescription": "`Base64` 编码的 32 字节密钥，用 `s1`-`s4` 前 12 字节作 nonce 加密报文头；启用时 `s1`-`s4` 均须至少为 `12`"
         },
         "content-padding-addition": {
           "$ref": "#/definitions/compatible/string",
-          "title": "内容填充增量（AmneziaWG v3+）",
-          "description": "支持固定值或范围",
-          "markdownDescription": "支持固定值或范围"
+          "title": "传输内容附加填充（AmneziaWG v3+）",
+          "description": "单位:字节，自定义传输明文填充长度，替代默认的 16 字节对齐；可写单值或 min-max",
+          "markdownDescription": "单位:`字节`，自定义传输明文填充长度，替代默认的 16 字节对齐；可写单值或 `min-max`"
         },
         "rekey-after-time": {
           "$ref": "#/definitions/compatible/string",
           "title": "重协商间隔（AmneziaWG v3+）",
-          "description": "单位:s",
-          "markdownDescription": "单位:s"
+          "description": "单位:s，当前密钥建立后多久发起新握手；可写单值或范围",
+          "markdownDescription": "单位:`s`，当前密钥建立后多久发起新握手；可写单值或范围",
+          "default": "120"
         },
         "rekey-timeout": {
           "$ref": "#/definitions/compatible/string",
-          "title": "重协商超时（AmneziaWG v3+）",
-          "description": "单位:s",
-          "markdownDescription": "单位:s"
+          "title": "握手重试间隔（AmneziaWG v3+）",
+          "description": "单位:s，握手失败后等待多久再试；可写单值或范围",
+          "markdownDescription": "单位:`s`，握手失败后等待多久再试；可写单值或范围",
+          "default": "5"
         },
         "reject-after-time": {
           "$ref": "#/definitions/compatible/string",
-          "title": "拒绝旧密钥时限（AmneziaWG v3+）",
-          "description": "单位:s",
-          "markdownDescription": "单位:s"
+          "title": "旧密钥拒绝时限（AmneziaWG v3+）",
+          "description": "单位:s，超过后拒绝继续使用旧密钥并强制新握手；可写单值或范围",
+          "markdownDescription": "单位:`s`，超过后拒绝继续使用旧密钥并强制新握手；可写单值或范围",
+          "default": "180"
         },
         "keepalive-timeout": {
           "$ref": "#/definitions/compatible/string",
-          "title": "保活超时（AmneziaWG v3+）",
-          "description": "单位:s",
-          "markdownDescription": "单位:s"
+          "title": "空闲保活超时（AmneziaWG v3+）",
+          "description": "单位:s，距上次数据超过该时间后发送空闲保活，不是 persistent-keepalive；可写单值或范围",
+          "markdownDescription": "单位:`s`，距上次数据超过该时间后发送空闲保活，不是 `persistent-keepalive`；可写单值或范围",
+          "default": "10"
         },
         "max-handshake-attempts": {
           "$ref": "#/definitions/compatible/string",
-          "title": "最大握手次数（AmneziaWG v3+）",
-          "description": "最大握手尝试次数",
-          "markdownDescription": "最大握手尝试次数"
+          "title": "最大握手重试次数（AmneziaWG v3+）",
+          "description": "连续握手失败多少次后停止重试；可写单值或范围",
+          "markdownDescription": "连续握手失败多少次后停止重试；可写单值或范围",
+          "default": "18"
         },
         "random-trailers": {
           "$ref": "#/definitions/compatible/boolean",
           "title": "随机尾部填充（AmneziaWG v3.1+）",
-          "description": "在数据包后附加随机尾部",
-          "markdownDescription": "在数据包后附加随机尾部"
+          "description": "在报文后追加随机长度尾部以打散包长；配置了 content-padding-addition 时传输包改走该填充",
+          "markdownDescription": "在报文后追加随机长度尾部以打散包长；配置了 `content-padding-addition` 时传输包改走该填充"
         },
         "disable-cookies": {
           "$ref": "#/definitions/compatible/boolean",
-          "title": "禁用Cookie（AmneziaWG v3.1+）",
-          "description": "禁用Cookie握手保护",
-          "markdownDescription": "禁用Cookie握手保护"
+          "title": "禁用 Cookie 应答（AmneziaWG v3.1+）",
+          "description": "关闭过载时的 Cookie Reply，收到被拒绝的握手后不再回送 Cookie",
+          "markdownDescription": "关闭过载时的 Cookie Reply，收到被拒绝的握手后不再回送 Cookie"
         }
       }
     },
@@ -212,27 +217,27 @@
         },
         "public-key": {
           "$ref": "#/definitions/compatible/string",
-          "title": "公钥",
-          "description": "公钥",
-          "markdownDescription": "公钥"
+          "title": "对端公钥",
+          "description": "对端 WireGuard 公钥，Base64 编码",
+          "markdownDescription": "对端 WireGuard 公钥，`Base64` 编码"
         },
         "pre-shared-key": {
           "$ref": "#/definitions/compatible/string",
           "title": "预共享密钥",
-          "description": "预共享密钥",
-          "markdownDescription": "预共享密钥"
+          "description": "与对端相同的可选对称密钥，Base64 编码",
+          "markdownDescription": "与对端相同的可选对称密钥，`Base64` 编码"
         },
         "reserved": {
           "type": "array",
-          "title": "保留字段值",
-          "description": "部分WARP节点需要使用",
-          "markdownDescription": "部分`WARP`节点需要使用"
+          "title": "报文头保留字节",
+          "description": "写入 WireGuard 报文头第 2-4 字节的 3 个字节，部分 WARP 节点要求指定；启用 AmneziaWG 时不会改写该字段",
+          "markdownDescription": "写入 WireGuard 报文头第 2-4 字节的 3 个字节，部分 `WARP` 节点要求指定；启用 AmneziaWG 时不会改写该字段"
         },
         "allowed-ips": {
           "$ref": "#/definitions/types/ipCIDRArray",
-          "title": "允许进行流量转发的IP段",
-          "description": "允许进行流量转发的IP段",
-          "markdownDescription": "允许进行流量转发的IP段"
+          "title": "交给该对端的目的网段",
+          "description": "匹配这些前缀的流量发往该 peer；配置 peers 时每项都不能为空，未配置 peers 时由本地 ip/ipv6 自动设为 0.0.0.0/0 和/或 ::/0",
+          "markdownDescription": "匹配这些前缀的流量发往该 peer；配置 `peers` 时每项都不能为空，未配置 `peers` 时由本地 `ip`/`ipv6` 自动设为 `0.0.0.0/0` 和/或 `::/0`"
         }
       }
     }
@@ -290,21 +295,21 @@
         },
         "private-key": {
           "$ref": "#/definitions/compatible/string",
-          "title": "私钥",
-          "description": "私钥(Base64编码)",
-          "markdownDescription": "私钥(`Base64`编码)"
+          "title": "本端私钥",
+          "description": "本端 WireGuard 私钥，Base64 编码；只能写在顶层",
+          "markdownDescription": "本端 WireGuard 私钥，`Base64` 编码；只能写在顶层"
         },
         "workers": {
           "$ref": "#/definitions/compatible/integer",
-          "title": "工作线程",
-          "description": "工作线程(默认为CPU逻辑核心数)",
-          "markdownDescription": "工作线程(默认为CPU逻辑核心数)"
+          "title": "工作协程数",
+          "description": "加解密与握手工作协程数，默认为 CPU 逻辑核心数",
+          "markdownDescription": "加解密与握手工作协程数，默认为 CPU 逻辑核心数"
         },
         "mtu": {
           "$ref": "#/definitions/compatible/integer",
           "title": "最大传输单元",
-          "description": "最大传输单元",
-          "markdownDescription": "最大传输单元",
+          "description": "用户态协议栈 MTU",
+          "markdownDescription": "用户态协议栈 `MTU`",
           "default": 1408
         },
         "udp": {
@@ -316,36 +321,36 @@
         "persistent-keepalive": {
           "$ref": "#/definitions/compatible/integer",
           "title": "持久保活间隔",
-          "description": "单位:s",
-          "markdownDescription": "单位:s"
+          "description": "单位:s，按该间隔向对端发送空传输保活，默认不发送",
+          "markdownDescription": "单位:`s`，按该间隔向对端发送空传输保活，默认不发送"
         },
         "ip-stack": { "$ref": "#/definitions/ip-stack" },
         "amnezia-wg-option": { "$ref": "#/definitions/amnezia-wg-option" },
         "peers": {
           "type": "array",
-          "title": "peer配置",
-          "description": "peer配置",
-          "markdownDescription": "peer配置",
+          "title": "对端列表",
+          "description": "配置后顶层 server、port、public-key、pre-shared-key 不再用于建链；每项必须填写 allowed-ips，private-key 仍只能写在顶层",
+          "markdownDescription": "配置后顶层 `server`、`port`、`public-key`、`pre-shared-key` 不再用于建链；每项必须填写 `allowed-ips`，`private-key` 仍只能写在顶层",
           "items": { "$ref": "#/definitions/wireguard-peer-option" }
         },
         "remote-dns-resolve": {
           "$ref": "#/definitions/compatible/boolean",
           "title": "强制DNS远程解析",
-          "description": "强制DNS远程解析",
-          "markdownDescription": "强制DNS远程解析",
+          "description": "通过本隧道解析目标域名；还需填写非空 dns",
+          "markdownDescription": "通过本隧道解析目标域名；还需填写非空 `dns`",
           "default": false
         },
         "dns": {
           "$ref": "#/definitions/types/serverArray",
-          "title": "DNS解析服务器",
-          "description": "DNS解析服务器(要求启用remote-dns-resolve)",
-          "markdownDescription": "DNS解析服务器(要求启用`remote-dns-resolve`)"
+          "title": "隧道内 DNS 服务器",
+          "description": "仅在 remote-dns-resolve 为 true 且本列表非空时生效，查询走本隧道",
+          "markdownDescription": "仅在 `remote-dns-resolve` 为 `true` 且本列表非空时生效，查询走本隧道"
         },
         "refresh-server-ip-interval": {
           "$ref": "#/definitions/compatible/integer",
-          "title": "服务器IP刷新间隔",
-          "description": "单位:s",
-          "markdownDescription": "单位:s"
+          "title": "对端域名刷新间隔",
+          "description": "单位:s，重新解析 server 域名的间隔，默认仅首次连接时解析",
+          "markdownDescription": "单位:`s`，重新解析 `server` 域名的间隔，默认仅首次连接时解析"
         }
       },
       "if": { "not": { "properties": { "peers": { "type": "array" } } } },
