@@ -70,10 +70,15 @@
               "markdownDescription": "单位`bit/s`，`0`表示不限速"
             },
             "quic-version-probe": {
-              "type": "boolean",
-              "title": "探测QUIC版本",
-              "description": "首次连接时探测伪装上游版本",
-              "markdownDescription": "首次连接时探测伪装上游`QUIC`版本"
+              "allOf": [
+                {
+                  "type": "boolean",
+                  "title": "探测QUIC版本",
+                  "description": "首次连接时探测伪装上游版本",
+                  "markdownDescription": "首次连接时探测伪装上游`QUIC`版本"
+                },
+                { "deprecationMessage": "v1.19.30 已弃用(不再探测伪装上游QUIC版本)" }
+              ]
             }
           }
         },
@@ -86,8 +91,8 @@
         "quic-versions": {
           "$ref": "#/definitions/types/stringArray",
           "title": "QUIC版本列表",
-          "description": "支持 v1、v2（也可写 1、2 或对应 RFC 名称）",
-          "markdownDescription": "支持 `v1`、`v2`（也可写 `1`、`2` 或对应 `RFC` 名称）"
+          "description": "本机支持的 QUIC 版本，支持 v1、v2（也可写 1、2 或对应 RFC 名称）",
+          "markdownDescription": "本机支持的 `QUIC` 版本，支持 `v1`、`v2`（也可写 `1`、`2` 或对应 `RFC` 名称）"
         },
         "zero-rtt": {
           "type": "boolean",
