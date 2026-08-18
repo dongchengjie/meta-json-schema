@@ -5,6 +5,7 @@
 - 新增: hysteria2 出站新增配置项 `handshake-timeout`，支持独立控制握手超时
 - 新增: listener Restls 新增配置项 `rate-limit`，支持限制回落连接双向转发速率
 - 移除: listener shadowquic `jls-upstream` 弃用配置项 `quic-version-probe`
+- 调整: Clash 风格域名通配仅允许完整标签 `*`，以及仅出现在首标签的 `+`
 
 ---
 
