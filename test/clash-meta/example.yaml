@@ -1465,6 +1465,7 @@ proxies: # socks5
     username: "user"
     password: "pass"
     peer-info:
+      IV_VER: custom-openvpn
       IV_HWADDR: "52:54:00:ff:72:87"
       UV_DEVICE_ID: "laptop-001"
     # 从 .ovpn 中复制 <ca></ca> 内的内容，不需要保留 <ca> 标签

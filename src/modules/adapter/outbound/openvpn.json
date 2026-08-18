@@ -178,8 +178,8 @@
           "type": "object",
           "additionalProperties": { "$ref": "#/definitions/compatible/string" },
           "title": "对端信息",
-          "description": "透传给服务端的 peer-info 键值对，追加在内置 peer-info 之后",
-          "markdownDescription": "透传给服务端的 `peer-info` 键值对，追加在内置 `peer-info` 之后"
+          "description": "透传给服务端的 peer-info 键值对。IV_VER 覆盖内置值；IV_PROTO、IV_CIPHERS 以及已启用 LZO 时的 IV_LZO 仍使用内置值；其余键追加在内置字段之后",
+          "markdownDescription": "透传给服务端的 `peer-info` 键值对。`IV_VER` 覆盖内置值；`IV_PROTO`、`IV_CIPHERS` 以及已启用 LZO 时的 `IV_LZO` 仍使用内置值；其余键追加在内置字段之后"
         },
         "ping": {
           "$ref": "#/definitions/compatible/integer",
