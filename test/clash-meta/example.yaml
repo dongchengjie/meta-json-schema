@@ -1432,7 +1432,7 @@ proxies: # socks5
     mtu: 1400
     ip-stack:
       mode: auto
-      congestion-controller: cubic
+      congestion-controller: bbr3
     udp: true
     remote-dns-resolve: true
     dns: [10.147.17.1]
