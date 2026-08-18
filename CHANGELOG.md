@@ -11,6 +11,7 @@
 - 新增: zerotier、wireguard、masque、openvpn 出站新增配置项 `ip-stack`，支持选择用户态 IP 协议栈；`congestion-controller` 支持 `cubic`、`reno`、`bbr`、`bbr3`
 - 新增: anytls 出站新增配置项 `client-metadata`，支持自定义发送给服务端的客户端标识
 - 调整: openvpn `peer-info` 允许用 `IV_VER` 覆盖内置版本标识
+- 新增: openvpn 出站新增配置项 `tran-window`，支持控制 rekey 后旧数据密钥的保留时间
 
 ---
 

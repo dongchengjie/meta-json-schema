@@ -195,6 +195,13 @@
           "markdownDescription": "单位:s",
           "default": 0
         },
+        "tran-window": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "旧数据密钥保留时间",
+          "description": "单位:s，rekey后旧data key的保留时间，0表示立即过期，应与服务端--tran-window对齐",
+          "markdownDescription": "单位:`s`，rekey后旧data key的保留时间，`0`表示立即过期，应与服务端`--tran-window`对齐",
+          "default": 3600
+        },
         "handshake-timeout": {
           "$ref": "#/definitions/compatible/integer",
           "title": "握手超时时间",

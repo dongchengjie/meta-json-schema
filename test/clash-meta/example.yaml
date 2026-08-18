@@ -1498,6 +1498,7 @@ proxies: # socks5
       -----END OpenVPN Static key V1-----
     ping: 10 # 默认值为 0
     ping-restart: 60 # 默认值为 0
+    tran-window: 3600 # rekey 后旧 data key 保留秒数；0 表示立即过期
     handshake-timeout: 30 # 单位为秒，0 不设置额外握手超时，受外层上下文控制
     mtu: 1500
     udp: true
