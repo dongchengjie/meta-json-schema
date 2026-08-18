@@ -11,6 +11,12 @@
       "type": "object",
       "title": "AmneziaWG配置",
       "properties": {
+        "version": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "AmneziaWG 实现版本",
+          "description": "仅 version 为 3 时使用 v3 实现，其余值使用旧实现",
+          "markdownDescription": "仅 `version` 为 `3` 时使用 v3 实现，其余值使用旧实现"
+        },
         "jc": {
           "$ref": "#/definitions/compatible/integer",
           "title": "垃圾包数量",
@@ -55,25 +61,25 @@
         },
         "h1": {
           "$ref": "#/definitions/compatible/string",
-          "title": "初始化握手包 Magic Header",
+          "title": "初始化握手包 Magic Header（v1.0/v1.5 仅支持单值，v2+ 还支持范围）",
           "description": "指定初始化握手包的 Magic Header 内容，作为包体前缀插入，用于混淆协议特征",
           "markdownDescription": "指定初始化握手包的 Magic Header 内容，作为包体前缀插入，用于混淆协议特征"
         },
         "h2": {
           "$ref": "#/definitions/compatible/string",
-          "title": "握手响应包 Magic Header",
+          "title": "握手响应包 Magic Header（v1.0/v1.5 仅支持单值，v2+ 还支持范围）",
           "description": "指定握手响应包的 Magic Header 内容，作为包体前缀插入，用于混淆协议特征",
           "markdownDescription": "指定握手响应包的 Magic Header 内容，作为包体前缀插入，用于混淆协议特征"
         },
         "h3": {
           "$ref": "#/definitions/compatible/string",
-          "title": "Underload 包 Magic Header",
+          "title": "Underload 包 Magic Header（v1.0/v1.5 仅支持单值，v2+ 还支持范围）",
           "description": "指定 Underload 包的 Magic Header 内容，用于协议混淆",
           "markdownDescription": "指定 Underload 包的 Magic Header 内容，用于协议混淆"
         },
         "h4": {
           "$ref": "#/definitions/compatible/string",
-          "title": "普通传输包 Magic Header",
+          "title": "普通传输包 Magic Header（v1.0/v1.5 仅支持单值，v2+ 还支持范围）",
           "description": "指定普通传输包的 Magic Header 内容，作为包体前缀插入，进一步防止流量被特征识别",
           "markdownDescription": "指定普通传输包的 Magic Header 内容，作为包体前缀插入，进一步防止流量被特征识别"
         },
@@ -110,8 +116,8 @@
         "j1": {
           "$ref": "#/definitions/compatible/string",
           "title": "受控 Junk 字段1",
-          "description": "受控 Junk 字段，按需插入特定 Junk 数据，增强协议多样性（AmneziaWG v1.5特有，v2已被移除）",
-          "markdownDescription": "受控 Junk 字段，按需插入特定 Junk 数据，增强协议多样性（AmneziaWG v1.5特有，v2已被移除）"
+          "description": "受控 Junk 字段，按需插入特定 Junk 数据，增强协议多样性（AmneziaWG v1.5特有，v2+ 已被移除）",
+          "markdownDescription": "受控 Junk 字段，按需插入特定 Junk 数据，增强协议多样性（AmneziaWG v1.5特有，v2+ 已被移除）"
         },
         "j2": {
           "$ref": "#/definitions/compatible/string",
@@ -127,9 +133,51 @@
         },
         "itime": {
           "$ref": "#/definitions/compatible/integer",
-          "title": "特殊握手超时时间（AmneziaWG v1.5特有，v2已被移除）",
+          "title": "特殊握手超时时间（AmneziaWG v1.5特有，v2+ 已被移除）",
           "description": "单位:s",
           "markdownDescription": "单位:s"
+        },
+        "header-protection-key": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "包头保护密钥（AmneziaWG v3+）",
+          "description": "Base64编码",
+          "markdownDescription": "`Base64`编码"
+        },
+        "content-padding-addition": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "内容填充增量（AmneziaWG v3+）",
+          "description": "支持固定值或范围",
+          "markdownDescription": "支持固定值或范围"
+        },
+        "rekey-after-time": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "重协商间隔（AmneziaWG v3+）",
+          "description": "单位:s",
+          "markdownDescription": "单位:s"
+        },
+        "rekey-timeout": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "重协商超时（AmneziaWG v3+）",
+          "description": "单位:s",
+          "markdownDescription": "单位:s"
+        },
+        "reject-after-time": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "拒绝旧密钥时限（AmneziaWG v3+）",
+          "description": "单位:s",
+          "markdownDescription": "单位:s"
+        },
+        "keepalive-timeout": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "保活超时（AmneziaWG v3+）",
+          "description": "单位:s",
+          "markdownDescription": "单位:s"
+        },
+        "max-handshake-attempts": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "最大握手次数（AmneziaWG v3+）",
+          "description": "最大握手尝试次数",
+          "markdownDescription": "最大握手尝试次数"
         }
       }
     },

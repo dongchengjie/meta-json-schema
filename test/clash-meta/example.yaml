@@ -1382,6 +1382,25 @@ proxies: # socks5
       j3: <t><b 0xf6ab><c><r 10> # AmneziaWG v1.5 only (removed in v2)
       itime: 60 # AmneziaWG v1.5 only (removed in v2)
 
+  # wireguard AmneziaWG v3
+  - name: "wg-amnezia-v3"
+    type: wireguard
+    server: 162.159.192.1
+    port: 2480
+    ip: 172.16.0.2
+    private-key: eCtXsJZ27+4PbhDkHnB923tkUn2Gj59wZw5wFA75MnU=
+    public-key: Cr8hWlKvtDt7nrvf+f0brNQQzabAqrjfBvas9pmowjo=
+    udp: true
+    amnezia-wg-option:
+      version: 3
+      header-protection-key: MDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3ODlhYmNkZWY=
+      content-padding-addition: 0-32
+      rekey-after-time: "120"
+      rekey-timeout: "5"
+      reject-after-time: "180"
+      keepalive-timeout: "10"
+      max-handshake-attempts: "18"
+
   # tailscale
   - name: "tailscale"
     type: tailscale
