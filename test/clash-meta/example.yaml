@@ -1539,6 +1539,9 @@ proxies: # socks5
     dns: [1.1.1.1, 8.8.8.8] # 仅在 remote-dns-resolve 为 true 时生效
     congestion-controller: bbr # 默认不开启
     bbr-profile: "standard" # Available: "standard", "conservative", "aggressive". Default: "standard"
+    ip-stack:
+      mode: auto
+      congestion-controller: cubic
 
   # masque-h3-l4proxy
   - name: "masque-h3-l4proxy"

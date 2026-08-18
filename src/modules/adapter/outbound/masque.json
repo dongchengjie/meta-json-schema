@@ -7,6 +7,7 @@
     "patterns": { "$ref": "../../../definitions/patterns.json" },
     "enums": { "$ref": "../../../definitions/enums.json" },
     "basic-option": { "$ref": "./base.json#/definitions/basic-option" },
+    "ip-stack": { "$ref": "./ip-stack.json" },
     "smux": { "$ref": "./singmux.json" }
   },
   "allOf": [
@@ -144,6 +145,7 @@
           "markdownDescription": "拥塞控制预设方案",
           "default": "standard"
         },
+        "ip-stack": { "$ref": "#/definitions/ip-stack" },
         "remote-dns-resolve": {
           "$ref": "#/definitions/compatible/boolean",
           "title": "强制DNS远程解析",
