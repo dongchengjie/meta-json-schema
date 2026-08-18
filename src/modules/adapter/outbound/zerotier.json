@@ -1,0 +1,165 @@
+{
+  "type": "object",
+  "title": "outbound-zerotier",
+  "definitions": {
+    "compatible": { "$ref": "../../../definitions/compatible.json" },
+    "types": { "$ref": "../../../definitions/types.json" },
+    "basic-option": { "$ref": "./base.json#/definitions/basic-option" },
+    "smux": { "$ref": "./singmux.json" }
+  },
+  "allOf": [
+    { "title": "basic配置", "$ref": "#/definitions/basic-option" },
+    {
+      "type": "object",
+      "title": "zerotier配置",
+      "required": ["name", "network"],
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "代理节点类型",
+          "description": "代理节点类型",
+          "markdownDescription": "代理节点类型"
+        },
+        "name": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "代理节点名称",
+          "description": "代理节点名称",
+          "markdownDescription": "代理节点名称"
+        },
+        "network": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "ZeroTier 网络 ID",
+          "description": "16 位十六进制网络 ID",
+          "markdownDescription": "16 位十六进制网络 ID"
+        },
+        "state-dir": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "节点状态目录",
+          "description": "持久化节点身份；省略时使用由网络 ID 和出站名称派生的隔离目录",
+          "markdownDescription": "持久化节点身份；省略时使用由网络 ID 和出站名称派生的隔离目录"
+        },
+        "planet": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "Planet 文件路径",
+          "description": "可选私有 planet 文件，替换内置 Earth planet",
+          "markdownDescription": "可选私有 planet 文件，替换内置 Earth planet"
+        },
+        "mtu": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "最大传输单元",
+          "description": "可选本地 MTU 覆盖，范围 1280-10000，且不能超过控制器 MTU",
+          "markdownDescription": "可选本地 MTU 覆盖，范围 1280-10000，且不能超过控制器 MTU"
+        },
+        "physical-mtu": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "物理路径 MTU",
+          "description": "ZeroTier UDP 载荷 MTU，范围 510-10324",
+          "markdownDescription": "ZeroTier UDP 载荷 MTU，范围 510-10324",
+          "default": 1432
+        },
+        "udp": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用UDP",
+          "description": "启用UDP",
+          "markdownDescription": "启用`UDP`"
+        },
+        "remote-dns-resolve": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "强制DNS远程解析",
+          "description": "通过 ZeroTier 使用控制器提供的 DNS 服务器解析目标域名",
+          "markdownDescription": "通过 ZeroTier 使用控制器提供的 DNS 服务器解析目标域名",
+          "default": false
+        },
+        "dns": {
+          "$ref": "#/definitions/types/stringArray",
+          "title": "DNS服务器列表",
+          "description": "仅在 remote-dns-resolve 为 true 时生效，用于覆盖控制器提供的 DNS",
+          "markdownDescription": "仅在 `remote-dns-resolve` 为 `true` 时生效，用于覆盖控制器提供的 DNS"
+        },
+        "low-bandwidth": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "低带宽模式",
+          "description": "降低后台流量和网络配置刷新频率",
+          "markdownDescription": "降低后台流量和网络配置刷新频率",
+          "default": false
+        },
+        "encrypted-hello": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "加密 HELLO",
+          "description": "对发出的 HELLO 使用协议 13 扩展加密",
+          "markdownDescription": "对发出的 `HELLO` 使用协议 13 扩展加密",
+          "default": false
+        },
+        "primary-port": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "主 UDP 端口",
+          "description": "省略时选择可用端口",
+          "markdownDescription": "省略时选择可用端口"
+        },
+        "secondary-port": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "第二 UDP 端口",
+          "description": "省略时选择可用端口；-1 表示禁用",
+          "markdownDescription": "省略时选择可用端口；`-1` 表示禁用"
+        },
+        "tcp-fallback-mode": {
+          "enum": ["auto", "force", "disable"],
+          "markdownEnumDescriptions": ["UDP 失败后使用中继", "仅使用中继", "关闭中继"],
+          "title": "TCP 回退模式",
+          "description": "控制公共 TCP 中继的使用方式",
+          "markdownDescription": "控制公共 TCP 中继的使用方式",
+          "default": "auto"
+        },
+        "tcp-fallback-relay": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "TCP 回退中继",
+          "description": "TCP 回退中继地址",
+          "markdownDescription": "TCP 回退中继地址",
+          "default": "204.80.128.1:443"
+        },
+        "orbit": {
+          "type": "array",
+          "title": "联邦根世界",
+          "description": "可选的联邦根世界（moon）",
+          "markdownDescription": "可选的联邦根世界（moon）",
+          "items": {
+            "type": "object",
+            "required": ["world", "seed"],
+            "properties": {
+              "world": {
+                "$ref": "#/definitions/compatible/string",
+                "title": "世界 ID",
+                "description": "16 位十六进制 moon 世界 ID",
+                "markdownDescription": "16 位十六进制 moon 世界 ID"
+              },
+              "seed": {
+                "$ref": "#/definitions/compatible/string",
+                "title": "种子节点",
+                "description": "10 位节点 ID",
+                "markdownDescription": "10 位节点 ID"
+              }
+            }
+          }
+        },
+        "remote-trace-target": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "远程诊断目标",
+          "description": "接收全局诊断跟踪的 10 位节点 ID",
+          "markdownDescription": "接收全局诊断跟踪的 10 位节点 ID"
+        },
+        "remote-trace-level": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "远程诊断级别",
+          "description": "0 normal，10 verbose，15 rules，20 debug，30 insane",
+          "markdownDescription": "`0` normal，`10` verbose，`15` rules，`20` debug，`30` insane",
+          "default": 0
+        }
+      }
+    },
+    {
+      "type": "object",
+      "title": "smux配置",
+      "properties": { "smux": { "title": "smux配置", "$ref": "#/definitions/smux" } }
+    }
+  ]
+}

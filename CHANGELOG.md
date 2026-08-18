@@ -7,6 +7,7 @@
 - 移除: listener shadowquic `jls-upstream` 弃用配置项 `quic-version-probe`
 - 调整: Clash 风格域名通配仅允许完整标签 `*`，以及仅出现在首标签的 `+`
 - 新增: wireguard `amnezia-wg-option` 新增配置项 `version`、`header-protection-key`、`content-padding-addition`、`rekey-after-time`、`rekey-timeout`、`reject-after-time`、`keepalive-timeout` 和 `max-handshake-attempts`，支持 AmneziaWG v3
+- 新增: proxy 新增 `zerotier` 协议
 
 ---
 

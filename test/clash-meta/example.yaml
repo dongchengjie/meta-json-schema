@@ -1421,6 +1421,28 @@ proxies: # socks5
     routing-mark: 6666 # Linux 下配置 fwmark
     ip-version: ipv4-prefer # 可选：dual/ipv4/ipv6/ipv4-prefer/ipv6-prefer
 
+  # zerotier
+  - name: "zerotier"
+    type: zerotier
+    network: "0123456789abcdef"
+    planet: ./planet
+    mtu: 1400
+    udp: true
+    remote-dns-resolve: true
+    dns: [10.147.17.1]
+    secondary-port: -1
+    tcp-fallback-mode: force
+    tcp-fallback-relay: 204.80.128.1:443
+    orbit:
+      - world: "0123456789abcdef"
+        seed: "0123456789"
+    remote-trace-target: "0123456789"
+    remote-trace-level: 10
+    dialer-proxy: "ss1"
+    interface-name: "WLAN"
+    routing-mark: 6666
+    ip-version: ipv4-prefer
+
   # openvpn
   - name: "openvpn"
     type: openvpn
