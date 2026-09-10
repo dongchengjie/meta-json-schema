@@ -193,9 +193,9 @@
         },
         "disable-cookies": {
           "$ref": "#/definitions/compatible/boolean",
-          "title": "禁用 Cookie 应答（AmneziaWG v3.1+）",
-          "description": "关闭过载时的 Cookie Reply，收到被拒绝的握手后不再回送 Cookie",
-          "markdownDescription": "关闭过载时的 Cookie Reply，收到被拒绝的握手后不再回送 Cookie"
+          "title": "禁用 Cookie（AmneziaWG v3.1+）",
+          "description": "关闭过载时的 Cookie 机制，不校验握手 Cookie，也不回送 Cookie Reply",
+          "markdownDescription": "关闭过载时的 Cookie 机制，不校验握手 Cookie，也不回送 Cookie Reply"
         }
       }
     },

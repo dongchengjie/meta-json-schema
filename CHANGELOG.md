@@ -5,6 +5,10 @@
 - 新增: tun 新增配置项 `processors-per-channel`，支持控制 gvisor 每通道处理协程数
 - 调整: openvpn `auth` 同时用于 tls-auth 的 HMAC 摘要
 
+### Bug Fixes
+
+- 修复: wireguard `disable-cookies` 在过载时同时跳过 Cookie 校验
+
 ---
 
 ## v1.19.30
