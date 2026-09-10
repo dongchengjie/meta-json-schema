@@ -12,7 +12,9 @@ Draft-07 标准求值会忽略 `$ref` 的全部同级关键词。仅供现有编
 
 写元数据之前先确认对象是不是用户字段。判定看用户会不会填写或选择这个键，不看它是否具名、是否独立成文件、有没有 `title`。
 
-用户字段是解析模型 `properties` 里用户会填写或选择的键，并且该处直接给出这个键的输入形状。输入形状可以是 `type`、`enum`、`const`、组合，或指向标量、pattern、enum 的 `$ref`。这类字段必须具备形状关键词、`title`、`description` 和 `markdownDescription`；枚举值需要分别说明时再加 `markdownEnumDescriptions`。`default` 是否写入见「枚举与缺省」。
+用户字段是解析模型 `properties` 里用户会填写或选择的键，并且该处直接给出这个键的输入形状。上游是否写入用户文档，不决定它是不是用户字段。
+
+输入形状可以是 `type`、`enum`、`const`、组合，或指向标量、pattern、enum 的 `$ref`。这类字段必须具备形状关键词、`title`、`description` 和 `markdownDescription`；枚举值需要分别说明时再加 `markdownEnumDescriptions`。`default` 是否写入见「枚举与缺省」。
 
 定义对象、`allOf` 分段、结构性节点、`if` / `then` / `else`、纯 `items`，以及只把另一个解析模型挂到某个键上的纯 `$ref`，都不是用户字段。它们只保留组合所需的形状和 `title`，不写 `description`、`markdownDescription` 或 `default`。`definitions` 里的转发 `$ref`、判别器同样不是用户字段。被条件组合包住的用户字段仍按用户字段写元数据。
 
