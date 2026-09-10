@@ -1,3 +1,11 @@
+## v1.19.31
+
+### Changes
+
+- 新增: tun 新增配置项 `processors-per-channel`，支持控制 gvisor 每通道处理协程数
+
+---
+
 ## v1.19.30
 
 ### Changes

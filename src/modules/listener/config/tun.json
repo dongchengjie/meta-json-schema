@@ -347,6 +347,13 @@
       "description": "Darwin系统特殊配置",
       "markdownDescription": "Darwin系统特殊配置",
       "default": false
+    },
+    "processors-per-channel": {
+      "type": "integer",
+      "title": "每通道处理协程数",
+      "description": "仅 gvisor 生效；每个通道处理报文的协程数。显式 0 时由 gvisor 按 GOMAXPROCS 计算",
+      "markdownDescription": "仅 `gvisor` 生效；每个通道处理报文的协程数。显式 `0` 时由 `gvisor` 按 `GOMAXPROCS` 计算",
+      "default": 1
     }
   }
 }

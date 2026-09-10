@@ -215,6 +215,7 @@ tun:
     - com.android.captiveportallogin
   recvmsgx: true
   sendmsgx: false
+  processors-per-channel: 1 # 仅 gvisor 生效；默认 1，显式 0 时按 GOMAXPROCS 计算
 
 # 嗅探域名 可选配置
 sniffer:
@@ -2495,6 +2496,7 @@ listeners:
     strict-route: true # 将所有连接路由到 tun 来防止泄漏，但你的设备将无法其他设备被访问
     icmp-timeout: 10 # ICMP NAT 过期时间，单位为秒
     disable-icmp-forwarding: true # 禁用 ICMP 转发，防止某些情况下的 ICMP 环回问题，ping 将不会显示真实的延迟
+    processors-per-channel: 1 # 仅 gvisor 生效；未配置时按 GOMAXPROCS 计算
     # inet4-route-address: # 启用 auto-route 时使用自定义路由而不是默认路由
     #   - 0.0.0.0/1
     #   - 128.0.0.0/1
