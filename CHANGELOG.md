@@ -3,6 +3,7 @@
 ### Changes
 
 - 新增: tun 新增配置项 `processors-per-channel`，支持控制 gvisor 每通道处理协程数
+- 调整: openvpn `auth` 同时用于 tls-auth 的 HMAC 摘要
 
 ---
 

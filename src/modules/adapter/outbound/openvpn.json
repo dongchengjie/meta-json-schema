@@ -104,8 +104,8 @@
         "auth": {
           "enum": ["MD5", "SHA1", "SHA256", "SHA384", "SHA512"],
           "title": "认证方式",
-          "description": "AEAD cipher 会忽略 auth",
-          "markdownDescription": "AEAD cipher 会忽略 auth",
+          "description": "非 AEAD 数据通道与 tls-auth 的 HMAC 摘要；AEAD 数据通道加密会忽略数据通道 HMAC，tls-auth 仍使用该摘要",
+          "markdownDescription": "非 `AEAD` 数据通道与 `tls-auth` 的 `HMAC` 摘要；`AEAD` 数据通道加密会忽略数据通道 `HMAC`，`tls-auth` 仍使用该摘要",
           "default": "SHA256"
         },
         "comp-lzo": {
