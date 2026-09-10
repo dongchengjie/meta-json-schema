@@ -1431,6 +1431,7 @@ proxies: # socks5
   - name: "zerotier"
     type: zerotier
     network: "0123456789abcdef"
+    identity-secret: "0123456789:0:public-key:private-key"
     planet: ./planet
     mtu: 1400
     ip-stack:

@@ -36,8 +36,14 @@
         "state-dir": {
           "$ref": "#/definitions/compatible/string",
           "title": "节点状态目录",
-          "description": "持久化节点身份；省略时使用由网络 ID 和出站名称派生的隔离目录",
-          "markdownDescription": "持久化节点身份；省略时使用由网络 ID 和出站名称派生的隔离目录"
+          "description": "持久化节点状态和默认身份；默认使用由网络 ID 和出站名称派生的隔离目录",
+          "markdownDescription": "持久化节点状态和默认身份；默认使用由网络 ID 和出站名称派生的隔离目录"
+        },
+        "identity-secret": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "节点身份密钥",
+          "description": "完整 identity.secret 内容，覆盖 state-dir 中的身份且不写入该目录；须包含私钥。默认使用 state-dir 中的身份",
+          "markdownDescription": "完整 `identity.secret` 内容，覆盖 `state-dir` 中的身份且不写入该目录；须包含私钥。默认使用 `state-dir` 中的身份"
         },
         "planet": {
           "$ref": "#/definitions/compatible/string",
