@@ -1,3 +1,4 @@
 allowBuilds:
   dprint: true
   lefthook: true
+minimumReleaseAge: 0
