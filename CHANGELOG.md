@@ -6,6 +6,7 @@
 - 调整: openvpn `auth` 同时用于 tls-auth 的 HMAC 摘要
 - 新增: zerotier 出站新增配置项 `identity-secret`，支持指定完整节点身份
 - 新增: proxy 新增 `easytier` 协议
+- 新增: tun `stack` 支持 `mips`
 
 ### Bug Fixes
 

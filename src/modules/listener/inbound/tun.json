@@ -20,11 +20,12 @@
         "stack": {
           "type": "string",
           "title": "TUN模式堆栈",
-          "enum": ["system", "gvisor", "mixed"],
+          "enum": ["system", "gvisor", "mixed", "mips"],
           "markdownEnumDescriptions": [
             "基于系统网络栈执行`L3`到`L4`转换。可以提供更稳定/全面的TUN体验,且占用相对其他堆栈更低。",
             "基于`gVisor`虚拟网络栈执行`L3`到`L4`转换。通过在用户空间中实现网络协议栈,可以提供更高的安全性和隔离性,同时可以避免操作系统内核和用户空间之间的切换,从而在特定情况下具有更好的网络处理性能。",
-            "混合堆栈,tcp使用`system`栈,udp使用`gvisor`栈,使用体验可能相对更好。"
+            "混合堆栈,tcp使用`system`栈,udp使用`gvisor`栈,使用体验可能相对更好。",
+            "基于`mipstack`用户态网络栈执行`L3`到`L4`转换。"
           ],
           "description": "如无使用问题,建议使用mixed(默认gvisor)",
           "markdownDescription": "如无使用问题,建议使用`mixed`(默认`gvisor`)",
