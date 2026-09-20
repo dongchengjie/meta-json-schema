@@ -28,6 +28,7 @@
     "openvpn": { "$ref": "../adapter/outbound/openvpn.json" },
     "tailscale": { "$ref": "../adapter/outbound/tailscale.json" },
     "zerotier": { "$ref": "../adapter/outbound/zerotier.json" },
+    "easytier": { "$ref": "../adapter/outbound/easytier.json" },
     "shadowquic": { "$ref": "../adapter/outbound/shadowquic.json" }
   },
   "items": {
@@ -290,6 +291,16 @@
             "properties": { "type": { "title": "zerotier配置", "const": "zerotier" } }
           },
           { "$ref": "#/definitions/zerotier" }
+        ]
+      },
+      {
+        "allOf": [
+          {
+            "type": "object",
+            "title": "easytier",
+            "properties": { "type": { "title": "easytier配置", "const": "easytier" } }
+          },
+          { "$ref": "#/definitions/easytier" }
         ]
       },
       {

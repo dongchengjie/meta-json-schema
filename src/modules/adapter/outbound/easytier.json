@@ -1,0 +1,257 @@
+{
+  "type": "object",
+  "title": "outbound-easytier",
+  "definitions": {
+    "compatible": { "$ref": "../../../definitions/compatible.json" },
+    "types": { "$ref": "../../../definitions/types.json" },
+    "basic-option": { "$ref": "./base.json#/definitions/basic-option" },
+    "smux": { "$ref": "./singmux.json" }
+  },
+  "allOf": [
+    { "title": "basic配置", "$ref": "#/definitions/basic-option" },
+    {
+      "type": "object",
+      "title": "easytier配置",
+      "required": ["name", "network-name"],
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "代理节点类型",
+          "description": "代理节点类型",
+          "markdownDescription": "代理节点类型"
+        },
+        "name": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "代理节点名称",
+          "description": "代理节点名称",
+          "markdownDescription": "代理节点名称"
+        },
+        "network-name": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "网络名称",
+          "description": "EasyTier 网络标识，必填",
+          "markdownDescription": "EasyTier 网络标识，必填"
+        },
+        "network-secret": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "网络密钥",
+          "description": "共享网络密钥，可为空",
+          "markdownDescription": "共享网络密钥，可为空"
+        },
+        "hostname": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "节点主机名",
+          "description": "overlay 通告的主机名，供 MagicDNS 使用",
+          "markdownDescription": "overlay 通告的主机名，供 MagicDNS 使用"
+        },
+        "ipv4": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "overlay IPv4 地址",
+          "description": "静态 overlay IPv4 或 CIDR。未填写时默认启用 DHCP",
+          "markdownDescription": "静态 overlay IPv4 或 CIDR。未填写时默认启用 DHCP"
+        },
+        "dhcp": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用 DHCP",
+          "description": "ipv4 为空时默认开启；填写 ipv4 后默认不启用，显式 true 时同时启用 DHCP",
+          "markdownDescription": "`ipv4` 为空时默认开启；填写 `ipv4` 后默认不启用，显式 `true` 时同时启用 DHCP"
+        },
+        "peers": {
+          "$ref": "#/definitions/types/uriArray",
+          "title": "对等节点",
+          "description": "入口 URI 列表。默认不隐式连接 public.easytier.top。URI 查询参数 peer-public-key 或 peer_public_key 用于锁定对端公钥。无 listeners 且未将 no-listener 设为 false 时至少填一个",
+          "markdownDescription": "入口 URI 列表。默认不隐式连接 `public.easytier.top`。URI 查询参数 `peer-public-key` 或 `peer_public_key` 用于锁定对端公钥。无 `listeners` 且未将 `no-listener` 设为 `false` 时至少填一个"
+        },
+        "listeners": {
+          "$ref": "#/definitions/types/uriArray",
+          "title": "监听地址",
+          "description": "本地监听 URI。未填写且 no-listener 为 false 时使用 tcp://0.0.0.0:11010。不能与 no-listener true 同时使用",
+          "markdownDescription": "本地监听 URI。未填写且 `no-listener` 为 `false` 时使用 `tcp://0.0.0.0:11010`。不能与 `no-listener` `true` 同时使用"
+        },
+        "no-listener": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "禁用监听",
+          "description": "默认不监听。显式 false 且未填写 listeners 时监听 tcp://0.0.0.0:11010。不能与 listeners 同时使用",
+          "markdownDescription": "默认不监听。显式 `false` 且未填写 `listeners` 时监听 `tcp://0.0.0.0:11010`。不能与 `listeners` 同时使用",
+          "default": true
+        },
+        "mapped-listeners": {
+          "$ref": "#/definitions/types/uriArray",
+          "title": "映射监听地址",
+          "description": "对外通告的监听 URI，用于 NAT 后的可达地址",
+          "markdownDescription": "对外通告的监听 URI，用于 NAT 后的可达地址"
+        },
+        "exit-nodes": {
+          "$ref": "#/definitions/types/stringArray",
+          "title": "出口节点",
+          "description": "overlay 出口节点地址",
+          "markdownDescription": "overlay 出口节点地址"
+        },
+        "proxy-networks": {
+          "$ref": "#/definitions/types/ipCIDRArray",
+          "title": "代理网段",
+          "description": "通过本节点代理的 CIDR",
+          "markdownDescription": "通过本节点代理的 CIDR"
+        },
+        "instance-name": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "实例名称",
+          "description": "默认使用出站名称",
+          "markdownDescription": "默认使用出站名称"
+        },
+        "state-dir": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "节点状态目录",
+          "description": "持久化 instance_id；默认 easytier/<name>",
+          "markdownDescription": "持久化 `instance_id`；默认 `easytier/<name>`"
+        },
+        "udp": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用UDP",
+          "description": "启用UDP",
+          "markdownDescription": "启用`UDP`"
+        },
+        "accept-dns": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用 MagicDNS",
+          "description": "由 EasyTier 实例提供 MagicDNS",
+          "markdownDescription": "由 EasyTier 实例提供 MagicDNS",
+          "default": false
+        },
+        "enable-exit-node": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "作为出口节点",
+          "description": "允许其他节点经本节点访问外部网络",
+          "markdownDescription": "允许其他节点经本节点访问外部网络",
+          "default": false
+        },
+        "enable-encryption": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用加密",
+          "description": "启用 EasyTier 数据通道加密",
+          "markdownDescription": "启用 EasyTier 数据通道加密",
+          "default": true
+        },
+        "encryption-algorithm": {
+          "enum": [
+            "xor",
+            "aes-gcm",
+            "aes-256-gcm",
+            "chacha20",
+            "openssl-aes-gcm",
+            "openssl-aes-256-gcm",
+            "chacha20-poly1305",
+            "openssl-chacha20"
+          ],
+          "title": "加密算法",
+          "description": "数据通道加密算法",
+          "markdownDescription": "数据通道加密算法",
+          "default": "aes-gcm"
+        },
+        "private-mode": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "私有模式",
+          "description": "仅允许相同网络标识的节点建立连接",
+          "markdownDescription": "仅允许相同网络标识的节点建立连接",
+          "default": false
+        },
+        "latency-first": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "延迟优先",
+          "description": "按延迟选择路径",
+          "markdownDescription": "按延迟选择路径",
+          "default": false
+        },
+        "disable-p2p": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "禁用 P2P",
+          "description": "禁用点对点直连，仅通过中继转发",
+          "markdownDescription": "禁用点对点直连，仅通过中继转发",
+          "default": false
+        },
+        "enable-kcp-proxy": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用 KCP 代理",
+          "description": "将 TCP 流转为 KCP",
+          "markdownDescription": "将 TCP 流转为 KCP",
+          "default": false
+        },
+        "disable-kcp-input": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "禁用 KCP 输入",
+          "description": "拒绝入站 KCP",
+          "markdownDescription": "拒绝入站 KCP",
+          "default": false
+        },
+        "enable-quic-proxy": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "启用 QUIC 代理",
+          "description": "将 TCP 流转为 QUIC",
+          "markdownDescription": "将 TCP 流转为 QUIC",
+          "default": false
+        },
+        "disable-quic-input": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "禁用 QUIC 输入",
+          "description": "拒绝入站 QUIC",
+          "markdownDescription": "拒绝入站 QUIC",
+          "default": false
+        },
+        "mtu": {
+          "$ref": "#/definitions/compatible/integer",
+          "title": "最大传输单元",
+          "description": "overlay MTU",
+          "markdownDescription": "overlay MTU",
+          "default": 1380
+        },
+        "tld-dns-zone": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "MagicDNS 区域",
+          "description": "MagicDNS 使用的 TLD 区域",
+          "markdownDescription": "MagicDNS 使用的 TLD 区域",
+          "default": "et.net."
+        },
+        "secure-mode": {
+          "$ref": "#/definitions/compatible/boolean",
+          "title": "安全模式",
+          "description": "启用 Noise E2EE。配置 local-private-key、local-public-key 或 peer URI 中的 peer-public-key 时默认开启；显式 false 时不得同时配置这些材料",
+          "markdownDescription": "启用 Noise E2EE。配置 `local-private-key`、`local-public-key` 或 peer URI 中的 `peer-public-key` 时默认开启；显式 `false` 时不得同时配置这些材料"
+        },
+        "local-private-key": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "本地私钥",
+          "description": "Base64 X25519 私钥，用于固定本机身份",
+          "markdownDescription": "Base64 X25519 私钥，用于固定本机身份"
+        },
+        "local-public-key": {
+          "$ref": "#/definitions/compatible/string",
+          "title": "本地公钥",
+          "description": "Base64 X25519 公钥，须与 local-private-key 配对；填写时必须同时填写 local-private-key",
+          "markdownDescription": "Base64 X25519 公钥，须与 `local-private-key` 配对；填写时必须同时填写 `local-private-key`"
+        }
+      },
+      "allOf": [
+        {
+          "anyOf": [
+            { "required": ["peers"], "properties": { "peers": { "minItems": 1 } } },
+            { "required": ["listeners"], "properties": { "listeners": { "minItems": 1 } } },
+            { "required": ["no-listener"], "properties": { "no-listener": { "const": false } } }
+          ]
+        },
+        {
+          "if": { "required": ["no-listener"], "properties": { "no-listener": { "const": true } } },
+          "then": { "properties": { "listeners": { "maxItems": 0 } } }
+        },
+        {
+          "if": { "required": ["local-public-key"] },
+          "then": { "required": ["local-private-key"] }
+        }
+      ]
+    },
+    {
+      "type": "object",
+      "title": "smux配置",
+      "properties": { "smux": { "title": "smux配置", "$ref": "#/definitions/smux" } }
+    }
+  ]
+}
