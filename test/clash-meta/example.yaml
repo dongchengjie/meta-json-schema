@@ -1847,6 +1847,7 @@ proxy-groups:
     url: "https://cp.cloudflare.com/generate_204"
     interval: 300
     strategy: consistent-hashing # 可选 round-robin 和 sticky-sessions
+    hash-key: in-user # 用入站认证用户名固定节点；round-robin 不能填写
 
   # select 用户自行选择节点
   - name: Proxy

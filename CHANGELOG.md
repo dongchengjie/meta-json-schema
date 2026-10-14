@@ -1,3 +1,11 @@
+## v1.19.32
+
+### Changes
+
+- 新增: load-balance 新增配置项 `hash-key`，支持按入站认证用户固定节点
+
+---
+
 ## v1.19.31
 
 ### Changes

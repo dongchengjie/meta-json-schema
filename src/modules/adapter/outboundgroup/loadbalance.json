@@ -17,8 +17,24 @@
             "粘性会话,将特定的用户会话绑定到同一台服务器上"
           ],
           "default": "consistent-hashing"
+        },
+        "hash-key": {
+          "enum": ["in-user"],
+          "markdownEnumDescriptions": ["用入站认证用户名固定节点；未认证时回退到该策略原本的键"],
+          "title": "哈希键",
+          "description": "只改变一致性哈希和粘性会话用来固定节点的键，不改变选中哈希值后的分配方式。默认使用策略原本的键。round-robin 不能填写",
+          "markdownDescription": "只改变一致性哈希和粘性会话用来固定节点的键，不改变选中哈希值后的分配方式。默认使用策略原本的键。`round-robin` 不能填写"
         }
-      }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": ["strategy"],
+            "properties": { "strategy": { "const": "round-robin" } }
+          },
+          "then": { "not": { "required": ["hash-key"] } }
+        }
+      ]
     }
   ]
 }
