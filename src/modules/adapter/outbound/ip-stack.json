@@ -4,14 +4,10 @@
   "properties": {
     "mode": {
       "enum": ["auto", "gvisor", "mips"],
-      "markdownEnumDescriptions": [
-        "编译包含 gVisor 时使用 gVisor，否则使用 Mihomo IP 栈",
-        "gVisor 用户态协议栈",
-        "Mihomo IP 栈"
-      ],
+      "markdownEnumDescriptions": ["选择 Mihomo IP 栈", "gVisor 用户态协议栈", "Mihomo IP 栈"],
       "title": "协议栈模式",
-      "description": "用户态 IP 协议栈；auto 在编译包含 gVisor 时使用 gVisor，否则使用 Mihomo IP 栈",
-      "markdownDescription": "用户态 IP 协议栈；`auto` 在编译包含 `gVisor` 时使用 `gVisor`，否则使用 Mihomo IP 栈",
+      "description": "用户态 IP 协议栈；auto 使用 Mihomo IP 栈",
+      "markdownDescription": "用户态 IP 协议栈；`auto` 使用 Mihomo IP 栈",
       "default": "auto"
     },
     "congestion-controller": {

@@ -286,6 +286,14 @@
           "markdownDescription": "防止某些情况下的 ICMP 环回问题，ping 将不会显示真实的延迟",
           "default": false
         },
+        "congestion-controller": {
+          "enum": ["cubic", "reno", "bbr", "bbr3"],
+          "markdownEnumDescriptions": ["CUBIC算法", "Reno算法", "BBR算法", "BBRv3算法"],
+          "title": "TCP拥塞控制算法",
+          "description": "仅 mips 生效",
+          "markdownDescription": "仅 `mips` 生效",
+          "default": "cubic"
+        },
         "file-descriptor": {
           "type": "integer",
           "title": "文件描述符",

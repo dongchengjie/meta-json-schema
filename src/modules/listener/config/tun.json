@@ -26,9 +26,9 @@
         "混合堆栈,tcp使用`system`栈,udp使用`gvisor`栈,使用体验可能相对更好。",
         "基于`mipstack`用户态网络栈执行`L3`到`L4`转换。"
       ],
-      "description": "如无使用问题,建议使用mixed(默认gvisor)",
-      "markdownDescription": "如无使用问题,建议使用`mixed`(默认`gvisor`)",
-      "default": "gvisor"
+      "description": "如无使用问题,建议使用mixed(默认mips)",
+      "markdownDescription": "如无使用问题,建议使用`mixed`(默认`mips`)",
+      "default": "mips"
     },
     "dns-hijack": {
       "$ref": "#/definitions/types/stringArray",
@@ -284,6 +284,14 @@
       "description": "防止某些情况下的 ICMP 环回问题，ping 将不会显示真实的延迟",
       "markdownDescription": "防止某些情况下的 ICMP 环回问题，ping 将不会显示真实的延迟",
       "default": false
+    },
+    "congestion-controller": {
+      "enum": ["cubic", "reno", "bbr", "bbr3"],
+      "markdownEnumDescriptions": ["CUBIC算法", "Reno算法", "BBR算法", "BBRv3算法"],
+      "title": "TCP拥塞控制算法",
+      "description": "仅 mips 生效",
+      "markdownDescription": "仅 `mips` 生效",
+      "default": "cubic"
     },
     "file-descriptor": {
       "type": "integer",
