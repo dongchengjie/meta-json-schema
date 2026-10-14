@@ -5,7 +5,7 @@
 - 新增: load-balance 新增配置项 `hash-key`，支持按入站认证用户固定节点
 - 调整: 出站 `ip-stack` 的 `mode` 为 `auto` 时使用 Mihomo IP 栈
 - 新增: tun 新增配置项 `congestion-controller`，支持选择 mips 的 TCP 拥塞控制算法
-- 调整: 顶层 tun `stack` 默认改为 `mips`
+- 调整: tun `stack` 默认改为 `mips`
 
 ---
 

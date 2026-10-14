@@ -27,9 +27,9 @@
             "混合堆栈,tcp使用`system`栈,udp使用`gvisor`栈,使用体验可能相对更好。",
             "基于`mipstack`用户态网络栈执行`L3`到`L4`转换。"
           ],
-          "description": "如无使用问题,建议使用mixed(默认gvisor)",
-          "markdownDescription": "如无使用问题,建议使用`mixed`(默认`gvisor`)",
-          "default": "gvisor"
+          "description": "如无使用问题,建议使用mixed(默认mips)",
+          "markdownDescription": "如无使用问题,建议使用`mixed`(默认`mips`)",
+          "default": "mips"
         },
         "dns-hijack": {
           "$ref": "#/definitions/types/stringArray",
