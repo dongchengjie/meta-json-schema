@@ -23,8 +23,8 @@
   },
   "excludes": ["node_modules", "pnpm-lock.yaml", "schemas"],
   "plugins": [
-    "npm:@dprint/json@0.24.0",
-    "npm:@dprint/markdown@0.24.0",
+    "npm:@dprint/json@0.25.2",
+    "npm:@dprint/markdown@0.26.0",
     "npm:dprint-plugin-yaml@0.6.0"
   ]
 }
