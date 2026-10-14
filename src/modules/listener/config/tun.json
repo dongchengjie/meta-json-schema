@@ -1,7 +1,10 @@
 {
   "type": "object",
   "title": "tun配置",
-  "definitions": { "types": { "$ref": "../../../definitions/types.json" } },
+  "definitions": {
+    "types": { "$ref": "../../../definitions/types.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" }
+  },
   "properties": {
     "enable": {
       "type": "boolean",
@@ -286,8 +289,7 @@
       "default": false
     },
     "congestion-controller": {
-      "enum": ["cubic", "reno", "bbr", "bbr3"],
-      "markdownEnumDescriptions": ["CUBIC算法", "Reno算法", "BBR算法", "BBRv3算法"],
+      "$ref": "#/definitions/enums/congestion-controller",
       "title": "TCP拥塞控制算法",
       "description": "仅 mips 生效",
       "markdownDescription": "仅 `mips` 生效",

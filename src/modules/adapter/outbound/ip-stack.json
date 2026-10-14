@@ -1,6 +1,7 @@
 {
   "type": "object",
   "title": "ip-stack配置",
+  "definitions": { "enums": { "$ref": "../../../definitions/enums.json" } },
   "properties": {
     "mode": {
       "enum": ["auto", "gvisor", "mips"],
@@ -11,8 +12,7 @@
       "default": "auto"
     },
     "congestion-controller": {
-      "enum": ["cubic", "reno", "bbr", "bbr3"],
-      "markdownEnumDescriptions": ["CUBIC算法", "Reno算法", "BBR算法", "BBRv3算法"],
+      "$ref": "#/definitions/enums/congestion-controller",
       "title": "TCP拥塞控制算法",
       "description": "仅 Mihomo IP 栈生效，gVisor 会忽略该配置",
       "markdownDescription": "仅 Mihomo IP 栈生效，`gVisor` 会忽略该配置",

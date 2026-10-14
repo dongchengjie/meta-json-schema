@@ -3,6 +3,7 @@
   "title": "inbound-tun",
   "definitions": {
     "types": { "$ref": "../../../definitions/types.json" },
+    "enums": { "$ref": "../../../definitions/enums.json" },
     "base-option": { "$ref": "./base.json" }
   },
   "allOf": [
@@ -287,8 +288,7 @@
           "default": false
         },
         "congestion-controller": {
-          "enum": ["cubic", "reno", "bbr", "bbr3"],
-          "markdownEnumDescriptions": ["CUBIC算法", "Reno算法", "BBR算法", "BBRv3算法"],
+          "$ref": "#/definitions/enums/congestion-controller",
           "title": "TCP拥塞控制算法",
           "description": "仅 mips 生效",
           "markdownDescription": "仅 `mips` 生效",
