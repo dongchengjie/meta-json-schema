@@ -32,6 +32,17 @@
           "markdownDescription": "如无使用问题,建议使用`mixed`(默认`mips`)",
           "default": "mips"
         },
+        "dns-mode": {
+          "enum": ["disabled", "native", "hijack"],
+          "markdownEnumDescriptions": [
+            "不设置系统 DNS",
+            "将 TUN 地址设为系统 DNS",
+            "在 native 基础上额外拦截发往其他网卡的 53 端口流量（Windows 需启用 `strict-route`，Linux 需启用 `auto-redirect`）"
+          ],
+          "title": "系统DNS配置方式",
+          "description": "系统 DNS 配置方式。默认在 Windows 和 Linux 启用 auto-route 时为 hijack，否则为 disabled；macOS 默认为 disabled",
+          "markdownDescription": "系统 DNS 配置方式。默认在 Windows 和 Linux 启用 `auto-route` 时为 `hijack`，否则为 `disabled`；macOS 默认为 `disabled`"
+        },
         "dns-hijack": {
           "$ref": "#/definitions/types/stringArray",
           "title": "DNS劫持",
