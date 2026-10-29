@@ -1,3 +1,11 @@
+## v1.19.34
+
+### Changes
+
+- 新增: listener mieru 新增配置项 `tcp-idle-timeout`，支持设置底层 TCP 连接空闲超时时间
+
+---
+
 ## v1.19.33
 
 ### Changes

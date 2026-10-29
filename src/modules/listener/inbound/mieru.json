@@ -35,6 +35,13 @@
           "description": "加速 mita 服务器对网络数据包的解密（如果不发送用户提示，代理服务器将拒绝连接）",
           "markdownDescription": "加速 mita 服务器对网络数据包的解密（如果不发送用户提示，代理服务器将拒绝连接）",
           "default": false
+        },
+        "tcp-idle-timeout": {
+          "type": "integer",
+          "minimum": 60,
+          "title": "TCP空闲超时",
+          "description": "在上行和下行同时空闲指定秒数后，关闭底层 TCP 连接。默认不限制。最小值为 60。单位: s",
+          "markdownDescription": "在上行和下行同时空闲指定秒数后，关闭底层 TCP 连接。默认不限制。最小值为 60。单位: s"
         }
       }
     }
