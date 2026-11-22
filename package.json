@@ -1,6 +1,6 @@
 {
   "name": "meta-json-schema",
-  "version": "1.19.33",
+  "version": "1.19.34",
   "description": "JSON Schema for Clash Meta",
   "keywords": [
     "clash",
@@ -35,7 +35,7 @@
     "@aminya/minijson": "^1.1.3",
     "@commitlint/cli": "^21.2.4",
     "@commitlint/config-conventional": "^21.2.4",
-    "dprint": "^0.64.3",
+    "dprint": "^0.65.0",
     "json-schema-artifact": "^2.0.3",
     "lefthook": "^2.2.2"
   },
