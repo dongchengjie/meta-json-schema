@@ -59,11 +59,23 @@
           "markdownDescription": "预共享密钥"
         },
         "version": {
-          "enum": [1, 2, 3, 4, 5],
+          "enum": [1, 2, 3, 4, 5, 6],
           "title": "版本",
           "description": "版本",
           "markdownDescription": "版本",
           "default": 4
+        },
+        "mode": {
+          "enum": ["default", "unshaped", "unsafe-raw"],
+          "markdownEnumDescriptions": [
+            "默认模式，启用基于 PSK 派生的流量整形 profile",
+            "禁用流量整形 profile",
+            "禁用流量整形与加密"
+          ],
+          "title": "运行模式",
+          "description": "仅 version 6 生效，必须与服务端保持一致",
+          "markdownDescription": "仅 `version 6` 生效，必须与服务端保持一致",
+          "default": "default"
         },
         "udp": {
           "type": "boolean",

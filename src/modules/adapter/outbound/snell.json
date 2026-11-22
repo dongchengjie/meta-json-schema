@@ -230,11 +230,11 @@
         "udp": {
           "$ref": "#/definitions/compatible/boolean",
           "title": "启用UDP",
-          "description": "仅v3/4/5支持",
-          "markdownDescription": "仅v3/4/5支持"
+          "description": "仅v3/4/5/6支持",
+          "markdownDescription": "仅v3/4/5/6支持"
         },
         "version": {
-          "enum": [1, 2, 3, 4, 5],
+          "enum": [1, 2, 3, 4, 5, 6],
           "title": "版本",
           "description": "版本",
           "markdownDescription": "版本",
@@ -243,8 +243,20 @@
         "reuse": {
           "$ref": "#/definitions/compatible/boolean",
           "title": "连接复用",
-          "description": "仅v4/5支持",
-          "markdownDescription": "仅v4/5支持"
+          "description": "仅v4/5/6支持",
+          "markdownDescription": "仅v4/5/6支持"
+        },
+        "mode": {
+          "enum": ["default", "unshaped", "unsafe-raw"],
+          "markdownEnumDescriptions": [
+            "默认模式，启用基于 PSK 派生的流量整形 profile",
+            "禁用流量整形 profile",
+            "禁用流量整形与加密"
+          ],
+          "title": "运行模式",
+          "description": "仅 version 6 生效，必须与服务端保持一致",
+          "markdownDescription": "仅 `version 6` 生效，必须与服务端保持一致",
+          "default": "default"
         },
         "obfs-opts": {
           "title": "混淆配置",

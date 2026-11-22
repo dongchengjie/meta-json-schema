@@ -3,6 +3,7 @@
 ### Changes
 
 - 新增: listener mieru 新增配置项 `tcp-idle-timeout`，支持设置底层 TCP 连接空闲超时时间
+- 新增: snell 出站与入站支持 version 6 及配置项 `mode`
 
 ---
 
