@@ -33,13 +33,20 @@
     {
       "type": "object",
       "title": "shadowsocks配置",
-      "required": ["password", "cipher"],
+      "required": ["cipher"],
       "properties": {
         "password": {
           "type": "string",
           "title": "密码",
           "description": "认证密码",
           "markdownDescription": "认证密码"
+        },
+        "users": {
+          "type": "object",
+          "title": "用户列表(key: value格式)",
+          "description": "username:password；仅支持 AEAD 及 2022-blake3-aes-*。AEAD 加密时 password 需留空；2022-blake3-aes-* 时上方 password 为服务端 PSK，此处为用户 PSK",
+          "markdownDescription": "`username`:`password`；仅支持 AEAD 及 `2022-blake3-aes-*`。AEAD 加密时 `password` 需留空；`2022-blake3-aes-*` 时上方 `password` 为服务端 PSK，此处为用户 PSK",
+          "additionalProperties": { "type": "string" }
         },
         "cipher": {
           "$ref": "#/definitions/enums/cipher",
@@ -81,6 +88,7 @@
           }
         }
       },
+      "anyOf": [{ "required": ["password"] }, { "required": ["users"] }],
       "allOf": [
         {
           "not": {
